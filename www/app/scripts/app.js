@@ -23,9 +23,33 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl'
+      })
+      .when('/project', {
+        templateUrl: 'views/project.html',
+        controller: 'ProjectCtrl'
+      })
+      .when('/activity', {
+        templateUrl: 'views/activity.html',
+        controller: 'ActivityCtrl'
+      })
+      .when('/message', {
+        templateUrl: 'views/message.html',
+        controller: 'MessageCtrl'
+      })
+      .when('/team', {
+        templateUrl: 'views/team.html',
+        controller: 'TeamCtrl'
+      })
+      .when('/userpage', {
+        templateUrl: 'views/userpage.html',
+        controller: 'UserpageCtrl'
+      })
+      .when('/project-build', {
+        templateUrl: 'views/project-build.html',
+        controller: 'UserpageCtrl'
       })
       .otherwise({
         redirectTo: '/'

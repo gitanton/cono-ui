@@ -22,6 +22,7 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
     
     $scope.newProject = function(){
         $('#newproject').modal('toggle');
+        $('body').css('padding',0);
     };
     
     $scope.operateProject = function(project){
@@ -70,6 +71,7 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
    
    $scope.duplicateProjectModal = function(uuid){
         $('#duplicateproject').modal('toggle');
+        $('body').css('padding',0);
         $scope.duplicateProjectUuid = uuid;
     };
     
@@ -79,6 +81,7 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
    
    $scope.archiveProjectModal = function(uuid){
         $('#archiveproject').modal('toggle');
+        $('body').css('padding',0);
         $scope.archiveProjectUuid = uuid;
     };
     
@@ -95,6 +98,7 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
    
     $scope.deleteProjectModal = function(uuid){
         $('#deleteproject').modal('toggle');
+        $('body').css('padding',0);
         $scope.deleteProjectUuid = uuid;
     };
     
