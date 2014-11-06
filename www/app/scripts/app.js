@@ -47,9 +47,9 @@ angular
         templateUrl: 'views/userpage.html',
         controller: 'UserpageCtrl'
       })
-      .when('/project-build', {
-        templateUrl: 'views/project-build.html',
-        controller: 'UserpageCtrl'
+      .when('/project-build-activity', {
+        templateUrl: 'views/project-build-activity.html',
+        controller: 'ProjectBuildActivityCtrl'
       })
       .otherwise({
         redirectTo: '/'

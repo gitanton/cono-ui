@@ -24,6 +24,9 @@ body {
 .col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,.col-lg-11,.col-lg-12{
     padding:0px;
 }
+.btn:focus,.btn:hover{
+    color:#fff;
+}
 .container{
     padding:0px;
     width:100%;
@@ -76,6 +79,12 @@ body {
 ::-webkit-scrollbar-thumb {
     border-radius: 3px;
     background: #c7c7c7;
+}
+.modal-backdrop{
+    width:1024px;
+    height:672px;
+    margin:0 auto;
+    background:#0378ae;
 }
 
 /*login page*/
@@ -323,6 +332,9 @@ body {
 .project-content-projectcontent{
     position: relative;
 }
+.project-content-projectcontent img{
+    cursor:pointer;
+}
 .project-content-opetate{
     position: absolute;
     z-index: 1;
@@ -404,6 +416,58 @@ body {
     color:#efefef;
     font-size:1.15em;
 }
+#updateproject{
+    width:1024px;
+    margin:0 auto;
+    padding:191px 279px;
+}
+#updateproject .project-update{
+    width:465px;
+    height:288px;
+    background:#fff;
+    border-radius:4px;
+}
+#updateproject .project-update-desc{
+    text-align:center;
+    color:#0378ae;
+    padding:22px 0px;
+    border-bottom:1px solid #e3e3e3;
+}
+#updateproject .project-update-body{
+    text-align:center;
+    color:#0378ae;
+    padding:24px 35px;
+    background:#e6e6e6;
+    border-bottom:1px solid #e3e3e3;
+}
+#updateproject .project-update-title{
+    height:48px;
+}
+#updateproject .project-update-type{
+    margin-top:16px;
+    height:48px;
+}
+#updateproject .project-update-button{
+    padding:12px 0px;
+    text-align:center;
+}
+#updateproject .project-update-buttoncancel{
+    width:201px;
+    height:40px;
+    background:#fff;
+    border-radius:3px;
+    border:1px solid #0370a2;
+    color:#0378ae;
+    font-size:1.15em;
+}
+#updateproject .project-update-buttonsubmit{
+    width:201px;
+    height:40px;
+    border-radius:3px;
+    background:#0370a2;
+    color:#efefef;
+    font-size:1.15em;
+}
 #addPeopleToProject{
     width:1024px;
     margin:0 auto;
@@ -418,6 +482,11 @@ body {
 #addPeopleToProject .project-addPeople-desc{
     text-align:center;
     color:#0378ae;
+    padding:22px 0px;
+    border-bottom:1px solid #e3e3e3;
+}
+#addPeopleToProject .project-addPeople-delicon{
+    text-align:center;
     padding:22px 0px;
     border-bottom:1px solid #e3e3e3;
 }
@@ -592,12 +661,6 @@ body {
     color:#efefef;
     font-size:1.15em;
 }
-.modal-backdrop{
-    width:1024px;
-    height:672px;
-    margin:0 auto;
-    background:#0378ae;
-}
 
 /*activity page*/
 .activity-container{
@@ -746,7 +809,7 @@ body {
 }
 .team-content{
     border-top:1px solid #dddddd;
-    padding:19px 20px;
+    padding:19px 20px 19px 4px;
     background:#e6e6e6;
     height:545px;
 }
@@ -769,6 +832,76 @@ body {
     text-align:center;
     color:#258ab9;
     padding:22px 0px;
+}
+#addTeamMember{
+    width:1024px;
+    margin:0 auto;
+    padding:191px 279px;
+}
+#addTeamMember .teammember-add{
+    width:465px;
+    height:350px;
+    background:#fff;
+    border-radius:4px;
+}
+#addTeamMember .teammember-add-desc{
+    text-align:center;
+    color:#0378ae;
+    padding:22px 0px;
+    border-bottom:1px solid #e3e3e3;
+}
+#addTeamMember .teammember-add-delicon{
+    text-align:center;
+    padding:22px 0px;
+    border-bottom:1px solid #e3e3e3;
+}
+#addTeamMember .teammember-add-body{
+    text-align:center;
+    color:#0378ae;
+    padding:24px 35px;
+    background:#e6e6e6;
+    border-bottom:1px solid #e3e3e3;
+}
+#addTeamMember .has-email{
+    position:relative;
+}
+#addTeamMember .has-add{
+    position:relative;
+    border-radius:3px;
+    border:1px solid #0370a2;
+    color:#0378ae;
+    height:48px;
+    line-height:48px;
+    margin-bottom:0px;
+}
+#addTeamMember .teammember-add-email{
+    height:48px;
+    padding-right:20px;
+}
+#addTeamMember .teammember-add-emailicon{
+    right:6px;
+    top:18px;
+    position:absolute;
+}
+#addTeamMember .teammember-add-addAnother{
+    right:6px;
+    top:18px;
+    position:absolute;
+}
+#addTeamMember .teammember-add-select{
+    height:48px;
+}
+#addTeamMember .teammember-add-button{
+    padding:12px 0px;
+    text-align:center;
+}
+#addTeamMember .teammember-add-button button{
+    width:229px;
+    height:40px;
+    border-radius:3px;
+    background:#0370a2;
+    color:#efefef;
+    font-size:1.15em;
 }
 
 /*userpage page*/
@@ -883,11 +1016,13 @@ body {
     margin-right:10px;
     float:right;
 }
+.projectBuild-content-body{
+    height:497px;
+    overflow-y:auto;
+}
 .projectBuild-content-items{
     width:745px;
-    height:545px;
     padding-left:20px;
-    overflow-y:auto;
 }
 .projectBuild-content-item{
     width:725px;
@@ -906,6 +1041,76 @@ body {
     width:176px;
     margin-top:16px;
     margin-left:19px;
+}
+#addProjectMember{
+    width:1024px;
+    margin:0 auto;
+    padding:191px 279px;
+}
+#addProjectMember .projectmember-add{
+    width:465px;
+    height:350px;
+    background:#fff;
+    border-radius:4px;
+}
+#addProjectMember .projectmember-add-desc{
+    text-align:center;
+    color:#0378ae;
+    padding:22px 0px;
+    border-bottom:1px solid #e3e3e3;
+}
+#addProjectMember .projectmember-add-delicon{
+    text-align:center;
+    padding:22px 0px;
+    border-bottom:1px solid #e3e3e3;
+}
+#addProjectMember .projectmember-add-body{
+    text-align:center;
+    color:#0378ae;
+    padding:24px 35px;
+    background:#e6e6e6;
+    border-bottom:1px solid #e3e3e3;
+}
+#addProjectMember .has-email{
+    position:relative;
+}
+#addProjectMember .has-add{
+    position:relative;
+    border-radius:3px;
+    border:1px solid #0370a2;
+    color:#0378ae;
+    height:48px;
+    line-height:48px;
+    margin-bottom:0px;
+}
+#addProjectMember .projectmember-add-email{
+    height:48px;
+    padding-right:20px;
+}
+#addProjectMember .projectmember-add-emailicon{
+    right:6px;
+    top:18px;
+    position:absolute;
+}
+#addProjectMember .projectmember-add-addAnother{
+    right:6px;
+    top:18px;
+    position:absolute;
+}
+#addProjectMember .projectmember-add-select{
+    height:48px;
+}
+#addProjectMember .projectmember-add-button{
+    padding:12px 0px;
+    text-align:center;
+}
+#addProjectMember .projectmember-add-button button{
+    width:229px;
+    height:40px;
+    border-radius:3px;
+    background:#0370a2;
+    color:#efefef;
+    font-size:1.15em;
 }
 
 /* Responsive: Portrait tablets and up */

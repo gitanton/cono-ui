@@ -6,9 +6,11 @@
  * # ProjectCtrl
  * Controller of the conojoApp
  */
-angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$location) {
+angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http) {
     $scope.projecttype = 0;
     $scope.projecttitle = "";
+    $scope.updateProjectUuid = "";
+    $scope.updateProjectTypeid = 0;
     
     $scope.init = function(){
         $http({
@@ -69,6 +71,31 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
         });
    };
    
+   $scope.openUpdateProject = function(uuid){
+        $('#updateproject').modal('toggle');
+        $('body').css('padding',0);
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/projects/project/'+uuid,
+            method: 'GET',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(data) {
+            $scope.updateProjectUuid = data.uuid;
+            $scope.updateProjectTitle = data.name;
+            $scope.updateProjectTypeid = data.type_id;
+        });
+    };
+    
+    $scope.updateMyProject = function(uuid){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/projects/project/'+uuid,
+            method: 'PUT',
+            data: {name:$scope.updateProjectTitle,type_id:$scope.updateProjectTypeid}
+        }).success(function() {
+            $scope.init();
+            $('#updateproject').modal('hide');
+        });
+   };
+   
    $scope.duplicateProjectModal = function(uuid){
         $('#duplicateproject').modal('toggle');
         $('body').css('padding',0);
@@ -79,17 +106,18 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
         
     };
    
-   $scope.archiveProjectModal = function(uuid){
+   $scope.archiveProjectModal = function(uuid,typeid){
         $('#archiveproject').modal('toggle');
         $('body').css('padding',0);
         $scope.archiveProjectUuid = uuid;
+        $scope.archiveProjectTypeid = typeid;
     };
     
     $scope.archiveProject = function(uuid){
         $http({
             url: 'http://conojoapp.scmreview.com/rest/projects/project/'+uuid,
             method: 'PUT',
-            data:{"type_id":"1"}
+            data:{type_id:$scope.archiveProjectTypeid,archived:"1"}
         }).success(function() {
             $scope.init();
             $('#archiveproject').modal('hide');
