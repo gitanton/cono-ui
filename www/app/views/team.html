@@ -27,7 +27,7 @@
         <form name="createteammember">
             <div class="col-lg-12 teammember-add-body">
                 <div class="form-group">
-                    <select name="teammembertype" ng-model="teammembertype" class="form-control teammember-add-select">
+                    <select name="teammembertype" ng-model="memberUuid" class="form-control teammember-add-select">
                         <option value=0>Select Person</option>
                         <option value=1>Charles Haggas</option>
                         <option value=2>Ambrose Bierce</option>
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="col-lg-12 teammember-add-button">
-                <button class="btn btn-lg" type="submit">Invite People</button>       
+                <button class="btn btn-lg" type="submit" ng-click="addTeamMember()">Invite People</button>       
             </div>
         </form>
     </div>

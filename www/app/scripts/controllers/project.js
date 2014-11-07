@@ -65,8 +65,8 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http) {
             method: 'POST',
             data: $.param({name:$scope.projecttitle,type_id:$scope.projecttype}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data) {
-            $scope.projects.push(data);
+        }).success(function() {
+            $scope.init();
             $('#newproject').modal('hide');
         });
    };
@@ -96,14 +96,23 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http) {
         });
    };
    
-   $scope.duplicateProjectModal = function(uuid){
+   $scope.duplicateProjectModal = function(uuid,name){
         $('#duplicateproject').modal('toggle');
         $('body').css('padding',0);
         $scope.duplicateProjectUuid = uuid;
+        $scope.duplicateProjectName = name;
     };
     
     $scope.duplicateProject = function(uuid){
-        
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/projects/project/'+uuid+'/duplicate',
+            method: 'POST',
+            data: $.param({uuid:$scope.duplicateProjectUuid,name:$scope.duplicateProjectName+'-Copy'}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            $scope.init();
+            $('#duplicateproject').modal('hide');
+        });
     };
    
    $scope.archiveProjectModal = function(uuid,typeid){

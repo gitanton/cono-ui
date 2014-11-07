@@ -21,15 +21,26 @@ body {
     border-bottom-right-radius:10px;
     margin:auto;
 }
-.col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,.col-lg-11,.col-lg-12{
-    padding:0px;
-}
-.btn:focus,.btn:hover{
-    color:#fff;
-}
 .container{
     padding:0px;
     width:100%;
+}
+.col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,.col-lg-11,.col-lg-12{
+    padding:0px;
+}
+ul li{
+    list-style:none;
+}
+.appbutton{
+    width:225px;
+    height:44px;
+    border-radius:3px;
+    background:#0370a2;
+    color:#efefef;
+    font-size:1.15em;
+}
+.btn:focus,.btn:hover{
+    color:#fff;
 }
 .blue-line{
     border-bottom:2px solid #4baedd;
@@ -38,21 +49,21 @@ body {
     background:#e6e6e6;
     height:48px;
     padding:12px;
-}
-.nav-address{
-    padding-left:40px;
-    color:#757575;
-    font-size:1em;
+    .nav-address{
+        padding-left:40px;
+        color:#757575;
+        font-size:1em;
+    }
 }
 .header-container{
     height:64px;
     padding:17px 15px 13px;
-}
-.header-container .col-lg-2{
-    text-align:center;
-}
-.header-container .col-lg-2 a{
-    margin:0px 15px;
+    .col-lg-2{
+        text-align:center;
+        a{
+            margin:0px 15px;
+        }
+    }
 }
 .siderbar-closed-container{
     width:64px;
@@ -60,13 +71,13 @@ body {
     background:#0378ae;
     float:left;
     border-bottom-left-radius:8px;
-}
-.siderbar-closed-container .col-lg-12{
-    padding:23px 0px;
-    text-align:center;
-}
-.siderbar-closed-container .siderbar-closed-container-expand{
-    padding:230px 0px 21px;
+    .col-lg-12{
+        padding:23px 0px;
+        text-align:center;
+    }
+    .siderbar-closed-container-expand{
+        padding:230px 0px 21px;
+    }
 }
 /*scrollbar style*/
 ::-webkit-scrollbar {
@@ -93,82 +104,77 @@ body {
     padding:0px 317px;
     background:#efefef;
     border-top:3px solid #d4d4d4;
-}
-.login-logo{
-    padding:60px 82px 34px;
-    margin:0px;
-}
-.login-form{
-    height:283px;
-    margin:0px;
-    padding:33px;
-    background:#e3e3e3;
-    border-radius:10px;
-}
-.login-username{
-    height:44px;
-    margin-bottom:20px;
-    border:0px;
-}
-.login-password{
-    height:44px;
-    margin-bottom:16px;
-    border:0px;
-}
-.login-remember{
-    margin-bottom:33px;
-    height:16px;
-    line-height:16px;
-}
-.login-forgot{
-    text-align:right;
-}
-.login-button{
-    text-align:center;
-}
-.login-form button{
-    width:225px;
-    height:44px;
-    border-radius:3px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
-}
-.login-remember label{
-    font-size:0.85em;
-    margin-bottom:0px;
-}
-.login-forgot label{
-    font-size:0.85em;
-    font-weight:normal;
-    color:#0370a2;
-}
-.login-link{
-    margin:0px;
-    padding:24px 0px 90px;
-}
-.login-twitter{
-    margin-left:30px;
-}
-.login-fb{
-    margin-left:60px;
-}
-.login-google{
-    margin-left:60px;
+    .login-logo{
+        padding:60px 82px 34px;
+        margin:0px;
+    }
+    .login-form{
+        height:283px;
+        margin:0px;
+        padding:33px;
+        background:#e3e3e3;
+        border-radius:10px;
+        .login-username{
+            height:44px;
+            margin-bottom:20px;
+            border:0px;
+        }
+        .login-password{
+            height:44px;
+            margin-bottom:16px;
+            border:0px;
+        }
+        .login-remember{
+            margin-bottom:33px;
+            height:16px;
+            line-height:16px;
+            label{
+                font-size:0.85em;
+                margin-bottom:0px;
+            }
+        }
+        .login-forgot{
+            text-align:right;
+            label{
+                font-size:0.85em;
+                font-weight:normal;
+                color:#0370a2;
+            }
+        }
+        .login-button{
+            text-align:center;
+            button{
+                @extend .appbutton;
+            }
+        }
+    }
+    .login-link{
+        margin:0px;
+        padding:24px 0px 90px;
+        .login-twitter{
+            margin-left:30px;
+        }
+        .login-fb{
+            margin-left:60px;
+        }
+        .login-google{
+            margin-left:60px;
+        }
+    }
 }
 .login-footer{
     background:#e3e3e3;
     height:108px;
     padding:32px 0px;
     text-align:center;
-}
-.login-footer a{
-    width:225px;
-    height:44px;
-    border-radius:3px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
+    a{
+        width:225px;
+        height:44px;
+        border-radius:3px;
+        background:#0370a2;
+        color:#efefef;
+        font-size:1.15em;
+    }
 }
 
 /*register page*/
@@ -176,941 +182,901 @@ body {
     padding:0px 317px;
     background:#efefef;
     border-top:3px solid #d4d4d4;
-}
-.register-logo{
-    padding:24px 82px 31px;
-    margin:0px;
-}
-.register-form{
-    height:386px;
-    margin:0px;
-    padding:22px 33px 30px;
-    background:#e3e3e3;
-    border-radius:10px;
-}
-.register-form button{
-    width:225px;
-    height:44px;
-    border-radius:3px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
-}
-.register-desc{
-    padding-bottom:29px;
-    text-align:center;
-}
-.register-desc-free{
-    font-size:1.55em;
-    height:25px;
-    line-height:25px;
-    margin:0px;
-}
-.register-desc-card{
-    font-size:1.05em;
-    height:17px;
-    line-height:17px;
-    margin:0px;
-}
-.register-fullname,.register-email,.register-password{
-    margin-bottom:7px;
-    height:44px;
-    border:0px;
-}
-.register-confirmpassword{
-    margin-bottom:23px;
-    height:44px;
-    border:0px;
-}
-.register-button{
-    text-align:center;
-}
-.register-note{
-    margin:0px;
-    padding:15px 0px 39px;
-    font-size:0.85em;
-    text-align:center;
-}
-.register-note p{
-    margin:0px;
+    .register-logo{
+        padding:24px 82px 31px;
+        margin:0px;
+    }
+    .register-form{
+        height:386px;
+        margin:0px;
+        padding:22px 33px 30px;
+        background:#e3e3e3;
+        border-radius:10px;
+        button{
+            @extend .appbutton;
+        }
+        .register-desc{
+            padding-bottom:29px;
+            text-align:center;
+        }
+        .register-desc-free{
+            font-size:1.55em;
+            height:25px;
+            line-height:25px;
+            margin:0px;
+        }
+        .register-desc-card{
+            font-size:1.05em;
+            height:17px;
+            line-height:17px;
+            margin:0px;
+        }
+        .register-fullname{
+            margin-bottom:7px;
+            height:44px;
+            border:0px;
+        }
+        .register-email{
+            margin-bottom:7px;
+            height:44px;
+            border:0px;
+        }
+        .register-password{
+            margin-bottom:7px;
+            height:44px;
+            border:0px;
+        }
+        .register-confirmpassword{
+            margin-bottom:23px;
+            height:44px;
+            border:0px;
+        }
+        .register-button{
+            text-align:center;
+        }
+    }
+    .register-note{
+        margin:0px;
+        padding:15px 0px 39px;
+        font-size:0.85em;
+        text-align:center;
+        p{
+            margin:0px;
+        }
+    }
 }
 .register-footer{
     background:#e3e3e3;
     height:108px;
     padding:20px 370px;
-}
-.register-footer p{
-    margin:0px;
-}
-.register-footer .col-lg-8{
-    margin:14px 0px;
+    p{
+        margin:0px;
+    }
+    .col-lg-8{
+        margin:14px 0px;
+    }
 }
 
 /*project page*/
 .project-container{
     float:left;
-}
-.project-header{
-    width:960px;
-    height:64px;
-    background:#efefef;
-    border-top:1px solid #e3e3e3;
-    padding:11px 20px 12px;
-}
-.project-header-search{
-    width:460px;
-    height:40px;
-    background:#ffffff;
-}
-.project-header-search img{
-    margin-left:12px;
-}
-.project-header-search input{
-    width:420px;
-    height:40px;
-    box-shadow:none;
-    border:0px;
-    display:inline;
-}
-.project-header-create{
-    text-align:right;
-}
-.project-header-create button{
-    width:156px;
-    height:40px;
-    border-radius:2px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
-    padding:0px;
-}
-.project-content{
-    border-top:1px solid #dddddd;
-    padding:19px 14px 19px 4px;
-    background:#e6e6e6;
-    width:960px;
-    height:545px;
-    overflow-y:auto;
-}
-.project-content .col-lg-4{
-    width:295px;
-    height:270px;
-    margin-bottom:19px;
-    background:#fff;
-}
-.project-content-offset{
-    margin-left:16px;
-}
-.project-content-name{
-    color:#0378ae;
-    padding:13px 0px 12px 15px;
-}
-.project-content-gear{
-    padding:13px 15px 12px;
-    text-align:right;
-}
-.project-content-gear-a{
-    background:url('/images/gear-icon.png') no-repeat;
-    height:20px;
-    display: block;
-}
-.project-content-gear-a-selected{
-    background:url('/images/gear-selected.png') no-repeat;
-    height:20px;
-    display: block;
-}
-.project-content-gear-background{
-    background:#707070;
-}
-.project-content-operate-show{
-    display:block;
-    background:#707070;
-}
-.project-content-operate-hide{
-    display:none;
-}
-.project-content-projectcontent{
-    position: relative;
-}
-.project-content-projectcontent img{
-    cursor:pointer;
-}
-.project-content-opetate{
-    position: absolute;
-    z-index: 1;
-    width:295px;
-    height:184px;
-    top:0px;
-}
-.project-content-opetate ul{
-    padding:0px;
-    margin:0px;
-}
-.project-content-opetate ul li{
-    list-style:none;
-    height:46px;
-    padding:14px 17px;
-}
-.project-content-opetate ul li a{
-    color:#fff;
-    text-decoration:none;
-}
-.project-content-opetate ul li img{
-    padding-right:17px;
-}
-.project-content-btm{
-    position: absolute;
-    z-index: 1;
-    width:296px;
-    height:43px;
-    top:184px;
-    background:url('/images/btm.png');
-}
-.project-content-paper{
-    padding:13px 0px 12px 15px;
-}
-.project-content-move{
-    padding:13px 15px 12px 0px;
-    text-align:right;
+    .project-header{
+        width:960px;
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px;
+        .project-header-search{
+            width:460px;
+            height:40px;
+            background:#ffffff;
+            img{
+                margin-left:12px;
+            }
+            input{
+                width:420px;
+                height:40px;
+                box-shadow:none;
+                border:0px;
+                display:inline;
+            }
+        }
+        .project-header-create{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:156px;
+                height:40px;
+                border-radius:2px;
+                padding:0px;
+            }
+        }
+    }
+    .project-content{
+        border-top:1px solid #dddddd;
+        padding:19px 14px 19px 4px;
+        background:#e6e6e6;
+        width:960px;
+        height:545px;
+        overflow-y:auto;
+        .col-lg-4{
+            width:295px;
+            height:270px;
+            margin-bottom:19px;
+            background:#fff;
+        }
+        .project-content-offset{
+            margin-left:16px;
+        }
+        .project-content-name{
+            color:#0378ae;
+            padding:13px 0px 12px 15px;
+        }
+        .project-content-gear{
+            padding:13px 15px 12px;
+            text-align:right;
+        }
+        .project-content-gear-a{
+            background:url('/images/gear-icon.png') no-repeat;
+            height:20px;
+            display: block;
+        }
+        .project-content-gear-a-selected{
+            background:url('/images/gear-selected.png') no-repeat;
+            height:20px;
+            display: block;
+        }
+        .project-content-gear-background{
+            background:#707070;
+        }
+        .project-content-operate-show{
+            display:block;
+            background:#707070;
+        }
+        .project-content-operate-hide{
+            display:none;
+        }
+        .project-content-projectcontent{
+            position: relative;
+            img{
+                cursor:pointer;
+            }
+        }
+        .project-content-opetate{
+            position: absolute;
+            z-index: 1;
+            width:295px;
+            height:184px;
+            top:0px;
+            ul{
+                padding:0px;
+                margin:0px;
+                li{
+                    height:46px;
+                    padding:14px 17px;
+                    a{
+                        color:#fff;
+                        text-decoration:none;
+                    }
+                    img{
+                        padding-right:17px;
+                    }
+                }
+            }
+        }
+        .project-content-btm{
+            position: absolute;
+            z-index: 1;
+            width:296px;
+            height:43px;
+            top:184px;
+            background:url('/images/btm.png');
+            .project-content-paper{
+                padding:13px 0px 12px 15px;
+            }
+            .project-content-move{
+                padding:13px 15px 12px 0px;
+                text-align:right;
+            }
+        }
+    }
 }
 #newproject{
     width:1024px;
     margin:0 auto;
     padding:191px 279px;
-}
-#newproject .project-new{
-    width:465px;
-    height:288px;
-    background:#fff;
-    border-radius:4px;
-}
-#newproject .project-new-desc{
-    text-align:center;
-    color:#0378ae;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#newproject .project-new-body{
-    text-align:center;
-    color:#0378ae;
-    padding:24px 35px;
-    background:#e6e6e6;
-    border-bottom:1px solid #e3e3e3;
-}
-#newproject .project-new-title{
-    height:48px;
-}
-#newproject .project-new-type{
-    margin-top:16px;
-    height:48px;
-}
-#newproject .project-new-button{
-    padding:12px 0px;
-    text-align:center;
-}
-#newproject .project-new-button button{
-    width:229px;
-    height:40px;
-    border-radius:3px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
+    .project-new{
+        width:465px;
+        height:288px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .project-new-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-new-body{
+        text-align:center;
+        color:#0378ae;
+        padding:24px 35px;
+        background:#e6e6e6;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-new-title{
+        height:48px;
+    }
+    .project-new-type{
+        margin-top:16px;
+        height:48px;
+    }
+    .project-new-button{
+        padding:12px 0px;
+        text-align:center;
+        button{
+            @extend .appbutton;
+            width:229px;
+            height:40px;
+        }
+    }
 }
 #updateproject{
     width:1024px;
     margin:0 auto;
     padding:191px 279px;
-}
-#updateproject .project-update{
-    width:465px;
-    height:288px;
-    background:#fff;
-    border-radius:4px;
-}
-#updateproject .project-update-desc{
-    text-align:center;
-    color:#0378ae;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#updateproject .project-update-body{
-    text-align:center;
-    color:#0378ae;
-    padding:24px 35px;
-    background:#e6e6e6;
-    border-bottom:1px solid #e3e3e3;
-}
-#updateproject .project-update-title{
-    height:48px;
-}
-#updateproject .project-update-type{
-    margin-top:16px;
-    height:48px;
-}
-#updateproject .project-update-button{
-    padding:12px 0px;
-    text-align:center;
-}
-#updateproject .project-update-buttoncancel{
-    width:201px;
-    height:40px;
-    background:#fff;
-    border-radius:3px;
-    border:1px solid #0370a2;
-    color:#0378ae;
-    font-size:1.15em;
-}
-#updateproject .project-update-buttonsubmit{
-    width:201px;
-    height:40px;
-    border-radius:3px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
-}
-#addPeopleToProject{
-    width:1024px;
-    margin:0 auto;
-    padding:191px 279px;
-}
-#addPeopleToProject .project-addPeople{
-    width:465px;
-    height:288px;
-    background:#fff;
-    border-radius:4px;
-}
-#addPeopleToProject .project-addPeople-desc{
-    text-align:center;
-    color:#0378ae;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#addPeopleToProject .project-addPeople-delicon{
-    text-align:center;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#addPeopleToProject .project-addPeople-body{
-    text-align:center;
-    color:#0378ae;
-    padding:24px 35px;
-    background:#e6e6e6;
-    border-bottom:1px solid #e3e3e3;
-}
-#addPeopleToProject .project-addPeople-title{
-    height:48px;
-}
-#addPeopleToProject .project-addPeople-type{
-    margin-top:16px;
-    height:48px;
-}
-#addPeopleToProject .project-addPeople-button{
-    padding:12px 0px;
-    text-align:center;
-}
-#addPeopleToProject .project-addPeople-button button{
-    width:229px;
-    height:40px;
-    border-radius:3px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
+    .project-update{
+        width:465px;
+        height:288px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .project-update-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-update-body{
+        text-align:center;
+        color:#0378ae;
+        padding:24px 35px;
+        background:#e6e6e6;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-update-title{
+        height:48px;
+    }
+    .project-update-type{
+        margin-top:16px;
+        height:48px;
+    }
+    .project-update-button{
+        padding:12px 0px;
+        text-align:center;
+    }
+    .project-update-buttoncancel{
+        @extend .appbutton;
+        width:201px;
+        height:40px;
+        background:#fff;
+        border:1px solid #0370a2;
+        color:#0378ae;
+    }
+    .project-update-buttonsubmit{
+        @extend .appbutton;
+        width:201px;
+        height:40px;
+    }
 }
 #duplicateproject{
     width:1024px;
     margin:0 auto;
     padding:137px 279px;
-}
-#duplicateproject .project-duplicate{
-    width:465px;
-    height:327px;
-    background:#fff;
-    border-radius:4px;
-}
-#duplicateproject .project-duplicate-desc{
-    text-align:center;
-    color:#0378ae;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#duplicateproject .project-duplicate-delicon{
-    text-align:center;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#duplicateproject .project-duplicate-warning{
-    text-align:center;
-    background:#e6e6e6;
-}
-#duplicateproject .project-duplicate-warningicon{
-    padding:27px 0px;
-}
-#duplicateproject .project-duplicate-warningdesc{
-    padding:0px 65px 30px;
-}
-#duplicateproject .project-duplicate-button{
-    padding:12px 0px;
-    text-align:center;
-}
-#duplicateproject .project-duplicate-buttonsubmit{
-    width:201px;
-    height:40px;
-    border-radius:3px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
+    .project-duplicate{
+        width:465px;
+        height:327px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .project-duplicate-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-duplicate-delicon{
+        text-align:center;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-duplicate-warning{
+        text-align:center;
+        background:#e6e6e6;
+    }
+    .project-duplicate-warningicon{
+        padding:27px 0px;
+    }
+    .project-duplicate-warningdesc{
+        padding:0px 65px 30px;
+    }
+    .project-duplicate-button{
+        padding:12px 0px;
+        text-align:center;
+    }
+    .project-duplicate-buttonsubmit{
+        @extend .appbutton;
+        width:201px;
+        height:40px;
+    }
 }
 #archiveproject{
     width:1024px;
     margin:0 auto;
     padding:137px 279px;
-}
-#archiveproject .project-archive{
-    width:465px;
-    height:387px;
-    background:#fff;
-    border-radius:4px;
-}
-#archiveproject .project-archive-desc{
-    text-align:center;
-    color:#0378ae;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#archiveproject .project-archive-delicon{
-    text-align:center;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#archiveproject .project-archive-warning{
-    text-align:center;
-    background:#e6e6e6;
-}
-#archiveproject .project-archive-warningicon{
-    padding:35px 0px;
-}
-#archiveproject .project-archive-warningdesc{
-    padding:0px 65px 35px;
-}
-#archiveproject .project-archive-button{
-    padding:12px 0px;
-    text-align:center;
-}
-#archiveproject .project-archive-buttonsubmit{
-    width:201px;
-    height:40px;
-    border-radius:3px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
+    .project-archive{
+        width:465px;
+        height:387px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .project-archive-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-archive-delicon{
+        text-align:center;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-archive-warning{
+        text-align:center;
+        background:#e6e6e6;
+    }
+    .project-archive-warningicon{
+        padding:35px 0px;
+    }
+    .project-archive-warningdesc{
+        padding:0px 65px 35px;
+    }
+    .project-archive-button{
+        padding:12px 0px;
+        text-align:center;
+    }
+    .project-archive-buttonsubmit{
+        @extend .appbutton;
+        width:201px;
+        height:40px;
+    }
 }
 #deleteproject{
     width:1024px;
     margin:0 auto;
     padding:137px 279px;
-}
-#deleteproject .project-delete{
-    width:465px;
-    height:397px;
-    background:#fff;
-    border-radius:4px;
-}
-#deleteproject .project-delete-desc{
-    text-align:center;
-    color:#0378ae;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#deleteproject .project-delete-delicon{
-    text-align:center;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#deleteproject .project-delete-warning{
-    text-align:center;
-    background:#e6e6e6;
-}
-#deleteproject .project-delete-warningicon{
-    padding:27px 0px;
-}
-#deleteproject .project-delete-warningdesc{
-    font-size:1.6em;
-    padding:0px 65px;
-}
-#deleteproject .project-delete-warningundone{
-    padding:25px 0px;
-}
-#deleteproject .project-delete-button{
-    padding:12px 0px;
-    text-align:center;
-}
-#deleteproject .project-delete-buttoncancel{
-    width:201px;
-    height:40px;
-    background:#fff;
-    border-radius:3px;
-    border:1px solid #0370a2;
-    color:#0378ae;
-    font-size:1.15em;
-}
-#deleteproject .project-delete-buttonsubmit{
-    width:201px;
-    height:40px;
-    border-radius:3px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
+    .project-delete{
+        width:465px;
+        height:397px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .project-delete-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-delete-delicon{
+        text-align:center;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-delete-warning{
+        text-align:center;
+        background:#e6e6e6;
+    }
+    .project-delete-warningicon{
+        padding:27px 0px;
+    }
+    .project-delete-warningdesc{
+        font-size:1.6em;
+        padding:0px 65px;
+    }
+    .project-delete-warningundone{
+        padding:25px 0px;
+    }
+    .project-delete-button{
+        padding:12px 0px;
+        text-align:center;
+    }
+    .project-delete-buttoncancel{
+        @extend .appbutton;
+        width:201px;
+        height:40px;
+        background:#fff;
+        border:1px solid #0370a2;
+        color:#0378ae;
+    }
+    .project-delete-buttonsubmit{
+        @extend .appbutton;
+        width:201px;
+        height:40px;
+    }
 }
 
 /*activity page*/
 .activity-container{
     float:left;
-}
-.activity-header{
-    width:960px;
-    height:64px;
-    background:#efefef;
-    border-top:1px solid #e3e3e3;
-    padding:11px 20px 12px;
-}
-.activity-header-account span{
-    font-size: 20px;
-    height:40px;
-    line-height:40px;
-}
-.activity-header-button{
-    text-align:right;
-}
-.activity-header-button button{
-    width:98px;
-    height:40px;
-    border-radius:2px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:0.9em;
-}
-.activity-content{
-    border-top:1px solid #dddddd;
-    padding:16px 14px 0px 20px;
-    background:#e6e6e6;
-    height:545px;
-    overflow-y:auto;
-}
-.activity-content-items{
-    width:725px;
-}
-.activity-content-item{
-    margin-top:16px;
-}
-.activity-content-img{
-    width:164px;
-}
-.activity-content-desc{
-    width:561px;
-    height:180px;
-    background:#fff;
-    padding:20px
-}
-.activity-content-delete{
-    width:176px;
-    margin-top:16px;
-    margin-left:19px;
+    .activity-header{
+        width:960px;
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px;
+        .activity-header-account{
+            span{
+                font-size: 20px;
+                height:40px;
+                line-height:40px;
+            }
+        }
+        .activity-header-button{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:98px;
+                height:40px;
+                border-radius:2px;
+            }
+        }
+    }
+    .activity-content{
+        border-top:1px solid #dddddd;
+        padding:16px 14px 0px 20px;
+        background:#e6e6e6;
+        height:545px;
+        overflow-y:auto;
+        .activity-content-items{
+            width:725px;
+            .activity-content-item{
+                margin-top:16px;
+                .activity-content-img{
+                    width:164px;
+                }
+                .activity-content-desc{
+                    width:561px;
+                    height:180px;
+                    background:#fff;
+                    padding:20px
+                }
+            }
+        }
+        .activity-content-delete{
+            width:176px;
+            margin-top:16px;
+            margin-left:19px;
+        }
+    }
 }
 
 /*message page*/
 .message-container{
     float:left;
-}
-.message-header{
-    width:960px;
-    height:64px;
-    background:#efefef;
-    border-top:1px solid #e3e3e3;
-    padding:11px 20px 12px;
-}
-.message-header-title{
-    padding:7px 0px;
-    font-size: 18px;
-}
-.message-header-button{
-    text-align:right;
-}
-.message-header-button button{
-    width:98px;
-    height:40px;
-    border-radius:2px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:0.9em;
-}
-.message-subheader{
-    height:66px;
-    padding:21px 18px;
-    border-bottom:1px solid #e5e5e5;
-    box-shadow:0px 3px 3px #e5e5e5;
-}
-.message-subheader-previously{
-    text-align:right;
-}
-.message-content{
-    height:478px;
-    overflow-y:auto;
-}
-.message-content-items{
-    padding:10px 40px 10px 20px;
-    width:960px;
-    height:478px;
-}
-.message-content-item{
-    border-bottom:1px solid #e5e5e5;
-    height:132px;
-}
-.message-content-img{
-    width:89px;
-    padding:20px 10px 20px 15px;
-}
-.message-content-name{
-    padding:40px 10px 40px 0px;
-    color:#258ab9;
-}
-.message-content-message{
-    padding:10px;
-}
-.message-content-operate{
-    width:120px;
+    .message-header{
+        width:960px;
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px;
+        .message-header-title{
+            padding:7px 0px;
+            font-size: 18px;
+        }
+        .message-header-button{
+            text-align:right;
+             button{
+                @extend .appbutton;
+                width:98px;
+                height:40px;
+                border-radius:2px;
+            }
+        }
+    }
+    .message-subheader{
+        height:66px;
+        padding:21px 18px;
+        border-bottom:1px solid #e5e5e5;
+        box-shadow:0px 3px 3px #e5e5e5;
+        .message-subheader-previously{
+            text-align:right;
+        }
+    }
+    .message-content{
+        height:478px;
+        overflow-y:auto;
+        .message-content-items{
+            padding:10px 40px 10px 20px;
+            width:960px;
+            height:478px;
+        }
+        .message-content-item{
+            border-bottom:1px solid #e5e5e5;
+            height:132px;
+        }
+        .message-content-img{
+            width:89px;
+            padding:20px 10px 20px 15px;
+        }
+        .message-content-name{
+            padding:40px 10px 40px 0px;
+            color:#258ab9;
+        }
+        .message-content-message{
+            padding:10px;
+        }
+        .message-content-operate{
+            width:120px;
+        }
+    }
 }
 
 /*team page*/
 .team-container{
     float:left;
+    .team-header{
+        width:960px;
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px;
+        .team-header-account{
+            span{
+                font-size: 20px;
+                height:40px;
+                line-height:40px;
+            }
+        }
+        .team-header-button{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:156px;
+                height:40px;
+                border-radius:2px;
+                font-size:0.9em;
+            }
+        }
+    }
 }
-.team-header{
-    width:960px;
-    height:64px;
-    background:#efefef;
-    border-top:1px solid #e3e3e3;
-    padding:11px 20px 12px;
-}
-.team-header-account span{
-    font-size: 20px;
-    height:40px;
-    line-height:40px;
-}
-.team-header-button{
-    text-align:right;
-}
-.team-header-button button{
-    width:156px;
-    height:40px;
-    border-radius:2px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:0.9em;
-}
+
 .team-content{
     border-top:1px solid #dddddd;
     padding:19px 20px 19px 4px;
     background:#e6e6e6;
     height:545px;
+    .col-lg-4{
+        width:296px;
+        height:296px;
+        background:#d4d4d4;
+        border-radius:3px;
+    }
+    .team-content-offset{
+        margin-left:16px;
+    }
+    .team-content-itemimg{
+        text-align:center;
+        background:#d4d4d4;
+        padding:20px;
+        border-bottom:1px solid #e6e6e6;
+    }
+    .team-content-itemname{
+        text-align:center;
+        color:#258ab9;
+        padding:22px 0px;
+    }
 }
-.team-content .col-lg-4{
-    width:296px;
-    height:296px;
-    background:#d4d4d4;
-    border-radius:3px;
-}
-.team-content-offset{
-    margin-left:16px;
-}
-.team-content-itemimg{
-    text-align:center;
-    background:#d4d4d4;
-    padding:20px;
-    border-bottom:1px solid #e6e6e6;
-}
-.team-content-itemname{
-    text-align:center;
-    color:#258ab9;
-    padding:22px 0px;
-}
-#addTeamMember{
+#addTeamMember,#addPeopleToProject{
     width:1024px;
     margin:0 auto;
     padding:191px 279px;
-}
-#addTeamMember .teammember-add{
-    width:465px;
-    height:350px;
-    background:#fff;
-    border-radius:4px;
-}
-#addTeamMember .teammember-add-desc{
-    text-align:center;
-    color:#0378ae;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#addTeamMember .teammember-add-delicon{
-    text-align:center;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#addTeamMember .teammember-add-body{
-    text-align:center;
-    color:#0378ae;
-    padding:24px 35px;
-    background:#e6e6e6;
-    border-bottom:1px solid #e3e3e3;
-}
-#addTeamMember .has-email{
-    position:relative;
-}
-#addTeamMember .has-add{
-    position:relative;
-    border-radius:3px;
-    border:1px solid #0370a2;
-    color:#0378ae;
-    height:48px;
-    line-height:48px;
-    margin-bottom:0px;
-}
-#addTeamMember .teammember-add-email{
-    height:48px;
-    padding-right:20px;
-}
-#addTeamMember .teammember-add-emailicon{
-    right:6px;
-    top:18px;
-    position:absolute;
-}
-#addTeamMember .teammember-add-addAnother{
-    right:6px;
-    top:18px;
-    position:absolute;
-}
-#addTeamMember .teammember-add-select{
-    height:48px;
-}
-#addTeamMember .teammember-add-button{
-    padding:12px 0px;
-    text-align:center;
-}
-#addTeamMember .teammember-add-button button{
-    width:229px;
-    height:40px;
-    border-radius:3px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
+    .teammember-add{
+        width:465px;
+        height:350px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .teammember-add-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .teammember-add-delicon{
+        text-align:center;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .teammember-add-body{
+        text-align:center;
+        color:#0378ae;
+        padding:24px 35px;
+        background:#e6e6e6;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .has-email{
+        position:relative;
+    }
+    .has-add{
+        position:relative;
+        border-radius:3px;
+        border:1px solid #0370a2;
+        color:#0378ae;
+        height:48px;
+        line-height:48px;
+        margin-bottom:0px;
+    }
+    .teammember-add-email{
+        height:48px;
+        padding-right:20px;
+    }
+    .teammember-add-emailicon{
+        right:6px;
+        top:18px;
+        position:absolute;
+    }
+    .teammember-add-addAnother{
+        right:6px;
+        top:18px;
+        position:absolute;
+    }
+    .teammember-add-select{
+        height:48px;
+    }
+    .teammember-add-button{
+        padding:12px 0px;
+        text-align:center;
+        button{
+            @extend .appbutton;
+            width:229px;
+            height:40px;
+        }
+    }
 }
 
 /*userpage page*/
 .userpage-container{
     float:left;
+    .userpage-header{
+        width:960px;
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px;
+        .userpage-header-account{
+            span{
+                font-size: 20px;
+                height:40px;
+                line-height:40px;
+            }
+        }
+        .userpage-header-button{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:156px;
+                height:40px;
+                border-radius:2px;
+                font-size:0.9em;
+            }
+        }
+    }
+    .userpage-content{
+        border-top:1px solid #dddddd;
+        padding:24px 20px;
+        background:#e6e6e6;
+        height:545px;
+        overflow-y:auto;
+        .userpage-content-container{
+            width:920px;
+            background:#fff;
+            border-radius:3px;
+            .userpage-content-intro{
+                border-bottom:1px solid #e5e5e5;
+                height:232px;
+                .userpage-content-img{
+                    text-align:center;
+                    padding:20px;
+                }
+                .userpage-content-desc{
+                    padding:21px 0px;
+                }
+                .userpage-content-name{
+                    font-size:1.5em;
+                    box-shadow:3px 3px 3px #e5e5e5;
+                }
+                .userpage-content-active{
+                    font-style:italic;
+                    color:#909090;
+                }
+            }
+            .userpage-content-ownedbyme{
+                border-top:1px solid #e5e5e5;
+                .userpage-content-ownedbyme-title{
+                    border-bottom:1px solid #e5e5e5;
+                    height:64px;
+                    padding:24px;
+                    color:#0378ae;
+                }
+                .userpage-content-ownedbyme-item{
+                    height:64px;
+                    padding:14px 24px;
+                    border-bottom:1px solid #e5e5e5;
+                    button{
+                        @extend .appbutton;
+                        height:36px;
+                        width:136px;
+                        background:#fff;
+                        border:1px solid #0370a2;
+                        color:#0378ae;
+                        font-size:1em;
+                    }
+                }
+            }
+        }
+    }
 }
-.userpage-header{
-    width:960px;
-    height:64px;
-    background:#efefef;
-    border-top:1px solid #e3e3e3;
-    padding:11px 20px 12px;
-}
-.userpage-header-account span{
-    font-size: 20px;
-    height:40px;
-    line-height:40px;
-}
-.userpage-header-button{
-    text-align:right;
-}
-.userpage-header-button button{
-    width:156px;
-    height:40px;
-    border-radius:2px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:0.9em;
-}
-.userpage-content{
-    border-top:1px solid #dddddd;
-    padding:24px 20px;
-    background:#e6e6e6;
-    height:545px;
-}
-.userpage-content .userpage-content-container{
-    width:920px;
-    height:296px;
-    background:#fff;
-    border-radius:3px;
-}
-.userpage-content-intro{
-    border-bottom:1px solid #e5e5e5;
-    height:232px;
-}
-.userpage-content-img{
-    text-align:center;
-    padding:20px;
-}
-.userpage-content-desc{
-    padding:21px 0px;
-}
-.userpage-content-name{
-    font-size:1.5em;
-    box-shadow:3px 3px 3px #e5e5e5;
-}
-.userpage-content-active{
-    font-style:italic;
-    color:#909090;
-}
-/*projectBuild page*/
-.projectBuild-container{
+
+/*project build activity page*/
+.projectBuildActivity-container{
     float:left;
-}
-.projectBuild-header{
-    width:960px;
-    height:64px;
-    background:#efefef;
-    border-top:1px solid #e3e3e3;
-    padding:11px 20px 12px;
-}
-.projectBuild-header-name{
-    text-align:left;
-    font-size:1.5em;
-}
-.projectBuild-header-name img{
-    margin-left:12px;
-}
-.projectBuild-header-button{
-    text-align:right;
-}
-.projectBuild-header-button button{
-    width:156px;
-    height:40px;
-    border-radius:2px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
-    padding:0px;
-}
-.projectBuild-content{
-    background:#e6e6e6;
-    width:960px;
-    height:545px;
-}
-.projectBuild-content-menu{
-    height:48px;
-    padding:8px 20px;
-    background:#55abd4;
-}
-.projectBuild-content-nav ul li{
-    list-style:none;
-    color:#fff;
-    width:82px;
-    line-height:32px;
-    margin-right:10px;
-    float:left;
-}
-.projectBuild-content-member ul li{
-    list-style:none;
-    width:44px;
-    margin-right:10px;
-    float:right;
-}
-.projectBuild-content-body{
-    height:497px;
-    overflow-y:auto;
-}
-.projectBuild-content-items{
-    width:745px;
-    padding-left:20px;
-}
-.projectBuild-content-item{
-    width:725px;
-    margin-top:16px;
-}
-.projectBuild-content-img{
-    width:164px;
-}
-.projectBuild-content-desc{
-    width:561px;
-    height:180px;
-    background:#fff;
-    padding:20px
-}
-.projectBuild-content-delete{
-    width:176px;
-    margin-top:16px;
-    margin-left:19px;
+    .projectBuildActivity-header{
+        width:960px;
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px;
+        .projectBuildActivity-header-name{
+            text-align:left;
+            font-size:1.5em;
+        }
+        .projectBuildActivity-header-name img{
+            margin-left:12px;
+        }
+        .projectBuildActivity-header-button{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:156px;
+                height:40px;
+                border-radius:2px;
+                padding:0px;
+            }
+        }
+    }
+    .projectBuildActivity-content{
+        background:#e6e6e6;
+        width:960px;
+        height:545px;
+        .projectBuildActivity-content-menu{
+            height:48px;
+            padding:8px 20px;
+            background:#55abd4;
+            .projectBuildActivity-content-nav{
+                 ul{
+                     li{
+                        color:#fff;
+                        width:82px;
+                        line-height:32px;
+                        margin-right:10px;
+                        float:left;
+                    }
+                 }
+            }
+            .projectBuildActivity-content-member{
+                 ul{
+                     li{
+                        width:44px;
+                        margin-right:10px;
+                        float:right;
+                    }
+                 }
+            }
+        }
+        .projectBuildActivity-content-body{
+            height:497px;
+            overflow-y:auto;
+            .projectBuildActivity-content-items{
+                width:745px;
+                padding-left:20px;
+                .projectBuildActivity-content-item{
+                    width:725px;
+                    margin-top:16px;
+                }
+                .projectBuildActivity-content-img{
+                    width:164px;
+                }
+                .projectBuildActivity-content-desc{
+                    width:561px;
+                    height:180px;
+                    background:#fff;
+                    padding:20px
+                }
+            }
+            .projectBuildActivity-content-delete{
+                width:176px;
+                margin-top:16px;
+                margin-left:19px;
+            }
+        }
+    }
 }
 #addProjectMember{
     width:1024px;
     margin:0 auto;
     padding:191px 279px;
-}
-#addProjectMember .projectmember-add{
-    width:465px;
-    height:350px;
-    background:#fff;
-    border-radius:4px;
-}
-#addProjectMember .projectmember-add-desc{
-    text-align:center;
-    color:#0378ae;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#addProjectMember .projectmember-add-delicon{
-    text-align:center;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-}
-#addProjectMember .projectmember-add-body{
-    text-align:center;
-    color:#0378ae;
-    padding:24px 35px;
-    background:#e6e6e6;
-    border-bottom:1px solid #e3e3e3;
-}
-#addProjectMember .has-email{
-    position:relative;
-}
-#addProjectMember .has-add{
-    position:relative;
-    border-radius:3px;
-    border:1px solid #0370a2;
-    color:#0378ae;
-    height:48px;
-    line-height:48px;
-    margin-bottom:0px;
-}
-#addProjectMember .projectmember-add-email{
-    height:48px;
-    padding-right:20px;
-}
-#addProjectMember .projectmember-add-emailicon{
-    right:6px;
-    top:18px;
-    position:absolute;
-}
-#addProjectMember .projectmember-add-addAnother{
-    right:6px;
-    top:18px;
-    position:absolute;
-}
-#addProjectMember .projectmember-add-select{
-    height:48px;
-}
-#addProjectMember .projectmember-add-button{
-    padding:12px 0px;
-    text-align:center;
-}
-#addProjectMember .projectmember-add-button button{
-    width:229px;
-    height:40px;
-    border-radius:3px;
-    background:#0370a2;
-    color:#efefef;
-    font-size:1.15em;
+    .projectmember-add{
+        width:465px;
+        height:350px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .projectmember-add-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .projectmember-add-delicon{
+        text-align:center;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .projectmember-add-body{
+        text-align:center;
+        color:#0378ae;
+        padding:24px 35px;
+        background:#e6e6e6;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .has-email{
+        position:relative;
+    }
+    .has-add{
+        position:relative;
+        border-radius:3px;
+        border:1px solid #0370a2;
+        color:#0378ae;
+        height:48px;
+        line-height:48px;
+        margin-bottom:0px;
+    }
+    .projectmember-add-email{
+        height:48px;
+        padding-right:20px;
+    }
+    .projectmember-add-emailicon{
+        right:6px;
+        top:18px;
+        position:absolute;
+    }
+    .projectmember-add-addAnother{
+        right:6px;
+        top:18px;
+        position:absolute;
+    }
+    .projectmember-add-select{
+        height:48px;
+    }
+    .projectmember-add-button{
+        padding:12px 0px;
+        text-align:center;
+        button{
+            @extend .appbutton;
+            width:229px;
+            height:40px;
+        }
+    }
 }
 
 /* Responsive: Portrait tablets and up */

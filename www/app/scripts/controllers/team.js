@@ -9,7 +9,7 @@
  */
 angular.module('conojoApp')
   .controller('TeamCtrl', function ($scope,$http) {
-    $scope.teammembertype = 0;
+    $scope.memberUuid = 0;
     
     $scope.init = function(){
         $http({
@@ -27,6 +27,17 @@ angular.module('conojoApp')
     $scope.openAddTeamMember = function(){
         $('#addTeamMember').modal('toggle');
         $('body').css('padding',0);
+    };
+    
+    $scope.addTeamMember = function(){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/teams/team/'+uuid+'/invite',
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            $scope.init();
+            $('#duplicateproject').modal('hide');
+        });
     };
     
     $scope.init();
