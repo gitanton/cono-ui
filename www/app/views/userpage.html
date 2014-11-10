@@ -8,7 +8,7 @@
                 <span>Your Team</span>
             </div>
             <div class="userpage-header-button col-lg-6">
-                <button class="btn btn-lg">Add Team Member</button>
+                <button class="btn btn-lg" ng-click="openAddTeamMember()">Add Team Member</button>
             </div>
         </div>
         <div class="userpage-content">
@@ -34,6 +34,31 @@
         </div>
     </div>
 </div>
+<div id="addTeamMember" class="modal fade in" style="display: none;">
+    <div class="teammember-add">
+        <div class="col-lg-10 teammember-add-desc">ADD PEOPLE TO TEAM</div>
+        <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="createteammember">
+            <div class="col-lg-12 teammember-add-body">
+                <div class="form-group">
+                    <select name="teammembertype" ng-model="memberUuid" class="form-control teammember-add-select">
+                        <option value=0>Select Person</option>
+                    </select>
+                </div>
+                <div class="form-group has-email">
+                    <input type="text" name="teammemberemail" ng-model="teammemberemail" class="form-control teammember-add-email" placeholder="Enter an email" />
+                    <img class="teammember-add-emailicon" src="images/mail-icon.png">
+                </div>
+                <div class="form-group has-add">
+                    <span>Add another person<img class="teammember-add-addAnother" src="images/addAnotherPeople-icon.png"></span>
+                </div>
+            </div>
+            <div class="col-lg-12 teammember-add-button">
+                <button class="btn btn-lg" type="submit" ng-click="addTeamMember()">Invite People</button>       
+            </div>
+        </form>
+    </div>
+</div>
 <div id="addPeopleToProject" class="modal fade in" style="display: none;">
     <div class="teammember-add">
         <div class="col-lg-10 teammember-add-desc">ADD PEOPLE TO THE PROJECT</div>
@@ -47,7 +72,7 @@
                     </select>
                 </div>
                 <div class="form-group has-email">
-                    <input type="text" name="teammemberemail" ng-model="teammemberemail" class="form-control teammember-add-email" placeholder="Enter an email" />
+                    <input type="text" name="teammemberemail" ng-model="memberEmail" class="form-control teammember-add-email" placeholder="Enter an email" />
                     <img class="teammember-add-emailicon" src="images/mail-icon.png">
                 </div>
                 <div class="form-group has-add">
@@ -60,4 +85,5 @@
         </form>
     </div>
 </div>
+
 

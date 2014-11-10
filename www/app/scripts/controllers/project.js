@@ -114,6 +114,23 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http) {
             $('#duplicateproject').modal('hide');
         });
     };
+    
+    $scope.shareProjectModal = function(uuid){
+        $('#shareproject').modal('toggle');
+        $('body').css('padding',0);
+        $scope.shareProjectUuid = uuid;
+    };
+    
+    $scope.shareProject = function(uuid){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/projects/project/'+uuid+'/share',
+            method: 'POST',
+            data: $.param({uuid:$scope.shareProjectUuid}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            $('#shareproject').modal('hide');
+        });
+    };
    
    $scope.archiveProjectModal = function(uuid,typeid){
         $('#archiveproject').modal('toggle');

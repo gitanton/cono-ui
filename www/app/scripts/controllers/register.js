@@ -10,12 +10,14 @@
 angular.module('conojoApp')
   .controller('RegisterCtrl', function ($scope,$http,$location,$routeParams) {
     $scope.formData = {};
-    if($routeParams.invite){
-        $scope.postRegisterData = {invite_key:$routeParams.invite,fullname:$scope.formData.fullname,email:$scope.formData.email,username:$scope.formData.fullname,password:$scope.formData.password};
-    }else{
-        $scope.postRegisterData = {fullname:$scope.formData.fullname,email:$scope.formData.email,username:$scope.formData.fullname,password:$scope.formData.password};
-    }
+    
     $scope.processForm = function(){
+        if($routeParams.invite){
+            $scope.postRegisterData = {invite_key:$routeParams.invite,fullname:$scope.formData.fullname,email:$scope.formData.email,username:$scope.formData.fullname,password:$scope.formData.password};
+        }else{
+            $scope.postRegisterData = {fullname:$scope.formData.fullname,email:$scope.formData.email,username:$scope.formData.fullname,password:$scope.formData.password};
+        }
+        
        $http({
             url: 'http://conojoapp.scmreview.com/rest/users',
             method: 'POST',

@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('UserpageCtrl', function ($scope,$http) {
+  .controller('UserpageCtrl', function ($scope,$http,$routeParams) {
     $scope.memberUuid = 0;  
     
     $scope.init = function(){
@@ -34,15 +34,31 @@ angular.module('conojoApp')
         $('body').css('padding',0);
     };
     
-    $scope.addProjectMember = function(uuid){
+    $scope.addProjectMember = function(){
         $http({
-            url: 'http://conojoapp.scmreview.com/rest/projects/project/'+uuid+'/invite',
+            url: 'http://conojoapp.scmreview.com/rest/projects/project/'+$scope.addProjectMemberUuid+'/invite',
             method: 'POST',
-            data: $.param({uuid:$scope.addProjectMemberUuid,user_uuid:$scope.memberUuid,email:$scope.teammemberemail}),
+            data: $.param({uuid:$scope.addProjectMemberUuid,user_uuid:$scope.memberUuid,email:$scope.memberEmail}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
-            $scope.init();
-            $('#duplicateproject').modal('hide');
+            $('#addPeopleToProject').modal('hide');
+        });
+    };
+    
+    $scope.openAddTeamMember = function(){
+        $('#addTeamMember').modal('toggle');
+        $('body').css('padding',0);
+        $scope.activeTeamUuid = $routeParams.uuid;
+    };
+    
+    $scope.addTeamMember = function(){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/teams/team/'+$scope.activeTeamUuid+'/invite',
+            method: 'POST',
+            data: $.param({uuid:$scope.activeTeamUuid,email:$scope.teammemberemail}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            $('#addTeamMember').modal('hide');
         });
     };
     

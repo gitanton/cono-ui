@@ -510,6 +510,84 @@ ul li{
         height:40px;
     }
 }
+#shareproject{
+    width:1024px;
+    margin:0 auto;
+    padding:137px 279px;
+    .project-share{
+        width:465px;
+        height:327px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .project-share-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-share-delicon{
+        text-align:center;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-share-body{
+        background:#e6e6e6;
+        padding:25px;
+        .project-share-email{
+            height:48px;
+            .has-email{
+                width:298px;
+                height:48px;
+                margin-right:12px;
+                position:relative;
+                margin-bottom:16px;
+                input{
+                    width:298px;
+                    height:48px;
+                    border-radius:3px;
+                }
+                .project-share-emailicon{
+                    position:absolute;
+                    right:6px;
+                    top:18px;
+                }
+            }
+            .project-share-sendbutton{
+                width:105px;
+                height:48px;
+                button{
+                    @extend .appbutton;
+                    width:105px;
+                    height:48px;
+                }
+            }
+        }
+        .project-share-shorturl{
+            border:1px solid #fff;
+            border-radius:3px;
+            margin-bottom:16px;
+            height:48px;
+            input{
+                height:48px;
+            }
+        }
+        .has-icon{
+            position:relative;
+            border-radius:3px;
+            border:1px solid #0370a2;
+            color:#0378ae;
+            height:48px;
+            line-height:48px;
+            margin-bottom:16px;
+            img{
+                position:absolute;
+                right:6px;
+                top:18px;
+            }
+        }
+    }
+}
 #archiveproject{
     width:1024px;
     margin:0 auto;
@@ -769,6 +847,9 @@ ul li{
         background:#d4d4d4;
         padding:20px;
         border-bottom:1px solid #e6e6e6;
+        img{
+            cursor:pointer;
+        }
     }
     .team-content-itemname{
         text-align:center;

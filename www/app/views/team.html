@@ -4,23 +4,23 @@
     <div class="team-container">
         <div class="team-header">
             <div class="team-header-account col-lg-6"><span>Your Team</span></div>
-            <div class="team-header-button col-lg-6">
+<!--            <div class="team-header-button col-lg-6">
                 <button class="btn btn-lg" ng-click="openAddTeamMember()">Add Team Member</button>
-            </div>
+            </div>-->
         </div>
         <div class="team-content">
             <div class="col-lg-4 team-content-offset" ng-repeat="team in teams">
                 <div class="col-lg-12 team-content-itemimg">
-                    <a href="#/userpage"><img src="images/Dawkins.png" class="img-circle"></a>
+                    <img src="images/Dawkins.png" class="img-circle" ng-click="userPage('{{team.uuid}}')">
                 </div>
                 <div class="col-lg-12 team-content-itemname">
-                    <span>{{team.member}}</span>
+                    <span>R.Dawkins</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div id="addTeamMember" class="modal fade in" style="display: none;">
+<!--<div id="addTeamMember" class="modal fade in" style="display: none;">
     <div class="teammember-add">
         <div class="col-lg-10 teammember-add-desc">ADD PEOPLE TO TEAM</div>
         <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
@@ -47,4 +47,4 @@
             </div>
         </form>
     </div>
-</div>
+</div>-->
