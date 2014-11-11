@@ -755,7 +755,7 @@ ul li{
             text-align:right;
              button{
                 @extend .appbutton;
-                width:98px;
+                width:140px;
                 height:40px;
                 border-radius:2px;
             }
@@ -775,7 +775,7 @@ ul li{
         overflow-y:auto;
         .message-content-items{
             padding:10px 40px 10px 20px;
-            width:960px;
+            width:954px;
             height:478px;
         }
         .message-content-item{
@@ -796,6 +796,152 @@ ul li{
         .message-content-operate{
             width:120px;
         }
+    }
+}
+#addNewMessage{
+    width:1024px;
+    margin:0 auto;
+    padding:117px 279px;
+    .newmessage-add{
+        width:465px;
+        height:450px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .newmessage-add-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .newmessage-add-delicon{
+        text-align:center;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .newmessage-add-body{
+        text-align:center;
+        color:#0378ae;
+        padding:24px 35px;
+        background:#e6e6e6;
+        border-bottom:1px solid #e3e3e3;
+        .has-add{
+            position:relative;
+        }
+        .newmessage-add-addicon{
+            right:6px;
+            top:18px;
+            position:absolute;
+        }
+        input{
+            height:48px;
+        }
+        textarea{
+            height:211px;
+        }
+    }
+    .newmessage-add-button{
+        padding:12px 0px;
+        text-align:center;
+        button{
+            @extend .appbutton;
+            width:229px;
+            height:40px;
+        }
+    }
+}
+#replymessage{
+    width:1024px;
+    margin:0 auto;
+    padding:140px 279px;
+    .replymessage-add{
+        width:465px;
+        height:400px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .replymessage-add-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .replymessage-add-delicon{
+        text-align:center;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .replymessage-add-body{
+        text-align:center;
+        color:#0378ae;
+        padding:24px 35px;
+        background:#e6e6e6;
+        border-bottom:1px solid #e3e3e3;
+        textarea{
+            height:211px;
+        }
+    }
+    .replymessage-add-button{
+        padding:12px 0px;
+        text-align:center;
+        button{
+            @extend .appbutton;
+            width:229px;
+            height:40px;
+        }
+    }
+}
+#deletemessage{
+    width:1024px;
+    margin:0 auto;
+    padding:137px 279px;
+    .message-delete{
+        width:465px;
+        height:397px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .message-delete-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .message-delete-delicon{
+        text-align:center;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .message-delete-warning{
+        text-align:center;
+        background:#e6e6e6;
+    }
+    .message-delete-warningicon{
+        padding:27px 0px;
+    }
+    .message-delete-warningdesc{
+        font-size:1.6em;
+        padding:0px 65px;
+    }
+    .message-delete-warningundone{
+        padding:25px 0px;
+    }
+    .message-delete-button{
+        padding:12px 0px;
+        text-align:center;
+    }
+    .message-delete-buttoncancel{
+        @extend .appbutton;
+        width:201px;
+        height:40px;
+        background:#fff;
+        border:1px solid #0370a2;
+        color:#0378ae;
+    }
+    .message-delete-buttonsubmit{
+        @extend .appbutton;
+        width:201px;
+        height:40px;
     }
 }
 
