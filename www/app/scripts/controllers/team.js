@@ -37,15 +37,8 @@ angular.module('conojoApp')
 //    };
     
     $scope.userPage = function(uuid){
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/teams/team',
-            method: 'GET',
-            data: $.param({uuid:uuid}),
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data) {
-            var url = '/userpage/'+data.uuid;
-            $location.path(url);
-        });
+        var url = '/userpage/'+uuid;
+        $location.path(url);
     }
     
     $scope.init();

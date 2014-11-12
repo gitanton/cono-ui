@@ -6,11 +6,9 @@
  * # ProjectCtrl
  * Controller of the conojoApp
  */
-angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http) {
+angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$location) {
     $scope.projecttype = 0;
     $scope.projecttitle = "";
-    $scope.updateProjectUuid = "";
-    $scope.updateProjectTypeid = 0;
     
     $scope.init = function(){
         $http({
@@ -71,30 +69,10 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http) {
         });
    };
    
-   $scope.openUpdateProject = function(uuid){
-        $('#updateproject').modal('toggle');
-        $('body').css('padding',0);
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/projects/project/'+uuid,
-            method: 'GET',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data) {
-            $scope.updateProjectUuid = data.uuid;
-            $scope.updateProjectTitle = data.name;
-            $scope.updateProjectTypeid = data.type_id;
-        });
-    };
-    
-    $scope.updateMyProject = function(uuid){
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/projects/project/'+uuid,
-            method: 'PUT',
-            data: {name:$scope.updateProjectTitle,type_id:$scope.updateProjectTypeid}
-        }).success(function() {
-            $scope.init();
-            $('#updateproject').modal('hide');
-        });
-   };
+   $scope.projectBuild = function(uuid){
+        var url = '/project-build-activity/'+uuid;
+        $location.path(url);
+    }
    
    $scope.duplicateProjectModal = function(uuid,name){
         $('#duplicateproject').modal('toggle');

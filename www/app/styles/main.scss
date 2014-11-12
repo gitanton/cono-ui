@@ -28,8 +28,14 @@ body {
 .col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,.col-lg-11,.col-lg-12{
     padding:0px;
 }
+ul{
+    padding:0px;
+    margin:0px;
+}
 ul li{
     list-style:none;
+    padding:0px;
+    margin:0px;
 }
 .appbutton{
     width:225px;
@@ -421,54 +427,6 @@ ul li{
         }
     }
 }
-#updateproject{
-    width:1024px;
-    margin:0 auto;
-    padding:191px 279px;
-    .project-update{
-        width:465px;
-        height:288px;
-        background:#fff;
-        border-radius:4px;
-    }
-    .project-update-desc{
-        text-align:center;
-        color:#0378ae;
-        padding:22px 0px;
-        border-bottom:1px solid #e3e3e3;
-    }
-    .project-update-body{
-        text-align:center;
-        color:#0378ae;
-        padding:24px 35px;
-        background:#e6e6e6;
-        border-bottom:1px solid #e3e3e3;
-    }
-    .project-update-title{
-        height:48px;
-    }
-    .project-update-type{
-        margin-top:16px;
-        height:48px;
-    }
-    .project-update-button{
-        padding:12px 0px;
-        text-align:center;
-    }
-    .project-update-buttoncancel{
-        @extend .appbutton;
-        width:201px;
-        height:40px;
-        background:#fff;
-        border:1px solid #0370a2;
-        color:#0378ae;
-    }
-    .project-update-buttonsubmit{
-        @extend .appbutton;
-        width:201px;
-        height:40px;
-    }
-}
 #duplicateproject{
     width:1024px;
     margin:0 auto;
@@ -801,10 +759,10 @@ ul li{
 #addNewMessage{
     width:1024px;
     margin:0 auto;
-    padding:117px 279px;
+    padding:100px 279px;
     .newmessage-add{
         width:465px;
-        height:450px;
+        height:495px;
         background:#fff;
         border-radius:4px;
     }
@@ -821,22 +779,28 @@ ul li{
     }
     .newmessage-add-body{
         text-align:center;
-        color:#0378ae;
         padding:24px 35px;
         background:#e6e6e6;
         border-bottom:1px solid #e3e3e3;
         .has-add{
             position:relative;
+            .newmessage-add-email{
+                height:48px;
+            }
+            .newmessage-add-addicon{
+                right:6px;
+                top:18px;
+                position:absolute;
+            }
         }
-        .newmessage-add-addicon{
-            right:6px;
-            top:18px;
-            position:absolute;
+        .has-allselected{
+            text-align:left;
+            height:30px;
+            input{
+                heihgt:30px;
+            }
         }
-        input{
-            height:48px;
-        }
-        textarea{
+        .newmessage-add-message{
             height:211px;
         }
     }
@@ -1169,6 +1133,7 @@ ul li{
         }
         .projectBuildActivity-header-name img{
             margin-left:12px;
+            cursor:pointer;
         }
         .projectBuildActivity-header-button{
             text-align:right;
@@ -1197,6 +1162,7 @@ ul li{
                         line-height:32px;
                         margin-right:10px;
                         float:left;
+                        text-align:center;
                     }
                  }
             }
@@ -1236,6 +1202,54 @@ ul li{
                 margin-left:19px;
             }
         }
+    }
+}
+#updateproject{
+    width:1024px;
+    margin:0 auto;
+    padding:191px 279px;
+    .project-update{
+        width:465px;
+        height:288px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .project-update-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-update-body{
+        text-align:center;
+        color:#0378ae;
+        padding:24px 35px;
+        background:#e6e6e6;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .project-update-title{
+        height:48px;
+    }
+    .project-update-type{
+        margin-top:16px;
+        height:48px;
+    }
+    .project-update-button{
+        padding:12px 0px;
+        text-align:center;
+    }
+    .project-update-buttoncancel{
+        @extend .appbutton;
+        width:201px;
+        height:40px;
+        background:#fff;
+        border:1px solid #0370a2;
+        color:#0378ae;
+    }
+    .project-update-buttonsubmit{
+        @extend .appbutton;
+        width:201px;
+        height:40px;
     }
 }
 #addProjectMember{
