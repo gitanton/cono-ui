@@ -38,10 +38,15 @@ angular.module('conojoApp')
         });
     }
     
-    $scope.replyMessageModal = function(){
+    $scope.replyMessageModal = function(uuid){
         $('#replymessage').modal('toggle');
+        $scope.replyMessageUuid = uuid;
         $('body').css('padding',0);
     };
+    
+    $scope.replyMessageModal = function(){
+        
+    }
     
     $scope.deleteMessageModal = function(uuid){
         $('#deletemessage').modal('toggle');
