@@ -53,6 +53,10 @@ angular
         templateUrl: 'views/project-build-activity.html',
         controller: 'ProjectBuildActivityCtrl'
       })
+      .when('/invitation/:invite/:type', {
+        templateUrl: 'views/invitation.html',
+        controller: '  InvitationCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
