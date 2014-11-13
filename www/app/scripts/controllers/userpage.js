@@ -38,7 +38,7 @@ angular.module('conojoApp')
         $http({
             url: 'http://conojoapp.scmreview.com/rest/projects/project/'+$scope.addProjectMemberUuid+'/invite',
             method: 'POST',
-            data: $.param({uuid:$scope.addProjectMemberUuid,user_uuid:$scope.memberUuid,email:$scope.memberEmail}),
+            data: $.param({uuid:$scope.addProjectMemberUuid,email:$scope.memberEmail}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
             $('#addPeopleToProject').modal('hide');
