@@ -23,13 +23,11 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/register/:invite', {
+       .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
-      }) .when('/register', {
-        templateUrl: 'views/register.html',
-        controller: 'RegisterCtrl'
-      }).when('/project', {
+      })
+       .when('/project', {
         templateUrl: 'views/project.html',
         controller: 'ProjectCtrl'
       })

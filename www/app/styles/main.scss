@@ -1320,6 +1320,125 @@ ul li{
     }
 }
 
+/*invitation page*/
+.invitation-container{
+    padding:0px 5px;
+    background:#efefef;
+    height:670px;
+    border-top:3px solid #d4d4d4;
+    .invitation-logo{
+        position:relative;
+        padding:24px 17px 31px;
+        margin:0px;
+        .invitation-warn{
+            position:absolute;
+            top:25px;
+            left:25px;
+        }
+    }
+    .invitation-content{
+        padding:0px 75px;
+        .login-form{
+            height:283px;
+            margin:0px;
+            padding:33px;
+            background:#e3e3e3;
+            border-radius:10px;
+            .login-username{
+                height:44px;
+                margin-bottom:20px;
+                border:0px;
+            }
+            .login-password{
+                height:44px;
+                margin-bottom:16px;
+                border:0px;
+            }
+            .login-remember{
+                margin-bottom:33px;
+                height:16px;
+                line-height:16px;
+                label{
+                    font-size:0.85em;
+                    margin-bottom:0px;
+                }
+            }
+            .login-forgot{
+                text-align:right;
+                label{
+                    font-size:0.85em;
+                    font-weight:normal;
+                    color:#0370a2;
+                }
+            }
+            .login-button{
+                text-align:center;
+                button{
+                    @extend .appbutton;
+                }
+            }
+        }
+        .register-form{
+            height:386px;
+            margin:0px;
+            padding:22px 33px 30px;
+            background:#e3e3e3;
+            border-radius:10px;
+            button{
+                @extend .appbutton;
+            }
+            .register-desc{
+                padding-bottom:29px;
+                text-align:center;
+            }
+            .register-desc-free{
+                font-size:1.55em;
+                height:25px;
+                line-height:25px;
+                margin:0px;
+            }
+            .register-desc-card{
+                font-size:1.05em;
+                height:17px;
+                line-height:17px;
+                margin:0px;
+            }
+            .register-fullname{
+                margin-bottom:7px;
+                height:44px;
+                border:0px;
+            }
+            .register-email{
+                margin-bottom:7px;
+                height:44px;
+                border:0px;
+            }
+            .register-password{
+                margin-bottom:7px;
+                height:44px;
+                border:0px;
+            }
+            .register-confirmpassword{
+                margin-bottom:23px;
+                height:44px;
+                border:0px;
+            }
+            .register-button{
+                text-align:center;
+            }
+        }
+        .register-note{
+            margin:0px;
+            padding:15px 0px 39px;
+            font-size:0.85em;
+            text-align:center;
+            p{
+                margin:0px;
+            }
+        }
+    }
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
 

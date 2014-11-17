@@ -1,1 +1,64 @@
-<p>This is the invitation page.</p>
+<div class="blue-line"></div>
+<div class="invitation-container">
+    <div class="invitation-logo">
+        <div class="col-lg-5"><img src="images/invitation-icon.png"></div>
+        <div class="col-lg-7"><img src="images/logo-account.png"></div>
+        <div class="invitation-warn">In order to accept this invitation,register a new<br />account or login with your current accout.</div>
+    </div>
+    <div class="invitation-content col-lg-12">
+        <div class="login col-lg-5">
+            <div class="login-form">
+                 <form name="loginformInvite" ng-submit="processLoginForm()" novalidate>
+                    <div class="col-lg-12">
+                        <input type="text" name="username" ng-model="loginFormData.username" class="form-control login-username" placeholder="Username" ng-minlength="5" required />
+                        <span ng-show="loginformInvite.username.$invalid && !loginformInvite.username.$pristine">Username Should be at least five characters long</span>
+                    </div>
+                    <div class="col-lg-12">
+                        <input type="password" name="password" ng-model="loginFormData.password" class="form-control login-password" placeholder="Password" ng-minlength="6" required />
+                        <span ng-show="loginformInvite.password.$invalid && !loginformInvite.password.$pristine">Password Should be at least six characters long</span>
+                    </div>
+                    <div class="col-lg-6 login-remember">
+                        <label><input type="checkbox"> Remember me</label>
+                    </div>
+                    <div class="col-lg-6 login-forgot">
+                        <label><a href="javascript:void(0)">Forgot Password</a></label>
+                    </div>
+                    <div class="col-lg-12 login-button"><button class="btn btn-lg" type="submit" ng-disabled="loginformInvite.$invalid">Login</button></div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-2">OR</div>
+        <div class="register col-lg-5">
+            <div class="register-form">
+                <div class="col-lg-12 register-desc">
+                    <p class="register-desc-free">Get Started Absolutely FREE.</p>
+                    <p class="register-desc-card">No credit card needed.</p>
+                </div>
+                <form name="userFormInvite" ng-submit="processRegisterForm()" novalidate>
+                    <div class="col-lg-12">
+                        <input type="text" name="fullname" class="form-control register-fullname" placeholder="Full name" ng-model="registerFormData.fullname" ng-minlength="6" required />
+                        <span ng-show="userFormInvite.fullname.$invalid && !userFormInvite.fullname.$pristine">Username Should be at least five characters long</span>
+                    </div>
+                    <div class="col-lg-12">
+                        <input type="email" name="email" class="form-control register-email" placeholder="Email" ng-model="registerFormData.email" required />
+                        <span ng-show="userFormInvite.email.$invalid && !userFormInvite.email.$pristine">Enter a valid email.</span>
+                    </div>
+                    <div class="col-lg-12">
+                        <input type="password" name="password" class="form-control register-password" placeholder="Password" ng-model="registerFormData.password" ng-minlength="6" required />
+                        <span ng-show="userFormInvite.password.$invalid && !userFormInvite.password.$pristine">Password Should be at least six characters long</span>
+                    </div>
+                    <div class="col-lg-12">
+                        <input type="password" name="confirmpassword" class="form-control register-confirmpassword" placeholder="Confirm Password" ng-model="registerFormData.confirmpassword" ng-minlength="6" required />
+                        <span ng-show="userFormInvite.confirmpassword.$invalid && !userFormInvite.confirmpassword.$pristine">Password Should be at least six characters long</span>
+                    </div>
+                    <div class="col-lg-12 register-button">
+                        <button class="btn btn-lg" type="submit" ng-disabled="userFormInvite.$invalid">Create Account</button>
+                    </div>
+                </form>
+            </div>
+            <div class="register-note">
+                <p>By creating an account I agree to Conojo's Terms of Services.</p>
+            </div>
+        </div>
+    </div>
+</div>
