@@ -30,15 +30,15 @@ angular.module('conojoApp')
     
     $scope.openAddProjectMember = function(uuid){
         $('#addPeopleToProject').modal('toggle');
-        $scope.addProjectMemberUuid = uuid;
+        $scope.addToProjectUuid = uuid;
         $('body').css('padding',0);
     };
     
     $scope.addProjectMember = function(){
         $http({
-            url: 'http://conojoapp.scmreview.com/rest/projects/project/'+$scope.addProjectMemberUuid+'/invite',
+            url: 'http://conojoapp.scmreview.com/rest/projects/project/'+$scope.addToProjectUuid+'/invite',
             method: 'POST',
-            data: $.param({uuid:$scope.addProjectMemberUuid,email:$scope.memberEmail}),
+            data: $.param({uuid:$scope.addToProjectUuid,email:$scope.memberEmail}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
             $('#addPeopleToProject').modal('hide');

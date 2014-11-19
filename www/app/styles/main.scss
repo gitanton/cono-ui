@@ -1118,24 +1118,30 @@ ul li{
     }
 }
 
-/*project build activity page*/
-.projectBuildActivity-container{
+.project-design-menu-current{
+    background:#0378ae;
+    border-radius:3px;
+    font-size:0.9em;
+}
+
+/*project build page*/
+.projectBuild-container{
     float:left;
-    .projectBuildActivity-header{
+    .projectBuild-header{
         width:960px;
         height:64px;
         background:#efefef;
         border-top:1px solid #e3e3e3;
         padding:11px 20px 12px;
-        .projectBuildActivity-header-name{
+        .projectBuild-header-name{
             text-align:left;
             font-size:1.5em;
         }
-        .projectBuildActivity-header-name img{
+        .projectBuild-header-name img{
             margin-left:12px;
             cursor:pointer;
         }
-        .projectBuildActivity-header-button{
+        .projectBuild-header-button{
             text-align:right;
             button{
                 @extend .appbutton;
@@ -1146,27 +1152,29 @@ ul li{
             }
         }
     }
-    .projectBuildActivity-content{
+    .projectBuild-content{
         background:#e6e6e6;
         width:960px;
         height:545px;
-        .projectBuildActivity-content-menu{
+        .projectBuild-content-menu{
             height:48px;
             padding:8px 20px;
             background:#55abd4;
-            .projectBuildActivity-content-nav{
+            .projectBuild-content-nav{
                  ul{
                      li{
                         color:#fff;
+                        font-size:0.9em;
                         width:82px;
                         line-height:32px;
                         margin-right:10px;
                         float:left;
                         text-align:center;
+                        cursor:pointer;
                     }
                  }
             }
-            .projectBuildActivity-content-member{
+            .projectBuild-content-member{
                  ul{
                      li{
                         width:44px;
@@ -1176,27 +1184,27 @@ ul li{
                  }
             }
         }
-        .projectBuildActivity-content-body{
+        .projectBuild-content-body{
             height:497px;
             overflow-y:auto;
-            .projectBuildActivity-content-items{
+            .projectBuild-content-items{
                 width:745px;
                 padding-left:20px;
-                .projectBuildActivity-content-item{
+                .projectBuild-content-item{
                     width:725px;
                     margin-top:16px;
                 }
-                .projectBuildActivity-content-img{
+                .projectBuild-content-img{
                     width:164px;
                 }
-                .projectBuildActivity-content-desc{
+                .projectBuild-content-desc{
                     width:561px;
                     height:180px;
                     background:#fff;
                     padding:20px
                 }
             }
-            .projectBuildActivity-content-delete{
+            .projectBuild-content-delete{
                 width:176px;
                 margin-top:16px;
                 margin-left:19px;
@@ -1204,6 +1212,266 @@ ul li{
         }
     }
 }
+
+/*project screen page*/
+.projectScreen-container{
+    float:left;
+    .projectScreen-header{
+        width:960px;
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px;
+        .projectScreen-header-name{
+            text-align:left;
+            font-size:1.5em;
+        }
+        .projectScreen-header-name img{
+            margin-left:12px;
+            cursor:pointer;
+        }
+        .projectScreen-header-button{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:156px;
+                height:40px;
+                border-radius:2px;
+                padding:0px;
+            }
+        }
+    }
+    .projectScreen-content{
+        background:#e6e6e6;
+        width:960px;
+        height:545px;
+        .projectScreen-content-menu{
+            height:48px;
+            padding:8px 20px;
+            background:#55abd4;
+            .projectScreen-content-nav{
+                 ul{
+                     li{
+                        color:#fff;
+                        font-size:0.9em;
+                        width:82px;
+                        line-height:32px;
+                        margin-right:10px;
+                        float:left;
+                        text-align:center;
+                        cursor:pointer;
+                    }
+                 }
+            }
+            .projectScreen-content-member{
+                 ul{
+                     li{
+                        width:44px;
+                        margin-right:10px;
+                        float:right;
+                    }
+                 }
+            }
+        }
+        .projectScreen-content-body{
+            height:497px;
+            overflow-y:auto;
+            .projectScreen-content-items{
+                width:745px;
+                padding-left:20px;
+                .projectScreen-content-item{
+                    width:725px;
+                    margin-top:16px;
+                }
+                .projectScreen-content-img{
+                    width:164px;
+                }
+                .projectScreen-content-desc{
+                    width:561px;
+                    height:180px;
+                    background:#fff;
+                    padding:20px
+                }
+            }
+            .projectScreen-content-delete{
+                width:176px;
+                margin-top:16px;
+                margin-left:19px;
+            }
+        }
+    }
+}
+
+/*project activity page*/
+.projectActivity-container{
+    float:left;
+    .projectActivity-header{
+        width:960px;
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px;
+        .projectActivity-header-name{
+            text-align:left;
+            font-size:1.5em;
+        }
+        .projectActivity-header-name img{
+            margin-left:12px;
+            cursor:pointer;
+        }
+        .projectActivity-header-button{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:156px;
+                height:40px;
+                border-radius:2px;
+                padding:0px;
+            }
+        }
+    }
+    .projectActivity-content{
+        background:#e6e6e6;
+        width:960px;
+        height:545px;
+        .projectActivity-content-menu{
+            height:48px;
+            padding:8px 20px;
+            background:#55abd4;
+            .projectActivity-content-nav{
+                 ul{
+                     li{
+                        color:#fff;
+                        font-size:0.9em;
+                        width:82px;
+                        line-height:32px;
+                        margin-right:10px;
+                        float:left;
+                        text-align:center;
+                        cursor:pointer;
+                    }
+                 }
+            }
+            .projectActivity-content-member{
+                 ul{
+                     li{
+                        width:44px;
+                        margin-right:10px;
+                        float:right;
+                    }
+                 }
+            }
+        }
+        .projectActivity-content-body{
+            height:497px;
+            overflow-y:auto;
+            .projectActivity-content-items{
+                width:745px;
+                padding-left:20px;
+                .projectActivity-content-item{
+                    width:725px;
+                    margin-top:16px;
+                }
+                .projectActivity-content-img{
+                    width:164px;
+                }
+                .projectActivity-content-desc{
+                    width:561px;
+                    height:180px;
+                    background:#fff;
+                    padding:20px
+                }
+            }
+            .projectActivity-content-delete{
+                width:176px;
+                margin-top:16px;
+                margin-left:19px;
+            }
+        }
+    }
+}
+
+/*project comment page*/
+.projectComment-container{
+    float:left;
+    .projectComment-header{
+        width:960px;
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px;
+        .projectComment-header-name{
+            text-align:left;
+            font-size:1.5em;
+        }
+        .projectComment-header-name img{
+            margin-left:12px;
+            cursor:pointer;
+        }
+        .projectComment-header-button{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:156px;
+                height:40px;
+                border-radius:2px;
+                padding:0px;
+            }
+        }
+    }
+    .projectComment-content{
+        background:#e6e6e6;
+        width:960px;
+        height:545px;
+        .projectComment-content-menu{
+            height:48px;
+            padding:8px 20px;
+            background:#55abd4;
+            .projectComment-content-nav{
+                 ul{
+                     li{
+                        color:#fff;
+                        font-size:0.9em;
+                        width:82px;
+                        line-height:32px;
+                        margin-right:10px;
+                        float:left;
+                        text-align:center;
+                        cursor:pointer;
+                    }
+                 }
+            }
+        }
+         .projectComment-subheader{
+            height:66px;
+            padding:21px 18px;
+            border-bottom:1px solid #e5e5e5;
+            box-shadow:0px 3px 3px #e5e5e5;
+            .projectComment-subheader-previously{
+                text-align:right;
+            }
+        }
+        .projectComment-content-body{
+            height:430px;
+            overflow-y:auto;
+            .projectComment-content-items{
+                padding-left:20px;
+                .projectComment-content-item{
+                    margin-top:16px;
+                }
+                .projectComment-content-img{
+                    width:164px;
+                }
+                .projectComment-content-desc{
+                    height:180px;
+                    background:#fff;
+                    padding:20px
+                }
+            }
+        }
+    }
+}
+
 #updateproject{
     width:1024px;
     margin:0 auto;
@@ -1250,73 +1518,6 @@ ul li{
         @extend .appbutton;
         width:201px;
         height:40px;
-    }
-}
-#addProjectMember{
-    width:1024px;
-    margin:0 auto;
-    padding:191px 279px;
-    .projectmember-add{
-        width:465px;
-        height:350px;
-        background:#fff;
-        border-radius:4px;
-    }
-    .projectmember-add-desc{
-        text-align:center;
-        color:#0378ae;
-        padding:22px 0px;
-        border-bottom:1px solid #e3e3e3;
-    }
-    .projectmember-add-delicon{
-        text-align:center;
-        padding:22px 0px;
-        border-bottom:1px solid #e3e3e3;
-    }
-    .projectmember-add-body{
-        text-align:center;
-        color:#0378ae;
-        padding:24px 35px;
-        background:#e6e6e6;
-        border-bottom:1px solid #e3e3e3;
-    }
-    .has-email{
-        position:relative;
-    }
-    .has-add{
-        position:relative;
-        border-radius:3px;
-        border:1px solid #0370a2;
-        color:#0378ae;
-        height:48px;
-        line-height:48px;
-        margin-bottom:0px;
-    }
-    .projectmember-add-email{
-        height:48px;
-        padding-right:20px;
-    }
-    .projectmember-add-emailicon{
-        right:6px;
-        top:18px;
-        position:absolute;
-    }
-    .projectmember-add-addAnother{
-        right:6px;
-        top:18px;
-        position:absolute;
-    }
-    .projectmember-add-select{
-        height:48px;
-    }
-    .projectmember-add-button{
-        padding:12px 0px;
-        text-align:center;
-        button{
-            @extend .appbutton;
-            width:229px;
-            height:40px;
-        }
     }
 }
 

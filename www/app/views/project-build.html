@@ -1,0 +1,83 @@
+<div class="projectBuild-page">
+    <div ng-include="'views/header.html'"></div>
+    <div ng-include="'views/siderbar-closed.html'"></div>
+    <div class="projectBuild-container">
+        <div class="projectBuild-header">
+            <div class="projectBuild-header-name col-lg-6">
+                <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
+            </div>
+            <div class="projectBuild-header-button col-lg-6">
+                <button class="btn btn-lg">Share</button>
+                <button class="btn btn-lg">Start a Metting</button>
+            </div>
+        </div>
+        <div class="projectBuild-content">
+            <div class="projectBuild-content-menu">
+                <div class="projectBuild-content-nav col-lg-6">
+                    <ul>
+                        <li class="project-design-menu-current">Build</li>
+                        <li  ng-click="toScreen()">Screens</li>
+                        <li ng-click="toActivity()">ACTIVITY</li>
+                        <li ng-click="toComment()">COMMENTS</li>
+                        <li ng-click="openMessage(activeProjectUuid)">MESSAGES</li>
+                    </ul>
+                </div>
+                <div class="projectBuild-content-member col-lg-6">
+                    <ul>
+                        <li><img src="images/member-two.png"></li>
+                        <li><img src="images/member-one.png"></li>
+                        <li><img src="images/addMember-icon.png" ng-click="openAddProjectMember()"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="projectBuild-content-body">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="updateproject" class="modal fade in" style="display: none;">
+    <div class="project-update">
+        <div class="col-lg-12 project-update-desc">UPDATE PROJECT</div>
+        <form name="updateProject">
+            <div class="col-lg-12 project-update-body">
+                <input type="text" name="projecttitle" ng-model="updateProjectTitle" class="form-control project-update-title" />
+                <select name="projecttype"  ng-model="updateProjectTypeid" class="form-control project-update-type">
+                    <option value=0>Project Type</option>
+                    <option value=1>UI/UX Project</option>
+                    <option value=2>Video Project</option>
+                    <option value=3>Business Template</option>
+                </select>	        
+            </div>
+            <div class="col-lg-12 project-update-button">
+                <button class="btn btn-lg project-update-buttoncancel" type="cancel" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-lg project-update-buttonsubmit" type="submit" ng-click='updateMyProject(activeProjectUuid)'>Save</button>        
+            </div>
+        </form>
+    </div>
+</div>
+<div id="addPeopleToProject" class="modal fade in" style="display: none;">
+    <div class="teammember-add">
+        <div class="col-lg-10 teammember-add-desc">ADD PEOPLE TO THE PROJECT</div>
+        <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="createteammember">
+            <div class="col-lg-12 teammember-add-body">
+                <div class="form-group">
+                    <select name="teammembertype" class="form-control teammember-add-select">
+                        <option value=0>Select Person</option>
+                        <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
+                    </select>
+                </div>
+                <div class="form-group has-email">
+                    <input type="text" name="teammemberemail" ng-model="memberEmail" class="form-control teammember-add-email" placeholder="Enter an email" />
+                    <img class="teammember-add-emailicon" src="images/mail-icon.png">
+                </div>
+                <div class="form-group has-add">
+                    <span>Add another person<img class="teammember-add-addAnother" src="images/addAnotherPeople-icon.png"></span>
+                </div>
+            </div>
+            <div class="col-lg-12 teammember-add-button">
+                <button class="btn btn-lg" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People</button>       
+            </div>
+        </form>
+    </div>
+</div>

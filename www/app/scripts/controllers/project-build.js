@@ -1,13 +1,13 @@
 'use strict';
 /**
  * @ngdoc function
- * @name conojoApp.controller:ProjectBuildActivityCtrl
+ * @name conojoApp.controller:ProjectBuildCtrl
  * @description
- * # ProjectBuildActivityCtrl
+ * # ProjectBuildCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectBuildActivityCtrl', function ($scope,$http,$location,$routeParams) {
+ .controller('ProjectBuildCtrl', function ($scope,$http,$location,$routeParams) {
     $scope.activeProjectUuid = $routeParams.uuid;
     
     $scope.init = function(){
@@ -38,12 +38,38 @@ angular.module('conojoApp')
    };
      
     $scope.openAddProjectMember = function(){
-        $('#addProjectMember').modal('toggle');
+        $('#addPeopleToProject').modal('toggle');
         $('body').css('padding',0);
     };
     
-     $scope.openMessage = function(uuid){
-        var url = '/message/'+uuid;
+    $scope.addProjectMember = function(){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/projects/project/'+$scope.activeProjectUuid+'/invite',
+            method: 'POST',
+            data: $.param({uuid:$scope.activeProjectUuid,email:$scope.memberEmail}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            $('#addPeopleToProject').modal('hide');
+        });
+    };
+    
+    $scope.toScreen = function(){
+        var url = '/project-screen/'+$scope.activeProjectUuid;
+        $location.path(url);
+    }
+    
+    $scope.toActivity = function(){
+        var url = '/project-activity/'+$scope.activeProjectUuid;
+        $location.path(url);
+    }
+    
+    $scope.toComment = function(){
+        var url = '/project-comment/'+$scope.activeProjectUuid;
+        $location.path(url);
+    }
+    
+     $scope.openMessage = function(){
+        var url = '/message/'+$scope.activeProjectUuid;
         $location.path(url);
     }
     

@@ -70,7 +70,7 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
    };
    
    $scope.projectBuild = function(uuid){
-        var url = '/project-build-activity/'+uuid;
+        var url = '/project-build/'+uuid;
         $location.path(url);
     }
    

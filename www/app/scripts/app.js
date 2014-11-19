@@ -47,9 +47,21 @@ angular
         templateUrl: 'views/userpage.html',
         controller: 'UserpageCtrl'
       })
-      .when('/project-build-activity/:uuid', {
-        templateUrl: 'views/project-build-activity.html',
-        controller: 'ProjectBuildActivityCtrl'
+      .when('/project-build/:uuid', {
+        templateUrl: 'views/project-build.html',
+        controller: 'ProjectBuildCtrl'
+      })
+      .when('/project-screen/:uuid', {
+        templateUrl: 'views/project-screen.html',
+        controller: 'ProjectScreenCtrl'
+      })
+      .when('/project-activity/:uuid', {
+        templateUrl: 'views/project-activity.html',
+        controller: 'ProjectActivityCtrl'
+      })
+      .when('/project-comment/:uuid', {
+        templateUrl: 'views/project-comment.html',
+        controller: 'ProjectCommentCtrl'
       })
       .when('/invitation/:invite/:type', {
         templateUrl: 'views/invitation.html',
