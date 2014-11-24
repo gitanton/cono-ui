@@ -1185,29 +1185,19 @@ ul li{
             }
         }
         .projectBuild-content-body{
-            height:497px;
-            overflow-y:auto;
-            .projectBuild-content-items{
-                width:745px;
-                padding-left:20px;
-                .projectBuild-content-item{
-                    width:725px;
-                    margin-top:16px;
+            background-image:url('/images/project-build-bg.jpg');
+            height:91%;
+            width:100%;
+            position:relative;
+            .projectBuild-content-tools{
+                position:absolute;
+                top:89%;
+                left:0px;
+                .projectBuild-content-addScreens{
+                    position:absolute;
+                    top:0px;
+                    right:-778px;
                 }
-                .projectBuild-content-img{
-                    width:164px;
-                }
-                .projectBuild-content-desc{
-                    width:561px;
-                    height:180px;
-                    background:#fff;
-                    padding:20px
-                }
-            }
-            .projectBuild-content-delete{
-                width:176px;
-                margin-top:16px;
-                margin-left:19px;
             }
         }
     }
@@ -1277,27 +1267,100 @@ ul li{
             height:497px;
             overflow-y:auto;
             .projectScreen-content-items{
-                width:745px;
-                padding-left:20px;
-                .projectScreen-content-item{
-                    width:725px;
-                    margin-top:16px;
-                }
-                .projectScreen-content-img{
-                    width:164px;
-                }
-                .projectScreen-content-desc{
-                    width:561px;
-                    height:180px;
-                    background:#fff;
-                    padding:20px
+                margin-left:16px;
+                width:710px;
+                .projectScreen-content-thumb{
+                    margin:16px 16px 16px 0px;
+                    width:218px;
                 }
             }
             .projectScreen-content-delete{
                 width:176px;
                 margin-top:16px;
                 margin-left:19px;
+                position:relative;
+                .projectScreen-content-deletecontainer{
+                    position:absolute;
+                    top:0px;
+                    left:0px;
+                    z-index:1;
+                }
+                .projectScreen-content-upload{
+                    position:absolute;
+                    top:120px;
+                    left:45%;
+                    z-index:2;
+                }
+                .projectScreen-content-sync{
+                    position:absolute;
+                    bottom:-482px;
+                    right:10px;
+                    z-index:2;
+                }
             }
+        }
+    }
+}
+#addProjectScreen{
+    width:1024px;
+    margin:0 auto;
+    padding:191px 279px;
+    .teammember-add{
+        width:465px;
+        height:370px;
+        background:#fff;
+        border-radius:4px;
+    }
+    .teammember-add-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .teammember-add-delicon{
+        text-align:center;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .teammember-add-body{
+        text-align:center;
+        padding:24px 35px;
+        background:#e6e6e6;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .has-email{
+        position:relative;
+    }
+    .has-add{
+        border-radius:3px;
+        border:2px dashed #fff;
+        height:100px;
+        line-height:48px;
+        margin-bottom:10px;
+    }
+    .teammember-add-email{
+        height:48px;
+        padding-right:20px;
+        margin-bottom:10px;
+    }
+    .teammember-add-emailicon{
+        right:6px;
+        top:45px;
+        position:absolute;
+    }
+    .teammember-add-addAnother{
+        
+    }
+    .teammember-add-select{
+        height:48px;
+    }
+    .teammember-add-button{
+        padding:12px 0px;
+        text-align:center;
+        button{
+            @extend .appbutton;
+            width:229px;
+            height:40px;
         }
     }
 }

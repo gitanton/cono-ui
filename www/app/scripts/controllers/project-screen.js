@@ -53,6 +53,22 @@ angular.module('conojoApp')
         });
     };
     
+    $scope.openUploadScreen = function(){
+        $('#addProjectScreen').modal('toggle');
+        $('body').css('padding',0);
+    };
+    
+    $scope.addProjectMember = function(){
+        $http({
+            url: '',
+            method: 'POST',
+            data: $.param({}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            $('#addProjectScreen').modal('hide');
+        });
+    };
+    
     $scope.toBuild = function(){
         var url = '/project-build/'+$scope.activeProjectUuid;
         $location.path(url);
