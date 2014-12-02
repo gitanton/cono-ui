@@ -9,6 +9,11 @@
  */
 angular.module('conojoApp')
   .controller('MainCtrl', function ($scope,$http,$location) {
+    $scope.loginPadding = ($(window).height() - 519)/2;
+
+    $(".login-logo").css('padding-top',$scope.loginPadding);
+    $(".login-link").css('padding-bottom',$scope.loginPadding);
+      
     $scope.formData = {};
     $scope.processForm = function(){
        $http({

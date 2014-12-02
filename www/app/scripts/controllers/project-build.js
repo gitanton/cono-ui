@@ -9,8 +9,27 @@
 angular.module('conojoApp')
  .controller('ProjectBuildCtrl', function ($scope,$http,$location,$routeParams) {
     $scope.activeProjectUuid = $routeParams.uuid;
+    $scope.setHeight = function(){
+        $scope.siderbarContainer = $(window).height() - 64;
+        $scope.siderbarExpand = $(window).height() - 442;
+        $scope.projectContent = $(window).height() - 176;
+        $scope.projectDrawing = $(window).height() - 244;
+        $scope.projectShapeTool = $(window).height() - 509;
+        
+        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
+        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
+        $(".projectBuild-content-body").css('height',$scope.projectContent);
+        $(".projectBuild-content-drawing").css('height',$scope.projectDrawing);
+        $(".projectBuild-content-shape").css('top',$scope.projectDrawing-305);
+        $(".projectBuild-content-tools").css('top',$scope.projectDrawing+10);
+        $(".projectBuild-content-addScreens").css('top',$scope.projectDrawing+10);
+    };
     
     $scope.init = function(){
+        $('#picker').farbtastic(function(color){
+            console.log(color);
+        });
+        
         $http({
             url: 'http://conojoapp.scmreview.com/rest/projects/project/'+$scope.activeProjectUuid,
             method: 'GET',
@@ -18,6 +37,7 @@ angular.module('conojoApp')
         }).success(function(data) {
             $scope.updateProjectTitle = data.name;
             $scope.updateProjectTypeid = data.type_id;
+            $scope.setHeight();
         });
     };
     
@@ -71,6 +91,30 @@ angular.module('conojoApp')
      $scope.openMessage = function(){
         var url = '/message/'+$scope.activeProjectUuid;
         $location.path(url);
+    }
+    
+    $scope.openComments = function(){
+        
+    }
+    
+    $scope.openHotspots = function(){
+        
+    }
+    
+    $scope.openDrawing = function(){
+        
+    }
+    
+    $scope.openBrush = function(){
+        $('.projectBuild-content-brush').show();
+    }
+    
+    $scope.openEraser = function(){
+        $('.projectBuild-content-eraser').show();
+    }
+    
+    $scope.openShape = function(){
+        $('.projectBuild-content-shape').show();
     }
     
     $scope.init();

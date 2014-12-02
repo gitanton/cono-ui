@@ -1,7 +1,7 @@
 <div class="projectBuild-page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar-closed.html'"></div>
-    <div class="projectBuild-container">
+    <div class="projectBuild-container col-lg-12">
         <div class="projectBuild-header">
             <div class="projectBuild-header-name col-lg-6">
                 <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
@@ -31,12 +31,60 @@
                 </div>
             </div>
             <div class="projectBuild-content-body">
-                <canvas id="drawing" style="width:100%;"></canvas>
+                <div class="projectBuild-content-drawing"><canvas id="drawing"></canvas></div>
                 <div class="projectBuild-content-tools">
-                    <img src="images/comments.png" ng-click="openBrush()">
-                    <img src="images/hotspots.png" ng-click="openHotspots()">
-                    <img src="images/brush.png" ng-click="openComment()">
-                    <img class="projectBuild-content-addScreens" src="images/comments.png" ng-click="openAddScreen()">
+                    <ul>
+                        <li><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>
+                        <li><img src="images/hotspots-blue-icon.png" ng-click="openHotspots()"></li>
+                        <li><img src="images/brush-blue-icon.png" ng-click="openDrawing()"></li>
+                        <li><img src="images/brush-black-icon.png" ng-click="openBrush()"></li>
+                        <li><img src="images/eraser-black-icon.png" ng-click="openEraser()"></li>
+                        <li><img src="images/shape-black-icon.png" ng-click="openShape()"></li>
+                    </ul>
+                </div>
+                <div class="projectBuild-content-addScreens"><img  src="images/addScreen-icon.png" ng-click="openAddScreen()">Add Screens</div>
+                <div class="projectBuild-content-brush">
+                    <div class="projectBuild-content-brushTitle col-lg-12">BRUSH TOOL</div>
+                    <div class="projectBuild-content-brushContent">
+                        <div class="projectBuild-content-brushColorLeft col-lg-8">
+                            <div id="picker"></div>
+                        </div>
+                        <div class="projectBuild-content-brushColorRight col-lg-4">
+                        </div>
+                        <div class="projectBuild-content-brushBottom col-lg-12">
+                            <div class="col-lg-4"><img  src="images/8px-icon.png"></div>
+                            <div class="col-lg-4"><img  src="images/20px-icon.png"></div>
+                            <div class="col-lg-4"><img  src="images/30px-icon.png"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="projectBuild-content-eraser">
+                    <div class="projectBuild-content-eraserTitle col-lg-12">ERASER  TOOL</div>
+                    <div class="projectBuild-content-eraserContent col-lg-12">
+                        <div class="col-lg-4"><img  src="images/8px-icon.png"></div>
+                        <div class="col-lg-4"><img  src="images/20px-icon.png"></div>
+                        <div class="col-lg-4"><img  src="images/30px-icon.png"></div>
+                    </div>
+                </div>
+                <div class="projectBuild-content-shape">
+                    <div class="projectBuild-content-shapeTitle col-lg-12">SHAPE TOOL</div>
+                    <div class="projectBuild-content-shapeContent">
+                        <div class="projectBuild-content-shapeLeft col-lg-6">
+                            <div class="col-lg-4"><img  src="images/square-icon.png"></div>
+                            <div class="col-lg-4"><img  src="images/triangle-icon.png"></div>
+                            <div class="col-lg-4"><img  src="images/circle-icon.png"></div>
+                            <div class="col-lg-4"><img  src="images/talk-icon.png"></div>
+                            <div class="col-lg-4"><img  src="images/arrow-icon.png"></div>
+                            <div class="col-lg-4"><img  src="images/star-icon.png"></div>
+                            <div class="col-lg-12"></div>
+                            <div class="col-lg-4"><img  src="images/8px-icon.png"></div>
+                            <div class="col-lg-4"><img  src="images/20px-icon.png"></div>
+                            <div class="col-lg-4"><img  src="images/30px-icon.png"></div>
+                        </div>
+                        <div class="projectBuild-content-colorRight col-lg-6">
+                            <div id="picker"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
