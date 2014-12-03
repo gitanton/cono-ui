@@ -9,6 +9,7 @@
 angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$location) {
     $scope.projecttype = 0;
     $scope.projecttitle = "";
+    
     $scope.setHeight = function(){
         $scope.siderbarContainer = $(window).height() - 64;
         $scope.siderbarExpand = $(window).height() - 442;
@@ -27,13 +28,11 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data) {
              $scope.projects = data;
-             $scope.setHeight();
         });
     };
     
     $scope.newProject = function(){
         $('#newproject').modal('toggle');
-        $('body').css('padding',0);
     };
     
     $scope.operateProject = function(project){
@@ -87,7 +86,6 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
    
    $scope.duplicateProjectModal = function(uuid,name){
         $('#duplicateproject').modal('toggle');
-        $('body').css('padding',0);
         $scope.duplicateProjectUuid = uuid;
         $scope.duplicateProjectName = name;
     };
@@ -106,7 +104,6 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
     
     $scope.shareProjectModal = function(uuid){
         $('#shareproject').modal('toggle');
-        $('body').css('padding',0);
         $scope.shareProjectUuid = uuid;
     };
     
@@ -123,7 +120,6 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
    
    $scope.archiveProjectModal = function(uuid,typeid){
         $('#archiveproject').modal('toggle');
-        $('body').css('padding',0);
         $scope.archiveProjectUuid = uuid;
         $scope.archiveProjectTypeid = typeid;
     };
@@ -141,7 +137,6 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
    
     $scope.deleteProjectModal = function(uuid){
         $('#deleteproject').modal('toggle');
-        $('body').css('padding',0);
         $scope.deleteProjectUuid = uuid;
     };
     

@@ -10,6 +10,16 @@
 angular.module('conojoApp')
   .controller('MessageCtrl', function ($scope,$http,$routeParams) {
       $scope.activeProjectUuid = $routeParams.uuid;
+      $scope.setHeight = function(){
+        $scope.siderbarContainer = $(window).height() - 64;
+        $scope.siderbarExpand = $(window).height() - 442;
+        $scope.messageContent = $(window).height() - 194;
+        
+        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
+        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
+        $(".message-content").css('height',$scope.messageContent);
+    };
+      
       $scope.init = function(){
           $http({
                 url: 'http://conojoapp.scmreview.com/rest/messages/',
@@ -23,7 +33,6 @@ angular.module('conojoApp')
       
     $scope.openAddNewMessage = function(){
         $('#addNewMessage').modal('toggle');
-        $('body').css('padding',0);
     };
     
     $scope.addNewMessage = function(){
@@ -41,7 +50,6 @@ angular.module('conojoApp')
     $scope.replyMessageModal = function(uuid){
         $('#replymessage').modal('toggle');
         $scope.replyMessageUuid = uuid;
-        $('body').css('padding',0);
     };
     
     $scope.replyMessageModal = function(){
@@ -51,7 +59,6 @@ angular.module('conojoApp')
     $scope.deleteMessageModal = function(uuid){
         $('#deletemessage').modal('toggle');
         $scope.deleteMessageUuid = uuid;
-        $('body').css('padding',0);
     };
     
     $scope.deleteMessage = function(){

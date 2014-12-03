@@ -2,14 +2,20 @@
 
 /**
  * @ngdoc function
- * @name conojoApp.controller:InvitePeopleCtrl
+ * @name conojoApp.controller:InvitationCtrl
  * @description
- * # InvitePeopleCtrl
+ * # InvitationCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('InvitePeopleCtrl', function ($scope,$http,$location,$routeParams) {
-    $scope.loginFormData = {};
+  .controller('InvitationCtrl', function ($scope,$http,$location,$routeParams) {
+     $scope.inviteMarginTop = ($(window).height() - 587)/2;
+     
+    $(".invitation-container").css('height',$(window).height());
+    $(".invitation-container").css('padding-top',$scope.inviteMarginTop);
+    $(".invitation-container").css('padding-bottom',$scope.inviteMarginTop);
+     
+    $scope.formData = {};
     $scope.processLoginForm = function(){
        $http({
             url: 'http://conojoapp.scmreview.com/rest/users/login',

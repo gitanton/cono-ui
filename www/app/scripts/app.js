@@ -65,7 +65,7 @@ angular
       })
       .when('/invitation/:invite/:type', {
         templateUrl: 'views/invitation.html',
-        controller: '  InvitationCtrl'
+        controller: 'InvitationCtrl'
       })
       .otherwise({
         redirectTo: '/'

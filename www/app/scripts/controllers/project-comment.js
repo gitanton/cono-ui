@@ -9,6 +9,15 @@
 angular.module('conojoApp')
  .controller('ProjectCommentCtrl', function ($scope,$http,$location,$routeParams) {
     $scope.activeProjectUuid = $routeParams.uuid;
+    $scope.setHeight = function(){
+        $scope.siderbarContainer = $(window).height() - 64;
+        $scope.siderbarExpand = $(window).height() - 442;
+        $scope.projectCommentBody = $(window).height() - 176;
+        
+        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
+        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
+        $(".projectComment-content-body").css('height',$scope.projectCommentBody);
+    };
     
     $scope.init = function(){
         $http({
@@ -23,7 +32,6 @@ angular.module('conojoApp')
     
     $scope.openUpdateProject = function(){
         $('#updateproject').modal('toggle');
-        $('body').css('padding',0);
     };
     
     $scope.updateMyProject = function(uuid){

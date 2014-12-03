@@ -10,6 +10,15 @@
 angular.module('conojoApp')
   .controller('TeamCtrl', function ($scope,$http,$location) {
     $scope.memberUuid = 0;
+    $scope.setHeight = function(){
+        $scope.siderbarContainer = $(window).height() - 64;
+        $scope.siderbarExpand = $(window).height() - 442;
+        $scope.teamContent = $(window).height() - 128;
+        
+        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
+        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
+        $(".team-content").css('height',$scope.teamContent);
+    };
     
     $scope.init = function(){
         $http({
@@ -19,22 +28,6 @@ angular.module('conojoApp')
              $scope.teams = data;
         });
     };
-    
-//    $scope.openAddTeamMember = function(){
-//        $('#addTeamMember').modal('toggle');
-//        $('body').css('padding',0);
-//    };
-//    
-//    $scope.addTeamMember = function(){
-//        $http({
-//            url: 'http://conojoapp.scmreview.com/rest/teams/team/'+uuid+'/invite',
-//            method: 'POST',
-//            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-//        }).success(function() {
-//            $scope.init();
-//            $('#duplicateproject').modal('hide');
-//        });
-//    };
     
     $scope.userPage = function(uuid){
         var url = '/userpage/'+uuid;

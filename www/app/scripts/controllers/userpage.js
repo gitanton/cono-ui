@@ -9,7 +9,24 @@
  */
 angular.module('conojoApp')
   .controller('UserpageCtrl', function ($scope,$http,$routeParams) {
-    $scope.memberUuid = 0;  
+    $scope.setHeight = function(){
+        $scope.siderbarContainer = $(window).height() - 64;
+        $scope.siderbarExpand = $(window).height() - 442;
+        $scope.userpageContent = $(window).height() - 128;
+        
+        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
+        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
+        $(".userpage-content").css('height',$scope.userpageContent);
+    }
+    
+    $scope.memberUuid = 0; 
+    $scope.setHeight = function(){
+        $scope.siderbarContainer = $(window).height() - 64;
+        $scope.siderbarExpand = $(window).height() - 442;
+        
+        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
+        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
+    };
     
     $scope.init = function(){
         $http({
@@ -31,7 +48,6 @@ angular.module('conojoApp')
     $scope.openAddProjectMember = function(uuid){
         $('#addPeopleToProject').modal('toggle');
         $scope.addToProjectUuid = uuid;
-        $('body').css('padding',0);
     };
     
     $scope.addProjectMember = function(){
@@ -47,7 +63,6 @@ angular.module('conojoApp')
     
     $scope.openAddTeamMember = function(){
         $('#addTeamMember').modal('toggle');
-        $('body').css('padding',0);
         $scope.activeTeamUuid = $routeParams.uuid;
     };
     

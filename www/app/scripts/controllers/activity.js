@@ -9,9 +9,13 @@
  */
 angular.module('conojoApp')
   .controller('ActivityCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    $scope.setHeight = function(){
+        $scope.siderbarContainer = $(window).height() - 64;
+        $scope.siderbarExpand = $(window).height() - 442;
+        $scope.activityContent = $(window).height() - 128;
+        
+        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
+        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
+        $(".activity-content").css('height',$scope.activityContent);
+    };
   });

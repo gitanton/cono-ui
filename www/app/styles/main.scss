@@ -264,9 +264,6 @@ ul li{
 
 /*project page*/
 .project-container{
-    position:absolute;
-    left:0px;
-    z-index:1;
     .project-header{
         height:64px;
         background:#efefef;
@@ -641,13 +638,11 @@ ul li{
 
 /*activity page*/
 .activity-container{
-    float:left;
     .activity-header{
-        width:960px;
         height:64px;
         background:#efefef;
         border-top:1px solid #e3e3e3;
-        padding:11px 20px 12px;
+        padding:11px 20px 12px 84px;
         .activity-header-account{
             span{
                 font-size: 20px;
@@ -667,19 +662,16 @@ ul li{
     }
     .activity-content{
         border-top:1px solid #dddddd;
-        padding:16px 14px 0px 20px;
+        padding:16px 14px 0px 84px;
         background:#e6e6e6;
-        height:545px;
         overflow-y:auto;
         .activity-content-items{
-            width:725px;
             .activity-content-item{
                 margin-top:16px;
                 .activity-content-img{
                     width:164px;
                 }
                 .activity-content-desc{
-                    width:561px;
                     height:180px;
                     background:#fff;
                     padding:20px
@@ -696,13 +688,11 @@ ul li{
 
 /*message page*/
 .message-container{
-    float:left;
     .message-header{
-        width:960px;
         height:64px;
         background:#efefef;
         border-top:1px solid #e3e3e3;
-        padding:11px 20px 12px;
+        padding:11px 20px 12px 84px;
         .message-header-title{
             padding:7px 0px;
             font-size: 18px;
@@ -719,7 +709,7 @@ ul li{
     }
     .message-subheader{
         height:66px;
-        padding:21px 18px;
+        padding:21px 18px 21px 82px;
         border-bottom:1px solid #e5e5e5;
         box-shadow:0px 3px 3px #e5e5e5;
         .message-subheader-previously{
@@ -727,11 +717,9 @@ ul li{
         }
     }
     .message-content{
-        height:478px;
         overflow-y:auto;
         .message-content-items{
-            padding:10px 40px 10px 20px;
-            width:954px;
+            padding:10px 40px 10px 84px;
             height:478px;
         }
         .message-content-item{
@@ -909,13 +897,11 @@ ul li{
 
 /*team page*/
 .team-container{
-    float:left;
     .team-header{
-        width:960px;
         height:64px;
         background:#efefef;
         border-top:1px solid #e3e3e3;
-        padding:11px 20px 12px;
+        padding:11px 20px 12px 84px;
         .team-header-account{
             span{
                 font-size: 20px;
@@ -938,9 +924,9 @@ ul li{
 
 .team-content{
     border-top:1px solid #dddddd;
-    padding:19px 20px 19px 4px;
+    padding:19px 20px 19px 68px;
     background:#e6e6e6;
-    height:545px;
+    overflow-y:auto;
     .col-lg-4{
         width:296px;
         height:296px;
@@ -1035,13 +1021,11 @@ ul li{
 
 /*userpage page*/
 .userpage-container{
-    float:left;
     .userpage-header{
-        width:960px;
         height:64px;
         background:#efefef;
         border-top:1px solid #e3e3e3;
-        padding:11px 20px 12px;
+        padding:11px 20px 12px 84px;
         .userpage-header-account{
             span{
                 font-size: 20px;
@@ -1062,12 +1046,10 @@ ul li{
     }
     .userpage-content{
         border-top:1px solid #dddddd;
-        padding:24px 20px;
+        padding:24px 20px 24px 84px;
         background:#e6e6e6;
-        height:545px;
         overflow-y:auto;
         .userpage-content-container{
-            width:920px;
             background:#fff;
             border-radius:3px;
             .userpage-content-intro{
@@ -1190,8 +1172,6 @@ ul li{
                 margin-left:auto;
                 margin-right:auto;
                 #drawing{
-                    width:100%;
-                    height:100%;
                     background: white;
                     cursor: crosshair;
                 }
@@ -1226,12 +1206,16 @@ ul li{
                 width: 150px;
                 padding: 15px 15px;
             }
-            .projectBuild-content-brush{
+            .drawingToolShow{
+                display:block;
+            }
+            .drawingToolShow{
                 display:none;
+            }
+            .projectBuild-content-brush{
                 width:350px;
                 position: absolute;
                 background: #464646;
-                top:430px;
                 .projectBuild-content-brushTitle{
                     background:#1c85b6;
                     height:20px;
@@ -1244,11 +1228,9 @@ ul li{
                 }
             }
             .projectBuild-content-eraser{
-                display:none;
                 width:210px;
                 position: absolute;
                 background: #464646;
-                top:645px;
                 .projectBuild-content-eraserTitle{
                     background:#1c85b6;
                     height:20px;
@@ -1261,7 +1243,6 @@ ul li{
                 }
             }
             .projectBuild-content-shape{
-                display:none;
                 width:400px;
                 position: absolute;
                 background: #464646;
@@ -1287,13 +1268,11 @@ ul li{
 
 /*project screen page*/
 .projectScreen-container{
-    float:left;
     .projectScreen-header{
-        width:960px;
         height:64px;
         background:#efefef;
         border-top:1px solid #e3e3e3;
-        padding:11px 20px 12px;
+        padding:11px 20px 12px 84px;
         .projectScreen-header-name{
             text-align:left;
             font-size:1.5em;
@@ -1315,8 +1294,7 @@ ul li{
     }
     .projectScreen-content{
         background:#e6e6e6;
-        width:960px;
-        height:545px;
+        padding-left:64px;
         .projectScreen-content-menu{
             height:48px;
             padding:8px 20px;
@@ -1346,7 +1324,6 @@ ul li{
             }
         }
         .projectScreen-content-body{
-            height:497px;
             overflow-y:auto;
             .projectScreen-content-items{
                 margin-left:16px;
@@ -1449,13 +1426,11 @@ ul li{
 
 /*project activity page*/
 .projectActivity-container{
-    float:left;
     .projectActivity-header{
-        width:960px;
         height:64px;
         background:#efefef;
         border-top:1px solid #e3e3e3;
-        padding:11px 20px 12px;
+        padding:11px 20px 12px 84px;
         .projectActivity-header-name{
             text-align:left;
             font-size:1.5em;
@@ -1477,8 +1452,7 @@ ul li{
     }
     .projectActivity-content{
         background:#e6e6e6;
-        width:960px;
-        height:545px;
+        padding-left:64px;
         .projectActivity-content-menu{
             height:48px;
             padding:8px 20px;
@@ -1508,20 +1482,16 @@ ul li{
             }
         }
         .projectActivity-content-body{
-            height:497px;
             overflow-y:auto;
             .projectActivity-content-items{
-                width:745px;
                 padding-left:20px;
                 .projectActivity-content-item{
-                    width:725px;
                     margin-top:16px;
                 }
                 .projectActivity-content-img{
                     width:164px;
                 }
                 .projectActivity-content-desc{
-                    width:561px;
                     height:180px;
                     background:#fff;
                     padding:20px
@@ -1538,13 +1508,11 @@ ul li{
 
 /*project comment page*/
 .projectComment-container{
-    float:left;
     .projectComment-header{
-        width:960px;
         height:64px;
         background:#efefef;
         border-top:1px solid #e3e3e3;
-        padding:11px 20px 12px;
+        padding:11px 20px 12px 84px;
         .projectComment-header-name{
             text-align:left;
             font-size:1.5em;
@@ -1566,8 +1534,7 @@ ul li{
     }
     .projectComment-content{
         background:#e6e6e6;
-        width:960px;
-        height:545px;
+        padding-left:64px;
         .projectComment-content-menu{
             height:48px;
             padding:8px 20px;
@@ -1597,7 +1564,6 @@ ul li{
             }
         }
         .projectComment-content-body{
-            height:430px;
             overflow-y:auto;
             .projectComment-content-items{
                 padding-left:20px;
@@ -1668,14 +1634,18 @@ ul li{
 
 /*invitation page*/
 .invitation-container{
-    padding:0px 5px;
     background:#efefef;
-    height:670px;
-    border-top:3px solid #d4d4d4;
     .invitation-logo{
-        position:relative;
-        padding:24px 17px 31px;
-        margin:0px;
+        width:1000px;
+        margin-left:auto;
+        margin-right:auto;
+        .col-lg-5{
+            padding-bottom:50px;
+        }
+        .col-lg-7{
+            padding-top:33px;
+            padding-bottom:50px;
+        }
         .invitation-warn{
             position:absolute;
             top:25px;
@@ -1683,10 +1653,12 @@ ul li{
         }
     }
     .invitation-content{
-        padding:0px 75px;
+        width:1000px;
+        margin-left:auto;
+        margin-right:auto;
         .login-form{
             height:283px;
-            margin:0px;
+            width:390px;
             padding:33px;
             background:#e3e3e3;
             border-radius:10px;
@@ -1726,7 +1698,7 @@ ul li{
         }
         .register-form{
             height:386px;
-            margin:0px;
+            width:390px;
             padding:22px 33px 30px;
             background:#e3e3e3;
             border-radius:10px;
