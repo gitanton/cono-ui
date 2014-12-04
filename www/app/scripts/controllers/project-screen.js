@@ -28,6 +28,14 @@ angular.module('conojoApp')
             $scope.updateProjectTitle = data.name;
             $scope.updateProjectTypeid = data.type_id;
         });
+        
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
+            method: 'GET',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(data) {
+            $scope.screens = data;
+        });
     };
     
     $scope.openUpdateProject = function(){
@@ -64,13 +72,14 @@ angular.module('conojoApp')
         $('#addProjectScreen').modal('toggle');
     };
     
-    $scope.addProjectMember = function(){
+    $scope.addUploadScreen = function(){
         $http({
-            url: '',
+            url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
             method: 'POST',
-            data: $.param({}),
+            data: $.param({project_uuid:$scope.activeProjectUuid,url:$scope.screenUrl}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
+            $scope.init();
             $('#addProjectScreen').modal('hide');
         });
     };

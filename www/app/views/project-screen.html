@@ -32,6 +32,7 @@
             </div>
             <div class="projectScreen-content-body">
                 <div class="projectScreen-content-items col-lg-10">
+                    <div class="projectScreen-content-thumb col-lg-4" ng-repeat="screen in screens"><img src='{{screen.url}}'></div>
                     <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
                     <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
                     <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
@@ -109,12 +110,12 @@
                 </div>
                 <div class="form-group has-email">
                     <p>Or paste a link below:</p>
-                    <input type="text" name="teammemberemail" ng-model="memberEmail" class="form-control teammember-add-email" placeholder="Paste link here" />
-                    <img class="teammember-add-emailicon" src="images/mail-icon.png">
+                    <input type="text" name="screenUrl" ng-model="screenUrl" class="form-control teammember-add-email" placeholder="Paste link here" />
+                    <img class="teammember-add-emailicon" src="images/link-icon.png">
                 </div>
             </div>
             <div class="col-lg-12 teammember-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addProjectScreen()">Add Screens</button>       
+                <button class="btn btn-lg" type="submit" ng-click="addUploadScreen()">Add Screens</button>       
             </div>
         </form>
     </div>

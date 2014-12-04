@@ -41,7 +41,7 @@
                         <li><img src="images/shape-black-icon.png" ng-click="openDrawing('shape')"></li>
                     </ul>
                 </div>
-                <div class="projectBuild-content-addScreens"><img  src="images/addScreen-icon.png" ng-click="openAddScreen()">Add Screens</div>
+                <div class="projectBuild-content-addScreens"><img  src="images/addScreen-icon.png" ng-click="openUploadScreen()">Add Screens</div>
                 <div class="projectBuild-content-brush" ng-hide="brushTool">
                     <div class="projectBuild-content-brushTitle col-lg-12">BRUSH TOOL</div>
                     <div class="projectBuild-content-brushContent">
@@ -131,6 +131,28 @@
             </div>
             <div class="col-lg-12 teammember-add-button">
                 <button class="btn btn-lg" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People</button>       
+            </div>
+        </form>
+    </div>
+</div>
+<div id="addProjectScreen" class="modal fade in" style="display: none;">
+    <div class="teammember-add">
+        <div class="col-lg-10 teammember-add-desc">ADD SCREENS</div>
+        <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="createteammember">
+            <div class="col-lg-12 teammember-add-body">
+                <div class="form-group has-add">
+                    <img class="teammember-add-addAnother" src="images/upload-icon.png">
+                    <p>Select a file from your computer to add</p>
+                </div>
+                <div class="form-group has-email">
+                    <p>Or paste a link below:</p>
+                    <input type="text" name="screenUrl" ng-model="screenUrl" class="form-control teammember-add-email" placeholder="Paste link here" />
+                    <img class="teammember-add-emailicon" src="images/link-icon.png">
+                </div>
+            </div>
+            <div class="col-lg-12 teammember-add-button">
+                <button class="btn btn-lg" type="submit" ng-click="addUploadScreen()">Add Screens</button>       
             </div>
         </form>
     </div>

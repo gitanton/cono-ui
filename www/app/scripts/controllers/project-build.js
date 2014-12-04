@@ -62,14 +62,6 @@ angular.module('conojoApp')
     };
     
     $scope.init = function(){
-        $('#pickerBrush').farbtastic(function(color){
-            $scope.setPenColor(color);
-        });
-        $('#pickerShape').farbtastic(function(color){
-            $scope.setPenColor(color);
-        });
-        $scope.setPenWidth(0);
-        
         $http({
             url: 'http://conojoapp.scmreview.com/rest/projects/project/'+$scope.activeProjectUuid,
             method: 'GET',
@@ -78,6 +70,14 @@ angular.module('conojoApp')
             $scope.updateProjectTitle = data.name;
             $scope.updateProjectTypeid = data.type_id;
         });
+        
+        $('#pickerBrush').farbtastic(function(color){
+            $scope.setPenColor(color);
+        });
+        $('#pickerShape').farbtastic(function(color){
+            $scope.setPenColor(color);
+        });
+        $scope.setPenWidth(0);
     };
     
     $scope.openUpdateProject = function(){
@@ -107,6 +107,21 @@ angular.module('conojoApp')
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
             $('#addPeopleToProject').modal('hide');
+        });
+    };
+    
+    $scope.openUploadScreen = function(){
+        $('#addProjectScreen').modal('toggle');
+    };
+    
+    $scope.addUploadScreen = function(){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
+            method: 'POST',
+            data: $.param({project_uuid:$scope.activeProjectUuid,file:'1qaz2wsx3edc',url:$scope.screenUrl}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            $('#addProjectScreen').modal('hide');
         });
     };
     

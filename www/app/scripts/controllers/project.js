@@ -79,8 +79,8 @@ angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$lo
         });
    };
    
-   $scope.projectBuild = function(uuid){
-        var url = '/project-build/'+uuid;
+   $scope.projectScreen = function(uuid){
+        var url = '/project-screen/'+uuid;
         $location.path(url);
     }
    

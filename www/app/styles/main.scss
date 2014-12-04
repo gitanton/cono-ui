@@ -547,7 +547,7 @@ ul li{
     padding:137px 279px;
     .project-archive{
         width:465px;
-        height:387px;
+        height:405px;
         background:#fff;
         border-radius:4px;
     }
@@ -1327,10 +1327,16 @@ ul li{
             overflow-y:auto;
             .projectScreen-content-items{
                 margin-left:16px;
-                width:710px;
                 .projectScreen-content-thumb{
                     margin:16px 16px 16px 0px;
+                    border: 1px solid #d1d1d1;
                     width:218px;
+                    height:197px;
+                    img{
+                        width:218px;
+                        height:197px;
+                        cursor:pointer;
+                    }
                 }
             }
             .projectScreen-content-delete{
@@ -1366,7 +1372,7 @@ ul li{
     padding:191px 279px;
     .teammember-add{
         width:465px;
-        height:370px;
+        height:381px;
         background:#fff;
         border-radius:4px;
     }
