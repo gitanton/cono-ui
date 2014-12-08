@@ -39,6 +39,7 @@ angular.module('conojoApp')
         cxt.fillStyle = color;
     }
     
+    $scope.shapeFill = false;
      $scope.brushTool = true;
      $scope.eraserTool = true;
      $scope.shapeTool = true;
@@ -47,18 +48,17 @@ angular.module('conojoApp')
         $scope.siderbarContainer = $(window).height() - 64;
         $scope.siderbarExpand = $(window).height() - 442;
         $scope.projectContent = $(window).height() - 176;
-        $scope.projectDrawing = $(window).height() - 244;
-        $scope.projectShapeTool = $(window).height() - 509;
+        $scope.projectDrawing = $(window).height() - 234;
         
         $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
         $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
         $(".projectBuild-content-body").css('height',$scope.projectContent);
         $(".projectBuild-content-drawing").css('height',$scope.projectDrawing);
-        $(".projectBuild-content-brush").css('top',$scope.projectDrawing-305);
-        $(".projectBuild-content-eraser").css('top',$scope.projectDrawing-90);
-        $(".projectBuild-content-shape").css('top',$scope.projectDrawing-305);
-        $(".projectBuild-content-tools").css('top',$scope.projectDrawing+10);
-        $(".projectBuild-content-addScreens").css('top',$scope.projectDrawing+10);
+        $(".projectBuild-content-brush").css('top',$scope.projectDrawing-325);
+        $(".projectBuild-content-eraser").css('top',$scope.projectDrawing-120);
+        $(".projectBuild-content-shape").css('top',$scope.projectDrawing-350);
+        $(".projectBuild-content-tools").css('top',$scope.projectDrawing);
+        $(".projectBuild-content-addScreens").css('top',$scope.projectDrawing);
     };
     
     $scope.init = function(){
@@ -175,6 +175,23 @@ angular.module('conojoApp')
         }
     }
     
+    $scope.shapeFillSwitch = function(type){
+        if(type == 'on'){
+            $scope.shapeFill = true;
+            $('.shapeFillSwitchOn').removeClass('shapeUnFillItem').addClass('shapeFillItem');
+            $('.shapeFillSwitchOff').removeClass('shapeFillItem').addClass('shapeUnFillItem');
+        }else if(type == 'off'){
+            $scope.shapeFill = false;
+            $('.shapeFillSwitchOff').removeClass('shapeUnFillItem').addClass('shapeFillItem');
+            $('.shapeFillSwitchOn').removeClass('shapeFillItem').addClass('shapeUnFillItem');
+        }
+    }
+    
+    $scope.specicalColor = function(color){
+        cxt.strokeStyle = color;
+        cxt.fillStyle = color;
+    }
+    
     $scope.setBrushWidth = function(width){
         cxt.lineWidth = width;
         var flag=0;
@@ -241,7 +258,11 @@ angular.module('conojoApp')
             var endY=evt.pageY-this.offsetTop-176;
             var rectW=endX-rectX;
             var rectH=endY-rectY;
-            cxt.strokeRect(rectX,rectY,rectW,rectH);
+            if($scope.shapeFill){
+                cxt.fillRect(rectX,rectY,rectW,rectH);
+            }else{
+                cxt.strokeRect(rectX,rectY,rectW,rectH);
+            }
         }
         canvas.onmousemove=null;
         canvas.onmouseout=null;
@@ -267,7 +288,12 @@ angular.module('conojoApp')
             var tmpB=Math.sqrt(tmpC*tmpC-tmpA*tmpA);
             cxt.lineTo(polyX,endY-tmpB);
             cxt.closePath();
-            cxt.stroke();
+            
+            if($scope.shapeFill){
+                cxt.fill();
+            }else{
+                cxt.stroke();
+            }
         }
         canvas.onmousemove=null;
         canvas.onmouseout=null;
@@ -289,11 +315,86 @@ angular.module('conojoApp')
             cxt.beginPath();
             cxt.arc(arcX,arcY,c,0,360,false);
             cxt.closePath();
-            cxt.stroke();
+            
+            if($scope.shapeFill){
+                cxt.fill();
+            }else{
+                cxt.stroke();
+            }
         }
         canvas.onmousemove=null;
         canvas.onmouseout=null;
     };
+    
+    $scope.drawTalk = function(){
+        canvas.onmousedown=function(evt){
+            evt=window.event||evt;
+            polyX=evt.pageX-this.offsetLeft-64;
+            polyY=evt.pageY-this.offsetTop-176;
+        }
+        canvas.onmouseup=function(evt){
+            evt=window.event||evt;
+            cxt.beginPath();
+            cxt.moveTo(polyX,polyY);
+            cxt.quadraticCurveTo(polyX-15,polyY,polyX-15,polyY+15);
+            cxt.quadraticCurveTo(polyX-15,polyY+27,polyX-3,polyY+27);
+            cxt.quadraticCurveTo(polyX-3,polyY+32,polyX-8,polyY+35);
+            cxt.quadraticCurveTo(polyX,polyY+35,polyX+3,polyY+27);
+            cxt.quadraticCurveTo(polyX+15,polyY+27,polyX+15,polyY+15);
+            cxt.quadraticCurveTo(polyX+15,polyY,polyX,polyY);
+            cxt.fill();
+        }
+        canvas.onmousemove=null;
+        canvas.onmouseout=null;
+    }
+    
+    $scope.drawArrow = function(){
+        canvas.onmousedown=function(evt){
+            evt=window.event||evt;
+            polyX=evt.pageX-this.offsetLeft-64;
+            polyY=evt.pageY-this.offsetTop-176;
+        }
+        canvas.onmouseup=function(evt){
+            evt=window.event||evt;
+            cxt.beginPath();
+            cxt.moveTo(polyX,polyY);
+            cxt.lineTo(polyX+20,polyY);
+            cxt.lineTo(polyX+20,polyY-5);
+            cxt.lineTo(polyX+30,polyY+5);
+            cxt.lineTo(polyX+20,polyY+15);
+            cxt.lineTo(polyX+20,polyY+10);
+            cxt.lineTo(polyX,polyY+10);
+            cxt.closePath();
+            cxt.fill();
+        }
+        canvas.onmousemove=null;
+        canvas.onmouseout=null;
+    }
+    
+    $scope.drawStar = function(){
+        canvas.onmousedown=function(evt){
+            evt=window.event||evt;
+            polyX=evt.pageX-this.offsetLeft-64;
+            polyY=evt.pageY-this.offsetTop-176;
+        }
+        canvas.onmouseup=function(evt){
+            evt=window.event||evt;
+            cxt.beginPath();
+            cxt.moveTo(polyX,polyY);
+            cxt.lineTo(polyX+12,polyY);
+            cxt.lineTo(polyX+15,polyY-10);
+            cxt.lineTo(polyX+18,polyY);
+            cxt.lineTo(polyX+30,polyY);
+            cxt.lineTo(polyX+20,polyY+10);
+            cxt.lineTo(polyX+23,polyY+20);
+            cxt.lineTo(polyX+15,polyY+15);
+            cxt.lineTo(polyX+7,polyY+20);
+            cxt.lineTo(polyX+10,polyY+10);
+            cxt.fill();
+        }
+        canvas.onmousemove=null;
+        canvas.onmouseout=null;
+    }
     
     $scope.init();
 });

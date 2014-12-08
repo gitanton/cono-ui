@@ -1167,6 +1167,7 @@ ul li{
         .projectBuild-content-body{
             background-image:url('/images/project-build-bg.jpg');
             position:relative;
+            cursor:pointer;
             .projectBuild-content-drawing{
                 width:1000px;
                 margin-left:auto;
@@ -1204,18 +1205,14 @@ ul li{
                 height: 58px;
                 background: #e6e6e6;
                 width: 150px;
-                padding: 15px 15px;
-            }
-            .drawingToolShow{
-                display:block;
-            }
-            .drawingToolShow{
-                display:none;
+                padding: 15px;
             }
             .projectBuild-content-brush{
-                width:350px;
+                width:360px;
                 position: absolute;
                 background: #464646;
+                color:#fff;
+                text-align:center;
                 .projectBuild-content-brushTitle{
                     background:#1c85b6;
                     height:20px;
@@ -1223,14 +1220,39 @@ ul li{
                     color:#fff;
                 }
                 .projectBuild-content-brushContent{
-                    height:305px;
+                    height:295px;
                     padding:10px 0px;
+                    .projectBuild-content-brushColorRight{
+                        padding: 20px 0px;
+                        ul{
+                            li{
+                                width:30px;
+                                height:30px;
+                            }
+                            .brushColor1{background:#fff;}
+                            .brushColor2{background:#959595;}
+                            .brushColor3{background:#555555;}
+                            .brushColor4{background:#252525;}
+                            .brushColor5{background:#000;}
+                            .brushColor6{background:#d26a9d;}
+                            .brushColor7{background:#a90c5a;}
+                            .brushColor8{background:#800039;}
+                            .brushColor9{background:#45001e;}
+                            .brushColor10{background:#250012;}
+                        }
+                    }
+                    .projectBuild-content-brushBottom{
+                        padding:10px 80px 0px;
+                    }
                 }
             }
             .projectBuild-content-eraser{
                 width:210px;
                 position: absolute;
                 background: #464646;
+                color:#fff;
+                text-align:center;
+                left:80px;
                 .projectBuild-content-eraserTitle{
                     background:#1c85b6;
                     height:20px;
@@ -1238,14 +1260,16 @@ ul li{
                     color:#fff;
                 }
                 .projectBuild-content-eraserContent{
-                    height:70px;
-                    padding:10px 0px;
+                    height:90px;
+                    padding:10px 20px;
                 }
             }
             .projectBuild-content-shape{
                 width:400px;
                 position: absolute;
                 background: #464646;
+                color:#fff;
+                text-align:center;
                 .projectBuild-content-shapeTitle{
                     background:#1c85b6;
                     height:20px;
@@ -1253,11 +1277,51 @@ ul li{
                     color:#fff;
                 }
                 .projectBuild-content-shapeContent{
-                    height:305px;
+                    height:340px;
                     .projectBuild-content-shapeLeft{
-                        padding:10px 0px 0px 10px;
+                        padding:40px 0px 0px 10px;
                         .col-lg-4{
-                            margin-bottom:10px;
+                            margin-bottom:20px;
+                        }
+                    }
+                    .projectBuild-content-shapeRight{
+                        .shapeColorContainer{
+                            ul{
+                                margin:5px 20px;
+                                height:30px;
+                                li{
+                                    width:30px;
+                                    height:30px;
+                                    float:left;
+                                }
+                                .shapeColor1{background:#fff;}
+                                .shapeColor2{background:#959595;}
+                                .shapeColor3{background:#555555;}
+                                .shapeColor4{background:#252525;}
+                                .shapeColor5{background:#000;}
+                                .shapeColor6{background:#d26a9d;}
+                                .shapeColor7{background:#a90c5a;}
+                                .shapeColor8{background:#800039;}
+                                .shapeColor9{background:#45001e;}
+                                .shapeColor10{background:#250012;}
+                            }
+                        }
+                        .shapeFillSwitch{
+                            text-align:center;
+                            width: 100px;
+                            height: 42px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            .shapeFillSwitchContainer{
+                                border:1px solid #fff;
+                            }
+                            .shapeFillItem{
+                                background:#fff;
+                                color:#000;
+                            }
+                            .shapeUnFillItem{
+                                color:#fff;
+                            }
                         }
                     }
                 }
