@@ -1,13 +1,13 @@
 'use strict';
 /**
  * @ngdoc function
- * @name conojoApp.controller:ProjectBuildCtrl
+ * @name conojoApp.controller:ProjectNewScreenBuildCtrl
  * @description
- * # ProjectBuildCtrl
+ * # ProjectNewScreenBuildCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectBuildCtrl', function ($scope,$http,$location,$routeParams) {
+ .controller('ProjectNewScreenBuildCtrl', function ($scope,$http,$location,$routeParams) {
     var canvas = document.getElementById('drawing');
     var cxt = canvas.getContext('2d');
     var rectX=0;
@@ -44,7 +44,6 @@ angular.module('conojoApp')
      $scope.eraserTool = true;
      $scope.shapeTool = true;
     $scope.activeProjectUuid = $routeParams.puuid;
-    $scope.activeScreenUuid = $routeParams.suuid;
     $scope.setHeight = function(){
         $scope.siderbarContainer = $(window).height() - 64;
         $scope.siderbarExpand = $(window).height() - 442;
@@ -215,16 +214,6 @@ angular.module('conojoApp')
         }
         canvas.onmouseup=function(){
             flag=0;
-            
-            var screenData = canvas.toDataURL();
-            $http({
-                url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid+'/hotspots',
-                method: 'POST',
-                data: $.param({screen_uuid:$scope.activeScreenUuid,data:screenData}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
-
-            });
         }
         canvas.onmouseout=function(){
             flag=0;
@@ -250,16 +239,6 @@ angular.module('conojoApp')
         }
         canvas.onmouseup=function(){
             eraserFlag=0;
-            
-            var screenData = canvas.toDataURL();
-            $http({
-                url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid+'/hotspots',
-                method: 'POST',
-                data: $.param({screen_uuid:$scope.activeScreenUuid,data:screenData}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
-
-            });
         }
         canvas.onmouseout=function(){
             eraserFlag=0;
@@ -284,16 +263,6 @@ angular.module('conojoApp')
             }else{
                 cxt.strokeRect(rectX,rectY,rectW,rectH);
             }
-            
-            var screenData = canvas.toDataURL();
-            $http({
-                url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid+'/hotspots',
-                method: 'POST',
-                data: $.param({screen_uuid:$scope.activeScreenUuid,data:screenData}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
-
-            });
         }
         canvas.onmousemove=null;
         canvas.onmouseout=null;
@@ -325,16 +294,6 @@ angular.module('conojoApp')
             }else{
                 cxt.stroke();
             }
-            
-             var screenData = canvas.toDataURL();
-            $http({
-                url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid+'/hotspots',
-                method: 'POST',
-                data: $.param({screen_uuid:$scope.activeScreenUuid,data:screenData}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
-
-            });
         }
         canvas.onmousemove=null;
         canvas.onmouseout=null;
@@ -362,16 +321,6 @@ angular.module('conojoApp')
             }else{
                 cxt.stroke();
             }
-            
-            var screenData = canvas.toDataURL();
-            $http({
-                url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid+'/hotspots',
-                method: 'POST',
-                data: $.param({screen_uuid:$scope.activeScreenUuid,data:screenData}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
-
-            });
         }
         canvas.onmousemove=null;
         canvas.onmouseout=null;
@@ -394,16 +343,6 @@ angular.module('conojoApp')
             cxt.quadraticCurveTo(polyX+18,polyY+27,polyX+18,polyY+15);
             cxt.quadraticCurveTo(polyX+18,polyY,polyX,polyY);
             cxt.fill();
-            
-            var screenData = canvas.toDataURL();
-            $http({
-                url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid+'/hotspots',
-                method: 'POST',
-                data: $.param({screen_uuid:$scope.activeScreenUuid,data:screenData}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
-
-            });
         }
         canvas.onmousemove=null;
         canvas.onmouseout=null;
@@ -427,16 +366,6 @@ angular.module('conojoApp')
             cxt.lineTo(polyX,polyY+10);
             cxt.closePath();
             cxt.fill();
-            
-            var screenData = canvas.toDataURL();
-            $http({
-                url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid+'/hotspots',
-                method: 'POST',
-                data: $.param({screen_uuid:$scope.activeScreenUuid,data:screenData}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
-
-            });
         }
         canvas.onmousemove=null;
         canvas.onmouseout=null;
@@ -462,16 +391,6 @@ angular.module('conojoApp')
             cxt.lineTo(polyX+7,polyY+20);
             cxt.lineTo(polyX+10,polyY+7);
             cxt.fill();
-            
-            var screenData = canvas.toDataURL();
-            $http({
-                url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid+'/hotspots',
-                method: 'POST',
-                data: $.param({screen_uuid:$scope.activeScreenUuid,data:screenData}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
-
-            });
         }
         canvas.onmousemove=null;
         canvas.onmouseout=null;

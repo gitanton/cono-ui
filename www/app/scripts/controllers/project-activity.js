@@ -60,7 +60,7 @@ angular.module('conojoApp')
         });
     };
     
-    $scope.toBuild = function(){
+    $scope.toBuildNewScreen = function(){
         var url = '/project-build/'+$scope.activeProjectUuid;
         $location.path(url);
     }

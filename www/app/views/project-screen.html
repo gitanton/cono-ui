@@ -15,7 +15,7 @@
             <div class="projectScreen-content-menu">
                 <div class="projectScreen-content-nav col-lg-6">
                     <ul>
-                        <li  ng-click="toBuild()">Build</li>
+                        <li  ng-click="toBuildNewScreen()">Build</li>
                         <li class="project-design-menu-current">Screens</li>
                         <li  ng-click="toActivity()">ACTIVITY</li>
                         <li  ng-click="toComment()">COMMENTS</li>
@@ -32,8 +32,8 @@
             </div>
             <div class="projectScreen-content-body">
                 <div class="projectScreen-content-items col-lg-10">
-                    <div class="projectScreen-content-thumb col-lg-4" ng-repeat="screen in screens"><img src='{{screen.url}}'></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
+                    <div class="projectScreen-content-thumb col-lg-4" ng-repeat="screen in screens"><img ng-src="{{screen.url}}" ng-click="toBuild('{{screen.uuid}}')"></div>
+                    <div class="projectScreen-content-thumb col-lg-4"><img src="/images/screen-thumb.png"></div>
                     <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
                     <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
                     <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>

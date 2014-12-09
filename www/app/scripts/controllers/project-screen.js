@@ -84,8 +84,13 @@ angular.module('conojoApp')
         });
     };
     
-    $scope.toBuild = function(){
+    $scope.toBuildNewScreen = function(){
         var url = '/project-build/'+$scope.activeProjectUuid;
+        $location.path(url);
+    }
+    
+    $scope.toBuild = function(suuid){
+        var url = '/project-build/'+$scope.activeProjectUuid+'/'+suuid;
         $location.path(url);
     }
     

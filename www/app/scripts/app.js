@@ -47,9 +47,13 @@ angular
         templateUrl: 'views/userpage.html',
         controller: 'UserpageCtrl'
       })
-      .when('/project-build/:uuid', {
+      .when('/project-build/:puuid/:suuid', {
         templateUrl: 'views/project-build.html',
         controller: 'ProjectBuildCtrl'
+      })
+      .when('/project-build/:uuid', {
+        templateUrl: 'views/project-build.html',
+        controller: 'ProjectNewScreenBuildCtrl'
       })
       .when('/project-screen/:uuid', {
         templateUrl: 'views/project-screen.html',
