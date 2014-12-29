@@ -51,8 +51,8 @@ angular
         templateUrl: 'views/project-build.html',
         controller: 'ProjectBuildCtrl'
       })
-      .when('/project-build/:uuid', {
-        templateUrl: 'views/project-build.html',
+      .when('/project-newscreen-build/:puuid', {
+        templateUrl: 'views/project-newscreen-build.html',
         controller: 'ProjectNewScreenBuildCtrl'
       })
       .when('/project-screen/:uuid', {

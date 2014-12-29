@@ -10,6 +10,7 @@ angular.module('conojoApp')
  .controller('ProjectBuildCtrl', function ($scope,$http,$location,$routeParams) {
     var canvas = document.getElementById('drawing');
     var cxt = canvas.getContext('2d');
+    
     var rectX=0;
     var rectY=0;
     var polyX=0;
@@ -43,6 +44,7 @@ angular.module('conojoApp')
      $scope.brushTool = true;
      $scope.eraserTool = true;
      $scope.shapeTool = true;
+     $scope.showAddHotspots = false;
     $scope.activeProjectUuid = $routeParams.puuid;
     $scope.activeScreenUuid = $routeParams.suuid;
     $scope.setHeight = function(){
@@ -150,8 +152,73 @@ angular.module('conojoApp')
         
     }
     
+    $scope.hotspotsList = [];
+    $scope.preFlag = false;
+    
     $scope.openHotspots = function(){
-        
+        cxt.strokeStyle = "rgba(250,246,162,0.7)";
+        cxt.fillStyle = "rgba(250,246,162,0.7)";
+        canvas.onmousedown=function(evt){
+            if($scope.preFlag){
+                cxt.clearRect(0,0,1000,423);
+                if($scope.hotspotsList.length > 1){
+                    var index = $scope.hotspotsList.length - 2;
+                    var image = new Image();
+                    image.src = $scope.hotspotsList[index][0];
+                    cxt.drawImage(image , 0 ,0);
+                }
+                $scope.hotspotsList.pop();
+            }
+            evt=window.event||evt;
+            rectX=evt.pageX-this.offsetLeft-64;
+            rectY=evt.pageY-this.offsetTop-176;
+            $('#addHotspots').css('left',evt.pageX-400);
+            $('#addHotspots').css('top',evt.pageY);
+        }
+
+        canvas.onmouseup=function(evt){
+            evt=window.event||evt;
+            var endX=evt.pageX-this.offsetLeft-64;
+            var endY=evt.pageY-this.offsetTop-176;
+            var rectW=endX-rectX;
+            var rectH=endY-rectY;
+            cxt.fillRect(rectX,rectY,rectW,rectH);
+            $scope.preFlag = true;
+            $scope.hotspotsList.push([canvas.toDataURL(),rectX,rectY,endX,endY]);
+            $scope.showAddHotspots = true;
+            $scope.$apply();
+        }
+        canvas.onmousemove=null;
+        canvas.onmouseout=null;
+    }
+    
+    $scope.saveAddHotspots = function(){
+        $scope.preFlag = false;
+        var imgDataArray = $scope.hotspotsList.slice(-1);
+        var screenData = {'imgData':imgDataArray[0][0],'bX':imgDataArray[0][1],'bY':imgDataArray[0][2],'eX':imgDataArray[0][3],'eY':imgDataArray[0][4],'link':$scope.hotspotsLinkTo};
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid+'/hotspots',
+            method: 'POST',
+            data: $.param({screen_uuid:$scope.activeScreenUuid,data:screenData}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+
+        });
+        //save to the Server successfully
+        $scope.showAddHotspots = false;
+    }
+    
+    $scope.hideAddHotspots = function(){
+        $scope.preFlag = false;
+        $scope.showAddHotspots = false;
+        cxt.clearRect(0,0,1000,423);
+        if($scope.hotspotsList.length > 1){
+            var index = $scope.hotspotsList.length - 2;
+            var image = new Image();
+            image.src = $scope.hotspotsList[index][0];
+            cxt.drawImage(image , 0 ,0);
+        }
+        $scope.hotspotsList.pop();
     }
     
     $scope.openDrawing = function(type){
@@ -171,6 +238,7 @@ angular.module('conojoApp')
             $scope.brushTool = true;
             $scope.eraserTool = true;
             $scope.shapeTool = false;
+            $scope.setPenWidth(0);
             cxt.strokeStyle = '#000';
             cxt.fillStyle = '#000';
         }
