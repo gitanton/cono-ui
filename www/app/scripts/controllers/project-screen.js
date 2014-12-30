@@ -151,6 +151,25 @@ angular.module('conojoApp')
         });
     };
     
+    $scope.openNewMeeting = function(){
+        $('#newMeeting').modal('toggle');
+    };
+    
+    $scope.addNewMeeting = function(){
+        
+    };
+    
+    $('.newMeeting-time').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
+    });
+    
     $scope.toBuildNewScreen = function(){
         var url = '/project-newscreen-build/'+$scope.activeProjectUuid;
         $location.path(url);
