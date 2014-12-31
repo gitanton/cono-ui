@@ -509,6 +509,13 @@ ul li{
 .modal-backdrop{
     background:#0378ae;
 }
+#datetimepicker{
+    position:absolute;
+    width:220px;
+    display:none;
+    z-index: 1040;
+    background: #fff;
+}
 
 /*login page*/
 .login-container{
@@ -802,14 +809,14 @@ ul li{
     }
 }
 #newproject{
-    width:1024px;
-    margin:0 auto;
-    padding:50px 279px;
+    width:100%;
+    padding-top:50px;
     .project-new{
         width:465px;
         height:288px;
         background:#fff;
         border-radius:4px;
+        margin:0 auto;
     }
     .project-new-desc{
         text-align:center;
@@ -842,14 +849,14 @@ ul li{
     }
 }
 #duplicateproject{
-    width:1024px;
-    margin:0 auto;
-    padding:50px 279px;
+    width:100%;
+    padding-top:50px;
     .project-duplicate{
         width:465px;
         height:327px;
         background:#fff;
         border-radius:4px;
+        margin:0 auto;
     }
     .project-duplicate-desc{
         text-align:center;
@@ -883,14 +890,14 @@ ul li{
     }
 }
 #shareproject{
-    width:1024px;
-    margin:0 auto;
-    padding:50px 279px;
+    width:100%;
+    padding-top:50px;
     .project-share{
         width:465px;
         height:327px;
         background:#fff;
         border-radius:4px;
+        margin:0 auto;
     }
     .project-share-desc{
         text-align:center;
@@ -961,14 +968,14 @@ ul li{
     }
 }
 #archiveproject{
-    width:1024px;
-    margin:0 auto;
-    padding:50px 279px;
+    width:100%;
+    padding-top:50px;
     .project-archive{
         width:465px;
         height:405px;
         background:#fff;
         border-radius:4px;
+        margin:0 auto;
     }
     .project-archive-desc{
         text-align:center;
@@ -1002,14 +1009,14 @@ ul li{
     }
 }
 #deleteproject{
-    width:1024px;
-    margin:0 auto;
-    padding:50px 279px;
+    width:100%;
+    padding-top:50px;
     .project-delete{
         width:465px;
         height:397px;
         background:#fff;
         border-radius:4px;
+        margin:0 auto;
     }
     .project-delete-desc{
         text-align:center;
@@ -1162,14 +1169,14 @@ ul li{
     }
 }
 #addNewMessage{
-    width:1024px;
-    margin:0 auto;
-    padding:50px 279px;
+    width:100%;
+    padding-top:50px;
     .newmessage-add{
         width:465px;
         height:495px;
         background:#fff;
         border-radius:4px;
+        margin:0 auto;
     }
     .newmessage-add-desc{
         text-align:center;
@@ -1220,14 +1227,14 @@ ul li{
     }
 }
 #replymessage{
-    width:1024px;
-    margin:0 auto;
-    padding:50px 279px;
+    width:100%;
+    padding-top:50px;
     .replymessage-add{
         width:465px;
         height:400px;
         background:#fff;
         border-radius:4px;
+        margin:0 auto;
     }
     .replymessage-add-desc{
         text-align:center;
@@ -1261,14 +1268,14 @@ ul li{
     }
 }
 #deletemessage{
-    width:1024px;
-    margin:0 auto;
-    padding:50px 279px;
+    width:100%;
+    padding-top:50px;
     .message-delete{
         width:465px;
         height:397px;
         background:#fff;
         border-radius:4px;
+        margin:0 auto;
     }
     .message-delete-desc{
         text-align:center;
@@ -1371,14 +1378,14 @@ ul li{
     }
 }
 #addTeamMember,#addPeopleToProject{
-    width:1024px;
-    margin:0 auto;
-    padding:50px 279px;
+    width:100%;
+    padding-top:50px;
     .teammember-add{
         width:465px;
         height:350px;
         background:#fff;
         border-radius:4px;
+        margin:0 auto;
     }
     .teammember-add-desc{
         text-align:center;
@@ -1899,14 +1906,14 @@ ul li{
     }
 }
 #addProjectScreen{
-    width:1024px;
-    margin:0 auto;
-    padding:50px 279px;
+    width:100%;
+    padding-top:50px;
     .teammember-add{
         width:465px;
         height:381px;
         background:#fff;
         border-radius:4px;
+        margin:0 auto;
     }
     .teammember-add-desc{
         text-align:center;
@@ -2138,15 +2145,15 @@ ul li{
     }
 }
 
-#newMeeting{
-    width:1024px;
-    margin:0 auto;
-    padding:50px 279px;
+#newMeeting,#allMeetings{
+    width:100%;
+    padding-top:50px;
     .newMeeting-add{
         width:465px;
         height:538px;
         background:#fff;
         border-radius:4px;
+        margin:0 auto;
     }
     .newMeeting-add-desc{
         text-align:center;
@@ -2179,14 +2186,14 @@ ul li{
 }
 
 #updateproject{
-    width:1024px;
-    margin:0 auto;
-    padding:50px 279px;
+    width:100%;
+    padding-top:50px;
     .project-update{
         width:465px;
         height:288px;
         background:#fff;
         border-radius:4px;
+        margin:0 auto;
     }
     .project-update-desc{
         text-align:center;
