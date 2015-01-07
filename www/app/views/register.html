@@ -15,6 +15,12 @@
                 <span ng-show="userForm.email.$invalid && !userForm.email.$pristine">Enter a valid email.</span>
             </div>
             <div class="col-lg-12">
+                <select name="timezone" class="form-control register-timezone" ng-model="formData.timezone">
+                    <option ng-repeat="timezone in timezones" value={{timezone}}>{{timezone}}</option>
+                </select>
+                <span ng-show="userForm.timezone.$invalid && !userForm.timezone.$pristine">Select the timezone.</span>
+            </div>
+            <div class="col-lg-12">
                 <input type="password" name="password" class="form-control register-password" placeholder="Password" ng-model="formData.password" ng-minlength="6" required />
                 <span ng-show="userForm.password.$invalid && !userForm.password.$pristine">Password Should be at least six characters long</span>
             </div>

@@ -610,17 +610,17 @@ ul li{
     }
     .register-form{
         height:386px;
-        width:390px;
+        width:420px;
         margin-left: auto;
         margin-right: auto;
-        padding:22px 33px 30px;
+        padding:15px 33px;
         background:#e3e3e3;
         border-radius:10px;
         button{
             @extend .appbutton;
         }
         .register-desc{
-            padding-bottom:29px;
+            padding-bottom:15px;
             text-align:center;
         }
         .register-desc-free{
@@ -645,13 +645,18 @@ ul li{
             height:44px;
             border:0px;
         }
+        .register-timezone{
+            margin-bottom:7px;
+            height:44px;
+            border:0px;
+        }
         .register-password{
             margin-bottom:7px;
             height:44px;
             border:0px;
         }
         .register-confirmpassword{
-            margin-bottom:23px;
+            margin-bottom:7px;
             height:44px;
             border:0px;
         }
@@ -1553,7 +1558,7 @@ ul li{
             text-align:right;
             button{
                 @extend .appbutton;
-                width:156px;
+                width:140px;
                 height:40px;
                 border-radius:2px;
                 padding:0px;
@@ -1604,6 +1609,8 @@ ul li{
             }
             .projectBuild-content-tools{
                 position:absolute;
+                left:0px;
+                bottom:0px;
                 ul{
                     li{
                         text-align:center;
@@ -1627,6 +1634,7 @@ ul li{
             .projectBuild-content-addScreens{
                 position:absolute;
                 right: 0px;
+                bottom:0px;
                 height: 58px;
                 background: #e6e6e6;
                 width: 150px;
@@ -1635,6 +1643,7 @@ ul li{
             .projectBuild-content-brush{
                 width:360px;
                 position: absolute;
+                bottom:68px;
                 background: #464646;
                 color:#fff;
                 text-align:center;
@@ -1674,6 +1683,7 @@ ul li{
             .projectBuild-content-eraser{
                 width:210px;
                 position: absolute;
+                bottom:68px;
                 background: #464646;
                 color:#fff;
                 text-align:center;
@@ -1692,6 +1702,7 @@ ul li{
             .projectBuild-content-shape{
                 width:400px;
                 position: absolute;
+                bottom:68px;
                 background: #464646;
                 color:#fff;
                 text-align:center;
@@ -1823,7 +1834,7 @@ ul li{
             text-align:right;
             button{
                 @extend .appbutton;
-                width:156px;
+                width:140px;
                 height:40px;
                 border-radius:2px;
                 padding:0px;
@@ -1897,7 +1908,7 @@ ul li{
                 }
                 .projectScreen-content-sync{
                     position:absolute;
-                    bottom:-482px;
+                    bottom:10px;
                     right:10px;
                     z-index:2;
                 }
@@ -1988,7 +1999,7 @@ ul li{
             text-align:right;
             button{
                 @extend .appbutton;
-                width:156px;
+                width:140px;
                 height:40px;
                 border-radius:2px;
                 padding:0px;
@@ -2064,6 +2075,32 @@ ul li{
                     z-index:2;
                 }
             }
+        }
+    }
+}
+
+.build-content-tools{
+    position: absolute;
+    z-index: 3;
+    bottom: 0px;
+    left: 64px;
+    ul{
+        li{
+            text-align:center;
+            width:58px;
+            height:58px;
+            background:#fff;
+            float:left;
+            padding:15px 0px;
+        }
+        .tools-li-selected{
+            text-align:center;
+            width:58px;
+            height:58px;
+            background: none repeat scroll 0 0 #f6f064;
+            border: 1px solid #55abd4;
+            float:left;
+            padding:15px 0px;
         }
     }
 }
@@ -2172,6 +2209,7 @@ ul li{
         background:#e6e6e6;
         border-bottom:1px solid #e3e3e3;
         input{height:50px;}
+        select{height:50px;}
         textarea{height:150px;}
     }
     .newMeeting-add-button{
@@ -2300,15 +2338,15 @@ ul li{
         }
         .register-form{
             height:386px;
-            width:390px;
-            padding:22px 33px 30px;
+            width:420px;
+            padding:15px 33px;
             background:#e3e3e3;
             border-radius:10px;
             button{
                 @extend .appbutton;
             }
             .register-desc{
-                padding-bottom:29px;
+                padding-bottom:15px;
                 text-align:center;
             }
             .register-desc-free{
@@ -2333,13 +2371,18 @@ ul li{
                 height:44px;
                 border:0px;
             }
+            .register-timezone{
+                margin-bottom:7px;
+                height:44px;
+                border:0px;
+            }
             .register-password{
                 margin-bottom:7px;
                 height:44px;
                 border:0px;
             }
             .register-confirmpassword{
-                margin-bottom:23px;
+                margin-bottom:7px;
                 height:44px;
                 border:0px;
             }

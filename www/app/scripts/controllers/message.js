@@ -52,7 +52,7 @@ angular.module('conojoApp')
         $scope.replyMessageUuid = uuid;
     };
     
-    $scope.replyMessageModal = function(){
+    $scope.replyMessage = function(){
         
     }
     

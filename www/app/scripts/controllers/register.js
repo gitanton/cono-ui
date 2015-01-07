@@ -13,6 +13,16 @@ angular.module('conojoApp')
 
     $(".register-logo").css('padding-top',$scope.loginPadding);
     $(".register-note").css('padding-bottom',$scope.loginPadding);
+    
+    $scope.init = function(){
+        $http({
+             url: 'http://conojoapp.scmreview.com/rest/utils/timezones',
+             method: 'GET',
+             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+         }).success(function(data) {
+              $scope.timezones = data;
+         });
+    }
       
     $scope.formData = {};
     
@@ -20,10 +30,12 @@ angular.module('conojoApp')
        $http({
             url: 'http://conojoapp.scmreview.com/rest/users',
             method: 'POST',
-            data: $.param({fullname:$scope.formData.fullname,email:$scope.formData.email,username:$scope.formData.fullname,password:$scope.formData.password}),
+            data: $.param({fullname:$scope.formData.fullname,email:$scope.formData.email,timezone:$scope.timezone,username:$scope.formData.fullname,password:$scope.formData.password}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
              $location.path('/'); 
         });
     };
+    
+    $scope.init();
   });

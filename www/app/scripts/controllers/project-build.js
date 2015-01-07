@@ -57,11 +57,6 @@ angular.module('conojoApp')
         $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
         $(".projectBuild-content-body").css('height',$scope.projectContent);
         $(".projectBuild-content-drawing").css('height',$scope.projectDrawing);
-        $(".projectBuild-content-brush").css('top',$scope.projectDrawing-325);
-        $(".projectBuild-content-eraser").css('top',$scope.projectDrawing-120);
-        $(".projectBuild-content-shape").css('top',$scope.projectDrawing-350);
-        $(".projectBuild-content-tools").css('top',$scope.projectDrawing);
-        $(".projectBuild-content-addScreens").css('top',$scope.projectDrawing);
     };
     
     $scope.init = function(){
@@ -72,6 +67,14 @@ angular.module('conojoApp')
         }).success(function(data) {
             $scope.updateProjectTitle = data.name;
             $scope.updateProjectTypeid = data.type_id;
+        });
+        
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/users',
+            method: 'GET',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(data) {
+             $scope.users = data;
         });
         
         $('#pickerBrush').farbtastic(function(color){
