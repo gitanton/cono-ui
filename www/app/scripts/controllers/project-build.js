@@ -77,10 +77,11 @@ angular.module('conojoApp')
              $scope.users = data;
         });
         
-        $('#pickerBrush').farbtastic(function(color){
+        jQuery.noConflict();
+        jQuery('#pickerBrush').farbtastic(function(color){
             $scope.setPenColor(color);
         });
-        $('#pickerShape').farbtastic(function(color){
+        jQuery('#pickerShape').farbtastic(function(color){
             $scope.setPenColor(color);
         });
         $scope.setPenWidth(0);

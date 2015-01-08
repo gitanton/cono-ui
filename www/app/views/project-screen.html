@@ -8,8 +8,8 @@
             </div>
             <div class="projectScreen-header-button col-lg-6">
                 <button class="btn btn-lg">Share</button>
-                <button class="btn btn-lg" ng-click="startOneMeeting()">Start a Metting</button>
-                <button class="btn btn-lg" ng-click="openNewMeeting(activeProjectUuid)">Create a Metting</button>
+                <button class="btn btn-lg" ng-click="startOneMeeting()">Start a Meeting</button>
+                <button class="btn btn-lg" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
             </div>
         </div>
         <div class="projectScreen-content">
@@ -128,7 +128,7 @@
         <form name="newMeeting">
             <div class="col-lg-12 newMeeting-add-body">
                 <div class="form-group">
-                    <textarea name="meetingMessage" ng-model="meetingMessage" placeholder="Add Message" class="form-control newMeeting-message"></textarea>
+                    <textarea name="meetingMessage" ng-model="meetingMessage" placeholder="Notes" class="form-control newMeeting-message"></textarea>
                 </div>
                 <div class="form-group">
                     <input type="text" name="meetingName" ng-model="meetingName" class="form-control newMeeting-name" placeholder="Meeting Name" />

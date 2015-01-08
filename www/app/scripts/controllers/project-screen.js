@@ -177,14 +177,7 @@ angular.module('conojoApp')
     };
     
     $('.newMeeting-time').datetimepicker({
-        //language:  'fr',
-        weekStart: 1,
-        todayBtn:  1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        forceParse: 0,
-        showMeridian: 1
+        dateFormat: "yy-mm-dd"
     });
     
     $scope.toBuildNewScreen = function(){
