@@ -9,6 +9,7 @@
 angular.module('conojoApp')
  .controller('ProjectActivityCtrl', function ($scope,$http,$location,$routeParams) {
     $scope.activeProjectUuid = $routeParams.uuid;
+    $scope.startMeeting = false;
     $scope.setHeight = function(){
         $scope.siderbarContainer = $(window).height() - 64;
         $scope.siderbarExpand = $(window).height() - 442;
@@ -68,6 +69,26 @@ angular.module('conojoApp')
         });
     };
     
+    $scope.openNewMeeting = function(){
+        $('#newMeeting').modal('toggle');
+    };
+
+    $scope.addNewMeeting = function(){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/meetings',
+            method: 'POST',
+            data: $.param({notes:$scope.meetingMessage,project_uuid:$scope.activeProjectUuid,name:$scope.meetingName,date:$scope.meetingDateTime.split(" ")[0],time:$scope.meetingDateTime.split(" ")[1],attendees:$scope.meetingGroup}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            $scope.init();
+            $('#addProjectScreen').modal('hide');
+        });
+    };
+
+    $('.newMeeting-time').datetimepicker({
+        dateFormat: "yy-mm-dd"
+    });
+    
     $scope.toBuildNewScreen = function(){
         var url = '/project-build/'+$scope.activeProjectUuid;
         $location.path(url);
@@ -90,6 +111,14 @@ angular.module('conojoApp')
     
     $scope.handleDrop = function() {
         alert('Item has been dropped');
+    }
+    
+    $scope.startOneMeeting= function(){
+        $scope.startMeeting = true;
+    }
+
+    $scope.endOneMeeting= function(){
+        $scope.startMeeting = false;
     }
     
     $scope.init();
