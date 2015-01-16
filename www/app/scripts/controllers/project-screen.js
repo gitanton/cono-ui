@@ -206,11 +206,54 @@ angular.module('conojoApp')
     }
     
     $scope.startOneMeeting= function(){
-        $scope.startMeeting = true;
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/meetings/meeting/5453412f-c6b8-4a3d-b35c-ba043cfa3c26/start',
+            method: 'POST',
+            data: $.param({uuid:'5453412f-c6b8-4a3d-b35c-ba043cfa3c26'}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            $scope.startMeeting = true;
+            $scope.comments = [];
+            $http({
+                url: 'http://conojoapp.scmreview.com/rest/utils/bootstrap',
+                method: 'GET',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(data) {
+                Twilio.Device.setup(data.token);
+                // get the phone number to connect the call to
+                var params = {"PhoneNumber": '4155992671'};
+                var connection = Twilio.Device.connect(params);
+                connection.accept(function(conn) {
+                    /* Wait about 7 seconds to get through the announcement so we can send the digits */
+                    setTimeout(function() {
+                        conn.sendDigits('0142078');
+                    }, 7000);
+                });
+            });
+        });
     }
     
     $scope.endOneMeeting= function(){
-        $scope.startMeeting = false;
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/meetings/meeting/5453412f-c6b8-4a3d-b35c-ba043cfa3c26/end',
+            method: 'POST',
+            data: $.param({uuid:'5453412f-c6b8-4a3d-b35c-ba043cfa3c26'}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            Twilio.Device.disconnectAll();
+            $scope.startMeeting = false;
+        });
+    }
+    
+    $scope.sendChat = function(){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/meetings/meeting/5453412f-c6b8-4a3d-b35c-ba043cfa3c26/chat',
+            method: 'POST',
+            data: $.param({uuid:'5453412f-c6b8-4a3d-b35c-ba043cfa3c26',comment:$scope.chatComment}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(data) {
+            $scope.comments.push({'created':data.created,'comment':data.comment,'creator_uuid':data.creator.uuid,'creator_fullname':data.creator.fullname});
+        });
     }
     
     $scope.init();

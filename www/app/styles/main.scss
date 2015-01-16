@@ -1680,11 +1680,18 @@ ul li{
     }
 }
 
-.build-content-tools{
+.build-content-chat{
     position: absolute;
     z-index: 3;
     bottom: 0px;
     left: 64px;
+}
+
+.build-content-tools{
+    position: absolute;
+    z-index: 3;
+    bottom: 0px;
+    left: 350px;
     ul{
         li{
             text-align:center;

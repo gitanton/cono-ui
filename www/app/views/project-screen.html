@@ -156,6 +156,15 @@
     </div>
     <div class="col-lg-4"><img src="images/phone-icon.png"></div>
 </div>
+<div  ng-show="startMeeting" class="build-content-chat">
+    <div ng-repeat="comment in comments">
+        {{comment.createor_fullname}} {{comment.comment}} {{comment.created}}
+    </div>
+    <form name="meeting-chat">
+        <input type="text" name="meeting-chat-content" ng-model="chatComment">
+        <button ng-click="sendChat()">SEND</button>
+    </form>
+</div>
 <div  ng-show="startMeeting" class="build-content-tools">
     <ul>
         <li class="projectBuild-content-tools-li"><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>
