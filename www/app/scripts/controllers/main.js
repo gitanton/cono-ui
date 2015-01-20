@@ -21,7 +21,7 @@ angular.module('conojoApp')
             method: 'POST',
             data:$.param({username:$scope.formData.username,password:$scope.formData.password}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function() {
+        }).success(function(data) {
              $location.path('project'); 
         });
     };

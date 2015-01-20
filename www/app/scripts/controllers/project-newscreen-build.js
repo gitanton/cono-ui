@@ -150,14 +150,6 @@ angular.module('conojoApp')
     $('.newMeeting-time').datetimepicker({
         dateFormat: "yy-mm-dd"
     });
-
-    $scope.startOneMeeting= function(){
-        $scope.startMeeting = true;
-    }
-
-    $scope.endOneMeeting= function(){
-        $scope.startMeeting = false;
-    }
     
     $scope.toScreen = function(){
         var url = '/project-screen/'+$scope.activeProjectUuid;

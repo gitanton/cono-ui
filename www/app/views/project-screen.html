@@ -8,7 +8,6 @@
             </div>
             <div class="projectScreen-header-button col-lg-6">
                 <button class="btn btn-lg">Share</button>
-                <button class="btn btn-lg" ng-click="startOneMeeting()">Start a Meeting</button>
                 <button class="btn btn-lg" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
             </div>
         </div>
@@ -147,30 +146,4 @@
             </div>
         </form>
     </div>
-</div>
-<div ng-show="startMeeting" style="height:70px;line-height:70px;text-align:center;position: absolute;top:0px;width:100%;background:#fff;border-bottom:1px solid #e3e3e3;z-index:3;">
-    <div class="col-lg-4"><img src="images/Dawkins-l.png" class="img-circle"><img src="images/Dawkins-l.png" class="img-circle"><img src="images/Dawkins-l.png" class="img-circle"><img src="images/addUser-icon.png"></div>
-    <div class="col-lg-4">
-        <div style="background:#e3e3e3;height:30px;line-height:30px;width:78px;display:inline-block;border-radius:1px;">01:12:12</div>
-        <div ng-click="endOneMeeting()" style="background:#2699ce;height:30px;line-height:30px;width:118px;color:#fff;display:inline-block;border-radius:1px;">END MEETING</div>
-    </div>
-    <div class="col-lg-4"><img src="images/phone-icon.png"></div>
-</div>
-<div  ng-show="startMeeting" class="build-content-chat">
-    <div ng-repeat="comment in comments">
-        {{comment.createor_fullname}} {{comment.comment}} {{comment.created}}
-    </div>
-    <form name="meeting-chat">
-        <input type="text" name="meeting-chat-content" ng-model="chatComment">
-        <button ng-click="sendChat()">SEND</button>
-    </form>
-</div>
-<div  ng-show="startMeeting" class="build-content-tools">
-    <ul>
-        <li class="projectBuild-content-tools-li"><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>
-        <li class="projectBuild-content-tools-li"><img src="images/hotspots-blue-icon.png" ng-click="openHotspots()"></li>
-        <li class="projectBuild-content-tools-brush"><img src="images/brush-black-icon.png" ng-click="openDrawing('brush')"></li>
-        <li class="projectBuild-content-tools-eraser"><img src="images/eraser-black-icon.png" ng-click="openDrawing('eraser')"></li>
-        <li class="projectBuild-content-tools-shape"><img src="images/shape-black-icon.png" ng-click="openDrawing('shape')"></li>
-    </ul>
 </div>

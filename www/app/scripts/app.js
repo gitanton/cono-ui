@@ -71,7 +71,11 @@ angular
         templateUrl: 'views/invitation.html',
         controller: 'InvitationCtrl'
       })
+      .when('/meeting/:uuid', {
+        templateUrl: 'views/meeting.html',
+        controller: 'MeetingCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })

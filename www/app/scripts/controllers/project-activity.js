@@ -113,14 +113,6 @@ angular.module('conojoApp')
         alert('Item has been dropped');
     }
     
-    $scope.startOneMeeting= function(){
-        $scope.startMeeting = true;
-    }
-
-    $scope.endOneMeeting= function(){
-        $scope.startMeeting = false;
-    }
-    
     $scope.init();
 })
 .directive('draggable', function() {
