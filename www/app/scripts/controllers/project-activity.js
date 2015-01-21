@@ -81,7 +81,7 @@ angular.module('conojoApp')
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
             $scope.init();
-            $('#addProjectScreen').modal('hide');
+            $('#newMeeting').modal('hide');
         });
     };
 

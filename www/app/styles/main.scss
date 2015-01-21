@@ -1680,6 +1680,23 @@ ul li{
     }
 }
 
+    .meeting-start{
+        width:325px;
+        height:50px;
+        margin-top:150px;
+        margin-left:auto;
+        margin-right:auto;
+        .meeting-start-input{
+            height:35px;
+            margin-right:20px;
+        }
+        .meeting-start-button{
+            @extend .appbutton;
+            width:125px;
+            height:35px;
+        }
+    }
+
 .meeting-header{
     height:70px;
     line-height:70px;
@@ -1699,6 +1716,7 @@ ul li{
         border-radius:1px;
     }
     .meeting-end{
+        cursor:pointer;
         background:#2699ce;
         height:30px;
         line-height:30px;
@@ -1714,6 +1732,33 @@ ul li{
     z-index: 3;
     bottom: 0px;
     left: 64px;
+    width:402px;
+    .meeting-chat-header{
+        text-align: center;
+        color: #fff;
+        font-size: 16px;
+        height:62px;
+        line-height:62px;
+        background:#2699ce;
+        border:1px solid #0378ae;
+        border-radius:1px;
+    }
+    .meeting-chat-content{
+        height:200px;
+        padding:15px;
+        border:1px solid #d6d6d6;
+        overflow-y: auto;
+    }
+    .meeting-chat-input{
+        height:77px;
+        padding:12px;
+        border:1px solid #86b8cf;
+        background:#b7d0dc;
+        input{
+            width:372px;
+            height:47px;
+        }
+    }
 }
 
 .build-content-tools{

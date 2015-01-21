@@ -1,7 +1,9 @@
-<div class="col-lg-12">
+<div ng-hide="startMeeting" class="meeting-start">
     <form>
-        <input type="text" ng-model="digits" />
-        <button ng-click="startOneMeeting()">Start</button>
+        <div class="form-group">
+            <input type="text" ng-model="digits" class="meeting-start-input"/>
+            <button class="meeting-start-button" ng-click="startOneMeeting()">Start meeting</button>
+        </div>
     </form>
 </div>
 <div ng-show="startMeeting" class="meeting-header">
@@ -12,25 +14,25 @@
         <img src="images/addUser-icon.png">
     </div>
     <div class="col-lg-4">
-        <div class="meeting-time"style="">01:12:12</div>
+        <div class="meeting-time">01:12:12</div>
         <div class="meeting-end" ng-click="endOneMeeting()">END MEETING</div>
     </div>
     <div class="col-lg-4"><img src="images/phone-icon.png"></div>
 </div>
 <div  ng-show="startMeeting" class="meeting-chat">
-    <div ng-repeat="comment in comments">
-        {{comment.createor_fullname}} {{comment.comment}} {{comment.created}}
+    <div class="meeting-chat-header">
+        <div class="col-lg-10">GROUP CHAT</div>
+        <div class="col-lg-2"><img src="images/chat-up-icon.png" ng-click="chatUp()"></div>
     </div>
-    <form name="meeting-chat">
-        <input type="text" name="meeting-chat-content" ng-model="chatComment" ng-keyup="$event.keyCode == 13 && sendChat()" placeholder="Enter your message">
-    </form>
+    <div class="meeting-chat-content">
+        <div ng-repeat="comment in comments">
+            <!--<div class="col-lg-3" ng-repeat="creator in comment">{{createor.fullname}}</div>-->
+            <div class="col-lg-9">{{comment.comment}} {{comment.created | date:"hh:mm"}}</div>
+        </div>
+    </div>
+    <div class="meeting-chat-input">
+        <form>
+            <input type="text" name="meeting-chat-content" ng-model="chatComment" ng-keyup="$event.keyCode == 13 && sendChat()" placeholder="Type your message here">
+        </form>
+    </div>
 </div>
-<!--<div  ng-show="startMeeting" class="build-content-tools">
-    <ul>
-        <li class="projectBuild-content-tools-li"><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>
-        <li class="projectBuild-content-tools-li"><img src="images/hotspots-blue-icon.png" ng-click="openHotspots()"></li>
-        <li class="projectBuild-content-tools-brush"><img src="images/brush-black-icon.png" ng-click="openDrawing('brush')"></li>
-        <li class="projectBuild-content-tools-eraser"><img src="images/eraser-black-icon.png" ng-click="openDrawing('eraser')"></li>
-        <li class="projectBuild-content-tools-shape"><img src="images/shape-black-icon.png" ng-click="openDrawing('shape')"></li>
-    </ul>
-</div>-->

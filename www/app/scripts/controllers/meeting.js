@@ -9,6 +9,7 @@
  */
 angular.module('conojoApp')
   .controller('MeetingCtrl', function ($scope,$http,$routeParams) {
+    $scope.CLOCK = null;
     $scope.startMeeting = false;
     $scope.meetingUuid = $routeParams.uuid;
     
@@ -30,6 +31,10 @@ angular.module('conojoApp')
                     conn.sendDigits($scope.digits);
                 }, 7000);
             });
+            
+            $scope.CLOCK = setInterval(function(){
+                $scope.getChat();
+            },2000);
         });
     }
     
@@ -41,6 +46,7 @@ angular.module('conojoApp')
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
             Twilio.Device.disconnectAll();
+            clearInterval($scope.CLOCK);
             $scope.startMeeting = false;
         });
     }
@@ -51,6 +57,8 @@ angular.module('conojoApp')
             method: 'POST',
             data: $.param({uuid:$scope.meetingUuid,comment:$scope.chatComment}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            $scope.chatComment = '';
         });
     }
     
@@ -64,8 +72,4 @@ angular.module('conojoApp')
             $scope.comments = data;
         });
     }
-    
-    setInterval(function(){
-        $scope.getChat();
-    },2000);
   });
