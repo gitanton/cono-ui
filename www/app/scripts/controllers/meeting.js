@@ -12,6 +12,7 @@ angular.module('conojoApp')
     $scope.CLOCK = null;
     $scope.startMeeting = false;
     $scope.meetingUuid = $routeParams.uuid;
+    $scope.comments = {};
     
     $scope.startOneMeeting= function(){
         $http({
@@ -69,6 +70,9 @@ angular.module('conojoApp')
             data: $.param({uuid:$scope.meetingUuid}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data){
+            for(var i=0;i<data.length;i++){
+                data[i].fullname = data[i].creator.fullname;
+            }
             $scope.comments = data;
         });
     }

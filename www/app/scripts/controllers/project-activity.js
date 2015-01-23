@@ -9,7 +9,6 @@
 angular.module('conojoApp')
  .controller('ProjectActivityCtrl', function ($scope,$http,$location,$routeParams) {
     $scope.activeProjectUuid = $routeParams.uuid;
-    $scope.startMeeting = false;
     $scope.setHeight = function(){
         $scope.siderbarContainer = $(window).height() - 64;
         $scope.siderbarExpand = $(window).height() - 442;
@@ -90,7 +89,7 @@ angular.module('conojoApp')
     });
     
     $scope.toBuildNewScreen = function(){
-        var url = '/project-build/'+$scope.activeProjectUuid;
+        var url = '/project-newscreen-build/'+$scope.activeProjectUuid;
         $location.path(url);
     }
 

@@ -25,9 +25,13 @@
         <div class="col-lg-2"><img src="images/chat-up-icon.png" ng-click="chatUp()"></div>
     </div>
     <div class="meeting-chat-content">
-        <div ng-repeat="comment in comments">
-            <!--<div class="col-lg-3" ng-repeat="creator in comment">{{createor.fullname}}</div>-->
-            <div class="col-lg-9">{{comment.comment}} {{comment.created | date:"hh:mm"}}</div>
+        <div class="col-lg-12" ng-repeat="comment in comments">
+            <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
+            <div class="col-lg-9">
+                <div class="col-lg-8">{{comment.fullname}}</div>
+                <div class="col-lg-4">{{comment.created | limitTo:-8}}</div>
+                <div class="col-lg-12">{{comment.comment}}</div>
+            </div>
         </div>
     </div>
     <div class="meeting-chat-input">

@@ -8,45 +8,13 @@
  */
 angular.module('conojoApp')
  .controller('ProjectNewScreenBuildCtrl', function ($scope,$http,$location,$routeParams) {
-    var canvas = document.getElementById('drawing');
-    var cxt = canvas.getContext('2d');
-    
-    var rectX=0;
-    var rectY=0;
-    var polyX=0;
-    var polyY=0;
-    var arcX=0;
-    var arcY=0;
-    var eraserFlag=0;
-
-    $scope.setPenWidth = function(width){
-        switch(width){
-            case 0:
-                cxt.lineWidth=8;
-                break;
-            case 1:
-                cxt.lineWidth=20;
-                break;
-            case 2:
-                cxt.lineWidth=30;
-                break;
-            default:
-                cxt.lineWidth=8;
-        }
-    }
-    
-    $scope.setPenColor = function(color){
-        cxt.strokeStyle = color;
-        cxt.fillStyle = color;
-    }
-    
-    $scope.shapeFill = false;
+     $scope.CLOCK = null;
+     $scope.shapeFill = false;
      $scope.brushTool = true;
      $scope.eraserTool = true;
      $scope.shapeTool = true;
      $scope.showAddHotspots = false;
     $scope.activeProjectUuid = $routeParams.puuid;
-    $scope.startMeeting = false;
     $scope.setHeight = function(){
         $scope.siderbarContainer = $(window).height() - 64;
         $scope.siderbarExpand = $(window).height() - 442;
@@ -70,6 +38,25 @@ angular.module('conojoApp')
         });
         
         $http({
+            url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid,
+            method: 'GET',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(data) {
+            imageObj_b.src = data.url;
+            imageObj_b.onload = function (){  
+                cxt_b.drawImage(imageObj_b,0,0,1000,423);  
+            }
+            
+            if(data.hotspots.length > 0){
+                var h_length = data.hotspots.length - 1;
+                imageObj.src = 'data:image/png;base64,' + data.hotspots[h_length].data.slice(9);
+                imageObj.onload = function (){  
+                    cxt.drawImage(imageObj,0,0,1000,423);  
+                }
+            }
+        });
+        
+        $http({
             url: 'http://conojoapp.scmreview.com/rest/users',
             method: 'GET',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -84,6 +71,26 @@ angular.module('conojoApp')
             $scope.setPenColor(color);
         });
         $scope.setPenWidth(0);
+    };
+    
+//    $scope.CLOCK = setInterval(function(){
+//        $scope.getChange();
+//    },2000);
+    
+    $scope.getChange = function(){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid,
+            method: 'GET',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(data) {
+            if(data.hotspots.length > 0){
+                var h_length = data.hotspots.length - 1;
+                imageObj.src = 'data:image/png;base64,' + data.hotspots[h_length].data.slice(9);
+                imageObj.onload = function (){  
+                    cxt.drawImage(imageObj,0,0,1000,423);  
+                }
+            }
+        });
     };
     
     $scope.openUpdateProject = function(){
@@ -173,6 +180,42 @@ angular.module('conojoApp')
     
     $scope.openComments = function(){
         
+    }
+    
+    var canvas_b = document.getElementById('drawing-b');
+    var cxt_b = canvas_b.getContext('2d');
+    var imageObj_b = new Image();
+    var canvas = document.getElementById('drawing-f');
+    var cxt = canvas.getContext('2d');
+    var imageObj = new Image();
+    
+    var rectX=0;
+    var rectY=0;
+    var polyX=0;
+    var polyY=0;
+    var arcX=0;
+    var arcY=0;
+    var eraserFlag=0;
+
+    $scope.setPenWidth = function(width){
+        switch(width){
+            case 0:
+                cxt.lineWidth=8;
+                break;
+            case 1:
+                cxt.lineWidth=20;
+                break;
+            case 2:
+                cxt.lineWidth=30;
+                break;
+            default:
+                cxt.lineWidth=8;
+        }
+    }
+    
+    $scope.setPenColor = function(color){
+        cxt.strokeStyle = color;
+        cxt.fillStyle = color;
     }
     
     $scope.hotspotsList = [];

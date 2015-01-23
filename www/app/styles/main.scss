@@ -1203,9 +1203,16 @@ ul li{
                 width:1000px;
                 margin-left:auto;
                 margin-right:auto;
-                #drawing{
+                #drawing-b{
                     background: white;
                     cursor: crosshair;
+                    position: absolute;
+                    z-index: 1;
+                }
+                #drawing-f{
+                    cursor: crosshair;
+                    position: absolute;
+                    z-index: 2;
                 }
             }
             .projectBuild-content-tools{
