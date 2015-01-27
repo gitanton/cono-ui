@@ -19,15 +19,6 @@ angular.module('conojoApp')
         $(".userpage-content").css('height',$scope.userpageContent);
     }
     
-    $scope.memberUuid = 0; 
-    $scope.setHeight = function(){
-        $scope.siderbarContainer = $(window).height() - 64;
-        $scope.siderbarExpand = $(window).height() - 442;
-        
-        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
-        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
-    };
-    
     $scope.init = function(){
         $http({
             url: 'http://conojoapp.scmreview.com/rest/projects',

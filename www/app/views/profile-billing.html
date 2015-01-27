@@ -1,0 +1,28 @@
+<div class="profileProject-page">
+    <div ng-include="'views/header.html'"></div>
+    <div ng-include="'views/siderbar-closed.html'" onload="setHeight()"></div>
+    <div class="profileProject-container">
+        <div class="profileProject-header">
+            <div class="profileProject-header-name col-lg-6">
+                <span>Profile</span>
+            </div>
+            <div class="profileProject-header-button col-lg-6">
+                <button class="btn btn-lg">Save & Update</button>
+            </div>
+        </div>
+        <div class="profileProject-content">
+            <div class="profileProject-content-menu">
+                <div class="profileProject-content-nav col-lg-12">
+                    <ul>
+                        <li ng-click="toBuildNewScreen()">MY PROJECTS</li>
+                        <li ng-click="toScreen()">PROFILE</li>
+                        <li class="project-design-menu-current">BILLING</li>
+                        <li ng-click="toComment()">NOTIFICATIONS</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="profileProject-content-body">
+            </div>
+        </div>
+    </div>
+</div>

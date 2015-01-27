@@ -7,12 +7,9 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectNewScreenBuildCtrl', function ($scope,$http,$location,$routeParams) {
+ .controller('ProjectNewScreenBuildCtrl', function ($scope,$http,$location,$routeParams,meetingFlag) {
      $scope.CLOCK = null;
      $scope.shapeFill = false;
-     $scope.brushTool = true;
-     $scope.eraserTool = true;
-     $scope.shapeTool = true;
      $scope.showAddHotspots = false;
     $scope.activeProjectUuid = $routeParams.puuid;
     $scope.setHeight = function(){
@@ -73,8 +70,15 @@ angular.module('conojoApp')
         $scope.setPenWidth(0);
     };
     
+    $scope.$watch(meetingFlag.startMeeting, function() {
+        console.log(meetingFlag.startMeeting);
+    });
+    
 //    $scope.CLOCK = setInterval(function(){
-//        $scope.getChange();
+//        console.log(meetingFlag.startMeeting);
+//        if(meetingFlag.startMeeting){
+//            $scope.getChange();
+//        }
 //    },2000);
     
     $scope.getChange = function(){
@@ -287,28 +291,39 @@ angular.module('conojoApp')
         $scope.hotspotsList.pop();
     }
     
-    $scope.openDrawing = function(type){
+    $scope.openDrawing = function(type,event){
         if(type == 'brush'){
-            $scope.brushTool = false;
-            $scope.eraserTool = true;
-            $scope.shapeTool = true;
+            $(".projectBuild-content-brush").show();
+            $(".projectBuild-content-eraser").hide();
+            $(".projectBuild-content-shape").hide();
             $scope.setBrushWidth(8);
             cxt.strokeStyle = '#000';
             cxt.fillStyle = '#000';
         }else if(type == 'eraser'){
-            $scope.brushTool = true;
-            $scope.eraserTool = false;
-            $scope.shapeTool = true;
+            $(".projectBuild-content-brush").hide();
+            $(".projectBuild-content-eraser").show();
+            $(".projectBuild-content-shape").hide();
             $scope.setEraserWidth(8);
         }else if(type == 'shape'){
-            $scope.brushTool = true;
-            $scope.eraserTool = true;
-            $scope.shapeTool = false;
+            $(".projectBuild-content-brush").hide();
+            $(".projectBuild-content-eraser").hide();
+            $(".projectBuild-content-shape").show();
             $scope.setPenWidth(0);
             cxt.strokeStyle = '#000';
             cxt.fillStyle = '#000';
         }
+        event.stopPropagation();
     }
+    
+    $(document).on("click", function (){
+        $(".projectBuild-content-brush").hide();
+    });
+    $(document).on("click", function (){
+        $(".projectBuild-content-eraser").hide();
+    });
+    $(document).on("click", function (){
+        $(".projectBuild-content-shape").hide();
+    });
     
     $scope.shapeFillSwitch = function(type){
         if(type == 'on'){

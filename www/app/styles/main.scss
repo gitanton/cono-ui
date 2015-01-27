@@ -1249,6 +1249,7 @@ ul li{
                 padding: 15px;
             }
             .projectBuild-content-brush{
+                display:none;
                 width:360px;
                 position: absolute;
                 bottom:68px;
@@ -1289,6 +1290,7 @@ ul li{
                 }
             }
             .projectBuild-content-eraser{
+                display:none;
                 width:210px;
                 position: absolute;
                 bottom:68px;
@@ -1308,6 +1310,7 @@ ul li{
                 }
             }
             .projectBuild-content-shape{
+                display:none;
                 width:400px;
                 position: absolute;
                 bottom:68px;
@@ -1687,22 +1690,22 @@ ul li{
     }
 }
 
-    .meeting-start{
-        width:325px;
-        height:50px;
-        margin-top:150px;
-        margin-left:auto;
-        margin-right:auto;
-        .meeting-start-input{
-            height:35px;
-            margin-right:20px;
-        }
-        .meeting-start-button{
-            @extend .appbutton;
-            width:125px;
-            height:35px;
-        }
+.meeting-start{
+    width:325px;
+    height:50px;
+    margin-top:150px;
+    margin-left:auto;
+    margin-right:auto;
+    .meeting-start-input{
+        height:35px;
+        margin-right:20px;
     }
+    .meeting-start-button{
+        @extend .appbutton;
+        width:125px;
+        height:35px;
+    }
+}
 
 .meeting-header{
     height:70px;
@@ -2086,6 +2089,210 @@ ul li{
             text-align:center;
             p{
                 margin:0px;
+            }
+        }
+    }
+}
+
+/*profile project page*/
+.profileProject-container{
+    .profileProject-header{
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px 84px;
+        .profileProject-header-name{
+            text-align:left;
+            font-size:1.5em;
+        }
+        .profileProject-header-name img{
+            margin-left:12px;
+            cursor:pointer;
+        }
+        .profileProject-header-button{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:140px;
+                height:40px;
+                border-radius:2px;
+                padding:0px;
+            }
+        }
+    }
+    .profileProject-content{
+        background:#e6e6e6;
+        padding-left:64px;
+        .profileProject-content-menu{
+            height:48px;
+            padding:8px 20px;
+            background:#55abd4;
+            .profileProject-content-nav{
+                 ul{
+                     li{
+                        color:#fff;
+                        font-size:0.9em;
+                        width:120px;
+                        line-height:32px;
+                        margin-right:10px;
+                        float:left;
+                        text-align:center;
+                        cursor:pointer;
+                    }
+                 }
+            }
+        }
+        .profileProject-content-body{
+            padding: 24px 20px 0px 20px;
+            .profileProject-content-projectH{
+                height: 40px;
+                margin-bottom: 10px;
+                position: relative;
+                .profileProject-content-projectH-r{
+                    border:1px solid #0378ae;
+                    border-radius:2px;
+                    width: 155px;
+                    height: 40px;
+                    padding:10px;
+                    color:#0378ae;
+                    right: 0px;
+                    position: absolute;
+                    img{margin-left:25px;}
+                }
+            }
+            .profileProject-content-projects{
+                overflow-y:auto;
+                background: #fff;
+                border-radius: 3px;
+                border-top: 1px solid #e5e5e5;
+                .profileProject-content-project-intro{
+                    padding:20px 50px;
+                    box-shadow: 3px 3px 3px #e5e5e5;
+                    height: 68px;
+                    font-size:15px;
+                    .profileProject-content-project-name{    
+                        color:#0378ae;
+                    }
+                    .profileProject-content-project-count{
+                        color:#919191;
+                    }
+                }
+                .profileProject-content-project-thumb{
+                    padding:15px;
+                    border-bottom:1px solid #e5e5e5;
+                    img{
+                        margin-left:15px;
+                        margin-bottom:15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*profile profile page*/
+.profileProfile-container{
+    .profileProfile-header{
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px 84px;
+        .profileProfile-header-name{
+            text-align:left;
+            font-size:1.5em;
+        }
+        .profileProfile-header-name img{
+            margin-left:12px;
+            cursor:pointer;
+        }
+        .profileProfile-header-button{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:140px;
+                height:40px;
+                border-radius:2px;
+                padding:0px;
+            }
+        }
+    }
+    .profileProfile-content{
+        background:#e6e6e6;
+        padding-left:64px;
+        .profileProfile-content-menu{
+            height:48px;
+            padding:8px 20px;
+            background:#55abd4;
+            .profileProfile-content-nav{
+                 ul{
+                     li{
+                        color:#fff;
+                        font-size:0.9em;
+                        width:120px;
+                        line-height:32px;
+                        margin-right:10px;
+                        float:left;
+                        text-align:center;
+                        cursor:pointer;
+                    }
+                 }
+            }
+        }
+        .profileProfile-content-body{
+            padding: 24px 20px 0px 20px;
+            .profileProfile-content-profileH{
+                height: 40px;
+                margin-bottom: 10px;
+            }
+            .profileProfile-content-profile{
+                overflow-y:auto;
+                background: #fff;
+                border-radius: 3px;
+                border-top: 1px solid #e5e5e5;
+                .profileProfile-content-profile-title{
+                    padding:20px 50px;
+                    box-shadow: 3px 3px 3px #e5e5e5;
+                    height: 68px;
+                    font-size:15px;
+                    color:#0378ae;
+                }
+                .profileProfile-content-profile-info{
+                    padding:45px 115px;
+                    .profileProfile-content-profile-info-l{
+                        .profileProfile-content-profile-info-file{
+                            border:1px solid #0378ae;
+                            border-radius:2px;
+                            width: 164px;
+                            height: 40px;
+                            padding:10px 35px;
+                            color:#0378ae;
+                            margin-top:15px;
+                        }
+                    }
+                    .profileProfile-content-profile-info-r{
+                        input{
+                            background:#e6e6e6;
+                            border-radius:3px;
+                            border: 1px solid #e6e6e6;
+                            height:40px;
+                            width:100%;
+                            padding:0px 10px;
+                        }
+                        .profileProfile-content-profile-fullname{
+                            margin-bottom:25px;
+                        }
+                        .profileProfile-content-profile-email{
+                            margin-bottom:25px;
+                        }
+                        .profileProfile-content-profile-password{
+                            input{
+                                background:#fff;
+                                margin-left:60px;
+                                border:1px solid #0378ae;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

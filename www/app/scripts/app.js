@@ -75,7 +75,28 @@ angular
         templateUrl: 'views/meeting.html',
         controller: 'MeetingCtrl'
       })
+     .when('/profile-project', {
+        templateUrl: 'views/profile-project.html',
+        controller: 'ProfileProjectCtrl'
+     })
+      .when('/profile-profile', {
+        templateUrl: 'views/profile-profile.html',
+        controller: 'ProfileProfileCtrl'
+      })
+     .when('/profile-billing', {
+        templateUrl: 'views/profile-billing.html',
+        controller: 'ProfileBillingCtrl'
+     })
+     .when('/profile-notice', {
+        templateUrl: 'views/profile-notice.html',
+        controller: 'ProfileNoticeCtrl'
+     })
       .otherwise({
         redirectTo: '/'
       });
   })
+  .factory('meetingFlag', function() {
+    return {
+      startMeeting: false
+    }
+});

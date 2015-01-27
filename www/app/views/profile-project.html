@@ -1,0 +1,70 @@
+<div class="profileProject-page">
+    <div ng-include="'views/header.html'"></div>
+    <div ng-include="'views/siderbar-closed.html'" onload="setHeight()"></div>
+    <div class="profileProject-container">
+        <div class="profileProject-header">
+            <div class="profileProject-header-name col-lg-6">
+                <span>Profile</span>
+            </div>
+            <div class="profileProject-header-button col-lg-6">
+                <button class="btn btn-lg">Save & Update</button>
+            </div>
+        </div>
+        <div class="profileProject-content">
+            <div class="profileProject-content-menu">
+                <div class="profileProject-content-nav col-lg-12">
+                    <ul>
+                        <li class="project-design-menu-current">MY PROJECTS</li>
+                        <li ng-click="toScreen()">PROFILE</li>
+                        <li ng-click="toBuildNewScreen()">BILLING</li>
+                        <li ng-click="toComment()">NOTIFICATIONS</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="profileProject-content-body">
+                <div class="profileProject-content-projectH">
+                    <div class="profileProject-content-projectH-l col-lg-10">My Projects</div>
+                    <div class="profileProject-content-projectH-r col-lg-2"><span>Select Project<img src="images/select-project-icon.png"></span></div>
+                </div>
+                <div class="profileProject-content-projects">
+                    <div class="profileProject-content-project">
+                        <div class="profileProject-content-project-intro">
+                            <span class="profileProject-content-project-name">Project Name</span> | <span class="profileProject-content-project-count">10 Screens</span>
+                        </div>
+                        <div class="profileProject-content-project-thumb">
+                            <img src="images/screen-thumb.png">
+                            <img src="images/screen-thumb.png">
+                            <img src="images/screen-thumb.png">
+                            <img src="images/screen-thumb.png">
+                            <img src="images/screen-thumb.png">
+                        </div>
+                    </div>
+                    <div class="profileProject-content-project">
+                        <div class="profileProject-content-project-intro">
+                            <span class="profileProject-content-project-name">Project Name</span> | <span class="profileProject-content-project-count">2 Videos</span>
+                        </div>
+                        <div class="profileProject-content-project-thumb">
+                            <img src="images/screen-thumb.png">
+                            <img src="images/screen-thumb.png">
+                            <img src="images/screen-thumb.png">
+                            <img src="images/screen-thumb.png">
+                            <img src="images/screen-thumb.png">
+                        </div>
+                    </div>
+                    <div class="profileProject-content-project">
+                        <div class="profileProject-content-project-intro">
+                            <span class="profileProject-content-project-name">Project Name</span> | <span class="profileProject-content-project-count">2 Videos</span>
+                        </div>
+                        <div class="profileProject-content-project-thumb">
+                            <img src="images/screen-thumb.png">
+                            <img src="images/screen-thumb.png">
+                            <img src="images/screen-thumb.png">
+                            <img src="images/screen-thumb.png">
+                            <img src="images/screen-thumb.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

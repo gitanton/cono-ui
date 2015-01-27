@@ -8,9 +8,9 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('MeetingCtrl', function ($scope,$http,$routeParams) {
-    $scope.CLOCK = null;
+  .controller('MeetingCtrl', function ($scope,$http,$routeParams,meetingFlag) {
     $scope.startMeeting = false;
+    $scope.CLOCK = null;
     $scope.meetingUuid = $routeParams.uuid;
     $scope.comments = {};
     
@@ -20,8 +20,6 @@ angular.module('conojoApp')
             method: 'GET',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data) {
-            $scope.startMeeting = true;
-
             Twilio.Device.setup(data.token);
             // get the phone number to connect the call to
             var params = {"PhoneNumber": '4155992671'};
@@ -32,6 +30,9 @@ angular.module('conojoApp')
                     conn.sendDigits($scope.digits);
                 }, 7000);
             });
+            
+            meetingFlag.startMeeting = true;
+            $scope.startMeeting = meetingFlag.startMeeting;
             
             $scope.CLOCK = setInterval(function(){
                 $scope.getChat();
@@ -48,7 +49,8 @@ angular.module('conojoApp')
         }).success(function() {
             Twilio.Device.disconnectAll();
             clearInterval($scope.CLOCK);
-            $scope.startMeeting = false;
+            meetingFlag.startMeeting = false;
+            $scope.startMeeting = meetingFlag.startMeeting;
         });
     }
     
