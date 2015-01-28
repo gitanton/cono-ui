@@ -2286,9 +2286,286 @@ ul li{
                         }
                         .profileProfile-content-profile-password{
                             input{
+                                color: #0378ae;
                                 background:#fff;
                                 margin-left:60px;
                                 border:1px solid #0378ae;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*profile billing page*/
+.profileBilling-container{
+    .profileBilling-header{
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px 84px;
+        .profileBilling-header-name{
+            text-align:left;
+            font-size:1.5em;
+        }
+        .profileBilling-header-name img{
+            margin-left:12px;
+            cursor:pointer;
+        }
+        .profileBilling-header-button{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:140px;
+                height:40px;
+                border-radius:2px;
+                padding:0px;
+            }
+        }
+    }
+    .profileBilling-content{
+        background:#e6e6e6;
+        padding-left:64px;
+        .profileBilling-content-menu{
+            height:48px;
+            padding:8px 20px;
+            background:#55abd4;
+            .profileBilling-content-nav{
+                 ul{
+                     li{
+                        color:#fff;
+                        font-size:0.9em;
+                        width:120px;
+                        line-height:32px;
+                        margin-right:10px;
+                        float:left;
+                        text-align:center;
+                        cursor:pointer;
+                    }
+                 }
+            }
+        }
+        .profileBilling-content-body{
+            padding: 24px 20px 0px 20px;
+            .profileBilling-content-title{
+                height: 40px;
+                margin-bottom: 10px;
+            }
+            .profileBilling-content-billing{
+                overflow-y:auto;
+                background: #fff;
+                border-radius: 3px;
+                border-top: 1px solid #e5e5e5;
+                .profileBilling-content-billing-card{
+                    padding:20px 50px;
+                    box-shadow: 3px 3px 3px #e5e5e5;
+                    height: 68px;
+                    font-size:15px;
+                    color:#0378ae;
+                }
+                .profileBilling-content-billing-cardInfo{
+                    height:95px;
+                    padding:25px 40px;
+                    border:1px solid #e5e5e5;
+                    .profileProfile-content-billing-number{
+                        input{
+                            background:#e6e6e6;
+                            border-radius:3px;
+                            border: 1px solid #e6e6e6;
+                            height:40px;
+                            width:100%;
+                            padding:0px 10px;
+                        }
+                    }
+                    .profileProfile-content-billing-change{
+                        color: #0378ae;
+                        height:40px;
+                        width:155px;
+                        margin-left:40px;
+                        border-radius:3px;
+                        padding:10px 25px;
+                        border:1px solid #0378ae;
+                        cursor:pointer;
+                    }
+                }
+                .profileBilling-content-billing-plan{
+                    padding:10px 50px;
+                    box-shadow: 3px 3px 3px #e5e5e5;
+                    height: 68px;
+                    font-size:15px;
+                    .profileBilling-content-billing-plantitle{
+                        height: 45px;
+                        line-height: 45px;
+                        color:#0378ae;
+                    }
+                    .profileBilling-content-billing-planinfo{
+                        width:405px;
+                        border:1px solid #e5e5e5;
+                        border-radius:3px;
+                        padding:10px 25px;
+                    }
+                    .profileBilling-content-billing-upgrade,.profileBilling-content-billing-cancel{
+                        color: #0378ae;
+                        width:155px;
+                        margin-left:40px;
+                        border:1px solid #0378ae;
+                        border-radius:3px;
+                        padding:10px 25px;
+                        cursor:pointer;
+                    }  
+                }
+                .profileBilling-content-billing-history{
+                    .profileBilling-content-billing-historytitle{
+                        color:#0378ae;
+                        padding:20px 50px;
+                        box-shadow: 3px 3px 3px #e5e5e5;
+                        font-size:15px;
+                    }
+                    .profileBilling-content-billing-historyitem{
+                        height:48px;
+                        border-bottom:1px dashed #e5e5e5;
+                        padding:15px 75px;
+                    }  
+                }
+                .profileBilling-content-billing-changrCard{
+                    padding:25px 40px;
+                    .profileBilling-content-billing-changeCard-one{
+                        margin-top:20px;
+                    }
+                    .profileBilling-content-billing-changeCard-two{
+                        margin-top:5px;
+                        .profileBilling-content-billing-changeCard-two-L{
+                            width:335px;
+                            border:1px solid #0378ae;
+                            border-radius:3px;
+                            padding:10px 25px;
+                        }
+                        .profileBilling-content-billing-changeCard-two-r{
+                            width:245px;
+                            border:1px solid #0378ae;
+                            border-radius:3px;
+                            padding:10px 25px;
+                        }
+                        .profileBilling-content-billing-changeCard-two-m,.profileBilling-content-billing-changeCard-two-p{
+                            width:45px;
+                            border:1px solid #0378ae;
+                            border-radius:3px;
+                            padding:10px 15px;
+                            margin-left:5px;
+                            margin-right:5px;
+                        }
+                    }
+                    .profileBilling-content-billing-changeCard-three{
+                        margin-top:50px;
+                        .col-lg-2{
+                            width:150px;
+                            img{margin-left:15px;}
+                        }
+                    }
+                    .profileBilling-content-billing-changeCard-four,.profileBilling-content-billing-changeCard-six,.profileBilling-content-billing-changeCard-eight{
+                        margin-top:35px;
+                    }
+                    .profileBilling-content-billing-changeCard-five{
+                        margin-top:5px;
+                        input{
+                            background:#e6e6e6;
+                            border-radius:3px;
+                            border: 1px solid #e6e6e6;
+                            height:40px;
+                            width:250px;
+                            padding:0px 10px;
+                        }
+                    }
+                    .profileBilling-content-billing-changeCard-seven{
+                        margin-top:5px;
+                        input{
+                            background:#e6e6e6;
+                            border-radius:3px;
+                            border: 1px solid #e6e6e6;
+                            height:40px;
+                            padding:0px 10px;
+                        }
+                        .profileBilling-content-billing-changeCard-city{
+                            input{width:250px;}
+                        }
+                        .profileBilling-content-billing-changeCard-state{
+                            input{width:110px;}
+                        }
+                        .profileBilling-content-billing-changeCard-country{
+                            input{width:250px;}
+                        }
+                        .profileBilling-content-billing-changeCard-code{
+                            input{width:110px;}
+                        }
+                    }
+                    .profileBilling-content-billing-changeCard-nine{
+                        margin-top:5px;
+                        input{
+                            background:#e6e6e6;
+                            border-radius:3px;
+                            border: 1px solid #e6e6e6;
+                            height:40px;
+                            padding:0px 10px;
+                        }
+                        .profileBilling-content-billing-changeCard-cardNum{
+                            input{width:410px;}
+                        }
+                        .profileBilling-content-billing-changeCard-expirationM{
+                            input{width:130px;}
+                        }
+                        .profileBilling-content-billing-changeCard-expirationM{
+                            input{width:130px;}
+                        }
+                        .profileBilling-content-billing-changeCard-cvv{
+                            input{width:130px;}
+                        }
+                    }
+                    .profileBilling-content-billing-changeCard-ten{
+                        margin-top:35px;
+                        .profileBilling-content-billing-changeCard-planinfo{
+                            width:530px;
+                            border:1px solid #0378ae;
+                            border-radius:3px;
+                            padding:10px 25px;
+                            color:#0378ae;
+                        }
+                        .profileBilling-content-billing-changeCard-button{
+                            @extend .appbutton;
+                            width:220px;
+                            height:40px;
+                            border-radius:3px;
+                            padding:10px 25px;
+                        }
+                    }
+                }
+               .profileBilling-content-billing-planTitle{
+                    padding:20px 50px;
+                    box-shadow: 3px 3px 3px #e5e5e5;
+                    height: 68px;
+                    font-size:15px;
+                    color:#0378ae;
+                }
+               .profileBilling-content-billing-plans{
+                    padding:20px;
+                    .profileBilling-content-billing-plans-items{
+                        font-size:15px;
+                        border-top:1px solid #e5e5e5;
+                        border-bottom:1px solid #e5e5e5;
+                        border-left:1px solid #e5e5e5;
+                        text-align:center;
+                        .profileBilling-content-billing-plans-item{
+                            border-right:1px solid #e5e5e5;
+                            padding:30px;
+                            .profileBilling-content-billing-plans-price{
+                                color:#777777;
+                                padding:20px 0px 35px;
+                                border-bottom:1px solid #e5e5e5;
+                            }
+                            .profileBilling-content-billing-plans-num{
+                                color:#777777;
+                                padding:40px 0px;
                             }
                         }
                     }
