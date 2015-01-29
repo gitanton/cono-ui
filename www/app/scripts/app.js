@@ -91,6 +91,10 @@ angular
         templateUrl: 'views/profile-notice.html',
         controller: 'ProfileNoticeCtrl'
      })
+     .when('/templates', {
+        templateUrl: 'views/templates.html',
+        controller: 'templatesCtrl'
+     })
       .otherwise({
         redirectTo: '/'
       });

@@ -26,6 +26,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 .container{
     padding:0px;
     width:100%;
+    font-family:'Roboto';
 }
 .col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,.col-lg-11,.col-lg-12{
     padding:0px;
@@ -45,7 +46,7 @@ ul li{
     border-radius:3px;
     background:#0370a2;
     color:#efefef;
-    font-size:1.15em;
+    font-size:14px;
 }
 .btn:focus,.btn:hover{
     color:#fff;
@@ -60,7 +61,6 @@ ul li{
     .nav-address{
         padding-left:40px;
         color:#757575;
-        font-size:1em;
     }
 }
 .header-container{
@@ -112,7 +112,6 @@ ul li{
         height:50px;
         line-height:50px;
         color:#fff;
-        font-size:20px;
         text-align:center;
         img{margin-left:90px;}
     }
@@ -150,14 +149,12 @@ ul li{
             height:16px;
             line-height:16px;
             label{
-                font-size:0.85em;
                 margin-bottom:0px;
             }
         }
         .login-forgot{
             text-align:right;
             label{
-                font-size:0.85em;
                 font-weight:normal;
                 color:#0370a2;
             }
@@ -196,7 +193,6 @@ ul li{
         border-radius:3px;
         background:#0370a2;
         color:#efefef;
-        font-size:1.15em;
     }
 }
 
@@ -225,13 +221,11 @@ ul li{
             text-align:center;
         }
         .register-desc-free{
-            font-size:1.55em;
             height:25px;
             line-height:25px;
             margin:0px;
         }
         .register-desc-card{
-            font-size:1.05em;
             height:17px;
             line-height:17px;
             margin:0px;
@@ -270,7 +264,6 @@ ul li{
         margin-left: auto;
         margin-right: auto;
         padding-top:30px;
-        font-size:0.85em;
         text-align:center;
         p{
             margin:0px;
@@ -643,7 +636,6 @@ ul li{
         padding:27px 0px;
     }
     .project-delete-warningdesc{
-        font-size:1.6em;
         padding:0px 65px;
     }
     .project-delete-warningundone{
@@ -677,7 +669,6 @@ ul li{
         padding:11px 20px 12px 84px;
         .activity-header-account{
             span{
-                font-size: 20px;
                 height:40px;
                 line-height:40px;
             }
@@ -727,7 +718,6 @@ ul li{
         padding:11px 20px 12px 84px;
         .message-header-title{
             padding:7px 0px;
-            font-size: 18px;
         }
         .message-header-button{
             text-align:right;
@@ -902,7 +892,6 @@ ul li{
         padding:27px 0px;
     }
     .message-delete-warningdesc{
-        font-size:1.6em;
         padding:0px 65px;
     }
     .message-delete-warningundone{
@@ -936,7 +925,6 @@ ul li{
         padding:11px 20px 12px 84px;
         .team-header-account{
             span{
-                font-size: 20px;
                 height:40px;
                 line-height:40px;
             }
@@ -948,7 +936,6 @@ ul li{
                 width:156px;
                 height:40px;
                 border-radius:2px;
-                font-size:0.9em;
             }
         }
     }
@@ -1060,7 +1047,6 @@ ul li{
         padding:11px 20px 12px 84px;
         .userpage-header-account{
             span{
-                font-size: 20px;
                 height:40px;
                 line-height:40px;
             }
@@ -1072,7 +1058,6 @@ ul li{
                 width:156px;
                 height:40px;
                 border-radius:2px;
-                font-size:0.9em;
             }
         }
     }
@@ -1095,7 +1080,6 @@ ul li{
                     padding:21px 0px;
                 }
                 .userpage-content-name{
-                    font-size:1.5em;
                     box-shadow:3px 3px 3px #e5e5e5;
                 }
                 .userpage-content-active{
@@ -1122,7 +1106,6 @@ ul li{
                         background:#fff;
                         border:1px solid #0370a2;
                         color:#0378ae;
-                        font-size:1em;
                     }
                 }
             }
@@ -1133,7 +1116,6 @@ ul li{
 .project-design-menu-current{
     background:#0378ae;
     border-radius:3px;
-    font-size:0.9em;
 }
 
 /*project build page*/
@@ -1149,7 +1131,7 @@ ul li{
         padding:11px 20px 12px;
         .projectBuild-header-name{
             text-align:left;
-            font-size:1.5em;
+            font-size:20px;
         }
         .projectBuild-header-name img{
             margin-left:12px;
@@ -1176,7 +1158,6 @@ ul li{
                  ul{
                      li{
                         color:#fff;
-                        font-size:0.9em;
                         width:82px;
                         line-height:32px;
                         margin-right:10px;
@@ -1435,7 +1416,7 @@ ul li{
         padding:11px 20px 12px 84px;
         .projectScreen-header-name{
             text-align:left;
-            font-size:1.5em;
+            font-size:20px;
         }
         .projectScreen-header-name img{
             margin-left:12px;
@@ -1463,7 +1444,6 @@ ul li{
                  ul{
                      li{
                         color:#fff;
-                        font-size:0.9em;
                         width:82px;
                         line-height:32px;
                         margin-right:10px;
@@ -1600,7 +1580,7 @@ ul li{
         padding:11px 20px 12px 84px;
         .projectActivity-header-name{
             text-align:left;
-            font-size:1.5em;
+            font-size:20px;
         }
         .projectActivity-header-name img{
             margin-left:12px;
@@ -1628,7 +1608,6 @@ ul li{
                  ul{
                      li{
                         color:#fff;
-                        font-size:0.9em;
                         width:82px;
                         line-height:32px;
                         margin-right:10px;
@@ -1746,7 +1725,6 @@ ul li{
     .meeting-chat-header{
         text-align: center;
         color: #fff;
-        font-size: 16px;
         height:62px;
         line-height:62px;
         background:#2699ce;
@@ -1806,7 +1784,7 @@ ul li{
         padding:11px 20px 12px 84px;
         .projectComment-header-name{
             text-align:left;
-            font-size:1.5em;
+            font-size:20px;
         }
         .projectComment-header-name img{
             margin-left:12px;
@@ -1834,7 +1812,6 @@ ul li{
                  ul{
                      li{
                         color:#fff;
-                        font-size:0.9em;
                         width:82px;
                         line-height:32px;
                         margin-right:10px;
@@ -2009,14 +1986,12 @@ ul li{
                 height:16px;
                 line-height:16px;
                 label{
-                    font-size:0.85em;
                     margin-bottom:0px;
                 }
             }
             .login-forgot{
                 text-align:right;
                 label{
-                    font-size:0.85em;
                     font-weight:normal;
                     color:#0370a2;
                 }
@@ -2042,13 +2017,11 @@ ul li{
                 text-align:center;
             }
             .register-desc-free{
-                font-size:1.55em;
                 height:25px;
                 line-height:25px;
                 margin:0px;
             }
             .register-desc-card{
-                font-size:1.05em;
                 height:17px;
                 line-height:17px;
                 margin:0px;
@@ -2085,7 +2058,6 @@ ul li{
         .register-note{
             margin:0px;
             padding:15px 0px 39px;
-            font-size:0.85em;
             text-align:center;
             p{
                 margin:0px;
@@ -2103,11 +2075,7 @@ ul li{
         padding:11px 20px 12px 84px;
         .profileProject-header-name{
             text-align:left;
-            font-size:1.5em;
-        }
-        .profileProject-header-name img{
-            margin-left:12px;
-            cursor:pointer;
+            font-size:20px;
         }
         .profileProject-header-button{
             text-align:right;
@@ -2131,7 +2099,6 @@ ul li{
                  ul{
                      li{
                         color:#fff;
-                        font-size:0.9em;
                         width:120px;
                         line-height:32px;
                         margin-right:10px;
@@ -2169,7 +2136,6 @@ ul li{
                     padding:20px 50px;
                     box-shadow: 3px 3px 3px #e5e5e5;
                     height: 68px;
-                    font-size:15px;
                     .profileProject-content-project-name{    
                         color:#0378ae;
                     }
@@ -2199,11 +2165,7 @@ ul li{
         padding:11px 20px 12px 84px;
         .profileProfile-header-name{
             text-align:left;
-            font-size:1.5em;
-        }
-        .profileProfile-header-name img{
-            margin-left:12px;
-            cursor:pointer;
+            font-size:20px;
         }
         .profileProfile-header-button{
             text-align:right;
@@ -2227,7 +2189,6 @@ ul li{
                  ul{
                      li{
                         color:#fff;
-                        font-size:0.9em;
                         width:120px;
                         line-height:32px;
                         margin-right:10px;
@@ -2253,7 +2214,6 @@ ul li{
                     padding:20px 50px;
                     box-shadow: 3px 3px 3px #e5e5e5;
                     height: 68px;
-                    font-size:15px;
                     color:#0378ae;
                 }
                 .profileProfile-content-profile-info{
@@ -2308,11 +2268,7 @@ ul li{
         padding:11px 20px 12px 84px;
         .profileBilling-header-name{
             text-align:left;
-            font-size:1.5em;
-        }
-        .profileBilling-header-name img{
-            margin-left:12px;
-            cursor:pointer;
+            font-size:20px;
         }
         .profileBilling-header-button{
             text-align:right;
@@ -2336,7 +2292,6 @@ ul li{
                  ul{
                      li{
                         color:#fff;
-                        font-size:0.9em;
                         width:120px;
                         line-height:32px;
                         margin-right:10px;
@@ -2362,7 +2317,6 @@ ul li{
                     padding:20px 50px;
                     box-shadow: 3px 3px 3px #e5e5e5;
                     height: 68px;
-                    font-size:15px;
                     color:#0378ae;
                 }
                 .profileBilling-content-billing-cardInfo{
@@ -2394,7 +2348,6 @@ ul li{
                     padding:10px 50px;
                     box-shadow: 3px 3px 3px #e5e5e5;
                     height: 68px;
-                    font-size:15px;
                     .profileBilling-content-billing-plantitle{
                         height: 45px;
                         line-height: 45px;
@@ -2421,7 +2374,6 @@ ul li{
                         color:#0378ae;
                         padding:20px 50px;
                         box-shadow: 3px 3px 3px #e5e5e5;
-                        font-size:15px;
                     }
                     .profileBilling-content-billing-historyitem{
                         height:48px;
@@ -2544,13 +2496,11 @@ ul li{
                     padding:20px 50px;
                     box-shadow: 3px 3px 3px #e5e5e5;
                     height: 68px;
-                    font-size:15px;
                     color:#0378ae;
                 }
                .profileBilling-content-billing-plans{
                     padding:20px;
                     .profileBilling-content-billing-plans-items{
-                        font-size:15px;
                         border-top:1px solid #e5e5e5;
                         border-bottom:1px solid #e5e5e5;
                         border-left:1px solid #e5e5e5;
@@ -2558,17 +2508,225 @@ ul li{
                         .profileBilling-content-billing-plans-item{
                             border-right:1px solid #e5e5e5;
                             padding:30px;
+                            .profileBilling-content-billing-plans-name{
+                                font-size:16px;
+                                font-weight: 700;
+                            }
                             .profileBilling-content-billing-plans-price{
                                 color:#777777;
                                 padding:20px 0px 35px;
                                 border-bottom:1px solid #e5e5e5;
+                                span{
+                                    color:#000;
+                                    font-weight:700;
+                                }
                             }
                             .profileBilling-content-billing-plans-num{
                                 color:#777777;
                                 padding:40px 0px;
+                                span{
+                                    color:#000;
+                                    font-weight:700;
+                                }
+                            }
+                            .profileBilling-content-billing-plans-per{
+                                color:#777777;
+                                padding-bottom:80px;
+                                span{
+                                    color:#000;
+                                    font-weight:700;
+                                }
+                            }
+                            .profileBilling-content-billing-plans-perT{
+                                color:#777777;
+                                padding-bottom:30px;
+                                span{
+                                    color:#000;
+                                    font-weight:700;
+                                }
+                            }
+                            .profileBilling-content-billing-plans-button{
+                                background:#cbefff;
+                                color:#0378ae;
+                                border:1px solid #0378ae;
+                                border-radius:3px;
+                                width:145px;
+                                height:40px;
+                                padding: 10px;
+                                margin:0 auto;
+                                cursor:pointer;
+                            }
+                        }
+                        .profileBilling-content-billing-plans-itemSelect{
+                            border-right:1px solid #e5e5e5;
+                            padding:30px;
+                            background: #1582b4;
+                            color:#fff;
+                            .profileBilling-content-billing-plans-name{
+                                font-size:16px;
+                                font-weight: 700;
+                            }
+                            .profileBilling-content-billing-plans-price{
+                                padding:20px 0px 35px;
+                                border-bottom:1px solid #e5e5e5;
+                            }
+                            .profileBilling-content-billing-plans-num{
+                                padding:40px 0px;
+                            }
+                            .profileBilling-content-billing-plans-per{
+                                padding-bottom:80px;
+                            }
+                            .profileBilling-content-billing-plans-perT{
+                                padding-bottom:30px;
+                            }
+                            .profileBilling-content-billing-plans-button{
+                                background:#ebebeb;
+                                color:#0378ae;
+                                border:1px solid #0378ae;
+                                border-radius:3px;
+                                width:145px;
+                                height:40px;
+                                padding: 10px;
+                                margin:0 auto;
+                                cursor:pointer;
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+/*profile notice page*/
+.profileNotice-container{
+    .profileNotice-header{
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px 84px;
+        .profileNotice-header-name{
+            text-align:left;
+            font-size:20px;
+        }
+        .profileNotice-header-button{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:140px;
+                height:40px;
+                border-radius:2px;
+                padding:0px;
+            }
+        }
+    }
+    .profileNotice-content{
+        background:#e6e6e6;
+        padding-left:64px;
+        .profileNotice-content-menu{
+            height:48px;
+            padding:8px 20px;
+            background:#55abd4;
+            .profileNotice-content-nav{
+                 ul{
+                     li{
+                        color:#fff;
+                        width:120px;
+                        line-height:32px;
+                        margin-right:10px;
+                        float:left;
+                        text-align:center;
+                        cursor:pointer;
+                    }
+                 }
+            }
+        }
+        .profileNotice-content-body{
+            padding: 24px 20px 0px 20px;
+            .profileNotice-content-title{
+                height: 40px;
+                margin-bottom: 10px;
+            }
+            .profileNotice-content-notice{
+                overflow-y:auto;
+                background: #fff;
+                border-radius: 3px;
+                border-top: 1px solid #e5e5e5;
+                .profileNotice-content-notice-general{
+                    .profileNotice-content-notice-generaltitle{
+                        color:#0378ae;
+                        padding:20px 50px;
+                        box-shadow: 3px 3px 3px #e5e5e5;
+                    }
+                    .profileNotice-content-notice-generalitem{
+                        height:48px;
+                        border-bottom:1px dashed #e5e5e5;
+                        padding:15px 75px;
+                        img{cursor:pointer;}
+                    }  
+                }
+            }
+        }
+    }
+}
+
+/*templates page*/
+.templates-container{
+    .templates-header{
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px 84px;
+        .templates-header-name{
+            text-align:left;
+            font-size:20px;
+        }
+        .templates-header-button{
+            border:1px solid #0378ae;
+            border-radius:2px;
+            width: 155px;
+            height: 40px;
+            padding:10px;
+            color:#0378ae;
+            img{margin-left:15px;}
+        }
+    }
+    .templates-content{
+        background:#55abd4;
+        padding-left:64px;
+        overflow-y:auto;
+        .templates-content-body{
+            padding: 24px 20px 0px 20px;
+            .templates-content-unselect{
+                text-align: center;
+                padding:20px 0px;
+                .templates-content-template-icon{
+                    width:268px;
+                    margin:0 auto;
+                    .templates-content-template-select{
+                        display:none;
+                    }
+                }
+                .templates-content-template-name{
+                    color:#fff;
+                    padding:10px 0px;
+                }
+            }
+            .templates-content-select{
+                text-align: center;
+                padding:20px 0px;
+                .templates-content-template-icon{
+                    position:relative;
+                    width:268px;
+                    margin:0 auto;
+                    .templates-content-template-select{
+                        position:absolute;
+                        right:0px;
+                        top:0px;
+                    }
+                }
+                .templates-content-template-name{
+                    padding:10px 0px;
                 }
             }
         }

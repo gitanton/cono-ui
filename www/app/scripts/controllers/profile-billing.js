@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('ProfileBillingCtrl', function ($scope) {
+  .controller('ProfileBillingCtrl', function ($scope,$location) {
      $scope.billingOne = true;
      $scope.billingTwo = false;
      $scope.billingThree = false;
@@ -39,5 +39,24 @@ angular.module('conojoApp')
         $scope.billingOne = false;
         $scope.billingTwo = false;
         $scope.billingThree = true;
+    }
+    
+    $scope.selectPlan = function(event){
+        
+    }
+    
+    $scope.toProject = function(){
+        var url = '/profile-project/';
+        $location.path(url);
+    }
+    
+    $scope.toProfile = function(){
+        var url = '/profile-profile/';
+        $location.path(url);
+    }
+    
+    $scope.toNotice = function(){
+        var url = '/profile-notice/';
+        $location.path(url);
     }
   });
