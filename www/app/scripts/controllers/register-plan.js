@@ -2,17 +2,17 @@
 
 /**
  * @ngdoc function
- * @name conojoApp.controller:RegisterCtrl
+ * @name conojoApp.controller:registerPlanCtrl
  * @description
- * # RegisterCtrl
+ * # registerPlanCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('RegisterCtrl', function ($scope,$http,$location) {
-     $scope.loginPadding = ($(window).height() - 641)/2;
+  .controller('registerPlanCtrl', function ($scope,$http,$location) {
+     $scope.loginPadding = ($(window).height() - 508)/2;
 
-    $(".register-logo").css('padding-top',$scope.loginPadding);
-    $(".register-note").css('padding-bottom',$scope.loginPadding);
+    $(".profileBilling-content-billing-planTitle").css('margin-top',$scope.loginPadding);
+    $(".profileBilling-content-billing-plans").css('margin-bottom',$scope.loginPadding);
     
     $scope.init = function(){
         $http({

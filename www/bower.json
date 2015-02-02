@@ -13,7 +13,8 @@
     "angular-touch": "~1.2.0",
     "angular-route": "~1.2.0",
     "jquery-ui" : "~1.11.2",
-    "jqueryui-timepicker-addon" : "~1.5.0"
+    "jqueryui-timepicker-addon" : "~1.5.0",
+    "blueimp-file-upload" : "~9.9.2"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",

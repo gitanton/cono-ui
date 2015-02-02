@@ -1,28 +1,26 @@
-<div class="projectScreen-page">
+<div class="projectActivity-page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar-closed.html'" onload="setHeight()"></div>
-    <div class="projectScreen-container">
-        <div class="projectScreen-header">
-            <div class="projectScreen-header-name col-lg-6">
+    <div class="projectActivity-container">
+        <div class="projectActivity-header">
+            <div class="projectActivity-header-name col-lg-6">
                 <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
             </div>
-            <div class="projectScreen-header-button col-lg-6">
+            <div class="projectActivity-header-button col-lg-6">
                 <button class="btn btn-lg">Share</button>
                 <button class="btn btn-lg" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
             </div>
         </div>
-        <div class="projectScreen-content">
-            <div class="projectScreen-content-menu">
-                <div class="projectScreen-content-nav col-lg-6">
+        <div class="projectActivity-content">
+            <div class="projectActivity-content-menu">
+                <div class="projectActivity-content-nav col-lg-6">
                     <ul>
-                        <li  ng-click="toBuildNewScreen()">Build</li>
-                        <li class="project-design-menu-current">Screens</li>
-                        <li  ng-click="toActivity()">ACTIVITY</li>
-                        <li  ng-click="toComment()">COMMENTS</li>
-                        <li ng-click="openMessage(activeProjectUuid)">MESSAGES</li>
+                        <li ng-click="toScreen()">Screens</li>
+                        <li class="project-design-menu-current">ACTIVITY</li>
+                        <li ng-click="toComment()">COMMENTS</li>
                     </ul>
                 </div>
-                <div class="projectScreen-content-member col-lg-6">
+                <div class="projectActivity-content-member col-lg-6">
                     <ul>
                         <li><img src="images/member-two.png"></li>
                         <li><img src="images/member-one.png"></li>
@@ -30,28 +28,42 @@
                     </ul>
                 </div>
             </div>
-            <div class="projectScreen-content-body">
-                <div class="projectScreen-content-items col-lg-10">
-                    <div class="projectScreen-content-thumb col-lg-4" ng-repeat="screen in screens"><img ng-src="{{screen.url}}" ng-click="toBuild('{{screen.uuid}}')"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="/images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                </div>
-                <div class="projectScreen-content-delete col-lg-2">
-                    <form id="fileupload" enctype="multipart/form-data" class="projectScreen-content-dropcontainer">
-                        <div class="dz-message">
-                            <p>Drag & Drop your files</p>
+            <div class="projectActivity-content-body">
+                <div class="projectActivity-content-items col-lg-10">
+                    <div class="col-lg-12 projectActivity-content-item" id="drag1" draggable>
+                        <div class="projectActivity-content-img col-lg-3"><img src="images/Dawkins.png"></div>
+                        <div class="projectActivity-content-desc col-lg-9">
+                            <div class="col-lg-9">R.Dawkins added 4 new screenshots to Project A</div>
+                            <div class="col-lg-3">10 min ago</div>
+                            <div class="col-lg-12"><img src="images/thumbs.png"></div>
+                            <div class="col-lg-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
                         </div>
-                    </form>
-                    <!--<div class="projectScreen-content-dropcontainer" id="drop-files" ondragover="return false">Drag & Drop here to upload files</div>-->
-                    <img class="projectScreen-content-upload" src="images/upload-blue-icon.png" ng-click="openUploadScreen()">
-                    <img class="projectScreen-content-sync" src="images/sync-icon.png">
+                    </div>
+                    <div class="col-lg-12 projectActivity-content-item" id="drag2" draggable>
+                        <div class="projectActivity-content-img col-lg-3"><img src="images/Dawkins.png"></div>
+                        <div class="projectActivity-content-desc col-lg-9">
+                            <div class="col-lg-9">R.Dawkins added 4 new screenshots to Project A</div>
+                            <div class="col-lg-3">10 min ago</div>
+                            <div class="col-lg-12"><img src="images/thumbs.png"></div>
+                            <div class="col-lg-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 projectActivity-content-item" id="drag3" draggable>
+                        <div class="projectActivity-content-img col-lg-3"><img src="images/Dawkins.png"></div>
+                        <div class="projectActivity-content-desc col-lg-9">
+                            <div class="col-lg-9">R.Dawkins added 4 new screenshots to Project A</div>
+                            <div class="col-lg-3">10 min ago</div>
+                            <div class="col-lg-12"><img src="images/thumbs.png"></div>
+                            <div class="col-lg-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="projectActivity-content-delete col-lg-2" droppable drop="handleDrop()">
+                    <img src="images/delete-icon.png" class="projectActivity-content-deleteicon">
+                    <div class="projectActivity-content-deleteintro" id="projectActivity-content-deleteintro">
+                        <p>DELETE</p>
+                        <p>Drag & Drop here to delete</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,28 +115,6 @@
         </form>
     </div>
 </div>
-<div id="addProjectScreen" class="modal fade in" style="display: none;">
-    <div class="teammember-add">
-        <div class="col-lg-10 teammember-add-desc">ADD SCREENS</div>
-        <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
-        <form name="createteammember">
-            <div class="col-lg-12 teammember-add-body">
-                <div class="form-group has-add">
-                    <img class="teammember-add-addAnother" src="images/upload-icon.png">
-                    <p>Select a file from your computer to add</p>
-                </div>
-                <div class="form-group has-email">
-                    <p>Or paste a link below:</p>
-                    <input type="text" name="screenUrl" ng-model="screenUrl" class="form-control teammember-add-email" placeholder="Paste link here" />
-                    <img class="teammember-add-emailicon" src="images/link-icon.png">
-                </div>
-            </div>
-            <div class="col-lg-12 teammember-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addUploadScreen()">Add Screens</button>       
-            </div>
-        </form>
-    </div>
-</div>
 <div id="newMeeting" class="modal fade in" style="display: none;">
     <div class="newMeeting-add">
         <div class="col-lg-10 newMeeting-add-desc">CREATE A MEETING</div>
@@ -140,9 +130,8 @@
                 <div class="form-group">
                     <input type="text" name="meetingDateTime" ng-model="meetingDateTime" class="form-control newMeeting-time" placeholder="Choose date & time" />
                 </div>
-                <div class="newMeeting-assignContainer form-group">
-                    <div class="newMeeting-assign" ng-click="showSelectMember($event)">Assign to</div>
-                    <select multiple="multiple" name="meetingGroup" ng-model="meetingGroup" class="form-control newMeeting-group">
+                <div class="form-group">
+                    <select name="meetingGroup" ng-model="meetingGroup" class="form-control newMeeting-group">
                         <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
                     </select>
                 </div>

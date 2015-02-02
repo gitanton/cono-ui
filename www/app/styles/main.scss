@@ -26,7 +26,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 .container{
     padding:0px;
     width:100%;
-    font-family:'Roboto';
 }
 .col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,.col-lg-11,.col-lg-12{
     padding:0px;
@@ -206,10 +205,6 @@ ul li{
         width: 227px;
     }
     .register-form{
-        height:386px;
-        width:420px;
-        margin-left: auto;
-        margin-right: auto;
         padding:15px 33px;
         background:#e3e3e3;
         border-radius:10px;
@@ -258,6 +253,231 @@ ul li{
         .register-button{
             text-align:center;
         }
+    }
+    .register-billing{
+        margin:0px 50px;
+        .profileBilling-content-title{
+            color: #0378ae;
+            border-bottom:1px solid #e3e3e3;
+        }
+        .profileBilling-content-billing-changrCard{
+            padding: 20px;
+            background:#e3e3e3;
+            border-radius:10px;
+            margin-top: 20px;
+            .profileBilling-content-billing-changeCard-two{
+                margin-top:5px;
+                .profileBilling-content-billing-changeCard-two-L{
+                    background: #fff;
+                    width:335px;
+                    border:1px solid #0378ae;
+                    border-radius:3px;
+                    padding:10px 25px;
+                }
+                .profileBilling-content-billing-changeCard-two-r{
+                    width:245px;
+                    border:1px solid #0378ae;
+                    border-radius:3px;
+                    padding:10px 25px;
+                    background: #fff;
+                }
+                .profileBilling-content-billing-changeCard-two-m,.profileBilling-content-billing-changeCard-two-p{
+                    background: #fff;
+                    width:45px;
+                    border:1px solid #0378ae;
+                    border-radius:3px;
+                    padding:10px 15px;
+                    margin-left:5px;
+                    margin-right:5px;
+                }
+            }
+            .profileBilling-content-billing-changeCard-three{
+                margin-top:20px;
+                .col-lg-2{
+                    width:150px;
+                    img{margin-left:15px;}
+                }
+            }
+            .profileBilling-content-billing-changeCard-four,.profileBilling-content-billing-changeCard-six,.profileBilling-content-billing-changeCard-eight{
+                margin-top:20px;
+            }
+            .profileBilling-content-billing-changeCard-five{
+                margin-top:5px;
+                input{
+                    background:#fff;
+                    border-radius:3px;
+                    border: 1px solid #e6e6e6;
+                    height:40px;
+                    width:250px;
+                    padding:0px 10px;
+                }
+            }
+            .profileBilling-content-billing-changeCard-seven{
+                margin-top:5px;
+                input{
+                    background:#fff;
+                    border-radius:3px;
+                    border: 1px solid #e6e6e6;
+                    height:40px;
+                    padding:0px 10px;
+                }
+                .profileBilling-content-billing-changeCard-city{
+                    input{width:250px;}
+                }
+                .profileBilling-content-billing-changeCard-state{
+                    input{width:110px;}
+                }
+                .profileBilling-content-billing-changeCard-country{
+                    input{width:250px;}
+                }
+                .profileBilling-content-billing-changeCard-code{
+                    input{width:110px;}
+                }
+            }
+            .profileBilling-content-billing-changeCard-nine{
+                margin-top:5px;
+                input{
+                    background:#fff;
+                    border-radius:3px;
+                    border: 1px solid #e6e6e6;
+                    height:40px;
+                    padding:0px 10px;
+                }
+                .profileBilling-content-billing-changeCard-cardNum{
+                    input{width:410px;}
+                }
+                .profileBilling-content-billing-changeCard-expirationM{
+                    input{width:130px;}
+                }
+                .profileBilling-content-billing-changeCard-expirationY{
+                    input{width:130px;}
+                }
+                .profileBilling-content-billing-changeCard-cvv{
+                    input{width:130px;}
+                }
+            }
+            .profileBilling-content-billing-changeCard-ten{
+                margin-top:20px;
+                .profileBilling-content-billing-changeCard-planinfo{
+                    width:530px;
+                    border:1px solid #0378ae;
+                    border-radius:3px;
+                    padding:10px 25px;
+                    color:#0378ae;
+                }
+                .profileBilling-content-billing-changeCard-button{
+                    @extend .appbutton;
+                    width:220px;
+                    height:40px;
+                    border-radius:3px;
+                    padding:10px 25px;
+                }
+            }
+        }
+    }
+    .register-plan{
+        .profileBilling-content-billing-planTitle{
+             padding:20px 50px;
+             box-shadow: 3px 3px 3px #e5e5e5;
+             height: 68px;
+             color:#0378ae;
+             text-align: center;
+         }
+        .profileBilling-content-billing-plans{
+             padding:20px;
+             .profileBilling-content-billing-plans-items{
+                 border-top:1px solid #e5e5e5;
+                 border-bottom:1px solid #e5e5e5;
+                 border-left:1px solid #e5e5e5;
+                 text-align:center;
+                 .profileBilling-content-billing-plans-item{
+                     border-right:1px solid #e5e5e5;
+                     padding:30px;
+                     .profileBilling-content-billing-plans-name{
+                         font-size:16px;
+                         font-weight: 700;
+                     }
+                     .profileBilling-content-billing-plans-price{
+                         color:#777777;
+                         padding:20px 0px 35px;
+                         border-bottom:1px solid #e5e5e5;
+                         span{
+                             color:#000;
+                             font-weight:700;
+                         }
+                     }
+                     .profileBilling-content-billing-plans-num{
+                         color:#777777;
+                         padding:40px 0px;
+                         span{
+                             color:#000;
+                             font-weight:700;
+                         }
+                     }
+                     .profileBilling-content-billing-plans-per{
+                         color:#777777;
+                         padding-bottom:80px;
+                         span{
+                             color:#000;
+                             font-weight:700;
+                         }
+                     }
+                     .profileBilling-content-billing-plans-perT{
+                         color:#777777;
+                         padding-bottom:30px;
+                         span{
+                             color:#000;
+                             font-weight:700;
+                         }
+                     }
+                     .profileBilling-content-billing-plans-button{
+                         background:#cbefff;
+                         color:#0378ae;
+                         border:1px solid #0378ae;
+                         border-radius:3px;
+                         width:145px;
+                         height:40px;
+                         padding: 10px;
+                         margin:0 auto;
+                         cursor:pointer;
+                     }
+                 }
+                 .profileBilling-content-billing-plans-itemSelect{
+                     border-right:1px solid #e5e5e5;
+                     padding:30px;
+                     background: #1582b4;
+                     color:#fff;
+                     .profileBilling-content-billing-plans-name{
+                         font-size:16px;
+                         font-weight: 700;
+                     }
+                     .profileBilling-content-billing-plans-price{
+                         padding:20px 0px 35px;
+                         border-bottom:1px solid #e5e5e5;
+                     }
+                     .profileBilling-content-billing-plans-num{
+                         padding:40px 0px;
+                     }
+                     .profileBilling-content-billing-plans-per{
+                         padding-bottom:80px;
+                     }
+                     .profileBilling-content-billing-plans-perT{
+                         padding-bottom:30px;
+                     }
+                     .profileBilling-content-billing-plans-button{
+                         background:#ebebeb;
+                         color:#0378ae;
+                         border:1px solid #0378ae;
+                         border-radius:3px;
+                         width:145px;
+                         height:40px;
+                         padding: 10px;
+                         margin:0 auto;
+                         cursor:pointer;
+                     }
+                 }
+             }
+         }
     }
     .register-note{
         width:390px;
@@ -1856,7 +2076,7 @@ ul li{
     padding-top:50px;
     .newMeeting-add{
         width:465px;
-        height:538px;
+        height:558px;
         background:#fff;
         border-radius:4px;
         margin:0 auto;
@@ -1878,8 +2098,25 @@ ul li{
         background:#e6e6e6;
         border-bottom:1px solid #e3e3e3;
         input{height:50px;}
-        select{height:50px;}
-        textarea{height:150px;}
+        select{height:80px;}
+        textarea{height:120px;}
+    }
+    .newMeeting-assign{
+        text-align: left;
+        height: 50px;
+        padding: 12px;
+        font-size: 14px;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .newMeeting-assignContainer{
+        height:100px;
+    }
+    .newMeeting-group{
+        display:none;
     }
     .newMeeting-add-button{
         padding:12px 0px;
@@ -2727,6 +2964,105 @@ ul li{
                 }
                 .templates-content-template-name{
                     padding:10px 0px;
+                }
+            }
+        }
+    }
+}
+
+/*project screen video page*/
+.projectScreenVideo-container{
+    .projectScreenVideo-header{
+        height:64px;
+        background:#efefef;
+        border-top:1px solid #e3e3e3;
+        padding:11px 20px 12px 84px;
+        .projectScreenVideo-header-name{
+            text-align:left;
+            font-size:20px;
+        }
+        .projectScreenVideo-header-name img{
+            margin-left:12px;
+            cursor:pointer;
+        }
+        .projectScreenVideo-header-button{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:140px;
+                height:40px;
+                border-radius:2px;
+                padding:0px;
+            }
+        }
+    }
+    .projectScreenVideo-content{
+        background:#e6e6e6;
+        padding-left:64px;
+        .projectScreenVideo-content-menu{
+            height:48px;
+            padding:8px 20px;
+            background:#55abd4;
+            .projectScreenVideo-content-nav{
+                 ul{
+                     li{
+                        color:#fff;
+                        width:82px;
+                        line-height:32px;
+                        margin-right:10px;
+                        float:left;
+                        text-align:center;
+                        cursor:pointer;
+                    }
+                 }
+            }
+            .projectScreenVideo-content-member{
+                 ul{
+                     li{
+                        width:44px;
+                        margin-right:10px;
+                        float:right;
+                    }
+                 }
+            }
+        }
+        .projectScreenVideo-content-body{
+            overflow-y:auto;
+            position:relative;
+            background-image:url('/images/project-build-bg.jpg');
+            .projectScreenVideo-content-upload{
+                text-align:center;
+                width:636px;
+                border:3px dashed #fff;
+                background:#dfdfdf;
+                height:180px;
+                margin-top:100px;
+                margin-left:auto;
+                margin-right:auto;
+                opacity: 0.7;
+            }
+            .projectScreenVideo-content-tools{
+                position:absolute;
+                left:0px;
+                bottom:0px;
+                ul{
+                    li{
+                        text-align:center;
+                        width:58px;
+                        height:58px;
+                        background:#e6e6e6;
+                        float:left;
+                        padding:15px 0px;
+                    }
+                    .tools-li-selected{
+                        text-align:center;
+                        width:58px;
+                        height:58px;
+                        background: none repeat scroll 0 0 #f6f064;
+                        border: 1px solid #55abd4;
+                        float:left;
+                        padding:15px 0px;
+                    }
                 }
             }
         }

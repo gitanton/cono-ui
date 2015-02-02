@@ -1,28 +1,26 @@
-<div class="projectScreen-page">
+<div class="projectScreenVideo-page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar-closed.html'" onload="setHeight()"></div>
-    <div class="projectScreen-container">
-        <div class="projectScreen-header">
-            <div class="projectScreen-header-name col-lg-6">
+    <div class="projectScreenVideo-container">
+        <div class="projectScreenVideo-header">
+            <div class="projectScreenVideo-header-name col-lg-6">
                 <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
             </div>
-            <div class="projectScreen-header-button col-lg-6">
+            <div class="projectScreenVideo-header-button col-lg-6">
                 <button class="btn btn-lg">Share</button>
                 <button class="btn btn-lg" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
             </div>
         </div>
-        <div class="projectScreen-content">
-            <div class="projectScreen-content-menu">
-                <div class="projectScreen-content-nav col-lg-6">
+        <div class="projectScreenVideo-content">
+            <div class="projectScreenVideo-content-menu">
+                <div class="projectScreenVideo-content-nav col-lg-6">
                     <ul>
-                        <li  ng-click="toBuildNewScreen()">Build</li>
                         <li class="project-design-menu-current">Screens</li>
                         <li  ng-click="toActivity()">ACTIVITY</li>
                         <li  ng-click="toComment()">COMMENTS</li>
-                        <li ng-click="openMessage(activeProjectUuid)">MESSAGES</li>
                     </ul>
                 </div>
-                <div class="projectScreen-content-member col-lg-6">
+                <div class="projectScreenVideo-content-member col-lg-6">
                     <ul>
                         <li><img src="images/member-two.png"></li>
                         <li><img src="images/member-one.png"></li>
@@ -30,28 +28,19 @@
                     </ul>
                 </div>
             </div>
-            <div class="projectScreen-content-body">
-                <div class="projectScreen-content-items col-lg-10">
-                    <div class="projectScreen-content-thumb col-lg-4" ng-repeat="screen in screens"><img ng-src="{{screen.url}}" ng-click="toBuild('{{screen.uuid}}')"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="/images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                    <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
-                </div>
-                <div class="projectScreen-content-delete col-lg-2">
-                    <form id="fileupload" enctype="multipart/form-data" class="projectScreen-content-dropcontainer">
-                        <div class="dz-message">
-                            <p>Drag & Drop your files</p>
-                        </div>
-                    </form>
-                    <!--<div class="projectScreen-content-dropcontainer" id="drop-files" ondragover="return false">Drag & Drop here to upload files</div>-->
-                    <img class="projectScreen-content-upload" src="images/upload-blue-icon.png" ng-click="openUploadScreen()">
-                    <img class="projectScreen-content-sync" src="images/sync-icon.png">
+            <div class="projectScreenVideo-content-body">
+                <input id="fileupload" type="file" name="files[]" data-url="server/php/">
+<!--                <form id="uploadVideo" class="projectScreenVideo-content-upload dropzone">
+                    <div class="dz-message">
+                        <p>Upload Video File</p>
+                        <p>Drag & Drop your files</p>
+                    </div>
+                </form>-->
+                <div class="projectScreenVideo-content-tools">
+                    <ul>
+                        <li class="projectScreenVideo-content-tools-li"><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>
+                        <li class="projectScreenVideo-content-tools-li"><img src="images/hotspots-blue-icon.png" ng-click="openHotspots()"></li>
+                    </ul>
                 </div>
             </div>
         </div>

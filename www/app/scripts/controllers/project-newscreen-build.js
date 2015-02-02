@@ -145,6 +145,18 @@ angular.module('conojoApp')
     $scope.openNewMeeting = function(){
         $('#newMeeting').modal('toggle');
     };
+    
+    $scope.showSelectMember = function(event){
+        $(event.target).parent().find(".newMeeting-group").show();
+        $(document).on("click", function (){
+            $(event.target).parent().find(".newMeeting-group").hide();
+        });
+        event.stopPropagation();
+    }
+    
+    $(".newMeeting-group").on("click", function (event){
+        event.stopPropagation();
+    });
 
     $scope.addNewMeeting = function(){
         $http({
