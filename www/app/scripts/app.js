@@ -95,7 +95,7 @@ angular
         templateUrl: 'views/templates.html',
         controller: 'templatesCtrl'
      })
-      .when('/project-screen-video', {
+      .when('/project-screen-video/:uuid', {
         templateUrl: 'views/project-screen-video.html',
         controller: 'ProjectScreenVideoCtrl'
       })
@@ -125,7 +125,7 @@ angular
     }
 })
 .directive('draggable', function() {
-    return function(scope, element) {
+    return function(scope, element) { 
         // this gives us the native JS object
         var el = element[0];
 
@@ -157,7 +157,7 @@ angular
         scope: {
             drop: '&' // parent
         },
-        link: function(scope, element) {
+        link: function(scope, element) {                                                     
             // again we need the native object
             var el = element[0];
                 

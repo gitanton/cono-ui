@@ -47,6 +47,18 @@ angular.module('conojoApp')
         });
     };
     
+    $("#videoupload").dropzone({
+        url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
+        paramName: "file", // The name that will be used to transfer the file
+        maxFilesize: 10,
+        clickable: false
+//        init:function(){
+//            $(this).on('success',function(){
+//                $scope.init();
+//            });
+//        }
+    });
+    
     $scope.openUpdateProject = function(){
         $('#updateproject').modal('toggle');
     };

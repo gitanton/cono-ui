@@ -44,12 +44,12 @@
                     <div class="projectScreen-content-thumb col-lg-4"><img src="images/screen-thumb.png"></div>
                 </div>
                 <div class="projectScreen-content-delete col-lg-2">
-                    <form id="fileupload" enctype="multipart/form-data" class="projectScreen-content-dropcontainer">
+                    <form id="screenupload" enctype="multipart/form-data" class="projectScreen-content-dropcontainer dropzone">
+                        <input type="hidden" name="project_uuid" value="{{activeProjectUuid}}">
                         <div class="dz-message">
                             <p>Drag & Drop your files</p>
                         </div>
                     </form>
-                    <!--<div class="projectScreen-content-dropcontainer" id="drop-files" ondragover="return false">Drag & Drop here to upload files</div>-->
                     <img class="projectScreen-content-upload" src="images/upload-blue-icon.png" ng-click="openUploadScreen()">
                     <img class="projectScreen-content-sync" src="images/sync-icon.png">
                 </div>

@@ -29,13 +29,13 @@
                 </div>
             </div>
             <div class="projectScreenVideo-content-body">
-                <input id="fileupload" type="file" name="files[]" data-url="server/php/">
-<!--                <form id="uploadVideo" class="projectScreenVideo-content-upload dropzone">
+                <form id="videoupload" enctype="multipart/form-data" class="projectScreenVideo-content-upload dropzone">
+                    <input type="hidden" name="project_uuid" value="{{activeProjectUuid}}">
                     <div class="dz-message">
                         <p>Upload Video File</p>
                         <p>Drag & Drop your files</p>
                     </div>
-                </form>-->
+                </form>
                 <div class="projectScreenVideo-content-tools">
                     <ul>
                         <li class="projectScreenVideo-content-tools-li"><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>
