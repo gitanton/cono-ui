@@ -7,23 +7,16 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectBuildCtrl', function ($scope,$http,$location,$routeParams,meetingFlag) {
+ .controller('ProjectBuildCtrl', function ($scope,$http,$location,$routeParams,meetingFlag,currentUser) {
      $scope.CLOCK = null;
      $scope.shapeFill = false;
      $scope.showAddHotspots = false;
     $scope.activeProjectUuid = $routeParams.puuid;
     $scope.activeScreenUuid = $routeParams.suuid;
-    $scope.setHeight = function(){
-        $scope.siderbarContainer = $(window).height() - 64;
-        $scope.siderbarExpand = $(window).height() - 442;
-        $scope.projectContent = $(window).height() - 176;
-        $scope.projectDrawing = $(window).height() - 234;
-        
-        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
-        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
-        $(".projectBuild-content-body").css('height',$scope.projectContent);
-        $(".projectBuild-content-drawing").css('height',$scope.projectDrawing);
-    };
+    $scope.projectContent = $(window).height() - 176;
+    $scope.projectDrawing = $(window).height() - 234;
+    $(".projectBuild-content-body").css('height',$scope.projectContent);
+    $(".projectBuild-content-drawing").css('height',$scope.projectDrawing);
     
     $scope.init = function(){
         $http({
@@ -31,6 +24,7 @@ angular.module('conojoApp')
             method: 'GET',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data) {
+            $scope.projectMembers = data.users;
             $scope.updateProjectTitle = data.name;
             $scope.updateProjectTypeid = data.type_id;
         });

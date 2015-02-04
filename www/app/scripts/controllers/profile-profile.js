@@ -8,16 +8,9 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('ProfileProfileCtrl', function ($scope,$location) {
-     $scope.setHeight = function(){
-        $scope.siderbarContainer = $(window).height() - 64;
-        $scope.siderbarExpand = $(window).height() - 442;
-        $scope.profileProfileContent = $(window).height() - 250;
-        
-        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
-        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
-        $(".profileProfile-content-profile").css('height',$scope.profileProfileContent);
-    };
+  .controller('ProfileProfileCtrl', function ($scope,$location,currentUser) {
+    $scope.profileProfileContent = $(window).height() - 250;
+    $(".profileProfile-content-profile").css('height',$scope.profileProfileContent);
     
     $scope.toProject = function(){
         var url = '/profile-project/';

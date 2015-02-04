@@ -8,17 +8,10 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('MessageCtrl', function ($scope,$http,$routeParams) {
+  .controller('MessageCtrl', function ($scope,$http,$routeParams,currentUser) {
       $scope.activeProjectUuid = $routeParams.uuid;
-      $scope.setHeight = function(){
-        $scope.siderbarContainer = $(window).height() - 64;
-        $scope.siderbarExpand = $(window).height() - 442;
-        $scope.messageContent = $(window).height() - 194;
-        
-        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
-        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
-        $(".message-content").css('height',$scope.messageContent);
-    };
+      $scope.messageContent = $(window).height() - 194;
+      $(".message-content").css('height',$scope.messageContent);
       
       $scope.init = function(){
           $http({

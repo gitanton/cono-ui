@@ -8,14 +8,9 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('ActivityCtrl', function ($scope) {
-    $scope.setHeight = function(){
-        $scope.siderbarContainer = $(window).height() - 64;
-        $scope.siderbarExpand = $(window).height() - 442;
+  .controller('ActivityCtrl', function ($scope,currentUser) {
         $scope.activityContent = $(window).height() - 128;
-        
-        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
-        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
+        $scope.activityDeleteContainer = $(window).height() - 180;
         $(".activity-content").css('height',$scope.activityContent);
-    };
+        $(".activity-content-delete").css('height',$scope.activityDeleteContainer);
   });

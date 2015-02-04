@@ -8,16 +8,9 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('UserpageCtrl', function ($scope,$http,$routeParams) {
-    $scope.setHeight = function(){
-        $scope.siderbarContainer = $(window).height() - 64;
-        $scope.siderbarExpand = $(window).height() - 442;
-        $scope.userpageContent = $(window).height() - 128;
-        
-        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
-        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
-        $(".userpage-content").css('height',$scope.userpageContent);
-    }
+  .controller('UserpageCtrl', function ($scope,$http,$routeParams,currentUser) {
+    $scope.siderbarExpand = $(window).height() - 442;
+    $(".userpage-content").css('height',$scope.userpageContent);
     
     $scope.init = function(){
         $http({

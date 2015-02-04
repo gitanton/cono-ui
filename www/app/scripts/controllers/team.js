@@ -8,17 +8,10 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('TeamCtrl', function ($scope,$http,$location) {
+  .controller('TeamCtrl', function ($scope,$http,$location,currentUser) {
     $scope.memberUuid = 0;
-    $scope.setHeight = function(){
-        $scope.siderbarContainer = $(window).height() - 64;
-        $scope.siderbarExpand = $(window).height() - 442;
-        $scope.teamContent = $(window).height() - 128;
-        
-        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
-        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
-        $(".team-content").css('height',$scope.teamContent);
-    };
+    $scope.teamContent = $(window).height() - 128;
+    $(".team-content").css('height',$scope.teamContent);
     
     $scope.init = function(){
         $http({

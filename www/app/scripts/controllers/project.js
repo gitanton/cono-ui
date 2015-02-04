@@ -6,20 +6,13 @@
  * # ProjectCtrl
  * Controller of the conojoApp
  */
-angular.module('conojoApp').controller('ProjectCtrl', function ($scope,$http,$location) {
+angular.module('conojoApp')
+  .controller('ProjectCtrl', function ($scope,$http,$location,currentUser) {
     $scope.projecttype = 0;
     $scope.projecttitle = "";
-    
-    $scope.setHeight = function(){
-        $scope.siderbarContainer = $(window).height() - 64;
-        $scope.siderbarExpand = $(window).height() - 442;
-        $scope.projectContent = $(window).height() - 128;
-        
-        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
-        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
-        $(".project-content").css('height',$scope.projectContent);
-        $(".projectBuild-content-tools").css('height',$scope.projectContent);
-    };
+    $scope.projectContent = $(window).height() - 128;
+    $(".project-content").css('height',$scope.projectContent);
+    $(".projectBuild-content-tools").css('height',$scope.projectContent);
     
     $scope.init = function(){
         $http({

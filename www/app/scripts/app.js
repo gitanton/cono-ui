@@ -120,10 +120,15 @@ angular
       });
   })
   .factory('meetingFlag', function() {
-    return {
-      startMeeting: false
-    }
-})
+        return {
+          startMeeting: false
+        }
+  })
+  .factory('currentUser', function() {
+        return {
+          currentUserUuid: ''
+        }
+  })
 .directive('draggable', function() {
     return function(scope, element) { 
         // this gives us the native JS object

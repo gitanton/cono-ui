@@ -8,7 +8,8 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('commentCtrl', function ($scope,$http) {
+  .controller('commentCtrl', function ($scope,$http,currentUser) {
+    $scope.expandMenuFlag = false;
     $scope.showCalendar = function(){
         $('#datetimepicker').datepicker({
             dateFormat: "yy-mm-dd",
@@ -36,6 +37,22 @@ angular.module('conojoApp')
              $scope.users = data;
         });
     }
+    
+    $scope.expandMenu = function(){
+        $scope.expandMenuFlag = true;
+    }
+    
+    $scope.closeMenu = function(){
+        $scope.expandMenuFlag = false;
+    }
+    
+    $scope.setHeight = function(){
+        $scope.siderbarContainer = $(window).height() - 64;
+        $scope.projectContent = $(window).height() - 128;
+        
+        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
+        $(".siderbar-expand-container").css('height',$scope.siderbarContainer);
+    };
     
     $scope.init();
   });

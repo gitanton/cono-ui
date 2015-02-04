@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('MeetingCtrl', function ($scope,$http,$routeParams,meetingFlag) {
+  .controller('MeetingCtrl', function ($scope,$http,$routeParams,meetingFlag,currentUser) {
     $scope.startMeeting = false;
     $scope.CLOCK = null;
     $scope.meetingUuid = $routeParams.uuid;

@@ -7,18 +7,12 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectScreenCtrl', function ($scope,$http,$location,$routeParams) {
+ .controller('ProjectScreenCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.activeProjectUuid = $routeParams.uuid;
-    
-    $scope.setHeight = function(){
-        $scope.siderbarContainer = $(window).height() - 64;
-        $scope.siderbarExpand = $(window).height() - 442;
-        $scope.projectScreenBody = $(window).height() - 176;
-        
-        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
-        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
-        $(".projectScreen-content-body").css('height',$scope.projectScreenBody);
-    };
+    $scope.projectScreenBody = $(window).height() - 176;
+    $scope.projectScreenDropcontainer = $(window).height() - 212;
+    $(".projectScreen-content-body").css('height',$scope.projectScreenBody);
+    $(".projectScreen-content-dropcontainer").css('height',$scope.projectScreenDropcontainer);
     
     $scope.init = function(){
         $http({
@@ -26,6 +20,7 @@ angular.module('conojoApp')
             method: 'GET',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data) {
+            $scope.projectMembers = data.users;
             $scope.updateProjectTitle = data.name;
             $scope.updateProjectTypeid = data.type_id;
         });

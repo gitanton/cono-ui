@@ -75,12 +75,61 @@ ul li{
     position:absolute;
     z-index:2;
     left:0px;
+    .siderbar-closed-img{
+        width:64px;
+        height:64px;
+    }
     .col-lg-12{
         padding:23px 0px;
         text-align:center;
     }
     .siderbar-closed-container-expand{
-        padding-bottom:21px;
+        position: absolute;
+        bottom: 0px;
+    }
+}
+.siderbar-expand-container{
+    width:205px;
+    background:#0378ae;
+    position:absolute;
+    z-index:2;
+    left:0px;
+    .siderbar-expand-img{
+        width:205px;
+        height:160px;
+    }
+    .col-lg-12{
+        padding:23px;
+        a{color:#fff;text-decoration: none;}
+        a:focus,a:hover{
+            color:#fff;
+            text-decoration: none;
+        }
+        color:#fff;
+        img{margin-right:20px;}
+    }
+    .siderbar-closed-container-expand{
+        position: absolute;
+        bottom: 0px;
+        padding-bottom: 20px;
+        padding-left:150px;
+        .siderbar-expand-profileContainer{
+            background:#323232;
+            position:absolute;
+            top:0px;width:205px;
+            height:160px;
+            opacity:0.5;
+            padding:50px 20px;
+            .siderbar-expand-profileView{
+                border:1px solid #fff;
+                border-radius:2px;
+                color: #fff;
+                text-align: center;
+                line-height: 50px;
+                height: 50px;
+                cursor: pointer;
+            }
+        }
     }
 }
 /*scrollbar style*/
@@ -205,6 +254,10 @@ ul li{
         width: 227px;
     }
     .register-form{
+        height:416px;
+        width:420px;
+        margin-left: auto;
+        margin-right: auto;
         padding:15px 33px;
         background:#e3e3e3;
         border-radius:10px;
@@ -246,7 +299,7 @@ ul li{
             border:0px;
         }
         .register-confirmpassword{
-            margin-bottom:7px;
+            margin-bottom:37px;
             height:44px;
             border:0px;
         }
@@ -922,9 +975,26 @@ ul li{
             }
         }
         .activity-content-delete{
+            height:494px;
             width:176px;
+            position:relative;
             margin-top:16px;
             margin-left:19px;
+            border:4px dashed #fff;
+            background:#eeeeee;
+            .activity-content-deleteicon{
+                position:absolute;
+                left:45%;
+                top:120px;
+                z-index:2;
+            }
+            .activity-content-deleteintro{
+                text-align:center;
+                position:absolute;
+                left:0%;
+                top:160px;
+                z-index:2;
+            }
         }
     }
 }

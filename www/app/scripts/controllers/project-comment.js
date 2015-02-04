@@ -7,17 +7,10 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectCommentCtrl', function ($scope,$http,$location,$routeParams) {
+ .controller('ProjectCommentCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.activeProjectUuid = $routeParams.uuid;
-    $scope.setHeight = function(){
-        $scope.siderbarContainer = $(window).height() - 64;
-        $scope.siderbarExpand = $(window).height() - 442;
-        $scope.projectCommentBody = $(window).height() - 176;
-        
-        $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
-        $(".siderbar-closed-container-expand").css('padding-top',$scope.siderbarExpand);
-        $(".projectComment-content-body").css('height',$scope.projectCommentBody);
-    };
+    $scope.projectCommentBody = $(window).height() - 176;
+    $(".projectComment-content-body").css('height',$scope.projectCommentBody);
     
     $scope.init = function(){
         $http({
