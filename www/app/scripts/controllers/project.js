@@ -143,6 +143,14 @@ angular.module('conojoApp')
             $('#deleteproject').modal('hide');
         });
     };
+    
+     $( "#sortable" ).sortable({
+         revert: true,
+         stop:function() {
+             //reorder the project endpoint
+          }
+     });
+     $( "#sortable" ).disableSelection();
    
    $scope.init();
 });

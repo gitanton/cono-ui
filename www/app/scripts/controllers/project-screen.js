@@ -49,7 +49,7 @@ angular.module('conojoApp')
         clickable: false,
         init:function(){
             $(this).on('success',function(){
-                $scope.init();
+                alert('success');
             });
         }
     });
@@ -133,7 +133,7 @@ angular.module('conojoApp')
     });
     
     $scope.toBuildNewScreen = function(){
-        var url = '/project-newscreen-build/'+$scope.activeProjectUuid;
+        var url = '/project-build/'+$scope.activeProjectUuid+'/new';
         $location.path(url);
     }
     

@@ -10,9 +10,7 @@ angular.module('conojoApp')
  .controller('ProjectScreenVideoCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.activeProjectUuid = $routeParams.uuid;
     $scope.projectScreenVideoBody = $(window).height() - 176;
-    $scope.projectScreenDropcontainer = $(window).height() - 212;
     $(".projectScreenVideo-content-body").css('height',$scope.projectScreenVideoBody);
-    $(".projectScreenVideo-content-upload").css('height',$scope.projectScreenDropcontainer);
     
     $scope.init = function(){
         $http({
@@ -46,12 +44,12 @@ angular.module('conojoApp')
         url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
         paramName: "file", // The name that will be used to transfer the file
         maxFilesize: 10,
-        clickable: false
-//        init:function(){
-//            $(this).on('success',function(){
-//                $scope.init();
-//            });
-//        }
+        clickable: false,
+        init: function(){
+            $(this).on('success',function(){
+                alert('success');
+            });
+        }
     });
     
     $scope.openUpdateProject = function(){

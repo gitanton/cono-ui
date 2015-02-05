@@ -97,7 +97,7 @@ angular.module('conojoApp')
     });
     
     $scope.toBuildNewScreen = function(){
-        var url = '/project-newscreen-build/'+$scope.activeProjectUuid;
+        var url = '/project-build/'+$scope.activeProjectUuid+'/new';
         $location.path(url);
     }
 

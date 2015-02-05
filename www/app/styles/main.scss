@@ -94,6 +94,23 @@ ul li{
     position:absolute;
     z-index:2;
     left:0px;
+    .siderbar-expand-profileContainer{
+        background:#323232;
+        position:absolute;
+        top:0px;width:205px;
+        height:160px;
+        opacity:0.5;
+        padding:50px 20px;
+        .siderbar-expand-profileView{
+            border:1px solid #fff;
+            border-radius:2px;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+    }
     .siderbar-expand-img{
         width:205px;
         height:160px;
@@ -113,23 +130,6 @@ ul li{
         bottom: 0px;
         padding-bottom: 20px;
         padding-left:150px;
-        .siderbar-expand-profileContainer{
-            background:#323232;
-            position:absolute;
-            top:0px;width:205px;
-            height:160px;
-            opacity:0.5;
-            padding:50px 20px;
-            .siderbar-expand-profileView{
-                border:1px solid #fff;
-                border-radius:2px;
-                color: #fff;
-                text-align: center;
-                line-height: 50px;
-                height: 50px;
-                cursor: pointer;
-            }
-        }
     }
 }
 /*scrollbar style*/
@@ -1470,6 +1470,18 @@ ul li{
         .projectBuild-content-body{
             background-image:url('/images/project-build-bg.jpg');
             position:relative;
+            overflow-y: auto;
+            .projectBuild-content-upload{
+                text-align:center;
+                width:636px;
+                border:3px dashed #fff;
+                background:#dfdfdf;
+                height:180px;
+                margin-top:100px;
+                margin-left:auto;
+                margin-right:auto;
+                opacity: 0.7;
+            }
             .projectBuild-content-drawing{
                 width:1000px;
                 margin-left:auto;
@@ -2991,7 +3003,7 @@ ul li{
         .templates-header-button{
             border:1px solid #0378ae;
             border-radius:2px;
-            width: 155px;
+            width: 160px;
             height: 40px;
             padding:10px;
             color:#0378ae;

@@ -30,11 +30,18 @@
                 </div>
             </div>
             <div class="projectBuild-content-body">
-                <div class="projectBuild-content-drawing">
+                <form ng-show="showNew" id="screenupload-new" enctype="multipart/form-data" class="projectBuild-content-upload dropzone">
+                    <input type="hidden" name="project_uuid" value="{{activeProjectUuid}}">
+                    <div class="dz-message">
+                        <p>Upload Video File</p>
+                        <p>Drag & Drop your files</p>
+                    </div>
+                </form>
+                <div class="projectBuild-content-drawing" ng-hide="showNew">
                     <canvas id="drawing-b" width="1000px" height="423px"></canvas>
                     <canvas id="drawing-f" width="1000px" height="423px"></canvas>
                 </div>
-                <div class="projectBuild-content-tools">
+                <div class="projectBuild-content-tools" ng-hide="showNew">
                     <ul>
                         <li class="projectBuild-content-tools-li"><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>
                         <li class="projectBuild-content-tools-li"><img src="images/hotspots-blue-icon.png" ng-click="openHotspots()"></li>
@@ -43,8 +50,7 @@
                         <li class="projectBuild-content-tools-shape"><img src="images/shape-black-icon.png" ng-click="openDrawing('shape',$event)"></li>
                     </ul>
                 </div>
-                <div class="projectBuild-content-addScreens"><img  src="images/addScreen-icon.png" ng-click="openUploadScreen()">Add Screens</div>
-                <div class="projectBuild-content-brush">
+                <div class="projectBuild-content-brush" ng-hide="showNew">
                     <div class="projectBuild-content-brushTitle col-lg-12">BRUSH TOOL</div>
                     <div class="projectBuild-content-brushContent col-lg-12">
                         <div class="projectBuild-content-brushColorLeft col-lg-8">
@@ -73,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="projectBuild-content-eraser">
+                <div class="projectBuild-content-eraser" ng-hide="showNew">
                     <div class="projectBuild-content-eraserTitle col-lg-12">ERASER  TOOL</div>
                     <div class="projectBuild-content-eraserContent col-lg-12">
                         <div class="col-lg-4"><img  src="images/8px-icon.png" ng-click="setEraserWidth(8)">8px</div>
@@ -81,7 +87,7 @@
                         <div class="col-lg-4"><img  src="images/30px-icon.png" ng-click="setEraserWidth(30)">30px</div>
                     </div>
                 </div>
-                <div class="projectBuild-content-shape">
+                <div class="projectBuild-content-shape" ng-hide="showNew">
                     <div class="projectBuild-content-shapeTitle col-lg-12">SHAPE TOOL</div>
                     <div class="projectBuild-content-shapeContent">
                         <div class="projectBuild-content-shapeLeft col-lg-6">

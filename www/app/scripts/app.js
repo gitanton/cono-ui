@@ -51,10 +51,6 @@ angular
         templateUrl: 'views/project-build.html',
         controller: 'ProjectBuildCtrl'
       })
-      .when('/project-newscreen-build/:puuid', {
-        templateUrl: 'views/project-newscreen-build.html',
-        controller: 'ProjectNewScreenBuildCtrl'
-      })
       .when('/project-screen/:uuid', {
         templateUrl: 'views/project-screen.html',
         controller: 'ProjectScreenCtrl'
@@ -95,7 +91,7 @@ angular
         templateUrl: 'views/templates.html',
         controller: 'templatesCtrl'
      })
-      .when('/project-screen-video/:uuid', {
+      .when('/project-screen-video', {
         templateUrl: 'views/project-screen-video.html',
         controller: 'ProjectScreenVideoCtrl'
       })

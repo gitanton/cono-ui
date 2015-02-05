@@ -12,7 +12,7 @@
                 <button class="btn btn-lg" ng-click="newProject()">Create New Project</button>
             </div>
         </div>
-        <div class="project-content">
+        <div class="project-content" id="sortable">
             <div class="col-lg-4 project-content-offset" ng-repeat="project in projects">
                 <div class="col-lg-10 project-content-name">{{project.name}}</div>
                 <div class="col-lg-2 project-content-gear" ng-class="showBackground(project.is_open)">
