@@ -129,16 +129,15 @@ angular.module('conojoApp')
         });
     };
     
-    $("#screenupload-new").dropzone({
+    var myDropzone = new Dropzone("#screenupload-new",{
         url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
         paramName: "file", // The name that will be used to transfer the file
         maxFilesize: 5,
-        clickable: false,
-        init:function(){
-            $(this).on('success',function(){
-                alert('success');
-            });
-        }
+        clickable: false
+    });
+    myDropzone.on("success", function(file,serverCallBack) {
+        var url = '/project-build/'+$scope.activeProjectUuid+'/'+serverCallBack.uuid;
+        $location.path(url);
     });
     
     $scope.openNewMeeting = function(){

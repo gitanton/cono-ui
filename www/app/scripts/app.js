@@ -91,9 +91,13 @@ angular
         templateUrl: 'views/templates.html',
         controller: 'templatesCtrl'
      })
-      .when('/project-screen-video', {
+      .when('/project-screen-video/:uuid', {
         templateUrl: 'views/project-screen-video.html',
         controller: 'ProjectScreenVideoCtrl'
+      })
+      .when('/project-screen-videoPlay', {
+        templateUrl: 'views/project-screen-videoPlay.html',
+        controller: 'ProjectScreenVideoPlayCtrl'
       })
       .when('/project-activity-video', {
         templateUrl: 'views/project-activity-video.html',

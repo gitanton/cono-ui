@@ -42,16 +42,14 @@ angular.module('conojoApp')
         });
     };
     
-    $("#screenupload").dropzone({
+    var myDropzone = new Dropzone("#screenupload",{
         url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
         paramName: "file", // The name that will be used to transfer the file
         maxFilesize: 5,
-        clickable: false,
-        init:function(){
-            $(this).on('success',function(){
-                alert('success');
-            });
-        }
+        clickable: false
+    });
+    myDropzone.on("success", function() {
+        $scope.init();
     });
     
     $scope.openUpdateProject = function(){

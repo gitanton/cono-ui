@@ -40,16 +40,15 @@ angular.module('conojoApp')
         });
     };
     
-    $("#videoupload").dropzone({
+    var myDropzone = new Dropzone("#videoupload",{
         url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
         paramName: "file", // The name that will be used to transfer the file
-        maxFilesize: 10,
-        clickable: false,
-        init: function(){
-            $(this).on('success',function(){
-                alert('success');
-            });
-        }
+        maxFilesize: 5,
+        clickable: false
+    });
+    myDropzone.on("success", function(file,serverCallBack) {
+        var url = '/project-screen-video/'+serverCallBack.uuid;
+        $location.path(url);
     });
     
     $scope.openUpdateProject = function(){
@@ -79,22 +78,6 @@ angular.module('conojoApp')
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
             $('#addPeopleToProject').modal('hide');
-        });
-    };
-    
-    $scope.openUploadScreen = function(){
-        $('#addProjectScreen').modal('toggle');
-    };
-    
-    $scope.addUploadScreen = function(){
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
-            method: 'POST',
-            data: $.param({project_uuid:$scope.activeProjectUuid,url:$scope.screenUrl}),
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function() {
-            $scope.init();
-            $('#addProjectScreen').modal('hide');
         });
     };
     
