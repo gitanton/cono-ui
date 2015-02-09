@@ -28,9 +28,20 @@
                 </div>
             </div>
             <div class="projectScreenVideo-content-body">
-                <video controls id="videoBody" style="width:100%">
-                    <source src="images/bl.mp4" type="video/mp4" />
-                </video>
+                <div class="projectScreenVideo-content-video">
+                    <video id="videoBody">
+                        <source src="images/123.mp4" type="video/mp4" />
+                    </video>
+                    <div class="video-player-processBar">
+                        <span class="bufferBar"></span>
+                        <span class="timeBar"></span>
+                    </div>
+                    <div class="video-player-processBtn">
+                        <div class="btnPrev btn" title="Prev"></div>
+                        <div class="btnPlay btn" title="Play/Pause video"></div>
+                        <div class="btnNext btn" title="Next"></div>
+                    </div>
+                </div>
                 <div class="projectScreenVideo-content-tools">
                     <ul>
                         <li class="projectScreenVideo-content-tools-li"><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>

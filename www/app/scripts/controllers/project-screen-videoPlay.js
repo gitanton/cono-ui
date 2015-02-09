@@ -12,7 +12,42 @@ angular.module('conojoApp')
     $scope.projectScreenVideoBody = $(window).height() - 176;
     $scope.videoHeight = $(window).height() - 235;
     $(".projectScreenVideo-content-body").css('height',$scope.projectScreenVideoBody);
-    $("#videoBody").css('height',$scope.videoHeight);
+    $(".projectScreenVideo-content-video").css('height',$scope.videoHeight);
+    
+    //CONTROLS EVENTS
+    //video screen and play button clicked
+    var video = $('#videoBody');
+    console.log(video);
+    $('.btnPlay').on('click', function() {
+        if(video[0].paused || video[0].ended) {
+            $('.btnPlay').addClass("paused");
+            video[0].play();
+        }
+        else {
+            $('.btnPlay').removeClass("paused");
+            video[0].pause();
+        }
+    });
+    
+    //video prev event
+    $('.btnPrev').on('click', function() {
+        var now = video[0].currentTime - 10;
+        video[0].currentTime = now;
+    });
+    
+    //video next event
+    $('.btnNext').on('click', function() {
+        var now = video[0].currentTime + 10;
+        video[0].currentTime = now;
+    });
+    
+    //display current video play time
+    video.on('timeupdate', function() {
+        var currentPos = video[0].currentTime;
+        var maxduration = video[0].duration;
+        var perc = 100 * currentPos / maxduration;
+        $('.timeBar').css('width',perc+'%');	
+    });
     
     $scope.init = function(){
         $http({

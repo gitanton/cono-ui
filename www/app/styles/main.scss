@@ -3112,6 +3112,75 @@ ul li{
             overflow-y:auto;
             position:relative;
             background-image:url('/images/project-build-bg.jpg');
+            .projectScreenVideo-content-video{
+                video{
+                    width:100%;
+                    height:100%;
+                }
+                .video-player-processBar{
+                    position: absolute;
+                    bottom: 58px;
+                    width:100%;
+                    height:6px;
+                    cursor:pointer;
+                    background: #fff;
+                    border-radius:6px;
+                    border-bottom:1px solid #e6e6e6;
+                    span {
+                        height:100%;
+                        position:absolute;
+                        top:0px;
+                        left:0px;
+                        display:block;
+                        border-radius:6px;
+                    }
+                    .timeBar{
+                        z-index:10;
+                        width:0;
+                        background: #3FB7FC;
+                    }
+                    .bufferBar{
+                        z-index:5;
+                        width:100%;
+                        background: #fff;
+                    }
+                }
+                .video-player-processBtn{
+                    width:220px;
+                    position:absolute;
+                    left:45%;
+                    bottom:45%;
+                    .btnPrev{
+                        cursor:pointer;
+                        margin-right:20px;
+                        width:32px;
+                        height:27px;
+                        padding:0px;
+                        background:url(/images/prev-icon.png) no-repeat 0 0;
+                    }
+                    .btnPlay{
+                        cursor:pointer;
+                        width:107px;
+                        height:107px;
+                        padding:0px;
+                        background:url(/images/play-icon.png) no-repeat 0 0;
+                    }
+                    .paused{
+                        width:107px;
+                        height:107px;
+                        padding:0px;
+                        background:url(/images/stop-icon.png) no-repeat 0 0;
+                    }
+                    .btnNext{
+                        cursor:pointer;
+                        margin-left:20px;
+                        width:32px;
+                        height:27px;
+                        padding:0px;
+                        background:url(/images/next-icon.png) no-repeat 0 0;
+                    }
+                }
+            }
             .projectScreenVideo-content-upload{
                 text-align:center;
                 width:636px;
