@@ -3126,23 +3126,32 @@ ul li{
                     background: #fff;
                     border-radius:6px;
                     border-bottom:1px solid #e6e6e6;
-                    span {
+                    padding:0px 3px;
+                    .timeBar{
+                        z-index:9;
+                        width:0;
+                        height:6px;
+                        background: #3FB7FC;
+                        position: relative;
+                        .barIcon{
+                            background: url("/images/bar-icon.png") no-repeat 0 0;
+                            width: 19px;
+                            height: 19px;
+                            position: absolute;
+                            top:-7px;
+                            right:-3px;
+                        }
+                    }
+                    .bufferBar{
+                        z-index:5;
+                        width:100%;
+                        background: #fff;
                         height:100%;
                         position:absolute;
                         top:0px;
                         left:0px;
                         display:block;
                         border-radius:6px;
-                    }
-                    .timeBar{
-                        z-index:10;
-                        width:0;
-                        background: #3FB7FC;
-                    }
-                    .bufferBar{
-                        z-index:5;
-                        width:100%;
-                        background: #fff;
                     }
                 }
                 .video-player-processBtn{
@@ -3179,6 +3188,37 @@ ul li{
                         padding:0px;
                         background:url(/images/next-icon.png) no-repeat 0 0;
                     }
+                }
+                .volume{
+                    position:absolute;
+                    cursor:pointer;
+                    width:152px;
+                    height:10px;
+                    right: 15px;
+                    bottom: 32px;
+                    background-color:#e6e6e6;
+                }
+                .volumeBar{
+                    display:block;
+                    height:100%;
+                    background-color:#55abd4;
+                    position: relative;
+                    .volumeBarIcon{
+                        background: url("/images/voiceBar-icon.png") no-repeat 0 0;
+                        width: 6px;
+                        height: 16px;
+                        position: absolute;
+                        top:-3px;
+                        right:-6px;
+                    }
+                }
+                .sound{
+                    background:url(/images/voice-icon.png) no-repeat 0 0;
+                    position: absolute;
+                    bottom: 30px;
+                    right: 170px;
+                    width: 20px;
+                    height: 15px;
                 }
             }
             .projectScreenVideo-content-upload{

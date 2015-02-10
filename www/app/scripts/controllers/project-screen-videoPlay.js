@@ -17,9 +17,8 @@ angular.module('conojoApp')
     //CONTROLS EVENTS
     //video screen and play button clicked
     var video = $('#videoBody');
-    console.log(video);
     $('.btnPlay').on('click', function() {
-        if(video[0].paused || video[0].ended) {
+        if(video[0].paused) {
             $('.btnPlay').addClass("paused");
             video[0].play();
         }
@@ -46,8 +45,105 @@ angular.module('conojoApp')
         var currentPos = video[0].currentTime;
         var maxduration = video[0].duration;
         var perc = 100 * currentPos / maxduration;
-        $('.timeBar').css('width',perc+'%');	
+        $('.timeBar').css('width',perc+'%');
     });
+    
+    //end the video
+    video.on('ended', function() {
+        $('.timeBar').css('width',0);
+        $('.btnPlay').removeClass("paused");
+    });
+    
+    //VIDEO PROGRESS BAR
+    //when video timebar clicked
+    var timeDrag = false;	/* check for drag event */
+    $('.video-player-processBar').on('mousedown', function(e) {
+        timeDrag = true;
+        updatebar(e.pageX);
+    });
+    $(document).on('mouseup', function(e) {
+        if(timeDrag) {
+                timeDrag = false;
+                updatebar(e.pageX);
+        }
+    });
+    $(document).on('mousemove', function(e) {
+        if(timeDrag) {
+                updatebar(e.pageX);
+        }
+    });
+    var updatebar = function(x) {
+        var progress = $('.video-player-processBar');
+
+        //calculate drag position
+        //and update video currenttime
+        //as well as progress bar
+        var maxduration = video[0].duration;
+        var position = x - progress.offset().left;
+        var percentage = 100 * position / progress.width();
+        if(percentage > 100) {
+                percentage = 100;
+        }
+        if(percentage < 0) {
+                percentage = 0;
+        }
+        $('.timeBar').css('width',percentage+'%');	
+        video[0].currentTime = maxduration * percentage / 100;
+    };
+    
+    //sound button clicked
+    $('.sound').click(function() {
+        if(video[0].muted) {
+                $('.volumeBar').css('width',0);
+        }
+        else{
+                $('.volumeBar').css('width', video[0].volume*100+'%');
+        }
+    });
+    
+    //VOLUME BAR
+    //volume bar event
+    var volumeDrag = false;
+    $('.volume').on('mousedown', function(e) {
+        volumeDrag = true;
+        video[0].muted = false;
+        updateVolume(e.pageX);
+    });
+    $(document).on('mouseup', function(e) {
+        if(volumeDrag) {
+                volumeDrag = false;
+                updateVolume(e.pageX);
+        }
+    });
+    $(document).on('mousemove', function(e) {
+        if(volumeDrag) {
+                updateVolume(e.pageX);
+        }
+    });
+    var updateVolume = function(x, vol) {
+        var volume = $('.volume');
+        var percentage;
+        //if only volume have specificed
+        //then direct update volume
+        if(vol) {
+                percentage = vol * 100;
+        }
+        else {
+                var position = x - volume.offset().left;
+                percentage = 100 * position / volume.width();
+        }
+
+        if(percentage > 100) {
+                percentage = 100;
+        }
+        if(percentage < 0) {
+                percentage = 0;
+        }
+
+        //update volume bar and video volume
+        $('.volumeBar').css('width',percentage+'%');	
+        video[0].volume = percentage / 100;
+    };
     
     $scope.init = function(){
         $http({

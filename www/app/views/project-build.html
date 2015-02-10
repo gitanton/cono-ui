@@ -16,7 +16,7 @@
                 <div class="projectBuild-content-nav col-lg-6">
                     <ul>
                         <li class="project-design-menu-current">Build</li>
-                        <li  ng-click="toScreen()">Screens</li>
+                        <li ng-click="toScreen()">Screens</li>
                         <li ng-click="toActivity()">ACTIVITY</li>
                         <li ng-click="toComment()">COMMENTS</li>
                         <li ng-click="openMessage(activeProjectUuid)">MESSAGES</li>
@@ -30,21 +30,27 @@
                 </div>
             </div>
             <div class="projectBuild-content-body">
-                <div class="projectBuild-content-drawing">
+                <form ng-show="showNew" id="screenupload_new" enctype="multipart/form-data" class="projectBuild-content-upload dropzone">
+                    <input type="hidden" name="project_uuid" value="{{activeProjectUuid}}">
+                    <div class="dz-message">
+                        <p>Upload Video File</p>
+                        <p>Drag & Drop your files</p>
+                    </div>
+                </form>
+                <div class="projectBuild-content-drawing" ng-hide="showNew">
                     <canvas id="drawing-b" width="1000px" height="423px"></canvas>
                     <canvas id="drawing-f" width="1000px" height="423px"></canvas>
                 </div>
-                <div class="projectBuild-content-tools">
+                <div class="projectBuild-content-tools" ng-hide="showNew">
                     <ul>
                         <li class="projectBuild-content-tools-li"><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>
                         <li class="projectBuild-content-tools-li"><img src="images/hotspots-blue-icon.png" ng-click="openHotspots()"></li>
-                        <li class="projectBuild-content-tools-brush"><img src="images/brush-black-icon.png" ng-click="openDrawing('brush',$event)"></li>
-                        <li class="projectBuild-content-tools-eraser"><img src="images/eraser-black-icon.png" ng-click="openDrawing('eraser',$event)"></li>
-                        <li class="projectBuild-content-tools-shape"><img src="images/shape-black-icon.png" ng-click="openDrawing('shape',$event)"></li>
+                        <li class="projectBuild-content-tools-brush"><img src="images/brush-black-icon.png" ng-click="openDrawing('brush', $event)"></li>
+                        <li class="projectBuild-content-tools-eraser"><img src="images/eraser-black-icon.png" ng-click="openDrawing('eraser', $event)"></li>
+                        <li class="projectBuild-content-tools-shape"><img src="images/shape-black-icon.png" ng-click="openDrawing('shape', $event)"></li>
                     </ul>
                 </div>
-                <div class="projectBuild-content-addScreens"><img  src="images/addScreen-icon.png" ng-click="openUploadScreen()">Add Screens</div>
-                <div class="projectBuild-content-brush" ng-hide="brushTool">
+                <div class="projectBuild-content-brush" ng-hide="showNew">
                     <div class="projectBuild-content-brushTitle col-lg-12">BRUSH TOOL</div>
                     <div class="projectBuild-content-brushContent col-lg-12">
                         <div class="projectBuild-content-brushColorLeft col-lg-8">
@@ -67,36 +73,36 @@
                             </ul>
                         </div>
                         <div class="projectBuild-content-brushBottom col-lg-12">
-                            <div class="col-lg-4"><img  src="images/8px-icon.png" ng-click="setBrushWidth(8)">8px</div>
-                            <div class="col-lg-4"><img  src="images/20px-icon.png" ng-click="setBrushWidth(20)">20px</div>
-                            <div class="col-lg-4"><img  src="images/30px-icon.png" ng-click="setBrushWidth(30)">30px</div>
+                            <div class="col-lg-4"><img src="images/8px-icon.png" ng-click="setBrushWidth(8)">8px</div>
+                            <div class="col-lg-4"><img src="images/20px-icon.png" ng-click="setBrushWidth(20)">20px</div>
+                            <div class="col-lg-4"><img src="images/30px-icon.png" ng-click="setBrushWidth(30)">30px</div>
                         </div>
                     </div>
                 </div>
-                <div class="projectBuild-content-eraser" ng-hide="eraserTool">
-                    <div class="projectBuild-content-eraserTitle col-lg-12">ERASER  TOOL</div>
+                <div class="projectBuild-content-eraser" ng-hide="showNew">
+                    <div class="projectBuild-content-eraserTitle col-lg-12">ERASER TOOL</div>
                     <div class="projectBuild-content-eraserContent col-lg-12">
-                        <div class="col-lg-4"><img  src="images/8px-icon.png" ng-click="setEraserWidth(8)">8px</div>
-                        <div class="col-lg-4"><img  src="images/20px-icon.png" ng-click="setEraserWidth(20)">20px</div>
-                        <div class="col-lg-4"><img  src="images/30px-icon.png" ng-click="setEraserWidth(30)">30px</div>
+                        <div class="col-lg-4"><img src="images/8px-icon.png" ng-click="setEraserWidth(8)">8px</div>
+                        <div class="col-lg-4"><img src="images/20px-icon.png" ng-click="setEraserWidth(20)">20px</div>
+                        <div class="col-lg-4"><img src="images/30px-icon.png" ng-click="setEraserWidth(30)">30px</div>
                     </div>
                 </div>
-                <div class="projectBuild-content-shape" ng-hide="shapeTool">
+                <div class="projectBuild-content-shape" ng-hide="showNew">
                     <div class="projectBuild-content-shapeTitle col-lg-12">SHAPE TOOL</div>
                     <div class="projectBuild-content-shapeContent">
                         <div class="projectBuild-content-shapeLeft col-lg-6">
                             <div class="projectBuild-content-shapeLeftT">
-                                <div class="col-lg-4"><img  src="images/square-icon.png" ng-click="drawSquare()"></div>
-                                <div class="col-lg-4"><img  src="images/triangle-icon.png" ng-click="drawTriangle()"></div>
-                                <div class="col-lg-4"><img  src="images/circle-icon.png" ng-click="drawCircle()"></div>
-                                <div class="col-lg-4"><img  src="images/talk-icon.png" ng-click="drawTalk()"></div>
-                                <div class="col-lg-4"><img  src="images/arrow-icon.png" ng-click="drawArrow()"></div>
-                                <div class="col-lg-4"><img  src="images/star-icon.png" ng-click="drawStar()"></div>
+                                <div class="col-lg-4"><img src="images/square-icon.png" ng-click="drawSquare()"></div>
+                                <div class="col-lg-4"><img src="images/triangle-icon.png" ng-click="drawTriangle()"></div>
+                                <div class="col-lg-4"><img src="images/circle-icon.png" ng-click="drawCircle()"></div>
+                                <div class="col-lg-4"><img src="images/talk-icon.png" ng-click="drawTalk()"></div>
+                                <div class="col-lg-4"><img src="images/arrow-icon.png" ng-click="drawArrow()"></div>
+                                <div class="col-lg-4"><img src="images/star-icon.png" ng-click="drawStar()"></div>
                             </div>
                             <div class="projectBuild-content-shapeLeftB">
-                                <div class="col-lg-4"><img  src="images/8px-icon.png" ng-click="setPenWidth(0)">8px</div>
-                                <div class="col-lg-4"><img  src="images/20px-icon.png" ng-click="setPenWidth(1)">20px</div>
-                                <div class="col-lg-4"><img  src="images/30px-icon.png" ng-click="setPenWidth(2)">30px</div>
+                                <div class="col-lg-4"><img src="images/8px-icon.png" ng-click="setPenWidth(0)">8px</div>
+                                <div class="col-lg-4"><img src="images/20px-icon.png" ng-click="setPenWidth(1)">20px</div>
+                                <div class="col-lg-4"><img src="images/30px-icon.png" ng-click="setPenWidth(2)">30px</div>
                             </div>
                         </div>
                         <div class="projectBuild-content-shapeRight col-lg-6">
@@ -137,16 +143,16 @@
         <form name="updateProject">
             <div class="col-lg-12 project-update-body">
                 <input type="text" name="projecttitle" ng-model="updateProjectTitle" class="form-control project-update-title" />
-                <select name="projecttype"  ng-model="updateProjectTypeid" class="form-control project-update-type">
+                <select name="projecttype" ng-model="updateProjectTypeid" class="form-control project-update-type">
                     <option value=0>Project Type</option>
                     <option value=1>UI/UX Project</option>
                     <option value=2>Video Project</option>
                     <option value=3>Business Template</option>
-                </select>	        
+                </select>
             </div>
             <div class="col-lg-12 project-update-button">
                 <button class="btn btn-lg project-update-buttoncancel" type="cancel" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-lg project-update-buttonsubmit" type="submit" ng-click='updateMyProject(activeProjectUuid)'>Save</button>        
+                <button class="btn btn-lg project-update-buttonsubmit" type="submit" ng-click='updateMyProject(activeProjectUuid)'>Save</button>
             </div>
         </form>
     </div>
@@ -172,7 +178,7 @@
                 </div>
             </div>
             <div class="col-lg-12 teammember-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People</button>       
+                <button class="btn btn-lg" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People</button>
             </div>
         </form>
     </div>
@@ -194,7 +200,7 @@
                 </div>
             </div>
             <div class="col-lg-12 teammember-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addUploadScreen()">Add Screens</button>       
+                <button class="btn btn-lg" type="submit" ng-click="addUploadScreen()">Add Screens</button>
             </div>
         </form>
     </div>
@@ -216,7 +222,7 @@
             </div>
             <div class="col-lg-12 hotspots-add-button">
                 <button class="btn btn-lg hotspots-buttoncancel" type="reset" ng-click="hideAddHotspots()">Cancel</button>
-                <button class="btn btn-lg hotspots-buttonsubmit" type="submit" ng-click="saveAddHotspots()">Save</button>  
+                <button class="btn btn-lg hotspots-buttonsubmit" type="submit" ng-click="saveAddHotspots()">Save</button>
             </div>
         </form>
     </div>
@@ -243,7 +249,7 @@
                 </div>
             </div>
             <div class="col-lg-12 newMeeting-add-button">
-                <button class="btn btn-lg" ng-click="addNewMeeting()">Create Meeting</button>       
+                <button class="btn btn-lg" ng-click="addNewMeeting()">Create Meeting</button>
             </div>
         </form>
     </div>
