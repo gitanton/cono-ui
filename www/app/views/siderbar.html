@@ -1,5 +1,5 @@
 <div class="siderbar-closed-container" ng-hide="expandMenuFlag">
-    <img class="siderbar-closed-img" src="images/Chan.png">
+    <img class="siderbar-closed-img" src="images/Chan.png" ng-click="goToProfile()">
     <div class="col-lg-12"><a href="#/project"><img src="images/project-icon.png"></a></div>
     <div class="col-lg-12"><a href="#/activity"><img src="images/activity-icon.png"></a></div>
     <div class="col-lg-12"><a href="#/team"><img src="images/team-icon.png"></a></div>
@@ -10,7 +10,7 @@
 </div>
 <div class="siderbar-expand-container" ng-show="expandMenuFlag">
     <div class="siderbar-expand-profileContainer">
-        <div class="siderbar-expand-profileView">View Profile</div>
+        <div class="siderbar-expand-profileView" ng-click="goToProfile()">View Profile</div>
     </div>
     <img class="siderbar-expand-img" src="images/Chan.png">
     <div class="col-lg-12"><a href="#/project"><img src="images/project-icon.png">Project</a></div>

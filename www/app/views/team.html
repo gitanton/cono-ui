@@ -6,12 +6,17 @@
             <div class="team-header-account col-lg-6"><span>Your Team</span></div>
         </div>
         <div class="team-content">
-            <div class="col-lg-4 team-content-offset" ng-repeat="team in teams">
-                <div class="col-lg-12 team-content-itemimg">
-                    <img src="images/Dawkins.png" class="img-circle" ng-click="userPage('{{team.uuid}}')">
-                </div>
-                <div class="col-lg-12 team-content-itemname">
-                    <span>R.Dawkins</span>
+            <div ng-repeat="team in teams">
+                <div class="col-lg-4 team-content-offset" ng-repeat="user in team.users" ng-mouseover="hoverIn($event)" ng-mouseout="hoverOut($event)">
+                    <div class="col-lg-12 team-content-itemimg">
+                        <img src="images/Dawkins.png" class="img-circle">
+                    </div>
+                    <div class="col-lg-12 team-content-itemname">
+                        <span>{{user.fullname}}</span>
+                    </div>
+                    <div class="team-content-permissions">
+                        <div class="team-content-permissionsEdit">Edit Permissions</div>
+                    </div>
                 </div>
             </div>
         </div>

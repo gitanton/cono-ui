@@ -12,7 +12,6 @@ angular.module('conojoApp')
     $scope.projecttitle = "";
     $scope.projectContent = $(window).height() - 128;
     $(".project-content").css('height',$scope.projectContent);
-    $(".projectBuild-content-tools").css('height',$scope.projectContent);
     
     $scope.init = function(){
         $http({
@@ -145,10 +144,11 @@ angular.module('conojoApp')
     };
     
      $( "#sortable" ).sortable({
-         revert: true,
-         stop:function() {
-             //reorder the project endpoint
-          }
+           revert: true,
+           handle:".project-content-move img",
+           stop:function() {
+               //reorder the project endpoint
+            }
      });
      $( "#sortable" ).disableSelection();
    

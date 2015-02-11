@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('commentCtrl', function ($scope,$http,currentUser) {
+  .controller('commentCtrl', function ($scope,$http,$location,currentUser) {
     $scope.expandMenuFlag = false;
     $scope.showCalendar = function(){
         $('#datetimepicker').datepicker({
@@ -52,6 +52,11 @@ angular.module('conojoApp')
         
         $(".siderbar-closed-container").css('height',$scope.siderbarContainer);
         $(".siderbar-expand-container").css('height',$scope.siderbarContainer);
+    };
+    
+    $scope.goToProfile = function(){
+        var url = '/profile-project';
+        $location.path(url);
     };
     
     $scope.init();

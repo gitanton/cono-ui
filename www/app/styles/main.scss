@@ -49,6 +49,7 @@ ul li{
 }
 .btn:focus,.btn:hover{
     color:#fff;
+    opacity: 0.5;
 }
 .blue-line{
     border-bottom:2px solid #4baedd;
@@ -86,6 +87,7 @@ ul li{
     .siderbar-closed-container-expand{
         position: absolute;
         bottom: 0px;
+        img{cursor:pointer;}
     }
 }
 .siderbar-expand-container{
@@ -130,6 +132,7 @@ ul li{
         bottom: 0px;
         padding-bottom: 20px;
         padding-left:150px;
+        img{cursor:pointer;}
     }
 }
 /*scrollbar style*/
@@ -619,11 +622,13 @@ ul li{
             background:url('/images/gear-icon.png') no-repeat;
             height:20px;
             display: block;
+            cursor: pointer;
         }
         .project-content-gear-a-selected{
             background:url('/images/gear-selected.png') no-repeat;
             height:20px;
             display: block;
+            cursor: pointer;
         }
         .project-content-gear-background{
             background:#707070;
@@ -740,6 +745,7 @@ ul li{
         text-align:center;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
+        cursor:pointer;
     }
     .project-duplicate-warning{
         text-align:center;
@@ -781,6 +787,7 @@ ul li{
         text-align:center;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
+        cursor:pointer;
     }
     .project-share-body{
         background:#e6e6e6;
@@ -859,6 +866,7 @@ ul li{
         text-align:center;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
+        cursor:pointer;
     }
     .project-archive-warning{
         text-align:center;
@@ -900,6 +908,7 @@ ul li{
         text-align:center;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
+        cursor:pointer;
     }
     .project-delete-warning{
         text-align:center;
@@ -1074,6 +1083,7 @@ ul li{
         text-align:center;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
+        cursor:pointer;
     }
     .newmessage-add-body{
         text-align:center;
@@ -1132,6 +1142,7 @@ ul li{
         text-align:center;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
+        cursor:pointer;
     }
     .replymessage-add-body{
         text-align:center;
@@ -1173,6 +1184,7 @@ ul li{
         text-align:center;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
+        cursor:pointer;
     }
     .message-delete-warning{
         text-align:center;
@@ -1244,6 +1256,25 @@ ul li{
     }
     .team-content-offset{
         margin-left:16px;
+        .team-content-permissions{
+            background:#323232;
+            position:absolute;
+            top:0px;
+            width:296px;
+            height:296px;
+            opacity:0.5;
+            padding:80px 50px;
+            display:none;
+            .team-content-permissionsEdit{
+                border:1px solid #fff;
+                border-radius:2px;
+                color: #fff;
+                text-align: center;
+                line-height: 50px;
+                height: 50px;
+                cursor: pointer;
+            }
+        }
     }
     .team-content-itemimg{
         text-align:center;
@@ -1280,6 +1311,7 @@ ul li{
         text-align:center;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
+        cursor:pointer;
     }
     .teammember-add-body{
         text-align:center;
@@ -1463,6 +1495,7 @@ ul li{
                         width:44px;
                         margin-right:10px;
                         float:right;
+                        .addMemberIcon{cursor:pointer}
                     }
                  }
             }
@@ -1675,7 +1708,6 @@ ul li{
         border-bottom:1px solid #e3e3e3;
     }
     .hotspots-add-delicon{
-        
         text-align:center;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
@@ -1761,6 +1793,7 @@ ul li{
                         width:44px;
                         margin-right:10px;
                         float:right;
+                        .addMemberIcon{cursor:pointer}
                     }
                  }
             }
@@ -1829,6 +1862,7 @@ ul li{
         text-align:center;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
+        cursor:pointer;
     }
     .teammember-add-body{
         text-align:center;
@@ -1925,6 +1959,7 @@ ul li{
                         width:44px;
                         margin-right:10px;
                         float:right;
+                        .addMemberIcon{cursor:pointer;}
                     }
                  }
             }
@@ -2173,6 +2208,7 @@ ul li{
         text-align:center;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
+        cursor:pointer;
     }
     .newMeeting-add-body{
         text-align:center;

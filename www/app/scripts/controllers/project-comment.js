@@ -9,7 +9,7 @@
 angular.module('conojoApp')
  .controller('ProjectCommentCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.activeProjectUuid = $routeParams.uuid;
-    $scope.projectCommentBody = $(window).height() - 176;
+    $scope.projectCommentBody = $(window).height() - 242;
     $(".projectComment-content-body").css('height',$scope.projectCommentBody);
     
     $scope.init = function(){
