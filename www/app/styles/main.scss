@@ -3196,14 +3196,17 @@ ul li{
                     left:45%;
                     bottom:45%;
                     .btnPrev{
+                        display:inline-block;
                         cursor:pointer;
                         margin-right:20px;
                         width:32px;
                         height:27px;
                         padding:0px;
                         background:url(/images/prev-icon.png) no-repeat 0 0;
+                        margin-bottom:40px;
                     }
                     .btnPlay{
+                        display:inline-block;
                         cursor:pointer;
                         width:107px;
                         height:107px;
@@ -3211,18 +3214,21 @@ ul li{
                         background:url(/images/play-icon.png) no-repeat 0 0;
                     }
                     .paused{
+                        display:inline-block;
                         width:107px;
                         height:107px;
                         padding:0px;
                         background:url(/images/stop-icon.png) no-repeat 0 0;
                     }
                     .btnNext{
+                        display:inline-block;
                         cursor:pointer;
                         margin-left:20px;
                         width:32px;
                         height:27px;
                         padding:0px;
                         background:url(/images/next-icon.png) no-repeat 0 0;
+                        margin-bottom:40px;
                     }
                 }
                 .volume{

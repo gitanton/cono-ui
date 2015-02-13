@@ -22,15 +22,11 @@ angular.module('conojoApp')
         });
     };
     
-    $scope.hoverIn = function(event){
-        console.log(event);
-        $(event.target).find(".team-content-permissions").show();
-    };
-    
-    $scope.hoverOut = function(event){
-        console.log(event);
-        $(event.target).find(".team-content-permissions").hide();
-    };
+    $(".team-content-offset").on('mouseover',function(){
+        $(this).find(".team-content-permissions").show();
+    }).on('mouseleave',function(){
+        $(this).find(".team-content-permissions").hide();
+    });
     
     $scope.init();
   });

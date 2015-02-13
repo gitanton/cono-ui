@@ -20,13 +20,6 @@ angular.module('conojoApp')
         }).success(function(data) {
              $scope.projects = data;
         });
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/users',
-            method: 'GET',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data) {
-             $scope.users = data;
-        });
     };
     
     $scope.openAddProjectMember = function(uuid){

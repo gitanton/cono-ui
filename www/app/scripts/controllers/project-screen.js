@@ -32,14 +32,6 @@ angular.module('conojoApp')
         }).success(function(data) {
             $scope.screens = data;
         });
-        
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/users',
-            method: 'GET',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data) {
-             $scope.users = data;
-        });
     };
     
     $("#screenupload").dropzone({
@@ -49,7 +41,7 @@ angular.module('conojoApp')
         clickable: false,
         init:function(){
             $(this).on('success',function(){
-                alert('success');
+                $scope.init();
             });
         }
     });

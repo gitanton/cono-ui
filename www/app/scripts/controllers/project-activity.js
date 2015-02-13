@@ -24,14 +24,6 @@ angular.module('conojoApp')
             $scope.updateProjectTitle = data.name;
             $scope.updateProjectTypeid = data.type_id;
         });
-        
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/users',
-            method: 'GET',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data) {
-             $scope.users = data;
-        });
     };
     
     $scope.openUpdateProject = function(){

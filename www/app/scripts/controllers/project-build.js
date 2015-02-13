@@ -56,14 +56,6 @@ angular.module('conojoApp')
             });   
         }
         
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/users',
-            method: 'GET',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data) {
-             $scope.users = data;
-        });
-        
         $('#pickerBrush').farbtastic(function(color){
             $scope.setPenColor(color);
         });
@@ -135,8 +127,9 @@ angular.module('conojoApp')
         maxFilesize: 5,
         clickable: false,
         init:function(){
-            $(this).on('success',function(){
-                alert('success');
+            $(this).on('success',function(file,serverCallBack){
+                var url = 'project-build/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
+                $location.path(url);
             });
         }
     });

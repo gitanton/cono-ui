@@ -30,27 +30,36 @@ angular.module('conojoApp')
         }).success(function(data) {
             $scope.screens = data;
         });
-        
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/users',
-            method: 'GET',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data) {
-             $scope.users = data;
-        });
     };
     
-    $("#videoupload").dropzone({
-        url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
+//    $("#videoupload").dropzone({
+//        url: 'http://conojoapp.scmreview.com/rest/videos/project/'+$scope.activeProjectUuid,
+//        paramName: "file", // The name that will be used to transfer the file
+//        maxFilesize: 10,
+//        clickable: false,
+//        init: function(){
+//            $(this).on('success',function(file,serverCallBack){
+//                var url = 'project-screen-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
+//                $location.path(url);
+//            });
+//        }
+//    });
+    
+    var videoUploadZone = new Dropzone("#videoupload",{
+        url: 'http://conojoapp.scmreview.com/rest/videos/project/'+$scope.activeProjectUuid,
         paramName: "file", // The name that will be used to transfer the file
         maxFilesize: 10,
-        clickable: false,
-        init: function(){
-            $(this).on('success',function(){
-                alert('success');
-            });
-        }
+        clickable: false
     });
+    
+    videoUploadZone.on("success",function(file,serverCallBack){
+        alert('success');
+        console.log(serverCallBack.uuid);
+        var url = 'project-screen-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
+//        $location.path(url);
+        console.log(url);
+    });
+    
     
     $scope.openUpdateProject = function(){
         $('#updateproject').modal('toggle');

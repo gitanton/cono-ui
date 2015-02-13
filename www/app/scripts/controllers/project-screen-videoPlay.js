@@ -8,11 +8,15 @@
  */
 angular.module('conojoApp')
  .controller('ProjectScreenVideoPlayCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
-    $scope.activeProjectUuid = $routeParams.uuid;
+    $scope.activeProjectUuid = $routeParams.puuid;
+    $scope.activeVideoProjectUuid = $routeParams.vuuid;
+    $scope.commentFlag = false;
+    $scope.showAddHotspots = false;
     $scope.projectScreenVideoBody = $(window).height() - 176;
     $scope.videoHeight = $(window).height() - 235;
     $(".projectScreenVideo-content-body").css('height',$scope.projectScreenVideoBody);
     $(".projectScreenVideo-content-video").css('height',$scope.videoHeight);
+//    $("#videoBody").css('margin-Left',($(window).width() - 832)/2);
     
     //CONTROLS EVENTS
     //video screen and play button clicked
@@ -157,19 +161,11 @@ angular.module('conojoApp')
         });
         
         $http({
-            url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
+            url: 'http://conojoapp.scmreview.com/rest/videos/video/'+$scope.activeVideoProjectUuid,
             method: 'GET',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data) {
             $scope.screens = data;
-        });
-        
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/users',
-            method: 'GET',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data) {
-             $scope.users = data;
         });
     };
     
@@ -243,6 +239,80 @@ angular.module('conojoApp')
     $scope.toComment = function(){
         var url = '/project-comment-video/';
         $location.path(url);
+    }
+    
+    var canvas = document.getElementById('videoDrawing');
+    var cxt = canvas.getContext('2d');
+    $scope.hotspotsList = [];
+    $scope.preFlag = false;
+    var rectX=0;
+    var rectY=0;
+    
+    $scope.openHotspots = function(){
+        cxt.strokeStyle = "rgba(250,246,162,0.7)";
+        cxt.fillStyle = "rgba(250,246,162,0.7)";
+        canvas.onmousedown=function(evt){
+            if($scope.preFlag){
+                cxt.clearRect(0,0,$('#videoBody').width(),$('#videoBody').height());
+                if($scope.hotspotsList.length > 1){
+                    var index = $scope.hotspotsList.length - 2;
+                    var image = new Image();
+                    image.src = $scope.hotspotsList[index][0];
+                    cxt.drawImage(image , 0 ,0);
+                }
+                $scope.hotspotsList.pop();
+            }
+            evt=window.event||evt;
+            rectX=evt.pageX-64;
+            rectY=evt.pageY-176;
+        }
+
+        canvas.onmouseup=function(evt){
+            evt=window.event||evt;
+            cxt.fillRect(rectX,rectY,25,25);
+            $scope.preFlag = true;
+            $scope.hotspotsList.push([canvas.toDataURL(),rectX,rectY,25,25]);
+            if(evt.pageX <= 400){
+                $('#addHotspots').css('left',evt.pageX + 35);
+                $('#addHotspots').css('top',evt.pageY);
+            }else{
+                $('#addHotspots').css('left',evt.pageX - 400);
+                $('#addHotspots').css('top',evt.pageY);
+            }
+            $scope.showAddHotspots = true;
+            $scope.$apply();
+        }
+        canvas.onmousemove=null;
+        canvas.onmouseout=null;
+    }
+    
+    $scope.saveAddHotspots = function(){
+        $scope.preFlag = false;
+        var imgDataArray = $scope.hotspotsList.slice(-1);
+        var screenData = {'imgData':imgDataArray[0][0],'bX':imgDataArray[0][1],'bY':imgDataArray[0][2],'eX':imgDataArray[0][3],'eY':imgDataArray[0][4],'link':$scope.hotspotsLinkTo};
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid+'/hotspots',
+            method: 'POST',
+            data: $.param({screen_uuid:$scope.activeScreenUuid,data:screenData}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+
+        });
+        //save to the Server successfully
+        $scope.showAddHotspots = false;
+    }
+    
+    $scope.hideAddHotspots = function(){
+        $scope.preFlag = false;
+        $scope.showAddHotspots = false;
+        cxt.clearRect(0,0,$('#videoBody').width(),$('#videoBody').height());
+        if($scope.hotspotsList.length > 1){
+            var index = $scope.hotspotsList.length - 2;
+            var image = new Image();
+            image.src = $scope.hotspotsList[index][0];
+            cxt.drawImage(image , 0 ,0);
+        }
+        $scope.hotspotsList.pop();
     }
     
     $scope.init();
