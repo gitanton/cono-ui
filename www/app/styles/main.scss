@@ -1740,6 +1740,41 @@ ul li{
         }
     }
 }
+#addComment{
+    position: absolute;
+    z-index: 999;
+    .comment-add{
+        width:390px;
+        height:342px;
+        border-radius:4px;
+        background:#e6e6e6;
+    }
+    .comment-add-desc{
+        text-align:left;
+        color:#0378ae;
+        padding:22px 40px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .comment-add-delicon{
+        text-align:center;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+        img{cursor:pointer;}
+    }
+    .comment-chat-content{
+        height:200px;
+        padding:15px;
+        overflow-y: auto;
+    }
+    .comment-chat-input{
+        height:77px;
+        padding:12px;
+        input{
+            width:372px;
+            height:47px;
+        }
+    }
+}
 
 /*project screen page*/
 .projectScreen-container{
@@ -3149,119 +3184,124 @@ ul li{
             position:relative;
             background-image:url('/images/project-build-bg.jpg');
             .projectScreenVideo-content-video{
+                text-align:center;
                 video{
-                    width:100%;
                     height:100%;
                 }
-                .video-player-processBar{
-                    position: absolute;
-                    bottom: 58px;
-                    width:100%;
+            }
+            .video-player-processBar{
+                position: absolute;
+                left:300px;
+                bottom: 30px;
+                width:735px;
+                height:6px;
+                cursor:pointer;
+                background: #fff;
+                border-radius:6px;
+                border-bottom:1px solid #e6e6e6;
+                .timeBar{
+                    z-index:9;
+                    width:0;
                     height:6px;
-                    cursor:pointer;
-                    background: #fff;
-                    border-radius:6px;
-                    border-bottom:1px solid #e6e6e6;
-                    padding:0px 3px;
-                    .timeBar{
-                        z-index:9;
-                        width:0;
-                        height:6px;
-                        background: #3FB7FC;
-                        position: relative;
-                        .barIcon{
-                            background: url("/images/bar-icon.png") no-repeat 0 0;
-                            width: 19px;
-                            height: 19px;
-                            position: absolute;
-                            top:-7px;
-                            right:-3px;
-                        }
-                    }
-                    .bufferBar{
-                        z-index:5;
-                        width:100%;
-                        background: #fff;
-                        height:100%;
-                        position:absolute;
-                        top:0px;
-                        left:0px;
-                        display:block;
-                        border-radius:6px;
-                    }
-                }
-                .video-player-processBtn{
-                    width:220px;
-                    position:absolute;
-                    left:45%;
-                    bottom:45%;
-                    .btnPrev{
-                        display:inline-block;
-                        cursor:pointer;
-                        margin-right:20px;
-                        width:32px;
-                        height:27px;
-                        padding:0px;
-                        background:url(/images/prev-icon.png) no-repeat 0 0;
-                        margin-bottom:40px;
-                    }
-                    .btnPlay{
-                        display:inline-block;
-                        cursor:pointer;
-                        width:107px;
-                        height:107px;
-                        padding:0px;
-                        background:url(/images/play-icon.png) no-repeat 0 0;
-                    }
-                    .paused{
-                        display:inline-block;
-                        width:107px;
-                        height:107px;
-                        padding:0px;
-                        background:url(/images/stop-icon.png) no-repeat 0 0;
-                    }
-                    .btnNext{
-                        display:inline-block;
-                        cursor:pointer;
-                        margin-left:20px;
-                        width:32px;
-                        height:27px;
-                        padding:0px;
-                        background:url(/images/next-icon.png) no-repeat 0 0;
-                        margin-bottom:40px;
-                    }
-                }
-                .volume{
-                    position:absolute;
-                    cursor:pointer;
-                    width:152px;
-                    height:10px;
-                    right: 15px;
-                    bottom: 32px;
-                    background-color:#e6e6e6;
-                }
-                .volumeBar{
-                    display:block;
-                    height:100%;
-                    background-color:#55abd4;
+                    background: #3FB7FC;
                     position: relative;
-                    .volumeBarIcon{
-                        background: url("/images/voiceBar-icon.png") no-repeat 0 0;
-                        width: 6px;
-                        height: 16px;
+                    .barIcon{
+                        background: url("/images/bar-icon.png") no-repeat 0 0;
+                        width: 19px;
+                        height: 19px;
                         position: absolute;
-                        top:-3px;
-                        right:-6px;
+                        top:-7px;
+                        right:-3px;
                     }
                 }
-                .sound{
-                    background:url(/images/voice-icon.png) no-repeat 0 0;
-                    position: absolute;
-                    bottom: 30px;
-                    right: 170px;
-                    width: 20px;
-                    height: 15px;
+                .bufferBar{
+                    z-index:5;
+                    width:100%;
+                    background: #fff;
+                    height:100%;
+                    position:absolute;
+                    top:0px;
+                    left:0px;
+                    display:block;
+                    border-radius:6px;
                 }
+            }
+            .video-player-processBtn{
+                width:145px;
+                position:absolute;
+                left:130px;
+                bottom:15px;
+                .btnPrev{
+                    display:inline-block;
+                    cursor:pointer;
+                    margin-right:20px;
+                    width:32px;
+                    height:27px;
+                    padding:0px;
+                    background:url(/images/prev-icon.png) no-repeat 0 0;
+                }
+                .btnPlay{
+                    display:inline-block;
+                    cursor:pointer;
+                    width:30px;
+                    height:30px;
+                    padding:0px;
+                    background:url(/images/play-icon.png) no-repeat 0 0;
+                }
+                .paused{
+                    display:inline-block;
+                    width:30px;
+                    height:30px;
+                    padding:0px;
+                    background:url(/images/stop-icon.png) no-repeat 0 0;
+                }
+                .btnNext{
+                    display:inline-block;
+                    cursor:pointer;
+                    margin-left:20px;
+                    width:32px;
+                    height:27px;
+                    padding:0px;
+                    background:url(/images/next-icon.png) no-repeat 0 0;
+                }
+            }
+            .volume{
+                position:absolute;
+                cursor:pointer;
+                width:150px;
+                height:10px;
+                left: 1070px;
+                bottom: 32px;
+                background-color:#e6e6e6;
+            }
+            .volumeBar{
+                display:block;
+                height:100%;
+                background-color:#55abd4;
+                position: relative;
+                .volumeBarIcon{
+                    background: url("/images/voiceBar-icon.png") no-repeat 0 0;
+                    width: 6px;
+                    height: 16px;
+                    position: absolute;
+                    top:-3px;
+                    right:-6px;
+                }
+            }
+            .sound{
+                background:url(/images/voice-icon.png) no-repeat 0 0;
+                position: absolute;
+                bottom: 30px;
+                left: 1050px;
+                width: 20px;
+                height: 15px;
+            }
+            .projectScreenVideo-content-videoDrawing{
+                width:100%;
+                position:absolute;
+                top:0px;
+                left:0px;
+                text-align:center;
             }
             .projectScreenVideo-content-upload{
                 text-align:center;
@@ -3275,9 +3315,7 @@ ul li{
                 opacity: 0.7;
             }
             .projectScreenVideo-content-tools{
-                position:absolute;
-                left:0px;
-                bottom:0px;
+                height:58px;
                 ul{
                     li{
                         text-align:center;

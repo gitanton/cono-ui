@@ -32,26 +32,30 @@
                     <video id="videoBody">
                         <source src="images/bl.compressed.mp4" type="video/mp4" />
                     </video>
-                    <canvas id="videoDrawing" width="768" height="432" style="position:absolute;top:0px;left:0px;cursor: crosshair;"></canvas>
-                    <div class="video-player-processBar">
-                        <span class="bufferBar"></span>
-                        <div class="timeBar"><span class="barIcon"></span></div>
-                    </div>
+                    <canvas id="videoDrawing" width="{{canvasWidth}}" height="{{canvasHeight}}" style="position:absolute;top:0px;left:0px;cursor: crosshair;"></canvas>
+                </div>
+                <div class="projectScreenVideo-content-tools">
+                    <ul>
+                        <li class="projectScreenVideo-content-tools-li"><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>
+                        <li class="projectScreenVideo-content-tools-li"><img src="images/hotspots-blue-icon.png" ng-click="openHotspots()"></li>
+                    </ul>
                     <div class="video-player-processBtn">
                         <div class="btnPrev" title="Prev"></div>
                         <div class="btnPlay" title="Play/Pause video"></div>
                         <div class="btnNext" title="Next"></div>
                     </div>
+                    <div class="video-player-processBar">
+                        <span class="bufferBar"></span>
+                        <div class="timeBar"><span class="barIcon"></span></div>
+                    </div>
                     <div class="volume" title="Set volume">
                         <div class="volumeBar"><span class="volumeBarIcon"></span></div>
                     </div>
                     <div class="sound sound2"></div>
-                </div>
-                <div class="projectScreenVideo-content-tools">
-                    <ul>
-                        <li class="projectScreenVideo-content-tools-li"><img src="images/comment-blue-icon.png" ng-click="openHotspots()"></li>
-                        <li class="projectScreenVideo-content-tools-li"><img src="images/hotspots-blue-icon.png"></li>
-                    </ul>
+                    <div style='position: absolute;cursor: pointer;left: 500px;bottom: 15px;border-color: #f6f064 transparent transparent transparent;border-style: solid;border-width: 15px;'></div>
+                    <div style='position: absolute;cursor: pointer;left: 520px;bottom: 15px;border-color: #f6f064 transparent transparent transparent;border-style: solid;border-width: 15px;'></div>
+                    <div style='position: absolute;cursor: pointer;left: 600px;bottom: 15px;border-color: #f6f064 transparent transparent transparent;border-style: solid;border-width: 15px;'></div>
+                    <div style='position: absolute;cursor: pointer;left: 650px;bottom: 15px;border-color: #f6f064 transparent transparent transparent;border-style: solid;border-width: 15px;'></div>
                 </div>
             </div>
         </div>
@@ -129,6 +133,67 @@
                 <button class="btn btn-lg" ng-click="addNewMeeting()">Create Meeting</button>       
             </div>
         </form>
+    </div>
+</div>
+<div id="addComment" ng-show="showComment">
+    <div class="comment-add">
+        <div class="col-lg-10 comment-add-desc">Mark as complete:</div>
+        <div class="col-lg-2 comment-add-delicon"><img src="images/close-icon.png" ng-click="hideComment()"></div>
+        <div class="comment-chat-content">
+            <div class="col-lg-12">
+                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
+                <div class="col-lg-9">
+                    <div class="col-lg-8">Charles Haggas</div>
+                    <div class="col-lg-4">10:21</div>
+                    <div class="col-lg-12">Did you hear the one about the rooster?</div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
+                <div class="col-lg-9">
+                    <div class="col-lg-8">Charles Haggas</div>
+                    <div class="col-lg-4">10:23</div>
+                    <div class="col-lg-12">Also,can you maek this pop more?</div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
+                <div class="col-lg-9">
+                    <div class="col-lg-8">Charles Haggas</div>
+                    <div class="col-lg-4">10:21</div>
+                    <div class="col-lg-12">Did you hear the one about the rooster?</div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
+                <div class="col-lg-9">
+                    <div class="col-lg-8">Charles Haggas</div>
+                    <div class="col-lg-4">10:21</div>
+                    <div class="col-lg-12">Also,can you maek this pop more?</div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
+                <div class="col-lg-9">
+                    <div class="col-lg-8">Charles Haggas</div>
+                    <div class="col-lg-4">10:21</div>
+                    <div class="col-lg-12">Also,can you maek this pop more?</div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
+                <div class="col-lg-9">
+                    <div class="col-lg-8">Charles Haggas</div>
+                    <div class="col-lg-4">10:21</div>
+                    <div class="col-lg-12">Also,can you maek this pop more?</div>
+                </div>
+            </div>
+        </div>
+        <div class="comment-chat-input">
+            <form>
+                <input type="text" name="comment-chat-content" ng-model="chatComment" ng-keyup="$event.keyCode == 13 && saveComment()" placeholder="Leave a comment...">
+            </form>
+        </div>
     </div>
 </div>
 <div id="addHotspots" ng-show="showAddHotspots">
