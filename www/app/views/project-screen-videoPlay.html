@@ -29,10 +29,8 @@
             </div>
             <div class="projectScreenVideo-content-body">
                 <div class="projectScreenVideo-content-video">
-                    <video id="videoBody">
-                        <source src="images/bl.compressed.mp4" type="video/mp4" />
-                    </video>
-                    <canvas id="videoDrawing" width="{{canvasWidth}}" height="{{canvasHeight}}" style="position:absolute;top:0px;left:0px;cursor: crosshair;"></canvas>
+                    <video id="videoBody"><source src="#" type="video/mp4" /></video>
+                    <canvas id="videoDrawing" style="position:absolute;top:0px;left:0px;cursor: crosshair;"></canvas>
                 </div>
                 <div class="projectScreenVideo-content-tools">
                     <ul>
@@ -47,15 +45,12 @@
                     <div class="video-player-processBar">
                         <span class="bufferBar"></span>
                         <div class="timeBar"><span class="barIcon"></span></div>
+                        <div class="arrow arrow-down" ng-repeat="videoComment in videoComments" style="{{videoComment.data.left}}"></div>
                     </div>
                     <div class="volume" title="Set volume">
                         <div class="volumeBar"><span class="volumeBarIcon"></span></div>
                     </div>
                     <div class="sound sound2"></div>
-                    <div style='position: absolute;cursor: pointer;left: 500px;bottom: 15px;border-color: #f6f064 transparent transparent transparent;border-style: solid;border-width: 15px;'></div>
-                    <div style='position: absolute;cursor: pointer;left: 520px;bottom: 15px;border-color: #f6f064 transparent transparent transparent;border-style: solid;border-width: 15px;'></div>
-                    <div style='position: absolute;cursor: pointer;left: 600px;bottom: 15px;border-color: #f6f064 transparent transparent transparent;border-style: solid;border-width: 15px;'></div>
-                    <div style='position: absolute;cursor: pointer;left: 650px;bottom: 15px;border-color: #f6f064 transparent transparent transparent;border-style: solid;border-width: 15px;'></div>
                 </div>
             </div>
         </div>
@@ -191,7 +186,7 @@
         </div>
         <div class="comment-chat-input">
             <form>
-                <input type="text" name="comment-chat-content" ng-model="chatComment" ng-keyup="$event.keyCode == 13 && saveComment()" placeholder="Leave a comment...">
+                <input type="text" name="comment-chat-content" ng-model="commentContent" ng-keyup="$event.keyCode == 13 && saveComment()" placeholder="Leave a comment...">
             </form>
         </div>
     </div>

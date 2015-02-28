@@ -47,7 +47,7 @@ angular
         templateUrl: 'views/userpage.html',
         controller: 'UserpageCtrl'
       })
-      .when('/project-build', {
+      .when('/project-build/:puuid/:suuid', {
         templateUrl: 'views/project-build.html',
         controller: 'ProjectBuildCtrl'
       })
@@ -95,7 +95,7 @@ angular
         templateUrl: 'views/project-screen-video.html',
         controller: 'ProjectScreenVideoCtrl'
       })
-      .when('/project-screen-videoPlay', {
+      .when('/project-screen-videoPlay/:puuid/:vuuid', {
         templateUrl: 'views/project-screen-videoPlay.html',
         controller: 'ProjectScreenVideoPlayCtrl'
       })

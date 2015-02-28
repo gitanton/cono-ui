@@ -71,8 +71,12 @@ angular.module('conojoApp')
         });
    };
    
-   $scope.projectScreen = function(uuid){
-        var url = '/project-screen/'+uuid;
+   $scope.projectScreen = function(uuid,type){
+       if(type == 1){
+           var url = '/project-screen/'+uuid;
+       }else if(type == 2){
+           var url = '/project-screen-video/'+uuid;
+       }
         $location.path(url);
     }
    

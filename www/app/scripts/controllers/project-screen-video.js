@@ -32,19 +32,6 @@ angular.module('conojoApp')
         });
     };
     
-//    $("#videoupload").dropzone({
-//        url: 'http://conojoapp.scmreview.com/rest/videos/project/'+$scope.activeProjectUuid,
-//        paramName: "file", // The name that will be used to transfer the file
-//        maxFilesize: 10,
-//        clickable: false,
-//        init: function(){
-//            $(this).on('success',function(file,serverCallBack){
-//                var url = 'project-screen-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
-//                $location.path(url);
-//            });
-//        }
-//    });
-    
     var videoUploadZone = new Dropzone("#videoupload",{
         url: 'http://conojoapp.scmreview.com/rest/videos/project/'+$scope.activeProjectUuid,
         paramName: "file", // The name that will be used to transfer the file
@@ -53,11 +40,9 @@ angular.module('conojoApp')
     });
     
     videoUploadZone.on("success",function(file,serverCallBack){
-        alert('success');
-        console.log(serverCallBack.uuid);
-        var url = 'project-screen-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
-//        $location.path(url);
-        console.log(url);
+        var url = '/project-screen-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
+        $location.path(url).replace();
+        $scope.$apply();
     });
     
     

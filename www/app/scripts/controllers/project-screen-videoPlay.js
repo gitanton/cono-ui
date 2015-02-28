@@ -12,16 +12,36 @@ angular.module('conojoApp')
             $scope.activeVideoProjectUuid = $routeParams.vuuid;
             $scope.showComment = false;
             $scope.showAddHotspots = false;
-            $scope.projectScreenVideoBody = $(window).height() - 176;
-            $scope.videoHeight = $(window).height() - 235;
-            $(".projectScreenVideo-content-body").css('height', $scope.projectScreenVideoBody);
+            $scope.videoHeight = $(window).height() - 234;
             $(".projectScreenVideo-content-video").css('height', $scope.videoHeight);
             $("#videoBody").on("loadedmetadata", function () {
                 $("#videoDrawing").css('margin-Left', ($(window).width() - $("#videoBody").width() - 64)/2);
-                $scope.canvasWidth = $("#videoBody").width();
-                $scope.canvasHeight = $("#videoBody").height();
+                $("#videoDrawing").attr('width',$("#videoBody").width());
+                $("#videoDrawing").attr('height',$("#videoBody").height());
             });
 
+            $scope.init = function () {
+                $http({
+                    url: 'http://conojoapp.scmreview.com/rest/projects/project/' + $scope.activeProjectUuid,
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }).success(function (data) {
+                    $scope.projectMembers = data.users;
+                    $scope.updateProjectTitle = data.name;
+                    $scope.updateProjectTypeid = data.type_id;
+                });
+//                $('#videoBody').attr("src", 'http://conojoapp.scmreview.com/rest/assets/uploads/videos/21764b8fe4e7176e1396c1b47552a126.mp4');
+                $http({
+                    url: 'http://conojoapp.scmreview.com/rest/videos/video/' + $scope.activeVideoProjectUuid,
+                    method: 'GET',                    
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }).success(function (data) {
+                        $('#videoBody').attr("src", data.url);
+                        $scope.videoComments = data.comments;
+                        $scope.videoHotspots = data.hotspots;
+                });
+            };
+           
             //CONTROLS EVENTS
             //video screen and play button clicked
             var video = $('#videoBody');
@@ -60,6 +80,12 @@ angular.module('conojoApp')
             video.on('ended', function () {
                 $('.timeBar').css('width', 0);
                 $('.btnPlay').removeClass("paused");
+            });
+            
+            //arrow the video
+            $('.arrow').on('mousedown', function (e) {
+                timeDrag = true;
+                updatebar(e.pageX);
             });
 
             //VIDEO PROGRESS BAR
@@ -151,26 +177,6 @@ angular.module('conojoApp')
                 //update volume bar and video volume
                 $('.volumeBar').css('width', percentage + '%');
                 video[0].volume = percentage / 100;
-            };
-
-            $scope.init = function () {
-                $http({
-                    url: 'http://conojoapp.scmreview.com/rest/projects/project/' + $scope.activeProjectUuid,
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function (data) {
-                    $scope.projectMembers = data.users;
-                    $scope.updateProjectTitle = data.name;
-                    $scope.updateProjectTypeid = data.type_id;
-                });
-
-                $http({
-                    url: 'http://conojoapp.scmreview.com/rest/videos/video/' + $scope.activeVideoProjectUuid,
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function (data) {
-                    $scope.screens = data;
-                });
             };
 
             $scope.openUpdateProject = function () {
@@ -290,17 +296,14 @@ angular.module('conojoApp')
             $scope.saveComment = function () {
                 $scope.preFlagComment = false;
                 var imgDataArray = $scope.commentList.slice(-1);
-                var canvasData = {'imgData': imgDataArray[0][0], 'bX': imgDataArray[0][1], 'bY': imgDataArray[0][2], 'eX': 25, 'eY': 25};
+                var canvasData = {imgData: imgDataArray[0][0], bX: imgDataArray[0][1], bY: imgDataArray[0][2], eX: 25, eY: 25,left:100 * video[0].currentTime / video[0].duration+'%'};
                 $http({
                     url: 'http://conojoapp.scmreview.com/rest/videos/video/' + $scope.activeVideoProjectUuid + '/comments',
                     method: 'POST',
-                    data: $.param({video_uuid: $scope.activeVideoProjectUuid, content: chatComment, time:video[0].currentTime, data:canvasData}),
+                    data: $.param({video_uuid: $scope.activeVideoProjectUuid, content:$scope.commentContent, time:video[0].currentTime,data:canvasData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function () {
-                    var currentPos = video[0].currentTime;
-                    var maxduration = video[0].duration;
-                    var perc = 100 * currentPos / maxduration;
-                    $('.projectScreenVideo-content-tools').append("<div style='position: absolute;cursor: pointer;left: 500px;bottom: 32px;border-color: transparent transparent #f6f064;border-style: solid;border-width: 10px;'></div>");
+                    $scope.init();
                 });
                 //save to the Server successfully
                 $scope.showComment = false;
@@ -361,12 +364,12 @@ angular.module('conojoApp')
                 var imgDataArray = $scope.hotspotsList.slice(-1);
                 var screenData = {'imgData': imgDataArray[0][0], 'bX': imgDataArray[0][1], 'bY': imgDataArray[0][2], 'eX': imgDataArray[0][3], 'eY': imgDataArray[0][4], 'link': $scope.hotspotsLinkTo};
                 $http({
-                    url: 'http://conojoapp.scmreview.com/rest/screens/screen/' + $scope.activeScreenUuid + '/hotspots',
+                    url: 'http://conojoapp.scmreview.com/rest/videos/video/' + $scope.activeVideoProjectUuid + '/hotspots',
                     method: 'POST',
-                    data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
+                    data: $.param({video_uuid: $scope.activeVideoProjectUuid,time:video[0].currentTime,data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function () {
-
+                    $scope.init();
                 });
                 //save to the Server successfully
                 $scope.showAddHotspots = false;

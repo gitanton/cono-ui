@@ -3180,7 +3180,6 @@ ul li{
             }
         }
         .projectScreenVideo-content-body{
-            overflow-y:auto;
             position:relative;
             background-image:url('/images/project-build-bg.jpg');
             .projectScreenVideo-content-video{
@@ -3211,7 +3210,7 @@ ul li{
                         height: 19px;
                         position: absolute;
                         top:-7px;
-                        right:-3px;
+                        right:-18px;
                     }
                 }
                 .bufferBar{
@@ -3270,7 +3269,7 @@ ul li{
                 cursor:pointer;
                 width:150px;
                 height:10px;
-                left: 1070px;
+                left: 1080px;
                 bottom: 32px;
                 background-color:#e6e6e6;
             }
@@ -3292,9 +3291,38 @@ ul li{
                 background:url(/images/voice-icon.png) no-repeat 0 0;
                 position: absolute;
                 bottom: 30px;
-                left: 1050px;
+                left: 1060px;
                 width: 20px;
                 height: 15px;
+            }
+            .arrow {
+                width: 14px;
+                height: 25px;
+                cursor: pointer;
+                position: relative;
+                display: inline-block;
+                top: -20px;
+                z-index: 10;
+            }
+            .arrow:before, .arrow:after {
+                content: '';
+                border-color: transparent;
+                border-style: solid;
+                position: absolute;
+            }
+            .arrow-down:before {
+                border: none;
+                background-color: #f6f064;
+                height: 50%;
+                width: 100%;
+                top: 0;
+                left: 0;
+            }
+            .arrow-down:after {
+                left: 0;
+                top: 50%;
+                border-width: 7px 7px;
+                border-top-color: #f6f064;
             }
             .projectScreenVideo-content-videoDrawing{
                 width:100%;
@@ -3309,9 +3337,9 @@ ul li{
                 border:3px dashed #fff;
                 background:#dfdfdf;
                 height:180px;
-                margin-top:100px;
-                margin-left:auto;
-                margin-right:auto;
+                position: absolute;
+                top: 100px;
+                left: 30%;
                 opacity: 0.7;
             }
             .projectScreenVideo-content-tools{
