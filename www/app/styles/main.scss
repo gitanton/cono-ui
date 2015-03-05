@@ -1535,7 +1535,7 @@ ul li{
                 position:absolute;
                 left:0px;
                 bottom:0px;
-                ul{
+                .projectBuild-content-tools-ul{
                     li{
                         text-align:center;
                         width:58px;
@@ -1548,8 +1548,7 @@ ul li{
                         text-align:center;
                         width:58px;
                         height:58px;
-                        background: none repeat scroll 0 0 #f6f064;
-                        border: 1px solid #55abd4;
+                        background:#f6f064;
                         float:left;
                         padding:15px 0px;
                     }
@@ -2139,8 +2138,7 @@ ul li{
             text-align:center;
             width:58px;
             height:58px;
-            background: none repeat scroll 0 0 #f6f064;
-            border: 1px solid #55abd4;
+            background:#f6f064;
             float:left;
             padding:15px 0px;
         }
@@ -3187,12 +3185,16 @@ ul li{
                 video{
                     height:100%;
                 }
+                #videoDrawing{
+                    position:absolute;
+                    top:0px;
+                    left:0px;
+                    cursor: crosshair;
+                }
             }
             .video-player-processBar{
-                position: absolute;
-                left:300px;
-                bottom: 30px;
-                width:735px;
+                width:98%;
+                margin:0 auto;
                 height:6px;
                 cursor:pointer;
                 background: #fff;
@@ -3206,18 +3208,17 @@ ul li{
                     position: relative;
                     .barIcon{
                         background: url("/images/bar-icon.png") no-repeat 0 0;
-                        width: 19px;
-                        height: 19px;
+                        width: 14px;
+                        height: 14px;
                         position: absolute;
-                        top:-7px;
-                        right:-18px;
+                        top:-4px;
+                        right:-14px;
                     }
                 }
                 .bufferBar{
                     z-index:5;
                     width:100%;
                     background: #fff;
-                    height:100%;
                     position:absolute;
                     top:0px;
                     left:0px;
@@ -3225,32 +3226,46 @@ ul li{
                     border-radius:6px;
                 }
             }
+            .video-player-commentFlag{
+                margin: 0 auto;
+                width: 98%;
+                height:30px;
+                position: relative;
+                .arrow-down{
+                    background:url(/images/arrow-flag-icon.png) no-repeat 0 0;
+                    width:14px;
+                    height:25px;
+                    position: absolute;
+                    text-align: center;
+                    cursor: pointer;
+                }
+            }
             .video-player-processBtn{
                 width:145px;
                 position:absolute;
-                left:130px;
+                left:45%;
                 bottom:15px;
                 .btnPrev{
                     display:inline-block;
                     cursor:pointer;
                     margin-right:20px;
-                    width:32px;
-                    height:27px;
+                    width:24px;
+                    height:21px;
                     padding:0px;
                     background:url(/images/prev-icon.png) no-repeat 0 0;
                 }
                 .btnPlay{
                     display:inline-block;
                     cursor:pointer;
-                    width:30px;
-                    height:30px;
+                    width:20px;
+                    height:21px;
                     padding:0px;
                     background:url(/images/play-icon.png) no-repeat 0 0;
                 }
                 .paused{
                     display:inline-block;
-                    width:30px;
-                    height:30px;
+                    width:20px;
+                    height:21px;
                     padding:0px;
                     background:url(/images/stop-icon.png) no-repeat 0 0;
                 }
@@ -3258,8 +3273,8 @@ ul li{
                     display:inline-block;
                     cursor:pointer;
                     margin-left:20px;
-                    width:32px;
-                    height:27px;
+                    width:24px;
+                    height:21px;
                     padding:0px;
                     background:url(/images/next-icon.png) no-repeat 0 0;
                 }
@@ -3269,7 +3284,7 @@ ul li{
                 cursor:pointer;
                 width:150px;
                 height:10px;
-                left: 1080px;
+                left: 80%;
                 bottom: 32px;
                 background-color:#e6e6e6;
             }
@@ -3291,38 +3306,9 @@ ul li{
                 background:url(/images/voice-icon.png) no-repeat 0 0;
                 position: absolute;
                 bottom: 30px;
-                left: 1060px;
+                left: 78%;
                 width: 20px;
                 height: 15px;
-            }
-            .arrow {
-                width: 14px;
-                height: 25px;
-                cursor: pointer;
-                position: relative;
-                display: inline-block;
-                top: -20px;
-                z-index: 10;
-            }
-            .arrow:before, .arrow:after {
-                content: '';
-                border-color: transparent;
-                border-style: solid;
-                position: absolute;
-            }
-            .arrow-down:before {
-                border: none;
-                background-color: #f6f064;
-                height: 50%;
-                width: 100%;
-                top: 0;
-                left: 0;
-            }
-            .arrow-down:after {
-                left: 0;
-                top: 50%;
-                border-width: 7px 7px;
-                border-top-color: #f6f064;
             }
             .projectScreenVideo-content-videoDrawing{
                 width:100%;
@@ -3344,7 +3330,8 @@ ul li{
             }
             .projectScreenVideo-content-tools{
                 height:58px;
-                ul{
+                background: #fff;
+                .projectScreenVideo-content-tools-ul{
                     li{
                         text-align:center;
                         width:58px;
@@ -3357,10 +3344,134 @@ ul li{
                         text-align:center;
                         width:58px;
                         height:58px;
-                        background: none repeat scroll 0 0 #f6f064;
-                        border: 1px solid #55abd4;
+                        background:#f6f064;
                         float:left;
                         padding:15px 0px;
+                    }
+                }
+            }
+            .projectBuild-content-brush{
+                display:none;
+                width:360px;
+                position: absolute;
+                bottom:68px;
+                background: #464646;
+                color:#fff;
+                text-align:center;
+                .projectBuild-content-brushTitle{
+                    background:#1c85b6;
+                    height:20px;
+                    text-align:center;
+                    color:#fff;
+                }
+                .projectBuild-content-brushContent{
+                    height:295px;
+                    padding:10px 0px;
+                    .projectBuild-content-brushColorRight{
+                        padding: 20px 0px;
+                        ul{
+                            li{
+                                width:30px;
+                                height:30px;
+                            }
+                            .brushColor1{background:#fff;}
+                            .brushColor2{background:#959595;}
+                            .brushColor3{background:#555555;}
+                            .brushColor4{background:#252525;}
+                            .brushColor5{background:#000;}
+                            .brushColor6{background:#d26a9d;}
+                            .brushColor7{background:#a90c5a;}
+                            .brushColor8{background:#800039;}
+                            .brushColor9{background:#45001e;}
+                            .brushColor10{background:#250012;}
+                        }
+                    }
+                    .projectBuild-content-brushBottom{
+                        padding:10px 80px 0px;
+                    }
+                }
+            }
+            .projectBuild-content-eraser{
+                display:none;
+                width:210px;
+                position: absolute;
+                bottom:68px;
+                background: #464646;
+                color:#fff;
+                text-align:center;
+                left:80px;
+                .projectBuild-content-eraserTitle{
+                    background:#1c85b6;
+                    height:20px;
+                    text-align:center;
+                    color:#fff;
+                }
+                .projectBuild-content-eraserContent{
+                    height:90px;
+                    padding:10px 20px;
+                }
+            }
+            .projectBuild-content-shape{
+                display:none;
+                width:400px;
+                position: absolute;
+                bottom:68px;
+                background: #464646;
+                color:#fff;
+                text-align:center;
+                .projectBuild-content-shapeTitle{
+                    background:#1c85b6;
+                    height:20px;
+                    text-align:center;
+                    color:#fff;
+                }
+                .projectBuild-content-shapeContent{
+                    height:340px;
+                    .projectBuild-content-shapeLeft{
+                        padding:40px 0px 0px 10px;
+                        .col-lg-4{
+                            margin-bottom:20px;
+                        }
+                    }
+                    .projectBuild-content-shapeRight{
+                        .shapeColorContainer{
+                            ul{
+                                margin:5px 20px;
+                                height:30px;
+                                li{
+                                    width:30px;
+                                    height:30px;
+                                    float:left;
+                                }
+                                .shapeColor1{background:#fff;}
+                                .shapeColor2{background:#959595;}
+                                .shapeColor3{background:#555555;}
+                                .shapeColor4{background:#252525;}
+                                .shapeColor5{background:#000;}
+                                .shapeColor6{background:#d26a9d;}
+                                .shapeColor7{background:#a90c5a;}
+                                .shapeColor8{background:#800039;}
+                                .shapeColor9{background:#45001e;}
+                                .shapeColor10{background:#250012;}
+                            }
+                        }
+                        .shapeFillSwitch{
+                            text-align:center;
+                            width: 100px;
+                            height: 42px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            .shapeFillSwitchContainer{
+                                border:1px solid #fff;
+                            }
+                            .shapeFillItem{
+                                background:#fff;
+                                color:#000;
+                            }
+                            .shapeUnFillItem{
+                                color:#fff;
+                            }
+                        }
                     }
                 }
             }

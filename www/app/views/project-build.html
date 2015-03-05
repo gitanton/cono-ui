@@ -42,12 +42,15 @@
                     <canvas id="drawing-f" width="1000px" height="423px"></canvas>
                 </div>
                 <div class="projectBuild-content-tools" ng-hide="showNew">
-                    <ul>
-                        <li class="projectBuild-content-tools-li"><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>
-                        <li class="projectBuild-content-tools-li"><img src="images/hotspots-blue-icon.png" ng-click="openHotspots()"></li>
-                        <li class="projectBuild-content-tools-brush"><img src="images/brush-black-icon.png" ng-click="openDrawing('brush', $event)"></li>
-                        <li class="projectBuild-content-tools-eraser"><img src="images/eraser-black-icon.png" ng-click="openDrawing('eraser', $event)"></li>
-                        <li class="projectBuild-content-tools-shape"><img src="images/shape-black-icon.png" ng-click="openDrawing('shape', $event)"></li>
+                    <ul class="projectBuild-content-tools-ul">
+                        <li class="projectBuild-comment-blue" ng-show="showCommentBlue"><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>
+                        <li class="projectBuild-comment-black" ng-hide="showCommentBlue"><img src="images/comment-black-icon.png"></li>
+                        <li class="projectBuild-hotspots-blue" ng-show="showHotspotsBlue"><img src="images/hotspots-blue-icon.png" ng-click="openHotspots()"></li>
+                        <li class="projectBuild-hotspots-black" ng-hide="showHotspotsBlue"><img src="images/hotspots-black-icon.png"></li>
+                        <li class="projectBuild-brush-blue" ng-show="showBrushBlue"><img src="images/brush-blue-icon.png" ng-click="openTools()"></li>
+                        <li class="projectBuild-brush-black" ng-hide="showBrushBlue"><img src="images/brush-black-icon.png" ng-click="openDrawing('brush', $event)"></li>
+                        <li class="projectBuild-eraser" ng-show="showEraser"><img src="images/eraser-black-icon.png" ng-click="openDrawing('eraser', $event)"></li>
+                        <li class="projectBuild-shape" ng-show="showShape"><img src="images/shape-black-icon.png" ng-click="openDrawing('shape', $event)"></li>
                     </ul>
                 </div>
                 <div class="projectBuild-content-brush" ng-hide="showNew">
