@@ -1549,8 +1549,12 @@ ul li{
                         width:58px;
                         height:58px;
                         background:#f6f064;
+                        border: 1px solid #55abd4;
                         float:left;
                         padding:15px 0px;
+                    }
+                    .projectBuild-brush-black,.projectBuild-eraser,.projectBuild-shape{
+                        background:#f6f064;
                     }
                 }
             }
@@ -2139,6 +2143,7 @@ ul li{
             width:58px;
             height:58px;
             background:#f6f064;
+            border: 1px solid #55abd4;
             float:left;
             padding:15px 0px;
         }
@@ -3345,8 +3350,12 @@ ul li{
                         width:58px;
                         height:58px;
                         background:#f6f064;
+                        border: 1px solid #55abd4;
                         float:left;
                         padding:15px 0px;
+                    }
+                    .projectScreenVideo-brush-black,.projectScreenVideo-eraser,.projectScreenVideo-shape{
+                        background:#f6f064;
                     }
                 }
             }

@@ -234,19 +234,12 @@ angular.module('conojoApp')
         $scope.showEraser = true;
         $scope.showShape = true;
         $(".projectBuild-brush-black").siblings().removeClass("tools-li-selected");
-        $(".projectBuild-brush-black").addClass("tools-li-selected");
-        $(".projectBuild-content-brush").show();
-        $(".projectBuild-content-eraser").hide();
-        $(".projectBuild-content-shape").hide();
         $scope.setBrushWidth(8);
         cxt.strokeStyle = '#000';
         cxt.fillStyle = '#000';
     }
     
     $scope.openComment = function(){
-        $(".projectBuild-content-brush").hide();
-        $(".projectBuild-content-eraser").hide();
-        $(".projectBuild-content-shape").hide();
         $scope.showCommentBlue = false;
         $scope.showHotspotsBlue = true;
         $scope.showBrushBlue = true;
@@ -260,9 +253,6 @@ angular.module('conojoApp')
     $scope.preFlag = false;
     
     $scope.openHotspots = function(){
-        $(".projectBuild-content-brush").hide();
-        $(".projectBuild-content-eraser").hide();
-        $(".projectBuild-content-shape").hide();
         $scope.showCommentBlue = true;
         $scope.showHotspotsBlue = false;
         $scope.showBrushBlue = true;
@@ -337,59 +327,57 @@ angular.module('conojoApp')
     }
     
     $scope.openDrawing = function(type,event){
+        $scope.showCommentBlue = true;
+        $scope.showHotspotsBlue = true;
+        $scope.showBrushBlue = false;
+        $scope.showEraser = true;
+        $scope.showShape = true;
         if(type == 'brush'){
             $(".projectBuild-content-brush").show();
             $(".projectBuild-content-eraser").hide();
             $(".projectBuild-content-shape").hide();
-            $scope.showCommentBlue = true;
-            $scope.showHotspotsBlue = true;
-            $scope.showBrushBlue = false;
-            $scope.showEraser = true;
-            $scope.showShape = true;
             $(".projectBuild-brush-black").siblings().removeClass("tools-li-selected");
             $(".projectBuild-brush-black").addClass("tools-li-selected");
             $scope.setBrushWidth(8);
             cxt.strokeStyle = '#000';
             cxt.fillStyle = '#000';
+            $(".projectBuild-content-brush").on("click", function (){
+                event.stopPropagation();
+            });
+            $(document).on("click", function (){
+                $(".projectBuild-content-brush").hide();
+            });
         }else if(type == 'eraser'){
             $(".projectBuild-content-brush").hide();
             $(".projectBuild-content-eraser").show();
             $(".projectBuild-content-shape").hide();
-            $scope.showCommentBlue = true;
-            $scope.showHotspotsBlue = true;
-            $scope.showBrushBlue = false;
-            $scope.showEraser = true;
-            $scope.showShape = true;
             $(".projectBuild-eraser").siblings().removeClass("tools-li-selected");
             $(".projectBuild-eraser").addClass("tools-li-selected");
             $scope.setEraserWidth(8);
+            $(".projectBuild-content-eraser").on("click", function (){
+                event.stopPropagation();
+            });
+            $(document).on("click", function (){
+                $(".projectBuild-content-eraser").hide();
+            });
         }else if(type == 'shape'){
             $(".projectBuild-content-brush").hide();
             $(".projectBuild-content-eraser").hide();
             $(".projectBuild-content-shape").show();
-            $scope.showCommentBlue = true;
-            $scope.showHotspotsBlue = true;
-            $scope.showBrushBlue = false;
-            $scope.showEraser = true;
-            $scope.showShape = true;
             $(".projectBuild-shape").siblings().removeClass("tools-li-selected");
             $(".projectBuild-shape").addClass("tools-li-selected");
             $scope.setPenWidth(0);
             cxt.strokeStyle = '#000';
             cxt.fillStyle = '#000';
+            $(".projectBuild-content-shape").on("click", function (){
+                event.stopPropagation();
+            });
+            $(document).on("click", function (){
+                $(".projectBuild-content-shape").hide();
+            });
         }
         event.stopPropagation();
     }
-    
-//    $(document).on("click", function (){
-//        $(".projectBuild-content-brush").hide();
-//    });
-//    $(document).on("click", function (){
-//        $(".projectBuild-content-eraser").hide();
-//    });
-//    $(document).on("click", function (){
-//        $(".projectBuild-content-shape").hide();
-//    });
     
     $scope.shapeFillSwitch = function(type){
         if(type == 'on'){

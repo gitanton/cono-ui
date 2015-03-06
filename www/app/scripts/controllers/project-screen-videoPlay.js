@@ -42,7 +42,6 @@ angular.module('conojoApp')
                 }).success(function (data) {
                         $('#videoBody').attr("src", data.url);
                         $scope.videoComments = data.comments;
-                        $scope.videoHotspots = data.hotspots;
                 });
                 
                 $('#pickerBrush').farbtastic(function(color){
@@ -59,6 +58,10 @@ angular.module('conojoApp')
             var video = $('#videoBody');
             $('.btnPlay').on('click', function () {
                 if (video[0].paused) {
+                    cxt.clearRect(0, 0, $('#videoBody').width(), $('#videoBody').height());
+                    if($scope.showComment){
+                        $scope.hideComment();
+                    }
                     $('.btnPlay').addClass("paused");
                     video[0].play();
                 }
@@ -98,7 +101,7 @@ angular.module('conojoApp')
             $scope.goToComment = function(time,order){
                 video[0].currentTime = time;
                 var imageObj = new Image();
-                imageObj.src = 'data:image/png;base64,' + $scope.videoHotspots[order - 1].data;
+                imageObj.src = 'data:image/png;base64,' + $scope.videoComments[order - 1].data;
                 cxt.drawImage(imageObj,0,0,$("#videoBody").width(),$("#videoBody").height());  
                 $('.btnPlay').removeClass("paused");
                 video[0].pause();
@@ -302,9 +305,6 @@ angular.module('conojoApp')
             }
             
             $scope.openComment = function () {
-                $(".projectBuild-content-brush").hide();
-                $(".projectBuild-content-eraser").hide();
-                $(".projectBuild-content-shape").hide();
                 $scope.showCommentBlue = false;
                 $scope.showBrushBlue = true;
                 $scope.showEraser = false;
@@ -357,12 +357,10 @@ angular.module('conojoApp')
                 }).success(function (data) {
                     $('.video-player-commentFlag').append("<div class='arrow-down' style='left:"+100 * video[0].currentTime / video[0].duration+"%' ng-click='goToComment('"+video[0].currentTime+"')'>"+data.ordering+"</div>");
                 });
-                //save to the Server successfully
-                $scope.showComment = false;
             }
 
             $scope.hideComment = function () {
-                $scope.preFlag = false;
+                $scope.preFlagComment = false;
                 $scope.showComment = false;
                 cxt.clearRect(0, 0, $('#videoBody').width(), $('#videoBody').height());
                 if ($scope.commentList.length > 1) {
@@ -379,67 +377,67 @@ angular.module('conojoApp')
                 $scope.showBrushBlue = false;
                 $scope.showEraser = true;
                 $scope.showShape = true;
-                $(".projectScreenVideo-brush-black").siblings().removeClass("tools-li-selected");
-                $(".projectScreenVideo-brush-black").addClass("tools-li-selected");
-                $(".projectBuild-content-brush").show();
-                $(".projectBuild-content-eraser").hide();
-                $(".projectBuild-content-shape").hide();
+                $(".projectScreenVideo-comment-black").removeClass("tools-li-selected");
                 $scope.setBrushWidth(8);
                 cxt.strokeStyle = '#000';
                 cxt.fillStyle = '#000';
+                $('.btnPlay').removeClass("paused");
+                video[0].pause();
             }
 
             $scope.openDrawing = function(type,event){
+                $('.btnPlay').removeClass("paused");
+                video[0].pause();
+                $scope.showCommentBlue = true;
+                $scope.showBrushBlue = false;
+                $scope.showEraser = true;
+                $scope.showShape = true;
                 if(type == 'brush'){
                     $(".projectBuild-content-brush").show();
                     $(".projectBuild-content-eraser").hide();
                     $(".projectBuild-content-shape").hide();
-                    $scope.showCommentBlue = true;
-                    $scope.showBrushBlue = false;
-                    $scope.showEraser = true;
-                    $scope.showShape = true;
                     $(".projectScreenVideo-brush-black").siblings().removeClass("tools-li-selected");
                     $(".projectScreenVideo-brush-black").addClass("tools-li-selected");
                     $scope.setBrushWidth(8);
                     cxt.strokeStyle = '#000';
                     cxt.fillStyle = '#000';
+                    $(".projectBuild-content-brush").on("click", function (){
+                        event.stopPropagation();
+                    });
+                    $(document).on("click", function (){
+                        $(".projectBuild-content-brush").hide();
+                    });
                 }else if(type == 'eraser'){
                     $(".projectBuild-content-brush").hide();
                     $(".projectBuild-content-eraser").show();
                     $(".projectBuild-content-shape").hide();
-                    $scope.showCommentBlue = true;
-                    $scope.showBrushBlue = false;
-                    $scope.showEraser = true;
-                    $scope.showShape = true;
                     $(".projectScreenVideo-eraser").siblings().removeClass("tools-li-selected");
                     $(".projectScreenVideo-eraser").addClass("tools-li-selected");
                     $scope.setEraserWidth(8);
+                    $(".projectBuild-content-eraser").on("click", function (){
+                        event.stopPropagation();
+                    });
+                    $(document).on("click", function (){
+                        $(".projectBuild-content-eraser").hide();
+                    });
                 }else if(type == 'shape'){
                     $(".projectBuild-content-brush").hide();
                     $(".projectBuild-content-eraser").hide();
                     $(".projectBuild-content-shape").show();
-                    $scope.showCommentBlue = true;
-                    $scope.showBrushBlue = false;
-                    $scope.showEraser = true;
-                    $scope.showShape = true;
                     $(".projectScreenVideo-shape").siblings().removeClass("tools-li-selected");
                     $(".projectScreenVideo-shape").addClass("tools-li-selected");
                     $scope.setPenWidth(0);
                     cxt.strokeStyle = '#000';
                     cxt.fillStyle = '#000';
+                    $(".projectBuild-content-shape").on("click", function (){
+                        event.stopPropagation();
+                    });
+                    $(document).on("click", function (){
+                        $(".projectBuild-content-shape").hide();
+                    });
                 }
                 event.stopPropagation();
             }
-
-//            $(document).on("click", function (){
-//                $(".projectBuild-content-brush").hide();
-//            });
-//            $(document).on("click", function (){
-//                $(".projectBuild-content-eraser").hide();
-//            });
-//            $(document).on("click", function (){
-//                $(".projectBuild-content-shape").hide();
-//            });
 
             $scope.shapeFillSwitch = function(type){
                 if(type == 'on'){

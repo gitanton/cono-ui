@@ -41,12 +41,12 @@
                 </div>
                 <div class="projectScreenVideo-content-tools">
                     <ul class="projectScreenVideo-content-tools-ul">
-                        <li class="projectScreenVideo-comment-blue" ng-show="showCommentBlue"><img src="images/comment-blue-icon.png" ng-click="openComment()"></li>
+                        <li class="projectScreenVideo-comment-blue" ng-show="showCommentBlue" ng-click="openComment()"><img src="images/comment-blue-icon.png"></li>
                         <li class="projectScreenVideo-comment-black" ng-hide="showCommentBlue"><img src="images/comment-black-icon.png"></li>
-                        <li class="projectScreenVideo-brush-blue" ng-show="showBrushBlue"><img src="images/brush-blue-icon.png" ng-click="openTools()"></li>
-                        <li class="projectScreenVideo-brush-black" ng-hide="showBrushBlue"><img src="images/brush-black-icon.png" ng-click="openDrawing('brush', $event)"></li>
-                        <li class="projectScreenVideo-eraser" ng-show="showEraser"><img src="images/eraser-black-icon.png" ng-click="openDrawing('eraser', $event)"></li>
-                        <li class="projectScreenVideo-shape" ng-show="showShape"><img src="images/shape-black-icon.png" ng-click="openDrawing('shape', $event)"></li>
+                        <li class="projectScreenVideo-brush-blue" ng-show="showBrushBlue" ng-click="openTools()"><img src="images/brush-blue-icon.png"></li>
+                        <li class="projectScreenVideo-brush-black" ng-hide="showBrushBlue" ng-click="openDrawing('brush', $event)"><img src="images/brush-black-icon.png"></li>
+                        <li class="projectScreenVideo-eraser" ng-show="showEraser" ng-click="openDrawing('eraser', $event)"><img src="images/eraser-black-icon.png"></li>
+                        <li class="projectScreenVideo-shape" ng-show="showShape" ng-click="openDrawing('shape', $event)"><img src="images/shape-black-icon.png"></li>
                     </ul>
                     <div class="projectBuild-content-brush">
                         <div class="projectBuild-content-brushTitle col-lg-12">BRUSH TOOL</div>
@@ -278,27 +278,5 @@
                 <input type="text" name="comment-chat-content" ng-model="commentContent" ng-keyup="$event.keyCode == 13 && saveComment()" placeholder="Leave a comment...">
             </form>
         </div>
-    </div>
-</div>
-<div id="addHotspots" ng-show="showAddHotspots">
-    <div class="hotspots-add">
-        <div class="col-lg-10 hotspots-add-desc">Link To:</div>
-        <div class="col-lg-2 hotspots-add-delicon"><img src="images/close-icon.png" ng-click="hideAddHotspots()"></div>
-        <form name="createHotspots">
-            <div class="col-lg-12 hotspots-add-body">
-                <div class="form-group">
-                    <select name="hotspotsLinkTo" class="form-control hotspots-add-select" ng-model="hotspotsLinkTo">
-                        <option value=0>Select a destination</option>
-                        <option value=1>Project Screen A</option>
-                        <option value=2>Project Screen B</option>
-                        <option value=3>Project Screen C</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-12 hotspots-add-button">
-                <button class="btn btn-lg hotspots-buttoncancel" type="reset" ng-click="hideAddHotspots()">Cancel</button>
-                <button class="btn btn-lg hotspots-buttonsubmit" type="submit" ng-click="saveAddHotspots()">Save</button>
-            </div>
-        </form>
     </div>
 </div>
