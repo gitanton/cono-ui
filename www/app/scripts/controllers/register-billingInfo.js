@@ -11,8 +11,8 @@ angular.module('conojoApp')
   .controller('registerBillingCtrl', function ($scope,$http,$location) {
      $scope.loginPadding = ($(window).height() - 590)/2;
 
-    $(".register-logo").css('padding-top',$scope.loginPadding);
-    $(".profileBilling-content-billing-changrCard").css('margin-bottom',$scope.loginPadding);
+    $(".register-container").css('padding-top',$scope.loginPadding);
+    $(".register-container").css('padding-bottom',$scope.loginPadding);
     
     $scope.init = function(){
         $http({

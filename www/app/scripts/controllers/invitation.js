@@ -42,7 +42,7 @@ angular.module('conojoApp')
        $http({
             url: 'http://conojoapp.scmreview.com/rest/users',
             method: 'POST',
-            data: $.param({invite_key:$routeParams.invite,invite_type:$routeParams.type,fullname:$scope.registFormData.fullname,email:$scope.registFormData.email,timezone:$scope.timezone,username:$scope.registFormData.fullname,password:$scope.registFormData.password}),
+            data: $.param({invite_key:$routeParams.invite,invite_type:$routeParams.type,fullname:$scope.registFormData.username,email:$scope.registFormData.email,timezone:$scope.timezone,username:$scope.registFormData.username,password:$scope.registFormData.password}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
              $location.path('project'); 

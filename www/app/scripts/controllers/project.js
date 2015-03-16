@@ -20,6 +20,7 @@ angular.module('conojoApp')
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data) {
              $scope.projects = data;
+             $scope.projectsNum = $scope.projects.length;
         });
     };
     

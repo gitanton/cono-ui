@@ -30,7 +30,7 @@
             <div class="projectScreenVideo-content-body">
                 <div class="projectScreenVideo-content-video">
                     <video id="videoBody"><source src="#" type="video/mp4" /></video>
-                    <canvas id="videoDrawing"></canvas>
+                    <canvas id="videoDrawing" ng-show="showCanvas"></canvas>
                 </div>
                 <div class="video-player-commentFlag">
                     <div class="arrow-down" ng-repeat="videoComment in videoComments" style="left:{{videoComment.left_x}}" ng-click="goToComment('{{videoComment.time}}','{{videoComment.ordering}}')">{{videoComment.ordering}}</div>
@@ -224,52 +224,12 @@
         <div class="col-lg-10 comment-add-desc">Mark as complete:</div>
         <div class="col-lg-2 comment-add-delicon"><img src="images/close-icon.png" ng-click="hideComment()"></div>
         <div class="comment-chat-content">
-            <div class="col-lg-12">
+            <div class="col-lg-12" ng-repeat="videoComment in videoComments">
                 <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
                 <div class="col-lg-9">
                     <div class="col-lg-8">Charles Haggas</div>
-                    <div class="col-lg-4">10:21</div>
-                    <div class="col-lg-12">Did you hear the one about the rooster?</div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
-                <div class="col-lg-9">
-                    <div class="col-lg-8">Charles Haggas</div>
-                    <div class="col-lg-4">10:23</div>
-                    <div class="col-lg-12">Also,can you maek this pop more?</div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
-                <div class="col-lg-9">
-                    <div class="col-lg-8">Charles Haggas</div>
-                    <div class="col-lg-4">10:21</div>
-                    <div class="col-lg-12">Did you hear the one about the rooster?</div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
-                <div class="col-lg-9">
-                    <div class="col-lg-8">Charles Haggas</div>
-                    <div class="col-lg-4">10:21</div>
-                    <div class="col-lg-12">Also,can you maek this pop more?</div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
-                <div class="col-lg-9">
-                    <div class="col-lg-8">Charles Haggas</div>
-                    <div class="col-lg-4">10:21</div>
-                    <div class="col-lg-12">Also,can you maek this pop more?</div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
-                <div class="col-lg-9">
-                    <div class="col-lg-8">Charles Haggas</div>
-                    <div class="col-lg-4">10:21</div>
-                    <div class="col-lg-12">Also,can you maek this pop more?</div>
+                    <div class="col-lg-4">{{videoComment.created | limitTo:-8}}</div>
+                    <div class="col-lg-12">{{videoComment.content}}</div>
                 </div>
             </div>
         </div>

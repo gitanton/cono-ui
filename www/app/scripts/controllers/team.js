@@ -19,6 +19,22 @@ angular.module('conojoApp')
             method: 'GET'
         }).success(function(data) {
              $scope.teams = data;
+             $scope.selectTeam = $scope.teams[0];
+        });
+    };
+    
+    $scope.openAddTeamMember = function(){
+        $('#addTeamMember').modal('toggle');
+    };
+    
+    $scope.addTeamMember = function(){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/teams/team/'+$scope.selectTeam.uuid+'/invite',
+            method: 'POST',
+            data: $.param({uuid:$scope.selectTeam.uuid,email:$scope.teammemberemail}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            $('#addTeamMember').modal('hide');
         });
     };
     

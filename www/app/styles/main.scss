@@ -47,10 +47,6 @@ ul li{
     color:#efefef;
     font-size:14px;
 }
-.btn:focus,.btn:hover{
-    color:#fff;
-    opacity: 0.5;
-}
 .blue-line{
     border-bottom:2px solid #4baedd;
 }
@@ -79,6 +75,7 @@ ul li{
     .siderbar-closed-img{
         width:64px;
         height:64px;
+        cursor:pointer;
     }
     .col-lg-12{
         padding:23px 0px;
@@ -91,7 +88,7 @@ ul li{
     }
 }
 .siderbar-expand-container{
-    width:205px;
+    width:160px;
     background:#0378ae;
     position:absolute;
     z-index:2;
@@ -99,7 +96,8 @@ ul li{
     .siderbar-expand-profileContainer{
         background:#323232;
         position:absolute;
-        top:0px;width:205px;
+        top:0px;
+        width:160px;
         height:160px;
         opacity:0.5;
         padding:50px 20px;
@@ -114,7 +112,7 @@ ul li{
         }
     }
     .siderbar-expand-img{
-        width:205px;
+        width:160px;
         height:160px;
     }
     .col-lg-12{
@@ -281,7 +279,7 @@ ul li{
             line-height:17px;
             margin:0px;
         }
-        .register-fullname{
+        .register-username{
             margin-bottom:7px;
             height:44px;
             border:0px;
@@ -446,6 +444,7 @@ ul li{
                  border-bottom:1px solid #e5e5e5;
                  border-left:1px solid #e5e5e5;
                  text-align:center;
+                 background:#fff;
                  .profileBilling-content-billing-plans-item{
                      border-right:1px solid #e5e5e5;
                      padding:30px;
@@ -1238,6 +1237,26 @@ ul li{
                 width:156px;
                 height:40px;
                 border-radius:2px;
+            }
+        }
+        .team-header-teams{
+            text-align:right;
+            button{
+                @extend .appbutton;
+                width:140px;
+                height:40px;
+                border-radius:2px;
+                padding:0px;
+            }
+            .team-header-select{
+                width:200px;
+                height:40px;
+                border-radius:2px;
+                padding:0px;
+                background:#efefef;
+                color:#0378ae;
+                border:1px solid #0378ae;
+                img{margin-left:25px;}
             }
         }
     }
@@ -2419,7 +2438,7 @@ ul li{
                 line-height:17px;
                 margin:0px;
             }
-            .register-fullname{
+            .register-username{
                 margin-bottom:7px;
                 height:44px;
                 border:0px;
@@ -3187,10 +3206,14 @@ ul li{
             background-image:url('/images/project-build-bg.jpg');
             .projectScreenVideo-content-video{
                 text-align:center;
+                height:397px;
                 video{
-                    height:100%;
+                    width:705px;
+                    height:397px;
                 }
                 #videoDrawing{
+                    width:705px;
+                    height:397px;
                     position:absolute;
                     top:0px;
                     left:0px;
@@ -3198,7 +3221,7 @@ ul li{
                 }
             }
             .video-player-processBar{
-                width:98%;
+                width:705px;
                 margin:0 auto;
                 height:6px;
                 cursor:pointer;
@@ -3233,7 +3256,7 @@ ul li{
             }
             .video-player-commentFlag{
                 margin: 0 auto;
-                width: 98%;
+                width: 705px;
                 height:30px;
                 position: relative;
                 .arrow-down{

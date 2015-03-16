@@ -3,11 +3,15 @@
     <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
     <div class="team-container">
         <div class="team-header">
-            <div class="team-header-account col-lg-6"><span>Your Team</span></div>
+            <div class="team-header-account col-lg-6"><span>{{selectTeam.name}}</span></div>
+            <div class="team-header-teams col-lg-6">
+                <button class="btn btn-lg team-header-select">Select Teams<img src="images/select-project-icon.png"></button>
+                <button class="btn btn-lg" ng-click="openAddTeamMember()">Add Team Member</button>
+            </div>
         </div>
         <div class="team-content">
-            <div ng-repeat="team in teams">
-                <div class="col-lg-4 team-content-offset" ng-repeat="user in team.users" ng-mouseover="hoverIn($event)" ng-mouseout="hoverOut($event)">
+            <div>
+                <div class="col-lg-4 team-content-offset" ng-repeat="user in selectTeam.users" ng-mouseover="hoverIn($event)" ng-mouseout="hoverOut($event)">
                     <div class="col-lg-12 team-content-itemimg">
                         <img src="images/Dawkins.png" class="img-circle">
                     </div>
@@ -20,5 +24,30 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div id="addTeamMember" class="modal fade in" style="display: none;">
+    <div class="teammember-add">
+        <div class="col-lg-10 teammember-add-desc">ADD PEOPLE TO TEAM</div>
+        <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="addPeopleToProject">
+            <div class="col-lg-12 teammember-add-body">
+                <div class="form-group">
+                    <select name="teammembertype" class="form-control teammember-add-select">
+                        <option value=0>Select Person</option>
+                    </select>
+                </div>
+                <div class="form-group has-email">
+                    <input type="text" name="teammemberemail" ng-model="teammemberemail" class="form-control teammember-add-email" placeholder="Enter an email" />
+                    <img class="teammember-add-emailicon" src="images/mail-icon.png">
+                </div>
+                <div class="form-group has-add">
+                    <span>Add another person<img class="teammember-add-addAnother" src="images/addAnotherPeople-icon.png"></span>
+                </div>
+            </div>
+            <div class="col-lg-12 teammember-add-button">
+                <button class="btn btn-lg" type="submit" ng-click="addTeamMember()">Invite People</button>       
+            </div>
+        </form>
     </div>
 </div>

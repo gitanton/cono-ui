@@ -32,7 +32,7 @@ angular.module('conojoApp')
        $http({
             url: 'http://conojoapp.scmreview.com/rest/users',
             method: 'POST',
-            data: $.param({fullname:$scope.formData.fullname,email:$scope.formData.email,timezone:$scope.timezone,username:$scope.formData.fullname,password:$scope.formData.password}),
+            data: $.param({fullname:$scope.formData.username,email:$scope.formData.email,timezone:$scope.timezone,username:$scope.formData.username,password:$scope.formData.password}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
              $location.path('/'); 

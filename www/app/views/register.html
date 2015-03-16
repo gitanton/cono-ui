@@ -1,5 +1,5 @@
 <div class="register-container">
-    <div class="register-logo"><img src="images/logo-account.png"></div>
+    <div class="register-logo"><a ng-href="#/"><img src="images/logo-account.png"></a></div>
     <div class="register-form">
         <div class="col-lg-12 register-desc">
             <p class="register-desc-free">Get Started Absolutely FREE.</p>
@@ -7,8 +7,8 @@
         </div>
         <form name="userForm" ng-submit="processForm()" novalidate>
             <div class="col-lg-12">
-                <input type="text" name="fullname" class="form-control register-fullname" placeholder="Full name" ng-model="formData.fullname" ng-minlength="6" required />
-                <span ng-show="userForm.fullname.$invalid && !userForm.fullname.$pristine">Username Should be at least five characters long</span>
+                <input type="text" name="fullname" class="form-control register-username" placeholder="Username" ng-model="formData.username" ng-minlength="6" required />
+                <span ng-show="userForm.username.$invalid && !userForm.username.$pristine">Username Should be at least five characters long</span>
             </div>
             <div class="col-lg-12">
                 <input type="email" name="email" class="form-control register-email" placeholder="Email" ng-model="formData.email" required />

@@ -10,6 +10,7 @@ angular.module('conojoApp')
         .controller('ProjectScreenVideoPlayCtrl', function ($scope, $http, $location, $routeParams, currentUser) {
             $scope.activeProjectUuid = $routeParams.puuid;
             $scope.activeVideoProjectUuid = $routeParams.vuuid;
+            $scope.showCanvas = false;
             $scope.shapeFill = false;
             $scope.showComment = false;
             $scope.showCommentBlue = true;
@@ -20,8 +21,8 @@ angular.module('conojoApp')
             $(".projectScreenVideo-content-video").css('height', $scope.videoHeight);
             $("#videoBody").on("loadedmetadata", function () {
                 $("#videoDrawing").css('margin-Left', ($(window).width() - $("#videoBody").width() - 64)/2);
-                $("#videoDrawing").attr('width',$("#videoBody").width());
-                $("#videoDrawing").attr('height',$("#videoBody").height());
+//                $("#videoDrawing").attr('width',$("#videoBody").width());
+//                $("#videoDrawing").attr('height',$("#videoBody").height());
             });
 
             $scope.init = function () {
@@ -58,6 +59,12 @@ angular.module('conojoApp')
             var video = $('#videoBody');
             $('.btnPlay').on('click', function () {
                 if (video[0].paused) {
+                    $scope.showCanvas = false;
+                    $scope.showCommentBlue = true;
+                    $scope.showBrushBlue = true;
+                    $scope.showEraser = false;
+                    $scope.showShape = false;
+                    $scope.$apply();
                     cxt.clearRect(0, 0, $('#videoBody').width(), $('#videoBody').height());
                     if($scope.showComment){
                         $scope.hideComment();
@@ -99,9 +106,11 @@ angular.module('conojoApp')
             
             //arrow the video
             $scope.goToComment = function(time,order){
+                $scope.showCanvas = true;
                 video[0].currentTime = time;
                 var imageObj = new Image();
-                imageObj.src = 'data:image/png;base64,' + $scope.videoComments[order - 1].data;
+                imageObj.src = 'data:image/png;base64,' + $scope.videoComments[order - 1].data.slice(9);
+                cxt.clearRect(0, 0, $('#videoBody').width(), $('#videoBody').height());
                 cxt.drawImage(imageObj,0,0,$("#videoBody").width(),$("#videoBody").height());  
                 $('.btnPlay').removeClass("paused");
                 video[0].pause();
@@ -274,7 +283,6 @@ angular.module('conojoApp')
             var cxt = canvas.getContext('2d');
 
             $scope.commentList = [];
-            $scope.preFlagComment = false;
             var rectX=0;
             var rectY=0;
             var polyX=0;
@@ -305,6 +313,7 @@ angular.module('conojoApp')
             }
             
             $scope.openComment = function () {
+                $scope.showCanvas = true;
                 $scope.showCommentBlue = false;
                 $scope.showBrushBlue = true;
                 $scope.showEraser = false;
@@ -317,15 +326,9 @@ angular.module('conojoApp')
                 cxt.strokeStyle = "rgba(250,246,162,0.7)";
                 cxt.fillStyle = "rgba(250,246,162,0.7)";
                 canvas.onmousedown = function (evt) {
-                    if ($scope.preFlagComment) {
+                    if ($scope.commentList.length > 0) {
                         cxt.clearRect(0, 0, $('#videoBody').width(), $('#videoBody').height());
-                        if ($scope.commentList.length > 1) {
-                            var index = $scope.commentList.length - 2;
-                            var image = new Image();
-                            image.src = $scope.commentList[index][0];
-                            cxt.drawImage(image, 0, 0);
-                        }
-                        $scope.commentList.pop();
+                        $scope.commentList = [];
                     }
                     evt = window.event || evt;
                     rectX = evt.pageX - this.offsetLeft - 64;
@@ -335,7 +338,6 @@ angular.module('conojoApp')
                 canvas.onmouseup = function (evt) {
                     evt = window.event || evt;
                     cxt.fillRect(rectX, rectY, 25, 25);
-                    $scope.preFlagComment = true;
                     $scope.commentList.push([canvas.toDataURL(), rectX, rectY, 25, 25]);
                     $('#addComment').css('left', evt.pageX - 400);
                     $('#addComment').css('top', evt.pageY);
@@ -347,7 +349,6 @@ angular.module('conojoApp')
             }
 
             $scope.saveComment = function () {
-                $scope.preFlagComment = false;
                 var imgDataArray = $scope.commentList.slice(-1);
                 $http({
                     url: 'http://conojoapp.scmreview.com/rest/videos/video/' + $scope.activeVideoProjectUuid + '/comments',
@@ -360,7 +361,6 @@ angular.module('conojoApp')
             }
 
             $scope.hideComment = function () {
-                $scope.preFlagComment = false;
                 $scope.showComment = false;
                 cxt.clearRect(0, 0, $('#videoBody').width(), $('#videoBody').height());
                 if ($scope.commentList.length > 1) {
@@ -373,6 +373,7 @@ angular.module('conojoApp')
             }
             
             $scope.openTools = function(){
+                $scope.showCanvas = true;
                 $scope.showCommentBlue = true;
                 $scope.showBrushBlue = false;
                 $scope.showEraser = true;
