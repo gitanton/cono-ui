@@ -3511,6 +3511,45 @@ ul li{
     }
 }
 
+/*forgot password page*/
+.forgot-container{
+    background:#efefef;
+    .forgot-logo{
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom:30px;
+        width: 227px;
+    }
+    .forgot-form{
+        height:235px;
+        width:390px;
+        margin-left: auto;
+        margin-right: auto;
+        padding:33px;
+        background:#e3e3e3;
+        border-radius:10px;
+        .forgot-email{
+            height:44px;
+            margin-bottom:20px;
+            border:0px;
+        }
+        .forgot-button{
+            text-align:center;
+            button{
+                @extend .appbutton;
+            }
+        }
+    }
+    .forgot-note{
+        width:390px;
+        padding-top:30px;
+        text-align: center;
+        font-size:16px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 .farbtastic {
   position: relative;
 }

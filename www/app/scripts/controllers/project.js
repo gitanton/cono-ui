@@ -153,6 +153,16 @@ angular.module('conojoApp')
            handle:".project-content-move img",
            stop:function() {
                //reorder the project endpoint
+               var uuids = [];
+               for(var i=0;i<$scope.projectsNum;i++){
+                   uuids[i] = $(".project-content-name").eq(i).data("uuid");
+               }
+               $http({
+                    url: 'http://conojoapp.scmreview.com/rest/projects/ordering',
+                    method: 'POST',
+                    data:{uuids:uuids},
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                });
             }
      });
      $( "#sortable" ).disableSelection();

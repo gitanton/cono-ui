@@ -14,7 +14,7 @@
         </div>
         <div class="project-content" id="sortable">
             <div class="col-lg-4 project-content-offset" ng-repeat="project in projects">
-                <div class="col-lg-10 project-content-name">{{project.name}}</div>
+                <div class="col-lg-10 project-content-name" data-uuid="{{project.uuid}}">{{project.name}}</div>
                 <div class="col-lg-2 project-content-gear" ng-class="showBackground(project.is_open)">
                     <a ng-class="showGear(project.is_open)" ng-click="operateProject(project)"></a>
                 </div>
