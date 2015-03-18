@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('TeamCtrl', function ($scope,$http,currentUser) {
+  .controller('TeamCtrl', function ($scope,$http,$location,currentUser) {
     $scope.memberUuid = 0;
     $scope.teamContent = $(window).height() - 128;
     $(".team-content").css('height',$scope.teamContent);
@@ -38,11 +38,24 @@ angular.module('conojoApp')
         });
     };
     
-    $(".team-content-offset").on('mouseover',function(){
-        $(this).find(".team-content-permissions").show();
-    }).on('mouseleave',function(){
-        $(this).find(".team-content-permissions").hide();
-    });
+//    $(".team-content-offset").on('mouseover',function(){
+//        $(this).find(".team-content-permissions").show();
+//    }).on('mouseout',function(){
+//        $(this).find(".team-content-permissions").hide();
+//    });
+
+    $scope.hoverOver = function(event){
+        $(event.target).parents(".team-content-offset").find(".team-content-permissions").show();
+    }
+    
+    $scope.hoverLeave = function(event){
+        $(event.target).hide();
+    }
+    
+    $scope.goToEdit= function(uuid){
+        var url = '/userpage/'+uuid;
+        $location.path(url);
+    }
     
     $scope.init();
   });
