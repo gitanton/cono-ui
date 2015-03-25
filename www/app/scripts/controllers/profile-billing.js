@@ -16,6 +16,8 @@ angular.module('conojoApp')
     $scope.profileBillingContent = $(window).height() - 250;
     $(".profileBilling-content-billing").css('height',$scope.profileBillingContent);
     
+    $('.profileBilling-content-billing').jScrollPane();
+    
     $scope.backBilling = function(){
         $scope.billingOne = true;
         $scope.billingTwo = false;

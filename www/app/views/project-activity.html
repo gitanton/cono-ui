@@ -31,31 +31,14 @@
             </div>
             <div class="projectActivity-content-body">
                 <div class="projectActivity-content-items col-lg-10">
-                    <div class="col-lg-12 projectActivity-content-item" id="drag1" draggable>
+                    <div class="col-lg-12 projectActivity-content-item" ng-repeat="activity in projectActivities" id="drag{{$index}}" draggable>
                         <div class="projectActivity-content-img col-lg-3"><img src="images/Dawkins.png"></div>
                         <div class="projectActivity-content-desc col-lg-9">
-                            <div class="col-lg-9">R.Dawkins added 4 new screenshots to Project A</div>
-                            <div class="col-lg-3">10 min ago</div>
+                            <div class="col-lg-9">{{activity.title}}</div>
+                            <div class="col-lg-3">{{activity.created}}</div>
                             <div class="col-lg-12"><img src="images/thumbs.png"></div>
-                            <div class="col-lg-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 projectActivity-content-item" id="drag2" draggable>
-                        <div class="projectActivity-content-img col-lg-3"><img src="images/Dawkins.png"></div>
-                        <div class="projectActivity-content-desc col-lg-9">
-                            <div class="col-lg-9">R.Dawkins added 4 new screenshots to Project A</div>
-                            <div class="col-lg-3">10 min ago</div>
-                            <div class="col-lg-12"><img src="images/thumbs.png"></div>
-                            <div class="col-lg-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 projectActivity-content-item" id="drag3" draggable>
-                        <div class="projectActivity-content-img col-lg-3"><img src="images/Dawkins.png"></div>
-                        <div class="projectActivity-content-desc col-lg-9">
-                            <div class="col-lg-9">R.Dawkins added 4 new screenshots to Project A</div>
-                            <div class="col-lg-3">10 min ago</div>
-                            <div class="col-lg-12"><img src="images/thumbs.png"></div>
-                            <div class="col-lg-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
+                            <div class="col-lg-12">{{activity.content}}</div>
+                            <div style="position: absolute;top:0px;right:0px;"><img src="images/dragbar-icon.png"></div>
                         </div>
                     </div>
                 </div>

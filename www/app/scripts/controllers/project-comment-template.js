@@ -1,18 +1,16 @@
 'use strict';
 /**
  * @ngdoc function
- * @name conojoApp.controller:ProjectCommentCtrl
+ * @name conojoApp.controller:ProjectCommentVideoCtrl
  * @description
- * # ProjectCommentCtrl
+ * # ProjectCommentVideoCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectCommentCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
+ .controller('ProjectCommentVideoCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.activeProjectUuid = $routeParams.uuid;
-    $scope.projectCommentBody = $(window).height() - 242;
+    $scope.projectCommentBody = $(window).height() - 176;
     $(".projectComment-content-body").css('height',$scope.projectCommentBody);
-    
-    $('.projectComment-content-body').jScrollPane();
     
     $scope.init = function(){
         $http({
@@ -39,24 +37,14 @@ angular.module('conojoApp')
             $('#updateproject').modal('hide');
         });
    };
-    
-    $scope.toBuildNewScreen = function(){
-        var url = '/project-build/'+$scope.activeProjectUuid+'/new';
-        $location.path(url);
-    }
 
     $scope.toScreen = function(){
-        var url = '/project-screen/'+$scope.activeProjectUuid;
+        var url = '/project-screen-video/';
         $location.path(url);
     }
     
     $scope.toActivity = function(){
-        var url = '/project-activity/'+$scope.activeProjectUuid;
-        $location.path(url);
-    }
-    
-     $scope.openMessage = function(){
-        var url = '/message/'+$scope.activeProjectUuid;
+        var url = '/project-activity-video/';
         $location.path(url);
     }
     

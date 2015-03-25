@@ -1,20 +1,16 @@
 'use strict';
 /**
  * @ngdoc function
- * @name conojoApp.controller:ProjectScreenCtrl
+ * @name conojoApp.controller:ProjectScreenVideoCtrl
  * @description
- * # ProjectScreenCtrl
+ * # ProjectScreenVideoCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectScreenCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
+ .controller('ProjectScreenVideoCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.activeProjectUuid = $routeParams.uuid;
-    $scope.projectScreenBody = $(window).height() - 176;
-    $scope.projectScreenDropcontainer = $(window).height() - 212;
-    $(".projectScreen-content-body").css('height',$scope.projectScreenBody);
-    $(".projectScreen-content-dropcontainer").css('height',$scope.projectScreenDropcontainer);
-    
-    $('.projectScreen-content-body').jScrollPane();
+    $scope.projectScreenVideoBody = $(window).height() - 176;
+    $(".projectScreenVideo-content-body").css('height',$scope.projectScreenVideoBody);
     
     $scope.init = function(){
         $http({
@@ -36,17 +32,19 @@ angular.module('conojoApp')
         });
     };
     
-    $("#screenupload").dropzone({
-        url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
+    var videoUploadZone = new Dropzone("#videoupload",{
+        url: 'http://conojoapp.scmreview.com/rest/videos/project/'+$scope.activeProjectUuid,
         paramName: "file", // The name that will be used to transfer the file
-        maxFilesize: 5,
-        clickable: false,
-        init:function(){
-            $(this).on('success',function(){
-                $scope.init();
-            });
-        }
+        maxFilesize: 10,
+        clickable: false
     });
+    
+    videoUploadZone.on("success",function(file,serverCallBack){
+        var url = '/project-screen-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
+        $location.path(url).replace();
+        $scope.$apply();
+    });
+    
     
     $scope.openUpdateProject = function(){
         $('#updateproject').modal('toggle');
@@ -126,28 +124,13 @@ angular.module('conojoApp')
         event.stopPropagation();
     });
     
-    $scope.toBuildNewScreen = function(){
-        var url = '/project-build/'+$scope.activeProjectUuid+'/new';
-        $location.path(url);
-    }
-    
-    $scope.toBuild = function(suuid){
-        var url = '/project-build/'+$scope.activeProjectUuid+'/'+suuid;
-        $location.path(url);
-    }
-    
     $scope.toActivity = function(){
-        var url = '/project-activity/'+$scope.activeProjectUuid;
+        var url = '/project-activity-video/';
         $location.path(url);
     }
     
     $scope.toComment = function(){
-        var url = '/project-comment/'+$scope.activeProjectUuid;
-        $location.path(url);
-    }
-    
-     $scope.openMessage = function(){
-        var url = '/message/'+$scope.activeProjectUuid;
+        var url = '/project-comment-video/';
         $location.path(url);
     }
     

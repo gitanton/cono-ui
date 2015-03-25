@@ -59,5 +59,17 @@ angular.module('conojoApp')
         $location.path(url);
     };
     
+    $scope.Logout = function(){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/users/logout',
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(data) {
+             if(data.status == 'success'){
+                 $location.path('/');
+             }
+        });
+    }
+    
     $scope.init();
   });

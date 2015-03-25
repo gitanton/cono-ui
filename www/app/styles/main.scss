@@ -129,12 +129,12 @@ ul li{
         position: absolute;
         bottom: 0px;
         padding-bottom: 20px;
-        padding-left:150px;
+        padding-left:110px;
         img{cursor:pointer;}
     }
 }
 /*scrollbar style*/
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
     width: 6px;
 }
 ::-webkit-scrollbar-track {
@@ -144,7 +144,7 @@ ul li{
 ::-webkit-scrollbar-thumb {
     border-radius: 3px;
     background: #c7c7c7;
-}
+}*/
 .modal-backdrop{
     background:#0378ae;
 }
@@ -597,7 +597,7 @@ ul li{
     }
     .project-content{
         border-top:1px solid #dddddd;
-        padding:19px 14px 19px 88px;
+        padding:19px 14px 19px 88px !important;
         background:#e6e6e6;
         overflow-y:auto;
         .col-lg-4{
@@ -2025,8 +2025,9 @@ ul li{
             overflow-y:auto;
             .projectActivity-content-items{
                 padding-left:20px;
+                padding-top:16px;
                 .projectActivity-content-item{
-                    margin-top:16px;
+                    margin-bottom:16px;
                 }
                 .projectActivity-content-img{
                     width:164px;

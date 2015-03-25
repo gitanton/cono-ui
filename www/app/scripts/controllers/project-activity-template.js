@@ -1,20 +1,18 @@
 'use strict';
 /**
  * @ngdoc function
- * @name conojoApp.controller:ProjectActivityCtrl
+ * @name conojoApp.controller:ProjectActivityVideoCtrl
  * @description
- * # ProjectActivityCtrl
+ * # ProjectActivityVideoCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectActivityCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
+ .controller('ProjectActivityVideoCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.activeProjectUuid = $routeParams.uuid;
     $scope.projectActivityBody = $(window).height() - 176;
     $scope.projectActivityDeleteContainer = $(window).height() - 228;
     $(".projectActivity-content-body").css('height',$scope.projectActivityBody);
     $(".projectActivity-content-delete").css('height',$scope.projectActivityDeleteContainer);
-    
-    $('.projectActivity-content-body').jScrollPane();
     
     $scope.init = function(){
         $http({
@@ -25,14 +23,6 @@ angular.module('conojoApp')
             $scope.projectMembers = data.users;
             $scope.updateProjectTitle = data.name;
             $scope.updateProjectTypeid = data.type_id;
-        });
-        
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/activities/project/'+$scope.activeProjectUuid,
-            method: 'GET',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data) {
-            $scope.projectActivities = data;
         });
     };
     
@@ -69,18 +59,6 @@ angular.module('conojoApp')
     $scope.openNewMeeting = function(){
         $('#newMeeting').modal('toggle');
     };
-    
-    $scope.showSelectMember = function(event){
-        $(event.target).parent().find(".newMeeting-group").show();
-        $(document).on("click", function (){
-            $(event.target).parent().find(".newMeeting-group").hide();
-        });
-        event.stopPropagation();
-    }
-    
-    $(".newMeeting-group").on("click", function (event){
-        event.stopPropagation();
-    });
 
     $scope.addNewMeeting = function(){
         $http({
@@ -97,24 +75,14 @@ angular.module('conojoApp')
     $('.newMeeting-time').datetimepicker({
         dateFormat: "yy-mm-dd"
     });
-    
-    $scope.toBuildNewScreen = function(){
-        var url = '/project-build/'+$scope.activeProjectUuid+'/new';
-        $location.path(url);
-    }
 
     $scope.toScreen = function(){
-        var url = '/project-screen/'+$scope.activeProjectUuid;
+        var url = '/project-screen-video/';
         $location.path(url);
     }
     
     $scope.toComment = function(){
-        var url = '/project-comment/'+$scope.activeProjectUuid;
-        $location.path(url);
-    }
-    
-     $scope.openMessage = function(){
-        var url = '/message/'+$scope.activeProjectUuid;
+        var url = '/project-comment-video/';
         $location.path(url);
     }
     

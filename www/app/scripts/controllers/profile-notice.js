@@ -12,6 +12,8 @@ angular.module('conojoApp')
     $scope.profileNoticeContent = $(window).height() - 250;
     $(".profileNotice-content-notice").css('height',$scope.profileNoticeContent);
     
+    $('.profileNotice-content-notice').jScrollPane();
+    
     $scope.toProject = function(){
         var url = '/profile-project/';
         $location.path(url);

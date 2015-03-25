@@ -13,6 +13,8 @@ angular.module('conojoApp')
     $scope.projectContent = $(window).height() - 128;
     $(".project-content").css('height',$scope.projectContent);
     
+    $('.project-content').jScrollPane();
+    
     $scope.init = function(){
         $http({
             url: 'http://conojoapp.scmreview.com/rest/projects',

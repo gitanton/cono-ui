@@ -13,6 +13,8 @@ angular.module('conojoApp')
       $scope.messageContent = $(window).height() - 194;
       $(".message-content").css('height',$scope.messageContent);
       
+      $('.message-content').jScrollPane();
+      
       $scope.init = function(){
           $http({
                 url: 'http://conojoapp.scmreview.com/rest/messages/',
