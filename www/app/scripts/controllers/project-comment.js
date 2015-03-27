@@ -12,7 +12,7 @@ angular.module('conojoApp')
     $scope.projectCommentBody = $(window).height() - 242;
     $(".projectComment-content-body").css('height',$scope.projectCommentBody);
     
-    $('.projectComment-content-body').jScrollPane();
+//    $('.projectComment-content-body').jScrollPane();
     
     $scope.init = function(){
         $http({

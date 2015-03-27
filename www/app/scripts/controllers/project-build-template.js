@@ -1,13 +1,13 @@
 'use strict';
 /**
  * @ngdoc function
- * @name conojoApp.controller:ProjectBuildCtrl
+ * @name conojoApp.controller:ProjectBuildTemplateCtrl
  * @description
- * # ProjectBuildCtrl
+ * # ProjectBuildTemplateCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectBuildCtrl', function ($scope,$http,$location,$routeParams,meetingFlag,currentUser) {
+ .controller('ProjectBuildTemplateCtrl', function ($scope,$http,$location,$routeParams,meetingFlag,currentUser) {
      $scope.CLOCK = null;
      $scope.shapeFill = false;
      $scope.showAddHotspots = false;

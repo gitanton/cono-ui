@@ -12,7 +12,7 @@ angular.module('conojoApp')
     $scope.profileProjectsContent = $(window).height() - 250;
     $(".profileProject-content-projects").css('height',$scope.profileProjectsContent);
     
-    $('.profileProject-content-projects').jScrollPane();
+//    $('.profileProject-content-projects').jScrollPane();
     
     $scope.toProfile = function(){
         var url = '/profile-profile/';

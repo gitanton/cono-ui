@@ -12,7 +12,7 @@ angular.module('conojoApp')
     $scope.projectCommentBody = $(window).height() - 176;
     $(".projectComment-content-body").css('height',$scope.projectCommentBody);
     
-    $('.projectComment-content-body').jScrollPane();
+//    $('.projectComment-content-body').jScrollPane();
     
     $scope.init = function(){
         $http({
@@ -40,13 +40,22 @@ angular.module('conojoApp')
         });
    };
 
-    $scope.toScreen = function(){
-        var url = '/project-screen-video/';
-        $location.path(url);
+    $scope.toVideo = function(){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/videos/project/'+$scope.activeProjectUuid,
+            method: 'GET',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(data) {
+            if(data.length == 0){
+                $location.path('/project-video/'+$scope.activeProjectUuid);
+            }else{
+                $location.path('/project-videoPlay/'+ $scope.activeProjectUuid + '/' + data[0].uuid);
+            }
+        });
     }
     
     $scope.toActivity = function(){
-        var url = '/project-activity-video/';
+        var url = '/project-activity-video/' + $scope.activeProjectUuid;
         $location.path(url);
     }
     

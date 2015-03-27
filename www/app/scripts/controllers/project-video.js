@@ -1,13 +1,13 @@
 'use strict';
 /**
  * @ngdoc function
- * @name conojoApp.controller:ProjectScreenVideoCtrl
+ * @name conojoApp.controller:ProjectVideoCtrl
  * @description
- * # ProjectScreenVideoCtrl
+ * # ProjectVideoCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectScreenVideoCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
+ .controller('ProjectVideoCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.activeProjectUuid = $routeParams.uuid;
     $scope.projectScreenVideoBody = $(window).height() - 176;
     $(".projectScreenVideo-content-body").css('height',$scope.projectScreenVideoBody);
@@ -21,14 +21,6 @@ angular.module('conojoApp')
             $scope.projectMembers = data.users;
             $scope.updateProjectTitle = data.name;
             $scope.updateProjectTypeid = data.type_id;
-        });
-        
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/screens/project/'+$scope.activeProjectUuid,
-            method: 'GET',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(data) {
-            $scope.screens = data;
         });
     };
     
@@ -125,12 +117,12 @@ angular.module('conojoApp')
     });
     
     $scope.toActivity = function(){
-        var url = '/project-activity-video/';
+        var url = '/project-activity-video/' + $scope.activeProjectUuid;
         $location.path(url);
     }
     
     $scope.toComment = function(){
-        var url = '/project-comment-video/';
+        var url = '/project-comment-video/' + $scope.activeProjectUuid;
         $location.path(url);
     }
     

@@ -1,13 +1,13 @@
 'use strict';
 /**
  * @ngdoc function
- * @name conojoApp.controller:ProjectScreenVideoPlayCtrl
+ * @name conojoApp.controller:ProjectVideoPlayCtrl
  * @description
- * # ProjectScreenVideoPlayCtrl
+ * # ProjectVideoPlayCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-        .controller('ProjectScreenVideoPlayCtrl', function ($scope, $http, $location, $routeParams, currentUser) {
+        .controller('ProjectVideoPlayCtrl', function ($scope, $http, $location, $routeParams, currentUser) {
             $scope.activeProjectUuid = $routeParams.puuid;
             $scope.activeVideoProjectUuid = $routeParams.vuuid;
             $scope.showCanvas = false;
@@ -270,12 +270,12 @@ angular.module('conojoApp')
             });
 
             $scope.toActivity = function () {
-                var url = '/project-activity-video/';
+                var url = '/project-activity-video/' + $scope.activeProjectUuid;
                 $location.path(url);
             }
 
             $scope.toComment = function () {
-                var url = '/project-comment-video/';
+                var url = '/project-comment-video/' + $scope.activeProjectUuid;
                 $location.path(url);
             }
             

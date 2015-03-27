@@ -12,7 +12,7 @@ angular.module('conojoApp')
     $scope.userpageContent = $(window).height() - 128;
     $(".userpage-content").css('height',$scope.userpageContent);
     
-    $('.userpage-content').jScrollPane();
+//    $('.userpage-content').jScrollPane();
     
     $scope.init = function(){
         $http({

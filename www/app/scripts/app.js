@@ -91,21 +91,41 @@ angular
         templateUrl: 'views/templates.html',
         controller: 'templatesCtrl'
      })
-      .when('/project-screen-video/:uuid', {
-        templateUrl: 'views/project-screen-video.html',
-        controller: 'ProjectScreenVideoCtrl'
+      .when('/project-video/:uuid', {
+        templateUrl: 'views/project-video.html',
+        controller: 'ProjectVideoCtrl'
       })
-      .when('/project-screen-videoPlay/:puuid/:vuuid', {
-        templateUrl: 'views/project-screen-videoPlay.html',
-        controller: 'ProjectScreenVideoPlayCtrl'
+      .when('/project-videoPlay/:puuid/:vuuid', {
+        templateUrl: 'views/project-videoPlay.html',
+        controller: 'ProjectVideoPlayCtrl'
       })
-      .when('/project-activity-video', {
+      .when('/project-activity-video/:uuid', {
         templateUrl: 'views/project-activity-video.html',
         controller: 'ProjectActivityVideoCtrl'
       })
-      .when('/project-comment-video', {
+      .when('/project-comment-video/:uuid', {
         templateUrl: 'views/project-comment-video.html',
         controller: 'ProjectCommentVideoCtrl'
+      })
+      .when('/project-build-template', {
+        templateUrl: 'views/project-build-template.html',
+        controller: 'ProjectBuildTemplateCtrl'
+      })
+      .when('/project-templateSelect', {
+        templateUrl: 'views/project-templateSelect.html',
+        controller: 'ProjectTemplateSelectCtrl'
+      })
+      .when('/project-templateUpload', {
+        templateUrl: 'views/project-templateUpload.html',
+        controller: 'ProjectTemplateUploadCtrl'
+      })
+      .when('/project-activity-template', {
+        templateUrl: 'views/project-activity-template.html',
+        controller: 'ProjectActivityTemplateCtrl'
+      })
+      .when('/project-comment-template', {
+        templateUrl: 'views/project-comment-template.html',
+        controller: 'ProjectCommentTemplateCtrl'
       })
       .when('/register-billingInfo', {
         templateUrl: 'views/register-billingInfo.html',

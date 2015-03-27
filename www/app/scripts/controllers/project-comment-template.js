@@ -1,13 +1,13 @@
 'use strict';
 /**
  * @ngdoc function
- * @name conojoApp.controller:ProjectCommentVideoCtrl
+ * @name conojoApp.controller:ProjectCommentTemplateCtrl
  * @description
- * # ProjectCommentVideoCtrl
+ * # ProjectCommentTemplateCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectCommentVideoCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
+ .controller('ProjectCommentTemplateCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.activeProjectUuid = $routeParams.uuid;
     $scope.projectCommentBody = $(window).height() - 176;
     $(".projectComment-content-body").css('height',$scope.projectCommentBody);

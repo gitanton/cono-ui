@@ -1,14 +1,13 @@
 'use strict';
-
 /**
  * @ngdoc function
- * @name conojoApp.controller:templatesCtrl
+ * @name conojoApp.controller:ProjectTemplateSelectCtrl
  * @description
- * # templatesCtrl
+ * # ProjectTemplateSelectCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('templatesCtrl', function ($scope,currentUser) {
+ .controller('ProjectTemplateSelectCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.templatesContent = $(window).height() - 128;
     $(".templates-content").css('height',$scope.templatesContent);
-  });
+});

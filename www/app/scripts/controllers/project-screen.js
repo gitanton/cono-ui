@@ -14,7 +14,7 @@ angular.module('conojoApp')
     $(".projectScreen-content-body").css('height',$scope.projectScreenBody);
     $(".projectScreen-content-dropcontainer").css('height',$scope.projectScreenDropcontainer);
     
-    $('.projectScreen-content-body').jScrollPane();
+//    $('.projectScreen-content-body').jScrollPane();
     
     $scope.init = function(){
         $http({

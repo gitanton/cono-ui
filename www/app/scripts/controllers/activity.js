@@ -14,5 +14,5 @@ angular.module('conojoApp')
         $(".activity-content").css('height',$scope.activityContent);
         $(".activity-content-delete").css('height',$scope.activityDeleteContainer);
         
-        $('.activity-content').jScrollPane();
+//        $('.activity-content').jScrollPane();
   });

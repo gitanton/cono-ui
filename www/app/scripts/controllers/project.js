@@ -13,7 +13,7 @@ angular.module('conojoApp')
     $scope.projectContent = $(window).height() - 128;
     $(".project-content").css('height',$scope.projectContent);
     
-    $('.project-content').jScrollPane();
+//    $('.project-content').jScrollPane();
     
     $scope.init = function(){
         $http({
@@ -76,11 +76,22 @@ angular.module('conojoApp')
    
    $scope.projectScreen = function(uuid,type){
        if(type == 1){
-           var url = '/project-screen/'+uuid;
+           $location.path('/project-screen/'+uuid);
        }else if(type == 2){
-           var url = '/project-screen-video/'+uuid;
+           $http({
+                url: 'http://conojoapp.scmreview.com/rest/videos/project/'+uuid,
+                method: 'GET',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(data) {
+                if(data.length == 0){
+                    $location.path('/project-video/'+uuid);
+                }else{
+                    $location.path('/project-videoPlay/'+ uuid + '/' + data[0].uuid);
+                }
+            });
+       }else if(type == 3){
+           //
        }
-        $location.path(url);
     }
    
    $scope.duplicateProjectModal = function(uuid,name){

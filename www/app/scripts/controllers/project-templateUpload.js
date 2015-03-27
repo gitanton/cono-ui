@@ -1,13 +1,13 @@
 'use strict';
 /**
  * @ngdoc function
- * @name conojoApp.controller:ProjectScreenVideoCtrl
+ * @name conojoApp.controller:ProjectTemplateUploadCtrl
  * @description
- * # ProjectScreenVideoCtrl
+ * # ProjectTemplateUploadCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
- .controller('ProjectScreenVideoCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
+ .controller('ProjectTemplateUploadCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.activeProjectUuid = $routeParams.uuid;
     $scope.projectScreenVideoBody = $(window).height() - 176;
     $(".projectScreenVideo-content-body").css('height',$scope.projectScreenVideoBody);
