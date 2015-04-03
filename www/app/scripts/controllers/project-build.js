@@ -25,12 +25,6 @@ angular.module('conojoApp')
     $(".projectBuild-content-body").css('height',$scope.projectContent);
     $(".projectBuild-content-drawing").css('height',$scope.projectDrawing);
     
-    if($scope.activeScreenUuid == 'new'){
-        $scope.showNew = true;
-    }else{
-        $scope.showNew = false;
-    }
-    
     $scope.init = function(){
         $http({
             url: 'http://conojoapp.scmreview.com/rest/projects/project/'+$scope.activeProjectUuid,
@@ -42,29 +36,27 @@ angular.module('conojoApp')
             $scope.updateProjectTypeid = data.type_id;
         });
         
-        if($scope.activeScreenUuid != 'new'){
-            $http({
-                url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid,
-                method: 'GET',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function(data) {
-                imageObj_b.src = data.url;
-                imageObj_b.onload = function (){  
-                    cxt_b.drawImage(imageObj_b,0,0,1000,423);  
-                }
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid,
+            method: 'GET',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(data) {
+            imageObj_b.src = data.url;
+            imageObj_b.onload = function (){  
+                cxt_b.drawImage(imageObj_b,0,0,1000,423);  
+            }
 
-                if(data.hotspots.length > 0){
-                    var h_length = data.hotspots.length - 1;
-                    imageObj.src = 'data:image/png;base64,' + data.hotspots[h_length].data.slice(9);
-                    $scope.hotspotsList = [['data:image/png;base64,' + data.hotspots[h_length].data.slice(9),0,0,0,0]];
-                    imageObj.onload = function (){  
-                        cxt.drawImage(imageObj,0,0,1000,423);  
-                    }
-                }else{
-                    $scope.hotspotsList = [];
+            if(data.hotspots.length > 0){
+                var h_length = data.hotspots.length - 1;
+                imageObj.src = 'data:image/png;base64,' + data.hotspots[h_length].data.slice(9);
+                $scope.hotspotsList = [['data:image/png;base64,' + data.hotspots[h_length].data.slice(9),0,0,0,0]];
+                imageObj.onload = function (){  
+                    cxt.drawImage(imageObj,0,0,1000,423);  
                 }
-            });   
-        }
+            }else{
+                $scope.hotspotsList = [];
+            }
+        });   
         
         $('#pickerBrush').farbtastic(function(color){
             $scope.setPenColor(color);

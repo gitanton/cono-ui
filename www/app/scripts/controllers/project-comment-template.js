@@ -9,7 +9,7 @@
 angular.module('conojoApp')
  .controller('ProjectCommentTemplateCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.activeProjectUuid = $routeParams.uuid;
-    $scope.projectCommentBody = $(window).height() - 176;
+    $scope.projectCommentBody = $(window).height() - 242;
     $(".projectComment-content-body").css('height',$scope.projectCommentBody);
     
     $scope.init = function(){
@@ -39,12 +39,12 @@ angular.module('conojoApp')
    };
 
     $scope.toScreen = function(){
-        var url = '/project-screen-video/';
+        var url = '/project-templateUpload/';
         $location.path(url);
     }
     
     $scope.toActivity = function(){
-        var url = '/project-activity-video/';
+        var url = '/project-activity-template/';
         $location.path(url);
     }
     

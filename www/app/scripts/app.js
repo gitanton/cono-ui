@@ -87,10 +87,6 @@ angular
         templateUrl: 'views/profile-notice.html',
         controller: 'ProfileNoticeCtrl'
      })
-     .when('/templates', {
-        templateUrl: 'views/templates.html',
-        controller: 'templatesCtrl'
-     })
       .when('/project-video/:uuid', {
         templateUrl: 'views/project-video.html',
         controller: 'ProjectVideoCtrl'

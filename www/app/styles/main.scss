@@ -10,6 +10,32 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.2em 0;
 }
 
+body{
+    font-family:'Roboto-Light','Roboto-LightItalic','Roboto-Medium';
+}
+
+@font-face {
+ font-family: 'Roboto-Light';
+ src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Light.ttf');
+ src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Light.eot');
+ src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Light.svg');
+ src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Light.woff');
+}
+@font-face {
+ font-family: 'Roboto-LightItalic';
+ src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-LightItalic.ttf');
+ src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-LightItalic.eot');
+ src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-LightItalic.svg');
+ src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-LightItalic.woff');
+}
+@font-face {
+ font-family: 'Roboto-Medium';
+ src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Medium.ttf');
+ src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Medium.eot');
+ src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Medium.svg');
+ src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Medium.woff');
+}
+
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
 .ui-timepicker-div dl { text-align: left; }
 .ui-timepicker-div dl dt { float: left; clear:left; padding: 0 0 0 5px; }
@@ -1585,6 +1611,89 @@ ul li{
                 background: #e6e6e6;
                 width: 150px;
                 padding: 15px;
+            }
+            .projectBuild-content-text{
+                display:none;
+                width:505px;
+                position: absolute;
+                bottom:68px;
+                background: #464646;
+                color:#fff;
+                text-align:center;
+                left:80px;
+                .projectBuild-content-textTitle{
+                    background:#1c85b6;
+                    height:20px;
+                    text-align:center;
+                    color:#fff;
+                }
+                .projectBuild-content-textContent{
+                    padding:10px 20px;
+                    color:#fff;
+                    height:50px;
+                    .projectBuild-content-textColor{
+                        background:#3AD19A;
+                        height:30px;
+                    }
+                    .projectBuild-content-textSelect{
+                        background:#323232;
+                        width:30px;
+                        height:30px;
+                        display: inline-block;
+                        line-height:30px;
+                    }
+                    .projectBuild-content-textSize{
+                        .selectSize{
+                            position:absolute;
+                            top: -62px;
+                            left: 13px;
+                            background: #323232;
+                            width: 83px;
+                            div{cursor:pointer;}
+                        }
+                        .projectBuild-content-textSizeDiv{
+                            background:#323232;
+                            width:50px;
+                            height:30px;
+                            display: inline-block;
+                            line-height:30px;
+                        }
+                    }
+                    .projectBuild-content-textFamily{
+                        .selectFamily{
+                            position:absolute;
+                            top: -62px;
+                            left: 5px;
+                            background: #323232;
+                            width: 137px;
+                            div{cursor:pointer;}
+                        }
+                        .projectBuild-content-textFamilyDiv{
+                            background:#323232;
+                            width:120px;
+                            height:30px;
+                            display: inline-block;
+                            line-height:30px;
+                        }
+                    }
+                    .projectBuild-content-textWeight{
+                        .selectWeight{
+                            position:absolute;
+                            top: -82px;
+                            left: 7px;
+                            background: #323232;
+                            width: 133px;
+                            div{cursor:pointer;}
+                        }
+                        .projectBuild-content-textWeightDiv{
+                            background:#323232;
+                            width:100px;
+                            height:30px;
+                            display: inline-block;
+                            line-height:30px;
+                        }
+                    }
+                }
             }
             .projectBuild-content-brush{
                 display:none;

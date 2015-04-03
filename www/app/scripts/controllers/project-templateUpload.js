@@ -9,8 +9,10 @@
 angular.module('conojoApp')
  .controller('ProjectTemplateUploadCtrl', function ($scope,$http,$location,$routeParams,currentUser) {
     $scope.activeProjectUuid = $routeParams.uuid;
-    $scope.projectScreenVideoBody = $(window).height() - 176;
-    $(".projectScreenVideo-content-body").css('height',$scope.projectScreenVideoBody);
+    $scope.projectTemplateBody = $(window).height() - 176;
+    $scope.projectScreenDropcontainer = $(window).height() - 212;
+    $(".projectScreen-content-body").css('height',$scope.projectTemplateBody);
+    $(".projectScreen-content-dropcontainer").css('height',$scope.projectScreenDropcontainer);
     
     $scope.init = function(){
         $http({
@@ -32,14 +34,14 @@ angular.module('conojoApp')
         });
     };
     
-    var videoUploadZone = new Dropzone("#videoupload",{
+    var templateUploadZone = new Dropzone("#templateupload",{
         url: 'http://conojoapp.scmreview.com/rest/videos/project/'+$scope.activeProjectUuid,
         paramName: "file", // The name that will be used to transfer the file
         maxFilesize: 10,
         clickable: false
     });
     
-    videoUploadZone.on("success",function(file,serverCallBack){
+    templateUploadZone.on("success",function(file,serverCallBack){
         var url = '/project-screen-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
         $location.path(url).replace();
         $scope.$apply();
@@ -125,12 +127,12 @@ angular.module('conojoApp')
     });
     
     $scope.toActivity = function(){
-        var url = '/project-activity-video/';
+        var url = '/project-activity-template/';
         $location.path(url);
     }
     
     $scope.toComment = function(){
-        var url = '/project-comment-video/';
+        var url = '/project-comment-template/';
         $location.path(url);
     }
     

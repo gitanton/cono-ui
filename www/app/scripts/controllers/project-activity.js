@@ -97,11 +97,6 @@ angular.module('conojoApp')
     $('.newMeeting-time').datetimepicker({
         dateFormat: "yy-mm-dd"
     });
-    
-    $scope.toBuildNewScreen = function(){
-        var url = '/project-build/'+$scope.activeProjectUuid+'/new';
-        $location.path(url);
-    }
 
     $scope.toScreen = function(){
         var url = '/project-screen/'+$scope.activeProjectUuid;

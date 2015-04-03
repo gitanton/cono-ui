@@ -39,11 +39,6 @@ angular.module('conojoApp')
             $('#updateproject').modal('hide');
         });
    };
-    
-    $scope.toBuildNewScreen = function(){
-        var url = '/project-build/'+$scope.activeProjectUuid+'/new';
-        $location.path(url);
-    }
 
     $scope.toScreen = function(){
         var url = '/project-screen/'+$scope.activeProjectUuid;

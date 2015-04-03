@@ -85,12 +85,12 @@ angular.module('conojoApp')
     });
 
     $scope.toScreen = function(){
-        var url = '/project-video/';
+        var url = '/project-templateUpload/';
         $location.path(url);
     }
     
     $scope.toComment = function(){
-        var url = '/project-comment-video/';
+        var url = '/project-comment-template/';
         $location.path(url);
     }
     

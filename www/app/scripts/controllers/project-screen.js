@@ -126,11 +126,6 @@ angular.module('conojoApp')
         event.stopPropagation();
     });
     
-    $scope.toBuildNewScreen = function(){
-        var url = '/project-build/'+$scope.activeProjectUuid+'/new';
-        $location.path(url);
-    }
-    
     $scope.toBuild = function(suuid){
         var url = '/project-build/'+$scope.activeProjectUuid+'/'+suuid;
         $location.path(url);
