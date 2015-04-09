@@ -21,8 +21,6 @@ angular.module('conojoApp')
             $(".projectScreenVideo-content-video").css('height', $scope.videoHeight);
             $("#videoBody").on("loadedmetadata", function () {
                 $("#videoDrawing").css('margin-Left', ($(window).width() - $("#videoBody").width() - 64)/2);
-//                $("#videoDrawing").attr('width',$("#videoBody").width());
-//                $("#videoDrawing").attr('height',$("#videoBody").height());
             });
 
             $scope.init = function () {

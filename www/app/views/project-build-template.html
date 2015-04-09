@@ -53,18 +53,17 @@
                         <div class="col-lg-1 projectBuild-content-textColor"></div>
                         <div class="col-lg-3 projectBuild-content-textSize">
                             <div class="selectSize" ng-show="selectSizeDropdown">
-                                <div ng-click="selectSize(14)">14px</div>
-                                <div ng-click="selectSize(18)">18px</div>
-                                <div ng-click="selectSize(24)">24px</div>
+                                <div ng-click="selectSize('14px')">14px</div>
+                                <div ng-click="selectSize('18px')">18px</div>
+                                <div ng-click="selectSize('24px')">24px</div>
                             </div>
                             <div class="projectBuild-content-textSizeDiv">24px</div>
                             <div class="projectBuild-content-textSelect" ng-click="openSelectSize()"><img src="images/select-project-white-icon.png"></div>
                         </div>
                         <div class="col-lg-4 projectBuild-content-textFamily">
                             <div class="selectFamily" ng-show="selectFamilyDropdown">
-                                <div ng-click="selectFamily('light')">Roboto-Light</div>
-                                <div ng-click="selectFamily('lightitalic')">Roboto-LightItalic</div>
-                                <div ng-click="selectFamily('medium')">Roboto-Medium</div>
+                                <div ng-click="selectFamily('Roboto-Light')">Roboto-Light</div>
+                                <div ng-click="selectFamily('Roboto-Medium')">Roboto-Medium</div>
                             </div>
                             <div class="projectBuild-content-textFamilyDiv">Roboto-Light</div>
                             <div class="projectBuild-content-textSelect" ng-click="openSelectFamily()"><img src="images/select-project-white-icon.png"></div>
@@ -283,5 +282,19 @@
                 <button class="btn btn-lg" ng-click="addNewMeeting()">Create Meeting</button>
             </div>
         </form>
+    </div>
+</div>
+<div id="addText" class="modal fade in" style="display: none;">
+    <div class="addText-add">
+        <div class="col-lg-10 addText-add-desc">ADD TEXT</div>
+        <div class="col-lg-2 addText-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+            <div class="col-lg-12 addText-add-body">
+                <div class="form-group">
+                    <textarea name="addText" ng-model="addText" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="col-lg-12 addText-add-button">
+                <button class="btn btn-lg" ng-click="addTextToCanvas()">Add Text</button>
+            </div>
     </div>
 </div>
