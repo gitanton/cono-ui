@@ -10,6 +10,7 @@ angular.module('conojoApp')
  .controller('ProjectBuildTemplateCtrl', function ($scope,$http,$location,$routeParams,meetingFlag,currentUser) {
      $scope.CLOCK = null;
      $scope.shapeFill = false;
+     $scope.showComments = false;
      $scope.showAddHotspots = false;
      $scope.showCommentBlue = true;
      $scope.showHotspotsBlue = true;
@@ -227,15 +228,64 @@ angular.module('conojoApp')
         cxt.fillStyle = '#000';
     }
     
-    $scope.openComment = function(){
+    $scope.openComments = function(){
         $scope.showCommentBlue = false;
         $scope.showHotspotsBlue = true;
-        $scope.showTextBlue = true;
         $scope.showBrushBlue = true;
         $scope.showEraser = false;
         $scope.showShape = false;
         $(".projectBuild-comment-black").siblings().removeClass("tools-li-selected");
         $(".projectBuild-comment-black").addClass("tools-li-selected");
+        
+        cxt.strokeStyle = "rgba(250,246,162,0.7)";
+        cxt.fillStyle = "rgba(250,246,162,0.7)";
+        canvas.onmousedown=function(evt){
+            if($scope.commentList.length > 0){
+                cxt.clearRect(0,0,1000,423);
+                $scope.commentList = [];
+            }
+            evt=window.event||evt;
+            rectX=evt.pageX-this.offsetLeft-64;
+            rectY=evt.pageY-this.offsetTop-176;
+            $('#addHotspots').css('left',evt.pageX-20);
+            $('#addHotspots').css('top',evt.pageY);
+        }
+
+        canvas.onmouseup=function(evt){
+            evt=window.event||evt;
+            cxt.fillRect(rectX, rectY, 25, 25);
+            $scope.commentList.push([canvas.toDataURL(),rectX,rectY,25,25]);
+            $scope.showComments = true;
+            $scope.$apply();
+        }
+        canvas.onmousemove=null;
+        canvas.onmouseout=null;
+    }
+    
+    $scope.saveComments = function(){
+        var imgDataArray = $scope.commentList.slice(-1);
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/screens/screen/'+$scope.activeScreenUuid+'/hotspots',
+            method: 'POST',
+            data: $.param({screen_uuid:$scope.activeScreenUuid,data:imgDataArray[0][0],begin_x:imgDataArray[0][1], begin_y:imgDataArray[0][2], end_x:imgDataArray[0][3], end_y:imgDataArray[0][4], link_to:$scope.hotspotsLinkTo}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+
+        });
+        //save to the Server successfully
+        $scope.showComments = false;
+    }
+    
+    $scope.hideComments = function(){
+        $scope.showComments = false;
+        cxt.clearRect(0,0,1000,423);
+        if($scope.commentList.length > 1){
+            var index = $scope.commentList.length - 2;
+            var image = new Image();
+            image.src = $scope.commentList[index][0];
+            cxt.drawImage(image , 0 ,0);
+        }
+        $scope.commentList.pop();
     }
     
     var textX = 0;
@@ -355,7 +405,7 @@ angular.module('conojoApp')
             evt=window.event||evt;
             rectX=evt.pageX-this.offsetLeft-64;
             rectY=evt.pageY-this.offsetTop-176;
-            $('#addHotspots').css('left',evt.pageX-400);
+            $('#addHotspots').css('left',evt.pageX-20);
             $('#addHotspots').css('top',evt.pageY);
         }
 

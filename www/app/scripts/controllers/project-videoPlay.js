@@ -331,14 +331,14 @@ angular.module('conojoApp')
                     evt = window.event || evt;
                     rectX = evt.pageX - this.offsetLeft - 64;
                     rectY = evt.pageY - this.offsetTop - 176;
+                    $('#addComment').css('left', evt.pageX - 400);
+                    $('#addComment').css('top', evt.pageY);
                 }
 
                 canvas.onmouseup = function (evt) {
                     evt = window.event || evt;
                     cxt.fillRect(rectX, rectY, 25, 25);
                     $scope.commentList.push([canvas.toDataURL(), rectX, rectY, 25, 25]);
-                    $('#addComment').css('left', evt.pageX - 400);
-                    $('#addComment').css('top', evt.pageY);
                     $scope.showComment = true;
                     $scope.$apply();
                 }

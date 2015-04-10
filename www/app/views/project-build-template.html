@@ -35,7 +35,7 @@
                 </div>
                 <div class="projectBuild-content-tools">
                     <ul class="projectBuild-content-tools-ul">
-                        <li class="projectBuild-comment-blue" ng-show="showCommentBlue" ng-click="openComment()"><img src="images/comment-blue-icon.png"></li>
+                        <li class="projectBuild-comment-blue" ng-show="showCommentBlue" ng-click="openComments()"><img src="images/comment-blue-icon.png"></li>
                         <li class="projectBuild-comment-black" ng-hide="showCommentBlue"><img src="images/comment-black-icon.png"></li>
                         <li class="projectBuild-hotspots-blue" ng-show="showHotspotsBlue" ng-click="openHotspots()"><img src="images/hotspots-blue-icon.png"></li>
                         <li class="projectBuild-hotspots-black" ng-hide="showHotspotsBlue"><img src="images/hotspots-black-icon.png"></li>
@@ -255,6 +255,27 @@
                 <button class="btn btn-lg hotspots-buttonsubmit" type="submit" ng-click="saveAddHotspots()">Save</button>
             </div>
         </form>
+    </div>
+</div>
+<div id="addComment" ng-show="showComments">
+    <div class="comment-add">
+        <div class="col-lg-10 comment-add-desc">Mark as complete:</div>
+        <div class="col-lg-2 comment-add-delicon"><img src="images/close-icon.png" ng-click="hideComments()"></div>
+        <div class="comment-chat-content">
+            <div class="col-lg-12" ng-repeat="videoComment in videoComments">
+                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
+                <div class="col-lg-9">
+                    <div class="col-lg-8">Charles Haggas</div>
+                    <div class="col-lg-4">{{videoComment.created | limitTo:-8}}</div>
+                    <div class="col-lg-12">{{videoComment.content}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="comment-chat-input">
+            <form>
+                <input type="text" name="comment-chat-content" ng-model="commentContent" ng-keyup="$event.keyCode == 13 && saveComments()" placeholder="Leave a comment...">
+            </form>
+        </div>
     </div>
 </div>
 <div id="newMeeting" class="modal fade in" style="display: none;">
