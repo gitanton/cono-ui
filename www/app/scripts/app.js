@@ -131,10 +131,6 @@ angular
         templateUrl: 'views/register-plan.html',
         controller: 'registerPlanCtrl'
       })
-      .when('/forgot-password', {
-        templateUrl: 'views/forgot-password.html',
-        controller: 'forgotPasswordCtrl'
-      })
       .otherwise({
         redirectTo: '/'
       });

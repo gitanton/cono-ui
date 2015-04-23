@@ -3737,6 +3737,65 @@ ul li{
   background: url('/images/marker.png') no-repeat;
 }
 
+#resetPassword{
+    width:100%;
+    padding-top:50px;
+    .reset{
+        width:465px;
+        height:316px;
+        background:#fff;
+        border-radius:4px;
+        margin:0 auto;
+    }
+    .reset-desc{
+        text-align:center;
+        color:#0378ae;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .reset-delete-delicon{
+        text-align:center;
+        padding:22px 0px;
+        border-bottom:1px solid #e3e3e3;
+        cursor:pointer;
+    }
+    .reset-body{
+        text-align:center;
+        color:#0378ae;
+        padding:24px;
+        background:#e6e6e6;
+        border-bottom:1px solid #e3e3e3;
+    }
+    .reset-title{
+        height:48px;
+    }
+    .reset-button{
+        padding:12px 0px;
+        text-align:center;
+    }
+    .reset-delete-buttoncancel{
+        @extend .appbutton;
+        width:201px;
+        height:40px;
+        background:#fff;
+        border:1px solid #0370a2;
+        color:#0378ae;
+    }
+    .reset-delete-buttonsubmit{
+        @extend .appbutton;
+        width:201px;
+        height:40px;
+    }
+    .reset-note{
+        padding:0px 24px 24px;
+        text-align: left;
+        font-size:16px;
+        margin-left: auto;
+        margin-right: auto;
+        background: #e6e6e6;
+    }
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
 

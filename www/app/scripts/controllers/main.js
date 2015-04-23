@@ -26,4 +26,21 @@ angular.module('conojoApp')
              currentUser.currentUserUuid = data.uuid;
         });
     };
+    
+    $scope.openResetPassword = function(){
+        $('#resetPassword').modal('toggle');
+    };
+    
+    $scope.forgotPassword = function(){
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/users/forgot_password',
+            method: 'POST',
+            data:$.param({email:$scope.resetEmail}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(data){
+//            if(data.status == 'success'){
+//                $(".forgot-form").append("<p style='text-align:center;'>The email has been sent successfully, please read the email to get the password and go to <a href='#/'>Login</a> page</p>");
+//            }
+        });
+    }
   });
