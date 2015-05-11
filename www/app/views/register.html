@@ -7,7 +7,7 @@
         </div>
         <form name="userForm" ng-submit="processForm()" novalidate>
             <div class="col-lg-12">
-                <input type="text" name="fullname" class="form-control register-username" placeholder="Username" ng-model="formData.username" ng-minlength="6" required />
+                <input type="text" name="username" class="form-control register-username" placeholder="Username" ng-model="formData.username" ng-minlength="6" required />
                 <span ng-show="userForm.username.$invalid && !userForm.username.$pristine">Username Should be at least five characters long</span>
             </div>
             <div class="col-lg-12">
@@ -41,5 +41,16 @@
     <div class="register-footer-date-trial">
         <div class="col-lg-5"><img src="images/free-trial.png"></div>
         <div class="col-lg-7"><p>Your free 30-day trial</p><p>lasts until:{{lastDay | date}}</p></div>
+    </div>
+</div>
+<div id="registerNote" class="modal fade in" style="display: none;">
+    <div class="reset">
+        <div class="col-md-10 reset-desc">REGISTER</div>
+        <div class="col-md-2 reset-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-12 reset-note">
+            <p ng-show="errorOne">The Email field must contain a unique value.Please fill in your information again.</p>
+            <p ng-show="errorTwo">The Username field must contain a unique value.Please fill in your information again.</p>
+            <p ng-show="errorThree">The Username and Email field must contain a unique value.Please fill in your information again.</p>
+        </div>
     </div>
 </div>

@@ -55,6 +55,17 @@ angular.module('conojoApp')
                 cxt_b.drawImage(imageObj_b,0,0,1000,423);  
             }
 
+            if(data.comments.length > 0){
+                var c_length = data.comments.length - 1;
+                imageObj.src = 'data:image/png;base64,' + data.comments[c_length].data.slice(9);
+                $scope.commentList = [['data:image/png;base64,' + data.comments[c_length].data.slice(9),0,0,0,0]];
+                imageObj.onload = function (){
+                    cxt.drawImage(imageObj,0,0,1000,423);
+                }
+            }else{
+                $scope.commentList = [];
+            }
+
             if(data.hotspots.length > 0){
                 var h_length = data.hotspots.length - 1;
                 imageObj.src = 'data:image/png;base64,' + data.hotspots[h_length].data.slice(9);
@@ -247,12 +258,16 @@ angular.module('conojoApp')
             evt=window.event||evt;
             rectX=evt.pageX-this.offsetLeft-64;
             rectY=evt.pageY-this.offsetTop-176;
-            $('#addHotspots').css('left',evt.pageX-20);
-            $('#addHotspots').css('top',evt.pageY);
         }
 
         canvas.onmouseup=function(evt){
             evt=window.event||evt;
+            if(evt.pageX > 400){
+                $('#addComment').css('left',evt.pageX-400);
+            }else{
+                $('#addComment').css('left',evt.pageX+40);
+            }
+            $('#addComment').css('top',evt.pageY);
             cxt.fillRect(rectX, rectY, 25, 25);
             $scope.commentList.push([canvas.toDataURL(),rectX,rectY,25,25]);
             $scope.showComments = true;
@@ -405,8 +420,6 @@ angular.module('conojoApp')
             evt=window.event||evt;
             rectX=evt.pageX-this.offsetLeft-64;
             rectY=evt.pageY-this.offsetTop-176;
-            $('#addHotspots').css('left',evt.pageX-20);
-            $('#addHotspots').css('top',evt.pageY);
         }
 
         canvas.onmouseup=function(evt){
@@ -415,6 +428,12 @@ angular.module('conojoApp')
             var endY=evt.pageY-this.offsetTop-176;
             var rectW=endX-rectX;
             var rectH=endY-rectY;
+            if(evt.pageX > 400){
+                $('#addHotspots').css('left',evt.pageX -rectW -400);
+            }else{
+                $('#addHotspots').css('left',evt.pageX + 10);
+            }
+            $('#addHotspots').css('top',evt.pageY - rectH);
             cxt.fillRect(rectX,rectY,rectW,rectH);
             $scope.hotspotsList.push([canvas.toDataURL(),rectX,rectY,endX,endY]);
             $scope.showAddHotspots = true;
