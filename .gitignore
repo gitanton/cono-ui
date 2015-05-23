@@ -2,3 +2,5 @@
 .idea/
 *.iml
 *.iws
+
+www/app/scripts/config.js
