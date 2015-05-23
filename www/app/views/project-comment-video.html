@@ -1,0 +1,85 @@
+<div class="projectComment-page">
+    <div ng-include="'views/header.html'"></div>
+    <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
+    <div class="projectComment-container">
+        <div class="projectComment-header">
+            <div class="projectComment-header-name col-lg-6">
+                <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
+            </div>
+            <div class="projectComment-header-button col-lg-6">
+                <button class="btn btn-lg">New Comment</button>
+            </div>
+        </div>
+        <div class="projectComment-content">
+            <div class="projectComment-content-menu">
+                <div class="projectComment-content-nav col-lg-12">
+                    <ul>
+                        <li  ng-click="toVideo()">Video</li>
+                        <li  ng-click="toActivity()">ACTIVITY</li>
+                        <li class="project-design-menu-current">COMMENTS</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="projectComment-subheader">
+                <div class="projectComment-subheader-unread col-lg-6">
+                    <span>4 Comments </span><img src="images/line-after-message.png">
+                    <a href="javascript:void(0)"><img src="images/search-icon.png"></a>
+                </div>
+                <div class="projectComment-subheader-previously col-lg-6">
+                    <input type="checkbox"> Show previously viewed comments
+                </div>
+            </div>
+            <div class="projectComment-content-body">
+                <div class="projectComment-content-items col-lg-12">
+                    <div class="col-lg-12 projectComment-content-item">
+                        <div class="projectComment-content-img col-lg-3"><img src="images/Dawkins.png"></div>
+                        <div class="projectComment-content-desc col-lg-9">
+                            <div class="col-lg-9">R.Dawkins added 4 new screenshots to Project A</div>
+                            <div class="col-lg-3">10 min ago</div>
+                            <div class="col-lg-12"><img src="images/thumbs.png"></div>
+                            <div class="col-lg-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 projectComment-content-item">
+                        <div class="projectComment-content-img col-lg-3"><img src="images/Dawkins.png"></div>
+                        <div class="projectComment-content-desc col-lg-9">
+                            <div class="col-lg-9">R.Dawkins added 4 new screenshots to Project A</div>
+                            <div class="col-lg-3">10 min ago</div>
+                            <div class="col-lg-12"><img src="images/thumbs.png"></div>
+                            <div class="col-lg-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 projectComment-content-item">
+                        <div class="projectComment-content-img col-lg-3"><img src="images/Dawkins.png"></div>
+                        <div class="projectComment-content-desc col-lg-9">
+                            <div class="col-lg-9">R.Dawkins added 4 new screenshots to Project A</div>
+                            <div class="col-lg-3">10 min ago</div>
+                            <div class="col-lg-12"><img src="images/thumbs.png"></div>
+                            <div class="col-lg-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="updateproject" class="modal fade in" style="display: none;">
+    <div class="project-update">
+        <div class="col-lg-12 project-update-desc">UPDATE PROJECT</div>
+        <form name="updateProject">
+            <div class="col-lg-12 project-update-body">
+                <input type="text" name="projecttitle" ng-model="updateProjectTitle" class="form-control project-update-title" />
+                <select name="projecttype"  ng-model="updateProjectTypeid" class="form-control project-update-type">
+                    <option value=0>Project Type</option>
+                    <option value=1>UI/UX Project</option>
+                    <option value=2>Video Project</option>
+                    <option value=3>Business Template</option>
+                </select>	        
+            </div>
+            <div class="col-lg-12 project-update-button">
+                <button class="btn btn-lg project-update-buttoncancel" type="cancel" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-lg project-update-buttonsubmit" type="submit" ng-click='updateMyProject(activeProjectUuid)'>Save</button>        
+            </div>
+        </form>
+    </div>
+</div>

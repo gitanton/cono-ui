@@ -1,0 +1,53 @@
+<div class="activity-page">
+    <div ng-include="'views/header.html'"></div>
+    <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
+    <div class="activity-container col-lg-12">
+        <div class="activity-header">
+            <div class="activity-header-account col-lg-6"><span>Account Activity</span></div>
+            <div class="activity-header-button col-lg-6">
+                <button class="btn btn-lg">MYSELF</button>
+                <button class="btn btn-lg">MY TEAM</button>
+                <button class="btn btn-lg">EVERYONE</button>
+            </div>
+        </div>
+        <div class="activity-content">
+            <div class="activity-content-items col-lg-10">
+                <div class="col-lg-12 activity-content-item" id="drag1" draggable>
+                    <div class="activity-content-img col-lg-3"><img src="images/Dawkins.png"></div>
+                    <div class="activity-content-desc col-lg-9">
+                        <div class="col-lg-9">R.Dawkins added 4 new screenshots to Project A</div>
+                        <div class="col-lg-3">10 min ago</div>
+                        <div class="col-lg-12"><img src="images/thumbs.png"></div>
+                        <div class="col-lg-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
+                    </div>
+                </div>
+                <div class="col-lg-12 activity-content-item" id="drag2" draggable>
+                    <div class="activity-content-img col-lg-3"><img src="images/Dawkins.png"></div>
+                    <div class="activity-content-desc col-lg-9">
+                        <div class="col-lg-9">R.Dawkins added 4 new screenshots to Project A</div>
+                        <div class="col-lg-3">10 min ago</div>
+                        <div class="col-lg-12"><img src="images/thumbs.png"></div>
+                        <div class="col-lg-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
+                    </div>
+                </div>
+                <div class="col-lg-12 activity-content-item" id="drag3" draggable>
+                    <div class="activity-content-img col-lg-3"><img src="images/Dawkins.png"></div>
+                    <div class="activity-content-desc col-lg-9">
+                        <div class="col-lg-9">R.Dawkins added 4 new screenshots to Project A</div>
+                        <div class="col-lg-3">10 min ago</div>
+                        <div class="col-lg-12"><img src="images/thumbs.png"></div>
+                        <div class="col-lg-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
+                    </div>
+                </div>
+            </div>
+            <div class="activity-content-delete col-lg-2" droppable drop="handleDrop()">
+                <img src="images/delete-icon.png" class="activity-content-deleteicon">
+                <div class="activity-content-deleteintro" id="activity-content-deleteintro">
+                    <p>DELETE</p>
+                    <p>Drag & Drop here to delete</p>
+                </div>
+           </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,172 @@
+<div class="profileBilling-page">
+    <div ng-include="'views/header.html'"></div>
+    <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
+    <div class="profileBilling-container">
+        <div class="profileBilling-header">
+            <div class="profileBilling-header-name col-lg-6">
+                <span>Profile</span>
+            </div>
+            <div class="profileBilling-header-button col-lg-6">
+                <button class="btn btn-lg">Save & Update</button>
+            </div>
+        </div>
+        <div class="profileBilling-content">
+            <div class="profileBilling-content-menu">
+                <div class="profileBilling-content-nav col-lg-12">
+                    <ul>
+                        <li ng-click="toProject()">MY PROJECTS</li>
+                        <li ng-click="toProfile()">PROFILE</li>
+                        <li class="project-design-menu-current">BILLING</li>
+                        <li ng-click="toNotice()">NOTIFICATIONS</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="profileBilling-content-body">
+                <div class="profileBilling-content-one" ng-show="billingOne">
+                    <div class="profileBilling-content-title">Your Billing</div>
+                    <div class="profileBilling-content-billing">
+                        <div class="profileBilling-content-billing-card">Card Info</div>
+                        <div class="profileBilling-content-billing-cardInfo">
+                            <div class="profileProfile-content-billing-number col-lg-4"><input type="password"></div>
+                            <div class="profileProfile-content-billing-change col-lg-4" ng-click="changeCard()">Change Card</div>
+                        </div>
+                        <div class="profileBilling-content-billing-plan">
+                            <div class="profileBilling-content-billing-plantitle col-lg-1">Your Plan</div>
+                            <div class="profileBilling-content-billing-planinfo col-lg-5">Unlimited active projects at a time ($25/mo)</div>
+                            <div class="profileBilling-content-billing-upgrade col-lg-3" ng-click="upgradePlan()">Upgrade Plan</div>
+                            <div class="profileBilling-content-billing-cancel col-lg-3">Cancel Plan</div>
+                        </div>
+                        <div class="profileBilling-content-billing-history">
+                            <div class="profileBilling-content-billing-historytitle">History</div>
+                            <div class="profileBilling-content-billing-historyitem col-lg-12">Invoice #76201 for $25.00 on 9/20/14</div>
+                            <div class="profileBilling-content-billing-historyitem col-lg-12">Invoice #76201 for $25.00 on 9/20/14</div>
+                            <div class="profileBilling-content-billing-historyitem col-lg-12">Invoice #76201 for $25.00 on 9/20/14</div>
+                            <div class="profileBilling-content-billing-historyitem col-lg-12">Invoice #76201 for $25.00 on 9/20/14</div>
+                            <div class="profileBilling-content-billing-historyitem col-lg-12">Invoice #76201 for $25.00 on 9/20/14</div>
+                            <div class="profileBilling-content-billing-historyitem col-lg-12">Invoice #76201 for $25.00 on 9/20/14</div>
+                            <div class="profileBilling-content-billing-historyitem col-lg-12">Invoice #76201 for $25.00 on 9/20/14</div>
+                            <div class="profileBilling-content-billing-historyitem col-lg-12">Invoice #76201 for $25.00 on 9/20/14</div>
+                            <div class="profileBilling-content-billing-historyitem col-lg-12">Invoice #76201 for $25.00 on 9/20/14</div>
+                            <div class="profileBilling-content-billing-historyitem col-lg-12">Invoice #76201 for $25.00 on 9/20/14</div>
+                            <div class="profileBilling-content-billing-historyitem col-lg-12">Invoice #76201 for $25.00 on 9/20/14</div>
+                            <div class="profileBilling-content-billing-historyitem col-lg-12">Invoice #76201 for $25.00 on 9/20/14</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profileBilling-content-two" ng-show="billingTwo">
+                    <div class="profileBilling-content-title">Your Billing</div>
+                    <div class="profileBilling-content-billing">
+                        <div class="profileBilling-content-billing-card">
+                            <div class="col-lg-5"><img src="images/back-icon.png" ng-click="backBilling()"> BACK </div>
+                            <div class="col-lg-7">BILLING INFORMATION</div>
+                        </div>
+                        <div class="profileBilling-content-billing-changrCard col-lg-12">
+                            <div class="profileBilling-content-billing-changeCard-one col-lg-12">
+                                <div class="col-lg-6">Plan Type</div>
+                                <div class="col-lg-6">Add Team Members</div>
+                            </div>
+                            <div class="profileBilling-content-billing-changeCard-two col-lg-12">
+                                <div class="col-lg-6">
+                                    <div class="profileBilling-content-billing-changeCard-two-L">Professional - $25 per month</div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="profileBilling-content-billing-changeCard-two-m col-lg-2">-</div>
+                                    <div class="profileBilling-content-billing-changeCard-two-r col-lg-8">+ 1 Team Member - $10.00</div>
+                                    <div class="profileBilling-content-billing-changeCard-two-p col-lg-2">+</div>
+                                </div>
+                            </div>
+                            <div class="profileBilling-content-billing-changeCard-three col-lg-12">
+                                <div class="col-lg-2"><input type="radio" value="1" name="cardCategory"><img src="images/visa-icon.png"></div>
+                                <div class="col-lg-2"><input type="radio" value="2" name="cardCategory"><img src="images/master-card-icon.png"></div>
+                                <div class="col-lg-2"><input type="radio" value="3" name="cardCategory"><img src="images/america-express-icon.png"></div>
+                                <div class="col-lg-2"><input type="radio" value="4" name="cardCategory"><img src="images/discover-icon.png"></div>
+                                <div class="col-lg-2"><input type="radio" value="5" name="cardCategory"><img src="images/paypal-icon.png"></div>
+                            </div>
+                            <div class="profileBilling-content-billing-changeCard-four col-lg-12">
+                                <div class="col-lg-4">First Name</div>
+                                <div class="col-lg-4">Last Name</div>
+                                <div class="col-lg-4">Phone Number</div>
+                            </div>
+                            <div class="profileBilling-content-billing-changeCard-five col-lg-12">
+                                <div class="col-lg-4"><input type="text"></div>
+                                <div class="col-lg-4"><input type="text"></div>
+                                <div class="col-lg-4"><input type="text"></div>
+                            </div>
+                            <div class="profileBilling-content-billing-changeCard-six col-lg-12">
+                                <div class="col-lg-4">City</div>
+                                <div class="col-lg-2">State</div>
+                                <div class="col-lg-4">Country</div>
+                                <div class="col-lg-2">Zip Code</div>
+                            </div>
+                            <div class="profileBilling-content-billing-changeCard-seven col-lg-12">
+                                <div class="profileBilling-content-billing-changeCard-city col-lg-4"><input type="text"></div>
+                                <div class="profileBilling-content-billing-changeCard-state col-lg-2"><input type="text"></div>
+                                <div class="profileBilling-content-billing-changeCard-country col-lg-4"><input type="text"></div>
+                                <div class="profileBilling-content-billing-changeCard-code col-lg-2"><input type="text"></div>
+                            </div>
+                            <div class="profileBilling-content-billing-changeCard-eight col-lg-12">
+                                <div class="col-lg-6">Credit Card Number</div>
+                                <div class="col-lg-4">Expiration Date</div>
+                                <div class="col-lg-2">CVV</div>
+                            </div>
+                            <div class="profileBilling-content-billing-changeCard-nine col-lg-12">
+                                <div class="profileBilling-content-billing-changeCard-cardNum col-lg-6"><input type="text"></div>
+                                <div class="profileBilling-content-billing-changeCard-expirationM col-lg-2"><input type="text" placeholder="MM"></div>
+                                <div class="profileBilling-content-billing-changeCard-expirationY col-lg-2"><input type="text" placeholder="YY"></div>
+                                <div class="profileBilling-content-billing-changeCard-cvv col-lg-2"><input type="text"></div>
+                            </div>
+                            <div class="profileBilling-content-billing-changeCard-ten col-lg-12">
+                                <div class="col-lg-8">
+                                    <div class="profileBilling-content-billing-changeCard-planinfo">Professional Plan + 1 Team Member $35.00</div>
+                                </div>
+                                <div class="col-lg-4"><button class="btn btn-lg profileBilling-content-billing-changeCard-button">Buy Now</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profileBilling-content-three" ng-show="billingThree">
+                    <div class="profileBilling-content-title">Your Billing</div>
+                    <div class="profileBilling-content-billing">
+                        <div class="profileBilling-content-billing-planTitle">
+                            <div class="col-lg-5"><img src="images/back-icon.png" ng-click="backBilling()"> BACK </div>
+                            <div class="col-lg-7">SELECT A PLAN</div>
+                        </div>
+                        <div class="profileBilling-content-billing-plans col-lg-12">
+                            <div class="profileBilling-content-billing-plans-items col-lg-12">
+                                <div class="profileBilling-content-billing-plans-item col-lg-3">
+                                    <div class="profileBilling-content-billing-plans-name">TRIAL</div>
+                                    <div class="profileBilling-content-billing-plans-price">30 DAYS FREE</div>
+                                    <div class="profileBilling-content-billing-plans-num"><span>1</span> Project</div>
+                                    <div class="profileBilling-content-billing-plans-per"><span>$10</span> per additional team member</div>
+                                    <div class="profileBilling-content-billing-plans-button" ng-click="selectPlan($event)">SELECT PLAN</div>
+                                </div>
+                                <div class="profileBilling-content-billing-plans-item col-lg-3">
+                                    <div class="profileBilling-content-billing-plans-name">STARTER</div>
+                                    <div class="profileBilling-content-billing-plans-price"><span>$15</span>/Month</div>
+                                    <div class="profileBilling-content-billing-plans-num"><span>3</span> Project</div>
+                                    <div class="profileBilling-content-billing-plans-per"><span>$10</span> per additional team member</div>
+                                    <div class="profileBilling-content-billing-plans-button" ng-click="selectPlan($event)">SELECT PLAN</div>
+                                </div>
+                                <div class="profileBilling-content-billing-plans-itemSelect col-lg-3">
+                                    <div class="profileBilling-content-billing-plans-name">PROFESSIONAL</div>
+                                    <div class="profileBilling-content-billing-plans-price"><span>$25</span>/Month</div>
+                                    <div class="profileBilling-content-billing-plans-num"><span>10</span> Project</div>
+                                    <div class="profileBilling-content-billing-plans-per"><span>$10</span> per additional team member</div>
+                                    <div class="profileBilling-content-billing-plans-button" ng-click="selectPlan($event)">SELECT PLAN</div>
+                                </div>
+                                <div class="profileBilling-content-billing-plans-item col-lg-3">
+                                    <div class="profileBilling-content-billing-plans-name">TEAM</div>
+                                    <div class="profileBilling-content-billing-plans-price"><span>$100</span>/Month</div>
+                                    <div class="profileBilling-content-billing-plans-num"><span>Unlimited</span> Projects</div>
+                                    <div class="profileBilling-content-billing-plans-perT"><span>Up tp 5</span> team member</div>
+                                    <div class="profileBilling-content-billing-plans-perT"><span>$10</span> per additional team member</div>
+                                    <div class="profileBilling-content-billing-plans-button" ng-click="selectPlan($event)">SELECT PLAN</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

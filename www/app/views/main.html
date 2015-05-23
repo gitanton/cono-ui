@@ -1,23 +1,47 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div class="login-container">
+    <div class="login-logo"><a ng-href="http://conojo.scmreview.com/website-new"><img src="images/logo-account.png"></a></div>
+    <div class="login-form">
+        <form name="loginform" ng-submit="processForm()" novalidate>
+            <div class="col-lg-12">
+                <input type="text" name="username" ng-model="formData.username" class="form-control login-username" placeholder="Username" ng-minlength="5" required />
+                <span ng-show="loginform.username.$invalid && !loginform.username.$pristine">Username Should be at least five characters long</span>
+            </div>
+            <div class="col-lg-12">
+                <input type="password" name="password" ng-model="formData.password" class="form-control login-password" placeholder="Password" ng-minlength="6" required />
+                <span ng-show="loginform.password.$invalid && !loginform.password.$pristine">Password Should be at least six characters long</span>
+            </div>
+            <div class="col-lg-6 login-remember">
+                <label><input type="checkbox"> Remember me</label>
+            </div>
+            <div class="col-lg-6 login-forgot">
+                <label><a href="javascript:void(0)" ng-click="openResetPassword()">Forgot Password</a></label>
+            </div>
+            <div class="col-lg-12 login-button"><button class="btn btn-lg" type="submit" ng-disabled="loginform.$invalid">Login</button></div>
+        </form>
+    </div>
+    <div class="login-link">
+        <a href="javscript:void(0)" class="login-twitter"><img src="images/twitter.png"></a>
+        <a href="javscript:void(0)" class="login-fb"><img src="images/facebook.png"></a>
+        <a href="javscript:void(0)" class="login-google"><img src="images/google+.png"></a>
+    </div>
 </div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+<div class="login-footer">
+    <a class="btn btn-lg" ng-href="#/register">Create Account</a>
+    <div id="mydata"></div>
+</div>
+<div id="resetPassword" class="modal fade in" style="display: none;">
+    <div class="reset">
+        <div class="col-md-10 reset-desc">RESET PASSWORD</div>
+        <div class="col-md-2 reset-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="resetPassword">
+            <div class="col-md-12 reset-body">
+                <input type="text" name="resetEmail" ng-model="resetEmail" class="form-control reset-title" placeholder="Enter email address" />	        
+            </div>
+            <div class="col-md-12 reset-note">Please enter the email address that you used when creating your account. An email will be sent to that address with further instructions on how to reset your password.</div>
+            <div class="col-md-12 reset-button">
+                <button class="btn btn-lg reset-delete-buttoncancel" type="reset" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-lg reset-delete-buttonsubmit" type="submit" ng-click='forgotPassword()'>Send Email</button>       
+            </div>
+        </form>
+    </div>
 </div>

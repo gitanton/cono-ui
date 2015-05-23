@@ -1,0 +1,25 @@
+<div class="siderbar-closed-container" ng-hide="expandMenuFlag">
+    <img class="siderbar-closed-img" src="images/Chan.png" ng-click="goToProfile()">
+    <div class="col-lg-12"><a href="#/project" title="project"><img src="images/project-icon.png"></a></div>
+    <div class="col-lg-12"><a href="#/activity" title="activity"><img src="images/activity-icon.png"></a></div>
+    <div class="col-lg-12"><a href="#/team" title="team"><img src="images/team-icon.png"></a></div>
+    <div class="col-lg-12"><a href="javascript:void(0)" title="task"><img src="images/task-icon.png"></a></div>
+    <div class="col-lg-12"><a href="javascript:void(0)" title="logout" ng-click="Logout()"><img src="images/logout-icon.png"></a></div>
+    <div class="siderbar-closed-container-expand col-lg-12">
+        <img src="images/expand-icon.png" ng-click="expandMenu()" title="expand">
+    </div>
+</div>
+<div class="siderbar-expand-container" ng-show="expandMenuFlag">
+    <div class="siderbar-expand-profileContainer">
+        <div class="siderbar-expand-profileView" ng-click="goToProfile()">View Profile</div>
+    </div>
+    <img class="siderbar-expand-img" src="images/Chan.png">
+    <div class="col-lg-12"><a href="#/project" title="project"><img src="images/project-icon.png">Project</a></div>
+    <div class="col-lg-12"><a href="#/activity" title="activity"><img src="images/activity-icon.png">Activity</a></div>
+    <div class="col-lg-12"><a href="#/team" title="team"><img src="images/team-icon.png">Team</a></div>
+    <div class="col-lg-12"><a href="javascript:void(0)" title="task"><img src="images/task-icon.png">Tasks</a></div>
+    <div class="col-lg-12"><a href="javascript:void(0)" title="logout" ng-click="Logout()"><img src="images/logout-icon.png">Logout</a></div>
+    <div class="siderbar-closed-container-expand col-lg-12">
+        <img src="images/expand-back-icon.png" ng-click="closeMenu()" title="close">
+    </div>
+</div>

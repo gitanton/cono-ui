@@ -1,0 +1,50 @@
+<div class="profileProfile-page">
+    <div ng-include="'views/header.html'"></div>
+    <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
+    <div class="profileProfile-container">
+        <div class="profileProfile-header">
+            <div class="profileProfile-header-name col-lg-6">
+                <span>Profile</span>
+            </div>
+            <div class="profileProfile-header-button col-lg-6">
+                <button class="btn btn-lg">Save & Update</button>
+            </div>
+        </div>
+        <div class="profileProfile-content">
+            <div class="profileProfile-content-menu">
+                <div class="profileProfile-content-nav col-lg-12">
+                    <ul>
+                        <li ng-click="toProject()">MY PROJECTS</li>
+                        <li class="project-design-menu-current">PROFILE</li>
+                        <li ng-click="toBilling()">BILLING</li>
+                        <li ng-click="toNotice()">NOTIFICATIONS</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="profileProfile-content-body">
+                <div class="profileProfile-content-profileH">My Profile</div>
+                <div class="profileProfile-content-profile">
+                    <div class="profileProfile-content-profile-title">Your Information</div>
+                    <div class="profileProfile-content-profile-info">
+                        <div class="profileProfile-content-profile-info-l col-lg-3">
+                            <div class="profileProfile-content-profile-info-icon col-lg-12"><img src="images/Chan.png"></div>
+                            <div class="profileProfile-content-profile-info-file col-lg-12">Choose file</div>
+                        </div>
+                        <div class="profileProfile-content-profile-info-r col-lg-9">
+                            <div class="profileProfile-content-profile-fullname col-lg-12"><input type="text" placeholder="Full Name"></div>
+                            <div class="profileProfile-content-profile-email col-lg-12">
+                                <div class="col-lg-8"><input type="text" placeholder="Email"></div>
+                                <div class="profileProfile-content-profile-password col-lg-3"><input type="text" placeholder="Change Password"></div>
+                            </div>
+                            <div class="profileProfile-content-profile-address col-lg-12">
+                                <div class="col-lg-4"><input type="text" placeholder="City"></div>
+                                <div class="col-lg-4"><input type="text" placeholder="State"></div>
+                                <div class="col-lg-4"><input type="text" placeholder="Country"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

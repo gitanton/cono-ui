@@ -1,0 +1,321 @@
+<div class="projectBuild-page">
+    <div ng-include="'views/header.html'"></div>
+    <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
+    <div class="projectBuild-container col-lg-12">
+        <div class="projectBuild-header">
+            <div class="projectBuild-header-name col-lg-6">
+                <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
+            </div>
+            <div class="projectBuild-header-button col-lg-6">
+                <button class="btn btn-lg">Share</button>
+                <button class="btn btn-lg" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
+            </div>
+        </div>
+        <div class="projectBuild-content">
+            <div class="projectBuild-content-menu">
+                <div class="projectBuild-content-nav col-lg-6">
+                    <ul>
+                        <li class="project-design-menu-current">Build</li>
+                        <li ng-click="toScreen()">Screens</li>
+                        <li ng-click="toActivity()">ACTIVITY</li>
+                        <li ng-click="toComment()">COMMENTS</li>
+                    </ul>
+                </div>
+                <div class="projectBuild-content-member col-lg-6">
+                    <ul>
+                        <li ng-repeat="projectMember in projectMembers"><img src="images/member-one.png"></li>
+                        <li><img src="images/addMember-icon.png" ng-click="openAddProjectMember()" class="addMemberIcon"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="projectBuild-content-body">
+                <div class="projectBuild-content-drawing">
+                    <canvas id="drawing-b" width="1000px" height="423px"></canvas>
+                    <canvas id="drawing-f" width="1000px" height="423px"></canvas>
+                </div>
+                <div class="projectBuild-content-tools">
+                    <ul class="projectBuild-content-tools-ul">
+                        <li class="projectBuild-comment-blue" ng-show="showCommentBlue" ng-click="openComments()"><img src="images/comment-blue-icon.png"></li>
+                        <li class="projectBuild-comment-black" ng-hide="showCommentBlue"><img src="images/comment-black-icon.png"></li>
+                        <li class="projectBuild-hotspots-blue" ng-show="showHotspotsBlue" ng-click="openHotspots()"><img src="images/hotspots-blue-icon.png"></li>
+                        <li class="projectBuild-hotspots-black" ng-hide="showHotspotsBlue"><img src="images/hotspots-black-icon.png"></li>
+                        <li class="projectBuild-text-blue" ng-show="showTextBlue" ng-click="openText($event)"><img src="images/text-blue-icon.png"></li>
+                        <li class="projectBuild-text-black" ng-hide="showTextBlue" ng-click="openText($event)"><img src="images/text-black-icon.png"></li>
+                        <li class="projectBuild-brush-blue" ng-show="showBrushBlue" ng-click="openTools()"><img src="images/brush-blue-icon.png"></li>
+                        <li class="projectBuild-brush-black" ng-hide="showBrushBlue" ng-click="openDrawing('brush', $event)"><img src="images/brush-black-icon.png"></li>
+                        <li class="projectBuild-eraser" ng-show="showEraser" ng-click="openDrawing('eraser', $event)"><img src="images/eraser-black-icon.png"></li>
+                        <li class="projectBuild-shape" ng-show="showShape" ng-click="openDrawing('shape', $event)"><img src="images/shape-black-icon.png"></li>
+                    </ul>
+                </div>
+                <div class="projectBuild-content-text">
+                    <div class="projectBuild-content-textTitle col-lg-12">TYPE TOOL</div>
+                    <div class="projectBuild-content-textContent col-lg-12">
+                        <div class="col-lg-1 projectBuild-content-textColor"></div>
+                        <div class="col-lg-3 projectBuild-content-textSize">
+                            <div class="selectSize" ng-show="selectSizeDropdown">
+                                <div ng-click="selectSize('14px')">14px</div>
+                                <div ng-click="selectSize('18px')">18px</div>
+                                <div ng-click="selectSize('24px')">24px</div>
+                            </div>
+                            <div class="projectBuild-content-textSizeDiv">24px</div>
+                            <div class="projectBuild-content-textSelect" ng-click="openSelectSize()"><img src="images/select-project-white-icon.png"></div>
+                        </div>
+                        <div class="col-lg-4 projectBuild-content-textFamily">
+                            <div class="selectFamily" ng-show="selectFamilyDropdown">
+                                <div ng-click="selectFamily('Roboto-Light')">Roboto-Light</div>
+                                <div ng-click="selectFamily('Roboto-Medium')">Roboto-Medium</div>
+                            </div>
+                            <div class="projectBuild-content-textFamilyDiv">Roboto-Light</div>
+                            <div class="projectBuild-content-textSelect" ng-click="openSelectFamily()"><img src="images/select-project-white-icon.png"></div>
+                        </div>
+                        <div class="col-lg-4 projectBuild-content-textWeight">
+                            <div class="selectWeight" ng-show="selectWeightDropdown">
+                                <div ng-click="selectWeight('normal')">normal</div>
+                                <div ng-click="selectWeight('bold')">bold</div>
+                                <div ng-click="selectWeight('bolder')">bolder</div>
+                                <div ng-click="selectWeight('lighter')">lighter</div>
+                            </div>
+                            <div class="projectBuild-content-textWeightDiv">normal</div>
+                            <div class="projectBuild-content-textSelect" ng-click="openSelectWeight()"><img src="images/select-project-white-icon.png"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="projectBuild-content-brush">
+                    <div class="projectBuild-content-brushTitle col-lg-12">BRUSH TOOL</div>
+                    <div class="projectBuild-content-brushContent col-lg-12">
+                        <div class="projectBuild-content-brushColorLeft col-lg-8">
+                            <div id="pickerBrush"></div>
+                        </div>
+                        <div class="projectBuild-content-brushColorRight col-lg-4">
+                            <ul class="col-lg-6">
+                                <li class="brushColor1" ng-click="specicalColor('#fff')"></li>
+                                <li class="brushColor2" ng-click="specicalColor('#959595')"></li>
+                                <li class="brushColor3" ng-click="specicalColor('#555555')"></li>
+                                <li class="brushColor4" ng-click="specicalColor('#252525')"></li>
+                                <li class="brushColor5" ng-click="specicalColor('#000')"></li>
+                            </ul>
+                            <ul class="col-lg-6">
+                                <li class="brushColor6" ng-click="specicalColor('#d26a9d')"></li>
+                                <li class="brushColor7" ng-click="specicalColor('#a90c5a')"></li>
+                                <li class="brushColor8" ng-click="specicalColor('#800039')"></li>
+                                <li class="brushColor9" ng-click="specicalColor('#45001e')"></li>
+                                <li class="brushColor10" ng-click="specicalColor('#250012')"></li>
+                            </ul>
+                        </div>
+                        <div class="projectBuild-content-brushBottom col-lg-12">
+                            <div class="col-lg-4"><img src="images/8px-icon.png" ng-click="setBrushWidth(8)">8px</div>
+                            <div class="col-lg-4"><img src="images/20px-icon.png" ng-click="setBrushWidth(20)">20px</div>
+                            <div class="col-lg-4"><img src="images/30px-icon.png" ng-click="setBrushWidth(30)">30px</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="projectBuild-content-eraser">
+                    <div class="projectBuild-content-eraserTitle col-lg-12">ERASER TOOL</div>
+                    <div class="projectBuild-content-eraserContent col-lg-12">
+                        <div class="col-lg-4"><img src="images/8px-icon.png" ng-click="setEraserWidth(8)">8px</div>
+                        <div class="col-lg-4"><img src="images/20px-icon.png" ng-click="setEraserWidth(20)">20px</div>
+                        <div class="col-lg-4"><img src="images/30px-icon.png" ng-click="setEraserWidth(30)">30px</div>
+                    </div>
+                </div>
+                <div class="projectBuild-content-shape">
+                    <div class="projectBuild-content-shapeTitle col-lg-12">SHAPE TOOL</div>
+                    <div class="projectBuild-content-shapeContent">
+                        <div class="projectBuild-content-shapeLeft col-lg-6">
+                            <div class="projectBuild-content-shapeLeftT">
+                                <div class="col-lg-4"><img src="images/square-icon.png" ng-click="drawSquare()"></div>
+                                <div class="col-lg-4"><img src="images/triangle-icon.png" ng-click="drawTriangle()"></div>
+                                <div class="col-lg-4"><img src="images/circle-icon.png" ng-click="drawCircle()"></div>
+                                <div class="col-lg-4"><img src="images/talk-icon.png" ng-click="drawTalk()"></div>
+                                <div class="col-lg-4"><img src="images/arrow-icon.png" ng-click="drawArrow()"></div>
+                                <div class="col-lg-4"><img src="images/star-icon.png" ng-click="drawStar()"></div>
+                            </div>
+                            <div class="projectBuild-content-shapeLeftB">
+                                <div class="col-lg-4"><img src="images/8px-icon.png" ng-click="setPenWidth(0)">8px</div>
+                                <div class="col-lg-4"><img src="images/20px-icon.png" ng-click="setPenWidth(1)">20px</div>
+                                <div class="col-lg-4"><img src="images/30px-icon.png" ng-click="setPenWidth(2)">30px</div>
+                            </div>
+                        </div>
+                        <div class="projectBuild-content-shapeRight col-lg-6">
+                            <div id="pickerShape"></div>
+                            <div class="shapeColorContainer">
+                                <ul>
+                                    <li class="shapeColor1" ng-click="specicalColor('#fff')"></li>
+                                    <li class="shapeColor2" ng-click="specicalColor('#959595')"></li>
+                                    <li class="shapeColor3" ng-click="specicalColor('#555555')"></li>
+                                    <li class="shapeColor4" ng-click="specicalColor('#252525')"></li>
+                                    <li class="shapeColor5" ng-click="specicalColor('#000')"></li>
+                                </ul>
+                                <ul>
+                                    <li class="shapeColor6" ng-click="specicalColor('#d26a9d')"></li>
+                                    <li class="shapeColor7" ng-click="specicalColor('#a90c5a')"></li>
+                                    <li class="shapeColor8" ng-click="specicalColor('#800039')"></li>
+                                    <li class="shapeColor9" ng-click="specicalColor('#45001e')"></li>
+                                    <li class="shapeColor10" ng-click="specicalColor('#250012')"></li>
+                                </ul>
+                            </div>
+                            <div class="shapeFillSwitch">
+                                <div class="col-lg-12">Fill Shape</div>
+                                <div class="shapeFillSwitchContainer col-lg-12">
+                                    <div class="col-lg-6 shapeFillSwitchOn shapeUnFillItem" ng-click="shapeFillSwitch('on')">ON</div>
+                                    <div class="col-lg-6 shapeFillSwitchOff shapeFillItem" ng-click="shapeFillSwitch('off')">OFF</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="updateproject" class="modal fade in" style="display: none;">
+    <div class="project-update">
+        <div class="col-lg-12 project-update-desc">UPDATE PROJECT</div>
+        <form name="updateProject">
+            <div class="col-lg-12 project-update-body">
+                <input type="text" name="projecttitle" ng-model="updateProjectTitle" class="form-control project-update-title" />
+                <select name="projecttype" ng-model="updateProjectTypeid" class="form-control project-update-type">
+                    <option value=0>Project Type</option>
+                    <option value=1>UI/UX Project</option>
+                    <option value=2>Video Project</option>
+                    <option value=3>Business Template</option>
+                </select>
+            </div>
+            <div class="col-lg-12 project-update-button">
+                <button class="btn btn-lg project-update-buttoncancel" type="cancel" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-lg project-update-buttonsubmit" type="submit" ng-click='updateMyProject(activeProjectUuid)'>Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="addPeopleToProject" class="modal fade in" style="display: none;">
+    <div class="teammember-add">
+        <div class="col-lg-10 teammember-add-desc">ADD PEOPLE TO THE PROJECT</div>
+        <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="addPeopleToProject">
+            <div class="col-lg-12 teammember-add-body">
+                <div class="form-group">
+                    <select name="teammembertype" class="form-control teammember-add-select">
+                        <option value=0>Select Person</option>
+                        <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
+                    </select>
+                </div>
+                <div class="form-group has-email">
+                    <input type="text" name="teammemberemail" ng-model="memberEmail" class="form-control teammember-add-email" placeholder="Enter an email" />
+                    <img class="teammember-add-emailicon" src="images/mail-icon.png">
+                </div>
+                <div class="form-group has-add">
+                    <span>Add another person<img class="teammember-add-addAnother" src="images/addAnotherPeople-icon.png"></span>
+                </div>
+            </div>
+            <div class="col-lg-12 teammember-add-button">
+                <button class="btn btn-lg" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="addProjectScreen" class="modal fade in" style="display: none;">
+    <div class="teammember-add">
+        <div class="col-lg-10 teammember-add-desc">ADD SCREENS</div>
+        <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="createteammember">
+            <div class="col-lg-12 teammember-add-body">
+                <div class="form-group has-add">
+                    <img class="teammember-add-addAnother" src="images/upload-icon.png">
+                    <p>Select a file from your computer to add</p>
+                </div>
+                <div class="form-group has-email">
+                    <p>Or paste a link below:</p>
+                    <input type="text" name="screenUrl" ng-model="screenUrl" class="form-control teammember-add-email" placeholder="Paste link here" />
+                    <img class="teammember-add-emailicon" src="images/link-icon.png">
+                </div>
+            </div>
+            <div class="col-lg-12 teammember-add-button">
+                <button class="btn btn-lg" type="submit" ng-click="addUploadScreen()">Add Screens</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="addHotspots" ng-show="showAddHotspots">
+    <div class="hotspots-add">
+        <div class="col-lg-10 hotspots-add-desc">Link To:</div>
+        <div class="col-lg-2 hotspots-add-delicon"><img src="images/close-icon.png" ng-click="hideAddHotspots()"></div>
+        <form name="createHotspots">
+            <div class="col-lg-12 hotspots-add-body">
+                <div class="form-group">
+                    <select name="hotspotsLinkTo" class="form-control hotspots-add-select" ng-model="hotspotsLinkTo">
+                        <option value=0>Select a destination</option>
+                        <option value=1>Project Screen A</option>
+                        <option value=2>Project Screen B</option>
+                        <option value=3>Project Screen C</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-12 hotspots-add-button">
+                <button class="btn btn-lg hotspots-buttoncancel" type="reset" ng-click="hideAddHotspots()">Cancel</button>
+                <button class="btn btn-lg hotspots-buttonsubmit" type="submit" ng-click="saveAddHotspots()">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="addComment" ng-show="showComments">
+    <div class="comment-add">
+        <div class="col-lg-10 comment-add-desc">Mark as complete:</div>
+        <div class="col-lg-2 comment-add-delicon"><img src="images/close-icon.png" ng-click="hideComments()"></div>
+        <div class="comment-chat-content">
+            <div class="col-lg-12" ng-repeat="videoComment in videoComments">
+                <div class="col-lg-3"><img src="images/chat-person-icon.png"></div>
+                <div class="col-lg-9">
+                    <div class="col-lg-8">Charles Haggas</div>
+                    <div class="col-lg-4">{{videoComment.created | limitTo:-8}}</div>
+                    <div class="col-lg-12">{{videoComment.content}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="comment-chat-input">
+            <form>
+                <input type="text" name="comment-chat-content" ng-model="commentContent" ng-keyup="$event.keyCode == 13 && saveComments()" placeholder="Leave a comment...">
+            </form>
+        </div>
+    </div>
+</div>
+<div id="newMeeting" class="modal fade in" style="display: none;">
+    <div class="newMeeting-add">
+        <div class="col-lg-10 newMeeting-add-desc">CREATE A MEETING</div>
+        <div class="col-lg-2 newMeeting-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="newMeeting">
+            <div class="col-lg-12 newMeeting-add-body">
+                <div class="form-group">
+                    <textarea name="meetingMessage" ng-model="meetingMessage" placeholder="Notes" class="form-control newMeeting-message"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="meetingName" ng-model="meetingName" class="form-control newMeeting-name" placeholder="Meeting Name" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="meetingDateTime" ng-model="meetingDateTime" class="form-control newMeeting-time" placeholder="Choose date & time" />
+                </div>
+                <div class="form-group">
+                    <select name="meetingGroup" ng-model="meetingGroup" class="form-control newMeeting-group">
+                        <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-12 newMeeting-add-button">
+                <button class="btn btn-lg" ng-click="addNewMeeting()">Create Meeting</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="addText" class="modal fade in" style="display: none;">
+    <div class="addText-add">
+        <div class="col-lg-10 addText-add-desc">ADD TEXT</div>
+        <div class="col-lg-2 addText-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+            <div class="col-lg-12 addText-add-body">
+                <div class="form-group">
+                    <textarea name="addText" ng-model="addText" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="col-lg-12 addText-add-button">
+                <button class="btn btn-lg" ng-click="addTextToCanvas()">Add Text</button>
+            </div>
+    </div>
+</div>
