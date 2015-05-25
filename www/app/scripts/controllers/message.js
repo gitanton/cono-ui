@@ -8,15 +8,15 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('MessageCtrl', function ($scope,$http,currentUser) {
-      $scope.messageContent = $(window).height() - 194;
-      $(".message-content").css('height',$scope.messageContent);
-      
+    .controller('MessageCtrl', function ($scope, $http, $routeParams, currentUser, ENV) {
+        $scope.activeProjectUuid = $routeParams.uuid;
+        $scope.messageContent = $(window).height() - 194;
+        $(".message-content").css('height', $scope.messageContent);
 //      $('.message-content').jScrollPane();
-      
-      $scope.init = function(){
-          $http({
-                url: 'http://conojoapp.scmreview.com/rest/messages/',
+
+        $scope.init = function () {
+            $http({
+                url: ENV.API_ENDPOINT + 'messages/',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function(data) {
