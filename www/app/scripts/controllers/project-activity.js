@@ -14,8 +14,6 @@ angular.module('conojoApp')
         $(".projectActivity-content-body").css('height', $scope.projectActivityBody);
         $(".projectActivity-content-delete").css('height', $scope.projectActivityDeleteContainer);
 
-//    $('.projectActivity-content-body').jScrollPane();
-
         $scope.init = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'projects/project/' + $scope.activeProjectUuid,

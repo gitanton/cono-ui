@@ -13,8 +13,6 @@ angular.module('conojoApp')
         $scope.projectContent = $(window).height() - 128;
         $(".project-content").css('height', $scope.projectContent);
 
-//    $('.project-content').jScrollPane();
-
         $scope.init = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'projects',
@@ -90,7 +88,17 @@ angular.module('conojoApp')
                         }
                     });
             } else if (type == 3) {
-                //
+                $http({
+                    url: 'http://conojoapp.scmreview.com/rest/templates',
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }).success(function(data) {
+                    if(data.length == 0){
+                        $location.path('/project-templateSelect/'+uuid);
+                    }else{
+                        $location.path('/project-videoPlay/'+ uuid + '/' + data[0].uuid);
+                    }
+                });
             }
         }
 
@@ -175,6 +183,8 @@ angular.module('conojoApp')
                     method: 'POST',
                     data: {uuids: uuids},
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }).success(function(){
+                    $scope.init();
                 });
             }
         });

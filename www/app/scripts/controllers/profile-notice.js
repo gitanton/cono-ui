@@ -8,11 +8,9 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileNoticeCtrl', function ($scope, $location, currentUser) {
+    .controller('ProfileNoticeCtrl', function ($scope, $location, currentUser,ENV) {
         $scope.profileNoticeContent = $(window).height() - 250;
         $(".profileNotice-content-notice").css('height', $scope.profileNoticeContent);
-
-//    $('.profileNotice-content-notice').jScrollPane();
 
         $scope.toProject = function () {
             var url = '/profile-project/';

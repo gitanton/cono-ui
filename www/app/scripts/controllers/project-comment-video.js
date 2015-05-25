@@ -12,8 +12,6 @@ angular.module('conojoApp')
         $scope.projectCommentBody = $(window).height() - 242;
         $(".projectComment-content-body").css('height', $scope.projectCommentBody);
 
-//    $('.projectComment-content-body').jScrollPane();
-
         $scope.init = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'projects/project/' + $scope.activeProjectUuid,

@@ -36,7 +36,7 @@ angular
                 templateUrl: 'views/activity.html',
                 controller: 'ActivityCtrl'
             })
-            .when('/message/:uuid', {
+            .when('/message', {
                 templateUrl: 'views/message.html',
                 controller: 'MessageCtrl'
             })

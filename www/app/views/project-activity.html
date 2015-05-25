@@ -29,14 +29,14 @@
             </div>
             <div class="projectActivity-content-body">
                 <div class="projectActivity-content-items col-md-10">
-                    <div class="col-md-12 projectActivity-content-item" ng-repeat="activity in projectActivities" id="drag{{$index}}" draggable>
+                    <div class="col-md-12 projectActivity-content-item" ng-repeat="activity in projectActivities">
                         <div class="projectActivity-content-img col-md-3"><img src="images/Dawkins.png"></div>
                         <div class="projectActivity-content-desc col-md-9">
                             <div class="col-md-9">{{activity.title}}</div>
                             <div class="col-md-3">{{activity.created}}</div>
                             <div class="col-md-12"><img src="images/thumbs.png"></div>
                             <div class="col-md-12">{{activity.content}}</div>
-                            <div style="position: absolute;top:0px;right:0px;"><img src="images/dragbar-icon.png"></div>
+                            <div style="position: absolute;top:0px;right:0px;"><img src="images/dragbar-icon.png" id="drag{{$index}}" draggable></div>
                         </div>
                     </div>
                 </div>

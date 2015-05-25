@@ -82,9 +82,9 @@ angular.module('conojoApp')
             $scope.setPenWidth(0);
         };
 
-        $scope.$watch(meetingFlag.startMeeting, function () {
-            console.log(meetingFlag.startMeeting);
-        });
+        //$scope.$watch(meetingFlag.startMeeting, function () {
+        //    console.log(meetingFlag.startMeeting);
+        //});
 
 //    $scope.CLOCK = setInterval(function(){
 //        if(meetingFlag.startMeeting){
@@ -92,21 +92,21 @@ angular.module('conojoApp')
 //        }
 //    },2000);
 
-        $scope.getChange = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid,
-                method: 'GET',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                if (data.hotspots.length > 0) {
-                    var h_length = data.hotspots.length - 1;
-                    imageObj.src = 'data:image/png;base64,' + data.hotspots[h_length].data.slice(9);
-                    imageObj.onload = function () {
-                        cxt.drawImage(imageObj, 0, 0, 1000, 423);
-                    }
-                }
-            });
-        };
+        //$scope.getChange = function () {
+        //    $http({
+        //        url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid,
+        //        method: 'GET',
+        //        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        //    }).success(function (data) {
+        //        if (data.hotspots.length > 0) {
+        //            var h_length = data.hotspots.length - 1;
+        //            imageObj.src = 'data:image/png;base64,' + data.hotspots[h_length].data.slice(9);
+        //            imageObj.onload = function () {
+        //                cxt.drawImage(imageObj, 0, 0, 1000, 423);
+        //            }
+        //        }
+        //    });
+        //};
 
         $scope.openUpdateProject = function () {
             $('#updateproject').modal('toggle');
@@ -138,19 +138,6 @@ angular.module('conojoApp')
             });
         };
 
-        $("#screenupload-new").dropzone({
-            url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
-            paramName: "file", // The name that will be used to transfer the file
-            maxFilesize: 5,
-            clickable: false,
-            init: function () {
-                $(this).on('success', function (file, serverCallBack) {
-                    var url = 'project-build/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
-                    $location.path(url);
-                });
-            }
-        });
-
         $scope.openNewMeeting = function () {
             $('#newMeeting').modal('toggle');
         };
@@ -181,6 +168,18 @@ angular.module('conojoApp')
 
         $('.newMeeting-time').datetimepicker({
             dateFormat: "yy-mm-dd"
+        });
+
+        $scope.showSelectMemberC = function(event){
+            $(event.target).parent().find(".comment-group").show();
+            $(document).on("click", function (){
+                $(event.target).parent().find(".comment-group").hide();
+            });
+            event.stopPropagation();
+        }
+
+        $("comment-group").on("click", function (event){
+            event.stopPropagation();
         });
 
         $scope.toScreen = function () {
@@ -254,6 +253,7 @@ angular.module('conojoApp')
         $scope.commentList = [];
 
         $scope.openComments = function () {
+            $scope.showAddHotspots = false;
             $scope.showCommentBlue = false;
             $scope.showHotspotsBlue = true;
             $scope.showBrushBlue = true;
@@ -274,8 +274,10 @@ angular.module('conojoApp')
                 rectY = evt.pageY - this.offsetTop - 176;
                 if (evt.pageX > 400) {
                     $('#addComment').css('left', evt.pageX - 400);
+                    $scope.addCommentPosition = false;
                 } else {
                     $('#addComment').css('left', evt.pageX + 40);
+                    $scope.addCommentPosition = true;
                 }
                 $('#addComment').css('top', evt.pageY);
             }
@@ -320,6 +322,7 @@ angular.module('conojoApp')
         $scope.hotspotsList = [];
 
         $scope.openHotspots = function () {
+            $scope.showAddComment = false;
             $scope.showCommentBlue = true;
             $scope.showHotspotsBlue = false;
             $scope.showBrushBlue = true;

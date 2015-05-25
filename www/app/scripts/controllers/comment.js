@@ -59,6 +59,11 @@ angular.module('conojoApp')
             $location.path(url);
         };
 
+        $scope.goToMessages = function () {
+            var url = '/message';
+            $location.path(url);
+        };
+
         $scope.Logout = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'users/logout',
