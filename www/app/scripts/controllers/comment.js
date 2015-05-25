@@ -27,7 +27,7 @@ angular.module('conojoApp')
     $scope.hideCalendar = function(){
         $('#datetimepicker').hide();
     }
-    
+
     $scope.init = function(){
         $http({
             url: 'http://conojoapp.scmreview.com/rest/users',
@@ -56,6 +56,11 @@ angular.module('conojoApp')
     
     $scope.goToProfile = function(){
         var url = '/profile-project';
+        $location.path(url);
+    };
+
+    $scope.goToMessages = function(){
+        var url = '/message';
         $location.path(url);
     };
     

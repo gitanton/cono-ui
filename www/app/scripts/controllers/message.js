@@ -8,8 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-  .controller('MessageCtrl', function ($scope,$http,$routeParams,currentUser) {
-      $scope.activeProjectUuid = $routeParams.uuid;
+  .controller('MessageCtrl', function ($scope,$http,currentUser) {
       $scope.messageContent = $(window).height() - 194;
       $(".message-content").css('height',$scope.messageContent);
       
@@ -19,36 +18,28 @@ angular.module('conojoApp')
           $http({
                 url: 'http://conojoapp.scmreview.com/rest/messages/',
                 method: 'GET',
-                data: $.param({project_uuid:$scope.project_uuid}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function(data) {
                 $scope.messages = data;
             });
       }
-      
-    $scope.openAddNewMessage = function(){
-        $('#addNewMessage').modal('toggle');
-    };
     
-    $scope.addNewMessage = function(){
-        $http({
-            url: 'http://conojoapp.scmreview.com/rest/messages/',
-            method: 'POST',
-            data: $.param({content:$scope.messagecontent,project_uuid:$scope.activeProjectUuid}),
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function() {
-            $scope.init();
-            $('#addNewMessage').modal('hide');
-        });
-    }
-    
-    $scope.replyMessageModal = function(uuid){
+    $scope.replyMessageModal = function(muuid,puuid){
         $('#replymessage').modal('toggle');
-        $scope.replyMessageUuid = uuid;
+        $scope.replyMessageUuid = muuid;
+        $scope.replyProjectUuid = puuid;
     };
     
     $scope.replyMessage = function(){
-        
+        $http({
+            url: 'http://conojoapp.scmreview.com/rest/messages',
+            method: 'POST',
+            data: $.param({content:$scope.messagecontent,project_uuid:$scope.replyProjectUuid,parent_uuid:$scope.replyMessageUuid}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function() {
+            $scope.init();
+            $('#replymessage').modal('hide');
+        });
     }
     
     $scope.deleteMessageModal = function(uuid){
@@ -60,6 +51,7 @@ angular.module('conojoApp')
         $http({
             url: 'http://conojoapp.scmreview.com/rest/messages/message/'+$scope.deleteMessageUuid,
             method: 'DELETE',
+            data: $.param({uuid:$scope.deleteMessageUuid}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function() {
             $scope.init();

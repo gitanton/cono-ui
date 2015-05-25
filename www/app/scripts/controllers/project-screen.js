@@ -42,7 +42,7 @@ angular.module('conojoApp')
         maxFilesize: 5,
         clickable: false,
         init:function(){
-            $(this).on('success',function(){
+            $(this).get(0).on('success',function(){
                 $scope.init();
             });
         }
@@ -140,11 +140,6 @@ angular.module('conojoApp')
         var url = '/project-comment/'+$scope.activeProjectUuid;
         $location.path(url);
     }
-    
-     $scope.openMessage = function(){
-        var url = '/message/'+$scope.activeProjectUuid;
-        $location.path(url);
-    }
-    
+
     $scope.init();
 });

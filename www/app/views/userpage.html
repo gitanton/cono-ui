@@ -3,31 +3,31 @@
     <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
     <div class="userpage-container">
         <div class="userpage-header">
-            <div class="userpage-header-account col-lg-6">
+            <div class="userpage-header-account col-md-6">
                 <a href="#/team"><img src="images/back-icon.png"></a>
                 <span>Your Team</span>
             </div>
-            <div class="userpage-header-button col-lg-6">
+            <div class="userpage-header-button col-md-6">
                 <button class="btn btn-lg" ng-click="openAddTeamMember()">Add Team Member</button>
             </div>
         </div>
         <div class="userpage-content">
-            <div class="col-lg-12 userpage-content-container">
+            <div class="col-md-12 userpage-content-container">
                 <div class="userpage-content-intro">
-                    <div class="col-lg-3 userpage-content-img">
+                    <div class="col-md-3 userpage-content-img">
                         <img src="images/Dawkins.png" class="img-circle">
                     </div>
-                    <div class="col-lg-9 userpage-content-desc">
-                        <p class="col-lg-12 userpage-content-name">R.Dawkins</p>
-                        <p class="col-lg-12 userpage-content-email">account@company.com</p>
-                        <p class="col-lg-12 userpage-content-active">Last active Today at 3:14pm</p>
+                    <div class="col-md-9 userpage-content-desc">
+                        <p class="col-md-12 userpage-content-name">R.Dawkins</p>
+                        <p class="col-md-12 userpage-content-email">account@company.com</p>
+                        <p class="col-md-12 userpage-content-active">Last active Today at 3:14pm</p>
                     </div>
                 </div>
                 <div class="userpage-content-ownedbyme">
-                    <div class="col-lg-12 userpage-content-ownedbyme-title">OWNED BY ME</div>
-                    <div class="col-lg-12 userpage-content-ownedbyme-item" ng-repeat="project in projects">
-                        <div class="col-lg-6">{{project.name}}</div>
-                        <div class="col-lg-6"><button class="btn btn-lg" ng-click="openAddProjectMember('{{project.uuid}}')">Send Invite</button></div>
+                    <div class="col-md-12 userpage-content-ownedbyme-title">OWNED BY ME</div>
+                    <div class="col-md-12 userpage-content-ownedbyme-item" ng-repeat="project in projects">
+                        <div class="col-md-6">{{project.name}}</div>
+                        <div class="col-md-6"><button class="btn btn-lg" ng-click="openAddProjectMember('{{project.uuid}}')">Send Invite</button></div>
                     </div>
                 </div>
             </div>
@@ -36,10 +36,10 @@
 </div>
 <div id="addTeamMember" class="modal fade in" style="display: none;">
     <div class="teammember-add">
-        <div class="col-lg-10 teammember-add-desc">ADD PEOPLE TO TEAM</div>
-        <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-10 teammember-add-desc">ADD PEOPLE TO TEAM</div>
+        <div class="col-md-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
         <form name="addPeopleToProject">
-            <div class="col-lg-12 teammember-add-body">
+            <div class="col-md-12 teammember-add-body">
                 <div class="form-group">
                     <select name="teammembertype" class="form-control teammember-add-select">
                         <option value=0>Select Person</option>
@@ -53,7 +53,7 @@
                     <span>Add another person<img class="teammember-add-addAnother" src="images/addAnotherPeople-icon.png"></span>
                 </div>
             </div>
-            <div class="col-lg-12 teammember-add-button">
+            <div class="col-md-12 teammember-add-button">
                 <button class="btn btn-lg" type="submit" ng-click="addTeamMember()">Invite People</button>       
             </div>
         </form>
@@ -61,10 +61,10 @@
 </div>
 <div id="addPeopleToProject" class="modal fade in" style="display: none;">
     <div class="teammember-add">
-        <div class="col-lg-10 teammember-add-desc">ADD PEOPLE TO THE PROJECT</div>
-        <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-10 teammember-add-desc">ADD PEOPLE TO THE PROJECT</div>
+        <div class="col-md-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
         <form name="addPeopleToProject">
-            <div class="col-lg-12 teammember-add-body">
+            <div class="col-md-12 teammember-add-body">
                 <div class="form-group">
                     <select name="teammembertype" class="form-control teammember-add-select">
                         <option value=0>Select Person</option>
@@ -79,7 +79,7 @@
                     <span>Add another person<img class="teammember-add-addAnother" src="images/addAnotherPeople-icon.png"></span>
                 </div>
             </div>
-            <div class="col-lg-12 teammember-add-button">
+            <div class="col-md-12 teammember-add-button">
                 <button class="btn btn-lg" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People</button>       
             </div>
         </form>

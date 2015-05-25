@@ -90,7 +90,17 @@ angular.module('conojoApp')
                 }
             });
        }else if(type == 3){
-           //
+           $http({
+               url: 'http://conojoapp.scmreview.com/rest/templates',
+               method: 'GET',
+               headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+           }).success(function(data) {
+               if(data.length == 0){
+                   $location.path('/project-templateSelect/'+uuid);
+               }else{
+                   $location.path('/project-templateUpload/'+ uuid + '/' + data[0].uuid);
+               }
+           });
        }
     }
    
@@ -138,7 +148,7 @@ angular.module('conojoApp')
         $http({
             url: 'http://conojoapp.scmreview.com/rest/projects/project/'+uuid,
             method: 'PUT',
-            data:{type_id:$scope.archiveProjectTypeid,archived:"1"}
+            data:$.param({type_id:$scope.archiveProjectTypeid,archived:"1"})
         }).success(function() {
             $scope.init();
             $('#archiveproject').modal('hide');
@@ -173,7 +183,7 @@ angular.module('conojoApp')
                $http({
                     url: 'http://conojoapp.scmreview.com/rest/projects/ordering',
                     method: 'POST',
-                    data:{uuids:uuids},
+                    data:$.param({uuids:uuids}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 });
             }

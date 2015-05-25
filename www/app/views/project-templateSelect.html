@@ -3,161 +3,21 @@
     <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
     <div class="templates-container">
         <div class="templates-header">
-            <div class="templates-header-name col-lg-10">
+            <div class="templates-header-name col-md-10">
                 <span>Select Your Templates</span>
             </div>
-            <div class="templates-header-button col-lg-2">
+            <div class="templates-header-button col-md-2">
                 <span>Filter Templates<img src="images/select-project-icon.png"></span>
             </div>
         </div>
         <div class="templates-content">
             <div class="templates-content-body">
-                <div class="templates-content-unselect col-lg-6">
+                <div class="templates-content-unselect col-md-6" ng-repeat="template in templates">
                     <div class="templates-content-template-icon">
-                        <img src="images/Blue-1.jpg" style="width:268px;height:177px;">
+                        <img src='{{template.url}}' style="width:268px;height:177px;">
                         <img src="images/template-select-icon.png" class="templates-content-template-select">
                     </div>
-                    <div class="templates-content-template-name">Power Templates</div>
-                </div>
-                <div class="templates-content-select col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Blue-2.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Problem Solving</div>
-                </div>
-                <div class="templates-content-unselect col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Blue-3.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Power Templates</div>
-                </div>
-                <div class="templates-content-select col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Blue-4.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Problem Solving</div>
-                </div>
-                <div class="templates-content-unselect col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Blue-5.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Power Templates</div>
-                </div>
-                <div class="templates-content-select col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Blue-6.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Problem Solving</div>
-                </div>
-                <div class="templates-content-unselect col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Green-1.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Power Templates</div>
-                </div>
-                <div class="templates-content-select col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Green-2.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Problem Solving</div>
-                </div>
-                <div class="templates-content-unselect col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Green-3.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Power Templates</div>
-                </div>
-                <div class="templates-content-select col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Orange-1.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Problem Solving</div>
-                </div>
-                <div class="templates-content-unselect col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Orange-2.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Power Templates</div>
-                </div>
-                <div class="templates-content-select col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Orange-3.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Problem Solving</div>
-                </div>
-                <div class="templates-content-unselect col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Orange-4.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Power Templates</div>
-                </div>
-                <div class="templates-content-select col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Orange-5.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Problem Solving</div>
-                </div>
-                <div class="templates-content-unselect col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Orange-6.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Power Templates</div>
-                </div>
-                <div class="templates-content-select col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Red-1.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Problem Solving</div>
-                </div>
-                <div class="templates-content-unselect col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Red-2.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Power Templates</div>
-                </div>
-                <div class="templates-content-select col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Red-3.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Problem Solving</div>
-                </div>
-                <div class="templates-content-unselect col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Red-4.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Power Templates</div>
-                </div>
-                <div class="templates-content-select col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Red-5.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Problem Solving</div>
-                </div>
-                <div class="templates-content-unselect col-lg-6">
-                    <div class="templates-content-template-icon">
-                        <img src="images/Red-6.jpg" style="width:268px;height:177px;">
-                        <img src="images/template-select-icon.png" class="templates-content-template-select">
-                    </div>
-                    <div class="templates-content-template-name">Power Templates</div>
+                    <div class="templates-content-template-name">{{template.name}}</div>
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@ angular.module('conojoApp')
     });
     
     videoUploadZone.on("success",function(file,serverCallBack){
-        var url = '/project-screen-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
+        var url = '/project-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
         $location.path(url).replace();
         $scope.$apply();
     });

@@ -3,25 +3,24 @@
     <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
     <div class="projectScreen-container">
         <div class="projectScreen-header">
-            <div class="projectScreen-header-name col-lg-6">
+            <div class="projectScreen-header-name col-md-6">
                 <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
             </div>
-            <div class="projectScreen-header-button col-lg-6">
+            <div class="projectScreen-header-button col-md-6">
                 <button class="btn btn-lg">Share</button>
                 <button class="btn btn-lg" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
             </div>
         </div>
         <div class="projectScreen-content">
             <div class="projectScreen-content-menu">
-                <div class="projectScreen-content-nav col-lg-6">
+                <div class="projectScreen-content-nav col-md-6">
                     <ul>
                         <li class="project-design-menu-current">Screens</li>
                         <li  ng-click="toActivity()">ACTIVITY</li>
                         <li  ng-click="toComment()">COMMENTS</li>
-                        <li ng-click="openMessage(activeProjectUuid)">MESSAGES</li>
                     </ul>
                 </div>
-                <div class="projectScreen-content-member col-lg-6">
+                <div class="projectScreen-content-member col-md-6">
                     <ul>
                         <li ng-repeat="projectMember in projectMembers"><img src="images/member-one.png"></li>
                         <li><img src="images/addMember-icon.png" ng-click="openAddProjectMember()" class="addMemberIcon"></li>
@@ -29,10 +28,10 @@
                 </div>
             </div>
             <div class="projectScreen-content-body">
-                <div class="projectScreen-content-items col-lg-10">
-                    <div class="projectScreen-content-thumb col-lg-4" ng-repeat="screen in screens"><img ng-src="{{screen.url}}" ng-click="toBuild('{{screen.uuid}}')"></div>
+                <div class="projectScreen-content-items col-md-10">
+                    <div class="projectScreen-content-thumb col-md-4" ng-repeat="screen in screens"><img ng-src="{{screen.url}}" ng-click="toBuild('{{screen.uuid}}')"></div>
                 </div>
-                <div class="projectScreen-content-delete col-lg-2">
+                <div class="projectScreen-content-delete col-md-2">
                     <form id="screenupload" enctype="multipart/form-data" class="projectScreen-content-dropcontainer dropzone">
                         <input type="hidden" name="project_uuid" value="{{activeProjectUuid}}">
                         <div class="dz-message">
@@ -48,9 +47,9 @@
 </div>
 <div id="updateproject" class="modal fade in" style="display: none;">
     <div class="project-update">
-        <div class="col-lg-12 project-update-desc">UPDATE PROJECT</div>
+        <div class="col-md-12 project-update-desc">UPDATE PROJECT</div>
         <form name="updateProject">
-            <div class="col-lg-12 project-update-body">
+            <div class="col-md-12 project-update-body">
                 <input type="text" name="projecttitle" ng-model="updateProjectTitle" class="form-control project-update-title" />
                 <select name="projecttype"  ng-model="updateProjectTypeid" class="form-control project-update-type">
                     <option value=0>Project Type</option>
@@ -59,7 +58,7 @@
                     <option value=3>Business Template</option>
                 </select>	        
             </div>
-            <div class="col-lg-12 project-update-button">
+            <div class="col-md-12 project-update-button">
                 <button class="btn btn-lg project-update-buttoncancel" type="cancel" data-dismiss="modal">Cancel</button>
                 <button class="btn btn-lg project-update-buttonsubmit" type="submit" ng-click='updateMyProject(activeProjectUuid)'>Save</button>        
             </div>
@@ -68,10 +67,10 @@
 </div>
 <div id="addPeopleToProject" class="modal fade in" style="display: none;">
     <div class="teammember-add">
-        <div class="col-lg-10 teammember-add-desc">ADD PEOPLE TO THE PROJECT</div>
-        <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-10 teammember-add-desc">ADD PEOPLE TO THE PROJECT</div>
+        <div class="col-md-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
         <form name="addPeopleToProject">
-            <div class="col-lg-12 teammember-add-body">
+            <div class="col-md-12 teammember-add-body">
                 <div class="form-group">
                     <select name="teammembertype" class="form-control teammember-add-select">
                         <option value=0>Select Person</option>
@@ -86,7 +85,7 @@
                     <span>Add another person<img class="teammember-add-addAnother" src="images/addAnotherPeople-icon.png"></span>
                 </div>
             </div>
-            <div class="col-lg-12 teammember-add-button">
+            <div class="col-md-12 teammember-add-button">
                 <button class="btn btn-lg" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People</button>       
             </div>
         </form>
@@ -94,10 +93,10 @@
 </div>
 <div id="addProjectScreen" class="modal fade in" style="display: none;">
     <div class="teammember-add">
-        <div class="col-lg-10 teammember-add-desc">ADD SCREENS</div>
-        <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-10 teammember-add-desc">ADD SCREENS</div>
+        <div class="col-md-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
         <form name="createteammember">
-            <div class="col-lg-12 teammember-add-body">
+            <div class="col-md-12 teammember-add-body">
                 <div class="form-group has-add">
                     <img class="teammember-add-addAnother" src="images/upload-icon.png">
                     <p>Select a file from your computer to add</p>
@@ -108,7 +107,7 @@
                     <img class="teammember-add-emailicon" src="images/link-icon.png">
                 </div>
             </div>
-            <div class="col-lg-12 teammember-add-button">
+            <div class="col-md-12 teammember-add-button">
                 <button class="btn btn-lg" type="submit" ng-click="addUploadScreen()">Add Screens</button>       
             </div>
         </form>
@@ -116,10 +115,10 @@
 </div>
 <div id="newMeeting" class="modal fade in" style="display: none;">
     <div class="newMeeting-add">
-        <div class="col-lg-10 newMeeting-add-desc">CREATE A MEETING</div>
-        <div class="col-lg-2 newMeeting-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-10 newMeeting-add-desc">CREATE A MEETING</div>
+        <div class="col-md-2 newMeeting-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
         <form name="newMeeting">
-            <div class="col-lg-12 newMeeting-add-body">
+            <div class="col-md-12 newMeeting-add-body">
                 <div class="form-group">
                     <textarea name="meetingMessage" ng-model="meetingMessage" placeholder="Notes" class="form-control newMeeting-message"></textarea>
                 </div>
@@ -136,7 +135,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-lg-12 newMeeting-add-button">
+            <div class="col-md-12 newMeeting-add-button">
                 <button class="btn btn-lg" ng-click="addNewMeeting()">Create Meeting</button>       
             </div>
         </form>

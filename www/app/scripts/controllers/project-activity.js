@@ -108,11 +108,6 @@ angular.module('conojoApp')
         $location.path(url);
     }
     
-     $scope.openMessage = function(){
-        var url = '/message/'+$scope.activeProjectUuid;
-        $location.path(url);
-    }
-    
     $scope.handleDrop = function() {
         alert('Item has been dropped');
     }

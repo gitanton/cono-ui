@@ -8,12 +8,12 @@
  */
 angular.module('conojoApp')
  .controller('ProjectBuildCtrl', function ($scope,$http,$location,$routeParams,meetingFlag,currentUser) {
-     $scope.CLOCK = null;
-     $scope.shapeFill = false;
-     $scope.showComments = false;
-     $scope.showAddHotspots = false;
-     $scope.showCommentBlue = true;
-     $scope.showHotspotsBlue = true;
+    $scope.CLOCK = null;
+    $scope.shapeFill = false;
+    $scope.showComments = false;
+    $scope.showAddHotspots = false;
+    $scope.showCommentBlue = true;
+    $scope.showHotspotsBlue = true;
     $scope.showBrushBlue = true;
     $scope.showEraser = false;
     $scope.showShape = false;
@@ -178,6 +178,18 @@ angular.module('conojoApp')
     $('.newMeeting-time').datetimepicker({
         dateFormat: "yy-mm-dd"
     });
+
+    $scope.showSelectMemberC = function(event){
+        $(event.target).parent().find(".comment-group").show();
+        $(document).on("click", function (){
+            $(event.target).parent().find(".comment-group").hide();
+        });
+        event.stopPropagation();
+    }
+
+    $("comment-group").on("click", function (event){
+        event.stopPropagation();
+    });
     
     $scope.toScreen = function(){
         var url = '/project-screen/'+$scope.activeProjectUuid;
@@ -191,11 +203,6 @@ angular.module('conojoApp')
     
     $scope.toComment = function(){
         var url = '/project-comment/'+$scope.activeProjectUuid;
-        $location.path(url);
-    }
-    
-     $scope.openMessage = function(){
-        var url = '/message/'+$scope.activeProjectUuid;
         $location.path(url);
     }
     
@@ -247,9 +254,10 @@ angular.module('conojoApp')
         cxt.fillStyle = '#000';
     }
 
-        $scope.commentList = [];
+    $scope.commentList = [];
 
     $scope.openComments = function(){
+        $scope.showAddHotspots = false;
         $scope.showCommentBlue = false;
         $scope.showHotspotsBlue = true;
         $scope.showBrushBlue = true;
@@ -270,8 +278,10 @@ angular.module('conojoApp')
             rectY=evt.pageY-this.offsetTop-176;
             if(evt.pageX > 400){
                 $('#addComment').css('left',evt.pageX-400);
+                $scope.addCommentPosition = false;
             }else{
                 $('#addComment').css('left',evt.pageX+40);
+                $scope.addCommentPosition = true;
             }
             $('#addComment').css('top',evt.pageY);
         }
@@ -313,9 +323,10 @@ angular.module('conojoApp')
         $scope.commentList.pop();
     }
 
-        $scope.hotspotsList = [];
+    $scope.hotspotsList = [];
 
     $scope.openHotspots = function(){
+        $scope.showAddComment = false;
         $scope.showCommentBlue = true;
         $scope.showHotspotsBlue = false;
         $scope.showBrushBlue = true;
@@ -343,9 +354,11 @@ angular.module('conojoApp')
             var rectW=endX-rectX;
             var rectH=endY-rectY;
             if(evt.pageX > 400){
-                $('#addHotspots').css('left',evt.pageX -rectW -400);
+                $('#addHotspots').css('left',evt.pageX -rectW -410);
+                $scope.addHotspotsPosition = false;
             }else{
-                $('#addHotspots').css('left',evt.pageX + 10);
+                $('#addHotspots').css('left',evt.pageX + 20);
+                $scope.addHotspotsPosition = true;
             }
             $('#addHotspots').css('top',evt.pageY - rectH);
             cxt.fillRect(rectX,rectY,rectW,rectH);

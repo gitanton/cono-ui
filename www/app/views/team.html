@@ -3,30 +3,30 @@
     <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
     <div class="team-container">
         <div class="team-header">
-            <div class="team-header-account col-lg-6"><span>{{selectTeam.name}}</span></div>
-            <div class="team-header-teams col-lg-6">
+            <div class="team-header-account col-md-6"><span>{{selectTeam.name}}</span></div>
+            <div class="team-header-teams col-md-6">
                 <button class="btn btn-lg team-header-select">Select Teams<img src="images/select-project-icon.png"></button>
                 <button class="btn btn-lg" ng-click="openAddTeamMember()">Add Team Member</button>
             </div>
         </div>
         <div class="team-content">
             <div>
-                <div class="col-lg-4 team-content-offset" ng-repeat="user in selectTeam.users">
-                    <div class="col-lg-12 team-content-itemimg">
+                <div class="col-md-4 team-content-offset" ng-repeat="team in teams">
+                    <div class="col-md-12 team-content-itemimg">
                         <img src="images/Dawkins.png" class="img-circle" ng-mouseover="hoverOver($event)">
                     </div>
-                    <div class="col-lg-12 team-content-itemname">
-                        <span>{{user.fullname}}</span>
+                    <div class="col-md-12 team-content-itemname">
+                        <span>{{team.fullname}}</span>
                     </div>
                     <div class="team-content-permissions" ng-mouseleave="hoverLeave($event)">
                         <div class="team-content-permissionsEdit" ng-click="goToEdit('{{user.uuid}}')">Edit Permissions</div>
                     </div>
                 </div>
-<!--                <div class="col-lg-4 team-content-offset">
-                    <div class="col-lg-12 team-content-itemimg">
+<!--                <div class="col-md-4 team-content-offset">
+                    <div class="col-md-12 team-content-itemimg">
                         <img src="images/Dawkins.png" class="img-circle">
                     </div>
-                    <div class="col-lg-12 team-content-itemname">
+                    <div class="col-md-12 team-content-itemname">
                         <span>{{user.fullname}}111</span>
                     </div>
                     <div class="team-content-permissions">
@@ -39,10 +39,10 @@
 </div>
 <div id="addTeamMember" class="modal fade in" style="display: none;">
     <div class="teammember-add">
-        <div class="col-lg-10 teammember-add-desc">ADD PEOPLE TO TEAM</div>
-        <div class="col-lg-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-10 teammember-add-desc">ADD PEOPLE TO TEAM</div>
+        <div class="col-md-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
         <form name="addPeopleToProject">
-            <div class="col-lg-12 teammember-add-body">
+            <div class="col-md-12 teammember-add-body">
                 <div class="form-group">
                     <select name="teammembertype" class="form-control teammember-add-select">
                         <option value=0>Select Person</option>
@@ -56,7 +56,7 @@
                     <span>Add another person<img class="teammember-add-addAnother" src="images/addAnotherPeople-icon.png"></span>
                 </div>
             </div>
-            <div class="col-lg-12 teammember-add-button">
+            <div class="col-md-12 teammember-add-button">
                 <button class="btn btn-lg" type="submit" ng-click="addTeamMember()">Invite People</button>       
             </div>
         </form>

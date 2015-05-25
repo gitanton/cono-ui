@@ -1,34 +1,34 @@
 <div class="register-container">
     <div class="register-logo"><a ng-href="#/"><img src="images/logo-account.png"></a></div>
     <div class="register-form">
-        <div class="col-lg-12 register-desc">
+        <div class="col-md-12 register-desc">
             <p class="register-desc-free">Get Started Absolutely FREE.</p>
             <p class="register-desc-card">No credit card needed.</p>
         </div>
         <form name="userForm" ng-submit="processForm()" novalidate>
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <input type="text" name="username" class="form-control register-username" placeholder="Username" ng-model="formData.username" ng-minlength="6" required />
                 <span ng-show="userForm.username.$invalid && !userForm.username.$pristine">Username Should be at least five characters long</span>
             </div>
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <input type="email" name="email" class="form-control register-email" placeholder="Email" ng-model="formData.email" required />
                 <span ng-show="userForm.email.$invalid && !userForm.email.$pristine">Enter a valid email.</span>
             </div>
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <select name="timezone" class="form-control register-timezone" ng-model="formData.timezone">
                     <option ng-repeat="timezone in timezones" value={{timezone}}>{{timezone}}</option>
                 </select>
                 <span ng-show="userForm.timezone.$invalid && !userForm.timezone.$pristine">Select the timezone.</span>
             </div>
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <input type="password" name="password" class="form-control register-password" placeholder="Password" ng-model="formData.password" ng-minlength="6" required />
                 <span ng-show="userForm.password.$invalid && !userForm.password.$pristine">Password Should be at least six characters long</span>
             </div>
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <input type="password" name="confirmpassword" class="form-control register-confirmpassword" placeholder="Confirm Password" ng-model="formData.confirmpassword" ng-minlength="6" required />
                 <span ng-show="userForm.confirmpassword.$invalid && !userForm.confirmpassword.$pristine">Password Should be at least six characters long</span>
             </div>
-            <div class="col-lg-12 register-button">
+            <div class="col-md-12 register-button">
                 <button class="btn btn-lg" type="submit" ng-disabled="userForm.$invalid">Create Account</button>
             </div>
         </form>
@@ -39,8 +39,8 @@
 </div>
 <div class="register-footer">
     <div class="register-footer-date-trial">
-        <div class="col-lg-5"><img src="images/free-trial.png"></div>
-        <div class="col-lg-7"><p>Your free 30-day trial</p><p>lasts until:{{lastDay | date}}</p></div>
+        <div class="col-md-5"><img src="images/free-trial.png"></div>
+        <div class="col-md-7"><p>Your free 30-day trial</p><p>lasts until:{{lastDay | date}}</p></div>
     </div>
 </div>
 <div id="registerNote" class="modal fade in" style="display: none;">
