@@ -24,6 +24,11 @@ angular.module('conojoApp')
             }).success(function (data) {
                     $location.path('project');
                     currentUser.currentUserUuid = data.uuid;
+                })
+                .error(function(data){
+                    $("#loginNote").modal('toggle');
+                    $(".login-username").val('').focus();
+                    $(".login-password").val('');
                 });
         };
 

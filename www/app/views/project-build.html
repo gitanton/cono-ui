@@ -228,9 +228,19 @@
             <div class="col-md-10 comment-add-desc">ADD COMMENT</div>
             <div class="col-md-2 comment-add-delicon"><img src="images/close-icon.png" ng-click="hideComments()"></div>
         </div>
+        <div class="comment-chat-content col-md-12">
+            <div class="col-md-12" ng-repeat="comment in comments">
+                <div class="col-md-3"><img src="images/chat-person-icon.png"></div>
+                <div class="col-md-9">
+                    <div class="col-md-8">{{comment.fullname}}</div>
+                    <div class="col-md-4">{{comment.created | limitTo:-8}}</div>
+                    <div class="col-md-12">{{comment.comment}}</div>
+                </div>
+            </div>
+        </div>
         <form>
             <div class="comment-chat-input col-md-12">
-                <textarea name="comment-chat-content" ng-model="commentContent" ng-keyup="$event.keyCode == 13 && saveComments()" placeholder="Leave a comment..."></textarea>
+                <textarea name="comment-content" ng-model="commentContent" placeholder="Leave a comment..."></textarea>
             </div>
             <div class="comment-assignContainer form-group col-md-12">
                 <div class="comment-assign" ng-click="showSelectMemberC($event)">Assign to</div>

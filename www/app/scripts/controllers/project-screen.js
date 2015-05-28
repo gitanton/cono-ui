@@ -40,7 +40,7 @@ angular.module('conojoApp')
             maxFilesize: 5,
             clickable: false,
             init: function () {
-                $(this).on('success', function () {
+                $(this).get(0).on('success', function () {
                     $scope.init();
                 });
             }

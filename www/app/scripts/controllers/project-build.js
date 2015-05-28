@@ -41,36 +41,42 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                imageObj_b.src = data.url;
-                imageObj_b.onload = function () {
-                    cxt_b.drawImage(imageObj_b, 0, 0, 1000, 423);
+                $scope.comments = data.comments;
+                $scope.hotspots = data.hotspots;
+
+                for(var i = 0;i < $scope.comments;i++){
+
+                }
+
+                for(var j = 0;j < $scope.hotspots;j++){
+
+                }
+
+                var img_b_init = new Image();
+                img_b_init.src = data.url;
+                img_b_init.onload = function () {
+                    cxt_b.drawImage(img_b_init, 0, 0, 1000, 423);
                 }
 
                 if (data.comments.length > 0) {
                     var c_length = data.comments.length - 1;
-                    imageObj.src = 'data:image/png;base64,' + data.comments[c_length].data.slice(9);
-                    $scope.commentList = [
-                        ['data:image/png;base64,' + data.comments[c_length].data.slice(9), 0, 0, 0, 0]
-                    ];
-                    imageObj.onload = function () {
-                        cxt.drawImage(imageObj, 0, 0, 1000, 423);
+                    var img_f_c = new Image();
+                    img_f_c.src = 'data:image/png;base64,' + data.comments[c_length].data.slice(9);
+                    img_f_c.onload = function () {
+                        cxt.drawImage(img_f_c, 0, 0, 1000, 423);
                     }
-                } else {
-                    $scope.commentList = [];
                 }
 
                 if (data.hotspots.length > 0) {
                     var h_length = data.hotspots.length - 1;
-                    imageObj.src = 'data:image/png;base64,' + data.hotspots[h_length].data.slice(9);
-                    $scope.hotspotsList = [
-                        ['data:image/png;base64,' + data.hotspots[h_length].data.slice(9), 0, 0, 0, 0]
-                    ];
-                    imageObj.onload = function () {
-                        cxt.drawImage(imageObj, 0, 0, 1000, 423);
+                    var img_f_h = new Image();
+                    img_f_h.src = 'data:image/png;base64,' + data.hotspots[h_length].data.slice(9);
+                    img_f_h.onload = function () {
+                        cxt.drawImage(img_f_h, 0, 0, 1000, 423);
                     }
-                } else {
-                    $scope.hotspotsList = [];
                 }
+
+                $scope.imgData.push([true,canvas.toDataURL()]);
             });
 
             $('#pickerBrush').farbtastic(function (color) {
@@ -202,12 +208,12 @@ angular.module('conojoApp')
             $location.path(url);
         }
 
+        $scope.imgData = [];
+
         var canvas_b = document.getElementById('drawing-b');
         var cxt_b = canvas_b.getContext('2d');
-        var imageObj_b = new Image();
         var canvas = document.getElementById('drawing-f');
         var cxt = canvas.getContext('2d');
-        var imageObj = new Image();
 
         var rectX = 0;
         var rectY = 0;
@@ -250,8 +256,6 @@ angular.module('conojoApp')
             cxt.fillStyle = '#000';
         }
 
-        $scope.commentList = [];
-
         $scope.openComments = function () {
             $scope.showAddHotspots = false;
             $scope.showCommentBlue = false;
@@ -262,13 +266,30 @@ angular.module('conojoApp')
             $(".projectBuild-comment-black").siblings().removeClass("tools-li-selected");
             $(".projectBuild-comment-black").addClass("tools-li-selected");
 
-            cxt.strokeStyle = "rgba(250,246,162,0.7)";
-            cxt.fillStyle = "rgba(250,246,162,0.7)";
+            if($scope.imgData.length > 0 && !$scope.imgData.slice(-1)[0][0]){
+                $scope.imgData.pop();
+                cxt.clearRect(0, 0, 1000, 423);
+
+                var img_c_r_f = new Image();
+                img_c_r_f.src = $scope.imgData.slice(-1)[0][1];
+                cxt.drawImage(img_c_r_f, 0, 0);
+            }
+
+            cxt.strokeStyle = "rgba(250,246,162,0.5)";
+            cxt.fillStyle = "rgba(250,246,162,0.5)";
             canvas.onmousedown = function (evt) {
-                if ($scope.commentList.length > 0) {
+                if($scope.imgData.length > 1 && !$scope.imgData.slice(-1)[0][0]){
+                    $scope.imgData.pop();
                     cxt.clearRect(0, 0, 1000, 423);
-                    $scope.commentList = [];
+
+                    var img_c_r_m = new Image();
+                    img_c_r_m.src = $scope.imgData.slice(-1)[0][1];
+                    cxt.drawImage(img_c_r_m, 0, 0);
+                }else if($scope.imgData.length == 1 && !$scope.imgData.slice(-1)[0][0]){
+                    $scope.imgData.pop();
+                    cxt.clearRect(0, 0, 1000, 423);
                 }
+
                 evt = window.event || evt;
                 rectX = evt.pageX - this.offsetLeft - 64;
                 rectY = evt.pageY - this.offsetTop - 176;
@@ -285,7 +306,7 @@ angular.module('conojoApp')
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
                 cxt.fillRect(rectX, rectY, 25, 25);
-                $scope.commentList.push([canvas.toDataURL(), rectX, rectY, 25, 25]);
+                $scope.imgData.push([false,canvas.toDataURL(), rectX, rectY, 25, 25]);
                 $scope.showComments = true;
                 $scope.$apply();
             }
@@ -294,14 +315,14 @@ angular.module('conojoApp')
         }
 
         $scope.saveComments = function () {
-            var imgDataArray = $scope.commentList.slice(-1);
+            var imgDataArray = $scope.imgData.slice(-1);
             $http({
-                url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
+                url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments',
                 method: 'POST',
-                data: $.param({screen_uuid: $scope.activeScreenUuid, data: imgDataArray[0][0], begin_x: imgDataArray[0][1], begin_y: imgDataArray[0][2], end_x: imgDataArray[0][3], end_y: imgDataArray[0][4], link_to: $scope.hotspotsLinkTo}),
+                data: $.param({screen_uuid: $scope.activeScreenUuid,content:$scope.commentContent,is_task:1,assignee_uuid:'', data: imgDataArray[0][1], begin_x: imgDataArray[0][2], begin_y: imgDataArray[0][3], end_x: imgDataArray[0][4], end_y: imgDataArray[0][5]}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-
+                $scope.imgData.slice(-1)[0][0] = true;
             });
             //save to the Server successfully
             $scope.showComments = false;
@@ -309,20 +330,21 @@ angular.module('conojoApp')
 
         $scope.hideComments = function () {
             $scope.showComments = false;
-            cxt.clearRect(0, 0, 1000, 423);
-            if ($scope.commentList.length > 1) {
-                var index = $scope.commentList.length - 2;
-                var image = new Image();
-                image.src = $scope.commentList[index][0];
-                cxt.drawImage(image, 0, 0);
+            if(!$scope.imgData.slice(-1)[0][0] && $scope.imgData.length > 1){
+                $scope.imgData.pop();
+                cxt.clearRect(0, 0, 1000, 423);
+
+                var img_c = new Image();
+                img_c.src = $scope.imgData.slice(-1)[0][1];
+                cxt.drawImage(img_c, 0, 0);
+            }else if(!$scope.imgData.slice(-1)[0][0] && $scope.imgData.length == 1){
+                $scope.imgData.pop();
+                cxt.clearRect(0, 0, 1000, 423);
             }
-            $scope.commentList.pop();
         }
 
-        $scope.hotspotsList = [];
-
         $scope.openHotspots = function () {
-            $scope.showAddComment = false;
+            $scope.showComments = false;
             $scope.showCommentBlue = true;
             $scope.showHotspotsBlue = false;
             $scope.showBrushBlue = true;
@@ -331,13 +353,30 @@ angular.module('conojoApp')
             $(".projectBuild-hotspots-black").siblings().removeClass("tools-li-selected");
             $(".projectBuild-hotspots-black").addClass("tools-li-selected");
 
-            cxt.strokeStyle = "rgba(250,246,162,0.7)";
-            cxt.fillStyle = "rgba(250,246,162,0.7)";
+            if($scope.imgData.length > 0 && !$scope.imgData.slice(-1)[0][0]){
+                $scope.imgData.pop();
+                cxt.clearRect(0, 0, 1000, 423);
+
+                var img_h_r_f = new Image();
+                img_h_r_f.src = $scope.imgData.slice(-1)[0][1];
+                cxt.drawImage(img_h_r_f, 0, 0);
+            }
+
+            cxt.strokeStyle = "rgba(250,246,162,0.5)";
+            cxt.fillStyle = "rgba(250,246,162,0.5)";
             canvas.onmousedown = function (evt) {
-                if ($scope.hotspotsList.length > 0) {
+                if($scope.imgData.length > 1 && !$scope.imgData.slice(-1)[0][0]){
+                    $scope.imgData.pop();
                     cxt.clearRect(0, 0, 1000, 423);
-                    $scope.hotspotsList = [];
+
+                    var img_h_r_m = new Image();
+                    img_h_r_m.src = $scope.imgData.slice(-1)[0][1];
+                    cxt.drawImage(img_h_r_m, 0, 0);
+                }else if($scope.imgData.length == 1 && !$scope.imgData.slice(-1)[0][0]){
+                    $scope.imgData.pop();
+                    cxt.clearRect(0, 0, 1000, 423);
                 }
+
                 evt = window.event || evt;
                 rectX = evt.pageX - this.offsetLeft - 64;
                 rectY = evt.pageY - this.offsetTop - 176;
@@ -356,7 +395,7 @@ angular.module('conojoApp')
                 }
                 $('#addHotspots').css('top', evt.pageY - rectH);
                 cxt.fillRect(rectX, rectY, rectW, rectH);
-                $scope.hotspotsList.push([canvas.toDataURL(), rectX, rectY, endX, endY]);
+                $scope.imgData.push([false,canvas.toDataURL(), rectX, rectY, endX, endY]);
                 $scope.showAddHotspots = true;
                 $scope.$apply();
             }
@@ -365,13 +404,14 @@ angular.module('conojoApp')
         }
 
         $scope.saveAddHotspots = function () {
-            var imgDataArray = $scope.hotspotsList.slice(-1);
+            var imgDataArray = $scope.imgData.slice(-1);
             $http({
                 url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
                 method: 'POST',
-                data: $.param({screen_uuid: $scope.activeScreenUuid, data: imgDataArray[0][0], begin_x: imgDataArray[0][1], begin_y: imgDataArray[0][2], end_x: imgDataArray[0][3], end_y: imgDataArray[0][4], link_to: $scope.hotspotsLinkTo}),
+                data: $.param({screen_uuid: $scope.activeScreenUuid, data: imgDataArray[0][1], begin_x: imgDataArray[0][2], begin_y: imgDataArray[0][3], end_x: imgDataArray[0][4], end_y: imgDataArray[0][5], link_to: $scope.hotspotsLinkTo}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
+                $scope.imgData.slice(-1)[0][0] = true;
 
             });
             //save to the Server successfully
@@ -380,17 +420,23 @@ angular.module('conojoApp')
 
         $scope.hideAddHotspots = function () {
             $scope.showAddHotspots = false;
-            cxt.clearRect(0, 0, 1000, 423);
-            if ($scope.hotspotsList.length > 1) {
-                var index = $scope.hotspotsList.length - 2;
-                var image = new Image();
-                image.src = $scope.hotspotsList[index][0];
-                cxt.drawImage(image, 0, 0);
+            if(!$scope.imgData.slice(-1)[0][0] && $scope.imgData.length > 1){
+                $scope.imgData.pop();
+                cxt.clearRect(0, 0, 1000, 423);
+
+                var img_h = new Image();
+                img_h.src = $scope.imgData.slice(-1)[0][1];
+                cxt.drawImage(img_h, 0, 0);
+            }else if(!$scope.imgData.slice(-1)[0][0] && $scope.imgData.length == 1){
+                $scope.imgData.pop();
+                cxt.clearRect(0, 0, 1000, 423);
             }
-            $scope.hotspotsList.pop();
         }
 
-        $scope.openDrawing = function (type, event) {
+        $scope.openDrawing = function (type, evt) {
+            evt = window.event || evt;
+            $scope.showAddHotspots = false;
+            $scope.showComments = false;
             $scope.showCommentBlue = true;
             $scope.showHotspotsBlue = true;
             $scope.showBrushBlue = false;
@@ -405,11 +451,12 @@ angular.module('conojoApp')
                 $scope.setBrushWidth(8);
                 cxt.strokeStyle = '#000';
                 cxt.fillStyle = '#000';
-                $(".projectBuild-content-brush").on("click", function () {
-                    event.stopPropagation();
-                });
                 $(document).on("click", function () {
                     $(".projectBuild-content-brush").hide();
+                });
+                $(".projectBuild-content-brush").on("click", function (evt) {
+                    evt = window.event || evt;
+                    evt.stopPropagation();
                 });
             } else if (type == 'eraser') {
                 $(".projectBuild-content-brush").hide();
@@ -418,11 +465,12 @@ angular.module('conojoApp')
                 $(".projectBuild-eraser").siblings().removeClass("tools-li-selected");
                 $(".projectBuild-eraser").addClass("tools-li-selected");
                 $scope.setEraserWidth(8);
-                $(".projectBuild-content-eraser").on("click", function () {
-                    event.stopPropagation();
-                });
                 $(document).on("click", function () {
                     $(".projectBuild-content-eraser").hide();
+                });
+                $(".projectBuild-content-eraser").on("click", function (evt) {
+                    evt = window.event || evt;
+                    evt.stopPropagation();
                 });
             } else if (type == 'shape') {
                 $(".projectBuild-content-brush").hide();
@@ -433,14 +481,15 @@ angular.module('conojoApp')
                 $scope.setPenWidth(0);
                 cxt.strokeStyle = '#000';
                 cxt.fillStyle = '#000';
-                $(".projectBuild-content-shape").on("click", function () {
-                    event.stopPropagation();
-                });
                 $(document).on("click", function () {
                     $(".projectBuild-content-shape").hide();
                 });
+                $(".projectBuild-content-shape").on("click", function (evt) {
+                    evt = window.event || evt;
+                    evt.stopPropagation();
+                });
             }
-            event.stopPropagation();
+            evt.stopPropagation();
         }
 
         $scope.shapeFillSwitch = function (type) {
@@ -490,7 +539,7 @@ angular.module('conojoApp')
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function () {
-
+                    $scope.imgData.push([true,canvas.toDataURL()]);
                 });
             }
             canvas.onmouseout = function () {
@@ -525,7 +574,7 @@ angular.module('conojoApp')
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function () {
-
+                    $scope.imgData.push([true,canvas.toDataURL()]);
                 });
             }
             canvas.onmouseout = function () {
@@ -559,7 +608,7 @@ angular.module('conojoApp')
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function () {
-
+                    $scope.imgData.push([true,canvas.toDataURL()]);
                 });
             }
             canvas.onmousemove = null;
@@ -600,7 +649,7 @@ angular.module('conojoApp')
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function () {
-
+                    $scope.imgData.push([true,canvas.toDataURL()]);
                 });
             }
             canvas.onmousemove = null;
@@ -637,7 +686,7 @@ angular.module('conojoApp')
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function () {
-
+                    $scope.imgData.push([true,canvas.toDataURL()]);
                 });
             }
             canvas.onmousemove = null;
@@ -669,7 +718,7 @@ angular.module('conojoApp')
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function () {
-
+                    $scope.imgData.push([true,canvas.toDataURL()]);
                 });
             }
             canvas.onmousemove = null;
@@ -702,7 +751,7 @@ angular.module('conojoApp')
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function () {
-
+                    $scope.imgData.push([true,canvas.toDataURL()]);
                 });
             }
             canvas.onmousemove = null;
@@ -737,7 +786,7 @@ angular.module('conojoApp')
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function () {
-
+                    $scope.imgData.push([true,canvas.toDataURL()]);
                 });
             }
             canvas.onmousemove = null;
