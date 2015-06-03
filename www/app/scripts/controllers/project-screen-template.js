@@ -1,18 +1,18 @@
 'use strict';
 /**
  * @ngdoc function
- * @name conojoApp.controller:ProjectActivityCtrl
+ * @name conojoApp.controller:ProjectScreenTemplateCtrl
  * @description
- * # ProjectActivityCtrl
+ * # ProjectScreenTemplateCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectActivityCtrl', function ($scope, $http, $location, $routeParams, currentUser, ENV) {
+    .controller('ProjectScreenTemplateCtrl', function ($scope, $http, $location, $routeParams, currentUser, ENV) {
         $scope.activeProjectUuid = $routeParams.uuid;
-        $scope.projectActivityBody = $(window).height() - 176;
-        $scope.projectActivityDeleteContainer = $(window).height() - 228;
-        $(".projectActivity-content-body").css('height', $scope.projectActivityBody);
-        $(".projectActivity-content-delete").css('height', $scope.projectActivityDeleteContainer);
+        $scope.projectScreenBody = $(window).height() - 176;
+        $scope.projectScreenDropcontainer = $(window).height() - 212;
+        $(".projectScreen-content-body").css('height', $scope.projectScreenBody);
+        $(".projectScreen-content-dropcontainer").css('height', $scope.projectScreenDropcontainer);
 
         $scope.init = function () {
             $http({
@@ -26,13 +26,25 @@ angular.module('conojoApp')
                 });
 
             $http({
-                url: ENV.API_ENDPOINT + 'activities/project/' + $scope.activeProjectUuid,
+                url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.projectActivities = data;
+                    $scope.screens = data;
                 });
         };
+
+        //$("#screenupload").dropzone({
+        //    url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
+        //    paramName: "file", // The name that will be used to transfer the file
+        //    maxFilesize: 5,
+        //    clickable: false,
+        //    init: function () {
+        //        $(this).get(0).on('success', function () {
+        //            $scope.init();
+        //        });
+        //    }
+        //});
 
         $scope.openUpdateProject = function () {
             $('#updateproject').modal('toggle');
@@ -64,9 +76,41 @@ angular.module('conojoApp')
                 });
         };
 
+        $scope.openUploadScreen = function () {
+            $('#addProjectScreen').modal('toggle');
+        };
+
+        $scope.addUploadScreen = function () {
+            $http({
+                url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
+                method: 'POST',
+                data: $.param({project_uuid: $scope.activeProjectUuid, url: $scope.screenUrl}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function () {
+                    $scope.init();
+                    $('#addProjectScreen').modal('hide');
+                });
+        };
+
         $scope.openNewMeeting = function () {
             $('#newMeeting').modal('toggle');
         };
+
+        $scope.addNewMeeting = function () {
+            $http({
+                url: ENV.API_ENDPOINT + 'meetings',
+                method: 'POST',
+                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(" ")[0], time: $scope.meetingDateTime.split(" ")[1], attendees: $scope.meetingGroup.join(",")}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function () {
+                    $scope.init();
+                    $('#newMeeting').modal('hide');
+                });
+        };
+
+        $('.newMeeting-time').datetimepicker({
+            dateFormat: "yy-mm-dd"
+        });
 
         $scope.showSelectMember = function (event) {
             $(event.target).parent().find(".newMeeting-group").show();
@@ -80,29 +124,17 @@ angular.module('conojoApp')
             event.stopPropagation();
         });
 
-        $scope.addNewMeeting = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'meetings',
-                method: 'POST',
-                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(" ")[0], time: $scope.meetingDateTime.split(" ")[1], attendees: $scope.meetingGroup}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
-                    $scope.init();
-                    $('#newMeeting').modal('hide');
-                });
-        };
-
-        $('.newMeeting-time').datetimepicker({
-            dateFormat: "yy-mm-dd"
-        });
-
-        $scope.toBuild = function () {
-            var url = '/project-build/' + $scope.activeProjectUuid + '/new';
+        $scope.toBuild = function (suuid) {
+            if(suuid == 'new'){
+                var url = '/project-build-template/' + $scope.activeProjectUuid + '/new';
+            }else{
+                var url = '/project-build-template/' + $scope.activeProjectUuid + '/' + suuid;
+            }
             $location.path(url);
         }
 
-        $scope.toScreen = function () {
-            var url = '/project-screen/' + $scope.activeProjectUuid;
+        $scope.toActivity = function () {
+            var url = '/project-activity/' + $scope.activeProjectUuid;
             $location.path(url);
         }
 
@@ -115,19 +147,6 @@ angular.module('conojoApp')
             var url = '/message/' + $scope.activeProjectUuid;
             $location.path(url);
         }
-        $scope.toScreen = function(){
-            var url = '/project-screen/'+$scope.activeProjectUuid;
-            $location.path(url);
-        }
-
-        $scope.toComment = function(){
-            var url = '/project-comment/'+$scope.activeProjectUuid;
-            $location.path(url);
-        }
-
-        $scope.handleDrop = function() {
-            alert('Item has been dropped');
-        }
 
         $scope.init();
-});
+    });

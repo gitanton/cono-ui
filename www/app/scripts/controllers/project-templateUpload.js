@@ -34,18 +34,18 @@ angular.module('conojoApp')
                 });
         };
 
-        var templateUploadZone = new Dropzone("#templateupload", {
-            url: ENV.API_ENDPOINT + 'videos/project/' + $scope.activeProjectUuid,
-            paramName: "file", // The name that will be used to transfer the file
-            maxFilesize: 10,
-            clickable: false
-        });
-
-        templateUploadZone.on("success", function (file, serverCallBack) {
-            var url = '/project-screen-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
-            $location.path(url).replace();
-            $scope.$apply();
-        });
+        //var templateUploadZone = new Dropzone("#templateupload", {
+        //    url: ENV.API_ENDPOINT + 'videos/project/' + $scope.activeProjectUuid,
+        //    paramName: "file", // The name that will be used to transfer the file
+        //    maxFilesize: 10,
+        //    clickable: false
+        //});
+        //
+        //templateUploadZone.on("success", function (file, serverCallBack) {
+        //    var url = '/project-screen-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
+        //    $location.path(url).replace();
+        //    $scope.$apply();
+        //});
 
 
         $scope.openUpdateProject = function () {

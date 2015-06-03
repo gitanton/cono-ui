@@ -14,7 +14,7 @@
             <div class="templates-content-body">
                 <div class="templates-content-unselect col-md-6" ng-repeat="template in templates">
                     <div class="templates-content-template-icon">
-                        <img src='{{template.url}}' style="width:268px;height:177px;">
+                        <img src='{{template.url}}' style="width:268px;height:177px;" ng-click="selectTemplate()">
                         <img src="images/template-select-icon.png" class="templates-content-template-select">
                     </div>
                     <div class="templates-content-template-name">{{template.name}}</div>

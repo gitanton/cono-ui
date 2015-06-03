@@ -3,6 +3,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+$font-roboto: 'Roboto', sans-serif;
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -11,29 +13,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 body{
-    font-family:'Roboto-Light','Roboto-Medium';
-}
-
-@font-face {
- font-family: 'Roboto-Light';
- src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Light.ttf');
- src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Light.eot');
- src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Light.svg');
- src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Light.woff');
-}
-/*@font-face {
- font-family: 'Roboto-LightItalic';
- src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-LightItalic.ttf');
- src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-LightItalic.eot');
- src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-LightItalic.svg');
- src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-LightItalic.woff');
-}*/
-@font-face {
- font-family: 'Roboto-Medium';
- src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Medium.ttf');
- src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Medium.eot');
- src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Medium.svg');
- src:url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/Roboto-Medium.woff');
+    font-family:$font-roboto;
 }
 
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
@@ -1582,10 +1562,10 @@ ul li{
                     cursor: crosshair;
                     position: absolute;
                     z-index: 1;
-                    font-family:'Roboto-Light','Roboto-Medium';
+                    font-family:$font-roboto;
                 }
                 #drawing-f{
-                    font-family:'Roboto-Light','Roboto-Medium';
+                    font-family:$font-roboto;
                     cursor: crosshair;
                     position: absolute;
                     z-index: 2;
@@ -2237,28 +2217,28 @@ ul li{
 #addProjectScreen{
     width:100%;
     padding-top:50px;
-    .teammember-add{
+    .addScreen-add{
         width:465px;
         height:381px;
         background:#fff;
         border-radius:4px;
         margin:0 auto;
     }
-    .teammember-add-desc{
+    .addScreen-add-desc{
         text-align:center;
         color:#0378ae;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
     }
-    .teammember-add-delicon{
+    .addScreen-add-delicon{
         text-align:center;
         padding:22px 0px;
         border-bottom:1px solid #e3e3e3;
         cursor:pointer;
     }
-    .teammember-add-body{
+    .addScreen-add-body{
         text-align:center;
-        padding:24px 35px;
+        padding:20px 35px;
         background:#e6e6e6;
         border-bottom:1px solid #e3e3e3;
     }
@@ -2269,26 +2249,30 @@ ul li{
         border-radius:3px;
         border:2px dashed #fff;
         height:100px;
-        line-height:48px;
-        margin-bottom:10px;
+        position: relative;
+        display: inline-block;
+        padding: 10px 75px;
+        overflow: hidden;
+        input {
+          position: absolute;
+          font-size: 67px;
+          right: 0;
+          top: 0;
+          opacity: 0;
+          width: 390px;
+        }
     }
-    .teammember-add-email{
+    .addScreen-add-email{
         height:48px;
         padding-right:20px;
         margin-bottom:10px;
     }
-    .teammember-add-emailicon{
+    .addScreen-add-emailicon{
         right:6px;
         top:45px;
         position:absolute;
     }
-    .teammember-add-addAnother{
-        
-    }
-    .teammember-add-select{
-        height:48px;
-    }
-    .teammember-add-button{
+    .addScreen-add-button{
         padding:12px 0px;
         text-align:center;
         button{
@@ -4180,6 +4164,59 @@ ul li{
   position: absolute;
   z-index:999;
   cursor: pointer;
+}
+
+#addFeedback{
+  width:100%;
+  padding-top:50px;
+  .feedback-add{
+    width:465px;
+    height:495px;
+    background:#fff;
+    border-radius:4px;
+    margin:0 auto;
+  }
+  .feedback-add-desc{
+    text-align:center;
+    color:#0378ae;
+    padding:22px 0px;
+    border-bottom:1px solid #e3e3e3;
+  }
+  .feedback-add-delicon{
+    text-align:center;
+    padding:22px 0px;
+    border-bottom:1px solid #e3e3e3;
+    cursor:pointer;
+  }
+  .feedback-add-body{
+    text-align:center;
+    padding:24px 35px;
+    background:#e6e6e6;
+    border-bottom:1px solid #e3e3e3;
+    .has-add{
+      position:relative;
+      .feedback-add-reason{
+        height:48px;
+      }
+      .feedback-add-addicon{
+        right:6px;
+        top:18px;
+        position:absolute;
+      }
+    }
+    .feedback-add-message{
+      height:211px;
+    }
+  }
+  .feedback-add-button{
+    padding:12px 0px;
+    text-align:center;
+    button{
+      @extend .appbutton;
+      width:229px;
+      height:40px;
+    }
+  }
 }
 
 /* Responsive: Portrait tablets and up */

@@ -64,6 +64,14 @@ angular.module('conojoApp')
             $location.path(url);
         };
 
+        $scope.openFeedBack = function(){
+            $('#addFeedback').modal('toggle');
+        }
+
+        $scope.addNewFeedBack = function(){
+            //add new feedback
+        }
+
         $scope.Logout = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'users/logout',

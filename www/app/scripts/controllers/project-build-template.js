@@ -42,28 +42,30 @@ angular.module('conojoApp')
                 $scope.updateProjectTypeid = data.type_id;
             });
 
-            $http({
-                url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid,
-                method: 'GET',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $scope.comments = data.comments;
-                $scope.hotspots = data.hotspots;
+            if($scope.activeScreenUuid !== 'new'){
+                $http({
+                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid,
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }).success(function (data) {
+                    $scope.comments = data.comments;
+                    $scope.hotspots = data.hotspots;
 
-                for (var i = 0; i < $scope.comments; i++) {
-                    //load all comments
-                }
+                    for (var i = 0; i < $scope.comments; i++) {
+                        //load all comments
+                    }
 
-                for (var j = 0; j < $scope.hotspots; j++) {
-                    //load all hotspots
-                }
+                    for (var j = 0; j < $scope.hotspots; j++) {
+                        //load all hotspots
+                    }
 
-                var img_b_init = new Image();
-                img_b_init.src = data.url;
-                img_b_init.onload = function () {
-                    cxt_b.drawImage(img_b_init, 0, 0, 1000, 423);
-                }
-            });
+                    var img_b_init = new Image();
+                    img_b_init.src = data.url;
+                    img_b_init.onload = function () {
+                        cxt_b.drawImage(img_b_init, 0, 0, 1000, 423);
+                    }
+                });
+            }
 
             $('#pickerBrush').farbtastic(function (color) {
                 $scope.setPenColor(color);
@@ -87,6 +89,11 @@ angular.module('conojoApp')
                 $scope.init();
                 $('#updateproject').modal('hide');
             });
+        };
+
+        $scope.openAddScreen = function () {
+            var url = '/project-templateSelect/' + $scope.activeProjectUuid;
+            $location.path(url);
         };
 
         $scope.openAddProjectMember = function () {
@@ -355,6 +362,7 @@ angular.module('conojoApp')
         });
 
         $scope.openDrawing = function (type, evt) {
+            $("#drawing-f").off();
             evt = window.event || evt;
             $scope.showAddHotspots = false;
             $scope.showComments = false;

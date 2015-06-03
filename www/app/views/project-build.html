@@ -45,6 +45,7 @@
                         <li class="projectBuild-shape" ng-show="showShape" ng-click="openDrawing('shape', $event)"><img src="images/shape-black-icon.png"></li>
                     </ul>
                 </div>
+                <div class="projectBuild-content-addScreens" ng-click="openAddScreen()"><img src="images/addScreen-icon.png"><span>Add Screen</span></div>
                 <div class="projectBuild-content-brush">
                     <div class="projectBuild-content-brushTitle col-md-12">BRUSH TOOL</div>
                     <div class="projectBuild-content-brushContent col-md-12">
@@ -179,22 +180,23 @@
     </div>
 </div>
 <div id="addProjectScreen" class="modal fade in" style="display: none;">
-    <div class="teammember-add">
-        <div class="col-md-10 teammember-add-desc">ADD SCREENS</div>
-        <div class="col-md-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
-        <form name="createteammember">
-            <div class="col-md-12 teammember-add-body">
+    <div class="addScreen-add">
+        <div class="col-md-10 addScreen-add-desc">ADD SCREENS</div>
+        <div class="col-md-2 addScreen-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="addScreen">
+            <div class="col-md-12 addScreen-add-body">
                 <div class="form-group has-add">
-                    <img class="teammember-add-addAnother" src="images/upload-icon.png">
-                    <p>Select a file from your computer to add</p>
+                    <img class="addScreen-add-addAnother" src="images/upload-icon.png">
+                    <p class="addScreen-file-desc">Select a file from your computer to add</p>
+                    <input type="file" name="addScreen-file" ng-model="screenFile" class="screenFile">
                 </div>
                 <div class="form-group has-email">
                     <p>Or paste a link below:</p>
-                    <input type="text" name="screenUrl" ng-model="screenUrl" class="form-control teammember-add-email" placeholder="Paste link here" />
-                    <img class="teammember-add-emailicon" src="images/link-icon.png">
+                    <input type="text" name="screenUrl" ng-model="screenUrl" class="form-control addScreen-add-email" placeholder="Paste link here" />
+                    <img class="addScreen-add-emailicon" src="images/link-icon.png">
                 </div>
             </div>
-            <div class="col-md-12 teammember-add-button">
+            <div class="col-md-12 addScreen-add-button">
                 <button class="btn btn-lg" type="submit" ng-click="addUploadScreen()">Add Screens</button>
             </div>
         </form>

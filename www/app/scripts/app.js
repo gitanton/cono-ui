@@ -104,19 +104,23 @@ angular
                 templateUrl: 'views/project-comment-video.html',
                 controller: 'ProjectCommentVideoCtrl'
             })
-            .when('/project-build-template', {
+            .when('/project-build-template/:puuid/:suuid', {
                 templateUrl: 'views/project-build-template.html',
                 controller: 'ProjectBuildTemplateCtrl'
             })
-            .when('/project-templateSelect', {
+            .when('/project-screen-template/:uuid', {
+                templateUrl: 'views/project-screen-template.html',
+                controller: 'ProjectScreenTemplateCtrl'
+            })
+            .when('/project-templateSelect/:uuid', {
                 templateUrl: 'views/project-templateSelect.html',
                 controller: 'ProjectTemplateSelectCtrl'
             })
-            .when('/project-templateUpload', {
+            .when('/project-screen-template/:uuid', {
                 templateUrl: 'views/project-templateUpload.html',
                 controller: 'ProjectTemplateUploadCtrl'
             })
-            .when('/project-activity-template', {
+            .when('/project-activity-template/:uuid', {
                 templateUrl: 'views/project-activity-template.html',
                 controller: 'ProjectActivityTemplateCtrl'
             })

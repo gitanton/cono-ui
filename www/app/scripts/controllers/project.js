@@ -74,7 +74,7 @@ angular.module('conojoApp')
 
         $scope.projectScreen = function (uuid, type) {
             if (type == 1) {
-                $location.path('/project-screen/' + uuid);
+                $location.path('/project-build/' + uuid + '/new');
             } else if (type == 2) {
                 $http({
                     url: ENV.API_ENDPOINT + 'videos/project/' + uuid,
@@ -88,17 +88,7 @@ angular.module('conojoApp')
                         }
                     });
             } else if (type == 3) {
-                $http({
-                    url: 'http://conojoapp.scmreview.com/rest/templates',
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function(data) {
-                    if(data.length == 0){
-                        $location.path('/project-templateSelect/'+uuid);
-                    }else{
-                        $location.path('/project-videoPlay/'+ uuid + '/' + data[0].uuid);
-                    }
-                });
+                $location.path('/project-build-template/' + uuid + '/new');
             }
         }
 
