@@ -20,18 +20,18 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.projectMembers = data.users;
-                    $scope.updateProjectTitle = data.name;
-                    $scope.updateProjectTypeid = data.type_id;
-                });
+                $scope.projectMembers = data.users;
+                $scope.updateProjectTitle = data.name;
+                $scope.updateProjectTypeid = data.type_id;
+            });
 
             $http({
                 url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.screens = data;
-                });
+                $scope.screens = data;
+            });
         };
 
         //$("#screenupload").dropzone({
@@ -56,9 +56,9 @@ angular.module('conojoApp')
                 method: 'PUT',
                 data: {name: $scope.updateProjectTitle, type_id: $scope.updateProjectTypeid}
             }).success(function () {
-                    $scope.init();
-                    $('#updateproject').modal('hide');
-                });
+                $scope.init();
+                $('#updateproject').modal('hide');
+            });
         };
 
         $scope.openAddProjectMember = function () {
@@ -72,8 +72,8 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.activeProjectUuid, email: $scope.memberEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $('#addPeopleToProject').modal('hide');
-                });
+                $('#addPeopleToProject').modal('hide');
+            });
         };
 
         $scope.openUploadScreen = function () {
@@ -87,9 +87,9 @@ angular.module('conojoApp')
                 data: $.param({project_uuid: $scope.activeProjectUuid, url: $scope.screenUrl}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $scope.init();
-                    $('#addProjectScreen').modal('hide');
-                });
+                $scope.init();
+                $('#addProjectScreen').modal('hide');
+            });
         };
 
         $scope.openNewMeeting = function () {
@@ -103,9 +103,9 @@ angular.module('conojoApp')
                 data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(" ")[0], time: $scope.meetingDateTime.split(" ")[1], attendees: $scope.meetingGroup.join(",")}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $scope.init();
-                    $('#newMeeting').modal('hide');
-                });
+                $scope.init();
+                $('#newMeeting').modal('hide');
+            });
         };
 
         $('.newMeeting-time').datetimepicker({

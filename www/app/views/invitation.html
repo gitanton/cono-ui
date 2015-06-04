@@ -9,7 +9,7 @@
     <div class="invitation-content">
         <div class="login col-md-5">
             <div class="login-form">
-                 <form name="loginformInvite" ng-submit="processLoginForm()" novalidate>
+                <form name="loginformInvite" ng-submit="processLoginForm()" novalidate>
                     <div class="col-md-12">
                         <input type="text" name="username" ng-model="loginFormData.username" class="form-control login-username" placeholder="Username" ng-minlength="5" required />
                         <span ng-show="loginformInvite.username.$invalid && !loginformInvite.username.$pristine">Username Should be at least five characters long</span>

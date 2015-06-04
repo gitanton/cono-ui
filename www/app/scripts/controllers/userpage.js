@@ -18,8 +18,8 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.projects = data;
-                });
+                $scope.projects = data;
+            });
         };
 
         $scope.openAddProjectMember = function (uuid) {
@@ -34,8 +34,8 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.addToProjectUuid, email: $scope.memberEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $('#addPeopleToProject').modal('hide');
-                });
+                $('#addPeopleToProject').modal('hide');
+            });
         };
 
         $scope.openAddTeamMember = function () {
@@ -50,8 +50,8 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.activeTeamUuid, email: $scope.teammemberemail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $('#addTeamMember').modal('hide');
-                });
+                $('#addTeamMember').modal('hide');
+            });
         };
 
         $scope.init();

@@ -18,9 +18,9 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'teams',
                 method: 'GET'
             }).success(function (data) {
-                    $scope.teams = data;
-                    $scope.selectTeam = $scope.teams[0];
-                });
+                $scope.teams = data;
+                $scope.selectTeam = $scope.teams[0];
+            });
         };
 
         $scope.openAddTeamMember = function () {
@@ -34,8 +34,8 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.selectTeam.uuid, email: $scope.teammemberemail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $('#addTeamMember').modal('hide');
-                });
+                $('#addTeamMember').modal('hide');
+            });
         };
 
 //    $(".team-content-offset").on('mouseover',function(){

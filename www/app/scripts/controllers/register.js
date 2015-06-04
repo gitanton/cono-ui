@@ -26,8 +26,8 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.timezones = data;
-                });
+                $scope.timezones = data;
+            });
         }
 
         $scope.formData = {};
@@ -39,27 +39,27 @@ angular.module('conojoApp')
                 data: $.param({fullname: $scope.formData.username, email: $scope.formData.email, timezone: $scope.timezone, username: $scope.formData.username, password: $scope.formData.password}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $location.path('project');
-                }).error(function (dataMessage) {
-                    if (dataMessage.data.level == 1) {
-                        $scope.errorOne = true;
-                        $scope.errorTwo = false;
-                        $scope.errorThree = false;
-                        $(".register-email").val('').focus();
-                    } else if (dataMessage.data.level == 2) {
-                        $scope.errorOne = false;
-                        $scope.errorTwo = true;
-                        $scope.errorThree = false;
-                        $(".register-username").val('').focus();
-                    } else if (dataMessage.data.level == 3) {
-                        $scope.errorOne = false;
-                        $scope.errorTwo = false;
-                        $scope.errorThree = true;
-                        $(".register-username").val('').focus();
-                        $(".register-email").val('');
-                    }
-                    $("#registerNote").modal('toggle');
-                });
+                $location.path('project');
+            }).error(function (dataMessage) {
+                if (dataMessage.data.level == 1) {
+                    $scope.errorOne = true;
+                    $scope.errorTwo = false;
+                    $scope.errorThree = false;
+                    $(".register-email").val('').focus();
+                } else if (dataMessage.data.level == 2) {
+                    $scope.errorOne = false;
+                    $scope.errorTwo = true;
+                    $scope.errorThree = false;
+                    $(".register-username").val('').focus();
+                } else if (dataMessage.data.level == 3) {
+                    $scope.errorOne = false;
+                    $scope.errorTwo = false;
+                    $scope.errorThree = true;
+                    $(".register-username").val('').focus();
+                    $(".register-email").val('');
+                }
+                $("#registerNote").modal('toggle');
+            });
         };
 
         $scope.init();

@@ -18,9 +18,9 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.updateProjectTitle = data.name;
-                    $scope.updateProjectTypeid = data.type_id;
-                });
+                $scope.updateProjectTitle = data.name;
+                $scope.updateProjectTypeid = data.type_id;
+            });
 
             $http({
                 url: ENV.API_ENDPOINT + 'messages',
@@ -43,9 +43,9 @@ angular.module('conojoApp')
                 data: $.param({name: $scope.updateProjectTitle, type_id: $scope.updateProjectTypeid}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $scope.init();
-                    $('#updateproject').modal('hide');
-                });
+                $scope.init();
+                $('#updateproject').modal('hide');
+            });
         };
 
         $scope.openAddComment = function(){

@@ -19,8 +19,11 @@ angular.module('conojoApp')
         $scope.showShape = false;
         $scope.videoHeight = $(window).height() - 270;
         $(".projectScreenVideo-content-video").css('height', $scope.videoHeight);
+        $("#videoBody").css('height', $scope.videoHeight);
         $("#videoBody").on("loadedmetadata", function () {
             $("#videoDrawing").css('margin-Left', ($(window).width() - $("#videoBody").width() - 64) / 2);
+            $("#videoDrawing").attr('width', $("#videoBody").width());
+            $("#videoDrawing").attr('height', $scope.videoHeight);
         });
 
         $scope.init = function () {
@@ -29,19 +32,19 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.projectMembers = data.users;
-                    $scope.updateProjectTitle = data.name;
-                    $scope.updateProjectTypeid = data.type_id;
-                });
+                $scope.projectMembers = data.users;
+                $scope.updateProjectTitle = data.name;
+                $scope.updateProjectTypeid = data.type_id;
+            });
 
-            $http({
-                url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid,
-                method: 'GET',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                    $('#videoBody').attr("src", data.url);
-                    $scope.videoComments = data.comments;
-                });
+            //$http({
+            //    url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid,
+            //    method: 'GET',
+            //    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            //}).success(function (data) {
+            //        $('#videoBody').attr("src", data.url);
+            //        $scope.videoComments = data.comments;
+            //    });
 
             $('#pickerBrush').farbtastic(function (color) {
                 $scope.setPenColor(color);
@@ -216,9 +219,9 @@ angular.module('conojoApp')
                 method: 'PUT',
                 data: {name: $scope.updateProjectTitle, type_id: $scope.updateProjectTypeid}
             }).success(function () {
-                    $scope.init();
-                    $('#updateproject').modal('hide');
-                });
+                $scope.init();
+                $('#updateproject').modal('hide');
+            });
         };
 
         $scope.openAddProjectMember = function () {
@@ -232,8 +235,8 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.activeProjectUuid, email: $scope.memberEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $('#addPeopleToProject').modal('hide');
-                });
+                $('#addPeopleToProject').modal('hide');
+            });
         };
 
         $scope.openNewMeeting = function () {
@@ -247,9 +250,9 @@ angular.module('conojoApp')
                 data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(" ")[0], time: $scope.meetingDateTime.split(" ")[1], attendees: $scope.meetingGroup.join(",")}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $scope.init();
-                    $('#newMeeting').modal('hide');
-                });
+                $scope.init();
+                $('#newMeeting').modal('hide');
+            });
         };
 
         $('.newMeeting-time').datetimepicker({
@@ -355,8 +358,8 @@ angular.module('conojoApp')
                 data: $.param({video_uuid: $scope.activeVideoProjectUuid, content: $scope.commentContent, time: video[0].currentTime, begin_x: imgDataArray[0][1], begin_y: imgDataArray[0][2], end_x: 25, end_y: 25, left_x: 100 * video[0].currentTime / video[0].duration + '%', data: imgDataArray[0][0]}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $('.video-player-commentFlag').append("<div class='arrow-down' style='left:" + 100 * video[0].currentTime / video[0].duration + "%' ng-click='goToComment('" + video[0].currentTime + "')'>" + data.ordering + "</div>");
-                });
+                $('.video-player-commentFlag').append("<div class='arrow-down' style='left:" + 100 * video[0].currentTime / video[0].duration + "%' ng-click='goToComment('" + video[0].currentTime + "')'>" + data.ordering + "</div>");
+            });
         }
 
         $scope.hideComment = function () {

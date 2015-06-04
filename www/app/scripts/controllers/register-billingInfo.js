@@ -20,8 +20,8 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.timezones = data;
-                });
+                $scope.timezones = data;
+            });
         }
 
         $scope.formData = {};
@@ -33,8 +33,8 @@ angular.module('conojoApp')
                 data: $.param({fullname: $scope.formData.fullname, email: $scope.formData.email, timezone: $scope.timezone, username: $scope.formData.fullname, password: $scope.formData.password}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $location.path('/');
-                });
+                $location.path('/');
+            });
         };
 
         $scope.init();

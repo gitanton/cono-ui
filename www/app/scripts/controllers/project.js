@@ -9,9 +9,9 @@
 angular.module('conojoApp')
     .controller('ProjectCtrl', function ($scope, $http, $location, currentUser, ENV) {
         $scope.projecttype = 0;
-        $scope.projecttitle = "";
+        $scope.projecttitle = '';
         $scope.projectContent = $(window).height() - 128;
-        $(".project-content").css('height', $scope.projectContent);
+        $('.project-content').css('height', $scope.projectContent);
 
         $scope.init = function () {
             $http({
@@ -19,9 +19,9 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.projects = data;
-                    $scope.projectsNum = $scope.projects.length;
-                });
+                $scope.projects = data;
+                $scope.projectsNum = $scope.projects.length;
+            });
         };
 
         $scope.newProject = function () {
@@ -67,30 +67,30 @@ angular.module('conojoApp')
                 data: $.param({name: $scope.projecttitle, type_id: $scope.projecttype}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $scope.init();
-                    $('#newproject').modal('hide');
-                });
+                $scope.init();
+                $('#newproject').modal('hide');
+            });
         };
 
         $scope.projectScreen = function (uuid, type) {
-            if (type == 1) {
-                $location.path('/project-build/' + uuid + '/new');
-            } else if (type == 2) {
+            if (type === 1) {
+                $location.path('/project-screen/' + uuid);
+            } else if (type === 2) {
                 $http({
                     url: ENV.API_ENDPOINT + 'videos/project/' + uuid,
                     method: 'GET',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function (data) {
-                        if (data.length == 0) {
-                            $location.path('/project-video/' + uuid);
-                        } else {
-                            $location.path('/project-videoPlay/' + uuid + '/' + data[0].uuid);
-                        }
-                    });
-            } else if (type == 3) {
-                $location.path('/project-build-template/' + uuid + '/new');
+                    if (data.length === 0) {
+                        $location.path('/project-video/' + uuid);
+                    } else {
+                        $location.path('/project-videoPlay/' + uuid + '/' + data[0].uuid);
+                    }
+                });
+            } else if (type === 3) {
+                //
             }
-        }
+        };
 
         $scope.duplicateProjectModal = function (uuid, name) {
             $('#duplicateproject').modal('toggle');
@@ -105,9 +105,9 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.duplicateProjectUuid, name: $scope.duplicateProjectName + '-Copy'}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $scope.init();
-                    $('#duplicateproject').modal('hide');
-                });
+                $scope.init();
+                $('#duplicateproject').modal('hide');
+            });
         };
 
         $scope.shareProjectModal = function (uuid) {
@@ -122,8 +122,8 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.shareProjectUuid}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $('#shareproject').modal('hide');
-                });
+                $('#shareproject').modal('hide');
+            });
         };
 
         $scope.archiveProjectModal = function (uuid, typeid) {
@@ -136,11 +136,11 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'projects/project/' + uuid,
                 method: 'PUT',
-                data: {type_id: $scope.archiveProjectTypeid, archived: "1"}
+                data: {type_id: $scope.archiveProjectTypeid, archived: '1'}
             }).success(function () {
-                    $scope.init();
-                    $('#archiveproject').modal('hide');
-                });
+                $scope.init();
+                $('#archiveproject').modal('hide');
+            });
         };
 
         $scope.deleteProjectModal = function (uuid) {
@@ -154,19 +154,19 @@ angular.module('conojoApp')
                 method: 'DELETE',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $scope.init();
-                    $('#deleteproject').modal('hide');
-                });
+                $scope.init();
+                $('#deleteproject').modal('hide');
+            });
         };
 
-        $("#sortable").sortable({
+        $('#sortable').sortable({
             revert: true,
-            handle: ".project-content-move img",
+            handle: '.project-content-move img',
             stop: function () {
                 //reorder the project endpoint
                 var uuids = [];
                 for (var i = 0; i < $scope.projectsNum; i++) {
-                    uuids[i] = $(".project-content-name").eq(i).data("uuid");
+                    uuids[i] = $('.project-content-name').eq(i).data('uuid');
                 }
                 $http({
                     url: ENV.API_ENDPOINT + 'projects/ordering',
@@ -178,7 +178,7 @@ angular.module('conojoApp')
                 });
             }
         });
-        $("#sortable").disableSelection();
+        $('#sortable').disableSelection();
 
         $scope.init();
     });

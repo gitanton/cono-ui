@@ -34,8 +34,8 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.users = data;
-                });
+                $scope.users = data;
+            });
         }
 
         $scope.expandMenu = function () {
@@ -78,11 +78,12 @@ angular.module('conojoApp')
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    if (data.status == 'success') {
-                        $location.path('/');
-                    }
-                });
+                if (data.status == 'success') {
+                    $location.path('/');
+                }
+            });
         }
 
         $scope.init();
     });
+
