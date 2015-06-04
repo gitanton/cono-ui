@@ -12,17 +12,15 @@ angular.module('conojoApp')
         $scope.projectCommentBody = $(window).height() - 242;
         $(".projectComment-content-body").css('height', $scope.projectCommentBody);
 
-//    $('.projectComment-content-body').jScrollPane();
-
         $scope.init = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'projects/project/' + $scope.activeProjectUuid,
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.updateProjectTitle = data.name;
-                    $scope.updateProjectTypeid = data.type_id;
-                });
+                $scope.updateProjectTitle = data.name;
+                $scope.updateProjectTypeid = data.type_id;
+            });
         };
 
         $scope.openUpdateProject = function () {
@@ -35,9 +33,9 @@ angular.module('conojoApp')
                 method: 'PUT',
                 data: {name: $scope.updateProjectTitle, type_id: $scope.updateProjectTypeid}
             }).success(function () {
-                    $scope.init();
-                    $('#updateproject').modal('hide');
-                });
+                $scope.init();
+                $('#updateproject').modal('hide');
+            });
         };
 
         $scope.toVideo = function () {
@@ -46,12 +44,12 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    if (data.length == 0) {
-                        $location.path('/project-video/' + $scope.activeProjectUuid);
-                    } else {
-                        $location.path('/project-videoPlay/' + $scope.activeProjectUuid + '/' + data[0].uuid);
-                    }
-                });
+                if (data.length == 0) {
+                    $location.path('/project-video/' + $scope.activeProjectUuid);
+                } else {
+                    $location.path('/project-videoPlay/' + $scope.activeProjectUuid + '/' + data[0].uuid);
+                }
+            });
         }
 
         $scope.toActivity = function () {

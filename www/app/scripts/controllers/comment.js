@@ -34,8 +34,8 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.users = data;
-                });
+                $scope.users = data;
+            });
         }
 
         $scope.expandMenu = function () {
@@ -59,17 +59,31 @@ angular.module('conojoApp')
             $location.path(url);
         };
 
+        $scope.goToMessages = function () {
+            var url = '/message';
+            $location.path(url);
+        };
+
+        $scope.openFeedBack = function(){
+            $('#addFeedback').modal('toggle');
+        }
+
+        $scope.addNewFeedBack = function(){
+            //add new feedback
+        }
+
         $scope.Logout = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'users/logout',
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    if (data.status == 'success') {
-                        $location.path('/');
-                    }
-                });
+                if (data.status == 'success') {
+                    $location.path('/');
+                }
+            });
         }
 
         $scope.init();
     });
+

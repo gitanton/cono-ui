@@ -2,21 +2,21 @@
     <div class="login-logo"><a ng-href="http://conojo.scmreview.com/website-new"><img src="images/logo-account.png"></a></div>
     <div class="login-form">
         <form name="loginform" ng-submit="processForm()" novalidate>
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <input type="text" name="username" ng-model="formData.username" class="form-control login-username" placeholder="Username" ng-minlength="5" required />
                 <span ng-show="loginform.username.$invalid && !loginform.username.$pristine">Username Should be at least five characters long</span>
             </div>
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <input type="password" name="password" ng-model="formData.password" class="form-control login-password" placeholder="Password" ng-minlength="6" required />
                 <span ng-show="loginform.password.$invalid && !loginform.password.$pristine">Password Should be at least six characters long</span>
             </div>
-            <div class="col-lg-6 login-remember">
+            <div class="col-md-6 login-remember">
                 <label><input type="checkbox"> Remember me</label>
             </div>
-            <div class="col-lg-6 login-forgot">
+            <div class="col-md-6 login-forgot">
                 <label><a href="javascript:void(0)" ng-click="openResetPassword()">Forgot Password</a></label>
             </div>
-            <div class="col-lg-12 login-button"><button class="btn btn-lg" type="submit" ng-disabled="loginform.$invalid">Login</button></div>
+            <div class="col-md-12 login-button"><button class="btn btn-lg" type="submit" ng-disabled="loginform.$invalid">Login</button></div>
         </form>
     </div>
     <div class="login-link">
@@ -35,13 +35,22 @@
         <div class="col-md-2 reset-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
         <form name="resetPassword">
             <div class="col-md-12 reset-body">
-                <input type="text" name="resetEmail" ng-model="resetEmail" class="form-control reset-title" placeholder="Enter email address" />	        
+                <input type="text" name="resetEmail" ng-model="resetEmail" class="form-control reset-title" placeholder="Enter email address" />
             </div>
             <div class="col-md-12 reset-note">Please enter the email address that you used when creating your account. An email will be sent to that address with further instructions on how to reset your password.</div>
             <div class="col-md-12 reset-button">
                 <button class="btn btn-lg reset-delete-buttoncancel" type="reset" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-lg reset-delete-buttonsubmit" type="submit" ng-click='forgotPassword()'>Send Email</button>       
+                <button class="btn btn-lg reset-delete-buttonsubmit" type="submit" ng-click='forgotPassword()'>Send Email</button>
             </div>
         </form>
+    </div>
+</div>
+<div id="loginNote" class="modal fade in" style="display: none;">
+    <div class="errorNote">
+        <div class="col-md-10 errorNote-desc">LOGIN</div>
+        <div class="col-md-2 errorNote-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-12 errorNote-note">
+            <p>The username/password you have entered are invalid.</p>
+        </div>
     </div>
 </div>

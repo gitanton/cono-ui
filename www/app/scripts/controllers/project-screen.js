@@ -14,39 +14,37 @@ angular.module('conojoApp')
         $(".projectScreen-content-body").css('height', $scope.projectScreenBody);
         $(".projectScreen-content-dropcontainer").css('height', $scope.projectScreenDropcontainer);
 
-//    $('.projectScreen-content-body').jScrollPane();
-
         $scope.init = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'projects/project/' + $scope.activeProjectUuid,
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.projectMembers = data.users;
-                    $scope.updateProjectTitle = data.name;
-                    $scope.updateProjectTypeid = data.type_id;
-                });
+                $scope.projectMembers = data.users;
+                $scope.updateProjectTitle = data.name;
+                $scope.updateProjectTypeid = data.type_id;
+            });
 
             $http({
                 url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $scope.screens = data;
-                });
+                $scope.screens = data;
+            });
         };
 
-        $("#screenupload").dropzone({
-            url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
-            paramName: "file", // The name that will be used to transfer the file
-            maxFilesize: 5,
-            clickable: false,
-            init: function () {
-                $(this).on('success', function () {
-                    $scope.init();
-                });
-            }
-        });
+        //$("#screenupload").dropzone({
+        //    url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
+        //    paramName: "file", // The name that will be used to transfer the file
+        //    maxFilesize: 5,
+        //    clickable: false,
+        //    init: function () {
+        //        $(this).get(0).on('success', function () {
+        //            $scope.init();
+        //        });
+        //    }
+        //});
 
         $scope.openUpdateProject = function () {
             $('#updateproject').modal('toggle');
@@ -58,9 +56,9 @@ angular.module('conojoApp')
                 method: 'PUT',
                 data: {name: $scope.updateProjectTitle, type_id: $scope.updateProjectTypeid}
             }).success(function () {
-                    $scope.init();
-                    $('#updateproject').modal('hide');
-                });
+                $scope.init();
+                $('#updateproject').modal('hide');
+            });
         };
 
         $scope.openAddProjectMember = function () {
@@ -74,8 +72,8 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.activeProjectUuid, email: $scope.memberEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $('#addPeopleToProject').modal('hide');
-                });
+                $('#addPeopleToProject').modal('hide');
+            });
         };
 
         $scope.openUploadScreen = function () {
@@ -89,9 +87,9 @@ angular.module('conojoApp')
                 data: $.param({project_uuid: $scope.activeProjectUuid, url: $scope.screenUrl}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $scope.init();
-                    $('#addProjectScreen').modal('hide');
-                });
+                $scope.init();
+                $('#addProjectScreen').modal('hide');
+            });
         };
 
         $scope.openNewMeeting = function () {
@@ -105,9 +103,9 @@ angular.module('conojoApp')
                 data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(" ")[0], time: $scope.meetingDateTime.split(" ")[1], attendees: $scope.meetingGroup.join(",")}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $scope.init();
-                    $('#newMeeting').modal('hide');
-                });
+                $scope.init();
+                $('#newMeeting').modal('hide');
+            });
         };
 
         $('.newMeeting-time').datetimepicker({
@@ -127,7 +125,11 @@ angular.module('conojoApp')
         });
 
         $scope.toBuild = function (suuid) {
-            var url = '/project-build/' + $scope.activeProjectUuid + '/' + suuid;
+            if(suuid == 'new'){
+                var url = '/project-build/' + $scope.activeProjectUuid + '/new';
+            }else{
+                var url = '/project-build/' + $scope.activeProjectUuid + '/' + suuid;
+            }
             $location.path(url);
         }
 

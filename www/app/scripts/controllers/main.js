@@ -22,8 +22,13 @@ angular.module('conojoApp')
                 data: $.param({username: $scope.formData.username, password: $scope.formData.password}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                    $location.path('project');
-                    currentUser.currentUserUuid = data.uuid;
+                $location.path('project');
+                currentUser.currentUserUuid = data.uuid;
+            })
+                .error(function(data){
+                    $("#loginNote").modal('toggle');
+                    $(".login-username").val('').focus();
+                    $(".login-password").val('');
                 });
         };
 
@@ -41,6 +46,6 @@ angular.module('conojoApp')
 //            if(data.status == 'success'){
 //                $(".forgot-form").append("<p style='text-align:center;'>The email has been sent successfully, please read the email to get the password and go to <a href='#/'>Login</a> page</p>");
 //            }
-                });
+            });
         }
     });

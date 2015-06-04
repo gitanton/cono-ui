@@ -8,15 +8,13 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileBillingCtrl', function ($scope, $location, currentUser) {
+    .controller('ProfileBillingCtrl', function ($scope, $location, currentUser,ENV) {
         $scope.billingOne = true;
         $scope.billingTwo = false;
         $scope.billingThree = false;
 
         $scope.profileBillingContent = $(window).height() - 250;
         $(".profileBilling-content-billing").css('height', $scope.profileBillingContent);
-
-//    $('.profileBilling-content-billing').jScrollPane();
 
         $scope.backBilling = function () {
             $scope.billingOne = true;
