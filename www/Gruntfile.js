@@ -55,7 +55,7 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         name: 'production',
-                        API_ENDPOINT: 'http://rest.conojo.com/rest/'
+                        API_ENDPOINT: 'http://rest.conojo.com/'
                     }
                 }
             }
