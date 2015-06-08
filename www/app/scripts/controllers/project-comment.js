@@ -79,7 +79,7 @@ angular.module('conojoApp')
                 $scope.init();
                 $('#replymessage').modal('hide');
             });
-        }
+        };
 
         $scope.deleteMessageModal = function(uuid){
             $('#deletemessage').modal('toggle');
@@ -100,22 +100,22 @@ angular.module('conojoApp')
         $scope.toBuild = function () {
             var url = '/project-build/' + $scope.activeProjectUuid + '/new';
             $location.path(url);
-        }
+        };
 
         $scope.toScreen = function () {
             var url = '/project-screen/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.toActivity = function () {
             var url = '/project-activity/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.openMessage = function () {
             var url = '/message/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.init();
     });

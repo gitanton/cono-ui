@@ -30,7 +30,7 @@
             <div class="projectScreenVideo-content-body">
                 <div class="projectScreenVideo-content-video">
                     <video id="videoBody"><source src="#" type="video/mp4" /></video>
-                    <canvas id="videoDrawing" ng-show="showCanvas" width='705px' height='397px'></canvas>
+                    <canvas id="videoDrawing" ng-show="showCanvas"></canvas>
                 </div>
                 <div class="video-player-commentFlag">
                     <div class="arrow-down" ng-repeat="videoComment in videoComments" style="left:{{videoComment.left_x}}" ng-click="goToComment('{{videoComment.time}}','{{videoComment.ordering}}')">{{videoComment.ordering}}</div>

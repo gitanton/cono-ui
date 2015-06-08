@@ -4,18 +4,19 @@
     <div class="projectComment-container">
         <div class="projectComment-header">
             <div class="projectComment-header-name col-md-6">
-                <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
+                <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject('{{activeProjectUuid}}')">
             </div>
             <div class="projectComment-header-button col-md-6">
-                <button class="btn btn-lg">New Comment</button>
+                <button class="btn btn-lg" ng-click="openAddComment()">New Comment</button>
             </div>
         </div>
         <div class="projectComment-content">
             <div class="projectComment-content-menu">
                 <div class="projectComment-content-nav col-md-12">
                     <ul>
-                        <li  ng-click="toVideo()">Video</li>
-                        <li  ng-click="toActivity()">ACTIVITY</li>
+                        <li ng-click="toBuild()">BUILD</li>
+                        <li ng-click="toScreen()">Screens</li>
+                        <li ng-click="toActivity()">ACTIVITY</li>
                         <li class="project-design-menu-current">COMMENTS</li>
                     </ul>
                 </div>
@@ -31,31 +32,18 @@
             </div>
             <div class="projectComment-content-body">
                 <div class="projectComment-content-items col-md-12">
-                    <div class="col-md-12 projectComment-content-item">
-                        <div class="projectComment-content-img col-md-3"><img src="images/Dawkins.png"></div>
-                        <div class="projectComment-content-desc col-md-9">
-                            <div class="col-md-9">R.Dawkins added 4 new screenshots to Project A</div>
-                            <div class="col-md-3">10 min ago</div>
-                            <div class="col-md-12"><img src="images/thumbs.png"></div>
-                            <div class="col-md-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
+                    <div class="col-md-12 projectComment-content-item" ng-repeat="message in messages">
+                        <div class="projectComment-content-img col-md-2"><img src="images/Dawkins-l.png"></div>
+                        <div class="projectComment-content-name col-md-2">R.Dawinks</div>
+                        <div class="projectComment-content-message col-md-6">
+                            <div class="col-md-12">{{message.content}}</div>
                         </div>
-                    </div>
-                    <div class="col-md-12 projectComment-content-item">
-                        <div class="projectComment-content-img col-md-3"><img src="images/Dawkins.png"></div>
-                        <div class="projectComment-content-desc col-md-9">
-                            <div class="col-md-9">R.Dawkins added 4 new screenshots to Project A</div>
-                            <div class="col-md-3">10 min ago</div>
-                            <div class="col-md-12"><img src="images/thumbs.png"></div>
-                            <div class="col-md-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 projectComment-content-item">
-                        <div class="projectComment-content-img col-md-3"><img src="images/Dawkins.png"></div>
-                        <div class="projectComment-content-desc col-md-9">
-                            <div class="col-md-9">R.Dawkins added 4 new screenshots to Project A</div>
-                            <div class="col-md-3">10 min ago</div>
-                            <div class="col-md-12"><img src="images/thumbs.png"></div>
-                            <div class="col-md-12">"Fruse euismod arcu sit amet turpis pellentesque,nec ultrices eros sollicitudin.Nuns vitae consectetur nibh,quis venenatis nisl.Phasellus ac consequat purus."</div>
+                        <div class="projectComment-content-operate col-md-2">
+                            <div class="col-md-12" style="text-align: right;">{{message.created | limitTo:-8}}</div>
+                            <div class="col-md-12" style="text-align: right;margin-top: 80px;cursor: pointer">
+                                <div class="col-md-6" ng-click="replyMessageModal('{{message.uuid}}')">Reply<img src="images/reply-icon.png"> </div>
+                                <div class="col-md-6" ng-click="deleteMessageModal('{{message.uuid}}')"> Delete<img src="images/delete-blue-icon.png"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -78,8 +66,62 @@
             </div>
             <div class="col-md-12 project-update-button">
                 <button class="btn btn-lg project-update-buttoncancel" type="cancel" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-lg project-update-buttonsubmit" type="submit" ng-click='updateMyProject(activeProjectUuid)'>Save</button>
+                <button class="btn btn-lg project-update-buttonsubmit" type="submit" ng-click="updateMyProject('{{activeProjectUuid}}')">Save</button>
             </div>
         </form>
+    </div>
+</div>
+<div id="addNewMessage" class="modal fade in" style="display: none;">
+    <div class="newmessage-add">
+        <div class="col-md-10 newmessage-add-desc">NEW COMMENT</div>
+        <div class="col-md-2 newmessage-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="createnewmessage">
+            <div class="col-md-12 newmessage-add-body">
+                <div class="form-group has-add">
+                    <input type="text" name="newmessageemail" ng-model="memberEmail" class="form-control newmessage-add-email" placeholder="Choose recipients or enter an email" />
+                    <img class="newmessage-add-addicon" src="images/add-gray-icon.png">
+                </div>
+                <div class="form-group has-allselected">
+                    <label><input type="checkbox"> Send to everyone on the project</label>
+                </div>
+                <div class="col-md-12">
+                    <textarea name="newmessagecontentl" ng-model="messageContent" class="form-control newmessage-add-message" placeholder="Add Comment"></textarea>
+                </div>
+            </div>
+            <div class="col-md-12 newmessage-add-button">
+                <button class="btn btn-lg" type="submit" ng-click="addNewComment('{{activeProjectUuid}}')">Send Comment</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="replymessage" class="modal fade in" style="display: none;">
+    <div class="replymessage-add">
+        <div class="col-md-10 replymessage-add-desc">REPLY COMMENT</div>
+        <div class="col-md-2 replymessage-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="createreplymessage">
+            <div class="col-md-12 replymessage-add-body">
+                <div class="col-md-12">
+                    <textarea name="replymessagecontent" ng-model="replyContent" class="form-control replymessage-add-message" placeholder="Add your reply"></textarea>
+                </div>
+            </div>
+            <div class="col-md-12 replymessage-add-button">
+                <button class="btn btn-lg" type="submit" ng-click="replyMessage()">Send Message</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="deletemessage" class="modal fade in" style="display: none;">
+    <div class="message-delete">
+        <div class="col-md-10 message-delete-desc">DELETE COMMENT</div>
+        <div class="col-md-2 message-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-12 message-delete-warning">
+            <div class="col-md-12 message-delete-warningicon"><img src="images/warning-icon.png"></div>
+            <div class="col-md-12 message-delete-warningdesc">Are you sure you want to delete this comment?</div>
+            <div class="col-md-12 message-delete-warningundone">Warning:This cannot be undone</div>
+        </div>
+        <div class="col-md-12 message-delete-button">
+            <button class="btn btn-lg message-delete-buttoncancel" type="cancel" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-lg message-delete-buttonsubmit" type="submit" ng-click='deleteMessage()'>Delete</button>
+        </div>
     </div>
 </div>
