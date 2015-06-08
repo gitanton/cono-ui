@@ -73,9 +73,9 @@ angular.module('conojoApp')
         };
 
         $scope.projectScreen = function (uuid, type) {
-            if (type === 1) {
-                $location.path('/project-screen/' + uuid);
-            } else if (type === 2) {
+            if (type === '1') {
+                $location.path('/project-build/' + uuid + '/new');
+            } else if (type === '2') {
                 $http({
                     url: ENV.API_ENDPOINT + 'videos/project/' + uuid,
                     method: 'GET',
@@ -87,8 +87,8 @@ angular.module('conojoApp')
                         $location.path('/project-videoPlay/' + uuid + '/' + data[0].uuid);
                     }
                 });
-            } else if (type === 3) {
-                //
+            } else if (type === '3') {
+                $location.path('/project-build-template/' + uuid + '/new');
             }
         };
 

@@ -14,6 +14,7 @@ $font-roboto: 'Roboto', sans-serif;
 
 body{
   font-family:$font-roboto;
+  font-family:$font-roboto;
 }
 
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
@@ -71,6 +72,7 @@ ul li{
   .col-md-3{
     text-align:right;
   }
+  img{cursor:pointer;}
 }
 .siderbar-closed-container{
   width:64px;
@@ -3673,13 +3675,7 @@ ul li{
       .projectScreenVideo-content-video{
         text-align:center;
         height:397px;
-        video{
-          width:705px;
-          height:397px;
-        }
         #videoDrawing{
-          width:705px;
-          height:397px;
           position:absolute;
           top:0px;
           left:0px;

@@ -95,15 +95,16 @@ angular.module('conojoApp')
             $('#addProjectScreen').modal('toggle');
         };
 
-        $(".screenFile").on('change',function(){
+        $("#screenFile").on('change',function(){
             $(".addScreen-file-desc").html($(this).val().substr($(this).val().lastIndexOf('\\')+1));
         });
 
         $scope.addUploadScreen = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
-                method: 'PUT',
-                data: {project_uuid: $scope.updateProjectTitle, file: $scope.screenFile, url:$scope.screenUrl}
+                method: 'POST',
+                //data: {project_uuid: $scope.activeProjectUuid, file: , url:$scope.screenUrl},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
                 var url = '/project-build/' + $scope.activeProjectUuid + data.uuid;
                 $location.path(url);

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Farbtastic Color Picker 1.2
  * © 2008 Steven Wittens

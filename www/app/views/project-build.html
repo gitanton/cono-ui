@@ -186,13 +186,13 @@
         <form name="addScreen">
             <div class="col-md-12 addScreen-add-body">
                 <div class="form-group has-add">
-                    <img class="addScreen-add-addAnother" src="images/upload-icon.png">
+                    <img src="images/upload-icon.png">
                     <p class="addScreen-file-desc">Select a file from your computer to add</p>
-                    <input type="file" name="addScreen-file" ng-model="screenFile" class="screenFile">
+                    <input type="file" name="addScreen-file" id="screenFile"/>
                 </div>
                 <div class="form-group has-email">
                     <p>Or paste a link below:</p>
-                    <input type="text" name="screenUrl" ng-model="screenUrl" class="form-control addScreen-add-email" placeholder="Paste link here" />
+                    <input type="text" name="addScreen-url" class="form-control addScreen-add-email" placeholder="Paste link here" />
                     <img class="addScreen-add-emailicon" src="images/link-icon.png">
                 </div>
             </div>
