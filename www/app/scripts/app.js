@@ -18,7 +18,13 @@ angular
         'ngTouch',
         'config'
     ])
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, $httpProvider) {
+
+        //Enable cross domain calls
+        $httpProvider.defaults.useXDomain = true;
+        $httpProvider.defaults.withCredentials = true;
+
+
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
