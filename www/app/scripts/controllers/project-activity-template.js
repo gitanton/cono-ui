@@ -11,8 +11,8 @@ angular.module('conojoApp')
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.projectActivityBody = $(window).height() - 176;
         $scope.projectActivityDeleteContainer = $(window).height() - 228;
-        $(".projectActivity-content-body").css('height', $scope.projectActivityBody);
-        $(".projectActivity-content-delete").css('height', $scope.projectActivityDeleteContainer);
+        $('.projectActivity-content-body').css('height', $scope.projectActivityBody);
+        $('.projectActivity-content-delete').css('height', $scope.projectActivityDeleteContainer);
 
         $scope.init = function () {
             $http({
@@ -87,16 +87,16 @@ angular.module('conojoApp')
         $scope.toScreen = function () {
             var url = '/project-templateUpload/';
             $location.path(url);
-        }
+        };
 
         $scope.toComment = function () {
             var url = '/project-comment-template/';
             $location.path(url);
-        }
+        };
 
         $scope.handleDrop = function () {
             alert('Item has been dropped');
-        }
+        };
 
         $scope.init();
     });

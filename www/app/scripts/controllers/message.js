@@ -10,7 +10,7 @@
 angular.module('conojoApp')
     .controller('MessageCtrl', function ($scope, $http, currentUser, ENV) {
         $scope.messageContent = $(window).height() - 194;
-        $(".message-content").css('height', $scope.messageContent);
+        $('.message-content').css('height', $scope.messageContent);
 
         $scope.init = function () {
             $http({
@@ -20,7 +20,7 @@ angular.module('conojoApp')
             }).success(function(data) {
                 $scope.messages = data;
             });
-        }
+        };
 
         $scope.replyMessageModal = function(muuid,puuid){
             $('#replymessage').modal('toggle');
@@ -38,7 +38,7 @@ angular.module('conojoApp')
                 $scope.init();
                 $('#replymessage').modal('hide');
             });
-        }
+        };
 
         $scope.deleteMessageModal = function(uuid){
             $('#deletemessage').modal('toggle');

@@ -38,7 +38,7 @@ angular.module('conojoApp')
                     $scope.getChat();
                 }, 2000);
             });
-        }
+        };
 
         $scope.endOneMeeting = function () {
             $http({
@@ -52,7 +52,7 @@ angular.module('conojoApp')
                 meetingFlag.startMeeting = false;
                 $scope.startMeeting = meetingFlag.startMeeting;
             });
-        }
+        };
 
         $scope.sendChat = function () {
             $http({
@@ -63,7 +63,7 @@ angular.module('conojoApp')
             }).success(function () {
                 $scope.chatComment = '';
             });
-        }
+        };
 
         $scope.getChat = function () {
             $http({
@@ -77,5 +77,5 @@ angular.module('conojoApp')
                 }
                 $scope.comments = data;
             });
-        }
+        };
     });

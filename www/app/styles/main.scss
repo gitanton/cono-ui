@@ -2351,7 +2351,7 @@ ul li{
     height:100px;
     position: relative;
     display: inline-block;
-    padding: 10px 75px;
+    padding: 10px 70px;
     overflow: hidden;
     input {
       position: absolute;
@@ -3107,6 +3107,17 @@ ul li{
               padding:10px 35px;
               color:#0378ae;
               margin-top:15px;
+              position: relative;
+              display: inline-block;
+              overflow: hidden;
+              input {
+                position: absolute;
+                font-size: 27px;
+                right: 0;
+                top: 0;
+                opacity: 0;
+                width: 160px;
+              }
             }
           }
           .profileProfile-content-profile-info-r{
@@ -3125,12 +3136,14 @@ ul li{
               margin-bottom:25px;
             }
             .profileProfile-content-profile-password{
-              input{
-                color: #0378ae;
-                background:#fff;
-                margin-left:60px;
-                border:1px solid #0378ae;
-              }
+              color: #0378ae;
+              background:#fff;
+              margin-left:50px;
+              border:1px solid #0378ae;
+              height:40px;
+              line-height:40px;
+              text-align:center;
+              cursor:pointer;
             }
           }
         }
@@ -4142,6 +4155,10 @@ ul li{
     border-bottom:1px solid #e3e3e3;
     cursor:pointer;
   }
+  .reset-body{
+    background: #e6e6e6;
+    padding:10px 20px;
+  }
   .reset-note{
     padding:24px;
     text-align: left;
@@ -4149,6 +4166,23 @@ ul li{
     margin-left: auto;
     margin-right: auto;
     background: #e6e6e6;
+  }
+  .reset-button{
+    padding:12px 0px;
+    text-align:center;
+    .reset-delete-buttoncancel{
+      @extend .appbutton;
+      width:201px;
+      height:40px;
+      background:#fff;
+      border:1px solid #0370a2;
+      color:#0378ae;
+    }
+    .reset-delete-buttonsubmit{
+      @extend .appbutton;
+      width:201px;
+      height:40px;
+    }
   }
 }
 
@@ -4173,31 +4207,6 @@ ul li{
     padding:22px 0px;
     border-bottom:1px solid #e3e3e3;
     cursor:pointer;
-  }
-  .reset-button{
-    padding:12px 0px;
-    text-align:center;
-  }
-  .reset-delete-buttoncancel{
-    @extend .appbutton;
-    width:201px;
-    height:40px;
-    background:#fff;
-    border:1px solid #0370a2;
-    color:#0378ae;
-  }
-  .reset-delete-buttonsubmit{
-    @extend .appbutton;
-    width:201px;
-    height:40px;
-  }
-  .reset-note{
-    padding:0px 24px 24px;
-    text-align: left;
-    font-size:16px;
-    margin-left: auto;
-    margin-right: auto;
-    background: #e6e6e6;
   }
 }
 
@@ -4224,38 +4233,6 @@ ul li{
     cursor:pointer;
   }
   .reset-note{
-    padding:24px;
-    text-align: left;
-    font-size:16px;
-    margin-left: auto;
-    margin-right: auto;
-    background: #e6e6e6;
-  }
-}
-
-#loginNote{
-  width:100%;
-  padding-top:50px;
-  .errorNote{
-    width:465px;
-    height:200px;
-    background:#fff;
-    border-radius:4px;
-    margin:0 auto;
-  }
-  .errorNote-desc{
-    text-align:center;
-    color:#0378ae;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-  }
-  .errorNote-delete-delicon{
-    text-align:center;
-    padding:22px 0px;
-    border-bottom:1px solid #e3e3e3;
-    cursor:pointer;
-  }
-  .errorNote-note{
     padding:24px;
     text-align: left;
     font-size:16px;

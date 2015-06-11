@@ -30,8 +30,8 @@
             </div>
             <div class="projectBuild-content-body">
                 <div class="projectBuild-content-drawing">
-                    <canvas id="drawing-b"></canvas>
-                    <canvas id="drawing-f"></canvas>
+                    <canvas id="drawing-b" width="1100" height="380"></canvas>
+                    <canvas id="drawing-f" width="1100" height="380"></canvas>
                 </div>
                 <div class="projectBuild-content-tools">
                     <ul class="projectBuild-content-tools-ul">
@@ -188,7 +188,7 @@
                 <div class="form-group has-add">
                     <img src="images/upload-icon.png">
                     <p class="addScreen-file-desc">Select a file from your computer to add</p>
-                    <input type="file" name="addScreen-file" id="screenFile"/>
+                    <input type="file" name="addScreen-file" id="screenFile" ngf-select ng-model="picFile" />
                 </div>
                 <div class="form-group has-email">
                     <p>Or paste a link below:</p>
@@ -197,7 +197,7 @@
                 </div>
             </div>
             <div class="col-md-12 addScreen-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addUploadScreen()">Add Screens</button>
+                <button class="btn btn-lg" type="submit" ng-click="addUploadScreen(picFile)">Add Screens</button>
             </div>
         </form>
     </div>

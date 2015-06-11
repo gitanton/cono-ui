@@ -17,8 +17,8 @@ angular.module('conojoApp')
         $scope.lastDay = $scope.today.setDate($scope.today.getDate() + 30);
         $scope.loginPadding = ($(window).height() - 651) / 2;
 
-        $(".register-logo").css('padding-top', $scope.loginPadding);
-        $(".register-note").css('padding-bottom', $scope.loginPadding);
+        $('.register-logo').css('padding-top', $scope.loginPadding);
+        $('.register-note').css('padding-bottom', $scope.loginPadding);
 
         $scope.init = function () {
             $http({
@@ -28,7 +28,7 @@ angular.module('conojoApp')
             }).success(function (data) {
                 $scope.timezones = data;
             });
-        }
+        };
 
         $scope.formData = {};
 
@@ -41,24 +41,24 @@ angular.module('conojoApp')
             }).success(function () {
                 $location.path('project');
             }).error(function (dataMessage) {
-                if (dataMessage.data.level == 1) {
+                if (dataMessage.data.level === 1) {
                     $scope.errorOne = true;
                     $scope.errorTwo = false;
                     $scope.errorThree = false;
-                    $(".register-email").val('').focus();
-                } else if (dataMessage.data.level == 2) {
+                    $('.register-email').val('').focus();
+                } else if (dataMessage.data.level === 2) {
                     $scope.errorOne = false;
                     $scope.errorTwo = true;
                     $scope.errorThree = false;
-                    $(".register-username").val('').focus();
-                } else if (dataMessage.data.level == 3) {
+                    $('.register-username').val('').focus();
+                } else if (dataMessage.data.level === 3) {
                     $scope.errorOne = false;
                     $scope.errorTwo = false;
                     $scope.errorThree = true;
-                    $(".register-username").val('').focus();
-                    $(".register-email").val('');
+                    $('.register-username').val('').focus();
+                    $('.register-email').val('');
                 }
-                $("#registerNote").modal('toggle');
+                $('#registerNote').modal('toggle');
             });
         };
 

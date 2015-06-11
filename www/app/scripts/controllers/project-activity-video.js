@@ -11,8 +11,8 @@ angular.module('conojoApp')
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.projectActivityBody = $(window).height() - 176;
         $scope.projectActivityDeleteContainer = $(window).height() - 228;
-        $(".projectActivity-content-body").css('height', $scope.projectActivityBody);
-        $(".projectActivity-content-delete").css('height', $scope.projectActivityDeleteContainer);
+        $('.projectActivity-content-body').css('height', $scope.projectActivityBody);
+        $('.projectActivity-content-delete').css('height', $scope.projectActivityDeleteContainer);
 
         $scope.init = function () {
             $http({
@@ -72,7 +72,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'meetings',
                 method: 'POST',
-                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(" ")[0], time: $scope.meetingDateTime.split(" ")[1], attendees: $scope.meetingGroup}),
+                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(' ')[0], time: $scope.meetingDateTime.split(' ')[1], attendees: $scope.meetingGroup}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $scope.init();
@@ -81,7 +81,7 @@ angular.module('conojoApp')
         };
 
         $('.newMeeting-time').datetimepicker({
-            dateFormat: "yy-mm-dd"
+            dateFormat: 'yy-mm-dd'
         });
 
         $scope.toVideo = function () {
@@ -96,16 +96,16 @@ angular.module('conojoApp')
                     $location.path('/project-videoPlay/' + $scope.activeProjectUuid + '/' + data[0].uuid);
                 }
             });
-        }
+        };
 
         $scope.toComment = function () {
             var url = '/project-comment-video/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.handleDrop = function () {
             alert('Item has been dropped');
-        }
+        };
 
         $scope.init();
     });

@@ -16,7 +16,8 @@ angular
         'ngRoute',
         'ngSanitize',
         'ngTouch',
-        'config'
+        'config',
+        'ngFileUpload'
     ])
     .config(function ($routeProvider) {
         $routeProvider
@@ -147,7 +148,10 @@ angular
     })
     .factory('currentUser', function () {
         return {
-            currentUserUuid: ''
+            currentUserUuid: '',
+            avatar: '',
+            fullname: '',
+            email: ''
         }
     })
     .directive('draggable', function () {
@@ -170,7 +174,7 @@ angular
 
             el.addEventListener(
                 'dragend',
-                function (e) {
+                function () {
                     this.classList.remove('drag');
                     return false;
                 },
@@ -192,7 +196,7 @@ angular
                     function (e) {
                         e.dataTransfer.dropEffect = 'move';
                         // allows us to drop
-                        if (e.preventDefault) e.preventDefault();
+                        if (e.preventDefault) {e.preventDefault();}
                         this.classList.add('over');
                         return false;
                     },
@@ -201,7 +205,7 @@ angular
 
                 el.addEventListener(
                     'dragenter',
-                    function (e) {
+                    function () {
                         this.classList.add('over');
                         return false;
                     },
@@ -210,7 +214,7 @@ angular
 
                 el.addEventListener(
                     'dragleave',
-                    function (e) {
+                    function () {
                         this.classList.remove('over');
                         return false;
                     },
@@ -221,7 +225,7 @@ angular
                     'drop',
                     function (e) {
                         // Stops some browsers from redirecting.
-                        if (e.stopPropagation) e.stopPropagation();
+                        if (e.stopPropagation) {e.stopPropagation();}
 
                         this.classList.remove('over');
 
