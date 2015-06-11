@@ -11,8 +11,8 @@ angular.module('conojoApp')
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.projectActivityBody = $(window).height() - 176;
         $scope.projectActivityDeleteContainer = $(window).height() - 228;
-        $(".projectActivity-content-body").css('height', $scope.projectActivityBody);
-        $(".projectActivity-content-delete").css('height', $scope.projectActivityDeleteContainer);
+        $('.projectActivity-content-body').css('height', $scope.projectActivityBody);
+        $('.projectActivity-content-delete').css('height', $scope.projectActivityDeleteContainer);
 
         $scope.init = function () {
             $http({
@@ -69,14 +69,14 @@ angular.module('conojoApp')
         };
 
         $scope.showSelectMember = function (event) {
-            $(event.target).parent().find(".newMeeting-group").show();
-            $(document).on("click", function () {
-                $(event.target).parent().find(".newMeeting-group").hide();
+            $(event.target).parent().find('.newMeeting-group').show();
+            $(document).on('click', function () {
+                $(event.target).parent().find('.newMeeting-group').hide();
             });
             event.stopPropagation();
-        }
+        };
 
-        $(".newMeeting-group").on("click", function (event) {
+        $('.newMeeting-group').on('click', function (event) {
             event.stopPropagation();
         });
 
@@ -84,7 +84,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'meetings',
                 method: 'POST',
-                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(" ")[0], time: $scope.meetingDateTime.split(" ")[1], attendees: $scope.meetingGroup}),
+                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(' ')[0], time: $scope.meetingDateTime.split(' ')[1], attendees: $scope.meetingGroup}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $scope.init();
@@ -99,35 +99,35 @@ angular.module('conojoApp')
         $scope.toBuild = function () {
             var url = '/project-build/' + $scope.activeProjectUuid + '/new';
             $location.path(url);
-        }
+        };
 
         $scope.toScreen = function () {
             var url = '/project-screen/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.toComment = function () {
             var url = '/project-comment/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.openMessage = function () {
             var url = '/message/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
         $scope.toScreen = function(){
             var url = '/project-screen/'+$scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.toComment = function(){
             var url = '/project-comment/'+$scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.handleDrop = function() {
             alert('Item has been dropped');
-        }
+        };
 
         $scope.init();
 });

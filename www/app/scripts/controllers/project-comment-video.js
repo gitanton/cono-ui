@@ -10,7 +10,7 @@ angular.module('conojoApp')
     .controller('ProjectCommentVideoCtrl', function ($scope, $http, $location, $routeParams, currentUser, ENV) {
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.projectCommentBody = $(window).height() - 242;
-        $(".projectComment-content-body").css('height', $scope.projectCommentBody);
+        $('.projectComment-content-body').css('height', $scope.projectCommentBody);
 
         $scope.init = function () {
             $http({
@@ -99,7 +99,7 @@ angular.module('conojoApp')
                     $location.path('/project-videoPlay/' + $scope.activeProjectUuid + '/' + data[0].uuid);
                 }
             });
-        }
+        };
 
         $scope.toActivity = function () {
             var url = '/project-activity-video/' + $scope.activeProjectUuid;

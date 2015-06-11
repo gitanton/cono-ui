@@ -11,8 +11,8 @@ angular.module('conojoApp')
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.projectScreenBody = $(window).height() - 176;
         $scope.projectScreenDropcontainer = $(window).height() - 212;
-        $(".projectScreen-content-body").css('height', $scope.projectScreenBody);
-        $(".projectScreen-content-dropcontainer").css('height', $scope.projectScreenDropcontainer);
+        $('.projectScreen-content-body').css('height', $scope.projectScreenBody);
+        $('.projectScreen-content-dropcontainer').css('height', $scope.projectScreenDropcontainer);
 
         $scope.init = function () {
             $http({
@@ -100,7 +100,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'meetings',
                 method: 'POST',
-                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(" ")[0], time: $scope.meetingDateTime.split(" ")[1], attendees: $scope.meetingGroup.join(",")}),
+                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(' ')[0], time: $scope.meetingDateTime.split(' ')[1], attendees: $scope.meetingGroup.join(',')}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $scope.init();
@@ -109,44 +109,44 @@ angular.module('conojoApp')
         };
 
         $('.newMeeting-time').datetimepicker({
-            dateFormat: "yy-mm-dd"
+            dateFormat: 'yy-mm-dd'
         });
 
         $scope.showSelectMember = function (event) {
-            $(event.target).parent().find(".newMeeting-group").show();
-            $(document).on("click", function () {
-                $(event.target).parent().find(".newMeeting-group").hide();
+            $(event.target).parent().find('.newMeeting-group').show();
+            $(document).on('click', function () {
+                $(event.target).parent().find('.newMeeting-group').hide();
             });
             event.stopPropagation();
-        }
+        };
 
-        $(".newMeeting-group").on("click", function (event) {
+        $('.newMeeting-group').on('click', function (event) {
             event.stopPropagation();
         });
 
         $scope.toBuild = function (suuid) {
-            if(suuid == 'new'){
+            if(suuid === 'new'){
                 var url = '/project-build/' + $scope.activeProjectUuid + '/new';
             }else{
                 var url = '/project-build/' + $scope.activeProjectUuid + '/' + suuid;
             }
             $location.path(url);
-        }
+        };
 
         $scope.toActivity = function () {
             var url = '/project-activity/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.toComment = function () {
             var url = '/project-comment/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.openMessage = function () {
             var url = '/message/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.init();
     });

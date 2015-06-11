@@ -9,7 +9,7 @@
 angular.module('conojoApp')
     .controller('ProjectTemplateSelectCtrl', function ($scope,$http,$location,$routeParams,currentUser,ENV) {
         $scope.templatesContent = $(window).height() - 128;
-        $(".templates-content").css('height',$scope.templatesContent);
+        $('.templates-content').css('height',$scope.templatesContent);
 
         $scope.init = function(){
             $http({
@@ -18,6 +18,17 @@ angular.module('conojoApp')
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function(data) {
                 $scope.templates = data;
+            });
+        };
+
+        $scope.selectTemplate = function(templateUrl){
+            $http({
+                url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
+                method: 'POST',
+                data: $.param({project_uuid: $scope.activeProjectUuid, url: templateUrl}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function () {
+                $('#addPeopleToProject').modal('hide');
             });
         };
 

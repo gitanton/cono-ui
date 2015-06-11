@@ -22,11 +22,11 @@ angular.module('conojoApp')
                 }
             });
             $('#datetimepicker').show();
-        }
+        };
 
         $scope.hideCalendar = function () {
             $('#datetimepicker').hide();
-        }
+        };
 
         $scope.init = function () {
             $http({
@@ -36,22 +36,22 @@ angular.module('conojoApp')
             }).success(function (data) {
                 $scope.users = data;
             });
-        }
+        };
 
         $scope.expandMenu = function () {
             $scope.expandMenuFlag = true;
-        }
+        };
 
         $scope.closeMenu = function () {
             $scope.expandMenuFlag = false;
-        }
+        };
 
         $scope.setHeight = function () {
             $scope.siderbarContainer = $(window).height() - 64;
             $scope.projectContent = $(window).height() - 128;
 
-            $(".siderbar-closed-container").css('height', $scope.siderbarContainer);
-            $(".siderbar-expand-container").css('height', $scope.siderbarContainer);
+            $('.siderbar-closed-container').css('height', $scope.siderbarContainer);
+            $('.siderbar-expand-container').css('height', $scope.siderbarContainer);
         };
 
         $scope.goToProfile = function () {
@@ -66,11 +66,11 @@ angular.module('conojoApp')
 
         $scope.openFeedBack = function(){
             $('#addFeedback').modal('toggle');
-        }
+        };
 
         $scope.addNewFeedBack = function(){
             //add new feedback
-        }
+        };
 
         $scope.Logout = function () {
             $http({
@@ -78,11 +78,11 @@ angular.module('conojoApp')
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                if (data.status == 'success') {
+                if (data.status === 'success') {
                     $location.path('/');
                 }
             });
-        }
+        };
 
         $scope.init();
     });

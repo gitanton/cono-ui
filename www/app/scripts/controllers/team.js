@@ -11,7 +11,7 @@ angular.module('conojoApp')
     .controller('TeamCtrl', function ($scope, $http, $location, currentUser, ENV) {
         $scope.memberUuid = 0;
         $scope.teamContent = $(window).height() - 128;
-        $(".team-content").css('height', $scope.teamContent);
+        $('.team-content').css('height', $scope.teamContent);
 
         $scope.init = function () {
             $http({
@@ -45,17 +45,17 @@ angular.module('conojoApp')
 //    });
 
         $scope.hoverOver = function (event) {
-            $(event.target).parents(".team-content-offset").find(".team-content-permissions").show();
-        }
+            $(event.target).parents('.team-content-offset').find('.team-content-permissions').show();
+        };
 
         $scope.hoverLeave = function (event) {
             $(event.target).hide();
-        }
+        };
 
         $scope.goToEdit = function (uuid) {
             var url = '/userpage/' + uuid;
             $location.path(url);
-        }
+        };
 
         $scope.init();
     });

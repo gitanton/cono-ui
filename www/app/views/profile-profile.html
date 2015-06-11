@@ -7,7 +7,7 @@
                 <span>Profile</span>
             </div>
             <div class="profileProfile-header-button col-md-6">
-                <button class="btn btn-lg">Save & Update</button>
+                <button class="btn btn-lg" ng-click="updateUserInfo()">Save & Update</button>
             </div>
         </div>
         <div class="profileProfile-content">
@@ -27,14 +27,17 @@
                     <div class="profileProfile-content-profile-title">Your Information</div>
                     <div class="profileProfile-content-profile-info">
                         <div class="profileProfile-content-profile-info-l col-md-3">
-                            <div class="profileProfile-content-profile-info-icon col-md-12"><img src="images/Chan.png"></div>
-                            <div class="profileProfile-content-profile-info-file col-md-12">Choose file</div>
+                            <div class="profileProfile-content-profile-info-icon col-md-12"><img src="currentUser.avatar" id="userAvatar"></div>
+                            <div class="profileProfile-content-profile-info-file col-md-12">
+                                <span class="add-file-desc">Choose file</span>
+                                <input type="file" name="add-file" id="screenFile" ngf-select ng-model="picFile" ngf-change="uploadAvatar(picFile)" />
+                            </div>
                         </div>
                         <div class="profileProfile-content-profile-info-r col-md-9">
-                            <div class="profileProfile-content-profile-fullname col-md-12"><input type="text" placeholder="Full Name"></div>
+                            <div class="profileProfile-content-profile-fullname col-md-12"><input type="text" placeholder="Full Name" ng-model="currentUser.fullname"></div>
                             <div class="profileProfile-content-profile-email col-md-12">
-                                <div class="col-md-8"><input type="text" placeholder="Email"></div>
-                                <div class="profileProfile-content-profile-password col-md-3"><input type="text" placeholder="Change Password"></div>
+                                <div class="col-md-8"><input type="text" placeholder="Email" ng-model="currentUser.email"></div>
+                                <div class="profileProfile-content-profile-password col-md-3" ng-click="openResetPassword()">Change Password</div>
                             </div>
                             <div class="profileProfile-content-profile-address col-md-12">
                                 <div class="col-md-4"><input type="text" placeholder="City"></div>
@@ -46,5 +49,21 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div id="resetPassword" class="modal fade in" style="display: none;">
+    <div class="reset">
+        <div class="col-md-10 reset-desc">RESET PASSWORD</div>
+        <div class="col-md-2 reset-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="resetPassword">
+            <div class="col-md-12 reset-body">
+                <input type="text" name="resetEmail" ng-model="resetEmail" class="form-control reset-title" placeholder="Enter email address" />
+            </div>
+            <div class="col-md-12 reset-note">Please enter the email address that you used when creating your account. An email will be sent to that address with further instructions on how to reset your password.</div>
+            <div class="col-md-12 reset-button">
+                <button class="btn btn-lg reset-delete-buttoncancel" type="reset" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-lg reset-delete-buttonsubmit" type="submit" ng-click='forgotPassword()'>Send Email</button>
+            </div>
+        </form>
     </div>
 </div>

@@ -10,7 +10,7 @@ angular.module('conojoApp')
     .controller('ProjectVideoCtrl', function ($scope, $http, $location, $routeParams, currentUser, ENV) {
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.projectScreenVideoBody = $(window).height() - 176;
-        $(".projectScreenVideo-content-body").css('height', $scope.projectScreenVideoBody);
+        $('.projectScreenVideo-content-body').css('height', $scope.projectScreenVideoBody);
 
         $scope.init = function () {
             $http({
@@ -24,14 +24,14 @@ angular.module('conojoApp')
                 });
         };
 
-        var videoUploadZone = new Dropzone("#videoupload", {
+        var videoUploadZone = new Dropzone('#videoupload', {
             url: ENV.API_ENDPOINT + 'videos/project/' + $scope.activeProjectUuid,
-            paramName: "file", // The name that will be used to transfer the file
+            paramName: 'file', // The name that will be used to transfer the file
             maxFilesize: 10,
             clickable: false
         });
 
-        videoUploadZone.on("success", function (file, serverCallBack) {
+        videoUploadZone.on('success', function (file, serverCallBack) {
             var url = '/project-screen-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
             $location.path(url).replace();
             $scope.$apply();
@@ -101,30 +101,30 @@ angular.module('conojoApp')
         };
 
         $('.newMeeting-time').datetimepicker({
-            dateFormat: "yy-mm-dd"
+            dateFormat: 'yy-mm-dd'
         });
 
         $scope.showSelectMember = function (event) {
-            $(event.target).parent().find(".newMeeting-group").show();
-            $(document).on("click", function () {
-                $(event.target).parent().find(".newMeeting-group").hide();
+            $(event.target).parent().find('.newMeeting-group').show();
+            $(document).on('click', function () {
+                $(event.target).parent().find('.newMeeting-group').hide();
             });
             event.stopPropagation();
-        }
+        };
 
-        $(".newMeeting-group").on("click", function (event) {
+        $('.newMeeting-group').on('click', function (event) {
             event.stopPropagation();
         });
 
         $scope.toActivity = function () {
             var url = '/project-activity-video/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.toComment = function () {
             var url = '/project-comment-video/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.init();
     });

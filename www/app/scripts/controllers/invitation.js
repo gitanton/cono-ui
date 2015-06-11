@@ -11,9 +11,9 @@ angular.module('conojoApp')
     .controller('InvitationCtrl', function ($scope, $http, $location, $routeParams, currentUser, ENV) {
         $scope.inviteMarginTop = ($(window).height() - 587) / 2;
 
-        $(".invitation-container").css('height', $(window).height());
-        $(".invitation-container").css('padding-top', $scope.inviteMarginTop);
-        $(".invitation-container").css('padding-bottom', $scope.inviteMarginTop);
+        $('.invitation-container').css('height', $(window).height());
+        $('.invitation-container').css('padding-top', $scope.inviteMarginTop);
+        $('.invitation-container').css('padding-bottom', $scope.inviteMarginTop);
 
         $scope.init = function () {
             $http({
@@ -23,7 +23,7 @@ angular.module('conojoApp')
             }).success(function (data) {
                 $scope.timezones = data;
             });
-        }
+        };
 
         $scope.formData = {};
         $scope.processLoginForm = function () {

@@ -11,8 +11,8 @@ angular.module('conojoApp')
     .controller('registerBillingCtrl', function ($scope, $http, $location, ENV) {
         $scope.loginPadding = ($(window).height() - 590) / 2;
 
-        $(".register-container").css('padding-top', $scope.loginPadding);
-        $(".register-container").css('padding-bottom', $scope.loginPadding);
+        $('.register-container').css('padding-top', $scope.loginPadding);
+        $('.register-container').css('padding-bottom', $scope.loginPadding);
 
         $scope.init = function () {
             $http({
@@ -22,7 +22,7 @@ angular.module('conojoApp')
             }).success(function (data) {
                 $scope.timezones = data;
             });
-        }
+        };
 
         $scope.formData = {};
 

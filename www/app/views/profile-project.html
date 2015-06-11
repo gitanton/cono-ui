@@ -27,40 +27,13 @@
                     <div class="profileProject-content-projectH-r col-md-2"><span>Select Project<img src="images/select-project-icon.png"></span></div>
                 </div>
                 <div class="profileProject-content-projects">
-                    <div class="profileProject-content-project">
+                    <div class="profileProject-content-project" ng-repeat="project in projects">
                         <div class="profileProject-content-project-intro">
-                            <span class="profileProject-content-project-name">Project Name</span> | <span class="profileProject-content-project-count">10 Screens</span>
+                            <span class="profileProject-content-project-name">{{project.name}}</span> | 
+                            <span class="profileProject-content-project-count"></span>
                         </div>
                         <div class="profileProject-content-project-thumb">
-                            <img src="images/screen-thumb.png">
-                            <img src="images/screen-thumb.png">
-                            <img src="images/screen-thumb.png">
-                            <img src="images/screen-thumb.png">
-                            <img src="images/screen-thumb.png">
-                        </div>
-                    </div>
-                    <div class="profileProject-content-project">
-                        <div class="profileProject-content-project-intro">
-                            <span class="profileProject-content-project-name">Project Name</span> | <span class="profileProject-content-project-count">2 Videos</span>
-                        </div>
-                        <div class="profileProject-content-project-thumb">
-                            <img src="images/screen-thumb.png">
-                            <img src="images/screen-thumb.png">
-                            <img src="images/screen-thumb.png">
-                            <img src="images/screen-thumb.png">
-                            <img src="images/screen-thumb.png">
-                        </div>
-                    </div>
-                    <div class="profileProject-content-project">
-                        <div class="profileProject-content-project-intro">
-                            <span class="profileProject-content-project-name">Project Name</span> | <span class="profileProject-content-project-count">2 Videos</span>
-                        </div>
-                        <div class="profileProject-content-project-thumb">
-                            <img src="images/screen-thumb.png">
-                            <img src="images/screen-thumb.png">
-                            <img src="images/screen-thumb.png">
-                            <img src="images/screen-thumb.png">
-                            <img src="images/screen-thumb.png">
+                            <!-- <img ng-src="{{screen.url}}" ng-repeat="screen in project.info"> -->
                         </div>
                     </div>
                 </div>

@@ -18,12 +18,12 @@ angular.module('conojoApp')
         $scope.showEraser = false;
         $scope.showShape = false;
         $scope.videoHeight = $(window).height() - 270;
-        $(".projectScreenVideo-content-video").css('height', $scope.videoHeight);
-        $("#videoBody").css('height', $scope.videoHeight);
-        $("#videoBody").on("loadedmetadata", function () {
-            $("#videoDrawing").css('margin-Left', ($(window).width() - $("#videoBody").width() - 64) / 2);
-            $("#videoDrawing").attr('width', $("#videoBody").width());
-            $("#videoDrawing").attr('height', $scope.videoHeight);
+        $('.projectScreenVideo-content-video').css('height', $scope.videoHeight);
+        $('#videoBody').attr({height: $scope.videoHeight});
+        $('#videoBody').css('maxWidth',$(window).width() - 64);
+        $('#videoBody').on('loadedmetadata', function () {
+            $('#videoDrawing').css('marginLeft', ($(window).width() - $('#videoBody').width() - 64) / 2);
+            $('#videoDrawing').attr({width:$('#videoBody').width(),height: $('#videoBody').height()});
         });
 
         $scope.init = function () {
@@ -37,14 +37,14 @@ angular.module('conojoApp')
                 $scope.updateProjectTypeid = data.type_id;
             });
 
-            //$http({
-            //    url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid,
-            //    method: 'GET',
-            //    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            //}).success(function (data) {
-            //        $('#videoBody').attr("src", data.url);
-            //        $scope.videoComments = data.comments;
-            //    });
+            $http({
+               url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid,
+               method: 'GET',
+               headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                   $('#videoBody').attr('src', data.url);
+                   $scope.videoComments = data.comments;
+               });
 
             $('#pickerBrush').farbtastic(function (color) {
                 $scope.setPenColor(color);
@@ -70,11 +70,11 @@ angular.module('conojoApp')
                 if ($scope.showComment) {
                     $scope.hideComment();
                 }
-                $('.btnPlay').addClass("paused");
+                $('.btnPlay').addClass('paused');
                 video[0].play();
             }
             else {
-                $('.btnPlay').removeClass("paused");
+                $('.btnPlay').removeClass('paused');
                 video[0].pause();
             }
         });
@@ -102,7 +102,7 @@ angular.module('conojoApp')
         //end the video
         video.on('ended', function () {
             $('.timeBar').css('width', 0);
-            $('.btnPlay').removeClass("paused");
+            $('.btnPlay').removeClass('paused');
         });
 
         //arrow the video
@@ -112,10 +112,10 @@ angular.module('conojoApp')
             var imageObj = new Image();
             imageObj.src = 'data:image/png;base64,' + $scope.videoComments[order - 1].data.slice(9);
             cxt.clearRect(0, 0, $('#videoBody').width(), $('#videoBody').height());
-            cxt.drawImage(imageObj, 0, 0, $("#videoBody").width(), $("#videoBody").height());
-            $('.btnPlay').removeClass("paused");
+            cxt.drawImage(imageObj, 0, 0, $('#videoBody').width(), $('#videoBody').height());
+            $('.btnPlay').removeClass('paused');
             video[0].pause();
-        }
+        };
 
         //VIDEO PROGRESS BAR
         //when video timebar clicked
@@ -247,7 +247,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'meetings',
                 method: 'POST',
-                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(" ")[0], time: $scope.meetingDateTime.split(" ")[1], attendees: $scope.meetingGroup.join(",")}),
+                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(' ')[0], time: $scope.meetingDateTime.split(' ')[1], attendees: $scope.meetingGroup.join(',')}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $scope.init();
@@ -256,30 +256,30 @@ angular.module('conojoApp')
         };
 
         $('.newMeeting-time').datetimepicker({
-            dateFormat: "yy-mm-dd"
+            dateFormat: 'yy-mm-dd'
         });
 
         $scope.showSelectMember = function (event) {
-            $(event.target).parent().find(".newMeeting-group").show();
-            $(document).on("click", function () {
-                $(event.target).parent().find(".newMeeting-group").hide();
+            $(event.target).parent().find('.newMeeting-group').show();
+            $(document).on('click', function () {
+                $(event.target).parent().find('.newMeeting-group').hide();
             });
             event.stopPropagation();
-        }
+        };
 
-        $(".newMeeting-group").on("click", function (event) {
+        $('.newMeeting-group').on('click', function (event) {
             event.stopPropagation();
         });
 
         $scope.toActivity = function () {
             var url = '/project-activity-video/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         $scope.toComment = function () {
             var url = '/project-comment-video/' + $scope.activeProjectUuid;
             $location.path(url);
-        }
+        };
 
         var canvas = document.getElementById('videoDrawing');
         var cxt = canvas.getContext('2d');
@@ -307,12 +307,12 @@ angular.module('conojoApp')
                 default:
                     cxt.lineWidth = 8;
             }
-        }
+        };
 
         $scope.setPenColor = function (color) {
             cxt.strokeStyle = color;
             cxt.fillStyle = color;
-        }
+        };
 
         $scope.openComment = function () {
             $scope.showCanvas = true;
@@ -320,13 +320,13 @@ angular.module('conojoApp')
             $scope.showBrushBlue = true;
             $scope.showEraser = false;
             $scope.showShape = false;
-            $(".projectScreenVideo-comment-black").siblings().removeClass("tools-li-selected");
-            $(".projectScreenVideo-comment-black").addClass("tools-li-selected");
-            $('.btnPlay').removeClass("paused");
+            $('.projectScreenVideo-comment-black').siblings().removeClass('tools-li-selected');
+            $('.projectScreenVideo-comment-black').addClass('tools-li-selected');
+            $('.btnPlay').removeClass('paused');
             video[0].pause();
 
-            cxt.strokeStyle = "rgba(250,246,162,0.7)";
-            cxt.fillStyle = "rgba(250,246,162,0.7)";
+            cxt.strokeStyle = 'rgba(250,246,162,0.7)';
+            cxt.fillStyle = 'rgba(250,246,162,0.7)';
             canvas.onmousedown = function (evt) {
                 if ($scope.commentList.length > 0) {
                     cxt.clearRect(0, 0, $('#videoBody').width(), $('#videoBody').height());
@@ -337,7 +337,7 @@ angular.module('conojoApp')
                 rectY = evt.pageY - this.offsetTop - 176;
                 $('#addComment').css('left', evt.pageX - 400);
                 $('#addComment').css('top', evt.pageY);
-            }
+            };
 
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
@@ -345,10 +345,10 @@ angular.module('conojoApp')
                 $scope.commentList.push([canvas.toDataURL(), rectX, rectY, 25, 25]);
                 $scope.showComment = true;
                 $scope.$apply();
-            }
+            };
             canvas.onmousemove = null;
             canvas.onmouseout = null;
-        }
+        };
 
         $scope.saveComment = function () {
             var imgDataArray = $scope.commentList.slice(-1);
@@ -358,9 +358,9 @@ angular.module('conojoApp')
                 data: $.param({video_uuid: $scope.activeVideoProjectUuid, content: $scope.commentContent, time: video[0].currentTime, begin_x: imgDataArray[0][1], begin_y: imgDataArray[0][2], end_x: 25, end_y: 25, left_x: 100 * video[0].currentTime / video[0].duration + '%', data: imgDataArray[0][0]}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                $('.video-player-commentFlag').append("<div class='arrow-down' style='left:" + 100 * video[0].currentTime / video[0].duration + "%' ng-click='goToComment('" + video[0].currentTime + "')'>" + data.ordering + "</div>");
+                $('.video-player-commentFlag').append("<div class='arrow-down' style='left:'" + 100 * video[0].currentTime / video[0].duration + "%'>" + data.ordering + "</div>");
             });
-        }
+        };
 
         $scope.hideComment = function () {
             $scope.showComment = false;
@@ -372,7 +372,7 @@ angular.module('conojoApp')
                 cxt.drawImage(image, 0, 0);
             }
             $scope.commentList.pop();
-        }
+        };
 
         $scope.openTools = function () {
             $scope.showCanvas = true;
@@ -380,84 +380,84 @@ angular.module('conojoApp')
             $scope.showBrushBlue = false;
             $scope.showEraser = true;
             $scope.showShape = true;
-            $(".projectScreenVideo-comment-black").removeClass("tools-li-selected");
+            $('.projectScreenVideo-comment-black').removeClass('tools-li-selected');
             $scope.setBrushWidth(8);
             cxt.strokeStyle = '#000';
             cxt.fillStyle = '#000';
-            $('.btnPlay').removeClass("paused");
+            $('.btnPlay').removeClass('paused');
             video[0].pause();
-        }
+        };
 
         $scope.openDrawing = function (type, event) {
-            $('.btnPlay').removeClass("paused");
+            $('.btnPlay').removeClass('paused');
             video[0].pause();
             $scope.showCommentBlue = true;
             $scope.showBrushBlue = false;
             $scope.showEraser = true;
             $scope.showShape = true;
-            if (type == 'brush') {
-                $(".projectBuild-content-brush").show();
-                $(".projectBuild-content-eraser").hide();
-                $(".projectBuild-content-shape").hide();
-                $(".projectScreenVideo-brush-black").siblings().removeClass("tools-li-selected");
-                $(".projectScreenVideo-brush-black").addClass("tools-li-selected");
+            if (type === 'brush') {
+                $('.projectBuild-content-brush').show();
+                $('.projectBuild-content-eraser').hide();
+                $('.projectBuild-content-shape').hide();
+                $('.projectScreenVideo-brush-black').siblings().removeClass('tools-li-selected');
+                $('.projectScreenVideo-brush-black').addClass('tools-li-selected');
                 $scope.setBrushWidth(8);
                 cxt.strokeStyle = '#000';
                 cxt.fillStyle = '#000';
-                $(".projectBuild-content-brush").on("click", function () {
+                $('.projectBuild-content-brush').on('click', function () {
                     event.stopPropagation();
                 });
-                $(document).on("click", function () {
-                    $(".projectBuild-content-brush").hide();
+                $(document).on('click', function () {
+                    $('.projectBuild-content-brush').hide();
                 });
-            } else if (type == 'eraser') {
-                $(".projectBuild-content-brush").hide();
-                $(".projectBuild-content-eraser").show();
-                $(".projectBuild-content-shape").hide();
-                $(".projectScreenVideo-eraser").siblings().removeClass("tools-li-selected");
-                $(".projectScreenVideo-eraser").addClass("tools-li-selected");
+            } else if (type === 'eraser') {
+                $('.projectBuild-content-brush').hide();
+                $('.projectBuild-content-eraser').show();
+                $('.projectBuild-content-shape').hide();
+                $('.projectScreenVideo-eraser').siblings().removeClass('tools-li-selected');
+                $('.projectScreenVideo-eraser').addClass('tools-li-selected');
                 $scope.setEraserWidth(8);
-                $(".projectBuild-content-eraser").on("click", function () {
+                $('.projectBuild-content-erase').on('click', function () {
                     event.stopPropagation();
                 });
-                $(document).on("click", function () {
-                    $(".projectBuild-content-eraser").hide();
+                $(document).on('click', function () {
+                    $('.projectBuild-content-eraser').hide();
                 });
-            } else if (type == 'shape') {
-                $(".projectBuild-content-brush").hide();
-                $(".projectBuild-content-eraser").hide();
-                $(".projectBuild-content-shape").show();
-                $(".projectScreenVideo-shape").siblings().removeClass("tools-li-selected");
-                $(".projectScreenVideo-shape").addClass("tools-li-selected");
+            } else if (type === 'shape') {
+                $('.projectBuild-content-brush').hide();
+                $('.projectBuild-content-eraser').hide();
+                $('.projectBuild-content-shape').show();
+                $('.projectScreenVideo-shape').siblings().removeClass('tools-li-selected');
+                $('.projectScreenVideo-shape').addClass('tools-li-selected');
                 $scope.setPenWidth(0);
                 cxt.strokeStyle = '#000';
                 cxt.fillStyle = '#000';
-                $(".projectBuild-content-shape").on("click", function () {
+                $('.projectBuild-content-shape').on('click', function () {
                     event.stopPropagation();
                 });
-                $(document).on("click", function () {
-                    $(".projectBuild-content-shape").hide();
+                $(document).on('click', function () {
+                    $('.projectBuild-content-shape').hide();
                 });
             }
             event.stopPropagation();
-        }
+        };
 
         $scope.shapeFillSwitch = function (type) {
-            if (type == 'on') {
+            if (type === 'on') {
                 $scope.shapeFill = true;
                 $('.shapeFillSwitchOn').removeClass('shapeUnFillItem').addClass('shapeFillItem');
                 $('.shapeFillSwitchOff').removeClass('shapeFillItem').addClass('shapeUnFillItem');
-            } else if (type == 'off') {
+            } else if (type === 'off') {
                 $scope.shapeFill = false;
                 $('.shapeFillSwitchOff').removeClass('shapeUnFillItem').addClass('shapeFillItem');
                 $('.shapeFillSwitchOn').removeClass('shapeFillItem').addClass('shapeUnFillItem');
             }
-        }
+        };
 
         $scope.specicalColor = function (color) {
             cxt.strokeStyle = color;
             cxt.fillStyle = color;
-        }
+        };
 
         $scope.setBrushWidth = function (width) {
             cxt.lineWidth = width;
@@ -469,7 +469,7 @@ angular.module('conojoApp')
                 cxt.beginPath();
                 cxt.moveTo(startX, startY);
                 flag = 1;
-            }
+            };
             canvas.onmousemove = function (evt) {
                 evt = window.event || evt;
                 var endX = evt.pageX - this.offsetLeft - 64;
@@ -478,14 +478,14 @@ angular.module('conojoApp')
                     cxt.lineTo(endX, endY);
                     cxt.stroke();
                 }
-            }
+            };
             canvas.onmouseup = function () {
                 flag = 0;
-            }
+            };
             canvas.onmouseout = function () {
                 flag = 0;
-            }
-        }
+            };
+        };
 
         $scope.setEraserWidth = function (width) {
             cxt.lineWidth = width;
@@ -495,7 +495,7 @@ angular.module('conojoApp')
                 var eraserY = evt.pageY - this.offsetTop - 176;
                 cxt.clearRect(eraserX - cxt.lineWidth, eraserY - cxt.lineWidth, cxt.lineWidth * 2, cxt.lineWidth * 2);
                 eraserFlag = 1;
-            }
+            };
             canvas.onmousemove = function (evt) {
                 evt = window.event || evt;
                 var eraserX = evt.pageX - this.offsetLeft - 64;
@@ -503,13 +503,13 @@ angular.module('conojoApp')
                 if (eraserFlag) {
                     cxt.clearRect(eraserX - cxt.lineWidth, eraserY - cxt.lineWidth, cxt.lineWidth * 2, cxt.lineWidth * 2);
                 }
-            }
+            };
             canvas.onmouseup = function () {
                 eraserFlag = 0;
-            }
+            };
             canvas.onmouseout = function () {
                 eraserFlag = 0;
-            }
+            };
         };
 
         $scope.drawSquare = function () {
@@ -517,7 +517,7 @@ angular.module('conojoApp')
                 evt = window.event || evt;
                 rectX = evt.pageX - this.offsetLeft - 64;
                 rectY = evt.pageY - this.offsetTop - 176;
-            }
+            };
 
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
@@ -530,7 +530,7 @@ angular.module('conojoApp')
                 } else {
                     cxt.strokeRect(rectX, rectY, rectW, rectH);
                 }
-            }
+            };
             canvas.onmousemove = null;
             canvas.onmouseout = null;
         };
@@ -540,7 +540,7 @@ angular.module('conojoApp')
                 evt = window.event || evt;
                 polyX = evt.pageX - this.offsetLeft - 64;
                 polyY = evt.pageY - this.offsetTop - 176;
-            }
+            };
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
                 var endX = evt.pageX - this.offsetLeft - 64;
@@ -561,7 +561,7 @@ angular.module('conojoApp')
                 } else {
                     cxt.stroke();
                 }
-            }
+            };
             canvas.onmousemove = null;
             canvas.onmouseout = null;
         };
@@ -571,7 +571,7 @@ angular.module('conojoApp')
                 evt = window.event || evt;
                 arcX = evt.pageX - this.offsetLeft - 64;
                 arcY = evt.pageY - this.offsetTop - 176;
-            }
+            };
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
                 var endX = evt.pageX - this.offsetLeft - 64;
@@ -588,7 +588,7 @@ angular.module('conojoApp')
                 } else {
                     cxt.stroke();
                 }
-            }
+            };
             canvas.onmousemove = null;
             canvas.onmouseout = null;
         };
@@ -598,7 +598,7 @@ angular.module('conojoApp')
                 evt = window.event || evt;
                 polyX = evt.pageX - this.offsetLeft - 64;
                 polyY = evt.pageY - this.offsetTop - 176;
-            }
+            };
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
                 cxt.beginPath();
@@ -610,17 +610,17 @@ angular.module('conojoApp')
                 cxt.quadraticCurveTo(polyX + 18, polyY + 27, polyX + 18, polyY + 15);
                 cxt.quadraticCurveTo(polyX + 18, polyY, polyX, polyY);
                 cxt.fill();
-            }
+            };
             canvas.onmousemove = null;
             canvas.onmouseout = null;
-        }
+        };
 
         $scope.drawArrow = function () {
             canvas.onmousedown = function (evt) {
                 evt = window.event || evt;
                 polyX = evt.pageX - this.offsetLeft - 64;
                 polyY = evt.pageY - this.offsetTop - 176;
-            }
+            };
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
                 cxt.beginPath();
@@ -633,17 +633,17 @@ angular.module('conojoApp')
                 cxt.lineTo(polyX, polyY + 10);
                 cxt.closePath();
                 cxt.fill();
-            }
+            };
             canvas.onmousemove = null;
             canvas.onmouseout = null;
-        }
+        };
 
         $scope.drawStar = function () {
             canvas.onmousedown = function (evt) {
                 evt = window.event || evt;
                 polyX = evt.pageX - this.offsetLeft - 64;
                 polyY = evt.pageY - this.offsetTop - 176;
-            }
+            };
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
                 cxt.beginPath();
@@ -658,10 +658,10 @@ angular.module('conojoApp')
                 cxt.lineTo(polyX + 7, polyY + 20);
                 cxt.lineTo(polyX + 10, polyY + 7);
                 cxt.fill();
-            }
+            };
             canvas.onmousemove = null;
             canvas.onmouseout = null;
-        }
+        };
 
         $scope.init();
     });

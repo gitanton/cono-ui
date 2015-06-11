@@ -11,8 +11,8 @@ angular.module('conojoApp')
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.projectTemplateBody = $(window).height() - 176;
         $scope.projectScreenDropcontainer = $(window).height() - 212;
-        $(".projectScreen-content-body").css('height', $scope.projectTemplateBody);
-        $(".projectScreen-content-dropcontainer").css('height', $scope.projectScreenDropcontainer);
+        $('.projectScreen-content-body').css('height', $scope.projectTemplateBody);
+        $('.projectScreen-content-dropcontainer').css('height', $scope.projectScreenDropcontainer);
 
         $scope.init = function () {
             $http({
@@ -115,26 +115,26 @@ angular.module('conojoApp')
         });
 
         $scope.showSelectMember = function (event) {
-            $(event.target).parent().find(".newMeeting-group").show();
-            $(document).on("click", function () {
-                $(event.target).parent().find(".newMeeting-group").hide();
+            $(event.target).parent().find('.newMeeting-group').show();
+            $(document).on('click', function () {
+                $(event.target).parent().find('.newMeeting-group').hide();
             });
             event.stopPropagation();
-        }
+        };
 
-        $(".newMeeting-group").on("click", function (event) {
+        $('.newMeeting-group').on('click', function (event) {
             event.stopPropagation();
         });
 
         $scope.toActivity = function () {
             var url = '/project-activity-template/';
             $location.path(url);
-        }
+        };
 
         $scope.toComment = function () {
             var url = '/project-comment-template/';
             $location.path(url);
-        }
+        };
 
         $scope.init();
     });
