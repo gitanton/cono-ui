@@ -26,9 +26,9 @@ angular.module('conojoApp')
                             method: 'GET',
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                         }).success(function (data) {
-                            $scope.projects[i]['infoNum'] = data.length + ' screens';
-                            $scope.projects[i]['info'] = data;
-                            console.log($scope.projects[i]);
+                            // $scope.projects[i]['infoNum'] = data.length + ' screens';
+                            // $scope.projects[i]['info'] = data;
+                            // console.log($scope.projects[i]);
                         });
                     }else if(data[i].type_id === 2){
                         $http({
@@ -36,9 +36,9 @@ angular.module('conojoApp')
                             method: 'GET',
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                         }).success(function (data) {
-                            $scope.projects[i]['infoNum'] = data.length + ' videos';
-                            $scope.projects[i]['info'] = data;
-                            console.log($scope.projects[i]);
+                            // $scope.projects[i]['infoNum'] = data.length + ' videos';
+                            // $scope.projects[i]['info'] = data;
+                            // console.log($scope.projects[i]);
                         });
                     }
                 }

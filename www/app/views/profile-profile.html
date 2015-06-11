@@ -27,16 +27,16 @@
                     <div class="profileProfile-content-profile-title">Your Information</div>
                     <div class="profileProfile-content-profile-info">
                         <div class="profileProfile-content-profile-info-l col-md-3">
-                            <div class="profileProfile-content-profile-info-icon col-md-12"><img src="currentUser.avatar" id="userAvatar"></div>
+                            <div class="profileProfile-content-profile-info-icon col-md-12"><img ng-src="avatar" id="userAvatar"></div>
                             <div class="profileProfile-content-profile-info-file col-md-12">
                                 <span class="add-file-desc">Choose file</span>
                                 <input type="file" name="add-file" id="screenFile" ngf-select ng-model="picFile" ngf-change="uploadAvatar(picFile)" />
                             </div>
                         </div>
                         <div class="profileProfile-content-profile-info-r col-md-9">
-                            <div class="profileProfile-content-profile-fullname col-md-12"><input type="text" placeholder="Full Name" ng-model="currentUser.fullname"></div>
+                            <div class="profileProfile-content-profile-fullname col-md-12"><input type="text" placeholder="Full Name" ng-model="fullname"></div>
                             <div class="profileProfile-content-profile-email col-md-12">
-                                <div class="col-md-8"><input type="text" placeholder="Email" ng-model="currentUser.email"></div>
+                                <div class="col-md-8"><input type="text" placeholder="Email" ng-model="email"></div>
                                 <div class="profileProfile-content-profile-password col-md-3" ng-click="openResetPassword()">Change Password</div>
                             </div>
                             <div class="profileProfile-content-profile-address col-md-12">
