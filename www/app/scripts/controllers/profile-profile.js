@@ -45,7 +45,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'users/user' + currentUser.currentUserUuid,
                 method: 'PUT',
-                data: $.param({uuid: currentUser.currentUserUuid,{fullename: currentUser.fullename,email: currentUser.email}}),
+                // data: $.param({uuid: currentUser.currentUserUuid,{fullename: currentUser.fullename,email: currentUser.email}}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
         };
