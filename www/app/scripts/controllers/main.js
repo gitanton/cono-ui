@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('MainCtrl', function ($scope, $http, $location, currentUser, ENV) {
+    .controller('MainCtrl', function ($scope, $http, $location, currentUser, ENV, $rootScope) {
         $scope.loginPadding = ($(window).height() - 519) / 2;
 
         $('.login-logo').css('padding-top', $scope.loginPadding);
@@ -22,11 +22,11 @@ angular.module('conojoApp')
                 data: $.param({username: $scope.formData.username, password: $scope.formData.password}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
+                $rootScope.currentUserUuid = data.uuid;
+                $rootScope.avatar = data.avatar;
+                $rootScope.fullname = data.fullname;
+                $rootScope.email = data.email;
                 $location.path('project');
-                currentUser.currentUserUuid = data.uuid;
-                currentUser.avatar = data.avatar;
-                currentUser.fullname = data.fullname;
-                currentUser.email = data.email;
             }).error(function(data){
                     $("#loginNote").modal('toggle');
                     $(".login-username").val('').focus();

@@ -38,7 +38,7 @@
                         </div>
                         <div class="profileBilling-content-billing-history">
                             <div class="profileBilling-content-billing-historytitle">History</div>
-                            <div class="profileBilling-content-billing-historyitem col-md-12" ng-repeat="billing in billings">Invoice for ${{billing.total}} on {{billing.date | limitTo: -8}}</div>
+                            <div class="profileBilling-content-billing-historyitem col-md-12" ng-repeat="billing in billings">Invoice for ${{billing.total}} on {{billing.date | limitTo: 10}}</div>
                         </div>
                     </div>
                 </div>

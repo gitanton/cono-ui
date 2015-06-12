@@ -8,13 +8,18 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileProfileCtrl', function ($scope, $location, currentUser, ENV, Upload) {
+    .controller('ProfileProfileCtrl', function ($scope, $location, currentUser, ENV, Upload, $rootScope) {
         $scope.profileProfileContent = $(window).height() - 250;
         $('.profileProfile-content-profile').css('height', $scope.profileProfileContent);
-        $scope.fullname = currentUser.fullname;
-        $scope.email = currentUser.email;
-        $scope.avatar = currentUser.avatar;
-        console.log($scope.fullname + '---' + $scope.email + '---' + $scope.avatar);
+        $scope.fullname = $rootScope.fullname;
+        $scope.email = $rootScope.email;
+        $('#userAvatar').attr('src',$rootScope.avatar);
+        console.log($scope.fullname + '---' + $scope.email + '---' + $rootScope.avatar);
+        console.log($rootScope.fullname + '---' + $rootScope.email + '---' + $rootScope.avatar);
+
+        $scope.init = function(){
+            //get the city, state and country list
+        };
 
         $scope.uploadAvatar = function(files){
             Upload.upload({
@@ -49,7 +54,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'users/user' + currentUser.currentUserUuid,
                 method: 'PUT',
-                // data: $.param({uuid: currentUser.currentUserUuid,{fullename: currentUser.fullename,email: currentUser.email}}),
+                data: $.param({uuid: currentUser.currentUserUuid,body:{'fullename': $scope.fullname,'email': $scope.email}}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
         };
@@ -62,4 +67,6 @@ angular.module('conojoApp')
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
         };
+
+        $scope.init();
     });

@@ -39,12 +39,18 @@ angular.module('conojoApp')
 
         $scope.updateSettings = function(index,setting){
             if(index === 'general'){
-                
+                $scope.notification.notify_general = setting;
             }else if(index === 'promition'){
-
+                $scope.notification.notify_promotions = setting;
             }else{
-                
+                $scope.notification.projects[index].notify = setting;
             }
+            $http({
+                url: ENV.API_ENDPOINT + 'users/notifications',
+                method: 'POST',
+                data:$.param({notifications: $scope.notification}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
         }
 
         $scope.init();

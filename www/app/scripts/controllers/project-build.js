@@ -482,7 +482,7 @@ angular.module('conojoApp')
 
                 var screenData = canvas.toDataURL();
                 $http({
-                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
+                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/drawings',
                     method: 'POST',
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -515,7 +515,7 @@ angular.module('conojoApp')
 
                 var screenData = canvas.toDataURL();
                 $http({
-                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
+                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/drawings',
                     method: 'POST',
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -547,7 +547,7 @@ angular.module('conojoApp')
 
                 var screenData = canvas.toDataURL();
                 $http({
-                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
+                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/drawings',
                     method: 'POST',
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -586,7 +586,7 @@ angular.module('conojoApp')
 
                 var screenData = canvas.toDataURL();
                 $http({
-                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
+                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/drawings',
                     method: 'POST',
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -621,7 +621,7 @@ angular.module('conojoApp')
 
                 var screenData = canvas.toDataURL();
                 $http({
-                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
+                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/drawings',
                     method: 'POST',
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -651,7 +651,7 @@ angular.module('conojoApp')
 
                 var screenData = canvas.toDataURL();
                 $http({
-                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
+                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/drawings',
                     method: 'POST',
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -682,7 +682,7 @@ angular.module('conojoApp')
 
                 var screenData = canvas.toDataURL();
                 $http({
-                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
+                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/drawings',
                     method: 'POST',
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -715,7 +715,7 @@ angular.module('conojoApp')
 
                 var screenData = canvas.toDataURL();
                 $http({
-                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
+                    url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/drawings',
                     method: 'POST',
                     data: $.param({screen_uuid: $scope.activeScreenUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
