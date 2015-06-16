@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileNoticeCtrl', function ($scope, $http, $location, currentUser,ENV) {
+    .controller('ProfileNoticeCtrl', function ($scope, $http, $location,ENV) {
         $scope.profileNoticeContent = $(window).height() - 250;
         $('.profileNotice-content-notice').css('height', $scope.profileNoticeContent);
 

@@ -8,17 +8,19 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileProfileCtrl', function ($scope, $location, currentUser, ENV, Upload, $rootScope) {
+    .controller('ProfileProfileCtrl', function ($scope, $location, $http, ENV, Upload, $window) {
         $scope.profileProfileContent = $(window).height() - 250;
         $('.profileProfile-content-profile').css('height', $scope.profileProfileContent);
-        $scope.fullname = $rootScope.fullname;
-        $scope.email = $rootScope.email;
-        $('#userAvatar').attr('src',$rootScope.avatar);
-        console.log($scope.fullname + '---' + $scope.email + '---' + $rootScope.avatar);
-        console.log($rootScope.fullname + '---' + $rootScope.email + '---' + $rootScope.avatar);
 
         $scope.init = function(){
-            //get the city, state and country list
+            //get the country
+            $scope.fullname = $window.sessionStorage.fullname;
+            $scope.email = $window.sessionStorage.email;
+            $scope.avatar = $window.sessionStorage.avatar;
+            $scope.city = $window.sessionStorage.city;
+            $scope.state = $window.sessionStorage.state;
+            $scope.country = $window.sessionStorage.country;
+            $('#userAvatar').attr('src',$window.sessionStorage.avatar);
         };
 
         $scope.uploadAvatar = function(files){
@@ -52,11 +54,18 @@ angular.module('conojoApp')
 
         $scope.updateUserInfo = function(){
             $http({
-                url: ENV.API_ENDPOINT + 'users/user' + currentUser.currentUserUuid,
+                url: ENV.API_ENDPOINT + 'users/user/' + $window.sessionStorage.currentUserUuid,
                 method: 'PUT',
-                data: $.param({uuid: currentUser.currentUserUuid,body:{'fullename': $scope.fullname,'email': $scope.email}}),
+                data: {uuid: $window.sessionStorage.currentUserUuid,body:{'fullename': $scope.fullname,'email': $scope.email,'city':$scope.city,'state':$scope.state,'country':$scope.country}},
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
+            }).success(function(data){
+                $window.sessionStorage.fullname = data.fullname;
+                $window.sessionStorage.email = data.email;
+                $window.sessionStorage.city = data.city;
+                $window.sessionStorage.state = data.state;
+                $window.sessionStorage.country = data.country;
+                $scope.init();
+            });
         };
 
         $scope.forgotPassword = function () {

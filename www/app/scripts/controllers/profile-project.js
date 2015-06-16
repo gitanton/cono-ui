@@ -8,9 +8,10 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileProjectCtrl', function ($scope, $http, $location, currentUser, ENV) {
+    .controller('ProfileProjectCtrl', function ($scope, $http, $location, ENV) {
         $scope.profileProjectsContent = $(window).height() - 250;
         $('.profileProject-content-projects').css('height', $scope.profileProjectsContent);
+        $scope.projectInfo = [];
 
         $scope.init = function () {
             $http({
@@ -18,27 +19,40 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                $scope.projects = data;
+                var projectInfo = [];
+                var projectName = [];
+
                 for(var i = 0;i < data.length; i++){
+                    projectName.push(data[i].name);
                     if(data[i].type_id === 1 || data[i].type_id === 3){
                         $http({
                             url: ENV.API_ENDPOINT + 'screens/project/' + data[i].uuid,
                             method: 'GET',
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                        }).success(function (data) {
-                            // $scope.projects[i]['infoNum'] = data.length + ' screens';
-                            // $scope.projects[i]['info'] = data;
-                            // console.log($scope.projects[i]);
+                        }).success(function (screens) {
+                            if(screens.length == 0){
+                                projectInfo.push([projectName.pop(),'no screen']);
+                            }else if(screens.length == 1){
+                                projectInfo.push([projectName.pop(),'1 screen',screens]);
+                            }else if(screens.length > 1){
+                                projectInfo.push([projectName.pop(),screens.length +' screens',screens]);
+                            }
+                            $scope.projectInfo = projectInfo;
                         });
                     }else if(data[i].type_id === 2){
                         $http({
                             url: ENV.API_ENDPOINT + 'videos/project/' + data[i].uuid,
                             method: 'GET',
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                        }).success(function (data) {
-                            // $scope.projects[i]['infoNum'] = data.length + ' videos';
-                            // $scope.projects[i]['info'] = data;
-                            // console.log($scope.projects[i]);
+                        }).success(function (videos) {
+                            if(videos.length == 0){
+                                projectInfo.push([projectName.pop(),'no video']);
+                            }else if(videos.length == 1){
+                                projectInfo.push([projectName.pop(),'1 video',videos]);
+                            }else if(videos.length > 1){
+                                projectInfo.push([projectName.pop(),videos.length +' videos',videos]);
+                            }
+                            $scope.projectInfo = projectInfo;
                         });
                     }
                 }

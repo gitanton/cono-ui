@@ -3,11 +3,8 @@
     <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
     <div class="profileProject-container">
         <div class="profileProject-header">
-            <div class="profileProject-header-name col-md-6">
+            <div class="profileProject-header-name col-md-12">
                 <span>Profile</span>
-            </div>
-            <div class="profileProject-header-button col-md-6">
-                <button class="btn btn-lg">Save & Update</button>
             </div>
         </div>
         <div class="profileProject-content">
@@ -27,13 +24,13 @@
                     <div class="profileProject-content-projectH-r col-md-2"><span>Select Project<img src="images/select-project-icon.png"></span></div>
                 </div>
                 <div class="profileProject-content-projects">
-                    <div class="profileProject-content-project" ng-repeat="project in projects">
+                    <div class="profileProject-content-project" ng-repeat="project in projectInfo">
                         <div class="profileProject-content-project-intro">
-                            <span class="profileProject-content-project-name">{{project.name}}</span> | 
-                            <span class="profileProject-content-project-count"></span>
+                            <span class="profileProject-content-project-name">{{project[0]}}</span> | 
+                            <span class="profileProject-content-project-count">{{project[1]}}</span>
                         </div>
                         <div class="profileProject-content-project-thumb">
-                            <!-- <img ng-src="{{screen.url}}" ng-repeat="screen in project.info"> -->
+                            <img ng-src="{{detail.url}}" ng-repeat="detail in project[2]">
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectVideoPlayCtrl', function ($scope, $http, $location, $routeParams, currentUser, ENV) {
+    .controller('ProjectVideoPlayCtrl', function ($scope, $http, $location, $routeParams, ENV) {
         $scope.activeProjectUuid = $routeParams.puuid;
         $scope.activeVideoProjectUuid = $routeParams.vuuid;
         $scope.showCanvas = false;

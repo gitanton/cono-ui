@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectTemplateUploadCtrl', function ($scope, $http, $location, $routeParams, currentUser, ENV) {
+    .controller('ProjectTemplateUploadCtrl', function ($scope, $http, $location, $routeParams, ENV) {
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.projectTemplateBody = $(window).height() - 176;
         $scope.projectScreenDropcontainer = $(window).height() - 212;

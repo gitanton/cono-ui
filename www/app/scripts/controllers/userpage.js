@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('UserpageCtrl', function ($scope, $http, $routeParams, currentUser, ENV) {
+    .controller('UserpageCtrl', function ($scope, $http, $routeParams, ENV) {
         $scope.userpageContent = $(window).height() - 128;
         $('.userpage-content').css('height', $scope.userpageContent);
 

@@ -3029,6 +3029,8 @@ ul li{
           img{
             margin-left:15px;
             margin-bottom:15px;
+            width:150px;
+            height:150px;
           }
         }
       }
@@ -3144,6 +3146,20 @@ ul li{
               line-height:40px;
               text-align:center;
               cursor:pointer;
+            }
+            .profileProfile-content-profile-address{
+              input{
+                width:250px;
+              }
+              select{
+                width:250px;
+                background:#e6e6e6;
+                border-radius:3px;
+                border: 1px solid #e6e6e6;
+                height:40px;
+                width:100%;
+                padding:0px 10px;
+              }
             }
           }
         }
@@ -4207,6 +4223,14 @@ ul li{
     padding:22px 0px;
     border-bottom:1px solid #e3e3e3;
     cursor:pointer;
+  }
+  .errorNote-note{
+    padding:24px;
+    text-align: left;
+    font-size:16px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #e6e6e6;
   }
 }
 

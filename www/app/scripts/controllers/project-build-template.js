@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectBuildTemplateCtrl', function ($scope, $http, $location, $routeParams, meetingFlag, currentUser, ENV) {
+    .controller('ProjectBuildTemplateCtrl', function ($scope, $http, $location, $routeParams, meetingFlag, ENV) {
         $scope.CLOCK = null;
         $scope.shapeFill = false;
         $scope.showComments = false;
@@ -46,21 +46,12 @@ angular.module('conojoApp')
                     method: 'GET',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function (data) {
-                    $scope.comments = data.comments;
-                    $scope.hotspots = data.hotspots;
-
-                    for (var i = 0; i < $scope.comments; i++) {
-                        //load all comments
-                    }
-
-                    for (var j = 0; j < $scope.hotspots; j++) {
-                        //load all hotspots
-                    }
+                    $scope.data = data;
 
                     var img_b_init = new Image();
                     img_b_init.src = data.url;
                     img_b_init.onload = function () {
-                        cxt_b.drawImage(img_b_init, 0, 0, 1000, 423);
+                        cxt_b.drawImage(img_b_init, 0, 0, 1100, 380);
                     }
                 });
             }
@@ -259,7 +250,7 @@ angular.module('conojoApp')
                 }
                 $('#addComment').css('top', evt.pageY);
 
-                $('.projectBuild-content-drawing').append("<div id='commentMarker'" + commentNum + " class='commentSqure' style='left:" + rectX + "px;top:" + rectY + "px'>" + commentNum + "</div>");
+                $('.projectBuild-content-drawing').append("<div id='commentMarker" + commentNum + "' class='commentSqure' style='left:" + rectX + "px;top:" + rectY + "px'>" + commentNum + "</div>");
 
                 $scope.addCommentFlag = true;
                 $scope.showComments = true;
@@ -327,7 +318,7 @@ angular.module('conojoApp')
                     }
                     $('#addHotspots').css('top', evt.pageY - rectH);
 
-                    $('.projectBuild-content-drawing').append("<div id='hotspotsMarker'" + hotspotsNum + " class='hotspotsSqure' style='left:" + rectX + "px;top:" + rectY + "px;width:" + rectW + "px;height:" + rectH + "px'></div>");
+                    $('.projectBuild-content-drawing').append("<div id='hotspotsMarker" + hotspotsNum + "' class='hotspotsSqure' style='left:" + rectX + "px;top:" + rectY + "px;width:" + rectW + "px;height:" + rectH + "px'></div>");
 
                     $scope.showAddHotspots = true;
                     $scope.addHotspotsFlag = true;

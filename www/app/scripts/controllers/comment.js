@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('commentCtrl', function ($scope, $http, $location, currentUser, ENV) {
+    .controller('commentCtrl', function ($scope, $http, $location, ENV) {
         $scope.expandMenuFlag = false;
         $scope.showCalendar = function () {
             $('#datetimepicker').datepicker({

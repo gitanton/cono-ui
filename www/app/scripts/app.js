@@ -152,14 +152,6 @@ angular
             startMeeting: false
         }
     })
-    .factory('currentUser', function () {
-        return {
-            currentUserUuid: '',
-            avatar: '',
-            fullname: '',
-            email: ''
-        }
-    })
     .directive('draggable', function () {
         return function (scope, element) {
             // this gives us the native JS object

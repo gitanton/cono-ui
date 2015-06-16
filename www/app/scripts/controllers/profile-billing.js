@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileBillingCtrl', function ($scope, $http, $location, currentUser,ENV) {
+    .controller('ProfileBillingCtrl', function ($scope, $http, $location, ENV) {
         $scope.billingOne = true;
         $scope.billingTwo = false;
         $scope.billingThree = false;
@@ -17,6 +17,14 @@ angular.module('conojoApp')
         $('.profileBilling-content-billing').css('height', $scope.profileBillingContent);
 
         $scope.init = function () {
+            $http({
+                url: ENV.API_ENDPOINT + 'utils/bootstrap',
+                method: 'GET',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                $scope.plans = data.plans;
+            });
+
             $http({
                 url: ENV.API_ENDPOINT + 'users/billing_history',
                 method: 'GET',
@@ -44,9 +52,24 @@ angular.module('conojoApp')
             $scope.billingThree = true;
         };
 
-        $scope.selectPlan = function (event) {
-
+        $scope.selectPlan = function (planId) {
+            $http({
+                url: ENV.API_ENDPOINT + 'users/subscription',
+                method: 'POST',
+                data: $.param({plan_id:planId}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
         };
+
+        $scope.cancelPlan = function(){
+            $http({
+                url: ENV.API_ENDPOINT + 'users/subscription',
+                method: 'DELETE',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(){
+                $scope.init();
+            })
+        }
 
         $scope.toProject = function () {
             var url = '/profile-project/';

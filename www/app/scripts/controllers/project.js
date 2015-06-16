@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectCtrl', function ($scope, $http, $location, currentUser, ENV) {
+    .controller('ProjectCtrl', function ($scope, $http, $location, ENV) {
         $scope.projecttype = 0;
         $scope.projecttitle = '';
         $scope.projectContent = $(window).height() - 128;

@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('TeamCtrl', function ($scope, $http, $location, currentUser, ENV) {
+    .controller('TeamCtrl', function ($scope, $http, $location, ENV) {
         $scope.memberUuid = 0;
         $scope.teamContent = $(window).height() - 128;
         $('.team-content').css('height', $scope.teamContent);

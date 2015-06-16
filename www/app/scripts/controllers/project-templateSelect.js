@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectTemplateSelectCtrl', function ($scope,$http,$location,$routeParams,currentUser,ENV) {
+    .controller('ProjectTemplateSelectCtrl', function ($scope, $http, $location, $routeParams, ENV) {
         $scope.templatesContent = $(window).height() - 128;
         $('.templates-content').css('height',$scope.templatesContent);
 

@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('MessageCtrl', function ($scope, $http, currentUser, ENV) {
+    .controller('MessageCtrl', function ($scope, $http, ENV) {
         $scope.messageContent = $(window).height() - 194;
         $('.message-content').css('height', $scope.messageContent);
 
