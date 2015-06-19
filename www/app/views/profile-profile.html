@@ -1,6 +1,6 @@
 <div class="profileProfile-page">
     <div ng-include="'views/header.html'"></div>
-    <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
+    <div ng-include="'views/siderbar.html'"></div>
     <div class="profileProfile-container">
         <div class="profileProfile-header">
             <div class="profileProfile-header-name col-md-6">
@@ -43,10 +43,8 @@
                                 <div class="col-md-4"><input type="text" placeholder="City" ng-model="city"></div>
                                 <div class="col-md-4"><input type="text" placeholder="State" ng-model="state"></div>
                                 <div class="col-md-4">
-                                    <select ng-model="country">
-                                        <option value="USA">USA</option>
-                                        <option value="Canada">Canada</option>
-                                        <option value="UK">UK</option>
+                                    <select ng-model="userCountry">
+                                        <option value="{{country}}" ng-selected="{{country == userCountry}}" ng-repeat="country in countries">{{country}}</option>
                                     </select>
                                 </div>
                             </div>

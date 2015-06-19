@@ -21,9 +21,11 @@ angular.module('conojoApp')
             }).success(function (data) {
                 var projectInfo = [];
                 var projectName = [];
+                var projectType = [];
 
                 for(var i = 0;i < data.length; i++){
                     projectName.push(data[i].name);
+                    projectType.push(data[i].type_id);
                     if(data[i].type_id === 1 || data[i].type_id === 3){
                         $http({
                             url: ENV.API_ENDPOINT + 'screens/project/' + data[i].uuid,
@@ -31,11 +33,11 @@ angular.module('conojoApp')
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                         }).success(function (screens) {
                             if(screens.length == 0){
-                                projectInfo.push([projectName.pop(),'no screen']);
+                                projectInfo.push([projectName.pop(),projectType.pop(),'no screen']);
                             }else if(screens.length == 1){
-                                projectInfo.push([projectName.pop(),'1 screen',screens]);
+                                projectInfo.push([projectName.pop(),projectType.pop(),'1 screen',screens]);
                             }else if(screens.length > 1){
-                                projectInfo.push([projectName.pop(),screens.length +' screens',screens]);
+                                projectInfo.push([projectName.pop(),projectType.pop(),screens.length +' screens',screens]);
                             }
                             $scope.projectInfo = projectInfo;
                         });
@@ -46,11 +48,11 @@ angular.module('conojoApp')
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                         }).success(function (videos) {
                             if(videos.length == 0){
-                                projectInfo.push([projectName.pop(),'no video']);
+                                projectInfo.push([projectName.pop(),projectType.pop(),'no video']);
                             }else if(videos.length == 1){
-                                projectInfo.push([projectName.pop(),'1 video',videos]);
+                                projectInfo.push([projectName.pop(),projectType.pop(),'1 video',videos]);
                             }else if(videos.length > 1){
-                                projectInfo.push([projectName.pop(),videos.length +' videos',videos]);
+                                projectInfo.push([projectName.pop(),projectType.pop(),videos.length +' videos',videos]);
                             }
                             $scope.projectInfo = projectInfo;
                         });

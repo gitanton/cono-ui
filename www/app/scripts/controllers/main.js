@@ -28,7 +28,7 @@ angular.module('conojoApp')
                 $window.sessionStorage.email = data.email;
                 $window.sessionStorage.city = data.city;
                 $window.sessionStorage.state = data.state;
-                $window.sessionStorage.country = data.country;
+                $window.sessionStorage.userCountry = data.country;
                 $location.path('project');
             }).error(function(data){
                     $("#loginNote").modal('toggle');

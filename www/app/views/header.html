@@ -1,4 +1,4 @@
-<div class="header-container">
+<div class="header-container" ng-controller="headerCtrl">
     <div class="col-md-9"><a href="javascript:void(0)"><img src="images/logo.png"></a></div>
     <div class="col-md-3">
         <div class="col-md-4">
@@ -10,73 +10,73 @@
         <div class="col-md-4"><img src="images/message-icon.png" ng-click="goToMessages()"></div>
         <div class="col-md-4"><img src="images/help-icon.png" ng-click="openFeedBack()"></div>
     </div>
-</div>
-<div id="meetingDetail" class="modal fade in" style="display: none;">
-    <div class="newMeeting-add">
-        <div class="col-md-10 newMeeting-add-desc">MEETING PROJECT NAME</div>
-        <div class="col-md-2 newMeeting-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
-        <form name="newMeeting">
-            <div class="col-md-12 newMeeting-add-body">
-                <div class="form-group">
-                    <textarea name="meetingMessage" ng-model="meetingMessage" placeholder="Notes" class="form-control newMeeting-message"></textarea>
+    <div id="meetingDetail" class="modal fade in" style="display: none;">
+        <div class="newMeeting-add">
+            <div class="col-md-10 newMeeting-add-desc">MEETING PROJECT NAME</div>
+            <div class="col-md-2 newMeeting-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+            <form name="newMeeting">
+                <div class="col-md-12 newMeeting-add-body">
+                    <div class="form-group">
+                        <textarea name="meetingMessage" ng-model="meetingMessage" placeholder="Notes" class="form-control newMeeting-message"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="meetingName" ng-model="meetingName" class="form-control newMeeting-name" placeholder="Meeting Name" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="meetingDateTime" ng-model="meetingDateTime" class="form-control newMeeting-time" placeholder="Choose date & time" />
+                    </div>
+                    <div class="form-group">
+                        <select name="meetingGroup" ng-model="meetingGroup" class="form-control newMeeting-group">
+                            <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="text" name="meetingName" ng-model="meetingName" class="form-control newMeeting-name" placeholder="Meeting Name" />
+                <div class="col-md-12 newMeeting-add-button">
+                    <button class="btn btn-lg" ng-click="addNewMeeting()">Create Meeting</button>
                 </div>
-                <div class="form-group">
-                    <input type="text" name="meetingDateTime" ng-model="meetingDateTime" class="form-control newMeeting-time" placeholder="Choose date & time" />
-                </div>
-                <div class="form-group">
-                    <select name="meetingGroup" ng-model="meetingGroup" class="form-control newMeeting-group">
-                        <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-12 newMeeting-add-button">
-                <button class="btn btn-lg" ng-click="addNewMeeting()">Create Meeting</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-<div id="addFeedback" class="modal fade in" style="display: none;">
-    <div class="feedback-add">
-        <div class="col-md-10 feedback-add-desc">SUPPORT</div>
-        <div class="col-md-2 feedback-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
-        <form name="createnewmessage">
-            <div class="col-md-12 feedback-add-body">
-                <p>Submit feedback or report problems you are experiencing using the form below.</p>
-                <div class="form-group has-add">
-                    <input type="text" name="reasonContent" ng-model="reasonContent" class="form-control feedback-add-reason" placeholder="Reasons for requesting support" />
-                    <img class="feedback-add-addicon" src="images/select-project-icon.png">
+    <div id="addFeedback" class="modal fade in" style="display: none;">
+        <div class="feedback-add">
+            <div class="col-md-10 feedback-add-desc">SUPPORT</div>
+            <div class="col-md-2 feedback-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+            <form name="createnewmessage">
+                <div class="col-md-12 feedback-add-body">
+                    <p>Submit feedback or report problems you are experiencing using the form below.</p>
+                    <div class="form-group has-add">
+                        <input type="text" name="reasonContent" ng-model="reasonContent" class="form-control feedback-add-reason" placeholder="Reasons for requesting support" />
+                        <img class="feedback-add-addicon" src="images/select-project-icon.png">
+                    </div>
+                    <div class="col-md-12">
+                        <textarea name="messageContent" ng-model="messageContent" class="form-control feedback-add-message" placeholder="Add message"></textarea>
+                    </div>
                 </div>
-                <div class="col-md-12">
-                    <textarea name="messageContent" ng-model="messageContent" class="form-control feedback-add-message" placeholder="Add message"></textarea>
+                <div class="col-md-12 feedback-add-button">
+                    <button class="btn btn-lg" type="submit" ng-click="addNewFeedback()">Get support</button>
                 </div>
-            </div>
-            <div class="col-md-12 feedback-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addNewFeedback()">Get support</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-<div id="addFeedback" class="modal fade in" style="display: none;">
-    <div class="feedback-add">
-        <div class="col-md-10 feedback-add-desc">SUPPORT</div>
-        <div class="col-md-2 feedback-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
-        <form name="createnewmessage">
-            <div class="col-md-12 feedback-add-body">
-                <p>Submit feedback or report problems you are experiencing using the form below.</p>
-                <div class="form-group has-add">
-                    <input type="text" name="reasonContent" ng-model="reasonContent" class="form-control feedback-add-reason" placeholder="Reasons for requesting support" />
-                    <img class="feedback-add-addicon" src="images/select-project-icon.png">
+    <div id="addFeedback" class="modal fade in" style="display: none;">
+        <div class="feedback-add">
+            <div class="col-md-10 feedback-add-desc">SUPPORT</div>
+            <div class="col-md-2 feedback-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+            <form name="createnewmessage">
+                <div class="col-md-12 feedback-add-body">
+                    <p>Submit feedback or report problems you are experiencing using the form below.</p>
+                    <div class="form-group has-add">
+                        <input type="text" name="reasonContent" ng-model="reasonContent" class="form-control feedback-add-reason" placeholder="Reasons for requesting support" />
+                        <img class="feedback-add-addicon" src="images/select-project-icon.png">
+                    </div>
+                    <div class="col-md-12">
+                        <textarea name="messageContent" ng-model="messageContent" class="form-control feedback-add-message" placeholder="Add message"></textarea>
+                    </div>
                 </div>
-                <div class="col-md-12">
-                    <textarea name="messageContent" ng-model="messageContent" class="form-control feedback-add-message" placeholder="Add message"></textarea>
+                <div class="col-md-12 feedback-add-button">
+                    <button class="btn btn-lg" type="submit" ng-click="addNewFeedback()">Get support</button>
                 </div>
-            </div>
-            <div class="col-md-12 feedback-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addNewFeedback()">Get support</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

@@ -1,15 +1,15 @@
+
 'use strict';
 
 /**
  * @ngdoc function
- * @name conojoApp.controller:commentCtrl
+ * @name conojoApp.controller:headerCtrl
  * @description
- * # commentCtrl
+ * # headerCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('commentCtrl', function ($scope, $http, $location, ENV) {
-        $scope.expandMenuFlag = false;
+    .controller('headerCtrl', function ($scope, $http, $location, ENV) {
         $scope.showCalendar = function () {
             $('#datetimepicker').datepicker({
                 dateFormat: "yy-mm-dd",
@@ -38,27 +38,6 @@ angular.module('conojoApp')
             });
         };
 
-        $scope.expandMenu = function () {
-            $scope.expandMenuFlag = true;
-        };
-
-        $scope.closeMenu = function () {
-            $scope.expandMenuFlag = false;
-        };
-
-        $scope.setHeight = function () {
-            $scope.siderbarContainer = $(window).height() - 64;
-            $scope.projectContent = $(window).height() - 128;
-
-            $('.siderbar-closed-container').css('height', $scope.siderbarContainer);
-            $('.siderbar-expand-container').css('height', $scope.siderbarContainer);
-        };
-
-        $scope.goToProfile = function () {
-            var url = '/profile-project';
-            $location.path(url);
-        };
-
         $scope.goToMessages = function () {
             var url = '/message';
             $location.path(url);
@@ -70,18 +49,6 @@ angular.module('conojoApp')
 
         $scope.addNewFeedBack = function(){
             //add new feedback
-        };
-
-        $scope.Logout = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'users/logout',
-                method: 'POST',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                if (data.status === 'success') {
-                    $location.path('/');
-                }
-            });
         };
 
         $scope.init();

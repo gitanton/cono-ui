@@ -22,9 +22,9 @@ angular.module('conojoApp')
         $scope.activeScreenUuid = $routeParams.suuid;
         $scope.drawingArea = $(window).width() - 64;
         $scope.projectContent = $(window).height() - 176;
+        $scope.drawLeft = ($scope.drawingArea - 1100) / 2;
         $('.projectBuild-content-body').css('height', $scope.projectContent);
-        $('#drawing-f').css('marginLeft', ($scope.drawingArea - 1100) / 2);
-        $('#drawing-b').css('marginLeft', ($scope.drawingArea - 1100) / 2);
+        $('.projectBuild-content-drawing').css('marginLeft', $scope.drawLeft);
 
         $scope.comments = [];
         $scope.hotspots = [];
@@ -49,6 +49,10 @@ angular.module('conojoApp')
                     $scope.drawings = data.drawings;
                     $scope.comments = data.comments;
                     $scope.hotspots = data.hotspots;
+
+                    for(var i = 0;i < data.drawings.length;i++){
+                        $('.projectBuild-content-drawing').append("<div id='commentMarker" + commentNum + "' class='commentSqure' style='left:" + rectX + "px;top:" + rectY + "px'>" + commentNum + "</div>");
+                    }
 
                     var img_b_init = new Image();
                     img_b_init.src = data.url;
@@ -240,6 +244,8 @@ angular.module('conojoApp')
 
         var commentNum = $scope.comments.length + 1;
         $scope.addCommentFlag = false;
+        var rectCommentX = 0;
+        var rectCommentY = 0;
 
         $scope.openComments = function () {
             $('#drawing-f').off();
@@ -259,9 +265,8 @@ angular.module('conojoApp')
                 }
 
                 evt = window.event || evt;
-                rectX = evt.pageX - 64;
-                rectY = evt.pageY - 176;
-                console.log(rectX + '---' + rectY);
+                rectCommentX = evt.pageX - 64;
+                rectCommentY = evt.pageY - 176;
 
                 if (evt.pageX > 400) {
                     $('#addComment').css('left', evt.pageX - 400);
@@ -272,7 +277,7 @@ angular.module('conojoApp')
                 }
                 $('#addComment').css('top', evt.pageY);
 
-                $('.projectBuild-content-drawing').append("<div id='commentMarker" + commentNum + "' class='commentSqure' style='left:" + rectX + "px;top:" + rectY + "px'>" + commentNum + "</div>");
+                $('.projectBuild-content-drawing').append("<div id='commentMarker" + commentNum + "' class='commentSqure' style='left:" + rectCommentX + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
 
                 $scope.addCommentFlag = true;
                 $scope.showComments = true;
@@ -283,8 +288,13 @@ angular.module('conojoApp')
         $scope.saveComments = function () {
             $http({
                 //post the comment's content,left,top and  marker.
+                url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments',
+                method: 'POST',
+                data: $.param({screen_uuid: $scope.activeScreenUuid, content: $scope.commentContent, is_task: $scope.isTask, marker: commentNum, assignee_uuid: '', begin_x: rectCommentX, begin_y: rectCommentY}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 //update the commentNum
+                commentNum++;
 
                 $scope.showComments = false;
                 $scope.addCommentFlag = false;

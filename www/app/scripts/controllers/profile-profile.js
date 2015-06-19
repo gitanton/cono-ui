@@ -14,12 +14,20 @@ angular.module('conojoApp')
 
         $scope.init = function(){
             //get the country
+            $http({
+                url: ENV.API_ENDPOINT + 'utils/bootstrap',
+                method: 'GET',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(data){
+                $scope.countries = data.countries;
+            });
+
             $scope.fullname = $window.sessionStorage.fullname;
             $scope.email = $window.sessionStorage.email;
             $scope.avatar = $window.sessionStorage.avatar;
             $scope.city = $window.sessionStorage.city;
             $scope.state = $window.sessionStorage.state;
-            $scope.country = $window.sessionStorage.country;
+            $scope.userCountry = $window.sessionStorage.userCountry;
             $('#userAvatar').attr('src',$window.sessionStorage.avatar);
         };
 
@@ -29,6 +37,7 @@ angular.module('conojoApp')
                 method: 'POST',
                 file: files[0]
             }).success(function (data) {
+                $window.sessionStorage.avatar = data.url;
                 $('#userAvatar').attr('src',data.url);
             });
         };
@@ -56,7 +65,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'users/user/' + $window.sessionStorage.currentUserUuid,
                 method: 'PUT',
-                data: {uuid: $window.sessionStorage.currentUserUuid,body:{'fullename': $scope.fullname,'email': $scope.email,'city':$scope.city,'state':$scope.state,'country':$scope.country}},
+                data: {uuid: $window.sessionStorage.currentUserUuid,body:{'fullename': $scope.fullname,'email': $scope.email,'city':$scope.city,'state':$scope.state,'country':$scope.userCountry}},
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function(data){
                 $window.sessionStorage.fullname = data.fullname;

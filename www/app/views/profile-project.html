@@ -1,6 +1,6 @@
 <div class="profileProject-page">
     <div ng-include="'views/header.html'"></div>
-    <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
+    <div ng-include="'views/siderbar.html'"></div>
     <div class="profileProject-container">
         <div class="profileProject-header">
             <div class="profileProject-header-name col-md-12">
@@ -27,10 +27,13 @@
                     <div class="profileProject-content-project" ng-repeat="project in projectInfo">
                         <div class="profileProject-content-project-intro">
                             <span class="profileProject-content-project-name">{{project[0]}}</span> | 
-                            <span class="profileProject-content-project-count">{{project[1]}}</span>
+                            <span class="profileProject-content-project-count">{{project[2]}}</span>
                         </div>
-                        <div class="profileProject-content-project-thumb">
-                            <img ng-src="{{detail.url}}" ng-repeat="detail in project[2]">
+                        <div class="profileProject-content-project-thumb" ng-if="project[1] === 1 || project[1] === 3">
+                            <img ng-src="{{detail.url}}" ng-repeat="detail in project[3]">
+                        </div>
+                        <div class="profileProject-content-project-thumb" ng-if="project[1] === 2">
+                            <video ng-src="{{detail.url}}" ng-repeat="detail in project[3]"></video>
                         </div>
                     </div>
                 </div>

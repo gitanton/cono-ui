@@ -12,6 +12,7 @@ angular.module('conojoApp')
         $scope.billingOne = true;
         $scope.billingTwo = false;
         $scope.billingThree = false;
+        $scope.plans = [];
 
         $scope.profileBillingContent = $(window).height() - 250;
         $('.profileBilling-content-billing').css('height', $scope.profileBillingContent);
@@ -26,12 +27,55 @@ angular.module('conojoApp')
             });
 
             $http({
+                url: ENV.API_ENDPOINT + 'users/subscription',
+                method: 'GET',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                $scope.plan = data.plan;
+                $scope.planName = data.plan.name;
+                $scope.planId = data.plan.id.toString();
+                $scope.planPrice = data.plan.price;
+                $scope.teamMember = data.plan.team_members;
+            });
+
+            $http({
                 url: ENV.API_ENDPOINT + 'users/billing_history',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
                 $scope.billings = data;
             });
+        };
+
+        $scope.addCardInfo = function(){
+            var $form = $('#payment-form');
+            var token = Stripe.card.createToken($form, $scope.stripeResponseHandler());;
+
+            $http({
+                url: ENV.API_ENDPOINT + 'users/subscription',
+                method: 'POST',
+                data:{token: token},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(data){
+                console.log(data);
+            });
+        };
+
+        $scope.stripeResponseHandler = function(status, response) {
+            var $form = $('#payment-form');
+
+            if (response.error) {
+                // Show the errors on the form
+                $form.find('.payment-errors').text(response.error.message);
+                $form.find('button').prop('disabled', false);
+            }else{
+                // response contains id and card, which contains additional card details
+                var token = response.id;
+                // Insert the token into the form so it gets submitted to the server
+                $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+            }
+
+            return token;
         };
 
         $scope.backBilling = function () {
@@ -52,24 +96,24 @@ angular.module('conojoApp')
             $scope.billingThree = true;
         };
 
-        $scope.selectPlan = function (planId) {
-            $http({
-                url: ENV.API_ENDPOINT + 'users/subscription',
-                method: 'POST',
-                data: $.param({plan_id:planId}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
+        $scope.activePlan = function (planId) {
+            $scope.planId = planId;
         };
 
-        $scope.cancelPlan = function(){
+        $scope.openCancelPlan = function () {
+            $('#deleteproject').modal('toggle');
+        };
+
+        $scope.cancelPlan = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'users/subscription',
                 method: 'DELETE',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function(){
                 $scope.init();
-            })
-        }
+                $('#deleteproject').modal('hide');
+            });
+        };
 
         $scope.toProject = function () {
             var url = '/profile-project/';

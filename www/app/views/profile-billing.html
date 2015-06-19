@@ -1,6 +1,6 @@
 <div class="profileBilling-page">
     <div ng-include="'views/header.html'"></div>
-    <div ng-include="'views/siderbar.html'" onload="setHeight()"></div>
+    <div ng-include="'views/siderbar.html'"></div>
     <div class="profileBilling-container">
         <div class="profileBilling-header">
             <div class="profileBilling-header-name col-md-12">
@@ -24,14 +24,14 @@
                     <div class="profileBilling-content-billing">
                         <div class="profileBilling-content-billing-card">Card Info</div>
                         <div class="profileBilling-content-billing-cardInfo">
-                            <div class="profileProfile-content-billing-number col-md-4"><input type="text" placeholder="Fill in your card"></div>
+                            <div class="profileProfile-content-billing-number col-md-6"><input type="text" placeholder="Fill in your card"></div>
                             <div class="profileProfile-content-billing-change col-md-4" ng-click="changeCard()">Change Card</div>
                         </div>
                         <div class="profileBilling-content-billing-plan">
                             <div class="profileBilling-content-billing-plantitle col-md-1">Your Plan</div>
                             <div class="profileBilling-content-billing-planinfo col-md-5">Unlimited active projects at a time ($25/mo)</div>
                             <div class="profileBilling-content-billing-upgrade col-md-3" ng-click="upgradePlan()">Upgrade Plan</div>
-                            <div class="profileBilling-content-billing-cancel col-md-3" ng-clcik="cancelPlan()">Cancel Plan</div>
+                            <div class="profileBilling-content-billing-cancel col-md-3" ng-clcik="openCancelPlan()">Cancel Plan</div>
                         </div>
                         <div class="profileBilling-content-billing-history">
                             <div class="profileBilling-content-billing-historytitle">History</div>
@@ -46,68 +46,54 @@
                             <div class="col-md-5"><img src="images/back-icon.png" ng-click="backBilling()"> BACK </div>
                             <div class="col-md-7">BILLING INFORMATION</div>
                         </div>
-                        <div class="profileBilling-content-billing-changrCard col-md-12">
-                            <div class="profileBilling-content-billing-changeCard-one col-md-12">
-                                <div class="col-md-6">Plan Type</div>
-                                <div class="col-md-6">Add Team Members</div>
-                            </div>
-                            <div class="profileBilling-content-billing-changeCard-two col-md-12">
-                                <div class="col-md-6">
-                                    <div class="profileBilling-content-billing-changeCard-two-L">Professional - $25 per month</div>
+                        <form id="payment-form">
+                            <div class="profileBilling-content-billing-changrCard">
+                                <div class="profileBilling-content-billing-changeCard-three col-md-12">
+                                    <div class="col-md-2"><input type="radio" value="1" name="cardCategory"><img src="images/visa-icon.png"></div>
+                                    <div class="col-md-2"><input type="radio" value="2" name="cardCategory"><img src="images/master-card-icon.png"></div>
+                                    <div class="col-md-2"><input type="radio" value="3" name="cardCategory"><img src="images/america-express-icon.png"></div>
+                                    <div class="col-md-2"><input type="radio" value="4" name="cardCategory"><img src="images/discover-icon.png"></div>
+                                    <div class="col-md-2"><input type="radio" value="5" name="cardCategory"><img src="images/paypal-icon.png"></div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="profileBilling-content-billing-changeCard-two-m col-md-2">-</div>
-                                    <div class="profileBilling-content-billing-changeCard-two-r col-md-8">+ 1 Team Member - $10.00</div>
-                                    <div class="profileBilling-content-billing-changeCard-two-p col-md-2">+</div>
+                                <div class="profileBilling-content-billing-changeCard-four col-md-12">
+                                    <div class="col-md-4">First Name</div>
+                                    <div class="col-md-4">Last Name</div>
+                                    <div class="col-md-4">Phone Number</div>
+                                </div>
+                                <div class="profileBilling-content-billing-changeCard-five col-md-12">
+                                    <div class="col-md-4"><input type="text"></div>
+                                    <div class="col-md-4"><input type="text"></div>
+                                    <div class="col-md-4"><input type="text"></div>
+                                </div>
+                                <div class="profileBilling-content-billing-changeCard-six col-md-12">
+                                    <div class="col-md-4">City</div>
+                                    <div class="col-md-2">State</div>
+                                    <div class="col-md-4">Country</div>
+                                    <div class="col-md-2">Zip Code</div>
+                                </div>
+                                <div class="profileBilling-content-billing-changeCard-seven col-md-12">
+                                    <div class="profileBilling-content-billing-changeCard-city col-md-4"><input type="text"></div>
+                                    <div class="profileBilling-content-billing-changeCard-state col-md-2"><input type="text"></div>
+                                    <div class="profileBilling-content-billing-changeCard-country col-md-4"><input type="text"></div>
+                                    <div class="profileBilling-content-billing-changeCard-code col-md-2"><input type="text"></div>
+                                </div>
+                                <div class="profileBilling-content-billing-changeCard-eight col-md-12">
+                                    <div class="col-md-6">Credit Card Number</div>
+                                    <div class="col-md-4">Expiration Date</div>
+                                    <div class="col-md-2">CVV</div>
+                                </div>
+                                <div class="profileBilling-content-billing-changeCard-nine col-md-12">
+                                    <div class="profileBilling-content-billing-changeCard-cardNum col-md-5"><input type="text" size="20" data-stripe="number"></div>
+                                    <div class="profileBilling-content-billing-changeCard-expirationM col-md-2"><input type="text" placeholder="MM" size="2" data-stripe="exp-month"></div>
+                                    <div class="profileBilling-content-billing-changeCard-expirationY col-md-2"><input type="text" placeholder="YYYY" size="4" data-stripe="exp-year"></div>
+                                    <div class="profileBilling-content-billing-changeCard-cvv col-md-3"><input type="text" size="4" data-stripe="cvc"></div>
+                                </div>
+                                <div class="profileBilling-content-billing-changeCard-ten col-md-12">
+                                    <span class="payment-errors"></span>
+                                    <button class="btn btn-lg profileBilling-content-billing-changeCard-button" ng-click="addCardInfo()">Update</button>
                                 </div>
                             </div>
-                            <div class="profileBilling-content-billing-changeCard-three col-md-12">
-                                <div class="col-md-2"><input type="radio" value="1" name="cardCategory"><img src="images/visa-icon.png"></div>
-                                <div class="col-md-2"><input type="radio" value="2" name="cardCategory"><img src="images/master-card-icon.png"></div>
-                                <div class="col-md-2"><input type="radio" value="3" name="cardCategory"><img src="images/america-express-icon.png"></div>
-                                <div class="col-md-2"><input type="radio" value="4" name="cardCategory"><img src="images/discover-icon.png"></div>
-                                <div class="col-md-2"><input type="radio" value="5" name="cardCategory"><img src="images/paypal-icon.png"></div>
-                            </div>
-                            <div class="profileBilling-content-billing-changeCard-four col-md-12">
-                                <div class="col-md-4">First Name</div>
-                                <div class="col-md-4">Last Name</div>
-                                <div class="col-md-4">Phone Number</div>
-                            </div>
-                            <div class="profileBilling-content-billing-changeCard-five col-md-12">
-                                <div class="col-md-4"><input type="text"></div>
-                                <div class="col-md-4"><input type="text"></div>
-                                <div class="col-md-4"><input type="text"></div>
-                            </div>
-                            <div class="profileBilling-content-billing-changeCard-six col-md-12">
-                                <div class="col-md-4">City</div>
-                                <div class="col-md-2">State</div>
-                                <div class="col-md-4">Country</div>
-                                <div class="col-md-2">Zip Code</div>
-                            </div>
-                            <div class="profileBilling-content-billing-changeCard-seven col-md-12">
-                                <div class="profileBilling-content-billing-changeCard-city col-md-4"><input type="text"></div>
-                                <div class="profileBilling-content-billing-changeCard-state col-md-2"><input type="text"></div>
-                                <div class="profileBilling-content-billing-changeCard-country col-md-4"><input type="text"></div>
-                                <div class="profileBilling-content-billing-changeCard-code col-md-2"><input type="text"></div>
-                            </div>
-                            <div class="profileBilling-content-billing-changeCard-eight col-md-12">
-                                <div class="col-md-6">Credit Card Number</div>
-                                <div class="col-md-4">Expiration Date</div>
-                                <div class="col-md-2">CVV</div>
-                            </div>
-                            <div class="profileBilling-content-billing-changeCard-nine col-md-12">
-                                <div class="profileBilling-content-billing-changeCard-cardNum col-md-6"><input type="text"></div>
-                                <div class="profileBilling-content-billing-changeCard-expirationM col-md-2"><input type="text" placeholder="MM"></div>
-                                <div class="profileBilling-content-billing-changeCard-expirationY col-md-2"><input type="text" placeholder="YY"></div>
-                                <div class="profileBilling-content-billing-changeCard-cvv col-md-2"><input type="text"></div>
-                            </div>
-                            <div class="profileBilling-content-billing-changeCard-ten col-md-12">
-                                <div class="col-md-8">
-                                    <div class="profileBilling-content-billing-changeCard-planinfo">Professional Plan + 1 Team Member $35.00</div>
-                                </div>
-                                <div class="col-md-4"><button class="btn btn-lg profileBilling-content-billing-changeCard-button">Buy Now</button></div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="profileBilling-content-three" ng-show="billingThree">
@@ -117,28 +103,60 @@
                             <div class="col-md-5"><img src="images/back-icon.png" ng-click="backBilling()"> BACK </div>
                             <div class="col-md-7">SELECT A PLAN</div>
                         </div>
-                        <div class="profileBilling-content-billing-plans col-md-12">
+                        <div class="profileBilling-content-billing-plans">
                             <div class="profileBilling-content-billing-plans-items col-md-12">
-                                <div class="profileBilling-content-billing-plans-item col-md-4" ng-if="plan.projects >= 0" ng-repeat="plan in plans">
+                                <div class="col-md-4" ng-class="{true:'profileBilling-content-billing-plans-itemSelect',false:'profileBilling-content-billing-plans-item'}[plan.id == planId]" ng-if="plan.projects >= 0" ng-repeat="plan in plans">
                                     <div class="profileBilling-content-billing-plans-name">{{plan.name}}</div>
                                     <div class="profileBilling-content-billing-plans-price">${{plan.price}}/Month</div>
                                     <div class="profileBilling-content-billing-plans-num"><span>{{plan.projects}}</span> Project</div>
                                     <div class="profileBilling-content-billing-plans-per"><span>${{plan.additional_member}}</span> per additional team member</div>
-                                    <div class="profileBilling-content-billing-plans-button" ng-click="selectPlan({{plan.id}})">SELECT PLAN</div>
+                                    <div class="profileBilling-content-billing-plans-button" ng-if="plan.id == planId">CURRENT PLAN</div>
+                                    <div class="profileBilling-content-billing-plans-button" ng-if="plan.id != planId" ng-click="activePlan({{plan.id}},$event)">SELECT PLAN</div>
                                 </div>
-                                <div class="profileBilling-content-billing-plans-item col-md-4" ng-if="plan.projects < 0" ng-repeat="plan in plans">
+                                <div class="col-md-4" ng-class="{true:'profileBilling-content-billing-plans-itemSelect',false:'profileBilling-content-billing-plans-item'}[plan.id == planId]" ng-if="plan.projects < 0" ng-repeat="plan in plans">
                                     <div class="profileBilling-content-billing-plans-name">{{plan.name}}</div>
                                     <div class="profileBilling-content-billing-plans-price">${{plan.price}}/Month</div>
-                                    <div class="profileBilling-content-billing-plans-num"><span>Unlimited</span> Project</div>
-                                    <div class="profileBilling-content-billing-plans-num">Up to <span>5 Team Members</span></div>
+                                    <div class="profileBilling-content-billing-plans-num">
+                                        <p><span>Unlimited</span> Project</p>
+                                        <p>Up to <span>5 Team Members</span></p>
+                                    </div>
                                     <div class="profileBilling-content-billing-plans-per"><span>${{plan.additional_member}}</span> per additional team member</div>
-                                    <div class="profileBilling-content-billing-plans-button" ng-click="selectPlan({{plan.id}})">SELECT PLAN</div>
+                                    <div class="profileBilling-content-billing-plans-button" ng-if="plan.id == planId">CURRENT PLAN</div>
+                                    <div class="profileBilling-content-billing-plans-button" ng-if="plan.id != planId" ng-click="activePlan({{plan.id}},$event)">SELECT PLAN</div>
+                                </div>
+                            </div>
+                            <div class="profileBilling-content-billing-plans-submit col-md-12">
+                                <div class="col-md-4">
+                                    <div class="profileBilling-content-billing-submit-l">{{planName}} - ${{planPrice}} per month</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="profileBilling-content-billing-submit-d col-md-3" ng-click="decreaseMember()">-</div>
+                                    <div class="profileBilling-content-billing-submit-price col-md-6">+ {{teamMember}} Team Member - $10.00</div>
+                                    <div class="profileBilling-content-billing-submit-i col-md-3" ng-click="addMember()">+</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-lg profileBilling-content-billing-plans-button" ng-click="payForPlan()">Buy Now</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div id="deleteproject" class="modal fade in" style="display: none;">
+    <div class="project-delete">
+        <div class="col-md-10 project-delete-desc">CANCEL YOUR SUBSCRIPTION PLAN</div>
+        <div class="col-md-2 project-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-12 project-delete-warning">
+            <div class="col-md-12 project-delete-warningicon"><img src="images/warning-icon.png"></div>
+            <div class="col-md-12 project-delete-warningdesc">Are you sure you want to cancel your plan?</div>
+            <div class="col-md-12 project-delete-warningundone">Warning:This cannot be undone</div>
+        </div>
+        <div class="col-md-12 project-delete-button">
+            <button class="btn btn-lg project-delete-buttoncancel" type="reset" data-dismiss="modal">No.Take me back</button>
+            <button class="btn btn-lg project-delete-buttonsubmit" type="submit" ng-click='cancelPlan()'>Yes.Cancel my plan</button>
         </div>
     </div>
 </div>
