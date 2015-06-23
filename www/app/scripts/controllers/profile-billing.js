@@ -49,7 +49,7 @@ angular.module('conojoApp')
 
         $scope.addCardInfo = function(){
             var $form = $('#payment-form');
-            var token = Stripe.card.createToken($form, $scope.stripeResponseHandler());;
+            var token = Stripe.card.createToken($form, stripeResponseHandler);
 
             $http({
                 url: ENV.API_ENDPOINT + 'users/subscription',
@@ -61,18 +61,19 @@ angular.module('conojoApp')
             });
         };
 
-        $scope.stripeResponseHandler = function(status, response) {
+        var stripeResponseHandler = function(status, response) {
             var $form = $('#payment-form');
 
             if (response.error) {
                 // Show the errors on the form
                 $form.find('.payment-errors').text(response.error.message);
                 $form.find('button').prop('disabled', false);
-            }else{
-                // response contains id and card, which contains additional card details
+            } else {
+                // token contains id, last4, and card type
                 var token = response.id;
                 // Insert the token into the form so it gets submitted to the server
                 $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+                console.log(token);
             }
 
             return token;

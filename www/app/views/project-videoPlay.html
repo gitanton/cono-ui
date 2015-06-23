@@ -219,24 +219,37 @@
         </form>
     </div>
 </div>
-<div id="addComment" ng-show="showComment">
+<div id="addComment" ng-class="{true: 'addCommentLeft', false: 'addCommentRight'}[addCommentPosition]" ng-show="showComment">
     <div class="comment-add">
-        <div class="col-md-10 comment-add-desc">Mark as complete:</div>
-        <div class="col-md-2 comment-add-delicon"><img src="images/close-icon.png" ng-click="hideComment()"></div>
-        <div class="comment-chat-content">
-            <div class="col-md-12" ng-repeat="videoComment in videoComments">
+        <div class="col-md-12 row">
+            <div class="col-md-10 comment-add-desc">ADD COMMENT</div>
+            <div class="col-md-2 comment-add-delicon"><img src="images/close-icon.png" ng-click="hideComments()"></div>
+        </div>
+        <div class="comment-chat-content col-md-12">
+            <div class="col-md-12" ng-repeat="comment in comments">
                 <div class="col-md-3"><img src="images/chat-person-icon.png"></div>
                 <div class="col-md-9">
-                    <div class="col-md-8">Charles Haggas</div>
-                    <div class="col-md-4">{{videoComment.created | limitTo:-8}}</div>
-                    <div class="col-md-12">{{videoComment.content}}</div>
+                    <div class="col-md-8">{{comment.fullname}}</div>
+                    <div class="col-md-4">{{comment.created | limitTo:-8}}</div>
+                    <div class="col-md-12">{{comment.comment}}</div>
                 </div>
             </div>
         </div>
-        <div class="comment-chat-input">
-            <form>
-                <input type="text" name="comment-chat-content" ng-model="commentContent" ng-keyup="$event.keyCode == 13 && saveComment()" placeholder="Leave a comment...">
-            </form>
-        </div>
+        <form>
+            <div class="comment-chat-input col-md-12">
+                <textarea name="comment-content" ng-model="commentContent" placeholder="Leave a comment..."></textarea>
+            </div>
+            <div class="comment-assignContainer form-group col-md-12">
+                <div class="comment-assign" ng-click="showSelectMemberC($event)">Assign to</div>
+                <select multiple="multiple" name="meetingGroup" ng-model="meetingGroup" class="form-control comment-group">
+                    <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
+                </select>
+            </div>
+            <div class="col-md-12 comment-assignTask"><input type="checkbox" value="1" name="assignTask">Assign this as a task</div>
+            <div class="col-md-12 comment-add-button">
+                <button class="btn btn-lg comment-buttoncancel" type="reset" ng-click="hideComments()">Cancel</button>
+                <button class="btn btn-lg comment-buttonsubmit" type="submit" ng-click="saveComments()">Save</button>
+            </div>
+        </form>
     </div>
 </div>
