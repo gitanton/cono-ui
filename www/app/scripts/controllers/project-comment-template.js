@@ -52,7 +52,7 @@ angular.module('conojoApp')
             $('#addNewMessage').modal('toggle');
         };
 
-        $scope.addNewComment = function(uuid){
+        $scope.addNewComment = function(){
             $http({
                 url: 'http://conojoapp.scmreview.com/rest/messages',
                 method: 'POST',

@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectBuildTemplateCtrl', function ($scope, $http, $location, $routeParams, meetingFlag, ENV, Upload) {
+    .controller('ProjectBuildTemplateCtrl', function ($scope, $http, $location, $routeParams, meetingFlag, ENV) {
         $scope.CLOCK = null;
         $scope.shapeFill = false;
         $scope.showComments = false;
@@ -53,7 +53,7 @@ angular.module('conojoApp')
 
                     if(data.drawings.length > 0){
                         var img_f_init = new Image();
-                        img_f_init.src = imageObj.src = 'data:image/png;base64,' + data.drawings.slice(-1).data.slice(9);
+                        img_f_init.src = 'data:image/png;base64,' + data.drawings[data.drawings.length - 1].data.slice(9);
                         img_f_init.onload = function () {
                             cxt.drawImage(img_f_init, 0, 0, 1100, 380);
                         };
@@ -70,8 +70,8 @@ angular.module('conojoApp')
 
                     if(data.hotspots,length > 0){
                         for(var j = 1;j <= data.hotspots.length;j++){
-                            var left = data.comments[i-1].begin_x + $scope.drawLeft;
-                            $('.projectBuild-content-drawing').append("<div id='hotspotsMarker" + j + "' class='hotspotsSqure' style='left:" + left + "px;top:" + begin_y + "px;width:" + end_x + "px;height:" + end_y + "px'></div>");
+                            var left = data.comments[j-1].begin_x + $scope.drawLeft;
+                            $('.projectBuild-content-drawing').append("<div id='hotspotsMarker" + j + "' class='hotspotsSqure' style='left:" + left + "px;top:" + data.comments[j-1].begin_y + "px;width:" + data.comments[j-1].end_x + "px;height:" + data.comments[j-1].end_y + "px'></div>");
                         }
                     }
 
@@ -356,7 +356,7 @@ angular.module('conojoApp')
                 //post the comment's content,left,top and  marker.
                 url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
                 method: 'POST',
-                data: $.param({screen_uuid: $scope.activeScreenUuid, begin_x: rectCommentX, begin_y: rectCommentY, end_x:rectHotspotsW, end_y:rectHotspotsH,link_to:hotspotsLinkTo}),
+                data: $.param({screen_uuid: $scope.activeScreenUuid, begin_x: rectCommentX, begin_y: rectCommentY, end_x:rectHotspotsW, end_y:rectHotspotsH,link_to:$scope.hotspotsLinkTo}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 //update the commentNum

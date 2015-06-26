@@ -42,7 +42,7 @@ angular.module('conojoApp')
             $('#addNewMessage').modal('toggle');
         };
 
-        $scope.addNewComment = function(uuid){
+        $scope.addNewComment = function(){
             $http({
                 url: 'http://conojoapp.scmreview.com/rest/messages',
                 method: 'POST',
@@ -93,7 +93,7 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                if (data.length == 0) {
+                if (data.length === 0) {
                     $location.path('/project-video/' + $scope.activeProjectUuid);
                 } else {
                     $location.path('/project-videoPlay/' + $scope.activeProjectUuid + '/' + data[0].uuid);

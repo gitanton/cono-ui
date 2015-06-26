@@ -74,9 +74,9 @@ angular.module('conojoApp')
                 // Insert the token into the form so it gets submitted to the server
                 $form.append($('<input type="hidden" name="stripeToken" />').val(token));
                 console.log(token);
-            }
 
-            return token;
+                return token;
+            }
         };
 
         $scope.backBilling = function () {

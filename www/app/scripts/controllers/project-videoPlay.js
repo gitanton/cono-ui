@@ -46,7 +46,7 @@ angular.module('conojoApp')
                    
                    if(data.drawings.length > 0){
                         var img_f_init = new Image();
-                        img_f_init.src = imageObj.src = 'data:image/png;base64,' + data.drawings.slice(-1).data.slice(9);
+                        img_f_init.src = 'data:image/png;base64,' + data.drawings[data.drawings.length - 1].data.slice(9);
                         img_f_init.onload = function () {
                             cxt.drawImage(img_f_init, 0, 0, 1100, 380);
                         };

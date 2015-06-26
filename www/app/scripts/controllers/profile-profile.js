@@ -83,7 +83,7 @@ angular.module('conojoApp')
                 method: 'POST',
                 data: $.param({email: $scope.resetEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
+            });
         };
 
         $scope.init();

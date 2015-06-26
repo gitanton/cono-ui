@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ActivityCtrl', function ($scope, ENV) {
+    .controller('ActivityCtrl', function ($scope) {
         $scope.activityContent = $(window).height() - 128;
         $scope.activityDeleteContainer = $(window).height() - 180;
         $('.activity-content').css('height', $scope.activityContent);

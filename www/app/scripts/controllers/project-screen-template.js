@@ -125,10 +125,11 @@ angular.module('conojoApp')
         });
 
         $scope.toBuild = function (suuid) {
+            var url = '';
             if(suuid === 'new'){
-                var url = '/project-build-template/' + $scope.activeProjectUuid + '/new';
+                url = '/project-build-template/' + $scope.activeProjectUuid + '/new';
             }else{
-                var url = '/project-build-template/' + $scope.activeProjectUuid + '/' + suuid;
+                url = '/project-build-template/' + $scope.activeProjectUuid + '/' + suuid;
             }
             $location.path(url);
         };

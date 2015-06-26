@@ -50,8 +50,8 @@ angular.module('conojoApp')
                 method: 'POST',
                 data:$.param({notifications: $scope.notification}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
-        }
+            });
+        };
 
         $scope.init();
     });

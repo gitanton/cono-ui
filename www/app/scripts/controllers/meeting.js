@@ -22,7 +22,7 @@ angular.module('conojoApp')
             }).success(function (data) {
                 Twilio.Device.setup(data.token);
                 // get the phone number to connect the call to
-                var params = {"PhoneNumber": '4155992671'};
+                var params = {'PhoneNumber': '4155992671'};
                 var connection = Twilio.Device.connect(params);
                 connection.accept(function (conn) {
                     /* Wait about 7 seconds to get through the announcement so we can send the digits */

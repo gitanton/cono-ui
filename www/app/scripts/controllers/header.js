@@ -12,7 +12,7 @@ angular.module('conojoApp')
     .controller('headerCtrl', function ($scope, $http, $location, ENV) {
         $scope.showCalendar = function () {
             $('#datetimepicker').datepicker({
-                dateFormat: "yy-mm-dd",
+                dateFormat: 'yy-mm-dd',
 //            beforeShowDay : function(dt){
 //                //get all meeting for this user
 ////                return [true, 'red', 'Test'];

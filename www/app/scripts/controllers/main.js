@@ -30,10 +30,10 @@ angular.module('conojoApp')
                 $window.sessionStorage.state = data.state;
                 $window.sessionStorage.userCountry = data.country;
                 $location.path('project');
-            }).error(function(data){
-                    $("#loginNote").modal('toggle');
-                    $(".login-username").val('').focus();
-                    $(".login-password").val('');
+            }).error(function(){
+                    $('#loginNote').modal('toggle');
+                    $('.login-username').val('').focus();
+                    $('.login-password').val('');
                 });
         };
 
@@ -47,6 +47,6 @@ angular.module('conojoApp')
                 method: 'POST',
                 data: $.param({email: $scope.resetEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
+            });
         };
     });

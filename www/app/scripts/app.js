@@ -173,7 +173,7 @@ angular
                 },
                 false
             );
-        }
+        };
     })
     .directive('droppable', function () {
         return {
@@ -231,5 +231,5 @@ angular
                     false
                 );
             }
-        }
+        };
     });

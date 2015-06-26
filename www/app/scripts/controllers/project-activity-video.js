@@ -90,7 +90,7 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                if (data.length == 0) {
+                if (data.length === 0) {
                     $location.path('/project-video/' + $scope.activeProjectUuid);
                 } else {
                     $location.path('/project-videoPlay/' + $scope.activeProjectUuid + '/' + data[0].uuid);
@@ -104,7 +104,7 @@ angular.module('conojoApp')
         };
 
         $scope.handleDrop = function () {
-            alert('Item has been dropped');
+
         };
 
         $scope.init();

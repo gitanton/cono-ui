@@ -53,7 +53,7 @@ angular.module('conojoApp')
 
                     if(data.drawings.length > 0){
                         var img_f_init = new Image();
-                        img_f_init.src = imageObj.src = 'data:image/png;base64,' + data.drawings.slice(-1).data.slice(9);
+                        img_f_init.src = 'data:image/png;base64,' + data.drawings[data.drawings.length - 1].data.slice(9);
                         img_f_init.onload = function () {
                             cxt.drawImage(img_f_init, 0, 0, 1100, 380);
                         };
@@ -70,8 +70,8 @@ angular.module('conojoApp')
 
                     if(data.hotspots,length > 0){
                         for(var j = 1;j <= data.hotspots.length;j++){
-                            var left = data.comments[i-1].begin_x + $scope.drawLeft;
-                            $('.projectBuild-content-drawing').append("<div id='hotspotsMarker" + j + "' class='hotspotsSqure' style='left:" + left + "px;top:" + begin_y + "px;width:" + end_x + "px;height:" + end_y + "px'></div>");
+                            var left = data.comments[j-1].begin_x + $scope.drawLeft;
+                            $('.projectBuild-content-drawing').append("<div id='hotspotsMarker" + j + "' class='hotspotsSqure' style='left:" + left + "px;top:" + data.comments[j-1].begin_y + "px;width:" + data.comments[j-1].end_x + "px;height:" + data.comments[j-1].end_y + "px'></div>");
                         }
                     }
 
@@ -83,12 +83,6 @@ angular.module('conojoApp')
                 });
             }
 
-            $('#pickerBrush').farbtastic(function (color) {
-                $scope.setPenColor(color);
-            });
-            $('#pickerShape').farbtastic(function (color) {
-                $scope.setPenColor(color);
-            });
             $scope.setPenWidth(0);
         };
 
@@ -375,7 +369,7 @@ angular.module('conojoApp')
                 //post the comment's content,left,top and  marker.
                 url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
                 method: 'POST',
-                data: $.param({screen_uuid: $scope.activeScreenUuid, begin_x: rectCommentX, begin_y: rectCommentY, end_x:rectHotspotsW, end_y:rectHotspotsH,link_to:hotspotsLinkTo}),
+                data: $.param({screen_uuid: $scope.activeScreenUuid, begin_x: rectCommentX, begin_y: rectCommentY, end_x:rectHotspotsW, end_y:rectHotspotsH,link_to:$scope.hotspotsLinkTo}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 //update the commentNum
@@ -408,6 +402,14 @@ angular.module('conojoApp')
             $scope.setBrushWidth(8);
             cxt.strokeStyle = '#000';
             cxt.fillStyle = '#000';
+
+            $('#pickerBrush').farbtastic(function (color) {
+                $scope.setPenColor(color);
+            });
+
+            $('#pickerShape').farbtastic(function (color) {
+                $scope.setPenColor(color);
+            });
         };
 
         $scope.openDrawing = function (type, evt) {
@@ -493,16 +495,16 @@ angular.module('conojoApp')
             var flag = 0;
             canvas.onmousedown = function (evt) {
                 evt = window.event || evt;
-                var startX = evt.pageX - 64;
-                var startY = evt.pageY - 176;
+                var startX = evt.pageX - this.offsetLeft - 64;
+                var startY = evt.pageY - this.offsetTop - 176;
                 cxt.beginPath();
                 cxt.moveTo(startX, startY);
                 flag = 1;
             };
             canvas.onmousemove = function (evt) {
                 evt = window.event || evt;
-                var endX = evt.pageX - 64;
-                var endY = evt.pageY - 176;
+                var endX = evt.pageX - this.offsetLeft - 64;
+                var endY = evt.pageY - this.offsetTop - 176;
                 if (flag) {
                     cxt.lineTo(endX, endY);
                     cxt.stroke();
@@ -528,15 +530,15 @@ angular.module('conojoApp')
             cxt.lineWidth = width;
             canvas.onmousedown = function (evt) {
                 evt = window.event || evt;
-                var eraserX = evt.pageX - 64;
-                var eraserY = evt.pageY - 176;
+                var eraserX = evt.pageX - this.offsetLeft - 64;
+                var eraserY = evt.pageY - this.offsetTop - 176;
                 cxt.clearRect(eraserX - cxt.lineWidth, eraserY - cxt.lineWidth, cxt.lineWidth * 2, cxt.lineWidth * 2);
                 eraserFlag = 1;
             };
             canvas.onmousemove = function (evt) {
                 evt = window.event || evt;
-                var eraserX = evt.pageX - 64;
-                var eraserY = evt.pageY - 176;
+                var eraserX = evt.pageX - this.offsetLeft - 64;
+                var eraserY = evt.pageY - this.offsetTop - 176;
                 if (eraserFlag) {
                     cxt.clearRect(eraserX - cxt.lineWidth, eraserY - cxt.lineWidth, cxt.lineWidth * 2, cxt.lineWidth * 2);
                 }
@@ -560,14 +562,14 @@ angular.module('conojoApp')
         $scope.drawSquare = function () {
             canvas.onmousedown = function (evt) {
                 evt = window.event || evt;
-                rectX = evt.pageX - 64;
-                rectY = evt.pageY - 176;
+                rectX = evt.pageX - this.offsetLeft - 64;
+                rectY = evt.pageY - this.offsetTop - 176;
             };
 
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
-                var endX = evt.pageX - 64;
-                var endY = evt.pageY - 176;
+                var endX = evt.pageX - this.offsetLeft - 64;
+                var endY = evt.pageY - this.offsetTop - 176;
                 var rectW = endX - rectX;
                 var rectH = endY - rectY;
                 if ($scope.shapeFill) {
@@ -591,13 +593,13 @@ angular.module('conojoApp')
         $scope.drawTriangle = function () {
             canvas.onmousedown = function (evt) {
                 evt = window.event || evt;
-                polyX = evt.pageX - 64;
-                polyY = evt.pageY - 176;
+                polyX = evt.pageX - this.offsetLeft - 64;
+                polyY = evt.pageY - this.offsetTop - 176;
             };
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
-                var endX = evt.pageX - 64;
-                var endY = evt.pageY - 176;
+                var endX = evt.pageX - this.offsetLeft - 64;
+                var endY = evt.pageY - this.offsetTop - 176;
                 cxt.beginPath();
                 cxt.moveTo(endX, endY);
                 var lbX = 2 * polyX - endX;
@@ -630,13 +632,13 @@ angular.module('conojoApp')
         $scope.drawCircle = function () {
             canvas.onmousedown = function (evt) {
                 evt = window.event || evt;
-                arcX = evt.pageX - 64;
-                arcY = evt.pageY - 176;
+                arcX = evt.pageX - this.offsetLeft - 64;
+                arcY = evt.pageY - this.offsetTop - 176;
             };
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
-                var endX = evt.pageX - 64;
-                var endY = evt.pageY - 176;
+                var endX = evt.pageX - this.offsetLeft - 64;
+                var endY = evt.pageY - this.offsetTop - 176;
                 var a = endX - arcX;
                 var b = endY - arcY;
                 var c = Math.sqrt(a * a + b * b);
@@ -665,8 +667,8 @@ angular.module('conojoApp')
         $scope.drawTalk = function () {
             canvas.onmousedown = function (evt) {
                 evt = window.event || evt;
-                polyX = evt.pageX - 64;
-                polyY = evt.pageY - 176;
+                polyX = evt.pageX - this.offsetLeft - 64;
+                polyY = evt.pageY - this.offsetTop - 176;
             };
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
@@ -695,8 +697,8 @@ angular.module('conojoApp')
         $scope.drawArrow = function () {
             canvas.onmousedown = function (evt) {
                 evt = window.event || evt;
-                polyX = evt.pageX - 64;
-                polyY = evt.pageY - 176;
+                polyX = evt.pageX - this.offsetLeft - 64;
+                polyY = evt.pageY - this.offsetTop - 176;
             };
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;
@@ -726,8 +728,8 @@ angular.module('conojoApp')
         $scope.drawStar = function () {
             canvas.onmousedown = function (evt) {
                 evt = window.event || evt;
-                polyX = evt.pageX - 64;
-                polyY = evt.pageY - 176;
+                polyX = evt.pageX - this.offsetLeft - 64;
+                polyY = evt.pageY - this.offsetTop - 176;
             };
             canvas.onmouseup = function (evt) {
                 evt = window.event || evt;

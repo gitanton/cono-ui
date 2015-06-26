@@ -93,7 +93,7 @@ angular.module('conojoApp')
         };
 
         $('.newMeeting-time').datetimepicker({
-            dateFormat: "yy-mm-dd"
+            dateFormat: 'yy-mm-dd'
         });
 
         $scope.toBuild = function () {
@@ -126,7 +126,7 @@ angular.module('conojoApp')
         };
 
         $scope.handleDrop = function() {
-            alert('Item has been dropped');
+
         };
 
         $scope.init();

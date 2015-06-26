@@ -32,9 +32,9 @@ angular.module('conojoApp')
                             method: 'GET',
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                         }).success(function (screens) {
-                            if(screens.length == 0){
+                            if(screens.length === 0){
                                 projectInfo.push([projectName.pop(),projectType.pop(),'no screen']);
-                            }else if(screens.length == 1){
+                            }else if(screens.length === 1){
                                 projectInfo.push([projectName.pop(),projectType.pop(),'1 screen',screens]);
                             }else if(screens.length > 1){
                                 projectInfo.push([projectName.pop(),projectType.pop(),screens.length +' screens',screens]);
@@ -47,9 +47,9 @@ angular.module('conojoApp')
                             method: 'GET',
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                         }).success(function (videos) {
-                            if(videos.length == 0){
+                            if(videos.length === 0){
                                 projectInfo.push([projectName.pop(),projectType.pop(),'no video']);
-                            }else if(videos.length == 1){
+                            }else if(videos.length === 1){
                                 projectInfo.push([projectName.pop(),projectType.pop(),'1 video',videos]);
                             }else if(videos.length > 1){
                                 projectInfo.push([projectName.pop(),projectType.pop(),videos.length +' videos',videos]);
