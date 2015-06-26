@@ -147,11 +147,6 @@ angular
                 redirectTo: '/'
             });
     })
-    .factory('meetingFlag', function () {
-        return {
-            startMeeting: false
-        }
-    })
     .directive('draggable', function () {
         return function (scope, element) {
             // this gives us the native JS object
