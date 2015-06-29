@@ -29,11 +29,15 @@ angular
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
+                controller: 'MainCtrl',
+                title: 'Login |Conojo Collaboration Platform',
+                description: 'Login | The most comprehensive creative collaboration platform there is. Get feedback on UI/UX, video and files in real-time. Get started with our free trial.'
             })
             .when('/register', {
                 templateUrl: 'views/register.html',
-                controller: 'RegisterCtrl'
+                controller: 'RegisterCtrl',
+                title: 'Register |Conojo Collaboration Platform',
+                description: 'Register | The most comprehensive creative collaboration platform there is. Get feedback on UI/UX, video and files in real-time. Get started with our free trial.'
             })
             .when('/project', {
                 templateUrl: 'views/project.html',
@@ -232,4 +236,10 @@ angular
                 );
             }
         };
-    });
+    })
+    .run(['$location', '$rootScope', function($location, $rootScope) {
+        $rootScope.$on('$routeChangeSuccess', function (event, current) {
+            $rootScope.title = current.$$route.title;
+            $rootScope.description = current.$$route.description;
+        });
+    }]);
