@@ -23,11 +23,28 @@ angular.module('conojoApp')
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
                 $window.sessionStorage.currentUserUuid = data.uuid;
-                $window.sessionStorage.avatar = data.avatar;
+
+                if(data.avatar === 'null'){
+                    $window.sessionStorage.avatar = 'images/Chan.png';
+                }else{
+                    $window.sessionStorage.avatar = data.avatar;
+                }
+
                 $window.sessionStorage.fullname = data.fullname;
                 $window.sessionStorage.email = data.email;
-                $window.sessionStorage.city = data.city;
-                $window.sessionStorage.state = data.state;
+
+                if(data.city === 'null'){
+                    $window.sessionStorage.city = '';
+                }else{
+                    $window.sessionStorage.city = data.city;
+                }
+
+                if(data.state === 'null'){
+                    $window.sessionStorage.state = '';
+                }else{
+                    $window.sessionStorage.state = data.state;
+                }
+
                 $window.sessionStorage.userCountry = data.country;
                 $location.path('project');
             }).error(function(){
