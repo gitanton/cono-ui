@@ -16,7 +16,7 @@
                 <div class="projectBuild-content-nav col-md-6">
                     <ul>
                         <li class="project-design-menu-current">Build</li>
-                        <li ng-click="toScreen()">Screens</li>
+                        <li ng-click="toScreen()">SCREENS</li>
                         <li ng-click="toActivity()">ACTIVITY</li>
                         <li ng-click="toComment()">COMMENTS</li>
                     </ul>
@@ -175,29 +175,6 @@
             </div>
             <div class="col-md-12 teammember-add-button">
                 <button class="btn btn-lg" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People</button>
-            </div>
-        </form>
-    </div>
-</div>
-<div id="addProjectScreen" class="modal fade in" style="display: none;">
-    <div class="addScreen-add">
-        <div class="col-md-10 addScreen-add-desc">ADD SCREENS</div>
-        <div class="col-md-2 addScreen-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
-        <form name="addScreen">
-            <div class="col-md-12 addScreen-add-body">
-                <div class="form-group has-add">
-                    <img src="images/upload-icon.png">
-                    <p class="addScreen-file-desc">Select a file from your computer to add</p>
-                    <input type="file" name="addScreen-file" id="screenFile" ngf-select ng-model="picFile" />
-                </div>
-                <div class="form-group has-email">
-                    <p>Or paste a link below:</p>
-                    <input type="text" name="addScreen-url" class="form-control addScreen-add-email" placeholder="Paste link here" />
-                    <img class="addScreen-add-emailicon" src="images/link-icon.png">
-                </div>
-            </div>
-            <div class="col-md-12 addScreen-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addUploadScreen(picFile)">Add Screens</button>
             </div>
         </form>
     </div>

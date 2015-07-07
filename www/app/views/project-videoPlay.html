@@ -15,7 +15,8 @@
             <div class="projectScreenVideo-content-menu">
                 <div class="projectScreenVideo-content-nav col-md-6">
                     <ul>
-                        <li class="project-design-menu-current">Video</li>
+                        <li class="project-design-menu-current">BUILD</li>
+                        <li  ng-click="toVideo()">VIDEOS</li>
                         <li  ng-click="toActivity()">ACTIVITY</li>
                         <li  ng-click="toComment()">COMMENTS</li>
                     </ul>
@@ -29,7 +30,7 @@
             </div>
             <div class="projectScreenVideo-content-body">
                 <div class="projectScreenVideo-content-video">
-                    <video src="#" id="videoBody"></video>
+                    <video src="images/zenmele.mp4" id="videoBody"></video>
                     <canvas id="videoDrawing" ng-show="showCanvas"></canvas>
                 </div>
                 <div class="video-player-commentFlag">
@@ -140,6 +141,7 @@
                         <div class="volumeBar"><span class="volumeBarIcon"></span></div>
                     </div>
                     <div class="sound sound2"></div>
+                    <div class="projectBuild-content-addScreens" ng-click="openAddVideo()"><img src="images/addScreen-icon.png"><span>Add Video</span></div>
                 </div>
             </div>
         </div>

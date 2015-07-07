@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectBuildTemplateCtrl', function ($scope, $http, $location, $routeParams, meetingFlag, ENV) {
+    .controller('ProjectBuildTemplateCtrl', function ($scope, $http, $location, $routeParams, ENV) {
         $scope.CLOCK = null;
         $scope.shapeFill = false;
         $scope.showComments = false;

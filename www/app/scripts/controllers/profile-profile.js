@@ -28,7 +28,6 @@ angular.module('conojoApp')
             $scope.city = $window.sessionStorage.city;
             $scope.state = $window.sessionStorage.state;
             $scope.userCountry = $window.sessionStorage.userCountry;
-            $('#userAvatar').attr('src',$window.sessionStorage.avatar);
         };
 
         $scope.uploadAvatar = function(files){
@@ -37,8 +36,10 @@ angular.module('conojoApp')
                 method: 'POST',
                 file: files[0]
             }).success(function (data) {
-                $window.sessionStorage.avatar = data.url;
-                $('#userAvatar').attr('src',data.url);
+                $window.sessionStorage.avatar = data.avatar;
+                $('#userAvatar').attr('src',data.avatar);
+                $('.siderbar-closed-img').attr('src',data.avatar);
+                $('.siderbar-expand-img').attr('src',data.avatar);
             });
         };
 

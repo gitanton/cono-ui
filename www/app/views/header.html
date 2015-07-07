@@ -2,7 +2,7 @@
     <div class="col-md-9"><a href="javascript:void(0)"><img src="images/logo.png"></a></div>
     <div class="col-md-3">
         <div class="col-md-4">
-            <img src="images/calender-icon.png" ng-click="showCalendar()">
+            <img src="images/calender-icon.png" ng-click="showCalendar($event)">
             <div id="datetimepicker">
                 <div class="datetimepicker-title">MEETINGS<img src="images/calender-white-icon.png" ng-click="hideCalendar()"></div>
             </div>
@@ -10,31 +10,64 @@
         <div class="col-md-4"><img src="images/message-icon.png" ng-click="goToMessages()"></div>
         <div class="col-md-4"><img src="images/help-icon.png" ng-click="openFeedBack()"></div>
     </div>
-    <div id="meetingDetail" class="modal fade in" style="display: none;">
-        <div class="newMeeting-add">
-            <div class="col-md-10 newMeeting-add-desc">MEETING PROJECT NAME</div>
-            <div class="col-md-2 newMeeting-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
-            <form name="newMeeting">
-                <div class="col-md-12 newMeeting-add-body">
-                    <div class="form-group">
-                        <textarea name="meetingMessage" ng-model="meetingMessage" placeholder="Notes" class="form-control newMeeting-message"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="meetingName" ng-model="meetingName" class="form-control newMeeting-name" placeholder="Meeting Name" />
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="meetingDateTime" ng-model="meetingDateTime" class="form-control newMeeting-time" placeholder="Choose date & time" />
-                    </div>
-                    <div class="form-group">
-                        <select name="meetingGroup" ng-model="meetingGroup" class="form-control newMeeting-group">
-                            <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-12 newMeeting-add-button">
-                    <button class="btn btn-lg" ng-click="addNewMeeting()">Create Meeting</button>
+    <div id="meetingDetail" class="modal fade in">
+        <div class="meetingDetail-add row">
+            <div class="col-md-10 meetingDetail-add-desc">MEETING DETAILS IN THIS DAY</div>
+            <div class="col-md-2 meetingDetail-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        </div>
+        <div class="meetingDetail-content" ng-if="meetingDetails == true">
+            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
+            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
+            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
+            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
+            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
+            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
+            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
+        </div>
+        <div ng-if="meetingDetails == false" class="meeting-start">
+            <form>
+                <div class="form-group">
+                    <input type="text" ng-model="digits" class="meeting-start-input" placeholder="Enter your digits" />
+                    <button class="meeting-start-button" ng-click="joinOneMeeting()">Start meeting</button>
                 </div>
             </form>
+        </div>
+    </div>
+    <div class="startMeeting" ng-if="startMeeting == true">
+        <div class="meeting-header">
+            <div class="col-md-4">
+                <img src="images/Dawkins-l.png" class="img-circle">
+                <img src="images/Dawkins-l.png" class="img-circle">
+                <img src="images/Dawkins-l.png" class="img-circle">
+                <img src="images/addUser-icon.png">
+            </div>
+            <div class="col-md-4">
+                <div class="meeting-time">01:12:12</div>
+                <div class="meeting-end" ng-click="endOneMeeting()">END MEETING</div>
+            </div>
+            <div class="col-md-4"><img src="images/phone-icon.png"></div>
+        </div>
+        <div class="meeting-chat">
+            <div class="meeting-chat-header">
+                <div class="col-md-10">GROUP CHAT</div>
+                <div class="col-md-2"><img src="images/chat-up-icon.png" ng-click="chatUp()" ng-if="chatContainer == false"></div>
+                <div class="col-md-2"><img src="images/chat-down-icon.png" ng-click="chatDown()" ng-if="chatContainer == true"></div>
+            </div>
+            <div class="meeting-chat-content" ng-if="chatContainer == true">
+                <div class="col-md-12" ng-repeat="comment in comments">
+                    <div class="col-md-3"><img src="images/chat-person-icon.png"></div>
+                    <div class="col-md-9">
+                        <div class="col-md-8">{{comment.fullname}}</div>
+                        <div class="col-md-4">{{comment.created | limitTo:-8}}</div>
+                        <div class="col-md-12">{{comment.comment}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="meeting-chat-input">
+                <form>
+                    <input type="text" name="meeting-chat-content" ng-model="chatComment" ng-keyup="$event.keyCode == 13 && sendChat()" placeholder="Type your message here">
+                </form>
+            </div>
         </div>
     </div>
     <div id="addFeedback" class="modal fade in" style="display: none;">
@@ -58,25 +91,11 @@
             </form>
         </div>
     </div>
-    <div id="addFeedback" class="modal fade in" style="display: none;">
-        <div class="feedback-add">
-            <div class="col-md-10 feedback-add-desc">SUPPORT</div>
-            <div class="col-md-2 feedback-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
-            <form name="createnewmessage">
-                <div class="col-md-12 feedback-add-body">
-                    <p>Submit feedback or report problems you are experiencing using the form below.</p>
-                    <div class="form-group has-add">
-                        <input type="text" name="reasonContent" ng-model="reasonContent" class="form-control feedback-add-reason" placeholder="Reasons for requesting support" />
-                        <img class="feedback-add-addicon" src="images/select-project-icon.png">
-                    </div>
-                    <div class="col-md-12">
-                        <textarea name="messageContent" ng-model="messageContent" class="form-control feedback-add-message" placeholder="Add message"></textarea>
-                    </div>
-                </div>
-                <div class="col-md-12 feedback-add-button">
-                    <button class="btn btn-lg" type="submit" ng-click="addNewFeedback()">Get support</button>
-                </div>
-            </form>
+    <div id="statusNotice" class="modal fade in" style="display: none;">
+        <div class="reset">
+            <div class="col-md-10 reset-desc">Status Notice</div>
+            <div class="col-md-2 reset-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+            <div class="col-md-12 reset-note"></div>
         </div>
     </div>
 </div>

@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('RegisterCtrl', function ($scope, $http, $location, ENV) {
+    .controller('RegisterCtrl', function ($scope, $http, $location, $window, ENV) {
         $scope.errorOne = false;
         $scope.errorTwo = false;
         $scope.errorThree = false;
@@ -38,7 +38,34 @@ angular.module('conojoApp')
                 method: 'POST',
                 data: $.param({fullname: $scope.formData.username, email: $scope.formData.email, timezone: $scope.timezone, username: $scope.formData.username, password: $scope.formData.password}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).success(function (data) {
+                $window.sessionStorage.currentUserUuid = data.uuid;
+
+                if(data.avatar === null){
+                    $window.sessionStorage.avatar = '';
+                }else{
+                    $window.sessionStorage.avatar = data.avatar;
+                }
+                console.log($window.sessionStorage.avatar);
+
+                $window.sessionStorage.fullname = data.fullname;
+                $window.sessionStorage.email = data.email;
+
+                if(data.city === null){
+                    $window.sessionStorage.city = '';
+                }else{
+                    $window.sessionStorage.city = data.city;
+                }
+                console.log($window.sessionStorage.city);
+
+                if(data.state === null){
+                    $window.sessionStorage.state = '';
+                }else{
+                    $window.sessionStorage.state = data.state;
+                }
+
+                $window.sessionStorage.userCountry = data.country;
+
                 $location.path('project');
             }).error(function (dataMessage) {
                 if (dataMessage.data.level === 1) {

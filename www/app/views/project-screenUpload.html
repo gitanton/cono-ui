@@ -1,46 +1,33 @@
-<div class="projectScreen-page">
+<div class="projectScreenVideo-page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="projectScreen-container">
-        <div class="projectScreen-header">
-            <div class="projectScreen-header-name col-md-6">
+    <div class="projectScreenVideo-container">
+        <div class="projectScreenVideo-header">
+            <div class="projectScreenVideo-header-name col-md-6">
                 <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
             </div>
-            <div class="projectScreen-header-button col-md-6">
-                <button class="btn btn-lg">Share</button>
+            <div class="projectScreenVideo-header-button col-md-6">
                 <button class="btn btn-lg" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
             </div>
         </div>
-        <div class="projectScreen-content">
-            <div class="projectScreen-content-menu">
-                <div class="projectScreen-content-nav col-md-6">
-                    <ul>
-                        <li class="project-design-menu-current">Screens</li>
-                        <li  ng-click="toActivity()">ACTIVITY</li>
-                        <li  ng-click="toComment()">COMMENTS</li>
-                    </ul>
-                </div>
-                <div class="projectScreen-content-member col-md-6">
+        <div class="projectScreenVideo-content">
+            <div class="projectScreenVideo-content-menu">
+                <div class="projectScreenVideo-content-nav col-md-6"><span><img src="images/back-icon.png" ng-click="goBackToBuild()" title="Back to Build">Add Screen</span></div>
+                <div class="projectScreenVideo-content-member col-md-6">
                     <ul>
                         <li ng-repeat="projectMember in projectMembers"><img src="images/member-one.png"></li>
-                        <li><img src="images/addMember-icon.png" ng-click="openAddProjectMember()" class="addMemberIcon"></li>
+                        <li><img src="images/addMember-icon.png" ng-click="openAddProjectMember()"></li>
                     </ul>
                 </div>
             </div>
-            <div class="projectScreen-content-body">
-                <div class="projectScreen-content-items col-md-10">
-                    <div class="projectScreen-content-thumb col-md-4" ng-repeat="screen in screens"><img ng-src="{{screen.url}}" ng-click="toBuild('{{screen.uuid}}')"></div>
-                </div>
-                <div class="projectScreen-content-delete col-md-2">
-                    <!--<form id="templateupload" enctype="multipart/form-data" class="projectScreen-content-dropcontainer dropzone">-->
-                    <!--<input type="hidden" name="project_uuid" value="{{activeProjectUuid}}">-->
-                    <!--<div class="dz-message">-->
-                    <!--<p>Drag & Drop your files</p>-->
-                    <!--</div>-->
-                    <!--<img class="projectScreen-content-upload" src="images/upload-blue-icon.png" ng-click="openUploadScreen()">-->
-                    <!--<img class="projectScreen-content-sync" src="images/sync-icon.png">-->
-                    <!--</form>-->
-                </div>
+            <div class="projectScreenVideo-content-body">
+                <form id="screenUpload" enctype="multipart/form-data" class="projectScreenVideo-content-upload dropzone">
+                    <input type="hidden" name="project_uuid" value="{{activeProjectUuid}}">
+                    <div class="dz-message">
+                        <p>Upload Screen</p>
+                        <p>Click here or Drag & Drop your files</p>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -87,28 +74,6 @@
             </div>
             <div class="col-md-12 teammember-add-button">
                 <button class="btn btn-lg" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People</button>
-            </div>
-        </form>
-    </div>
-</div>
-<div id="addProjectScreen" class="modal fade in" style="display: none;">
-    <div class="teammember-add">
-        <div class="col-md-10 teammember-add-desc">ADD SCREENS</div>
-        <div class="col-md-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
-        <form name="createteammember">
-            <div class="col-md-12 teammember-add-body">
-                <div class="form-group has-add">
-                    <img class="teammember-add-addAnother" src="images/upload-icon.png">
-                    <p>Select a file from your computer to add</p>
-                </div>
-                <div class="form-group has-email">
-                    <p>Or paste a link below:</p>
-                    <input type="text" name="screenUrl" ng-model="screenUrl" class="form-control teammember-add-email" placeholder="Paste link here" />
-                    <img class="teammember-add-emailicon" src="images/link-icon.png">
-                </div>
-            </div>
-            <div class="col-md-12 teammember-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addUploadScreen()">Add Screens</button>
             </div>
         </form>
     </div>

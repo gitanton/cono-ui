@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectBuildCtrl', function ($scope, $http, $location, $routeParams, ENV, Upload) {
+    .controller('ProjectBuildCtrl', function ($scope, $http, $location, $routeParams, ENV) {
         $scope.CLOCK = null;
         $scope.shapeFill = false;
         $scope.showComments = false;
@@ -102,27 +102,8 @@ angular.module('conojoApp')
         };
 
         $scope.openAddScreen = function () {
-            $('#addProjectScreen').modal('toggle');
-        };
-
-        $('#screenFile').on('change',function(){
-            $('.addScreen-file-desc').html($(this).val().substr($(this).val().lastIndexOf('\\')+1));
-        });
-
-        $scope.addUploadScreen = function (files) {
-            Upload.upload({
-                url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
-                method: 'POST',
-                fields: {
-                    'project_uuid': $scope.activeProjectUuid,
-                    'url': $scope.screenUrl
-                },
-                file: files[0]
-            }).success(function (data) {
-                $('#addProjectScreen').modal('hide');
-                $scope.activeScreenUuid = data.uuid;
-                $location.replace('/project-build/' + $scope.activeProjectUuid + '/' + data.uuid);
-            });
+            var url = '/project-screenUpload/' + $scope.activeProjectUuid;
+            $location.path(url);
         };
 
         $scope.openAddProjectMember = function () {

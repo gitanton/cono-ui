@@ -3,10 +3,15 @@
     <div ng-include="'views/siderbar.html'"></div>
     <div class="team-container">
         <div class="team-header">
-            <div class="team-header-account col-md-6"><span>{{selectTeam.name}}</span></div>
-            <div class="team-header-teams col-md-6">
-                <button class="btn btn-lg team-header-select">Select Teams<img src="images/select-project-icon.png"></button>
-                <button class="btn btn-lg" ng-click="openAddTeamMember()">Add Team Member</button>
+            <div class="team-header-account">
+                <div class="col-md-10 team-header-userName">123{{currentUser}}</div>
+                <div class="col-md-2 team-header-select">
+                    <span class="defaultTeam">Select Teams</span>
+                    <img src="images/select-project-icon.png" ng-click="openTeams($event)">
+                    <ul class="teams">
+                        <li ng-click="selectTeam('{{team.name}}',$index)" ng-repeat="team in teams">{{team.name}}</li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="team-content">
@@ -19,7 +24,7 @@
                         <span>{{team.fullname}}</span>
                     </div>
                     <div class="team-content-permissions" ng-mouseleave="hoverLeave($event)">
-                        <div class="team-content-permissionsEdit" ng-click="goToEdit('{{user.uuid}}')">Edit Permissions</div>
+                        <div class="team-content-permissionsEdit" ng-click="goToEdit('{{team.owner_uuid}}')">Edit Permissions</div>
                     </div>
                 </div>
                 <!--                <div class="col-md-4 team-content-offset">
@@ -35,30 +40,5 @@
                                 </div>-->
             </div>
         </div>
-    </div>
-</div>
-<div id="addTeamMember" class="modal fade in" style="display: none;">
-    <div class="teammember-add">
-        <div class="col-md-10 teammember-add-desc">ADD PEOPLE TO TEAM</div>
-        <div class="col-md-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
-        <form name="addPeopleToProject">
-            <div class="col-md-12 teammember-add-body">
-                <div class="form-group">
-                    <select name="teammembertype" class="form-control teammember-add-select">
-                        <option value=0>Select Person</option>
-                    </select>
-                </div>
-                <div class="form-group has-email">
-                    <input type="text" name="teammemberemail" ng-model="teammemberemail" class="form-control teammember-add-email" placeholder="Enter an email" />
-                    <img class="teammember-add-emailicon" src="images/mail-icon.png">
-                </div>
-                <div class="form-group has-add">
-                    <span>Add another person<img class="teammember-add-addAnother" src="images/addAnotherPeople-icon.png"></span>
-                </div>
-            </div>
-            <div class="col-md-12 teammember-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addTeamMember()">Invite People</button>
-            </div>
-        </form>
     </div>
 </div>

@@ -1,6 +1,7 @@
 <div class="siderBar" ng-controller="siderBarCtrl">
     <div class="siderbar-closed-container" ng-hide="expandMenuFlag">
-        <img class="siderbar-closed-img" src="#" ng-click="goToProfile()">
+        <img class="siderbar-closed-img" src="images/Chan.png" ng-click="goToProfile()" ng-if="userAvatar == ''">
+        <img class="siderbar-closed-img" ng-src="{{userAvatar}}" ng-click="goToProfile()" ng-if="userAvatar != ''">
         <div class="col-md-12"><a href="#/project" title="project"><img src="images/project-icon.png"></a></div>
         <div class="col-md-12"><a href="#/activity" title="activity"><img src="images/activity-icon.png"></a></div>
         <div class="col-md-12"><a href="#/team" title="team"><img src="images/team-icon.png"></a></div>
@@ -14,7 +15,8 @@
         <div class="siderbar-expand-profileContainer">
             <div class="siderbar-expand-profileView" ng-click="goToProfile()">View Profile</div>
         </div>
-        <img class="siderbar-expand-img" src="#">
+        <img class="siderbar-expand-img" src="images/Chan.png" ng-click="goToProfile()" ng-if="userAvatar == ''">
+        <img class="siderbar-expand-img" ng-src="{{userAvatar}}" ng-click="goToProfile()" ng-if="userAvatar != ''">
         <div class="col-md-12"><a href="#/project" title="project"><img src="images/project-icon.png">Project</a></div>
         <div class="col-md-12"><a href="#/activity" title="activity"><img src="images/activity-icon.png">Activity</a></div>
         <div class="col-md-12"><a href="#/team" title="team"><img src="images/team-icon.png">Team</a></div>

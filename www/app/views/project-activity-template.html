@@ -7,7 +7,6 @@
                 <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
             </div>
             <div class="projectActivity-header-button col-md-6">
-                <button class="btn btn-lg">Share</button>
                 <button class="btn btn-lg" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
             </div>
         </div>
@@ -112,8 +111,9 @@
                 <div class="form-group">
                     <input type="text" name="meetingDateTime" ng-model="meetingDateTime" class="form-control newMeeting-time" placeholder="Choose date & time" />
                 </div>
-                <div class="form-group">
-                    <select name="meetingGroup" ng-model="meetingGroup" class="form-control newMeeting-group">
+                <div class="newMeeting-assignContainer form-group">
+                    <div class="newMeeting-assign" ng-click="showSelectMember($event)">Assign to</div>
+                    <select multiple="multiple" name="meetingGroup" ng-model="meetingGroup" class="form-control newMeeting-group">
                         <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
                     </select>
                 </div>

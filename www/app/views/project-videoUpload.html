@@ -1,52 +1,33 @@
-<div class="projectActivity-page">
+<div class="projectScreenVideo-page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="projectActivity-container">
-        <div class="projectActivity-header">
-            <div class="projectActivity-header-name col-md-6">
+    <div class="projectScreenVideo-container">
+        <div class="projectScreenVideo-header">
+            <div class="projectScreenVideo-header-name col-md-6">
                 <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
             </div>
-            <div class="projectActivity-header-button col-md-6">
+            <div class="projectScreenVideo-header-button col-md-6">
                 <button class="btn btn-lg" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
             </div>
         </div>
-        <div class="projectActivity-content">
-            <div class="projectActivity-content-menu">
-                <div class="projectActivity-content-nav col-md-6">
-                    <ul>
-                        <li ng-click="toBuild()">BUILD</li>
-                        <li ng-click="toVideo()">VIDEOS</li>
-                        <li class="project-design-menu-current">ACTIVITY</li>
-                        <li ng-click="toComment()">COMMENTS</li>
-                    </ul>
-                </div>
-                <div class="projectActivity-content-member col-md-6">
+        <div class="projectScreenVideo-content">
+            <div class="projectScreenVideo-content-menu">
+                <div class="projectScreenVideo-content-nav col-md-6"><span><img src="images/back-icon.png" ng-click="goBackToBuild()" title="Back to Build">Add Video</span></div>
+                <div class="projectScreenVideo-content-member col-md-6">
                     <ul>
                         <li ng-repeat="projectMember in projectMembers"><img src="images/member-one.png"></li>
                         <li><img src="images/addMember-icon.png" ng-click="openAddProjectMember()"></li>
                     </ul>
                 </div>
             </div>
-            <div class="projectActivity-content-body">
-                <div class="projectActivity-content-items col-md-10">
-                    <div class="col-md-12 projectActivity-content-item" ng-repeat="activity in projectActivities" id="drag{{$index}}" draggable>
-                        <div class="projectActivity-content-img col-md-3"><img src="images/Dawkins.png"></div>
-                        <div class="projectActivity-content-desc col-md-9">
-                            <div class="col-md-9">{{activity.title}}</div>
-                            <div class="col-md-3">{{activity.created}}</div>
-                            <div class="col-md-12"><img src="images/thumbs.png"></div>
-                            <div class="col-md-12">{{activity.content}}</div>
-                            <div style="position: absolute;top:0px;right:0px;"><img src="images/dragbar-icon.png"></div>
-                        </div>
+            <div class="projectScreenVideo-content-body">
+                <form id="videoUpload" enctype="multipart/form-data" class="projectScreenVideo-content-upload dropzone">
+                    <input type="hidden" name="project_uuid" value="{{activeProjectUuid}}">
+                    <div class="dz-message">
+                        <p>Upload Video File</p>
+                        <p>Click here or Drag & Drop your files</p>
                     </div>
-                </div>
-                <div class="projectActivity-content-delete col-md-2" droppable drop="handleDrop()">
-                    <img src="images/delete-icon.png" class="projectActivity-content-deleteicon">
-                    <div class="projectActivity-content-deleteintro" id="projectActivity-content-deleteintro">
-                        <p>DELETE</p>
-                        <p>Drag & Drop here to delete</p>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

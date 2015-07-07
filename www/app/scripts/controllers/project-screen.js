@@ -76,22 +76,6 @@ angular.module('conojoApp')
             });
         };
 
-        $scope.openUploadScreen = function () {
-            $('#addProjectScreen').modal('toggle');
-        };
-
-        $scope.addUploadScreen = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
-                method: 'POST',
-                data: $.param({project_uuid: $scope.activeProjectUuid, url: $scope.screenUrl}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
-                $scope.init();
-                $('#addProjectScreen').modal('hide');
-            });
-        };
-
         $scope.openNewMeeting = function () {
             $('#newMeeting').modal('toggle');
         };
@@ -141,11 +125,6 @@ angular.module('conojoApp')
 
         $scope.toComment = function () {
             var url = '/project-comment/' + $scope.activeProjectUuid;
-            $location.path(url);
-        };
-
-        $scope.openMessage = function () {
-            var url = '/message/' + $scope.activeProjectUuid;
             $location.path(url);
         };
 

@@ -75,6 +75,10 @@ angular
                 templateUrl: 'views/project-comment.html',
                 controller: 'ProjectCommentCtrl'
             })
+            .when('/project-screenUpload/:uuid', {
+                templateUrl: 'views/project-screenUpload.html',
+                controller: 'ProjectScreenUploadCtrl'
+            })
             .when('/invitation/:invite/:type', {
                 templateUrl: 'views/invitation.html',
                 controller: 'InvitationCtrl'
@@ -103,6 +107,10 @@ angular
                 templateUrl: 'views/project-video.html',
                 controller: 'ProjectVideoCtrl'
             })
+            .when('/project-videoUpload/:uuid', {
+                templateUrl: 'views/project-videoUpload.html',
+                controller: 'ProjectVideoUploadCtrl'
+            })
             .when('/project-videoPlay/:puuid/:vuuid', {
                 templateUrl: 'views/project-videoPlay.html',
                 controller: 'ProjectVideoPlayCtrl'
@@ -126,10 +134,6 @@ angular
             .when('/project-templateSelect/:uuid', {
                 templateUrl: 'views/project-templateSelect.html',
                 controller: 'ProjectTemplateSelectCtrl'
-            })
-            .when('/project-screen-template/:uuid', {
-                templateUrl: 'views/project-templateUpload.html',
-                controller: 'ProjectTemplateUploadCtrl'
             })
             .when('/project-activity-template/:uuid', {
                 templateUrl: 'views/project-activity-template.html',

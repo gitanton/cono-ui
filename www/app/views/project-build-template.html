@@ -16,7 +16,7 @@
                 <div class="projectBuild-content-nav col-md-6">
                     <ul>
                         <li class="project-design-menu-current">Build</li>
-                        <li ng-click="toScreen()">Screens</li>
+                        <li ng-click="toScreen()">SCREENS</li>
                         <li ng-click="toActivity()">ACTIVITY</li>
                         <li ng-click="toComment()">COMMENTS</li>
                     </ul>
@@ -283,8 +283,9 @@
                 <div class="form-group">
                     <input type="text" name="meetingDateTime" ng-model="meetingDateTime" class="form-control newMeeting-time" placeholder="Choose date & time" />
                 </div>
-                <div class="form-group">
-                    <select name="meetingGroup" ng-model="meetingGroup" class="form-control newMeeting-group">
+                <div class="newMeeting-assignContainer form-group">
+                    <div class="newMeeting-assign" ng-click="showSelectMember($event)">Assign to</div>
+                    <select multiple="multiple" name="meetingGroup" ng-model="meetingGroup" class="form-control newMeeting-group">
                         <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
                     </select>
                 </div>

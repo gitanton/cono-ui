@@ -87,18 +87,14 @@ angular.module('conojoApp')
             });
         };
 
+        $scope.toBuild = function () {
+            var url = '/project-videoPlay/' + $scope.activeProjectUuid + '/new';
+            $location.path(url);
+        };
+
         $scope.toVideo = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'videos/project/' + $scope.activeProjectUuid,
-                method: 'GET',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                if (data.length === 0) {
-                    $location.path('/project-video/' + $scope.activeProjectUuid);
-                } else {
-                    $location.path('/project-videoPlay/' + $scope.activeProjectUuid + '/' + data[0].uuid);
-                }
-            });
+            var url = '/project-video/' + $scope.activeProjectUuid;
+            $location.path(url);
         };
 
         $scope.toActivity = function () {

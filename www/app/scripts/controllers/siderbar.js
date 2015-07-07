@@ -18,8 +18,7 @@ angular.module('conojoApp')
         $('.siderbar-expand-container').css('height', $scope.siderbarContainer);
 
         $scope.init = function () {
-            $('.siderbar-closed-img').attr('src',$window.sessionStorage.avatar);
-            $('.siderbar-expand-img').attr('src',$window.sessionStorage.avatar);
+            $scope.userAvatar = $window.sessionStorage.avatar;
         };
 
         $scope.$watch('$window.sessionStorage.avatar', function() {

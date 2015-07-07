@@ -24,8 +24,8 @@ angular.module('conojoApp')
             }).success(function (data) {
                 $window.sessionStorage.currentUserUuid = data.uuid;
 
-                if(data.avatar === 'null'){
-                    $window.sessionStorage.avatar = 'images/Chan.png';
+                if(data.avatar === null){
+                    $window.sessionStorage.avatar = '';
                 }else{
                     $window.sessionStorage.avatar = data.avatar;
                 }
@@ -33,13 +33,14 @@ angular.module('conojoApp')
                 $window.sessionStorage.fullname = data.fullname;
                 $window.sessionStorage.email = data.email;
 
-                if(data.city === 'null'){
+                if(data.city === null){
                     $window.sessionStorage.city = '';
                 }else{
                     $window.sessionStorage.city = data.city;
                 }
+                console.log($window.sessionStorage.city);
 
-                if(data.state === 'null'){
+                if(data.state === null){
                     $window.sessionStorage.state = '';
                 }else{
                     $window.sessionStorage.state = data.state;

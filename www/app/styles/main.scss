@@ -1340,39 +1340,34 @@ ul li {
         border-top: 1px solid #e3e3e3;
         padding: 11px 20px 12px 84px;
         .team-header-account {
-            span {
+            .team-header-userName {
                 height: 40px;
                 line-height: 40px;
-            }
-        }
-        .team-header-button {
-            text-align: right;
-            button {
-                @extend .appbutton;
-                width: 156px;
-                height: 40px;
-                border-radius: 2px;
-            }
-        }
-        .team-header-teams {
-            text-align: right;
-            button {
-                @extend .appbutton;
-                width: 140px;
-                height: 40px;
-                border-radius: 2px;
-                padding: 0px;
             }
             .team-header-select {
                 width: 200px;
                 height: 40px;
+                line-height: 40px;
+                text-align:center;
                 border-radius: 2px;
-                padding: 0px;
-                background: #efefef;
                 color: #0378ae;
                 border: 1px solid #0378ae;
                 img {
                     margin-left: 25px;
+                    cursor:pointer;
+                }
+                ul{
+                    z-index:999;
+                    display:none;
+                    width:200px;
+                    position:absolute;
+                    right:-1px;
+                    top:38px;
+                    border:1px solid #0378ae;
+                    li{
+                        border-top:1px solid #0378ae;
+                        cursor:pointer;
+                    }
                 }
             }
         }
@@ -1617,7 +1612,7 @@ ul li {
                 ul {
                     li {
                         color: #fff;
-                        width: 82px;
+                        width: 100px;
                         line-height: 32px;
                         margin-right: 10px;
                         float: left;
@@ -1706,6 +1701,7 @@ ul li {
                 background: #e6e6e6;
                 width: 150px;
                 padding: 15px;
+                cursor:pointer;
             }
             .projectBuild-content-text {
                 display: none;
@@ -2412,7 +2408,7 @@ ul li {
                 ul {
                     li {
                         color: #fff;
-                        width: 82px;
+                        width: 100px;
                         line-height: 32px;
                         margin-right: 10px;
                         float: left;
@@ -2518,6 +2514,7 @@ ul li {
         display: inline-block;
         padding: 10px 70px;
         overflow: hidden;
+        width:387px;
         input {
             position: absolute;
             font-size: 67px;
@@ -2585,7 +2582,7 @@ ul li {
                 ul {
                     li {
                         color: #fff;
-                        width: 82px;
+                        width: 100px;
                         line-height: 32px;
                         margin-right: 10px;
                         float: left;
@@ -2650,29 +2647,13 @@ ul li {
     }
 }
 
-.meeting-start {
-    width: 325px;
-    height: 50px;
-    margin-top: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    .meeting-start-input {
-        height: 35px;
-        margin-right: 20px;
-    }
-    .meeting-start-button {
-        @extend .appbutton;
-        width: 125px;
-        height: 35px;
-    }
-}
-
 .meeting-header {
     height: 70px;
     line-height: 70px;
     text-align: center;
     position: absolute;
     top: 0px;
+    left:0px;
     width: 100%;
     background: #fff;
     border-bottom: 1px solid #e3e3e3;
@@ -2792,7 +2773,7 @@ ul li {
                 ul {
                     li {
                         color: #fff;
-                        width: 82px;
+                        width: 100px;
                         line-height: 32px;
                         margin-right: 10px;
                         float: left;
@@ -2838,7 +2819,7 @@ ul li {
     }
 }
 
-#newMeeting, #meetingDetail {
+#newMeeting {
     width: 100%;
     padding-top: 50px;
     .newMeeting-add {
@@ -2874,6 +2855,14 @@ ul li {
         textarea {
             height: 120px;
         }
+        .has-add{
+            position:relative;
+            img{
+                right:6px;
+                top:18px;
+                position:absolute;
+            }
+        }
     }
     .newMeeting-assignContainer {
         height: 100px;
@@ -2899,6 +2888,59 @@ ul li {
             @extend .appbutton;
             width: 229px;
             height: 40px;
+        }
+    }
+}
+
+#meetingDetail{
+    width: 465px;
+    margin: 0 auto;
+    padding-top:85px;
+    .meetingDetail-add {
+        background: #fff;
+        border-radius: 4px;
+    }
+    .meetingDetail-add-desc {
+        text-align: center;
+        color: #0378ae;
+        padding: 22px 0px;
+        border-bottom: 1px solid #e3e3e3;
+    }
+    .meetingDetail-add-delicon {
+        text-align: center;
+        padding: 22px 0px;
+        border-bottom: 1px solid #e3e3e3;
+        cursor: pointer;
+    }
+    .meetingDetail-content{
+        text-align: center;
+        padding: 24px 35px;
+        background: #e6e6e6;
+        p{
+            height:30px;
+            border:1px solid #0378ae;
+            line-height:30px;
+            label{
+                cursor:pointer;
+                margin-left: 20px;
+                color: #0378ae;
+            }
+        }
+    }
+    .meeting-start{
+        background:#e6e6e6;
+        padding:24px 35px;
+        text-align:center;
+        .meeting-start-input {
+            height: 35px;
+            margin-right: 20px;
+            width:200px;
+        }
+        .meeting-start-button {
+            @extend .appbutton;
+            width: 125px;
+            height: 35px;
+            border:none;
         }
     }
 }
@@ -3336,7 +3378,7 @@ ul li {
                         }
                         .profileProfile-content-profile-address {
                             input {
-                                width: 250px;
+                                width: 230px;
                             }
                             select {
                                 width: 250px;
@@ -3881,10 +3923,15 @@ ul li {
             padding: 8px 20px;
             background: #55abd4;
             .projectScreenVideo-content-nav {
+                span{
+                    color:#fff;
+                    font-size:20px;
+                    img{margin-right:20px;cursor:pointer;}
+                }
                 ul {
                     li {
                         color: #fff;
-                        width: 82px;
+                        width: 100px;
                         line-height: 32px;
                         margin-right: 10px;
                         float: left;
@@ -4011,8 +4058,8 @@ ul li {
                 cursor: pointer;
                 width: 150px;
                 height: 10px;
-                left: 80%;
-                bottom: 32px;
+                left: 62%;
+                bottom: 28px;
                 background-color: #e6e6e6;
             }
             .volumeBar {
@@ -4032,8 +4079,8 @@ ul li {
             .sound {
                 background: url(/images/voice-icon.png) no-repeat 0 0;
                 position: absolute;
-                bottom: 30px;
-                left: 78%;
+                bottom: 25px;
+                left: 60%;
                 width: 20px;
                 height: 15px;
             }
@@ -4080,6 +4127,16 @@ ul li {
                         background: #f6f064;
                     }
                 }
+            }
+            .projectBuild-content-addScreens {
+                position: absolute;
+                right: 0px;
+                bottom: 0px;
+                height: 58px;
+                background: #e6e6e6;
+                width: 150px;
+                padding: 15px;
+                cursor:pointer;
             }
             .projectBuild-content-brush::before {
                 border-color: #464646 transparent transparent;
@@ -4511,6 +4568,38 @@ ul li {
         cursor: pointer;
     }
     .reset-note {
+        padding: 24px;
+        text-align: left;
+        font-size: 16px;
+        margin-left: auto;
+        margin-right: auto;
+        background: #e6e6e6;
+    }
+}
+
+#statusNotice {
+    width: 100%;
+    padding-top: 50px;
+    .errorNote {
+        width: 465px;
+        height: 200px;
+        background: #fff;
+        border-radius: 4px;
+        margin: 0 auto;
+    }
+    .errorNote-desc {
+        text-align: center;
+        color: #0378ae;
+        padding: 22px 0px;
+        border-bottom: 1px solid #e3e3e3;
+    }
+    .errorNote-delete-delicon {
+        text-align: center;
+        padding: 22px 0px;
+        border-bottom: 1px solid #e3e3e3;
+        cursor: pointer;
+    }
+    .errorNote-note {
         padding: 24px;
         text-align: left;
         font-size: 16px;

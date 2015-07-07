@@ -291,6 +291,16 @@ angular.module('conojoApp')
             event.stopPropagation();
         });
 
+        $scope.openAddVideo = function () {
+            var url = '/project-videoUpload/' + $scope.activeProjectUuid;
+            $location.path(url);
+        };
+
+        $scope.toVideo = function () {
+            var url = '/project-video/' + $scope.activeProjectUuid;
+            $location.path(url);
+        };
+
         $scope.toActivity = function () {
             var url = '/project-activity-video/' + $scope.activeProjectUuid;
             $location.path(url);

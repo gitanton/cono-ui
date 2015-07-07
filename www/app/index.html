@@ -2,7 +2,7 @@
 <html class="no-js" ng-app="conojoApp">
 <head>
     <meta charset="utf-8">
-    <title>{{title}}</title>
+    <title ng-bind="title">CONOJO APP</title>
     <meta name="description" content="{{description}}">
     <meta name="viewport" content="width=device-width">
 
@@ -45,7 +45,7 @@
         m.parentNode.insertBefore(a, m)
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-XXXXX-X');
+    ga('create', 'UA-62172621-1', 'auto');
     ga('send', 'pageview');
 </script>
 
@@ -110,20 +110,20 @@
 <script src="scripts/controllers/project-screen.js"></script>
 <script src="scripts/controllers/project-activity.js"></script>
 <script src="scripts/controllers/project-comment.js"></script>
+<script src="scripts/controllers/project-screenUpload.js"></script>
 <script src="scripts/controllers/invitation.js"></script>
 <script src="scripts/controllers/siderbar.js"></script>
 <script src="scripts/controllers/header.js"></script>
-<script src="scripts/controllers/meeting.js"></script>
 <script src="scripts/controllers/profile-project.js"></script>
 <script src="scripts/controllers/profile-profile.js"></script>
 <script src="scripts/controllers/profile-billing.js"></script>
 <script src="scripts/controllers/profile-notice.js"></script>
 <script src="scripts/controllers/project-build-template.js"></script>
 <script src="scripts/controllers/project-templateSelect.js"></script>
-<script src="scripts/controllers/project-templateUpload.js"></script>
 <script src="scripts/controllers/project-activity-template.js"></script>
 <script src="scripts/controllers/project-comment-template.js"></script>
 <script src="scripts/controllers/project-video.js"></script>
+<script src="scripts/controllers/project-videoUpload.js"></script>
 <script src="scripts/controllers/project-videoPlay.js"></script>
 <script src="scripts/controllers/project-activity-video.js"></script>
 <script src="scripts/controllers/project-comment-video.js"></script>
