@@ -3655,7 +3655,7 @@ ul li {
                         }
                         .profileBilling-content-billing-plans-button {
                             @extend .appbutton;
-                            width: 220px;
+                            width: 180px;
                             height: 40px;
                             border-radius: 3px;
                             padding: 10px 25px;
@@ -4577,7 +4577,7 @@ ul li {
     }
 }
 
-#statusNotice {
+#statusNotice,#statusNoticeProject {
     width: 100%;
     padding-top: 50px;
     .reset {

@@ -20,6 +20,8 @@ angular.module('conojoApp')
             }).success(function (data) {
                 $scope.projects = data;
             });
+
+            //this need to get the current team user's project
         };
 
         $scope.openAddProjectMember = function (uuid) {
@@ -35,12 +37,16 @@ angular.module('conojoApp')
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $('#addPeopleToProject').modal('hide');
+            }).error(function(data){
+                $('#addPeopleToProject').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 
         $scope.openAddTeamMember = function () {
             $('#addTeamMember').modal('toggle');
-            $scope.activeTeamUuid = $routeParams.uuid;
+            $scope.activeTeamUuid = $routeParams.tuuid;
         };
 
         $scope.addTeamMember = function () {
@@ -51,6 +57,10 @@ angular.module('conojoApp')
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $('#addTeamMember').modal('hide');
+            }).error(function(data){
+                $('#addTeamMember').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 

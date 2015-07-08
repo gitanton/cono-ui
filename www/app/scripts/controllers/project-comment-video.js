@@ -51,6 +51,10 @@ angular.module('conojoApp')
             }).success(function() {
                 $scope.init();
                 $('#addNewMessage').modal('hide');
+            }).error(function(data){
+                $('#addNewMessage').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 
@@ -68,6 +72,10 @@ angular.module('conojoApp')
             }).success(function() {
                 $scope.init();
                 $('#replymessage').modal('hide');
+            }).error(function(data){
+                $('#replymessage').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 

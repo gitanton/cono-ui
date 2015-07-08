@@ -26,6 +26,7 @@ angular.module('conojoApp')
             $('#replymessage').modal('toggle');
             $scope.replyMessageUuid = muuid;
             $scope.replyProjectUuid = puuid;
+            $scope.messagecontent = '';
         };
 
         $scope.replyMessage = function(){
@@ -37,6 +38,10 @@ angular.module('conojoApp')
             }).success(function() {
                 $scope.init();
                 $('#replymessage').modal('hide');
+            }).error(function(data){
+                $('#replymessage').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 

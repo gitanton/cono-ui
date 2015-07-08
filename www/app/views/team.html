@@ -9,7 +9,7 @@
                     <span class="defaultTeam">Select Teams</span>
                     <img src="images/select-project-icon.png" ng-click="openTeams($event)">
                     <ul class="teams">
-                        <li ng-click="selectTeam('{{team.name}}',$index)" ng-repeat="team in teams">{{team.name}}</li>
+                        <li ng-click="selectTeam('{{team.name}}')" ng-repeat="team in teams">{{team.name}}</li>
                     </ul>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                         <span>{{team.fullname}}</span>
                     </div>
                     <div class="team-content-permissions" ng-mouseleave="hoverLeave($event)">
-                        <div class="team-content-permissionsEdit" ng-click="goToEdit('{{team.owner_uuid}}')">Edit Permissions</div>
+                        <div class="team-content-permissionsEdit" ng-click="goToEdit('{{team.owner_uuid}}','{{team.uuid}}')">Edit Permissions</div>
                     </div>
                 </div>
                 <!--                <div class="col-md-4 team-content-offset">

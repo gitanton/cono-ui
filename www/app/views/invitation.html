@@ -69,3 +69,23 @@
         </div>
     </div>
 </div>
+<div id="loginNote" class="modal fade in" style="display: none;">
+    <div class="errorNote">
+        <div class="col-md-10 errorNote-desc">LOGIN</div>
+        <div class="col-md-2 errorNote-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-12 errorNote-note">
+            <p>The username/password you have entered are invalid.</p>
+        </div>
+    </div>
+</div>
+<div id="registerNote" class="modal fade in" style="display: none;">
+    <div class="reset">
+        <div class="col-md-10 reset-desc">REGISTER</div>
+        <div class="col-md-2 reset-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-12 reset-note">
+            <p ng-show="errorOne">The Email field must contain a unique value.Please fill in your information again.</p>
+            <p ng-show="errorTwo">The Username field must contain a unique value.Please fill in your information again.</p>
+            <p ng-show="errorThree">The Username and Email field must contain a unique value.Please fill in your information again.</p>
+        </div>
+    </div>
+</div>

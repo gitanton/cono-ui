@@ -72,24 +72,12 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.activeProjectUuid, email: $scope.memberEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $('#addPeopleToProject').modal('hide');
-                });
-        };
-
-        $scope.openUploadScreen = function () {
-            $('#addProjectScreen').modal('toggle');
-        };
-
-        $scope.addUploadScreen = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
-                method: 'POST',
-                data: $.param({project_uuid: $scope.activeProjectUuid, url: $scope.screenUrl}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
-                    $scope.init();
-                    $('#addProjectScreen').modal('hide');
-                });
+                $('#addPeopleToProject').modal('hide');
+            }).error(function(data){
+                $('#addPeopleToProject').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
+            });
         };
 
         $scope.openNewMeeting = function () {
@@ -103,9 +91,13 @@ angular.module('conojoApp')
                 data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(' ')[0], time: $scope.meetingDateTime.split(' ')[1], attendees: $scope.meetingGroup.join(',')}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
-                    $scope.init();
-                    $('#newMeeting').modal('hide');
-                });
+                $scope.init();
+                $('#newMeeting').modal('hide');
+            }).error(function(data){
+                $('#newMeeting').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
+            });
         };
 
         $('.newMeeting-time').datetimepicker({

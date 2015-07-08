@@ -256,6 +256,10 @@ angular.module('conojoApp')
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $('#addPeopleToProject').modal('hide');
+            }).error(function(data){
+                $('#addPeopleToProject').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 
@@ -272,6 +276,10 @@ angular.module('conojoApp')
             }).success(function () {
                 $scope.init();
                 $('#newMeeting').modal('hide');
+            }).error(function(data){
+                $('#newMeeting').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 
@@ -413,66 +421,6 @@ angular.module('conojoApp')
         $(document).on('click','.commentSqure',function(){
             //open add comment and reply comment
         });
-
-        // $scope.openComment = function () {
-        //     $scope.showCanvas = true;
-        //     $scope.showCommentBlue = false;
-        //     $scope.showBrushBlue = true;
-        //     $scope.showEraser = false;
-        //     $scope.showShape = false;
-        //     $('.projectScreenVideo-comment-black').siblings().removeClass('tools-li-selected');
-        //     $('.projectScreenVideo-comment-black').addClass('tools-li-selected');
-        //     $('.btnPlay').removeClass('paused');
-        //     video[0].pause();
-
-        //     cxt.strokeStyle = 'rgba(250,246,162,0.7)';
-        //     cxt.fillStyle = 'rgba(250,246,162,0.7)';
-        //     canvas.onmousedown = function (evt) {
-        //         if ($scope.commentList.length > 0) {
-        //             cxt.clearRect(0, 0, $('#videoBody').width(), $('#videoBody').height());
-        //             $scope.commentList = [];
-        //         }
-        //         evt = window.event || evt;
-        //         rectX = evt.pageX - this.offsetLeft - 64;
-        //         rectY = evt.pageY - this.offsetTop - 176;
-        //         $('#addComment').css('left', evt.pageX - 400);
-        //         $('#addComment').css('top', evt.pageY);
-        //     };
-
-        //     canvas.onmouseup = function (evt) {
-        //         evt = window.event || evt;
-        //         cxt.fillRect(rectX, rectY, 25, 25);
-        //         $scope.commentList.push([canvas.toDataURL(), rectX, rectY, 25, 25]);
-        //         $scope.showComment = true;
-        //         $scope.$apply();
-        //     };
-        //     canvas.onmousemove = null;
-        //     canvas.onmouseout = null;
-        // };
-
-        // $scope.saveComment = function () {
-        //     var imgDataArray = $scope.commentList.slice(-1);
-        //     $http({
-        //         url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid + '/comments',
-        //         method: 'POST',
-        //         data: $.param({video_uuid: $scope.activeVideoProjectUuid, content: $scope.commentContent, time: video[0].currentTime, begin_x: imgDataArray[0][1], begin_y: imgDataArray[0][2], end_x: 25, end_y: 25, left_x: 100 * video[0].currentTime / video[0].duration + '%', data: imgDataArray[0][0]}),
-        //         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        //     }).success(function (data) {
-        //         $('.video-player-commentFlag').append("<div class='arrow-down' style='left:'" + 100 * video[0].currentTime / video[0].duration + "%'>" + data.ordering + "</div>");
-        //     });
-        // };
-
-        // $scope.hideComment = function () {
-        //     $scope.showComment = false;
-        //     cxt.clearRect(0, 0, $('#videoBody').width(), $('#videoBody').height());
-        //     if ($scope.commentList.length > 1) {
-        //         var index = $scope.commentList.length - 2;
-        //         var image = new Image();
-        //         image.src = $scope.commentList[index][0];
-        //         cxt.drawImage(image, 0, 0);
-        //     }
-        //     $scope.commentList.pop();
-        // };
 
         $scope.openTools = function () {
             $scope.showCanvas = true;

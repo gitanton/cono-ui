@@ -13,6 +13,9 @@ angular.module('conojoApp')
         $scope.billingTwo = false;
         $scope.billingThree = false;
         $scope.plans = [];
+        $scope.newPlanId = 0;
+        $scope.newPlanMember = 0;
+        $scope.newPlanAddedPrice = 0;
 
         $scope.profileBillingContent = $(window).height() - 250;
         $('.profileBilling-content-billing').css('height', $scope.profileBillingContent);
@@ -52,12 +55,13 @@ angular.module('conojoApp')
             var token = Stripe.card.createToken($form, stripeResponseHandler);
 
             $http({
-                url: ENV.API_ENDPOINT + 'users/subscription',
+                url: ENV.API_ENDPOINT + 'users/subscription_card',
                 method: 'POST',
                 data:{token: token},
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function(data){
                 console.log(data);
+                $scope.token = data;
             });
         };
 
@@ -97,8 +101,38 @@ angular.module('conojoApp')
             $scope.billingThree = true;
         };
 
-        $scope.activePlan = function (planId) {
-            $scope.planId = planId;
+        $scope.activePlan = function (newPlanId,newPlanName,newPlanPrice,newPlanAdditional) {
+            $scope.planId = newPlanId;
+            $scope.newPlanId = newPlanId;
+            $scope.newPlanName = newPlanName;
+            $scope.newPlanPrice = newPlanPrice;
+            $scope.newPlanAdditional = newPlanAdditional;
+        };
+
+        $scope.addMember = function(){
+            $scope.newPlanAdditional++;
+            $scope.newPlanAddedPrice = $scope.newPlanAdditional * 10;
+        };
+
+        $scope.decreaseMember = function(){
+            if($scope.newPlanAdditional > 0){
+                $scope.newPlanAdditional--;
+                $scope.newPlanAddedPrice = $scope.newPlanAdditional * 10;
+            }
+        };
+
+        $scope.payForPlan = function(){
+            $http({
+                url: ENV.API_ENDPOINT + 'users/subscription',
+                method: 'POST',
+                data:$.param({token: $scope.token, plan_id: $scope.newPlanId, additional_users: $scope.newPlanAdditional}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(data){
+                console.log(data);
+            }).error(function(data){
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
+            });
         };
 
         $scope.openCancelPlan = function () {

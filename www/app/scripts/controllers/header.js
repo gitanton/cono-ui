@@ -18,7 +18,7 @@ angular.module('conojoApp')
 
         $scope.showCalendar = function (evt) {
             $http({
-                url: ENV.API_ENDPOINT + 'meetings/meeting',
+                url: ENV.API_ENDPOINT + 'meetings',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
@@ -27,12 +27,14 @@ angular.module('conojoApp')
 
             $('#datetimepicker').datepicker({
                 dateFormat: 'yy-mm-dd',
-                beforeShowDay : function(){
-                   //get all meeting for this user
-                   for(var i = 0;i < $scope.meetings.length;i++){
-                        return [true, 'red', 'Show meetings in today'];
-                   }
-                },
+                // beforeShowDay : function(){
+                //    //get all meeting for this user
+                //    // for(var i = 0;i < $scope.meetings.length;i++){
+                //    //      if(dt === $scope.meetings[i].date){
+                //    //          return [true, 'red', 'Show meetings in today'];
+                //    //      }
+                //    // }
+                // },
                 onSelect: function () {
                     $('#meetingDetail').modal('toggle');
                     $scope.meetingDetails = true;
@@ -57,6 +59,7 @@ angular.module('conojoApp')
 
         $scope.joinOneMeeting = function () {
             $('#meetingDetail').modal('hide');
+            $scope.digits = '';
             $http({
                 url: ENV.API_ENDPOINT + 'utils/bootstrap',
                 method: 'GET',
@@ -102,6 +105,9 @@ angular.module('conojoApp')
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $scope.chatComment = '';
+            }).error(function(data){
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 

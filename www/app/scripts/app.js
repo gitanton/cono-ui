@@ -55,7 +55,7 @@ angular
                 templateUrl: 'views/team.html',
                 controller: 'TeamCtrl'
             })
-            .when('/userpage/:uuid', {
+            .when('/userpage/:tuuid', {
                 templateUrl: 'views/userpage.html',
                 controller: 'UserpageCtrl'
             })

@@ -29,6 +29,10 @@ angular.module('conojoApp')
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $('#addPeopleToProject').modal('hide');
+            }).error(function(data){
+                $('#addPeopleToProject').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 

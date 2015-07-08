@@ -10,6 +10,7 @@ angular.module('conojoApp')
     .controller('ProjectCtrl', function ($scope, $http, $location, ENV) {
         $scope.projecttype = 0;
         $scope.projecttitle = '';
+        $scope.errorMessageProject = '';
         $scope.projectContent = $(window).height() - 128;
         $('.project-content').css('height', $scope.projectContent);
 
@@ -61,6 +62,8 @@ angular.module('conojoApp')
         };
 
         $scope.myProject = function () {
+            $scope.projecttitle = '';
+            $scope.projecttype = 0;
             $http({
                 url: ENV.API_ENDPOINT + 'projects',
                 method: 'POST',
@@ -71,9 +74,14 @@ angular.module('conojoApp')
                 $('#newproject').modal('hide');
             }).error(function(data){
                 $('#newproject').modal('hide');
-                $('.reset-note').html(data.message);
-                $('#statusNotice').modal('toggle');
+                $scope.errorMessageProject = data.message;
+                $('#statusNoticeProject').modal('toggle');
             });
+        };
+
+        $scope.goToBilling = function(){
+            $('#statusNoticeProject').modal('hide');
+            $location.path('/profile-billing');
         };
 
         $scope.projectScreen = function (uuid, type) {
@@ -102,15 +110,19 @@ angular.module('conojoApp')
             $scope.duplicateProjectName = name;
         };
 
-        $scope.duplicateProject = function (uuid) {
+        $scope.duplicateProject = function () {
             $http({
-                url: ENV.API_ENDPOINT + 'projects/project/' + uuid + '/duplicate',
+                url: ENV.API_ENDPOINT + 'projects/project/' + $scope.duplicateProjectUuid + '/duplicate',
                 method: 'POST',
                 data: $.param({uuid: $scope.duplicateProjectUuid, name: $scope.duplicateProjectName + '-Copy'}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $scope.init();
                 $('#duplicateproject').modal('hide');
+            }).error(function(data){
+                $('#duplicateproject').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 
@@ -127,6 +139,10 @@ angular.module('conojoApp')
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $('#shareproject').modal('hide');
+            }).error(function(data){
+                $('#shareproject').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 
@@ -144,6 +160,10 @@ angular.module('conojoApp')
             }).success(function () {
                 $scope.init();
                 $('#archiveproject').modal('hide');
+            }).error(function(data){
+                $('#archiveproject').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 
@@ -160,6 +180,10 @@ angular.module('conojoApp')
             }).success(function () {
                 $scope.init();
                 $('#deleteproject').modal('hide');
+            }).error(function(data){
+                $('#deleteproject').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 
@@ -179,6 +203,9 @@ angular.module('conojoApp')
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function(){
                     $scope.init();
+                }).error(function(data){
+                    $('.reset-note').html(data.message);
+                    $('#statusNotice').modal('toggle');
                 });
             }
         });

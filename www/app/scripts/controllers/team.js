@@ -43,11 +43,11 @@ angular.module('conojoApp')
             $location.path(url);
         };
 
-        $scope.selectTeam = function(val,index){
+        $scope.selectTeam = function(val){
             $('.teams').hide();
             $('.defaultTeam').html(val);
             $('.team-content-offset').hide();
-            $('.team-content-offset').eq(index).show();
+            // $('.team-content-offset').eq(index).show();
         };
 
         $scope.openTeams = function(evt){

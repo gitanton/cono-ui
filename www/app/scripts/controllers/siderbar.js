@@ -52,6 +52,9 @@ angular.module('conojoApp')
                 if (data.status === 'success') {
                     $location.path('/');
                 }
+            }).error(function(data){
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 

@@ -70,7 +70,7 @@
             <div class="col-md-12 project-duplicate-warningdesc">Includes all screens & assets included in project</div>
         </div>
         <div class="col-md-12 project-duplicate-button">
-            <button class="btn btn-lg project-duplicate-buttonsubmit" type="submit" ng-click='duplicateProject({{duplicateProjectUuid}})'>Duplicate</button>
+            <button class="btn btn-lg project-duplicate-buttonsubmit" type="submit" ng-click='duplicateProject()'>Duplicate</button>
         </div>
     </div>
 </div>
@@ -136,3 +136,11 @@
         </div>
     </div>
 </div>
+<div id="statusNoticeProject" class="modal fade in" style="display: none;">
+    <div class="reset">
+        <div class="col-md-10 reset-desc">Status Notice</div>
+        <div class="col-md-2 reset-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-12 reset-note">{{errorMessageProject}}Please click <label style="color:#0378ae;cursor:poiner;" ng-click="goToBilling()">here</label> to select one plan.</div>
+    </div>
+</div>
+

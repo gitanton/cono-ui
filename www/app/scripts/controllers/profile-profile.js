@@ -75,6 +75,9 @@ angular.module('conojoApp')
                 $window.sessionStorage.state = data.state;
                 $window.sessionStorage.country = data.country;
                 $scope.init();
+            }).error(function(data){
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 

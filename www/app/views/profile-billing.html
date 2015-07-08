@@ -111,7 +111,7 @@
                                     <div class="profileBilling-content-billing-plans-num"><span>{{plan.projects}}</span> Project</div>
                                     <div class="profileBilling-content-billing-plans-per"><span>${{plan.additional_member}}</span> per additional team member</div>
                                     <div class="profileBilling-content-billing-plans-button" ng-if="plan.id == planId">CURRENT PLAN</div>
-                                    <div class="profileBilling-content-billing-plans-button" ng-if="plan.id != planId" ng-click="activePlan({{plan.id}},$event)">SELECT PLAN</div>
+                                    <div class="profileBilling-content-billing-plans-button" ng-if="plan.id != planId" ng-click="activePlan({{plan.id}},{{plan.name}},{{plan.price}},{{plan.additional_member}})">SELECT PLAN</div>
                                 </div>
                                 <div class="col-md-4" ng-class="{true:'profileBilling-content-billing-plans-itemSelect',false:'profileBilling-content-billing-plans-item'}[plan.id == planId]" ng-if="plan.projects < 0" ng-repeat="plan in plans">
                                     <div class="profileBilling-content-billing-plans-name">{{plan.name}}</div>
@@ -122,19 +122,23 @@
                                     </div>
                                     <div class="profileBilling-content-billing-plans-per"><span>${{plan.additional_member}}</span> per additional team member</div>
                                     <div class="profileBilling-content-billing-plans-button" ng-if="plan.id == planId">CURRENT PLAN</div>
-                                    <div class="profileBilling-content-billing-plans-button" ng-if="plan.id != planId" ng-click="activePlan({{plan.id}},$event)">SELECT PLAN</div>
+                                    <div class="profileBilling-content-billing-plans-button" ng-if="plan.id != planId" ng-click="activePlan({{plan.id}},{{plan.name}},{{plan.price}},{{plan.additional_member}})">SELECT PLAN</div>
                                 </div>
                             </div>
                             <div class="profileBilling-content-billing-plans-submit col-md-12">
-                                <div class="col-md-4">
-                                    <div class="profileBilling-content-billing-submit-l">{{planName}} - ${{planPrice}} per month</div>
+                                <div class="col-md-2">New Plan Price Total</div>
+                                <div class="col-md-4" ng-if="newPlanId == 0">
+                                    <div class="profileBilling-content-billing-submit-l">Your don't select new plan</div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" ng-if="newPlanId != 0">
+                                    <div class="profileBilling-content-billing-submit-l">{{newPlanName}} - ${{newPlanPrice}} per month</div>
+                                </div>
+                                <div class="col-md-4" ng-if="newPlanId != 0">
                                     <div class="profileBilling-content-billing-submit-d col-md-3" ng-click="decreaseMember()">-</div>
-                                    <div class="profileBilling-content-billing-submit-price col-md-6">+ {{teamMember}} Team Member - $10.00</div>
+                                    <div class="profileBilling-content-billing-submit-price col-md-6">+ {{newPlanMember}} Team Member - ${{newPlanAddedPrice}}</div>
                                     <div class="profileBilling-content-billing-submit-i col-md-3" ng-click="addMember()">+</div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <button class="btn btn-lg profileBilling-content-billing-plans-button" ng-click="payForPlan()">Buy Now</button>
                                 </div>
                             </div>
