@@ -4580,26 +4580,26 @@ ul li {
 #statusNotice {
     width: 100%;
     padding-top: 50px;
-    .errorNote {
+    .reset {
         width: 465px;
         height: 200px;
         background: #fff;
         border-radius: 4px;
         margin: 0 auto;
     }
-    .errorNote-desc {
+    .reset-desc {
         text-align: center;
         color: #0378ae;
         padding: 22px 0px;
         border-bottom: 1px solid #e3e3e3;
     }
-    .errorNote-delete-delicon {
+    .reset-delete-delicon {
         text-align: center;
         padding: 22px 0px;
         border-bottom: 1px solid #e3e3e3;
         cursor: pointer;
     }
-    .errorNote-note {
+    .reset-note {
         padding: 24px;
         text-align: left;
         font-size: 16px;

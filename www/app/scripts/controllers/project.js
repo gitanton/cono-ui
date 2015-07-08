@@ -69,6 +69,10 @@ angular.module('conojoApp')
             }).success(function () {
                 $scope.init();
                 $('#newproject').modal('hide');
+            }).error(function(data){
+                $('#newproject').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 

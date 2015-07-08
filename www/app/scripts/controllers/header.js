@@ -17,12 +17,22 @@ angular.module('conojoApp')
         $scope.comments = {};
 
         $scope.showCalendar = function (evt) {
+            $http({
+                url: ENV.API_ENDPOINT + 'meetings/meeting',
+                method: 'GET',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                $scope.meetings = data;
+            });
+
             $('#datetimepicker').datepicker({
                 dateFormat: 'yy-mm-dd',
-//            beforeShowDay : function(dt){
-//                //get all meeting for this user
-////                return [true, 'red', 'Test'];
-//            },
+                beforeShowDay : function(){
+                   //get all meeting for this user
+                   for(var i = 0;i < $scope.meetings.length;i++){
+                        return [true, 'red', 'Show meetings in today'];
+                   }
+                },
                 onSelect: function () {
                     $('#meetingDetail').modal('toggle');
                     $scope.meetingDetails = true;
