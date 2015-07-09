@@ -2681,8 +2681,8 @@ ul li {
 .meeting-chat {
     position: absolute;
     z-index: 3;
-    bottom: 0px;
-    left: 64px;
+    top: 120px;
+    right: 0px;
     width: 402px;
     .meeting-chat-header {
         text-align: center;

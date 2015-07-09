@@ -14,8 +14,12 @@ angular.module('conojoApp')
         $scope.billingThree = false;
         $scope.plans = [];
         $scope.newPlanId = 0;
+        $scope.newPlanName = '';
+        $scope.newPlanPrice = 0;
         $scope.newPlanMember = 0;
         $scope.newPlanAddedPrice = 0;
+
+        $scope.planId = '';
 
         $scope.profileBillingContent = $(window).height() - 250;
         $('.profileBilling-content-billing').css('height', $scope.profileBillingContent);
@@ -34,11 +38,13 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                $scope.plan = data.plan;
-                $scope.planName = data.plan.name;
-                $scope.planId = data.plan.id.toString();
-                $scope.planPrice = data.plan.price;
-                $scope.teamMember = data.plan.team_members;
+                if(data.plan){
+                    $scope.plan = data.plan;
+                    $scope.planName = data.plan.name;
+                    $scope.planId = data.plan.id.toString();
+                    $scope.planPrice = data.plan.price;
+                    $scope.teamMember = data.plan.team_members;
+                }
             });
 
             $http({
@@ -101,23 +107,22 @@ angular.module('conojoApp')
             $scope.billingThree = true;
         };
 
-        $scope.activePlan = function (newPlanId,newPlanName,newPlanPrice,newPlanAdditional) {
+        $scope.activePlan = function (newPlanId,newPlanName,newPlanPrice) {
             $scope.planId = newPlanId;
             $scope.newPlanId = newPlanId;
             $scope.newPlanName = newPlanName;
             $scope.newPlanPrice = newPlanPrice;
-            $scope.newPlanAdditional = newPlanAdditional;
         };
 
         $scope.addMember = function(){
-            $scope.newPlanAdditional++;
-            $scope.newPlanAddedPrice = $scope.newPlanAdditional * 10;
+            $scope.newPlanMember++;
+            $scope.newPlanAddedPrice = $scope.newPlanMember * 10;
         };
 
         $scope.decreaseMember = function(){
-            if($scope.newPlanAdditional > 0){
-                $scope.newPlanAdditional--;
-                $scope.newPlanAddedPrice = $scope.newPlanAdditional * 10;
+            if($scope.newPlanMember > 0){
+                $scope.newPlanMember--;
+                $scope.newPlanAddedPrice = $scope.newPlanMember * 10;
             }
         };
 
