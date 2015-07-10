@@ -31,6 +31,7 @@ angular.module('conojoApp')
                 }
 
                 $window.sessionStorage.fullname = data.fullname;
+                $window.sessionStorage.username = data.username;
                 $window.sessionStorage.email = data.email;
 
                 if(data.city === null){

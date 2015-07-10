@@ -3451,37 +3451,6 @@ ul li {
                 background: #fff;
                 border-radius: 3px;
                 border-top: 1px solid #e5e5e5;
-                .profileBilling-content-billing-card {
-                    padding: 20px 50px;
-                    box-shadow: 3px 3px 3px #e5e5e5;
-                    height: 68px;
-                    color: #0378ae;
-                }
-                .profileBilling-content-billing-cardInfo {
-                    height: 95px;
-                    padding: 25px 40px;
-                    border: 1px solid #e5e5e5;
-                    .profileProfile-content-billing-number {
-                        input {
-                            background: #e6e6e6;
-                            border-radius: 3px;
-                            border: 1px solid #e6e6e6;
-                            height: 40px;
-                            width: 100%;
-                            padding: 0px 10px;
-                        }
-                    }
-                    .profileProfile-content-billing-change {
-                        color: #0378ae;
-                        height: 40px;
-                        width: 155px;
-                        margin-left: 40px;
-                        border-radius: 3px;
-                        padding: 10px 30px;
-                        border: 1px solid #0378ae;
-                        cursor: pointer;
-                    }
-                }
                 .profileBilling-content-billing-plan {
                     padding: 10px 50px;
                     box-shadow: 3px 3px 3px #e5e5e5;
@@ -3518,108 +3487,6 @@ ul li {
                         padding: 15px 75px;
                     }
                 }
-                .profileBilling-content-billing-changrCard {
-                    width: 1000px;
-                    margin-left: auto;
-                    margin-right: auto;
-                    .profileBilling-content-billing-changeCard-three {
-                        margin-top: 50px;
-                        .col-md-2 {
-                            width: 150px;
-                            img {
-                                margin-left: 15px;
-                            }
-                        }
-                    }
-                    .profileBilling-content-billing-changeCard-four, .profileBilling-content-billing-changeCard-six, .profileBilling-content-billing-changeCard-eight {
-                        margin-top: 35px;
-                    }
-                    .profileBilling-content-billing-changeCard-five {
-                        margin-top: 5px;
-                        input {
-                            background: #e6e6e6;
-                            border-radius: 3px;
-                            border: 1px solid #e6e6e6;
-                            height: 40px;
-                            width: 275px;
-                            padding: 0px 10px;
-                        }
-                    }
-                    .profileBilling-content-billing-changeCard-seven {
-                        margin-top: 5px;
-                        input {
-                            background: #e6e6e6;
-                            border-radius: 3px;
-                            border: 1px solid #e6e6e6;
-                            height: 40px;
-                            padding: 0px 10px;
-                        }
-                        .profileBilling-content-billing-changeCard-city {
-                            input {
-                                width: 250px;
-                            }
-                        }
-                        .profileBilling-content-billing-changeCard-state {
-                            input {
-                                width: 110px;
-                            }
-                        }
-                        .profileBilling-content-billing-changeCard-country {
-                            input {
-                                width: 250px;
-                            }
-                        }
-                        .profileBilling-content-billing-changeCard-code {
-                            input {
-                                width: 110px;
-                            }
-                        }
-                    }
-                    .profileBilling-content-billing-changeCard-nine {
-                        margin-top: 5px;
-                        input {
-                            background: #e6e6e6;
-                            border-radius: 3px;
-                            border: 1px solid #e6e6e6;
-                            height: 40px;
-                            padding: 0px 10px;
-                        }
-                        .profileBilling-content-billing-changeCard-cardNum {
-                            input {
-                                width: 320px;
-                            }
-                        }
-                        .profileBilling-content-billing-changeCard-expirationM {
-                            input {
-                                width: 120px;
-                            }
-                        }
-                        .profileBilling-content-billing-changeCard-expirationY {
-                            input {
-                                width: 120px;
-                            }
-                        }
-                        .profileBilling-content-billing-changeCard-cvv {
-                            text-align: center;
-                            input {
-                                width: 140px;
-                            }
-                        }
-                    }
-                    .profileBilling-content-billing-changeCard-ten {
-                        margin-top: 35px;
-                        margin-bottom: 20px;
-                        text-align: right;
-                        .profileBilling-content-billing-changeCard-button {
-                            @extend .appbutton;
-                            width: 220px;
-                            height: 40px;
-                            border-radius: 3px;
-                            padding: 10px 25px;
-                            margin-right: 55px;
-                        }
-                    }
-                }
                 .profileBilling-content-billing-planTitle {
                     padding: 20px 50px;
                     box-shadow: 3px 3px 3px #e5e5e5;
@@ -3652,13 +3519,6 @@ ul li {
                             padding: 10px 15px;
                             margin-left: 5px;
                             margin-right: 5px;
-                        }
-                        .profileBilling-content-billing-plans-button {
-                            @extend .appbutton;
-                            width: 180px;
-                            height: 40px;
-                            border-radius: 3px;
-                            padding: 10px 25px;
                         }
                     }
                     .profileBilling-content-billing-plans-items {
@@ -3742,6 +3602,50 @@ ul li {
                                 margin: 0 auto;
                                 cursor: pointer;
                             }
+                        }
+                    }
+                    .profileBilling-content-billing-changrCard {
+                        .profileBilling-content-billing-changeCard-eight {
+                            margin-top: 35px;
+                        }
+                        .profileBilling-content-billing-changeCard-nine {
+                            margin-top: 5px;
+                            input {
+                                background: #e6e6e6;
+                                border-radius: 3px;
+                                border: 1px solid #e6e6e6;
+                                height: 40px;
+                                padding: 0px 10px;
+                            }
+                            .profileBilling-content-billing-changeCard-cardNum {
+                                input {
+                                    width: 320px;
+                                }
+                            }
+                            .profileBilling-content-billing-changeCard-expirationM {
+                                input {
+                                    width: 120px;
+                                }
+                            }
+                            .profileBilling-content-billing-changeCard-expirationY {
+                                input {
+                                    width: 120px;
+                                }
+                            }
+                            .profileBilling-content-billing-changeCard-cvv {
+                                text-align: center;
+                                input {
+                                    width: 140px;
+                                }
+                            }
+                        }
+                        .profileBilling-content-billing-plans-button {
+                            @extend .appbutton;
+                            width: 180px;
+                            height: 40px;
+                            border-radius: 3px;
+                            padding: 10px 25px;
+                            margin:35px auto;
                         }
                     }
                 }

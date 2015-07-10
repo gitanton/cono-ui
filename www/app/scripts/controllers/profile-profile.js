@@ -66,7 +66,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'users/user/' + $window.sessionStorage.currentUserUuid,
                 method: 'PUT',
-                data: {uuid: $window.sessionStorage.currentUserUuid,body:{'uuid':$window.sessionStorage.currentUserUuid,'fullename': $scope.fullname,'email': $scope.email,'city':$scope.city,'state':$scope.state,'country':$scope.userCountry}},
+                data: $.param({'uuid': $window.sessionStorage.currentUserUuid,'fullname': $scope.fullname,'email': $scope.email,'username': $window.sessionStorage.username,'city': $scope.city,'state': $scope.state,'country': $scope.country}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function(data){
                 $window.sessionStorage.fullname = data.fullname;
