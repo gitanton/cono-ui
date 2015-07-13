@@ -88,17 +88,7 @@ angular.module('conojoApp')
             if (type === '1') {
                 $location.path('/project-build/' + uuid + '/new');
             } else if (type === '2') {
-                $http({
-                    url: ENV.API_ENDPOINT + 'videos/project/' + uuid,
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function (data) {
-                    if (data.length === 0) {
-                        $location.path('/project-video/' + uuid);
-                    } else {
-                        $location.path('/project-videoPlay/' + uuid + '/' + data[0].uuid);
-                    }
-                });
+                $location.path('/project-videoPlay/' + uuid + '/new');
             } else if (type === '3') {
                 $location.path('/project-build-template/' + uuid + '/new');
             }

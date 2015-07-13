@@ -238,6 +238,10 @@ angular.module('conojoApp')
 
         $scope.openComments = function () {
             $('#drawing-f').off();
+            if ($scope.addHotspotsFlag) {
+                $('#hotspotsMarker' + hotspotsNum).remove();
+                $scope.addHotspotsFlag = false;
+            }
 
             $scope.showAddHotspots = false;
             $scope.showCommentBlue = false;
@@ -309,6 +313,10 @@ angular.module('conojoApp')
 
         $scope.openHotspots = function () {
             $('#drawing-f').off();
+            if ($scope.addCommentFlag) {
+                $('#commentMarker' + commentNum).remove();
+                $scope.addCommentFlag = false;
+            }
 
             $scope.showComments = false;
             $scope.showCommentBlue = true;
@@ -319,35 +327,34 @@ angular.module('conojoApp')
             $('.projectBuild-hotspots-black').siblings().removeClass('tools-li-selected');
             $('.projectBuild-hotspots-black').addClass('tools-li-selected');
 
-            $('#drawing-f').on({
-                mousedown: function (evt) {
-                    if ($scope.addHotspotsFlag) {
-                        $('#hotspotsMarker' + hotspotsNum).remove();
-                    }
-
-                    evt = window.event || evt;
-                    rectHotspotsX = evt.pageX - 64;
-                    rectHotspotsY = evt.pageY - 176;
-                },
-                mouseup: function (evt) {
-                    evt = window.event || evt;
-                    var endX = evt.pageX - 64;
-                    var endY = evt.pageY - 176;
-                    rectHotspotsW = endX - rectHotspotsX;
-                    rectHotspotsH = endY - rectHotspotsY;
-                    if (evt.pageX > 400) {
-                        $('#addHotspots').css('left', evt.pageX - rectHotspotsW - 400);
-                    } else {
-                        $('#addHotspots').css('left', evt.pageX + 10);
-                    }
-                    $('#addHotspots').css('top', evt.pageY - rectHotspotsH);
-
-                    $('.projectBuild-content-drawing').append("<div id='hotspotsMarker" + hotspotsNum + "' class='hotspotsSqure' style='left:" + rectHotspotsX + "px;top:" + rectHotspotsY + "px;width:" + rectHotspotsW + "px;height:" + rectHotspotsH + "px'></div>");
-
-                    $scope.showAddHotspots = true;
-                    $scope.addHotspotsFlag = true;
-                    $scope.$apply();
+            $('#drawing-f').on('mousedown', function(evt){
+                if ($scope.addHotspotsFlag) {
+                    $('#hotspotsMarker' + hotspotsNum).remove();
                 }
+
+                evt = window.event || evt;
+                rectHotspotsX = evt.pageX - 64;
+                rectHotspotsY = evt.pageY - 176;
+            });
+
+            $('#drawing-f').on('mouseup', function(evt){
+                evt = window.event || evt;
+                var endX = evt.pageX - 64;
+                var endY = evt.pageY - 176;
+                rectHotspotsW = endX - rectHotspotsX;
+                rectHotspotsH = endY - rectHotspotsY;
+                if (evt.pageX > 400) {
+                    $('#addHotspots').css('left', evt.pageX - rectHotspotsW - 400);
+                } else {
+                    $('#addHotspots').css('left', evt.pageX + 10);
+                }
+                $('#addHotspots').css('top', evt.pageY - rectHotspotsH);
+
+                $('.projectBuild-content-drawing').append("<div id='hotspotsMarker" + hotspotsNum + "' class='hotspotsSqure' style='left:" + rectHotspotsX + "px;top:" + rectHotspotsY + "px;width:" + rectHotspotsW + "px;height:" + rectHotspotsH + "px'></div>");
+
+                $scope.showAddHotspots = true;
+                $scope.addHotspotsFlag = true;
+                $scope.$apply();
             });
         };
 
@@ -380,6 +387,19 @@ angular.module('conojoApp')
         });
 
         $scope.openTools = function () {
+            if ($scope.addCommentFlag) {
+                $('#commentMarker' + commentNum).remove();
+                $scope.addCommentFlag = false;
+            }
+
+            if ($scope.addHotspotsFlag) {
+                $('#hotspotsMarker' + hotspotsNum).remove();
+                $scope.addHotspotsFlag = false;
+            }
+
+            $scope.showAddHotspots = false;
+            $scope.showComments = false;
+
             $scope.showCommentBlue = true;
             $scope.showHotspotsBlue = true;
             $scope.showBrushBlue = false;

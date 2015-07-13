@@ -54,7 +54,7 @@ angular.module('conojoApp')
 
         $scope.addNewComment = function(){
             $http({
-                url: 'http://conojoapp.scmreview.com/rest/messages',
+                url: ENV.API_ENDPOINT + 'messages',
                 method: 'POST',
                 data: $.param({content:$scope.messageContent,project_uuid:$scope.activeProjectUuid}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -75,7 +75,7 @@ angular.module('conojoApp')
 
         $scope.replyMessage = function(){
             $http({
-                url: 'http://conojoapp.scmreview.com/rest/messages/'+$scope.replyMessageUuid,
+                url: ENV.API_ENDPOINT + 'messages/'+$scope.replyMessageUuid,
                 method: 'POST',
                 data: $.param({content:$scope.replyContent,project_uuid:$scope.activeProjectUuid,parent_uuid:$scope.replyMessageUuid}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -96,7 +96,7 @@ angular.module('conojoApp')
 
         $scope.deleteMessage = function(){
             $http({
-                url: 'http://conojoapp.scmreview.com/rest/messages/message/'+$scope.deleteMessageUuid,
+                url: ENV.API_ENDPOINT + 'messages/message/'+$scope.deleteMessageUuid,
                 method: 'DELETE',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function() {
