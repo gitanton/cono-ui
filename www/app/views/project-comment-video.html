@@ -33,16 +33,34 @@
             <div class="projectComment-content-body">
                 <div class="projectComment-content-items col-md-12">
                     <div class="col-md-12 projectComment-content-item" ng-repeat="message in messages">
-                        <div class="projectComment-content-img col-md-2"><img src="images/Dawkins-l.png"></div>
-                        <div class="projectComment-content-name col-md-2">R.Dawinks</div>
-                        <div class="projectComment-content-message col-md-6">
-                            <div class="col-md-12">{{message.content}}</div>
+                        <div class="projectComment-content-item-first row">
+                            <div class="projectComment-content-img col-md-2"><img src="images/Dawkins-l.png"></div>
+                            <div class="projectComment-content-name col-md-2">R.Dawinks</div>
+                            <div class="projectComment-content-message col-md-6">
+                                <div class="col-md-12">{{message.content}}</div>
+                            </div>
+                            <div class="projectComment-content-operate col-md-2">
+                                <div class="col-md-12" style="text-align: right;">{{message.created | limitTo:-8}}</div>
+                                <div class="col-md-12" style="text-align: right;margin-top: 80px;cursor: pointer">
+                                    <div class="col-md-6" ng-click="replyMessageModal('{{message.uuid}}')"><span>Reply</span><img src="images/reply-icon.png"> </div>
+                                    <div class="col-md-6" ng-click="deleteMessageModal('{{message.uuid}}')"><span>Delete</span><img src="images/delete-blue-icon.png"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="projectComment-content-operate col-md-2">
-                            <div class="col-md-12" style="text-align: right;">{{message.created | limitTo:-8}}</div>
-                            <div class="col-md-12" style="text-align: right;margin-top: 80px;cursor: pointer">
-                                <div class="col-md-6" ng-click="replyMessageModal('{{message.uuid}}')">Reply<img src="images/reply-icon.png"> </div>
-                                <div class="col-md-6" ng-click="deleteMessageModal('{{message.uuid}}')"> Delete<img src="images/delete-blue-icon.png"></div>
+                        <div class="projectComment-content-item-reply row">
+                            <div class="projectComment-content-itemReply col-md-12" ng-repeat="replies in message">
+                                <div class="projectComment-content-img col-md-2"><img src="images/Dawkins-l.png"></div>
+                                <div class="projectComment-content-name col-md-2">R.Dawinks</div>
+                                <div class="projectComment-content-message col-md-6">
+                                    <div class="col-md-12">{{message.content}}</div>
+                                </div>
+                                <div class="projectComment-content-operate col-md-2">
+                                    <div class="col-md-12" style="text-align: right;">10 mins ago</div>
+                                    <div class="col-md-12" style="text-align: right;margin-top: 80px;cursor: pointer">
+                                        <div class="col-md-6" ng-click="replyMessageModal('{{message.uuid}}','{{message.project_uuid}}')"><span>Reply</span><img src="images/reply-icon.png"> </div>
+                                        <div class="col-md-6" ng-click="deleteMessageModal('{{message.uuid}}')"><span>Delete</span><img src="images/delete-blue-icon.png"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

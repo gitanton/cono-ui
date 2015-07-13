@@ -1147,15 +1147,16 @@ ul li {
         .message-content-items {
             padding: 10px 40px 10px 84px;
             height: 478px;
-            .message-content-item {
+            .message-content-item-first {
                 border-bottom: 1px solid #e5e5e5;
-                height: 132px;
             }
             .message-content-item-reply {
                 border-bottom: 1px solid #e5e5e5;
-                height: 132px;
                 background: #faf9da;
-                padding-left: 30px;
+                margin-left: 30px;
+                .message-content-itemReply{
+                    border-bottom: 1px solid #e5e5e5;
+                }
             }
         }
         .message-content-img {
@@ -1170,7 +1171,9 @@ ul li {
             padding: 10px;
         }
         .message-content-operate {
-            width: 120px;
+            width: 170px;
+            img{margin-right:15px;}
+            span{color:#0378ae;margin-right:10px;}
         }
     }
 }
@@ -2796,22 +2799,30 @@ ul li {
             overflow-y: auto;
             .projectComment-content-items {
                 padding-left: 20px;
-                .projectComment-content-item {
+                .projectComment-content-item-first {
                     border-bottom: 1px solid #e5e5e5;
-                    height: 132px;
-                    .projectComment-content-img {
-                        width: 89px;
-                        padding: 20px 10px 20px 15px;
-                    }
-                    .projectComment-content-name {
-                        padding: 40px 10px 40px 0px;
-                        color: #258ab9;
-                    }
-                    .projectComment-content-message {
-                        padding: 10px;
-                    }
-                    .projectComment-content-operate {
-                        width: 120px;
+                }
+                .projectComment-content-img {
+                    width: 89px;
+                    padding: 20px 10px 20px 15px;
+                }
+                .projectComment-content-name {
+                    padding: 40px 10px 40px 0px;
+                    color: #258ab9;
+                }
+                .projectComment-content-message {
+                    padding: 10px;
+                }
+                .projectComment-content-operate {
+                    width: 170px;
+                    img{margin-left:15px;}
+                    span{color:#0378ae;margin-left:10px;}
+                }
+                .projectComment-content-item-reply {
+                    background: #faf9da;
+                    margin-left: 30px;
+                    .projectComment-content-itemReply{
+                        border-bottom: 1px solid #e5e5e5;
                     }
                 }
             }
