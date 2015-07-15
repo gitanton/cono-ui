@@ -20,6 +20,16 @@ angular.module('conojoApp')
             }).success(function (data) {
                 $scope.updateProjectTitle = data.name;
                 $scope.updateProjectTypeid = data.type_id;
+                $scope.projectMembers = data.users;
+            });
+
+            $http({
+                url: ENV.API_ENDPOINT + 'messages',
+                method: 'GET',
+                data: $.param({project_uuid:$scope.activeProjectUuid}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(data) {
+                $scope.messages = data;
             });
         };
 
@@ -39,6 +49,8 @@ angular.module('conojoApp')
         };
 
         $scope.openAddComment = function(){
+            $scope.messageContent = '';
+            $scope.recipients = '';
             $('#addNewMessage').modal('toggle');
         };
 
@@ -46,7 +58,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'messages',
                 method: 'POST',
-                data: $.param({content:$scope.messageContent,project_uuid:$scope.activeProjectUuid}),
+                data: $.param({content:$scope.messageContent,project_uuid:$scope.activeProjectUuid,recipients: $scope.recipients.join(',')}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function() {
                 $scope.init();
@@ -59,6 +71,7 @@ angular.module('conojoApp')
         };
 
         $scope.replyMessageModal = function(uuid){
+            $scope.replyContent = '';
             $('#replymessage').modal('toggle');
             $scope.replyMessageUuid = uuid;
         };

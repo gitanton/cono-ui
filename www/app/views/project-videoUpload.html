@@ -58,12 +58,12 @@
         <div class="col-md-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
         <form name="addPeopleToProject">
             <div class="col-md-12 teammember-add-body">
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <select name="teammembertype" class="form-control teammember-add-select">
                         <option value=0>Select Person</option>
                         <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
                     </select>
-                </div>
+                </div> -->
                 <div class="form-group has-email">
                     <input type="text" name="teammemberemail" ng-model="memberEmail" class="form-control teammember-add-email" placeholder="Enter an email" />
                     <img class="teammember-add-emailicon" src="images/mail-icon.png">
@@ -93,12 +93,10 @@
                 <div class="form-group">
                     <input type="text" name="meetingDateTime" ng-model="meetingDateTime" class="form-control newMeeting-time" placeholder="Choose date & time" />
                 </div>
-                <div class="newMeeting-assignContainer form-group">
-                    <div class="newMeeting-assign" ng-click="showSelectMember($event)">Assign to</div>
-                    <select multiple="multiple" name="meetingGroup" ng-model="meetingGroup" class="form-control newMeeting-group">
-                        <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
-                    </select>
-                </div>
+                <p style="text-align:left;">Choose recipients</p>
+                <select multiple="multiple" name="recipients" ng-model="recipients" class="form-control" style="margin-bottom:20px;height:60px;">
+                    <option ng-repeat="user in projectMembers" value={{user.uuid}}>{{user.fullname}}</option>
+                </select>
             </div>
             <div class="col-md-12 newMeeting-add-button">
                 <button class="btn btn-lg" ng-click="addNewMeeting()">Create Meeting</button>

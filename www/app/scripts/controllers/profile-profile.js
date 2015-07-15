@@ -59,6 +59,7 @@ angular.module('conojoApp')
         };
 
         $scope.openResetPassword = function () {
+            $scope.resetEmail = '';
             $('#resetPassword').modal('toggle');
         };
 

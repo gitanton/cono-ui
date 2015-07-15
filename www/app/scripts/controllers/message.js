@@ -22,7 +22,28 @@ angular.module('conojoApp')
             });
         };
 
+        // $scope.openAddComment = function(){
+        //     $('#addNewMessage').modal('toggle');
+        // };
+
+        // $scope.addNewComment = function(){
+        //     $http({
+        //         url: ENV.API_ENDPOINT + 'messages',
+        //         method: 'POST',
+        //         data: $.param({content:$scope.messageContent,project_uuid:$scope.activeProjectUuid}),
+        //         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        //     }).success(function() {
+        //         $scope.init();
+        //         $('#addNewMessage').modal('hide');
+        //     }).error(function(data){
+        //         $('#addNewMessage').modal('hide');
+        //         $('.reset-note').html(data.message);
+        //         $('#statusNotice').modal('toggle');
+        //     });
+        // };
+
         $scope.replyMessageModal = function(muuid,puuid){
+            $scope.messagecontent = '';
             $('#replymessage').modal('toggle');
             $scope.replyMessageUuid = muuid;
             $scope.replyProjectUuid = puuid;

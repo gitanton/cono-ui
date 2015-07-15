@@ -1,3 +1,4 @@
+
 'use strict';
 
 /**
@@ -55,7 +56,7 @@ angular
                 templateUrl: 'views/team.html',
                 controller: 'TeamCtrl'
             })
-            .when('/userpage/:tuuid', {
+            .when('/userpage/:ouuid/:tuuid', {
                 templateUrl: 'views/userpage.html',
                 controller: 'UserpageCtrl'
             })
@@ -139,7 +140,7 @@ angular
                 templateUrl: 'views/project-activity-template.html',
                 controller: 'ProjectActivityTemplateCtrl'
             })
-            .when('/project-comment-template', {
+            .when('/project-comment-template/:uuid', {
                 templateUrl: 'views/project-comment-template.html',
                 controller: 'ProjectCommentTemplateCtrl'
             })

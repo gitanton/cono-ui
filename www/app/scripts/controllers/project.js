@@ -26,6 +26,8 @@ angular.module('conojoApp')
         };
 
         $scope.newProject = function () {
+            $scope.projecttype = 0;
+            $scope.projecttitle = '';
             $('#newproject').modal('toggle');
         };
 
@@ -62,8 +64,6 @@ angular.module('conojoApp')
         };
 
         $scope.myProject = function () {
-            $scope.projecttitle = '';
-            $scope.projecttype = 0;
             $http({
                 url: ENV.API_ENDPOINT + 'projects',
                 method: 'POST',

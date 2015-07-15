@@ -48,8 +48,8 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'users/notifications',
                 method: 'POST',
-                data:$.param({notifications: $scope.notification}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                data: $.param({notifications: JSON.stringify($scope.notification)})
             });
         };
 

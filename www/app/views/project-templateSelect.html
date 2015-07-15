@@ -3,18 +3,25 @@
     <div ng-include="'views/siderbar.html'"></div>
     <div class="templates-container">
         <div class="templates-header">
-            <div class="templates-header-name col-md-10">
-                <span>Select Your Templates</span>
+            <div class="templates-header-name col-md-7">
+                <span><img src="images/back-icon.png" ng-click="goBackToBuild()" title="Back to Build">Select Your Templates</span>
             </div>
-            <div class="templates-header-button col-md-2">
-                <span>Filter Templates<img src="images/select-project-icon.png"></span>
+            <div class="templates-header-button col-md-3">
+                <button class="btn btn-lg" ng-click="uploadSelectTemplate()">Upload your selected template</button>
+            </div>
+            <div class="templates-header-filter col-md-2">
+                <span class="defaultTemplate">Filter Templates</span>
+                <img src="images/select-project-icon.png" ng-click="openTemplates($event)">
+                <ul class="templates">
+                    <li ng-click="selectTemplate('{{template.name}}',$index)" ng-repeat="template in templates">{{templates.name}}</li>
+                </ul>
             </div>
         </div>
         <div class="templates-content">
             <div class="templates-content-body">
                 <div class="templates-content-unselect col-md-6" ng-repeat="template in templates">
-                    <div class="templates-content-template-icon" ng-click="selectTemplate('{{template.url}}')">
-                        <img src='{{template.url}}' style="width:268px;height:177px;" ng-click="selectTemplate()">
+                    <div class="templates-content-template-icon" ng-click="selectTemplate('{{template.url}}',$event,$index)">
+                        <img src='{{template.url}}' style="width:268px;height:177px;">
                         <img src="images/template-select-icon.png" class="templates-content-template-select">
                     </div>
                     <div class="templates-content-template-name">{{template.name}}</div>

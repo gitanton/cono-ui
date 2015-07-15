@@ -247,6 +247,7 @@ angular.module('conojoApp')
         };
 
         $scope.openAddProjectMember = function () {
+            $scope.memberEmail = '';
             $('#addPeopleToProject').modal('toggle');
         };
 
@@ -257,6 +258,7 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.activeProjectUuid, email: $scope.memberEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
+                $scope.init();
                 $('#addPeopleToProject').modal('hide');
             }).error(function(data){
                 $('#addPeopleToProject').modal('hide');
@@ -266,6 +268,10 @@ angular.module('conojoApp')
         };
 
         $scope.openNewMeeting = function () {
+            $scope.meetingMessage = '';
+            $scope.meetingName = '';
+            $scope.meetingDateTime = '';
+            $scope.recipients = '';
             $('#newMeeting').modal('toggle');
         };
 
@@ -273,7 +279,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'meetings',
                 method: 'POST',
-                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(' ')[0], time: $scope.meetingDateTime.split(' ')[1], attendees: $scope.meetingGroup.join(',')}),
+                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(' ')[0], time: $scope.meetingDateTime.split(' ')[1], attendees: $scope.recipients.join(',')}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $scope.init();
@@ -287,18 +293,6 @@ angular.module('conojoApp')
 
         $('.newMeeting-time').datetimepicker({
             dateFormat: 'yy-mm-dd'
-        });
-
-        $scope.showSelectMember = function (event) {
-            $(event.target).parent().find('.newMeeting-group').show();
-            $(document).on('click', function () {
-                $(event.target).parent().find('.newMeeting-group').hide();
-            });
-            event.stopPropagation();
-        };
-
-        $('.newMeeting-group').on('click', function (event) {
-            event.stopPropagation();
         });
 
         $scope.openAddVideo = function () {
@@ -390,6 +384,9 @@ angular.module('conojoApp')
 
                 $('.projectScreenVideo-content-video').append("<div id='commentMarker" + commentNum + "' class='commentSqure' style='left:" + rectCommentX + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
 
+                $scope.commentContent = '';
+                $scope.commentRecipients = '';
+
                 $scope.addCommentFlag = true;
                 $scope.showComment = true;
                 $scope.$apply();
@@ -401,7 +398,7 @@ angular.module('conojoApp')
                 //post the comment's content,left,top and  marker.
                 url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid + '/comments',
                 method: 'POST',
-                data: $.param({video_uuid: $scope.activeVideoProjectUuid, content: $scope.commentContent, time: video[0].currentTime, begin_x: rectCommentX, begin_y: rectCommentY, end_x: 25, end_y: 25, left_x: 100 * video[0].currentTime / video[0].duration + '%'}),
+                data: $.param({video_uuid: $scope.activeVideoProjectUuid, content: $scope.commentContent,is_task: $scope.isTask,assignee_uuid: $scope.commentRecipients.join(','), time: video[0].currentTime, begin_x: rectCommentX, begin_y: rectCommentY, end_x: 25, end_y: 25, left_x: 100 * video[0].currentTime / video[0].duration + '%'}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
                 //update the commentNum

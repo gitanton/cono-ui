@@ -38,16 +38,16 @@ angular.module('conojoApp')
             $(event.target).hide();
         };
 
-        $scope.goToEdit = function (uuid) {
-            var url = '/userpage/' + uuid;
+        $scope.goToEdit = function (ouuid,tuuid) {
+            var url = '/userpage/' + ouuid + tuuid;
             $location.path(url);
         };
 
-        $scope.selectTeam = function(val){
+        $scope.selectTeam = function(val,index){
             $('.teams').hide();
             $('.defaultTeam').html(val);
             $('.team-content-offset').hide();
-            // $('.team-content-offset').eq(index).show();
+            $('.team-content-offset').eq(index).show();
         };
 
         $scope.openTeams = function(evt){

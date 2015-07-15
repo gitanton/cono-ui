@@ -35,6 +35,7 @@ angular.module('conojoApp')
         };
 
         $scope.openUpdateProject = function () {
+            $scope.memberEmail = '';
             $('#updateproject').modal('toggle');
         };
 
@@ -60,6 +61,7 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.activeProjectUuid, email: $scope.memberEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
+                $scope.init();
                 $('#addPeopleToProject').modal('hide');
             }).error(function(data){
                 $('#addPeopleToProject').modal('hide');
@@ -69,6 +71,10 @@ angular.module('conojoApp')
         };
 
         $scope.openNewMeeting = function () {
+            $scope.meetingMessage = '';
+            $scope.meetingName = '';
+            $scope.meetingDateTime = '';
+            $scope.recipients = '';
             $('#newMeeting').modal('toggle');
         };
 
@@ -88,7 +94,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'meetings',
                 method: 'POST',
-                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(' ')[0], time: $scope.meetingDateTime.split(' ')[1], attendees: $scope.meetingGroup}),
+                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(' ')[0], time: $scope.meetingDateTime.split(' ')[1], attendees: $scope.recipients.join(',')}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $scope.init();

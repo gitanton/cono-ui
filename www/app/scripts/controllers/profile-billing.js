@@ -56,7 +56,7 @@ angular.module('conojoApp')
         };
 
         $scope.payForPlan = function(){
-            var token = '';
+            $scope.token = '';
             Stripe.setPublishableKey('pk_test_qfSibHadzKvpVKdrPoBwHbGN');
             Stripe.card.createToken({
                 number: $scope.number,
@@ -68,21 +68,23 @@ angular.module('conojoApp')
                     $('.reset-note').html(response.error.message);
                     $('#statusNotice').modal('toggle');
                 } else {
-                    token = response.id;
-                    console.log(token);
-                }
-            });
+                    $scope.token = response.id;
+                    console.log($scope.token);
 
-            $http({
-                url: ENV.API_ENDPOINT + 'users/subscription',
-                method: 'POST',
-                data:$.param({token: token, plan_id: $scope.newPlanId, additional_users: $scope.newPlanMember}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function(data){
-                console.log(data);
-            }).error(function(data){
-                $('.reset-note').html(data.message);
-                $('#statusNotice').modal('toggle');
+                    $http({
+                        url: ENV.API_ENDPOINT + 'users/subscription',
+                        method: 'POST',
+                        data:$.param({token: $scope.token, plan_id: $scope.newPlanId, additional_users: $scope.newPlanMember}),
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    }).success(function(data){
+                        $scope.init();
+                        $('.reset-note').html(data.message);
+                        $('#statusNotice').modal('toggle');
+                    }).error(function(data){
+                        $('.reset-note').html(data.message);
+                        $('#statusNotice').modal('toggle');
+                    });
+                }
             });
         };
 

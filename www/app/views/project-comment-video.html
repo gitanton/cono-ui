@@ -48,17 +48,17 @@
                             </div>
                         </div>
                         <div class="projectComment-content-item-reply row">
-                            <div class="projectComment-content-itemReply col-md-12" ng-repeat="replies in message">
+                            <div class="projectComment-content-itemReply col-md-12" ng-repeat="reply in message.replies">
                                 <div class="projectComment-content-img col-md-2"><img src="images/Dawkins-l.png"></div>
                                 <div class="projectComment-content-name col-md-2">R.Dawinks</div>
                                 <div class="projectComment-content-message col-md-6">
-                                    <div class="col-md-12">{{message.content}}</div>
+                                    <div class="col-md-12">{{reply.content}}</div>
                                 </div>
                                 <div class="projectComment-content-operate col-md-2">
-                                    <div class="col-md-12" style="text-align: right;">10 mins ago</div>
+                                    <div class="col-md-12" style="text-align: right;">{{reply.created | limitTo:-8}}</div>
                                     <div class="col-md-12" style="text-align: right;margin-top: 80px;cursor: pointer">
-                                        <div class="col-md-6" ng-click="replyMessageModal('{{message.uuid}}','{{message.project_uuid}}')"><span>Reply</span><img src="images/reply-icon.png"> </div>
-                                        <div class="col-md-6" ng-click="deleteMessageModal('{{message.uuid}}')"><span>Delete</span><img src="images/delete-blue-icon.png"></div>
+                                        <div class="col-md-6" ng-click="replyMessageModal('{{reply.uuid}}','{{reply.project_uuid}}')"><span>Reply</span><img src="images/reply-icon.png"> </div>
+                                        <div class="col-md-6" ng-click="deleteMessageModal('{{reply.uuid}}')"><span>Delete</span><img src="images/delete-blue-icon.png"></div>
                                     </div>
                                 </div>
                             </div>
@@ -95,13 +95,17 @@
         <div class="col-md-2 newmessage-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
         <form name="createnewmessage">
             <div class="col-md-12 newmessage-add-body">
-                <div class="form-group has-add">
+                <!-- <div class="form-group has-add">
                     <input type="text" name="newmessageemail" ng-model="memberEmail" class="form-control newmessage-add-email" placeholder="Choose recipients or enter an email" />
                     <img class="newmessage-add-addicon" src="images/add-gray-icon.png">
                 </div>
                 <div class="form-group has-allselected">
                     <label><input type="checkbox"> Send to everyone on the project</label>
-                </div>
+                </div> -->
+                <p style="text-align:left;">Choose recipients</p>
+                <select multiple="multiple" name="recipients" ng-model="recipients" class="form-control" style="margin-bottom:20px;height:60px;s">
+                    <option ng-repeat="user in projectMembers" value={{user.uuid}}>{{user.fullname}}</option>
+                </select>
                 <div class="col-md-12">
                     <textarea name="newmessagecontentl" ng-model="messageContent" class="form-control newmessage-add-message" placeholder="Add Comment"></textarea>
                 </div>

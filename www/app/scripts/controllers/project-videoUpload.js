@@ -54,6 +54,7 @@ angular.module('conojoApp')
         };
 
         $scope.openAddProjectMember = function () {
+            $scope.memberEmail = '';
             $('#addPeopleToProject').modal('toggle');
         };
 
@@ -64,6 +65,7 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.activeProjectUuid, email: $scope.memberEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
+                $scope.init();
                 $('#addPeopleToProject').modal('hide');
             }).error(function(data){
                 $('#addPeopleToProject').modal('hide');
@@ -73,6 +75,10 @@ angular.module('conojoApp')
         };
 
         $scope.openNewMeeting = function () {
+            $scope.meetingMessage = '';
+            $scope.meetingName = '';
+            $scope.meetingDateTime = '';
+            $scope.recipients = '';
             $('#newMeeting').modal('toggle');
         };
 
@@ -80,7 +86,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'meetings',
                 method: 'POST',
-                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(" ")[0], time: $scope.meetingDateTime.split(" ")[1], attendees: $scope.meetingGroup.join(",")}),
+                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(" ")[0], time: $scope.meetingDateTime.split(" ")[1], attendees: $scope.recipients.join(",")}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $scope.init();
@@ -94,18 +100,6 @@ angular.module('conojoApp')
 
         $('.newMeeting-time').datetimepicker({
             dateFormat: 'yy-mm-dd'
-        });
-
-        $scope.showSelectMember = function (event) {
-            $(event.target).parent().find('.newMeeting-group').show();
-            $(document).on('click', function () {
-                $(event.target).parent().find('.newMeeting-group').hide();
-            });
-            event.stopPropagation();
-        };
-
-        $('.newMeeting-group').on('click', function (event) {
-            event.stopPropagation();
         });
 
         $scope.goBackToBuild = function(){

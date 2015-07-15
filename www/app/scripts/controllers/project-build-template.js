@@ -70,8 +70,8 @@ angular.module('conojoApp')
 
                     if(data.hotspots,length > 0){
                         for(var j = 1;j <= data.hotspots.length;j++){
-                            var left = data.comments[j-1].begin_x + $scope.drawLeft;
-                            $('.projectBuild-content-drawing').append("<div id='hotspotsMarker" + j + "' class='hotspotsSqure' style='left:" + left + "px;top:" + data.comments[j-1].begin_y + "px;width:" + data.comments[j-1].end_x + "px;height:" + data.comments[j-1].end_y + "px'></div>");
+                            var left = data.hotspots[j-1].begin_x + $scope.drawLeft;
+                            $('.projectBuild-content-drawing').append("<div data-linkto='" + data.hotspots[j-1].link_to + "' id='hotspotsMarker" + j + "' class='hotspotsSqure' style='left:" + left + "px;top:" + data.hotspots[j-1].begin_y + "px;width:" + data.hotspots[j-1].end_x + "px;height:" + data.hotspots[j-1].end_y + "px'></div>");
                         }
                     }
 
@@ -113,6 +113,7 @@ angular.module('conojoApp')
         };
 
         $scope.openAddProjectMember = function () {
+            $scope.memberEmail = '';
             $('#addPeopleToProject').modal('toggle');
         };
 
@@ -123,25 +124,22 @@ angular.module('conojoApp')
                 data: $.param({uuid: $scope.activeProjectUuid, email: $scope.memberEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
+                $scope.init();
                 $('#addPeopleToProject').modal('hide');
+            }).error(function(data){
+                $('#addPeopleToProject').modal('hide');
+                $('.reset-note').html(data.message);
+                $('#statusNotice').modal('toggle');
             });
         };
 
         $scope.openNewMeeting = function () {
+            $scope.meetingMessage = '';
+            $scope.meetingName = '';
+            $scope.meetingDateTime = '';
+            $scope.recipients = '';
             $('#newMeeting').modal('toggle');
         };
-
-        $scope.showSelectMember = function (event) {
-            $(event.target).parent().find('.newMeeting-group').show();
-            $(document).on('click', function () {
-                $(event.target).parent().find('.newMeeting-group').hide();
-            });
-            event.stopPropagation();
-        };
-
-        $('.newMeeting-group').on('click', function (event) {
-            event.stopPropagation();
-        });
 
         $scope.addNewMeeting = function () {
             $http({
@@ -153,7 +151,7 @@ angular.module('conojoApp')
                     name: $scope.meetingName,
                     date: $scope.meetingDateTime.split(' ')[0],
                     time: $scope.meetingDateTime.split(' ')[1],
-                    attendees: $scope.meetingGroup
+                    attendees: $scope.recipients.join(',')
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
@@ -166,30 +164,18 @@ angular.module('conojoApp')
             dateFormat: 'yy-mm-dd'
         });
 
-        $scope.showSelectMemberC = function (event) {
-            $(event.target).parent().find('.comment-group').show();
-            $(document).on('click', function () {
-                $(event.target).parent().find('.comment-group').hide();
-            });
-            event.stopPropagation();
-        };
-
-        $('comment-group').on('click', function (event) {
-            event.stopPropagation();
-        });
-
         $scope.toScreen = function () {
-            var url = '/project-screen/' + $scope.activeProjectUuid;
+            var url = '/project-screen-template/' + $scope.activeProjectUuid;
             $location.path(url);
         };
 
         $scope.toActivity = function () {
-            var url = '/project-activity/' + $scope.activeProjectUuid;
+            var url = '/project-activity-template/' + $scope.activeProjectUuid;
             $location.path(url);
         };
 
         $scope.toComment = function () {
-            var url = '/project-comment/' + $scope.activeProjectUuid;
+            var url = '/project-comment-template/' + $scope.activeProjectUuid;
             $location.path(url);
         };
 
@@ -237,6 +223,13 @@ angular.module('conojoApp')
         var rectCommentY = 0;
 
         $scope.openComments = function () {
+            if($scope.activeScreenUuid === 'new'){
+                $scope.errorMessage = 'You have noe checked the screen. So you should add screen first.';
+                $('.reset-note').html($scope.errorMessage);
+                $('#statusNotice').modal('toggle');
+                return false;
+            }
+
             $('#drawing-f').off();
             if ($scope.addHotspotsFlag) {
                 $('#hotspotsMarker' + hotspotsNum).remove();
@@ -272,6 +265,9 @@ angular.module('conojoApp')
 
                 $('.projectBuild-content-drawing').append("<div id='commentMarker" + commentNum + "' class='commentSqure' style='left:" + rectCommentX + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
 
+                $scope.commentContent = '';
+                $scope.commentRecipients = '';
+
                 $scope.addCommentFlag = true;
                 $scope.showComments = true;
                 $scope.$apply();
@@ -283,7 +279,7 @@ angular.module('conojoApp')
                 //post the comment's content,left,top and  marker.
                 url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments',
                 method: 'POST',
-                data: $.param({screen_uuid: $scope.activeScreenUuid, content: $scope.commentContent, is_task: $scope.isTask, marker: commentNum, assignee_uuid: '', begin_x: rectCommentX, begin_y: rectCommentY}),
+                data: $.param({screen_uuid: $scope.activeScreenUuid, content: $scope.commentContent, is_task: $scope.isTask, marker: commentNum, assignee_uuid: $scope.commentRecipients.join(','), begin_x: rectCommentX, begin_y: rectCommentY}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 //update the commentNum
@@ -312,6 +308,13 @@ angular.module('conojoApp')
         var rectHotspotsH = 0;
 
         $scope.openHotspots = function () {
+            if($scope.activeScreenUuid === 'new'){
+                $scope.errorMessage = 'You have noe checked the screen. So you should add screen first.';
+                $('.reset-note').html($scope.errorMessage);
+                $('#statusNotice').modal('toggle');
+                return false;
+            }
+
             $('#drawing-f').off();
             if ($scope.addCommentFlag) {
                 $('#commentMarker' + commentNum).remove();
@@ -352,6 +355,8 @@ angular.module('conojoApp')
 
                 $('.projectBuild-content-drawing').append("<div id='hotspotsMarker" + hotspotsNum + "' class='hotspotsSqure' style='left:" + rectHotspotsX + "px;top:" + rectHotspotsY + "px;width:" + rectHotspotsW + "px;height:" + rectHotspotsH + "px'></div>");
 
+                $scope.hotspotsLinkTo = '';
+
                 $scope.showAddHotspots = true;
                 $scope.addHotspotsFlag = true;
                 $scope.$apply();
@@ -384,9 +389,17 @@ angular.module('conojoApp')
 
         $(document).on('click','.hotspotsSqure',function(){
             //link to some position
+            $location.path('/project-build/' + $scope.activeProjectUuid + '/' + $(this).data('linkto'));
         });
 
         $scope.openTools = function () {
+            if($scope.activeScreenUuid === 'new'){
+                $scope.errorMessage = 'You have noe checked the screen. So you should add screen first.';
+                $('.reset-note').html($scope.errorMessage);
+                $('#statusNotice').modal('toggle');
+                return false;
+            }
+
             if ($scope.addCommentFlag) {
                 $('#commentMarker' + commentNum).remove();
                 $scope.addCommentFlag = false;
