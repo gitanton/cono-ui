@@ -4,12 +4,12 @@
     <div class="team-container">
         <div class="team-header">
             <div class="team-header-account">
-                <div class="col-md-10 team-header-userName">{{currentUser}}</div>
-                <div class="col-md-2 team-header-select">
+                <div class="col-md-9 team-header-userName">{{currentUser}}</div>
+                <div class="col-md-3 team-header-select">
                     <span class="defaultTeam">Select Teams</span>
                     <img src="images/select-project-icon.png" ng-click="openTeams($event)">
                     <ul class="teams">
-                        <li ng-click="selectTeam('{{team.name}}',$index)" ng-repeat="team in teams">{{team.name}}</li>
+                        <li ng-click="selectTeam('{{team.name}}','{{team.uuid}}')" ng-repeat="team in teams">{{team.name}}</li>
                     </ul>
                 </div>
             </div>

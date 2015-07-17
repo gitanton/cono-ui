@@ -13,7 +13,7 @@
                 <span class="defaultTemplate">Filter Templates</span>
                 <img src="images/select-project-icon.png" ng-click="openTemplates($event)">
                 <ul class="templates">
-                    <li ng-click="selectTemplate('{{template.name}}',$index)" ng-repeat="template in templates">{{templates.name}}</li>
+                    <li ng-click="selectTemplate('{{template.name}}',$index)" ng-repeat="template in templates">{{template.name}}</li>
                 </ul>
             </div>
         </div>

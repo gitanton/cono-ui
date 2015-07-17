@@ -39,15 +39,17 @@ angular.module('conojoApp')
         };
 
         $scope.goToEdit = function (ouuid,tuuid) {
-            var url = '/userpage/' + ouuid + tuuid;
+            var url = '/userpage/' + ouuid + '/' + tuuid;
             $location.path(url);
         };
 
-        $scope.selectTeam = function(val,index){
-            $('.teams').hide();
-            $('.defaultTeam').html(val);
-            $('.team-content-offset').hide();
-            $('.team-content-offset').eq(index).show();
+        $scope.selectTeam = function(val,uuid){
+            $http({
+                url: ENV.API_ENDPOINT + 'teams/team/' + uuid,
+                method: 'GET'
+            }).success(function (data) {
+                $scope.teams = data;
+            });
         };
 
         $scope.openTeams = function(evt){
