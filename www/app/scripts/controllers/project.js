@@ -91,7 +91,7 @@ angular.module('conojoApp')
                     method: 'GET',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function (data) {
-                    if(data.length >= 0){
+                    if(data.length > 0){
                         $location.path('/project-build/' + uuid + '/' + data[0].uuid);
                     }else{
                         $location.path('/project-screenUpload/' + uuid);
@@ -103,7 +103,7 @@ angular.module('conojoApp')
                     method: 'GET',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function (data) {
-                    if(data.length >= 0){
+                    if(data.length > 0){
                         $location.path('/project-videoPlay/' + uuid + '/' + data[0].uuid);
                     }else{
                         $location.path('/project-videoUpload/' + uuid);
@@ -115,7 +115,7 @@ angular.module('conojoApp')
                     method: 'GET',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function (data) {
-                    if(data.length >= 0){
+                    if(data.length > 0){
                         $location.path('/project-build-template/' + uuid + '/' + data[0].uuid);
                     }else{
                         $location.path('/project-templateSelect/' + uuid);
