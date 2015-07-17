@@ -102,8 +102,8 @@ angular.module('conojoApp')
             dateFormat: 'yy-mm-dd'
         });
 
-        $scope.goBackToBuild = function(){
-            var url = '/project-videoPlay/' + $scope.activeProjectUuid + '/new';
+        $scope.goBack = function(){
+            var url = '/project';
             $location.path(url);
         };
 

@@ -37,7 +37,6 @@ angular.module('conojoApp')
                 // },
                 onSelect: function () {
                     $('#meetingDetail').modal('toggle');
-                    $scope.meetingDetails = true;
                 }
             });
             $('#datetimepicker').show();

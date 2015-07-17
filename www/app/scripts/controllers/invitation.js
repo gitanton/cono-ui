@@ -9,7 +9,7 @@
  */
 angular.module('conojoApp')
     .controller('InvitationCtrl', function ($scope, $http, $location, $routeParams, ENV) {
-        $scope.inviteMarginTop = ($(window).height() - 587) / 2;
+        $scope.inviteMarginTop = ($(window).height() - 610) / 2;
 
         $('.invitation-container').css('height', $(window).height());
         $('.invitation-container').css('padding-top', $scope.inviteMarginTop);

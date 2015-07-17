@@ -248,7 +248,7 @@ ul li {
         width: 227px;
     }
     .login-form {
-        height: 283px;
+        height: 300px;
         width: 390px;
         margin-left: auto;
         margin-right: auto;
@@ -328,7 +328,7 @@ ul li {
         width: 227px;
     }
     .register-form {
-        height: 416px;
+        height: 430px;
         width: 420px;
         margin-left: auto;
         margin-right: auto;
@@ -354,26 +354,26 @@ ul li {
         }
         .register-username {
             margin-bottom: 7px;
-            height: 44px;
+            height: 40px;
             border: 0px;
         }
         .register-email {
             margin-bottom: 7px;
-            height: 44px;
+            height: 40px;
             border: 0px;
         }
         .register-timezone {
             margin-bottom: 7px;
-            height: 44px;
+            height: 40px;
             border: 0px;
         }
         .register-password {
             margin-bottom: 7px;
-            height: 44px;
+            height: 40px;
             border: 0px;
         }
         .register-confirmpassword {
-            margin-bottom: 37px;
+            margin-bottom: 7px;
             height: 44px;
             border: 0px;
         }
@@ -641,8 +641,8 @@ ul li {
 .register-footer {
     background: #e3e3e3;
     .register-footer-date-trial {
-        height: 108px;
-        padding: 20px 0px;
+        height: 100px;
+        padding: 15px 0px;
         width: 390px;
         margin-left: auto;
         margin-right: auto;
@@ -1657,8 +1657,6 @@ ul li {
                 opacity: 0.7;
             }
             .projectBuild-content-drawing {
-                width: 1100px;
-                height: 380px;
                 #drawing-b {
                     background: white;
                     cursor: crosshair;
@@ -2096,58 +2094,6 @@ ul li {
     width: 0;
 }
 
-.addHotspotsLeft::before {
-    border-color: transparent #e6e6e6 transparent transparent;
-    border-image: none;
-    border-style: solid;
-    border-width: 10px;
-    content: " ";
-    height: 0;
-    left: -20px;
-    position: absolute;
-    top: 10px;
-    width: 0;
-}
-
-.addHotspotsLeft::after {
-    border-color: transparent #e6e6e6 transparent transparent;
-    border-image: none;
-    border-style: solid;
-    border-width: 10px;
-    content: " ";
-    height: 0;
-    left: -20px;
-    position: absolute;
-    top: 10px;
-    width: 0;
-}
-
-.addHotspotsRight::before {
-    border-color: transparent transparent transparent #e6e6e6;
-    border-image: none;
-    border-style: solid;
-    border-width: 10px;
-    content: " ";
-    height: 0;
-    right: -20px;
-    position: absolute;
-    top: 10px;
-    width: 0;
-}
-
-.addHotspotsRight::after {
-    border-color: transparent transparent transparent #e6e6e6;
-    border-image: none;
-    border-style: solid;
-    border-width: 10px;
-    content: " ";
-    height: 0;
-    right: -20px;
-    position: absolute;
-    top: 10px;
-    width: 0;
-}
-
 #addHotspots {
     position: absolute;
     z-index: 999;
@@ -2195,58 +2141,6 @@ ul li {
             height: 40px;
         }
     }
-}
-
-.addCommentLeft::before {
-    border-color: transparent #e6e6e6 transparent transparent;
-    border-image: none;
-    border-style: solid;
-    border-width: 10px;
-    content: " ";
-    height: 0;
-    left: -20px;
-    position: absolute;
-    top: 10px;
-    width: 0;
-}
-
-.addCommentLeft::after {
-    border-color: transparent #e6e6e6 transparent transparent;
-    border-image: none;
-    border-style: solid;
-    border-width: 10px;
-    content: " ";
-    height: 0;
-    left: -20px;
-    position: absolute;
-    top: 10px;
-    width: 0;
-}
-
-.addCommentRight::before {
-    border-color: transparent transparent transparent #e6e6e6;
-    border-image: none;
-    border-style: solid;
-    border-width: 10px;
-    content: " ";
-    height: 0;
-    right: -20px;
-    position: absolute;
-    top: 10px;
-    width: 0;
-}
-
-.addCommentRight::after {
-    border-color: transparent transparent transparent #e6e6e6;
-    border-image: none;
-    border-style: solid;
-    border-width: 10px;
-    content: " ";
-    height: 0;
-    right: -20px;
-    position: absolute;
-    top: 10px;
-    width: 0;
 }
 
 .addCommentLeft::before {
@@ -3066,11 +2960,11 @@ ul li {
         margin-left: auto;
         margin-right: auto;
         .col-md-5 {
-            padding-bottom: 50px;
+            padding-bottom: 30px;
         }
         .col-md-7 {
             padding-top: 33px;
-            padding-bottom: 50px;
+            padding-bottom: 30px;
         }
         .invitation-warn {
             position: absolute;
@@ -3083,7 +2977,7 @@ ul li {
         margin-left: auto;
         margin-right: auto;
         .login-form {
-            height: 283px;
+            height: 300px;
             width: 390px;
             padding: 33px;
             background: #e3e3e3;
@@ -3121,7 +3015,7 @@ ul li {
             }
         }
         .register-form {
-            height: 386px;
+            height: 450px;
             width: 420px;
             padding: 15px 33px;
             background: #e3e3e3;
@@ -3902,11 +3796,11 @@ ul li {
             .projectScreenVideo-content-video {
                 text-align: center;
                 #videoBody {
-                    height: 390px;
+                    height: 412px;
                 }
                 #videoDrawing {
                     position: absolute;
-                    height: 390px;
+                    height: 412px;
                     top: 0px;
                     left: 0px;
                     cursor: crosshair;

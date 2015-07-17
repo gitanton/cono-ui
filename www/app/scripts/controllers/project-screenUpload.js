@@ -113,8 +113,8 @@ angular.module('conojoApp')
             event.stopPropagation();
         });
 
-        $scope.goBackToBuild = function(){
-            var url = '/project-build/' + $scope.activeProjectUuid + '/new';
+        $scope.goBack = function(){
+            var url = '/project';
             $location.path(url);
         };
 

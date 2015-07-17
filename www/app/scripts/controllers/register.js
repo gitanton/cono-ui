@@ -15,7 +15,7 @@ angular.module('conojoApp')
 
         $scope.today = new Date();
         $scope.lastDay = $scope.today.setDate($scope.today.getDate() + 30);
-        $scope.loginPadding = ($(window).height() - 651) / 2;
+        $scope.loginPadding = ($(window).height() - 656) / 2;
 
         $('.register-logo').css('padding-top', $scope.loginPadding);
         $('.register-note').css('padding-bottom', $scope.loginPadding);
