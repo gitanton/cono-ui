@@ -58,7 +58,7 @@ angular.module('conojoApp')
                     };
                 }
 
-                if(data.comments,length > 0){
+                if(data.comments.length > 0){
                     for(var i = 1;i <= data.comments.length;i++){
                         //group the comments
 
@@ -67,7 +67,7 @@ angular.module('conojoApp')
                     }
                 }
 
-                if(data.hotspots,length > 0){
+                if(data.hotspots.length > 0){
                     for(var j = 1;j <= data.hotspots.length;j++){
                         var left = data.hotspots[j-1].begin_x + $scope.drawLeft;
                         $('.projectBuild-content-drawing').append("<div data-linkto='" + data.hotspots[j-1].link_to + "' id='hotspotsMarker" + j + "' class='hotspotsSqure' style='left:" + left + "px;top:" + data.hotspots[j-1].begin_y + "px;width:" + data.hotspots[j-1].end_x + "px;height:" + data.hotspots[j-1].end_y + "px'></div>");

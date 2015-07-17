@@ -53,7 +53,7 @@ angular.module('conojoApp')
                             };
                         }
 
-                        if(data.comments,length > 0){
+                        if(data.comments.length > 0){
                             for(var i = 1;i <= data.comments.length;i++){
                                 //group the comments
 

@@ -60,7 +60,7 @@ angular.module('conojoApp')
 
                 if(data.comments,length > 0){
                     for(var i = 1;i <= data.comments.length;i++){
-                        //group the comments
+                        //group the commentsvar marker = data.comments[i].marker;
 
                         //var left = data.comments[i-1].begin_x + $scope.drawLeft;
                         //$('.projectBuild-content-drawing').append("<div id='commentMarker" + i + "' class='commentSqure' style='left:" + left + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
@@ -95,6 +95,8 @@ angular.module('conojoApp')
             });
             $scope.setPenWidth(0);
         };
+
+        console.log($scope.comments);
 
         $scope.openUpdateProject = function () {
             $('#updateproject').modal('toggle');
