@@ -8,6 +8,7 @@
  */
 angular.module('conojoApp')
     .controller('ProjectBuildCtrl', function ($scope, $http, $location, $routeParams, ENV) {
+        $scope.isTask = 1;
         $scope.CLOCK = null;
         $scope.shapeFill = false;
         $scope.showComments = false;
@@ -47,7 +48,6 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                commentNum = data.comments.length + 1;
                 hotspotsNum = data.hotspots.length + 1;
 
                 if(data.drawings.length > 0){
@@ -58,19 +58,11 @@ angular.module('conojoApp')
                     };
                 }
 
-                if(data.comments,length > 0){
-                    for(var i = 1;i <= data.comments.length;i++){
-                        //group the commentsvar marker = data.comments[i].marker;
-
-                        //var left = data.comments[i-1].begin_x + $scope.drawLeft;
-                        //$('.projectBuild-content-drawing').append("<div id='commentMarker" + i + "' class='commentSqure' style='left:" + left + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
-                    }
-                }
-
-                if(data.hotspots,length > 0){
-                    for(var j = 1;j <= data.hotspots.length;j++){
-                        var left = data.hotspots[j-1].begin_x + $scope.drawLeft;
-                        $('.projectBuild-content-drawing').append("<div data-linkto='" + data.hotspots[j-1].link_to + "' id='hotspotsMarker" + j + "' class='hotspotsSqure' style='left:" + left + "px;top:" + data.hotspots[j-1].begin_y + "px;width:" + data.hotspots[j-1].end_x + "px;height:" + data.hotspots[j-1].end_y + "px'></div>");
+                if(data.hotspots.length > 0){
+                    for(var j = 0;j < data.hotspots.length;j++){
+                        var left = data.hotspots[j].begin_x + $scope.drawLeft;
+                        var currentH = j + 1;
+                        $('.projectBuild-content-drawing').append("<div data-linkto='" + data.hotspots[j].link_to + "' id='hotspotsMarker" + currentH + "' class='hotspotsSqure' style='left:" + left + "px;top:" + data.hotspots[j].begin_y + "px;width:" + data.hotspots[j].end_x + "px;height:" + data.hotspots[j].end_y + "px'></div>");
                     }
                 }
 
@@ -86,6 +78,26 @@ angular.module('conojoApp')
                     }
                 };
             });
+    
+            $http({
+                url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments',
+                method: 'GET',
+                data: $.param({screen_uuid: $scope.activeScreenUuid}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                if(data.length > 0){
+                    for(var i = 0;i < data.length;i++){
+                        //group the comment
+                        var num = data[i].marker;
+                        if(!$scope.comments[num]){
+                            $scope.comments[num] = num;
+                            commentNum = num + 1;
+                            var left = data[i].begin_x + $scope.drawLeft;
+                            $('.projectBuild-content-drawing').append("<div data-comment='" + num + "' id='commentMarker" + num + "' class='commentSqure' style='left:" + left + "px;top:" + data[i].begin_y + "px'>" + num + "</div>");
+                        }
+                    }
+                }
+            });
 
             $('#pickerBrush').farbtastic(function (color) {
                 $scope.setPenColor(color);
@@ -95,8 +107,6 @@ angular.module('conojoApp')
             });
             $scope.setPenWidth(0);
         };
-
-        console.log($scope.comments);
 
         $scope.openUpdateProject = function () {
             $('#updateproject').modal('toggle');
@@ -167,7 +177,8 @@ angular.module('conojoApp')
         };
 
         $('.newMeeting-time').datetimepicker({
-            dateFormat: 'yy-mm-dd'
+            format: 'YYYY-MM-DD HH:mm',
+            useCurrent: false
         });
 
         $scope.toScreen = function () {
@@ -227,6 +238,8 @@ angular.module('conojoApp')
         $scope.addCommentFlag = false;
         var rectCommentX = 0;
         var rectCommentY = 0;
+        var currentCommentLeft = 0;
+        var currentCommentTop = 0;
 
         $scope.openComments = function () {
             $('#drawing-f').off();
@@ -252,6 +265,9 @@ angular.module('conojoApp')
                 evt = window.event || evt;
                 rectCommentX = evt.pageX - 64;
                 rectCommentY = evt.pageY - 176;
+                currentCommentLeft = evt.pageX - this.offsetLeft - 64;
+                currentCommentTop = evt.pageY - this.offsetTop - 176;
+
 
                 if (evt.pageX > 400) {
                     $('#addComment').css('left', evt.pageX - 400);
@@ -262,7 +278,7 @@ angular.module('conojoApp')
                 }
                 $('#addComment').css('top', evt.pageY);
 
-                $('.projectBuild-content-drawing').append("<div id='commentMarker" + commentNum + "' class='commentSqure' style='left:" + rectCommentX + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
+                $('.projectBuild-content-drawing').append("<div data-comment='" + commentNum + "' id='commentMarker" + commentNum + "' class='commentSqure' style='left:" + rectCommentX + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
 
                 $scope.commentContent = '';
                 $scope.commentRecipients = '';
@@ -278,7 +294,7 @@ angular.module('conojoApp')
                 //post the comment's content,left,top and  marker.
                 url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments',
                 method: 'POST',
-                data: $.param({screen_uuid: $scope.activeScreenUuid, content: $scope.commentContent, is_task: $scope.isTask, marker: commentNum, assignee_uuid: $scope.commentRecipients.join(','), begin_x: rectCommentX, begin_y: rectCommentY}),
+                data: $.param({screen_uuid: $scope.activeScreenUuid, content: $scope.commentContent, is_task: $scope.isTask, marker: commentNum, assignee_uuid: $scope.commentRecipients.join(','), begin_x: currentCommentLeft, begin_y: currentCommentTop}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 //update the commentNum
@@ -296,8 +312,28 @@ angular.module('conojoApp')
             }
         };
 
-        $(document).on('click','.commentSqure',function(){
+        $(document).on('click','.commentSqure',function(evt){
             //open add comment and reply comment
+            $scope.currentComments = [];
+            console.log('click comments ' + $(this).data('comment'));
+            $http({
+                url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments/search',
+                method: 'POST',
+                data: $.param({screen_uuid: $scope.activeScreenUuid,filter: JSON.stringify({marker:$(this).data('comment')})}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                $scope.currentComments = data;
+                if (evt.pageX > 400) {
+                    $('#addComment').css('left', evt.pageX - 400);
+                    $scope.addCommentPosition = false;
+                } else {
+                    $('#addComment').css('left', evt.pageX + 40);
+                    $scope.addCommentPosition = true;
+                }
+                $('#addComment').css('top', evt.pageY);
+                $scope.addCommentFlag = true;
+                $scope.showComments = true;
+            });
         });
 
         $scope.addHotspotsFlag = false;
@@ -305,6 +341,8 @@ angular.module('conojoApp')
         var rectHotspotsY = 0;
         var rectHotspotsW = 0;
         var rectHotspotsH = 0;
+        var currentHotspotsLeft = 0;
+        var currentHotspotsTop = 0;
 
         $scope.openHotspots = function () {
             $('#drawing-f').off();
@@ -338,6 +376,8 @@ angular.module('conojoApp')
                 var endY = evt.pageY - 176;
                 rectHotspotsW = endX - rectHotspotsX;
                 rectHotspotsH = endY - rectHotspotsY;
+                currentHotspotsLeft = evt.pageX - this.offsetLeft - rectHotspotsW - 64;
+                currentHotspotsTop = evt.pageY - this.offsetTop - rectHotspotsH - 176;
                 if (evt.pageX - rectHotspotsW > 400) {
                     $('#addHotspots').css('left', evt.pageX - rectHotspotsW - 400);
                     $scope.addHotspotsPosition = false;
@@ -347,7 +387,7 @@ angular.module('conojoApp')
                 }
                 $('#addHotspots').css('top', evt.pageY - rectHotspotsH);
 
-                $('.projectBuild-content-drawing').append("<div id='hotspotsMarker" + hotspotsNum + "' class='hotspotsSqure' style='left:" + rectHotspotsX + "px;top:" + rectHotspotsY + "px;width:" + rectHotspotsW + "px;height:" + rectHotspotsH + "px'></div>");
+                $('.projectBuild-content-drawing').append("<div data-linkto='' id='hotspotsMarker" + hotspotsNum + "' class='hotspotsSqure' style='left:" + rectHotspotsX + "px;top:" + rectHotspotsY + "px;width:" + rectHotspotsW + "px;height:" + rectHotspotsH + "px'></div>");
 
                 $scope.hotspotsLinkTo = '';
 
@@ -362,10 +402,11 @@ angular.module('conojoApp')
                 //post the comment's content,left,top and  marker.
                 url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/hotspots',
                 method: 'POST',
-                data: $.param({screen_uuid: $scope.activeScreenUuid, begin_x: rectCommentX, begin_y: rectCommentY, end_x:rectHotspotsW, end_y:rectHotspotsH,link_to:$scope.hotspotsLinkTo}),
+                data: $.param({screen_uuid: $scope.activeScreenUuid, begin_x: currentHotspotsLeft, begin_y: currentHotspotsTop, end_x:rectHotspotsW, end_y:rectHotspotsH,link_to:$scope.hotspotsLinkTo}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 //update the commentNum
+                $('#hotspotsMarker' + hotspotsNum).data('linkto',$scope.hotspotsLinkTo);
                 hotspotsNum++;
 
                 //save to the Server successfully
@@ -383,8 +424,8 @@ angular.module('conojoApp')
 
         $(document).on('click','.hotspotsSqure',function(){
             //link to some position
-            console.log('click hotspots');
-            $location.path('/project-build/' + $scope.activeProjectUuid + '/' + $(this).data('linkto'));
+            console.log('click hotspots ' + $(this).data('linkto'));
+            // $location.path('/project-build/' + $scope.activeProjectUuid + '/' + $(this).data('linkto'));
         });
 
         $scope.openTools = function () {

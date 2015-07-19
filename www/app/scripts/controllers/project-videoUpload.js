@@ -99,7 +99,8 @@ angular.module('conojoApp')
         };
 
         $('.newMeeting-time').datetimepicker({
-            dateFormat: 'yy-mm-dd'
+            format: 'YYYY-MM-DD HH:mm',
+            useCurrent: false
         });
 
         $scope.goBack = function(){

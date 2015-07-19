@@ -241,12 +241,12 @@
             <div class="col-md-2 comment-add-delicon"><img src="images/close-icon.png" ng-click="hideComments()"></div>
         </div>
         <div class="comment-chat-content col-md-12">
-            <div class="col-md-12" ng-repeat="comment in comments">
+            <div class="col-md-12" ng-repeat="comment in currentComments">
                 <div class="col-md-3"><img src="images/chat-person-icon.png"></div>
                 <div class="col-md-9">
                     <div class="col-md-8">{{comment.fullname}}</div>
                     <div class="col-md-4">{{comment.created | limitTo:-8}}</div>
-                    <div class="col-md-12">{{comment.comment}}</div>
+                    <div class="col-md-12">{{comment.content}}</div>
                 </div>
             </div>
         </div>
@@ -264,7 +264,7 @@
                     <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
                 </select> -->
             </div>
-            <div class="col-md-12 comment-assignTask"><input type="checkbox" value="1" name="assignTask">Assign this as a task</div>
+            <div class="col-md-12 comment-assignTask"><input type="checkbox" name="assignTask" ng-checked="isTask" ng-true-value="1" ng-false-value="2">Assign this as a task</div>
             <div class="col-md-12 comment-add-button">
                 <button class="btn btn-lg comment-buttoncancel" type="reset" ng-click="hideComments()">Cancel</button>
                 <button class="btn btn-lg comment-buttonsubmit" type="submit" ng-click="saveComments()">Save</button>

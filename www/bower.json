@@ -15,7 +15,8 @@
     "jquery-ui": "~1.11.2",
     "jqueryui-timepicker-addon": "~1.5.0",
     "dropzone": "~4.0.0",
-    "ng-file-upload": "~5.0.9"
+    "ng-file-upload": "~5.0.9",
+    "eonasdan-bootstrap-datetimepicker": "4.14.30"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",
