@@ -15,8 +15,7 @@ angular.module('conojoApp')
         $scope.init = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'messages/',
-                method: 'GET',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                method: 'GET'
             }).success(function(data) {
                 $scope.messages = data;
             });

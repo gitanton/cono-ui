@@ -122,13 +122,22 @@ angular.module('conojoApp')
             event.stopPropagation();
         });
 
+        $scope.toBuildFirst = function () {
+            $http({
+                url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
+                method: 'GET',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                if(data.length > 0){
+                    $location.path('/project-build-template/' + $scope.activeProjectUuid + '/' + data[0].uuid);
+                }else{
+                    $location.path('/project-templateSelect/' + $scope.activeProjectUuid);
+                }
+            });
+        };
+
         $scope.toBuild = function (suuid) {
-            var url = '';
-            if(suuid === 'new'){
-                url = '/project-build-template/' + $scope.activeProjectUuid + '/new';
-            }else{
-                url = '/project-build-template/' + $scope.activeProjectUuid + '/' + suuid;
-            }
+            var url = '/project-build-template/' + $scope.activeProjectUuid + '/' + suuid;
             $location.path(url);
         };
 

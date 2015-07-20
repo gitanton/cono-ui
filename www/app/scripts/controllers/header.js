@@ -31,7 +31,7 @@ angular.module('conojoApp')
                 //    //get all meeting for this user
                 //    // for(var i = 0;i < $scope.meetings.length;i++){
                 //    //      if(dt === $scope.meetings[i].date){
-                //    //          return [true, 'red', 'Show meetings in today'];
+                //    //          return [true, 'ui-state-active', 'Show meetings in today'];
                 //    //      }
                 //    // }
                 // },

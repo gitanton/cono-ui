@@ -112,8 +112,17 @@ angular.module('conojoApp')
         });
 
         $scope.toBuild = function () {
-            var url = '/project-build/' + $scope.activeProjectUuid + '/new';
-            $location.path(url);
+            $http({
+                url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
+                method: 'GET',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                if(data.length > 0){
+                    $location.path('/project-build/' + $scope.activeProjectUuid + '/' + data[0].uuid);
+                }else{
+                    $location.path('/project-screenUpload/' + $scope.activeProjectUuid);
+                }
+            });
         };
 
         $scope.toScreen = function () {

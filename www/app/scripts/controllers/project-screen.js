@@ -110,13 +110,22 @@ angular.module('conojoApp')
             useCurrent: false
         });
 
+        $scope.toBuildFirst = function () {
+            $http({
+                url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
+                method: 'GET',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                if(data.length > 0){
+                    $location.path('/project-build/' + $scope.activeProjectUuid + '/' + data[0].uuid);
+                }else{
+                    $location.path('/project-screenUpload/' + $scope.activeProjectUuid);
+                }
+            });
+        };
+
         $scope.toBuild = function (suuid) {
-            var url = '';
-            if(suuid === 'new'){
-                url = '/project-build/' + $scope.activeProjectUuid + '/new';
-            }else{
-                url = '/project-build/' + $scope.activeProjectUuid + '/' + suuid;
-            }
+            var url = '/project-build/' + $scope.activeProjectUuid + '/' + suuid;
             $location.path(url);
         };
 

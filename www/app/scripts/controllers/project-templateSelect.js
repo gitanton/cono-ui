@@ -24,7 +24,7 @@ angular.module('conojoApp')
 
         $scope.templateUrl = '';
 
-        $scope.selectTemplate = function(url,event,index){
+        $scope.clickTemplate = function(url,event,index){
             if($(event.target).parent().parent().hasClass('templates-content-unselect')){
                 $(event.target).parents('.templates-content-body').children().removeClass('templates-content-select').addClass('templates-content-unselect');
                 $(event.target).parents('.templates-content-body').children().eq(index).removeClass('templates-content-unselect').addClass('templates-content-select');

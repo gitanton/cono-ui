@@ -24,10 +24,8 @@ angular.module('conojoApp')
             });
 
             $http({
-                url: ENV.API_ENDPOINT + 'messages',
-                method: 'GET',
-                data: $.param({project_uuid:$scope.activeProjectUuid}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                url: ENV.API_ENDPOINT + 'messages/?project_uuid=' + $scope.activeProjectUuid,
+                method: 'GET'
             }).success(function(data) {
                 $scope.messages = data;
             });
@@ -79,7 +77,7 @@ angular.module('conojoApp')
 
         $scope.replyMessage = function(){
             $http({
-                url: ENV.API_ENDPOINT + 'messages/'+$scope.replyMessageUuid,
+                url: ENV.API_ENDPOINT + 'messages',
                 method: 'POST',
                 data: $.param({content:$scope.replyContent,project_uuid:$scope.activeProjectUuid,parent_uuid:$scope.replyMessageUuid}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -110,8 +108,17 @@ angular.module('conojoApp')
         };
 
         $scope.toBuild = function () {
-            var url = '/project-build/' + $scope.activeProjectUuid + '/new';
-            $location.path(url);
+            $http({
+                url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
+                method: 'GET',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                if(data.length > 0){
+                    $location.path('/project-build/' + $scope.activeProjectUuid + '/' + data[0].uuid);
+                }else{
+                    $location.path('/project-screenUpload/' + $scope.activeProjectUuid);
+                }
+            });
         };
 
         $scope.toScreen = function () {
