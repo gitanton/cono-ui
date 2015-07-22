@@ -114,7 +114,7 @@
                 </div>
                 <div class="newMeeting-assignContainer form-group">
                     <p style="text-align:left;">Choose recipients</p>
-                    <select multiple="multiple" name="recipients" ng-model="recipients" class="form-control" style="margin-bottom:20px;height:60px;">
+                    <select class="js-example-basic-multiple" multiple="multiple" ng-model="recipients">
                         <option ng-repeat="user in projectMembers" value={{user.uuid}}>{{user.fullname}}</option>
                     </select>
                 </div>

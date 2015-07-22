@@ -37,7 +37,7 @@
                 </div>
                 <form name="userFormInvite" ng-submit="processRegisterForm()" novalidate>
                     <div class="col-md-12">
-                        <input type="text" name="fullname" class="form-control register-username" placeholder="Username" ng-model="registerFormData.username" ng-minlength="6" required />
+                        <input type="text" name="username" class="form-control register-username" placeholder="Username" ng-model="registerFormData.username" ng-minlength="6" required />
                         <span ng-show="userFormInvite.username.$invalid && !userFormInvite.username.$pristine">Username Should be at least five characters long</span>
                     </div>
                     <div class="col-md-12">
@@ -56,10 +56,11 @@
                     </div>
                     <div class="col-md-12">
                         <input type="password" name="confirmpassword" class="form-control register-confirmpassword" placeholder="Confirm Password" ng-model="registerFormData.confirmpassword" ng-minlength="6" required />
-                        <span ng-show="userFormInvite.confirmpassword.$invalid && !userFormInvite.confirmpassword.$pristine">Password Should be at least six characters long</span>
+                        <span ng-show="userFormInvite.confirmpassword.$invalid && !userFormInvite.confirmpassword.$pristine">Password Should be at least six characters long.</span>
+                        <span ng-show="registerFormData.password != registerFormData.confirmpassword && !userFormInvite.confirmpassword.$pristine">This Must match the Password.</span>
                     </div>
                     <div class="col-md-12 register-button">
-                        <button class="btn btn-lg" type="submit" ng-disabled="userFormInvite.$invalid">Create Account</button>
+                        <button class="btn btn-lg" type="submit" ng-disabled="userFormInvite.$invalid || registerFormData.password != registerFormData.confirmpassword">Create Account</button>
                     </div>
                 </form>
             </div>

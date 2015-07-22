@@ -34,7 +34,7 @@
                     <div class="project-content-lable" ng-if="project.type_id == 2">VIDEO</div>
                     <div class="project-content-lable" ng-if="project.type_id == 3">BUSINESS TEMPLATE</div>
                     <div class="project-content-btm">
-                        <div class="col-md-6 project-content-paper"><a href="javascript:void(0)"><img src="images/paper-icon.png"></a></div>
+                        <div class="col-md-6 project-content-paper" ng-click="openProjectNote('{{project.uuid}}','{{project.name}}')"><a href="javascript:void(0)"><img src="images/paper-icon.png"></a></div>
                         <div class="col-md-6 project-content-move"><a href="javascript:void(0)"><img src="images/move-icon.png"></a></div>
                     </div>
                 </div>
@@ -141,6 +141,23 @@
         <div class="col-md-10 reset-desc">Status Notice</div>
         <div class="col-md-2 reset-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
         <div class="col-md-12 reset-note">{{errorMessageProject}}Please click <label style="color:#0378ae;cursor:poiner;" ng-click="goToBilling()">here</label> to select one plan.</div>
+    </div>
+</div>
+<div id="addProjectNote" class="modal fade in" style="display: none;">
+    <div class="feedback-add">
+        <div class="col-md-10 feedback-add-desc">{{projectNoteName}}:NOTES</div>
+        <div class="col-md-2 feedback-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <form name="createnewmessage">
+            <div class="col-md-12 feedback-add-body">
+                <div class="col-md-12">
+                    <textarea name="messageContent" ng-model="messageContent" class="form-control feedback-add-message" placeholder="Add project note"></textarea>
+                </div>
+            </div>
+            <div class="col-md-12 feedback-delete-button">
+                <button class="btn btn-lg feedback-delete-buttoncancel" type="reset" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-lg feedback-delete-buttonsubmit" type="submit" ng-click='addProjectNote()'>Save</button>
+            </div>
+        </form>
     </div>
 </div>
 

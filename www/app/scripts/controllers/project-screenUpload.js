@@ -73,11 +73,19 @@ angular.module('conojoApp')
             });
         };
 
+        function resultFormatState(state){
+            var $state = $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
+            return $state;
+        }
+
         $scope.openNewMeeting = function () {
             $scope.meetingMessage = '';
             $scope.meetingName = '';
-            $scope.meetingDateTime = '';
-            $scope.recipients = '';
+            $scope.recipients = [];
+            $(".js-example-basic-multiple").select2({
+                templateResult: resultFormatState
+            }).val('');
+            $(".select2-selection__choice").remove();
             $('#newMeeting').modal('toggle');
         };
 
@@ -85,15 +93,18 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'meetings',
                 method: 'POST',
-                data: $.param({notes: $scope.meetingMessage, project_uuid: $scope.activeProjectUuid, name: $scope.meetingName, date: $scope.meetingDateTime.split(" ")[0], time: $scope.meetingDateTime.split(" ")[1], attendees: $scope.recipients.join(",")}),
+                data: $.param({
+                    notes: $scope.meetingMessage,
+                    project_uuid: $scope.activeProjectUuid,
+                    name: $scope.meetingName,
+                    date: $('.newMeeting-time').val().split(' ')[0],
+                    time: $('.newMeeting-time').val().split(' ')[1],
+                    attendees: $scope.recipients.join(',')
+                }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $scope.init();
                 $('#newMeeting').modal('hide');
-            }).error(function(data){
-                $('#newMeeting').modal('hide');
-                $('.reset-note').html(data.message);
-                $('#statusNotice').modal('toggle');
             });
         };
 

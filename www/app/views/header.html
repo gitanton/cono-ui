@@ -16,13 +16,7 @@
             <div class="col-md-2 meetingDetail-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
         </div>
         <div class="meetingDetail-content" ng-if="meetingDetails == true">
-            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
-            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
-            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
-            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
-            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
-            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
-            <p>Meeting Name---12:30pm<label ng-click="startOneMeeting()">Join in this meeting</label></p>
+            <p ng-repeat="selectDateMeeting in selectDateMeetings">{{selectDateMeeting.name}}---{{selectDateMeeting.time}}<label ng-click="startOneMeeting('{{selectDateMeeting.uuid}}')">Join in this meeting</label></p>
         </div>
         <div ng-if="meetingDetails == false" class="meeting-start">
             <form>
@@ -78,8 +72,9 @@
                 <div class="col-md-12 feedback-add-body">
                     <p>Submit feedback or report problems you are experiencing using the form below.</p>
                     <div class="form-group has-add">
-                        <input type="text" name="reasonContent" ng-model="reasonContent" class="form-control feedback-add-reason" placeholder="Reasons for requesting support" />
-                        <img class="feedback-add-addicon" src="images/select-project-icon.png">
+                        <!-- <input type="text" name="reasonContent" ng-model="reasonContent" class="form-control feedback-add-reason" placeholder="Reasons for requesting support" />
+                        <img class="feedback-add-addicon" src="images/select-project-icon.png"> -->
+                        <select class="js-example-basic-single" data-placeholder="Reasons for requesting support"></select>
                     </div>
                     <div class="col-md-12">
                         <textarea name="messageContent" ng-model="messageContent" class="form-control feedback-add-message" placeholder="Add message"></textarea>

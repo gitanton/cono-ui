@@ -231,5 +231,15 @@ angular.module('conojoApp')
         });
         $('#sortable').disableSelection();
 
+        $scope.openProjectNote = function(uuid,name){
+            $scope.projectNoteUuid = uuid;
+            $scope.projectNoteName = name;
+            $('#addProjectNote').modal('toggle');
+        };
+
+        $scope.addProjectNote = function(){
+            
+        };
+
         $scope.init();
     });

@@ -149,11 +149,19 @@ angular.module('conojoApp')
             });
         };
 
+        function resultFormatState(state){
+            var $state = $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
+            return $state;
+        }
+
         $scope.openNewMeeting = function () {
             $scope.meetingMessage = '';
             $scope.meetingName = '';
-            $scope.meetingDateTime = '';
-            $scope.recipients = '';
+            $scope.recipients = [];
+            $(".js-example-basic-multiple").select2({
+                templateResult: resultFormatState
+            }).val('');
+            $(".select2-selection__choice").remove();
             $('#newMeeting').modal('toggle');
         };
 
@@ -165,8 +173,8 @@ angular.module('conojoApp')
                     notes: $scope.meetingMessage,
                     project_uuid: $scope.activeProjectUuid,
                     name: $scope.meetingName,
-                    date: $scope.meetingDateTime.split(' ')[0],
-                    time: $scope.meetingDateTime.split(' ')[1],
+                    date: $('.newMeeting-time').val().split(' ')[0],
+                    time: $('.newMeeting-time').val().split(' ')[1],
                     attendees: $scope.recipients.join(',')
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -282,6 +290,11 @@ angular.module('conojoApp')
                 $scope.commentContent = '';
                 $scope.commentRecipients = '';
 
+                $(".js-example-basic-multiple").select2({
+                    templateResult: resultFormatState
+                }).val('');
+                $(".select2-selection__choice").remove();
+
                 $scope.addCommentFlag = true;
                 $scope.showComments = true;
                 $scope.$apply();
@@ -314,6 +327,10 @@ angular.module('conojoApp')
         $(document).on('click','.commentSqure',function(evt){
             //open add comment and reply comment
             $scope.currentComments = [];
+            $(".js-example-basic-multiple").select2({
+                templateResult: resultFormatState
+            }).val('');
+            $(".select2-selection__choice").remove();
             console.log('click comments ' + $(this).data('comment'));
             $http({
                 url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments/search',

@@ -256,13 +256,9 @@
             </div>
             <div class="comment-assignContainer form-group col-md-12">
                 <p style="text-align:left;">Choose recipients</p>
-                <select multiple="multiple" name="commentRecipients" ng-model="commentRecipients" class="form-control" style="height:60px;">
+                <select class="js-example-basic-multiple" multiple="multiple" ng-model="commentRecipients">
                     <option ng-repeat="user in projectMembers" value={{user.uuid}}>{{user.fullname}}</option>
                 </select>
-                <!-- <div class="comment-assign" ng-click="showSelectMemberC($event)">Assign to</div>
-                <select multiple="multiple" name="meetingGroup" ng-model="meetingGroup" class="form-control comment-group">
-                    <option ng-repeat="user in users" value={{user.uuid}}>{{user.username}}</option>
-                </select> -->
             </div>
             <div class="col-md-12 comment-assignTask"><input type="checkbox" name="assignTask" ng-checked="isTask" ng-true-value="1" ng-false-value="2">Assign this as a task</div>
             <div class="col-md-12 comment-add-button">
@@ -288,7 +284,7 @@
                     <input type="text" name="meetingDateTime" ng-model="meetingDateTime" class="form-control newMeeting-time" placeholder="Choose date & time" />
                 </div>
                 <p style="text-align:left;">Choose recipients</p>
-                <select multiple="multiple" name="recipients" ng-model="recipients" class="form-control" style="margin-bottom:20px;height:60px;">
+                <select class="js-example-basic-multiple" multiple="multiple" ng-model="recipients">
                     <option ng-repeat="user in projectMembers" value={{user.uuid}}>{{user.fullname}}</option>
                 </select>
             </div>

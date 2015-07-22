@@ -50,31 +50,50 @@ angular.module('conojoApp')
             });
         };
 
-        $scope.openAddProjectMember = function () {
-            $('#addPeopleToProject').modal('toggle');
+        $scope.openNewMeeting = function () {
+            $scope.meetingMessage = '';
+            $scope.meetingName = '';
+            $scope.recipients = [];
+            $(".js-example-basic-multiple").select2({
+                templateResult: resultFormatState
+            }).val('');
+            $(".select2-selection__choice").remove();
+            $('#newMeeting').modal('toggle');
         };
 
-        $scope.addProjectMember = function () {
+        $scope.addNewMeeting = function () {
             $http({
-                url: ENV.API_ENDPOINT + 'projects/project/' + $scope.activeProjectUuid + '/invite',
+                url: ENV.API_ENDPOINT + 'meetings',
                 method: 'POST',
-                data: $.param({uuid: $scope.activeProjectUuid, email: $scope.memberEmail}),
+                data: $.param({
+                    notes: $scope.meetingMessage,
+                    project_uuid: $scope.activeProjectUuid,
+                    name: $scope.meetingName,
+                    date: $('.newMeeting-time').val().split(' ')[0],
+                    time: $('.newMeeting-time').val().split(' ')[1],
+                    attendees: $scope.recipients.join(',')
+                }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $scope.init();
-                $('#addPeopleToProject').modal('hide');
-            }).error(function(data){
-                $('#addPeopleToProject').modal('hide');
-                $('.reset-note').html(data.message);
-                $('#statusNotice').modal('toggle');
+                $('#newMeeting').modal('hide');
             });
         };
+
+        function resultFormatState(state){
+            var $state = $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
+            return $state;
+        }
 
         $scope.openNewMeeting = function () {
             $scope.meetingMessage = '';
             $scope.meetingName = '';
             $scope.meetingDateTime = '';
-            $scope.recipients = '';
+            $scope.recipients = [];
+            $(".js-example-basic-multiple").select2({
+                templateResult: resultFormatState
+            }).val('');
+            $(".select2-selection__choice").remove();
             $('#newMeeting').modal('toggle');
         };
 

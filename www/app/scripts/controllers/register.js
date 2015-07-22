@@ -36,7 +36,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'users',
                 method: 'POST',
-                data: $.param({fullname: $scope.formData.username, email: $scope.formData.email, timezone: $scope.timezone, username: $scope.formData.username, password: $scope.formData.password}),
+                data: $.param({fullname: $scope.formData.username, email: $scope.formData.email, timezone: $scope.formData.timezone, username: $scope.formData.username, password: $scope.formData.password}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
                 $window.sessionStorage.currentUserUuid = data.uuid;

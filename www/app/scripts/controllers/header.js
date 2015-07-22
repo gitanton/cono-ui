@@ -14,28 +14,52 @@ angular.module('conojoApp')
         $scope.startMeeting = false;
         $scope.chatContainer = true;
         $scope.CLOCK = null;
-        $scope.comments = {};
+        $scope.comments = [];
+        $scope.meetingDate = [];
+
+        $http({
+            url: ENV.API_ENDPOINT + 'meetings',
+            method: 'GET'
+        }).success(function (data) {
+            if(data.length > 0){
+                for(var i = 0;i < data.length;i++){
+                    $scope.meetingDate.push(data[i].date);
+                }
+            }
+        });
 
         $scope.showCalendar = function (evt) {
-            $http({
-                url: ENV.API_ENDPOINT + 'meetings',
-                method: 'GET',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $scope.meetings = data;
-            });
-
             $('#datetimepicker').datepicker({
                 dateFormat: 'yy-mm-dd',
-                // beforeShowDay : function(){
-                //    //get all meeting for this user
-                //    // for(var i = 0;i < $scope.meetings.length;i++){
-                //    //      if(dt === $scope.meetings[i].date){
-                //    //          return [true, 'ui-state-active', 'Show meetings in today'];
-                //    //      }
-                //    // }
-                // },
-                onSelect: function () {
+                beforeShowDay : function(dt){
+                    var datestring = jQuery.datepicker.formatDate('yy-mm-dd', dt);
+                    var hindex = $.inArray(datestring, $scope.meetingDate);
+                    if (hindex > -1) {
+                        return [true, 'ui-state-active', 'Show meetings in today'];
+                    }else{
+                        return [true, '', 'There is no meeting in today'];
+                    }
+
+                   // //get all meeting for this user
+                   // console.log($scope.meetingDate);
+                   // console.log($scope.meetingDate.length);
+                   // if($scope.meetingDate.length > 0){
+                   //      for(var i = 0;i < $scope.meetingDate.length;i++){
+                   //          if(dt === $scope.meetingDate[i]){
+                   //              return [true, 'ui-state-active', 'Show meetings in today'];
+                   //          }
+                   //      }
+                   // }else{
+                   //      return [true, '', 'There is no meeting in today'];
+                   // }
+                },
+                onSelect: function (date) {
+                    $http({
+                        url: ENV.API_ENDPOINT + 'meetings/?date=' + date,
+                        method: 'GET'
+                    }).success(function (data) {
+                        $scope.selectDateMeetings = data;
+                    });
                     $('#meetingDetail').modal('toggle');
                 }
             });
@@ -52,8 +76,9 @@ angular.module('conojoApp')
             evt.stopPropagation();
         });
 
-        $scope.startOneMeeting = function(){
+        $scope.startOneMeeting = function(uuid){
             $scope.meetingDetails = false;
+            $scope.joinTheMeeting = uuid;
         };
 
         $scope.joinOneMeeting = function () {
@@ -137,12 +162,25 @@ angular.module('conojoApp')
             $location.path(url);
         };
 
+        $scope.reasons = [{ id: 1, text: 'reason one' }, { id: 2, text: 'reason two' }, { id: 3, text: 'reason three' }, { id: 4, text: 'reason four' }, { id: 5, text: 'reason five' }];
+
         $scope.openFeedBack = function(){
+            $(".js-example-basic-single").select2({
+                templateResult: resultFormatState,
+                minimumResultsForSearch: Infinity,
+                data: $scope.reasons,
+            });
+            $(".js-example-basic-single").select2('val','');
             $('#addFeedback').modal('toggle');
         };
 
         $scope.addNewFeedBack = function(){
             //add new feedback
         };
+
+        function resultFormatState(state){
+            var $state = $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
+            return $state;
+        }
     });
 

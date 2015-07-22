@@ -26,10 +26,11 @@
             </div>
             <div class="col-md-12">
                 <input type="password" name="confirmpassword" class="form-control register-confirmpassword" placeholder="Confirm Password" ng-model="formData.confirmpassword" ng-minlength="6" required />
-                <span ng-show="userForm.confirmpassword.$invalid && !userForm.confirmpassword.$pristine">Password Should be at least six characters long</span>
+                <span ng-show="userForm.confirmpassword.$invalid && !userForm.confirmpassword.$pristine">Password Should be at least six characters long.</span>
+                <span ng-show="formData.password != formData.confirmpassword && !userForm.confirmpassword.$pristine">This Must match the Password.</span>
             </div>
             <div class="col-md-12 register-button">
-                <button class="btn btn-lg" type="submit" ng-disabled="userForm.$invalid">Create Account</button>
+                <button class="btn btn-lg" type="submit" ng-disabled="userForm.$invalid || formData.password != formData.confirmpassword">Create Account</button>
             </div>
         </form>
     </div>
