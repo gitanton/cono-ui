@@ -29,7 +29,7 @@ angular.module('conojoApp')
             paramName: 'file', // The name that will be used to transfer the file
             maxFilesize: 10,
             clickable: true,
-            header:{'Cache-Control': null,'X-Requested-With': null}
+            headers:{"Authorization": "Client-ID http://app.conojo.com","Cache-Control": null,"X-Requested-With": null}
         });
 
         videoUploadZone.on('success', function (file, serverCallBack) {
