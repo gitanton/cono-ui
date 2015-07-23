@@ -310,9 +310,11 @@ angular.module('conojoApp')
                 method: 'POST',
                 data: $.param({screen_uuid: $scope.activeScreenUuid, content: $scope.commentContent, is_task: $scope.isTask, marker: $(event.target).parents('.comment-add').data('marker'), assignee_uuid: $scope.commentRecipients.join(','), begin_x: currentCommentLeft, begin_y: currentCommentTop}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).success(function (data) {
                 //update the commentNum
-                commentNum++;
+                if(data.marker > commentNum){
+                    commentNum++;
+                }
 
                 $scope.showComments = false;
                 $scope.addCommentFlag = false;
