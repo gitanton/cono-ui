@@ -28,7 +28,8 @@ angular.module('conojoApp')
             url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
             paramName: 'file', // The name that will be used to transfer the file
             maxFilesize: 10,
-            clickable: true
+            clickable: true,
+            header:{'Cache-Control': null,'X-Requested-With': null}
         });
 
         screenUploadZone.on('success', function (file, serverCallBack) {
