@@ -235,7 +235,7 @@
     </div>
 </div>
 <div id="addComment" ng-class="{true: 'addCommentLeft', false: 'addCommentRight'}[addCommentPosition]" ng-show="showComments">
-    <div class="comment-add">
+    <div class="comment-add" data-marker=1>
         <div class="col-md-12 row">
             <div class="col-md-10 comment-add-desc">ADD COMMENT</div>
             <div class="col-md-2 comment-add-delicon"><img src="images/close-icon.png" ng-click="hideComments()"></div>
@@ -263,7 +263,7 @@
             <div class="col-md-12 comment-assignTask"><input type="checkbox" name="assignTask" ng-checked="isTask" ng-true-value="1" ng-false-value="2">Assign this as a task</div>
             <div class="col-md-12 comment-add-button">
                 <button class="btn btn-lg comment-buttoncancel" type="reset" ng-click="hideComments()">Cancel</button>
-                <button class="btn btn-lg comment-buttonsubmit" type="submit" ng-click="saveComments()">Save</button>
+                <button class="btn btn-lg comment-buttonsubmit" type="submit" ng-click="saveComments($event)">Save</button>
             </div>
         </form>
     </div>

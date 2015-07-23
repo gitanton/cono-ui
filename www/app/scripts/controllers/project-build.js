@@ -93,7 +93,7 @@ angular.module('conojoApp')
                             $scope.comments[num] = num;
                             commentNum = num + 1;
                             var left = data[i].begin_x + $scope.drawLeft;
-                            $('.projectBuild-content-drawing').append("<div data-comment='" + num + "' id='commentMarker" + num + "' class='commentSqure' style='left:" + left + "px;top:" + data[i].begin_y + "px'>" + num + "</div>");
+                            $('.projectBuild-content-drawing').append("<div data-beginx='" + data[i].begin_x + "' data-beginy='" + data[i].begin_y + "' data-comment='" + num + "' id='commentMarker" + num + "' class='commentSqure' style='left:" + left + "px;top:" + data[i].begin_y + "px'>" + num + "</div>");
                         }
                     }
                 }
@@ -286,8 +286,10 @@ angular.module('conojoApp')
                 }
                 $('#addComment').css('top', evt.pageY);
 
-                $('.projectBuild-content-drawing').append("<div data-comment='" + commentNum + "' id='commentMarker" + commentNum + "' class='commentSqure' style='left:" + rectCommentX + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
-
+                $('.projectBuild-content-drawing').append("<div data-beginx='" + currentCommentLeft + "' data-beginy='" + currentCommentTop + "' data-comment='" + commentNum + "' id='commentMarker" + commentNum + "' class='commentSqure' style='left:" + rectCommentX + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
+                $('.comment-add').data('marker',commentNum);
+                
+                $scope.currentComments = [];
                 $scope.commentContent = '';
                 $scope.commentRecipients = '';
 
@@ -302,12 +304,12 @@ angular.module('conojoApp')
             });
         };
 
-        $scope.saveComments = function () {
+        $scope.saveComments = function (event) {
             $http({
                 //post the comment's content,left,top and  marker.
                 url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments',
                 method: 'POST',
-                data: $.param({screen_uuid: $scope.activeScreenUuid, content: $scope.commentContent, is_task: $scope.isTask, marker: commentNum, assignee_uuid: $scope.commentRecipients.join(','), begin_x: currentCommentLeft, begin_y: currentCommentTop}),
+                data: $.param({screen_uuid: $scope.activeScreenUuid, content: $scope.commentContent, is_task: $scope.isTask, marker: $(event.target).parents('.comment-add').data('marker'), assignee_uuid: $scope.commentRecipients.join(','), begin_x: currentCommentLeft, begin_y: currentCommentTop}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 //update the commentNum
@@ -328,6 +330,17 @@ angular.module('conojoApp')
         $(document).on('click','.commentSqure',function(evt){
             //open add comment and reply comment
             $scope.currentComments = [];
+            $scope.commentContent = '';
+            $scope.commentRecipients = '';
+
+            $(".js-example-basic-multiple").select2({
+                templateResult: resultFormatState
+            }).val('');
+            $(".select2-selection__choice").remove();
+            var addMarker = $(this).data('comment');
+            var addBeginx = $(this).data('beginx');
+            // var addBeginy = $(this).data('beginy');
+
             $(".js-example-basic-multiple").select2({
                 templateResult: resultFormatState
             }).val('');
@@ -335,18 +348,19 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments/search',
                 method: 'POST',
-                data: $.param({screen_uuid: $scope.activeScreenUuid,filter: JSON.stringify({marker:$(this).data('comment')})}),
+                data: $.param({screen_uuid: $scope.activeScreenUuid,filter: JSON.stringify({marker:addMarker})}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
                 $scope.currentComments = data;
                 if (evt.pageX > 400) {
-                    $('#addComment').css('left', evt.pageX - 400);
+                    $('#addComment').css('left', addBeginx + $scope.drawLeft - 336);
                     $scope.addCommentPosition = false;
                 } else {
-                    $('#addComment').css('left', evt.pageX + 40);
+                    $('#addComment').css('left', addBeginx + $scope.drawLeft + 104);
                     $scope.addCommentPosition = true;
                 }
                 $('#addComment').css('top', evt.pageY);
+                $('.comment-add').data('marker',addMarker);
                 $scope.addCommentFlag = true;
                 $scope.showComments = true;
             });

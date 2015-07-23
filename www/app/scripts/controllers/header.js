@@ -17,18 +17,18 @@ angular.module('conojoApp')
         $scope.comments = [];
         $scope.meetingDate = [];
 
-        $http({
-            url: ENV.API_ENDPOINT + 'meetings',
-            method: 'GET'
-        }).success(function (data) {
-            if(data.length > 0){
-                for(var i = 0;i < data.length;i++){
-                    $scope.meetingDate.push(data[i].date);
-                }
-            }
-        });
-
         $scope.showCalendar = function (evt) {
+            $http({
+                url: ENV.API_ENDPOINT + 'meetings',
+                method: 'GET'
+            }).success(function (data) {
+                if(data.length > 0){
+                    for(var i = 0;i < data.length;i++){
+                        $scope.meetingDate.push(data[i].date);
+                    }
+                }
+            });
+
             $('#datetimepicker').datepicker({
                 dateFormat: 'yy-mm-dd',
                 beforeShowDay : function(dt){
@@ -39,19 +39,6 @@ angular.module('conojoApp')
                     }else{
                         return [true, '', 'There is no meeting in today'];
                     }
-
-                   // //get all meeting for this user
-                   // console.log($scope.meetingDate);
-                   // console.log($scope.meetingDate.length);
-                   // if($scope.meetingDate.length > 0){
-                   //      for(var i = 0;i < $scope.meetingDate.length;i++){
-                   //          if(dt === $scope.meetingDate[i]){
-                   //              return [true, 'ui-state-active', 'Show meetings in today'];
-                   //          }
-                   //      }
-                   // }else{
-                   //      return [true, '', 'There is no meeting in today'];
-                   // }
                 },
                 onSelect: function (date) {
                     $http({
