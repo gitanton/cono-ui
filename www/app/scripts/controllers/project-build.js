@@ -149,17 +149,14 @@ angular.module('conojoApp')
             });
         };
 
-        function resultFormatState(state){
-            var $state = $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
-            return $state;
-        }
-
         $scope.openNewMeeting = function () {
             $scope.meetingMessage = '';
             $scope.meetingName = '';
             $scope.recipients = [];
             $(".js-example-basic-multiple").select2({
-                templateResult: resultFormatState
+                templateResult: function(state){
+                    return $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
+                }
             }).val('');
             $(".select2-selection__choice").remove();
             $('#newMeeting').modal('toggle');
@@ -294,7 +291,9 @@ angular.module('conojoApp')
                 $scope.commentRecipients = '';
 
                 $(".js-example-basic-multiple").select2({
-                    templateResult: resultFormatState
+                    templateResult: function(state){
+                        return $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
+                    }
                 }).val('');
                 $(".select2-selection__choice").remove();
 
@@ -336,17 +335,15 @@ angular.module('conojoApp')
             $scope.commentRecipients = '';
 
             $(".js-example-basic-multiple").select2({
-                templateResult: resultFormatState
+                templateResult: function(state){
+                    return $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
+                }
             }).val('');
             $(".select2-selection__choice").remove();
             var addMarker = $(this).data('comment');
             var addBeginx = $(this).data('beginx');
             // var addBeginy = $(this).data('beginy');
 
-            $(".js-example-basic-multiple").select2({
-                templateResult: resultFormatState
-            }).val('');
-            $(".select2-selection__choice").remove();
             $http({
                 url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments/search',
                 method: 'POST',

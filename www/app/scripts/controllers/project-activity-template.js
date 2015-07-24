@@ -70,17 +70,14 @@ angular.module('conojoApp')
             });
         };
 
-        function resultFormatState(state){
-            var $state = $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
-            return $state;
-        }
-
         $scope.openNewMeeting = function () {
             $scope.meetingMessage = '';
             $scope.meetingName = '';
             $scope.recipients = [];
             $(".js-example-basic-multiple").select2({
-                templateResult: resultFormatState
+                templateResult: function(state){
+                    return $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
+                }
             }).val('');
             $(".select2-selection__choice").remove();
             $('#newMeeting').modal('toggle');

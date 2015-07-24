@@ -27,31 +27,31 @@ angular.module('conojoApp')
                         $scope.meetingDate.push(data[i].date);
                     }
                 }
-            });
 
-            $('#datetimepicker').datepicker({
-                dateFormat: 'yy-mm-dd',
-                beforeShowDay : function(dt){
-                    var datestring = jQuery.datepicker.formatDate('yy-mm-dd', dt);
-                    var hindex = $.inArray(datestring, $scope.meetingDate);
-                    if (hindex > -1) {
-                        return [true, 'ui-state-active', 'Show meetings in today'];
-                    }else{
-                        return [true, '', 'There is no meeting in today'];
+                $('#datetimepicker').datepicker({
+                    dateFormat: 'yy-mm-dd',
+                    beforeShowDay : function(dt){
+                        var datestring = jQuery.datepicker.formatDate('yy-mm-dd', dt);
+                        var hindex = $.inArray(datestring, $scope.meetingDate);
+                        if (hindex > -1) {
+                            return [true, 'ui-state-active', 'Show meetings in today'];
+                        }else{
+                            return [true, '', 'There is no meeting in today'];
+                        }
+                    },
+                    onSelect: function (date) {
+                        $http({
+                            url: ENV.API_ENDPOINT + 'meetings/?date=' + date,
+                            method: 'GET'
+                        }).success(function (data) {
+                            $scope.selectDateMeetings = data;
+                        });
+                        $('#meetingDetail').modal('toggle');
                     }
-                },
-                onSelect: function (date) {
-                    $http({
-                        url: ENV.API_ENDPOINT + 'meetings/?date=' + date,
-                        method: 'GET'
-                    }).success(function (data) {
-                        $scope.selectDateMeetings = data;
-                    });
-                    $('#meetingDetail').modal('toggle');
-                }
+                });
+                $('#datetimepicker').show();
+                evt.stopPropagation();
             });
-            $('#datetimepicker').show();
-            evt.stopPropagation();
         };
 
         $(document).on('click', function () {
@@ -97,9 +97,9 @@ angular.module('conojoApp')
 
         $scope.endOneMeeting = function () {
             $http({
-                url: ENV.API_ENDPOINT + 'meetings/meeting/' + $scope.meetingUuid + '/end',
+                url: ENV.API_ENDPOINT + 'meetings/meeting/' + $scope.joinTheMeeting + '/end',
                 method: 'POST',
-                data: $.param({uuid: $scope.meetingUuid}),
+                data: $.param({uuid: $scope.joinTheMeeting}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 Twilio.Device.disconnectAll();
@@ -110,9 +110,9 @@ angular.module('conojoApp')
 
         $scope.sendChat = function () {
             $http({
-                url: ENV.API_ENDPOINT + 'meetings/meeting/' + $scope.meetingUuid + '/chat',
+                url: ENV.API_ENDPOINT + 'meetings/meeting/' + $scope.joinTheMeeting + '/chat',
                 method: 'POST',
-                data: $.param({uuid: $scope.meetingUuid, comment: $scope.chatComment}),
+                data: $.param({uuid: $scope.joinTheMeeting, comment: $scope.chatComment}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function () {
                 $scope.chatComment = '';
@@ -124,9 +124,9 @@ angular.module('conojoApp')
 
         $scope.getChat = function () {
             $http({
-                url: ENV.API_ENDPOINT + 'meetings/meeting/' + $scope.meetingUuid + '/chat',
+                url: ENV.API_ENDPOINT + 'meetings/meeting/' + $scope.joinTheMeeting + '/chat',
                 method: 'GET',
-                data: $.param({uuid: $scope.meetingUuid}),
+                data: $.param({uuid: $scope.joinTheMeeting}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
                 for (var i = 0; i < data.length; i++) {
@@ -153,7 +153,9 @@ angular.module('conojoApp')
 
         $scope.openFeedBack = function(){
             $(".js-example-basic-single").select2({
-                templateResult: resultFormatState,
+                templateResult: function(state){
+                    return $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
+                },
                 minimumResultsForSearch: Infinity,
                 data: $scope.reasons,
             });
@@ -164,10 +166,5 @@ angular.module('conojoApp')
         $scope.addNewFeedBack = function(){
             //add new feedback
         };
-
-        function resultFormatState(state){
-            var $state = $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
-            return $state;
-        }
     });
 
