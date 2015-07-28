@@ -11,7 +11,8 @@ angular.module('conojoApp')
     .controller('ProfileProjectCtrl', function ($scope, $http, $location, ENV) {
         $scope.profileProjectsContent = $(window).height() - 250;
         $('.profileProject-content-projects').css('height', $scope.profileProjectsContent);
-        $scope.projectInfo = [];
+        $scope.projects = [];
+        var projectInfo = [];
 
         $scope.init = function () {
             $http({
@@ -19,47 +20,57 @@ angular.module('conojoApp')
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                var projectInfo = [];
-                var projectName = [];
-                var projectType = [];
+                $scope.projects = data;
 
-                for(var i = 0;i < data.length; i++){
-                    projectName.push(data[i].name);
-                    projectType.push(data[i].type_id);
-                    if(data[i].type_id === 1 || data[i].type_id === 3){
-                        $http({
-                            url: ENV.API_ENDPOINT + 'screens/project/' + data[i].uuid,
-                            method: 'GET',
-                            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                        }).success(function (screens) {
-                            if(screens.length === 0){
-                                projectInfo.push([projectName.pop(),projectType.pop(),'no screen']);
-                            }else if(screens.length === 1){
-                                projectInfo.push([projectName.pop(),projectType.pop(),'1 screen',screens]);
-                            }else if(screens.length > 1){
-                                projectInfo.push([projectName.pop(),projectType.pop(),screens.length +' screens',screens]);
-                            }
-                            $scope.projectInfo = projectInfo;
-                        });
-                    }else if(data[i].type_id === 2){
-                        $http({
-                            url: ENV.API_ENDPOINT + 'videos/project/' + data[i].uuid,
-                            method: 'GET',
-                            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                        }).success(function (videos) {
-                            if(videos.length === 0){
-                                projectInfo.push([projectName.pop(),projectType.pop(),'no video']);
-                            }else if(videos.length === 1){
-                                projectInfo.push([projectName.pop(),projectType.pop(),'1 video',videos]);
-                            }else if(videos.length > 1){
-                                projectInfo.push([projectName.pop(),projectType.pop(),videos.length +' videos',videos]);
-                            }
-                            $scope.projectInfo = projectInfo;
-                        });
-                    }
-                }
+                getProjectInfo(data,0);
             });
         };
+
+        function getProjectInfo(data,i){
+            projectInfo[i] = new Array(data[i].name,data[i].type_id,'',[]);
+            if(data[i].type_id === 1 || data[i].type_id === 3){
+                $http({
+                    url: ENV.API_ENDPOINT + 'screens/project/' + data[i].uuid,
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }).success(function (screens) {
+                    if(screens.length === 0){
+                        projectInfo[i][2] = 'no screen';
+                        projectInfo[i][3] = [];
+                    }else if(screens.length === 1){
+                        projectInfo[i][2] = '1 screen';
+                        projectInfo[i][3] = screens;
+                    }else if(screens.length > 1){
+                        projectInfo[i][2] = screens.length +' screens';
+                        projectInfo[i][3] = screens;
+                    }
+                    if((i+1) < data.length){
+                        getProjectInfo(data,i+1);
+                    }
+                });
+            }else if(data[i].type_id === 2){
+                $http({
+                    url: ENV.API_ENDPOINT + 'videos/project/' + data[i].uuid,
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }).success(function (videos) {
+                    if(videos.length === 0){
+                        projectInfo[i][2] = 'no video';
+                        projectInfo[i][3] = [];
+                    }else if(videos.length === 1){
+                        projectInfo[i][2] = '1 video';
+                        projectInfo[i][3] = videos;
+                    }else if(videos.length > 1){
+                        projectInfo[i][2] = videos.length +' videos';
+                        projectInfo[i][3] = videos;
+                    }
+                    if((i+1) < data.length){
+                        getProjectInfo(data,i+1);
+                    }
+                });
+            }
+            $scope.projectInfo = projectInfo;
+        }
 
         $scope.toProfile = function () {
             var url = '/profile-profile/';
