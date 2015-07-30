@@ -7,7 +7,7 @@
         </div>
         <form name="userForm" ng-submit="processForm()" novalidate>
             <div class="col-md-12">
-                <input type="text" name="username" class="form-control register-username" placeholder="Username" ng-model="formData.username" ng-minlength="6" required />
+                <input type="text" name="username" class="form-control register-username" placeholder="Username" ng-model="formData.username" ng-minlength="5" required />
                 <span ng-show="userForm.username.$invalid && !userForm.username.$pristine">Username Should be at least five characters long</span>
             </div>
             <div class="col-md-12">
