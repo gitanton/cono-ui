@@ -66,6 +66,9 @@ angular.module('conojoApp')
                 method: 'POST',
                 data: $.param({email: $scope.resetEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(){
+                $('#resetPassword').modal('hide');
+                $('#resetNote').modal('toggle');
             });
         };
     });

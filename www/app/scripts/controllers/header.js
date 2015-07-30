@@ -36,7 +36,7 @@ angular.module('conojoApp')
                         if (hindex > -1) {
                             return [true, 'ui-state-active', 'Show meetings in today'];
                         }else{
-                            return [true, '', 'There is no meeting in today'];
+                            return [false, '', 'There is no meeting in today'];
                         }
                     },
                     onSelect: function (date) {
