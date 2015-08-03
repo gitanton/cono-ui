@@ -1074,6 +1074,8 @@ ul li {
         background: #e6e6e6;
         overflow-y: auto;
         .activity-content-items {
+            padding-left: 20px;
+            padding-top: 16px;
             .activity-content-item {
                 margin-top: 16px;
                 .activity-content-img {
@@ -1630,6 +1632,10 @@ ul li {
                         width: 44px;
                         margin-right: 10px;
                         float: right;
+                        img{
+                            width:44px;
+                            height:32px;
+                        }
                         .addMemberIcon {
                             cursor: pointer
                         }
@@ -2320,8 +2326,12 @@ ul li {
                         width: 44px;
                         margin-right: 10px;
                         float: right;
-                        .addMemberIcon {
-                            cursor: pointer
+                        img{
+                            width:44px;
+                            height:32px;
+                        }
+                        .addMemberIcon{
+                            cursor:pointer;
                         }
                     }
                 }
@@ -2494,6 +2504,10 @@ ul li {
                         width: 44px;
                         margin-right: 10px;
                         float: right;
+                        img{
+                            width:44px;
+                            height:32px;
+                        }
                         .addMemberIcon {
                             cursor: pointer;
                         }
@@ -3782,6 +3796,13 @@ ul li {
                         width: 44px;
                         margin-right: 10px;
                         float: right;
+                        img{
+                            width:44px;
+                            height:32px;
+                        }
+                        .addMemberIcon{
+                            cursor:pointer;
+                        }
                     }
                 }
             }

@@ -22,7 +22,8 @@
                 </div>
                 <div class="projectScreen-content-member col-md-6">
                     <ul>
-                        <li ng-repeat="projectMember in projectMembers"><img src="images/member-one.png"></li>
+                        <li ng-repeat="projectMember in projectMembers"><img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}"></li>
+                        <li ng-repeat="projectMember in projectMembers"><img ng-if="projectMember.avatar == null" src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}"></li>
                         <li><img src="images/addMember-icon.png" ng-click="openAddProjectMember()" class="addMemberIcon"></li>
                     </ul>
                 </div>
