@@ -31,7 +31,7 @@ angular
             .when('/', {
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl',
-                title: 'Login |Conojo Collaboration Platform',
+                title: 'Login | Conojo Collaboration Platform',
                 description: 'Login | The most comprehensive creative collaboration platform there is. Get feedback on UI/UX, video and files in real-time. Get started with our free trial.'
             })
             .when('/register', {
@@ -42,7 +42,8 @@ angular
             })
             .when('/project', {
                 templateUrl: 'views/project.html',
-                controller: 'ProjectCtrl'
+                controller: 'ProjectCtrl',
+                title: 'Projects | Conojo Collaboration Platform'
             })
             .when('/activity', {
                 templateUrl: 'views/activity.html',
