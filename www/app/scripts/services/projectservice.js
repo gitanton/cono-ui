@@ -18,10 +18,29 @@ angular.module('conojoApp')
                         method: 'GET',
                         data: data,
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    }).then(function (response) {
+                        return response;
+                    }, function (error) {
+                        $log.error('projectService.list error: ' + angular.toJson(error));
+                        return $q.reject(error.data);
                     });
                 },
 
-                forgotPassword: function(email) {
+                reorder: function (uuids) {
+                    return $http({
+                        url: ENV.API_ENDPOINT + 'projects/ordering',
+                        method: 'POST',
+                        data: $.param({uuids: uuids}),
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    }).then(function (response) {
+                        return response;
+                    }, function (error) {
+                        $log.error('projectService.reorder error: ' + angular.toJson(error));
+                        return $q.reject(error.data);
+                    });
+                },
+
+                forgotPassword: function (email) {
                     $log.debug('Fetching password for: ' + email);
 
                     return $http({
@@ -29,9 +48,11 @@ angular.module('conojoApp')
                         method: 'POST',
                         data: $.param({email: email}),
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                    }, function(error) {
-                        $log.error('userService.forgotPassword error: ' + angular.toJson(error));
-                        return $q.reject(error);
+                    }).then(function (response) {
+                        return response;
+                    }, function (error) {
+                        $log.error('projectService.forgotPassword error: ' + angular.toJson(error));
+                        return $q.reject(error.data);
                     });
                 }
             };

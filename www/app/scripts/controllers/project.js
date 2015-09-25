@@ -210,12 +210,7 @@ angular.module('conojoApp')
                 for (var i = 0; i < $scope.projectsNum; i++) {
                     uuids[i] = $('.project-content-name').eq(i).data('uuid');
                 }
-                $http({
-                    url: ENV.API_ENDPOINT + 'projects/ordering',
-                    method: 'POST',
-                    data: {uuids: uuids},
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).then(function () {
+                projectService.reorder(uuids).then(function () {
                     $scope.init();
                 }, function (error) {
                     $('.reset-note').html(error.message);
