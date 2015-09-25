@@ -12,14 +12,14 @@ angular.module('conojoApp')
         $scope.profileProfileContent = $(window).height() - 250;
         $('.profileProfile-content-profile').css('height', $scope.profileProfileContent);
 
-        $scope.init = function(){
+        $scope.init = function () {
             //get the country
             $http({
                 url: ENV.API_ENDPOINT + 'utils/bootstrap',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function(data){
-                $scope.countries = data.countries;
+            }).then(function (response) {
+                $scope.countries = response.data.countries;
             });
 
             $scope.fullname = $window.sessionStorage.fullname;
@@ -30,16 +30,17 @@ angular.module('conojoApp')
             $scope.userCountry = $window.sessionStorage.userCountry;
         };
 
-        $scope.uploadAvatar = function(files){
+        $scope.uploadAvatar = function (files) {
             Upload.upload({
                 url: ENV.API_ENDPOINT + 'users/avatar',
                 method: 'POST',
                 file: files[0]
-            }).success(function (data) {
+            }).then(function (response) {
+                var data = response.data;
                 $window.sessionStorage.avatar = data.avatar;
-                $('#userAvatar').attr('src',data.avatar);
-                $('.siderbar-closed-img').attr('src',data.avatar);
-                $('.siderbar-expand-img').attr('src',data.avatar);
+                $('#userAvatar').attr('src', data.avatar);
+                $('.siderbar-closed-img').attr('src', data.avatar);
+                $('.siderbar-expand-img').attr('src', data.avatar);
             });
         };
 
@@ -63,20 +64,29 @@ angular.module('conojoApp')
             $('#resetPassword').modal('toggle');
         };
 
-        $scope.updateUserInfo = function(){
+        $scope.updateUserInfo = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'users/user/' + $window.sessionStorage.currentUserUuid,
                 method: 'PUT',
-                data: $.param({'uuid': $window.sessionStorage.currentUserUuid,'fullname': $scope.fullname,'email': $scope.email,'username': $window.sessionStorage.username,'city': $scope.city,'state': $scope.state,'country': $scope.country}),
+                data: $.param({
+                    'uuid': $window.sessionStorage.currentUserUuid,
+                    'fullname': $scope.fullname,
+                    'email': $scope.email,
+                    'username': $window.sessionStorage.username,
+                    'city': $scope.city,
+                    'state': $scope.state,
+                    'country': $scope.country
+                }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function(data){
+            }).then(function (response) {
+                var data = response.data;
                 $window.sessionStorage.fullname = data.fullname;
                 $window.sessionStorage.email = data.email;
                 $window.sessionStorage.city = data.city;
                 $window.sessionStorage.state = data.state;
                 $window.sessionStorage.country = data.country;
                 $scope.init();
-            }).error(function(data){
+            }, function (data) {
                 $('.reset-note').html(data.message);
                 $('#statusNotice').modal('toggle');
             });

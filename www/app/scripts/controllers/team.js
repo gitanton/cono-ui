@@ -19,8 +19,8 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'teams',
                 method: 'GET'
-            }).success(function (data) {
-                $scope.teams = data;
+            }).then(function (response) {
+                $scope.teams = response.data;
             });
         };
 
@@ -38,19 +38,19 @@ angular.module('conojoApp')
             $(event.target).hide();
         };
 
-        $scope.goToEdit = function (ouuid,tuuid) {
+        $scope.goToEdit = function (ouuid, tuuid) {
             var url = '/userpage/' + ouuid + '/' + tuuid;
             $location.path(url);
         };
 
-        $scope.selectTeam = function(val,index){
+        $scope.selectTeam = function (val, index) {
             $('.teams').hide();
             $('.defaultTeam').html(val);
             $('.team-content-offset').hide();
             $('.team-content-offset').eq(index).show();
         };
 
-        $scope.openTeams = function(evt){
+        $scope.openTeams = function (evt) {
             $('.teams').show();
             evt.stopPropagation();
         };

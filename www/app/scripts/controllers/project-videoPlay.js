@@ -21,7 +21,7 @@ angular.module('conojoApp')
         $('.projectScreenVideo-content-video').css('height', $scope.videoHeight);
         $('#videoBody').on('loadedmetadata', function () {
             $('#videoDrawing').css('marginLeft', ($(window).width() - $('#videoBody').width() - 64) / 2);
-            $('#videoDrawing').attr({width:$('#videoBody').width(),height: $('#videoBody').height()});
+            $('#videoDrawing').attr({width: $('#videoBody').width(), height: $('#videoBody').height()});
         });
         var commentNum = 1;
 
@@ -30,38 +30,40 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'projects/project/' + $scope.activeProjectUuid,
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
+            }).then(function (response) {
+                var data = response.data;
                 $scope.projectMembers = data.users;
                 $scope.updateProjectTitle = data.name;
                 $scope.updateProjectTypeid = data.type_id;
             });
 
-            if($scope.activeVideoProjectUuid !== 'new'){
+            if ($scope.activeVideoProjectUuid !== 'new') {
                 $http({
-                   url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid,
-                   method: 'GET',
-                   headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function (data) {
-                       $('#videoBody').attr('src', data.url);
-                       commentNum = data.comments.length + 1;
-                       
-                       if(data.drawings.length > 0){
-                            var img_f_init = new Image();
-                            img_f_init.src = 'data:image/png;base64,' + data.drawings[data.drawings.length - 1].data.slice(9);
-                            img_f_init.onload = function () {
-                                cxt.drawImage(img_f_init, 0, 0, $('#videoBody').width(), $('#videoBody').height());
-                            };
-                        }
+                    url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid,
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }).then(function (response) {
+                    var data = response.data;
+                    $('#videoBody').attr('src', data.url);
+                    commentNum = data.comments.length + 1;
 
-                        if(data.comments.length > 0){
-                            for(var i = 1;i <= data.comments.length;i++){
-                                //group the comments
+                    if (data.drawings.length > 0) {
+                        var img_f_init = new Image();
+                        img_f_init.src = 'data:image/png;base64,' + data.drawings[data.drawings.length - 1].data.slice(9);
+                        img_f_init.onload = function () {
+                            cxt.drawImage(img_f_init, 0, 0, $('#videoBody').width(), $('#videoBody').height());
+                        };
+                    }
 
-                                //var left = data.comments[i-1].begin_x + $scope.drawLeft;
-                                //$('.projectBuild-content-drawing').append("<div id='commentMarker" + i + "' class='commentSqure' style='left:" + left + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
-                            }
+                    if (data.comments.length > 0) {
+                        for (var i = 1; i <= data.comments.length; i++) {
+                            //group the comments
+
+                            //var left = data.comments[i-1].begin_x + $scope.drawLeft;
+                            //$('.projectBuild-content-drawing').append("<div id='commentMarker" + i + "' class='commentSqure' style='left:" + left + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
                         }
-                   });
+                    }
+                });
 
                 $('#pickerBrush').farbtastic(function (color) {
                     $scope.setPenColor(color);
@@ -240,7 +242,7 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'projects/project/' + uuid,
                 method: 'PUT',
                 data: {name: $scope.updateProjectTitle, type_id: $scope.updateProjectTypeid}
-            }).success(function () {
+            }).then(function () {
                 $scope.init();
                 $('#updateproject').modal('hide');
             });
@@ -257,10 +259,10 @@ angular.module('conojoApp')
                 method: 'POST',
                 data: $.param({uuid: $scope.activeProjectUuid, email: $scope.memberEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).then(function () {
                 $scope.init();
                 $('#addPeopleToProject').modal('hide');
-            }).error(function(data){
+            }, function (data) {
                 $('#addPeopleToProject').modal('hide');
                 $('.reset-note').html(data.message);
                 $('#statusNotice').modal('toggle');
@@ -272,7 +274,7 @@ angular.module('conojoApp')
             $scope.meetingName = '';
             $scope.recipients = [];
             $(".js-example-basic-multiple").select2({
-                templateResult: function(state){
+                templateResult: function (state) {
                     return $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
                 }
             }).val('');
@@ -293,7 +295,7 @@ angular.module('conojoApp')
                     attendees: $scope.recipients.join(',')
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).then(function () {
                 $scope.init();
                 $('#newMeeting').modal('hide');
             });
@@ -407,9 +409,21 @@ angular.module('conojoApp')
                 //post the comment's content,left,top and  marker.
                 url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid + '/comments',
                 method: 'POST',
-                data: $.param({video_uuid: $scope.activeVideoProjectUuid, content: $scope.commentContent,is_task: $scope.isTask,assignee_uuid: $scope.commentRecipients.join(','), time: video[0].currentTime, begin_x: rectCommentX, begin_y: rectCommentY, end_x: 25, end_y: 25, left_x: 100 * video[0].currentTime / video[0].duration + '%'}),
+                data: $.param({
+                    video_uuid: $scope.activeVideoProjectUuid,
+                    content: $scope.commentContent,
+                    is_task: $scope.isTask,
+                    assignee_uuid: $scope.commentRecipients.join(','),
+                    time: video[0].currentTime,
+                    begin_x: rectCommentX,
+                    begin_y: rectCommentY,
+                    end_x: 25,
+                    end_y: 25,
+                    left_x: 100 * video[0].currentTime / video[0].duration + '%'
+                }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
+            }).then(function (response) {
+                var data = response.data;
                 //update the commentNum
                 commentNum++;
 
@@ -426,7 +440,7 @@ angular.module('conojoApp')
             }
         };
 
-        $(document).on('click','.commentSqure',function(){
+        $(document).on('click', '.commentSqure', function () {
             //open add comment and reply comment
         });
 
@@ -443,7 +457,7 @@ angular.module('conojoApp')
             $scope.showEraser = true;
             $scope.showShape = true;
             $('.projectScreenVideo-comment-black').removeClass('tools-li-selected');
-            
+
             $('.btnPlay').removeClass('paused');
             video[0].pause();
         };
@@ -523,7 +537,7 @@ angular.module('conojoApp')
             $('#videoDrawing').off();
             cxt.lineWidth = width;
             var flag = 0;
-            $('#videoDrawing').on('mousedown', function(evt){
+            $('#videoDrawing').on('mousedown', function (evt) {
                 evt = window.event || evt;
                 var startX = evt.pageX - this.offsetLeft - 64;
                 var startY = evt.pageY - this.offsetTop - 176;
@@ -532,7 +546,7 @@ angular.module('conojoApp')
                 flag = 1;
             });
 
-            $('#videoDrawing').on('mousemove', function(evt){
+            $('#videoDrawing').on('mousemove', function (evt) {
                 evt = window.event || evt;
                 var endX = evt.pageX - this.offsetLeft - 64;
                 var endY = evt.pageY - this.offsetTop - 176;
@@ -542,21 +556,21 @@ angular.module('conojoApp')
                 }
             });
 
-            $('#videoDrawing').on('mouseup', function(){
+            $('#videoDrawing').on('mouseup', function () {
                 flag = 0;
 
                 var screenData = canvas.toDataURL();
                 $http({
                     url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid + '/drawings',
                     method: 'POST',
-                    data: $.param({video_uuid:$scope.activeVideoProjectUuid,data:screenData}),
+                    data: $.param({video_uuid: $scope.activeVideoProjectUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function() {
+                }).then(function () {
 
                 });
             });
 
-            $('#drawing-f').on('mouseout', function(){
+            $('#drawing-f').on('mouseout', function () {
                 flag = 0;
             });
         };
@@ -564,14 +578,14 @@ angular.module('conojoApp')
         $scope.setEraserWidth = function (width) {
             $('#videoDrawing').off();
             cxt.lineWidth = width;
-            $('#videoDrawing').on('mousedown', function(evt){
+            $('#videoDrawing').on('mousedown', function (evt) {
                 evt = window.event || evt;
                 var eraserX = evt.pageX - this.offsetLeft - 64;
                 var eraserY = evt.pageY - this.offsetTop - 176;
                 cxt.clearRect(eraserX - cxt.lineWidth, eraserY - cxt.lineWidth, cxt.lineWidth * 2, cxt.lineWidth * 2);
                 eraserFlag = 1;
             });
-            $('#videoDrawing').on('mousemove', function(evt){
+            $('#videoDrawing').on('mousemove', function (evt) {
                 evt = window.event || evt;
                 var eraserX = evt.pageX - this.offsetLeft - 64;
                 var eraserY = evt.pageY - this.offsetTop - 176;
@@ -579,33 +593,33 @@ angular.module('conojoApp')
                     cxt.clearRect(eraserX - cxt.lineWidth, eraserY - cxt.lineWidth, cxt.lineWidth * 2, cxt.lineWidth * 2);
                 }
             });
-            $('#videoDrawing').on('mouseup', function(){
+            $('#videoDrawing').on('mouseup', function () {
                 eraserFlag = 0;
 
                 var screenData = canvas.toDataURL();
                 $http({
                     url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid + '/drawings',
                     method: 'POST',
-                    data: $.param({video_uuid:$scope.activeVideoProjectUuid,data:screenData}),
+                    data: $.param({video_uuid: $scope.activeVideoProjectUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function() {
+                }).then(function () {
 
                 });
             });
-            $('#drawing-f').on('mouseout', function(){
+            $('#drawing-f').on('mouseout', function () {
                 eraserFlag = 0;
             });
         };
 
         $scope.drawSquare = function () {
             $('#videoDrawing').off();
-            $('#videoDrawing').on('mousedown', function(evt){
+            $('#videoDrawing').on('mousedown', function (evt) {
                 evt = window.event || evt;
                 rectX = evt.pageX - this.offsetLeft - 64;
                 rectY = evt.pageY - this.offsetTop - 176;
             });
 
-            $('#videoDrawing').on('mouseup', function(evt){
+            $('#videoDrawing').on('mouseup', function (evt) {
                 evt = window.event || evt;
                 var endX = evt.pageX - this.offsetLeft - 64;
                 var endY = evt.pageY - this.offsetTop - 176;
@@ -621,9 +635,9 @@ angular.module('conojoApp')
                 $http({
                     url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid + '/drawings',
                     method: 'POST',
-                    data: $.param({video_uuid:$scope.activeVideoProjectUuid,data:screenData}),
+                    data: $.param({video_uuid: $scope.activeVideoProjectUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function() {
+                }).then(function () {
 
                 });
             });
@@ -631,12 +645,12 @@ angular.module('conojoApp')
 
         $scope.drawTriangle = function () {
             $('#videoDrawing').off();
-            $('#videoDrawing').on('mousedown', function(evt){
+            $('#videoDrawing').on('mousedown', function (evt) {
                 evt = window.event || evt;
                 polyX = evt.pageX - this.offsetLeft - 64;
                 polyY = evt.pageY - this.offsetTop - 176;
             });
-            $('#videoDrawing').on('mouseup', function(evt){
+            $('#videoDrawing').on('mouseup', function (evt) {
                 evt = window.event || evt;
                 var endX = evt.pageX - this.offsetLeft - 64;
                 var endY = evt.pageY - this.offsetTop - 176;
@@ -661,9 +675,9 @@ angular.module('conojoApp')
                 $http({
                     url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid + '/drawings',
                     method: 'POST',
-                    data: $.param({video_uuid:$scope.activeVideoProjectUuid,data:screenData}),
+                    data: $.param({video_uuid: $scope.activeVideoProjectUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function() {
+                }).then(function () {
 
                 });
             });
@@ -671,12 +685,12 @@ angular.module('conojoApp')
 
         $scope.drawCircle = function () {
             $('#videoDrawing').off();
-            $('#videoDrawing').on('mousedown', function(evt){
+            $('#videoDrawing').on('mousedown', function (evt) {
                 evt = window.event || evt;
                 arcX = evt.pageX - this.offsetLeft - 64;
                 arcY = evt.pageY - this.offsetTop - 176;
             });
-            $('#videoDrawing').on('mouseup', function(evt){
+            $('#videoDrawing').on('mouseup', function (evt) {
                 evt = window.event || evt;
                 var endX = evt.pageX - this.offsetLeft - 64;
                 var endY = evt.pageY - this.offsetTop - 176;
@@ -697,9 +711,9 @@ angular.module('conojoApp')
                 $http({
                     url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid + '/drawings',
                     method: 'POST',
-                    data: $.param({video_uuid:$scope.activeVideoProjectUuid,data:screenData}),
+                    data: $.param({video_uuid: $scope.activeVideoProjectUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function() {
+                }).then(function () {
 
                 });
             });
@@ -707,12 +721,12 @@ angular.module('conojoApp')
 
         $scope.drawTalk = function () {
             $('#videoDrawing').off();
-            $('#videoDrawing').on('mousedown', function(evt){
+            $('#videoDrawing').on('mousedown', function (evt) {
                 evt = window.event || evt;
                 polyX = evt.pageX - this.offsetLeft - 64;
                 polyY = evt.pageY - this.offsetTop - 176;
             });
-            $('#videoDrawing').on('mouseup', function(evt){
+            $('#videoDrawing').on('mouseup', function (evt) {
                 evt = window.event || evt;
                 cxt.beginPath();
                 cxt.moveTo(polyX, polyY);
@@ -728,9 +742,9 @@ angular.module('conojoApp')
                 $http({
                     url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid + '/drawings',
                     method: 'POST',
-                    data: $.param({video_uuid:$scope.activeVideoProjectUuid,data:screenData}),
+                    data: $.param({video_uuid: $scope.activeVideoProjectUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function() {
+                }).then(function () {
 
                 });
             });
@@ -738,12 +752,12 @@ angular.module('conojoApp')
 
         $scope.drawArrow = function () {
             $('#videoDrawing').off();
-            $('#videoDrawing').on('mousedown', function(evt){
+            $('#videoDrawing').on('mousedown', function (evt) {
                 evt = window.event || evt;
                 polyX = evt.pageX - this.offsetLeft - 64;
                 polyY = evt.pageY - this.offsetTop - 176;
             });
-            $('#videoDrawing').on('mouseup', function(evt){
+            $('#videoDrawing').on('mouseup', function (evt) {
                 evt = window.event || evt;
                 cxt.beginPath();
                 cxt.moveTo(polyX, polyY);
@@ -760,9 +774,9 @@ angular.module('conojoApp')
                 $http({
                     url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid + '/drawings',
                     method: 'POST',
-                    data: $.param({video_uuid:$scope.activeVideoProjectUuid,data:screenData}),
+                    data: $.param({video_uuid: $scope.activeVideoProjectUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function() {
+                }).then(function () {
 
                 });
             });
@@ -770,12 +784,12 @@ angular.module('conojoApp')
 
         $scope.drawStar = function () {
             $('#videoDrawing').off();
-            $('#videoDrawing').on('mousedown', function(evt){
+            $('#videoDrawing').on('mousedown', function (evt) {
                 evt = window.event || evt;
                 polyX = evt.pageX - this.offsetLeft - 64;
                 polyY = evt.pageY - this.offsetTop - 176;
             });
-            $('#videoDrawing').on('mouseup', function(evt){
+            $('#videoDrawing').on('mouseup', function (evt) {
                 evt = window.event || evt;
                 cxt.beginPath();
                 cxt.moveTo(polyX, polyY);
@@ -794,9 +808,9 @@ angular.module('conojoApp')
                 $http({
                     url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid + '/drawings',
                     method: 'POST',
-                    data: $.param({video_uuid:$scope.activeVideoProjectUuid,data:screenData}),
+                    data: $.param({video_uuid: $scope.activeVideoProjectUuid, data: screenData}),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function() {
+                }).then(function () {
 
                 });
             });

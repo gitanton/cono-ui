@@ -19,7 +19,8 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'projects/project/' + $scope.activeProjectUuid,
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
+            }).then(function (response) {
+                var data = response.data;
                 $scope.projectMembers = data.users;
                 $scope.updateProjectTitle = data.name;
                 $scope.updateProjectTypeid = data.type_id;
@@ -29,8 +30,8 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'activities/project/' + $scope.activeProjectUuid,
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $scope.projectActivities = data;
+            }).then(function (response) {
+                $scope.projectActivities = response.data;
             });
         };
 
@@ -44,7 +45,7 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'projects/project/' + uuid,
                 method: 'PUT',
                 data: {name: $scope.updateProjectTitle, type_id: $scope.updateProjectTypeid}
-            }).success(function () {
+            }).then(function () {
                 $scope.init();
                 $('#updateproject').modal('hide');
             });
@@ -61,10 +62,10 @@ angular.module('conojoApp')
                 method: 'POST',
                 data: $.param({uuid: $scope.activeProjectUuid, email: $scope.memberEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).then(function () {
                 $scope.init();
                 $('#addPeopleToProject').modal('hide');
-            }).error(function(data){
+            }, function (data) {
                 $('#addPeopleToProject').modal('hide');
                 $('.reset-note').html(data.message);
                 $('#statusNotice').modal('toggle');
@@ -76,7 +77,7 @@ angular.module('conojoApp')
             $scope.meetingName = '';
             $scope.recipients = [];
             $(".js-example-basic-multiple").select2({
-                templateResult: function(state){
+                templateResult: function (state) {
                     return $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
                 }
             }).val('');
@@ -97,7 +98,7 @@ angular.module('conojoApp')
                     attendees: $scope.recipients.join(',')
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).then(function () {
                 $scope.init();
                 $('#newMeeting').modal('hide');
             });
@@ -113,10 +114,11 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                if(data.length > 0){
+            }).then(function (response) {
+                var data = response.data;
+                if (data.length > 0) {
                     $location.path('/project-build/' + $scope.activeProjectUuid + '/' + data[0].uuid);
-                }else{
+                } else {
                     $location.path('/project-screenUpload/' + $scope.activeProjectUuid);
                 }
             });
@@ -132,9 +134,9 @@ angular.module('conojoApp')
             $location.path(url);
         };
 
-        $scope.handleDrop = function() {
+        $scope.handleDrop = function () {
 
         };
 
         $scope.init();
-});
+    });

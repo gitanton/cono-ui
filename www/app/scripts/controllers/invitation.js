@@ -20,8 +20,8 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'utils/timezones',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $scope.timezones = data;
+            }).then(function (response) {
+                $scope.timezones = response.data;
             });
         };
 
@@ -30,11 +30,16 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'users/login',
                 method: 'POST',
-                data: $.param({invite_key: $routeParams.invite, invite_type: $routeParams.type, username: $scope.loginFormData.username, password: $scope.loginFormData.password}),
+                data: $.param({
+                    invite_key: $routeParams.invite,
+                    invite_type: $routeParams.type,
+                    username: $scope.loginFormData.username,
+                    password: $scope.loginFormData.password
+                }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).then(function () {
                 $location.path('project');
-            }).error(function(){
+            }, function () {
                 $('#loginNote').modal('toggle');
                 $('.login-username').val('').focus();
                 $('.login-password').val('');
@@ -46,11 +51,19 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'users',
                 method: 'POST',
-                data: $.param({invite_key: $routeParams.invite, invite_type: $routeParams.type, fullname: $scope.registFormData.username, email: $scope.registFormData.email, timezone: $scope.timezone, username: $scope.registFormData.username, password: $scope.registFormData.password}),
+                data: $.param({
+                    invite_key: $routeParams.invite,
+                    invite_type: $routeParams.type,
+                    fullname: $scope.registFormData.username,
+                    email: $scope.registFormData.email,
+                    timezone: $scope.timezone,
+                    username: $scope.registFormData.username,
+                    password: $scope.registFormData.password
+                }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).then(function () {
                 $location.path('project');
-            }).error(function (dataMessage) {
+            }, function (dataMessage) {
                 if (dataMessage.data.level === 1) {
                     $scope.errorOne = true;
                     $scope.errorTwo = false;

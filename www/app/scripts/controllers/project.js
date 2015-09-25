@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectCtrl', function ($scope, $http, $location, ENV) {
+    .controller('ProjectCtrl', function ($scope, $http, $location, ENV, projectService) {
         $scope.projecttype = 0;
         $scope.projecttitle = '';
         $scope.errorMessageProject = '';
@@ -15,12 +15,8 @@ angular.module('conojoApp')
         $('.project-content').css('height', $scope.projectContent);
 
         $scope.init = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'projects',
-                method: 'GET',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $scope.projects = data;
+            projectService.list().then(function (response) {
+                $scope.projects = response.data;
                 $scope.projectsNum = $scope.projects.length;
             });
         };
@@ -64,22 +60,17 @@ angular.module('conojoApp')
         };
 
         $scope.myProject = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'projects',
-                method: 'POST',
-                data: $.param({name: $scope.projecttitle, type_id: $scope.projecttype}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            projectService.list($.param({name: $scope.projecttitle, type_id: $scope.projecttype})).then(function () {
                 $scope.init();
                 $('#newproject').modal('hide');
-            }).error(function(data){
+            }, function (error) {
                 $('#newproject').modal('hide');
-                $scope.errorMessageProject = data.message;
+                $scope.errorMessageProject = error.message;
                 $('#statusNoticeProject').modal('toggle');
             });
         };
 
-        $scope.goToBilling = function(){
+        $scope.goToBilling = function () {
             $('#statusNoticeProject').modal('hide');
             $location.path('/profile-billing');
         };
@@ -90,10 +81,11 @@ angular.module('conojoApp')
                     url: ENV.API_ENDPOINT + 'screens/project/' + uuid,
                     method: 'GET',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function (data) {
-                    if(data.length > 0){
+                }).then(function (response) {
+                    var data = response.data;
+                    if (data.length > 0) {
                         $location.path('/project-build/' + uuid + '/' + data[0].uuid);
-                    }else{
+                    } else {
                         $location.path('/project-screenUpload/' + uuid);
                     }
                 });
@@ -102,10 +94,11 @@ angular.module('conojoApp')
                     url: ENV.API_ENDPOINT + 'videos/project/' + uuid,
                     method: 'GET',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function (data) {
-                    if(data.length > 0){
+                }).then(function (response) {
+                    var data = response.data;
+                    if (data.length > 0) {
                         $location.path('/project-videoPlay/' + uuid + '/' + data[0].uuid);
-                    }else{
+                    } else {
                         $location.path('/project-videoUpload/' + uuid);
                     }
                 });
@@ -114,10 +107,11 @@ angular.module('conojoApp')
                     url: ENV.API_ENDPOINT + 'screens/project/' + uuid,
                     method: 'GET',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function (data) {
-                    if(data.length > 0){
+                }).then(function (response) {
+                    var data = response.data;
+                    if (data.length > 0) {
                         $location.path('/project-build-template/' + uuid + '/' + data[0].uuid);
-                    }else{
+                    } else {
                         $location.path('/project-templateSelect/' + uuid);
                     }
                 });
@@ -136,12 +130,12 @@ angular.module('conojoApp')
                 method: 'POST',
                 data: $.param({uuid: $scope.duplicateProjectUuid, name: $scope.duplicateProjectName + '-Copy'}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).then(function () {
                 $scope.init();
                 $('#duplicateproject').modal('hide');
-            }).error(function(data){
+            }, function (error) {
                 $('#duplicateproject').modal('hide');
-                $('.reset-note').html(data.message);
+                $('.reset-note').html(error.message);
                 $('#statusNotice').modal('toggle');
             });
         };
@@ -157,11 +151,11 @@ angular.module('conojoApp')
                 method: 'POST',
                 data: $.param({uuid: $scope.shareProjectUuid}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).then(function () {
                 $('#shareproject').modal('hide');
-            }).error(function(data){
+            }, function (error) {
                 $('#shareproject').modal('hide');
-                $('.reset-note').html(data.message);
+                $('.reset-note').html(error.message);
                 $('#statusNotice').modal('toggle');
             });
         };
@@ -177,12 +171,12 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'projects/project/' + uuid,
                 method: 'PUT',
                 data: {type_id: $scope.archiveProjectTypeid, archived: '1'}
-            }).success(function () {
+            }).then(function () {
                 $scope.init();
                 $('#archiveproject').modal('hide');
-            }).error(function(data){
+            }, function (error) {
                 $('#archiveproject').modal('hide');
-                $('.reset-note').html(data.message);
+                $('.reset-note').html(error.message);
                 $('#statusNotice').modal('toggle');
             });
         };
@@ -197,12 +191,12 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'projects/project/' + uuid,
                 method: 'DELETE',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).then(function () {
                 $scope.init();
                 $('#deleteproject').modal('hide');
-            }).error(function(data){
+            }, function (error) {
                 $('#deleteproject').modal('hide');
-                $('.reset-note').html(data.message);
+                $('.reset-note').html(error.message);
                 $('#statusNotice').modal('toggle');
             });
         };
@@ -221,24 +215,24 @@ angular.module('conojoApp')
                     method: 'POST',
                     data: {uuids: uuids},
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function(){
+                }).then(function () {
                     $scope.init();
-                }).error(function(data){
-                    $('.reset-note').html(data.message);
+                }, function (error) {
+                    $('.reset-note').html(error.message);
                     $('#statusNotice').modal('toggle');
                 });
             }
         });
         $('#sortable').disableSelection();
 
-        $scope.openProjectNote = function(uuid,name){
+        $scope.openProjectNote = function (uuid, name) {
             $scope.projectNoteUuid = uuid;
             $scope.projectNoteName = name;
             $('#addProjectNote').modal('toggle');
         };
 
-        $scope.addProjectNote = function(){
-            
+        $scope.addProjectNote = function () {
+
         };
 
         $scope.init();

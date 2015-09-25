@@ -19,8 +19,8 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'utils/timezones',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $scope.timezones = data;
+            }).then(function (response) {
+                $scope.timezones = response.data;
             });
         };
 
@@ -30,9 +30,15 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'users',
                 method: 'POST',
-                data: $.param({fullname: $scope.formData.fullname, email: $scope.formData.email, timezone: $scope.timezone, username: $scope.formData.fullname, password: $scope.formData.password}),
+                data: $.param({
+                    fullname: $scope.formData.fullname,
+                    email: $scope.formData.email,
+                    timezone: $scope.timezone,
+                    username: $scope.formData.fullname,
+                    password: $scope.formData.password
+                }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).then(function () {
                 $location.path('/');
             });
         };

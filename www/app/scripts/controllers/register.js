@@ -25,8 +25,8 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'utils/timezones',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $scope.timezones = data;
+            }).then(function (response) {
+                $scope.timezones = response.data;
             });
         };
 
@@ -36,14 +36,21 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'users',
                 method: 'POST',
-                data: $.param({fullname: $scope.formData.username, email: $scope.formData.email, timezone: $scope.formData.timezone, username: $scope.formData.username, password: $scope.formData.password}),
+                data: $.param({
+                    fullname: $scope.formData.username,
+                    email: $scope.formData.email,
+                    timezone: $scope.formData.timezone,
+                    username: $scope.formData.username,
+                    password: $scope.formData.password
+                }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
+            }).then(function (response) {
+                var data = response.data;
                 $window.sessionStorage.currentUserUuid = data.uuid;
 
-                if(data.avatar === null){
+                if (data.avatar === null) {
                     $window.sessionStorage.avatar = '';
-                }else{
+                } else {
                     $window.sessionStorage.avatar = data.avatar;
                 }
                 console.log($window.sessionStorage.avatar);
@@ -51,23 +58,22 @@ angular.module('conojoApp')
                 $window.sessionStorage.fullname = data.fullname;
                 $window.sessionStorage.email = data.email;
 
-                if(data.city === null){
+                if (data.city === null) {
                     $window.sessionStorage.city = '';
-                }else{
+                } else {
                     $window.sessionStorage.city = data.city;
                 }
-                console.log($window.sessionStorage.city);
 
-                if(data.state === null){
+                if (data.state === null) {
                     $window.sessionStorage.state = '';
-                }else{
+                } else {
                     $window.sessionStorage.state = data.state;
                 }
 
                 $window.sessionStorage.userCountry = data.country;
 
                 $location.path('project');
-            }).error(function (dataMessage) {
+            }, function (dataMessage) {
                 if (dataMessage.data.level === 1) {
                     $scope.errorOne = true;
                     $scope.errorTwo = false;

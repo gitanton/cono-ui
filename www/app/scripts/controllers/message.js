@@ -16,8 +16,8 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'messages/',
                 method: 'GET'
-            }).success(function(data) {
-                $scope.messages = data;
+            }).then(function (response) {
+                $scope.messages = response.data;
             });
         };
 
@@ -31,17 +31,17 @@ angular.module('conojoApp')
         //         method: 'POST',
         //         data: $.param({content:$scope.messageContent,project_uuid:$scope.activeProjectUuid}),
         //         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        //     }).success(function() {
+        //     }).then(function() {
         //         $scope.init();
         //         $('#addNewMessage').modal('hide');
-        //     }).error(function(data){
+        //     },function(data){
         //         $('#addNewMessage').modal('hide');
         //         $('.reset-note').html(data.message);
         //         $('#statusNotice').modal('toggle');
         //     });
         // };
 
-        $scope.replyMessageModal = function(muuid,puuid){
+        $scope.replyMessageModal = function (muuid, puuid) {
             $scope.messagecontent = '';
             $('#replymessage').modal('toggle');
             $scope.replyMessageUuid = muuid;
@@ -49,38 +49,42 @@ angular.module('conojoApp')
             $scope.messagecontent = '';
         };
 
-        $scope.replyMessage = function(){
+        $scope.replyMessage = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'messages',
                 method: 'POST',
-                data: $.param({content:$scope.messagecontent,project_uuid:$scope.replyProjectUuid,parent_uuid:$scope.replyMessageUuid}),
+                data: $.param({
+                    content: $scope.messagecontent,
+                    project_uuid: $scope.replyProjectUuid,
+                    parent_uuid: $scope.replyMessageUuid
+                }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
+            }).then(function () {
                 $scope.init();
                 $('#replymessage').modal('hide');
-            }).error(function(data){
+            }, function (error) {
                 $('#replymessage').modal('hide');
-                $('.reset-note').html(data.message);
+                $('.reset-note').html(error.message);
                 $('#statusNotice').modal('toggle');
             });
         };
 
-        $scope.deleteMessageModal = function(uuid){
+        $scope.deleteMessageModal = function (uuid) {
             $('#deletemessage').modal('toggle');
             $scope.deleteMessageUuid = uuid;
         };
 
-        $scope.deleteMessage = function(){
+        $scope.deleteMessage = function () {
             $http({
-                url: ENV.API_ENDPOINT + 'messages/message/'+$scope.deleteMessageUuid,
+                url: ENV.API_ENDPOINT + 'messages/message/' + $scope.deleteMessageUuid,
                 method: 'DELETE',
-                data: $.param({uuid:$scope.deleteMessageUuid}),
+                data: $.param({uuid: $scope.deleteMessageUuid}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
+            }).then(function () {
                 $scope.init();
                 $('#deletemessage').modal('hide');
             });
         };
 
         $scope.init();
-  });
+    });

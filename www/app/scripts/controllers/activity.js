@@ -14,13 +14,13 @@ angular.module('conojoApp')
         $('.activity-content').css('height', $scope.activityContent);
         $('.activity-content-delete').css('height', $scope.activityDeleteContainer);
 
-        $scope.init = function(){
-        	$http({
+        $scope.init = function () {
+            $http({
                 url: ENV.API_ENDPOINT + 'activities/user',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $scope.projectActivities = data;
+            }).then(function (response) {
+                $scope.projectActivities = response.data;
             });
         };
 

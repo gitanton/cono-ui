@@ -17,7 +17,8 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'projects/project/' + $scope.activeProjectUuid,
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
+            }).then(function (response) {
+                var data = response.data;
                 $scope.updateProjectTitle = data.name;
                 $scope.updateProjectTypeid = data.type_id;
                 $scope.projectMembers = data.users;
@@ -26,8 +27,8 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'messages/?project_uuid=' + $scope.activeProjectUuid,
                 method: 'GET'
-            }).success(function(data) {
-                $scope.messages = data;
+            }).then(function (response) {
+                $scope.messages = response.data;
             });
         };
 
@@ -40,67 +41,75 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'projects/project/' + uuid,
                 method: 'PUT',
                 data: {name: $scope.updateProjectTitle, type_id: $scope.updateProjectTypeid}
-            }).success(function () {
+            }).then(function () {
                 $scope.init();
                 $('#updateproject').modal('hide');
             });
         };
 
-        $scope.openAddComment = function(){
+        $scope.openAddComment = function () {
             $scope.messageContent = '';
             $scope.recipients = '';
             $('#addNewMessage').modal('toggle');
         };
 
-        $scope.addNewComment = function(){
+        $scope.addNewComment = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'messages',
                 method: 'POST',
-                data: $.param({content:$scope.messageContent,project_uuid:$scope.activeProjectUuid,recipients: $scope.recipients.join(',')}),
+                data: $.param({
+                    content: $scope.messageContent,
+                    project_uuid: $scope.activeProjectUuid,
+                    recipients: $scope.recipients.join(',')
+                }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
+            }).then(function () {
                 $scope.init();
                 $('#addNewMessage').modal('hide');
-            }).error(function(data){
+            }, function (error) {
                 $('#addNewMessage').modal('hide');
-                $('.reset-note').html(data.message);
+                $('.reset-note').html(error.message);
                 $('#statusNotice').modal('toggle');
             });
         };
 
-        $scope.replyMessageModal = function(uuid){
+        $scope.replyMessageModal = function (uuid) {
             $scope.replyContent = '';
             $('#replymessage').modal('toggle');
             $scope.replyMessageUuid = uuid;
         };
 
-        $scope.replyMessage = function(){
+        $scope.replyMessage = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'messages',
                 method: 'POST',
-                data: $.param({content:$scope.replyContent,project_uuid:$scope.activeProjectUuid,parent_uuid:$scope.replyMessageUuid}),
+                data: $.param({
+                    content: $scope.replyContent,
+                    project_uuid: $scope.activeProjectUuid,
+                    parent_uuid: $scope.replyMessageUuid
+                }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
+            }).then(function () {
                 $scope.init();
                 $('#replymessage').modal('hide');
-            }).error(function(data){
+            }, function (error) {
                 $('#replymessage').modal('hide');
-                $('.reset-note').html(data.message);
+                $('.reset-note').html(error.message);
                 $('#statusNotice').modal('toggle');
             });
         };
 
-        $scope.deleteMessageModal = function(uuid){
+        $scope.deleteMessageModal = function (uuid) {
             $('#deletemessage').modal('toggle');
             $scope.deleteMessageUuid = uuid;
         };
 
-        $scope.deleteMessage = function(){
+        $scope.deleteMessage = function () {
             $http({
-                url: ENV.API_ENDPOINT + 'messages/message/'+$scope.deleteMessageUuid,
+                url: ENV.API_ENDPOINT + 'messages/message/' + $scope.deleteMessageUuid,
                 method: 'DELETE',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function() {
+            }).then(function () {
                 $scope.init();
                 $('#deletemessage').modal('hide');
             });
@@ -111,10 +120,11 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'videos/project/' + $scope.activeProjectUuid,
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                if(data.length > 0){
+            }).then(function (response) {
+                var data = response.data;
+                if (data.length > 0) {
                     $location.path('/project-videoPlay/' + $scope.activeProjectUuid + '/' + data[0].uuid);
-                }else{
+                } else {
                     $location.path('/project-videoUpload/' + $scope.activeProjectUuid);
                 }
             });

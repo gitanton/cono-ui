@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('MainCtrl', function ($scope, $http, $location, ENV, $window) {
+    .controller('MainCtrl', function ($scope, $http, $location, ENV, $window, userService) {
         $scope.loginPadding = ($(window).height() - 536) / 2;
 
         $('.login-logo').css('padding-top', $scope.loginPadding);
@@ -16,44 +16,39 @@ angular.module('conojoApp')
 
         $scope.formData = {};
         $scope.processForm = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'users/login',
-                method: 'POST',
-                data: $.param({username: $scope.formData.username, password: $scope.formData.password}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $window.sessionStorage.currentUserUuid = data.uuid;
+            userService.login($scope.formData.username, $scope.formData.password).then(function (user) {
+                console.log(user);
+                $window.sessionStorage.currentUserUuid = user.uuid;
 
-                if(data.avatar === null){
+                if (user.avatar === null) {
                     $window.sessionStorage.avatar = '';
-                }else{
-                    $window.sessionStorage.avatar = data.avatar;
+                } else {
+                    $window.sessionStorage.avatar = user.avatar;
                 }
 
-                $window.sessionStorage.fullname = data.fullname;
-                $window.sessionStorage.username = data.username;
-                $window.sessionStorage.email = data.email;
+                $window.sessionStorage.fullname = user.fullname;
+                $window.sessionStorage.username = user.username;
+                $window.sessionStorage.email = user.email;
 
-                if(data.city === null){
+                if (user.city === null) {
                     $window.sessionStorage.city = '';
-                }else{
-                    $window.sessionStorage.city = data.city;
+                } else {
+                    $window.sessionStorage.city = user.city;
                 }
-                console.log($window.sessionStorage.city);
 
-                if(data.state === null){
+                if (user.state === null) {
                     $window.sessionStorage.state = '';
-                }else{
-                    $window.sessionStorage.state = data.state;
+                } else {
+                    $window.sessionStorage.state = user.state;
                 }
 
-                $window.sessionStorage.userCountry = data.country;
+                $window.sessionStorage.userCountry = user.country;
                 $location.path('project');
-            }).error(function(){
-                    $('#loginNote').modal('toggle');
-                    $('.login-username').val('').focus();
-                    $('.login-password').val('');
-                });
+            }, function () {
+                $('#loginNote').modal('toggle');
+                $('.login-username').val('').focus();
+                $('.login-password').val('');
+            });
         };
 
         $scope.openResetPassword = function () {
@@ -61,12 +56,7 @@ angular.module('conojoApp')
         };
 
         $scope.forgotPassword = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'users/forgot_password',
-                method: 'POST',
-                data: $.param({email: $scope.resetEmail}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function(){
+            userService.forgotPassword($scope.resetEmail).then(function () {
                 $('#resetPassword').modal('hide');
                 $('#resetNote').modal('toggle');
             });

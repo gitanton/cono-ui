@@ -1,4 +1,3 @@
-
 'use strict';
 
 /**
@@ -17,6 +16,7 @@ angular
         'ngRoute',
         'ngSanitize',
         'ngTouch',
+        'logglyLogger',
         'config',
         'ngFileUpload'
     ])
@@ -198,7 +198,9 @@ angular
                     function (e) {
                         e.dataTransfer.dropEffect = 'move';
                         // allows us to drop
-                        if (e.preventDefault) {e.preventDefault();}
+                        if (e.preventDefault) {
+                            e.preventDefault();
+                        }
                         this.classList.add('over');
                         return false;
                     },
@@ -227,7 +229,9 @@ angular
                     'drop',
                     function (e) {
                         // Stops some browsers from redirecting.
-                        if (e.stopPropagation) {e.stopPropagation();}
+                        if (e.stopPropagation) {
+                            e.stopPropagation();
+                        }
 
                         this.classList.remove('over');
 
@@ -242,7 +246,7 @@ angular
             }
         };
     })
-    .run(['$location', '$rootScope', function($location, $rootScope) {
+    .run(['$location', '$rootScope', function ($location, $rootScope) {
         $rootScope.$on('$routeChangeSuccess', function (event, current) {
             $rootScope.title = current.$$route.title;
             $rootScope.description = current.$$route.description;

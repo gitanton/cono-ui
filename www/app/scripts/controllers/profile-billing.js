@@ -28,16 +28,17 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'utils/bootstrap',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $scope.plans = data.plans;
+            }).then(function (response) {
+                $scope.plans = response.data.plans;
             });
 
             $http({
                 url: ENV.API_ENDPOINT + 'users/subscription',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                if(data.plan){
+            }).then(function (response) {
+                var data = response.data;
+                if (data.plan) {
                     $scope.plan = data.plan;
                     $scope.planName = data.plan.name;
                     $scope.planId = data.plan.id.toString();
@@ -50,12 +51,12 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'users/billing_history',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $scope.billings = data;
+            }).then(function (response) {
+                $scope.billings = response.data;
             });
         };
 
-        $scope.payForPlan = function(){
+        $scope.payForPlan = function () {
             $scope.token = '';
             Stripe.setPublishableKey('pk_test_qfSibHadzKvpVKdrPoBwHbGN');
             Stripe.card.createToken({
@@ -63,7 +64,7 @@ angular.module('conojoApp')
                 cvc: $scope.cvc,
                 exp_month: $scope.exp_month,
                 exp_year: $scope.exp_year
-            }, function(status, response){
+            }, function (status, response) {
                 if (response.error) {
                     $('.reset-note').html(response.error.message);
                     $('#statusNotice').modal('toggle');
@@ -74,14 +75,18 @@ angular.module('conojoApp')
                     $http({
                         url: ENV.API_ENDPOINT + 'users/subscription',
                         method: 'POST',
-                        data:$.param({token: $scope.token, plan_id: $scope.newPlanId, additional_users: $scope.newPlanMember}),
+                        data: $.param({
+                            token: $scope.token,
+                            plan_id: $scope.newPlanId,
+                            additional_users: $scope.newPlanMember
+                        }),
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                    }).success(function(data){
+                    }).then(function (response) {
                         $scope.init();
-                        $('.reset-note').html(data.message);
+                        $('.reset-note').html(response.data.message);
                         $('#statusNotice').modal('toggle');
-                    }).error(function(data){
-                        $('.reset-note').html(data.message);
+                    }, function (error) {
+                        $('.reset-note').html(error.message);
                         $('#statusNotice').modal('toggle');
                     });
                 }
@@ -98,20 +103,20 @@ angular.module('conojoApp')
             $scope.billingThree = true;
         };
 
-        $scope.activePlan = function (newPlanId,newPlanName,newPlanPrice) {
+        $scope.activePlan = function (newPlanId, newPlanName, newPlanPrice) {
             $scope.planId = newPlanId;
             $scope.newPlanId = newPlanId;
             $scope.newPlanName = newPlanName;
             $scope.newPlanPrice = newPlanPrice;
         };
 
-        $scope.addMember = function(){
+        $scope.addMember = function () {
             $scope.newPlanMember++;
             $scope.newPlanAddedPrice = $scope.newPlanMember * 10;
         };
 
-        $scope.decreaseMember = function(){
-            if($scope.newPlanMember > 0){
+        $scope.decreaseMember = function () {
+            if ($scope.newPlanMember > 0) {
                 $scope.newPlanMember--;
                 $scope.newPlanAddedPrice = $scope.newPlanMember * 10;
             }
@@ -126,7 +131,7 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'users/subscription',
                 method: 'DELETE',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function(){
+            }).then(function () {
                 $scope.init();
                 $('#deleteproject').modal('hide');
             });

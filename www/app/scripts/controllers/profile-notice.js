@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileNoticeCtrl', function ($scope, $http, $location,ENV) {
+    .controller('ProfileNoticeCtrl', function ($scope, $http, $location, ENV) {
         $scope.profileNoticeContent = $(window).height() - 250;
         $('.profileNotice-content-notice').css('height', $scope.profileNoticeContent);
 
@@ -17,8 +17,8 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'users/notifications',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $scope.notification = data;
+            }).then(function (response) {
+                $scope.notification = response.data;
             });
         };
 
@@ -37,12 +37,12 @@ angular.module('conojoApp')
             $location.path(url);
         };
 
-        $scope.updateSettings = function(index,setting){
-            if(index === 'general'){
+        $scope.updateSettings = function (index, setting) {
+            if (index === 'general') {
                 $scope.notification.notify_general = setting;
-            }else if(index === 'promition'){
+            } else if (index === 'promition') {
                 $scope.notification.notify_promotions = setting;
-            }else{
+            } else {
                 $scope.notification.projects[index].notify = setting;
             }
             $http({

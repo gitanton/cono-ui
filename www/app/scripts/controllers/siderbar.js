@@ -1,4 +1,3 @@
-
 'use strict';
 
 /**
@@ -21,9 +20,9 @@ angular.module('conojoApp')
             $scope.userAvatar = $window.sessionStorage.avatar;
         };
 
-        $scope.$watch('$window.sessionStorage.avatar', function() {
-            $('.siderbar-closed-img').attr('src',$window.sessionStorage.avatar);
-            $('.siderbar-expand-img').attr('src',$window.sessionStorage.avatar);
+        $scope.$watch('$window.sessionStorage.avatar', function () {
+            $('.siderbar-closed-img').attr('src', $window.sessionStorage.avatar);
+            $('.siderbar-expand-img').attr('src', $window.sessionStorage.avatar);
         });
 
         $scope.expandMenu = function () {
@@ -35,7 +34,7 @@ angular.module('conojoApp')
         };
 
         $scope.setHeight = function () {
-            
+
         };
 
         $scope.goToProfile = function () {
@@ -48,12 +47,12 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'users/logout',
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                if (data.status === 'success') {
+            }).then(function (response) {
+                if (response.data.status === 'success') {
                     $location.path('/');
                 }
-            }).error(function(data){
-                $('.reset-note').html(data.message);
+            }, function (error) {
+                $('.reset-note').html(error.message);
                 $('#statusNotice').modal('toggle');
             });
         };

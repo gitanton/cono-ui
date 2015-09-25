@@ -17,8 +17,8 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'projects',
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                $scope.projects = data;
+            }).then(function (response) {
+                $scope.projects = response.data;
             });
 
             //this need to get the current team user's project
@@ -35,11 +35,11 @@ angular.module('conojoApp')
                 method: 'POST',
                 data: $.param({uuid: $scope.addToProjectUuid, email: $scope.memberEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).then(function () {
                 $('#addPeopleToProject').modal('hide');
-            }).error(function(data){
+            }, function (error) {
                 $('#addPeopleToProject').modal('hide');
-                $('.reset-note').html(data.message);
+                $('.reset-note').html(error.message);
                 $('#statusNotice').modal('toggle');
             });
         };
@@ -55,11 +55,11 @@ angular.module('conojoApp')
                 method: 'POST',
                 data: $.param({uuid: $scope.activeTeamUuid, email: $scope.teammemberemail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function () {
+            }).then(function () {
                 $('#addTeamMember').modal('hide');
-            }).error(function(data){
+            }, function (error) {
                 $('#addTeamMember').modal('hide');
-                $('.reset-note').html(data.message);
+                $('.reset-note').html(error.message);
                 $('#statusNotice').modal('toggle');
             });
         };
