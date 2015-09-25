@@ -24,7 +24,6 @@ angular.module('conojoApp')
                 },
 
                 get: function(uuid) {
-                    $log.debug('getting team: ' + uuid);
 
                     return $http({
                         url: uuid ? ENV.API_ENDPOINT + 'teams/team/'+uuid : ENV.API_ENDPOINT + 'teams/team',

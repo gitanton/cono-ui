@@ -20,11 +20,15 @@ angular
         'config',
         'ngFileUpload'
     ])
-    .config(function ($routeProvider, $httpProvider) {
+    .config(function ($routeProvider, $httpProvider, LogglyLoggerProvider) {
 
         //Enable cross domain calls
         $httpProvider.defaults.useXDomain = true;
         $httpProvider.defaults.withCredentials = true;
+        LogglyLoggerProvider.inputToken('c27a2843-94a4-43d4-a4eb-55908ee737f6');
+        LogglyLoggerProvider.includeTimestamp(true);
+        LogglyLoggerProvider.inputTag('conojoApp');
+        $httpProvider.interceptors.push('ResponseInterceptor');
 
 
         $routeProvider

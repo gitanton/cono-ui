@@ -34,8 +34,8 @@
                 <div class="projectComment-content-items col-md-12">
                     <div class="col-md-12 projectComment-content-item" ng-repeat="message in messages">
                         <div class="projectComment-content-item-first row">
-                            <div class="projectComment-content-img col-md-2"><img src="images/Dawkins-l.png"></div>
-                            <div class="projectComment-content-name col-md-2">R.Dawinks</div>
+                            <div class="projectComment-content-img col-md-2"><img src="{{message.sender.avatar}}" class="img-responsive"></div>
+                            <div class="projectComment-content-name col-md-2">{{message.sender.fullname}}</div>
                             <div class="projectComment-content-message col-md-6">
                                 <div class="col-md-12">{{message.content}}</div>
                             </div>
@@ -49,8 +49,8 @@
                         </div>
                         <div class="projectComment-content-item-reply row">
                             <div class="projectComment-content-itemReply col-md-12" ng-repeat="reply in message.replies">
-                                <div class="projectComment-content-img col-md-2"><img src="images/Dawkins-l.png"></div>
-                                <div class="projectComment-content-name col-md-2">R.Dawinks</div>
+                                <div class="projectComment-content-img col-md-2"><img src="{{reply.sender.avatar}}" class="img-responsive"></div>
+                                <div class="projectComment-content-name col-md-2">{{reply.sender.fullname}}</div>
                                 <div class="projectComment-content-message col-md-6">
                                     <div class="col-md-12">{{reply.content}}</div>
                                 </div>

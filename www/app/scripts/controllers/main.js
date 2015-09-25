@@ -17,7 +17,6 @@ angular.module('conojoApp')
         $scope.formData = {};
         $scope.processForm = function () {
             userService.login($scope.formData.username, $scope.formData.password).then(function (user) {
-                console.log(user);
                 $window.sessionStorage.currentUserUuid = user.uuid;
 
                 if (user.avatar === null) {
