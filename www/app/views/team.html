@@ -16,15 +16,15 @@
         </div>
         <div class="team-content">
             <div>
-                <div class="col-md-4 team-content-offset" ng-repeat="team in teams">
+                <div class="col-md-4 team-content-offset" ng-repeat="user in team.users">
                     <div class="col-md-12 team-content-itemimg">
-                        <img src="{{team.owner.avatar}}" class="img-circle img-responsive" ng-mouseover="hoverOver($event)">
+                        <img src="{{user.avatar}}" class="img-circle img-responsive" ng-mouseover="hoverOver($event)">
                     </div>
                     <div class="col-md-12 team-content-itemname">
-                        <span>{{team.name}}</span>
+                        <span>{{user.fullname}}</span>
                     </div>
                     <div class="team-content-permissions" ng-mouseleave="hoverLeave($event)">
-                        <div class="team-content-permissionsEdit" ng-click="goToEdit('{{team.owner_uuid}}','{{team.uuid}}')">Edit Permissions</div>
+                        <div class="team-content-permissionsEdit" ng-click="goToEdit('{{user.uuid}}','{{team.uuid}}')">Edit Permissions</div>
                     </div>
                 </div>
             </div>

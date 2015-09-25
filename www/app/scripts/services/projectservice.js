@@ -38,22 +38,6 @@ angular.module('conojoApp')
                         $log.error('projectService.reorder error: ' + angular.toJson(error));
                         return $q.reject(error.data);
                     });
-                },
-
-                forgotPassword: function (email) {
-                    $log.debug('Fetching password for: ' + email);
-
-                    return $http({
-                        url: ENV.API_ENDPOINT + 'users/forgot_password',
-                        method: 'POST',
-                        data: $.param({email: email}),
-                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                    }).then(function (response) {
-                        return response;
-                    }, function (error) {
-                        $log.error('projectService.forgotPassword error: ' + angular.toJson(error));
-                        return $q.reject(error.data);
-                    });
                 }
             };
 
