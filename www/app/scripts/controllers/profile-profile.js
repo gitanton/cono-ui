@@ -12,25 +12,6 @@ angular.module('conojoApp')
         $scope.profileProfileContent = $(window).height() - 250;
         $('.profileProfile-content-profile').css('height', $scope.profileProfileContent);
 
-        $scope.init = function () {
-            //get the country
-            $http({
-                url: ENV.API_ENDPOINT + 'utils/bootstrap',
-                method: 'GET',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).then(function (response) {
-                $scope.countries = response.data.countries;
-            });
-
-            var user = store.get('user');
-            $scope.fullname = user.fullname;
-            $scope.email = user.email;
-            $scope.avatar = user.avatar;
-            $scope.city = user.city;
-            $scope.state = user.state;
-            $scope.country = user.country;
-        };
-
         $scope.uploadAvatar = function (files) {
             Upload.upload({
                 url: ENV.API_ENDPOINT + 'users/avatar',
@@ -99,5 +80,34 @@ angular.module('conojoApp')
             });
         };
 
+
+
+        ////////////////////////////////////////////////////////////////////////////
+        //
+        // INITIALIZATION
+        //
+        ////////////////////////////////////////////////////////////////////////////
+        $scope.init = function () {
+            //get the country
+            $http({
+                url: ENV.API_ENDPOINT + 'utils/bootstrap',
+                method: 'GET',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function (response) {
+                $scope.countries = response.data.countries;
+            });
+
+            userService.get().then(function(user) {
+                if(user) {
+                    $scope.user = user;
+                    $scope.fullname = user.fullname;
+                    $scope.email = user.email;
+                    $scope.avatar = user.avatar;
+                    $scope.city = user.city;
+                    $scope.state = user.state;
+                    $scope.country = user.country;
+                }
+            });
+        };
         $scope.init();
     });

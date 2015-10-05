@@ -12,8 +12,6 @@ angular.module('conojoApp')
         $scope.memberUuid = 0;
         $scope.teamContent = $(window).height() - 128;
         $('.team-content').css('height', $scope.teamContent);
-        $scope.currentUser = userService.getUser() ? userService.getUser().fullname : '';
-        $scope.currentUuid = userService.getUserUUID();
 
         $scope.init = function () {
             teamService.list().then(function (teams) {
@@ -21,6 +19,11 @@ angular.module('conojoApp')
             });
             teamService.get().then(function(team) {
                 $scope.team = team;
+            });
+
+            userService.get().then(function(user) {
+                $scope.currentUser = user.fullname;
+                $scope.currentUuid = user.uuid;
             });
         };
 

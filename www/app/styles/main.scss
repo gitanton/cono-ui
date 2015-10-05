@@ -3266,6 +3266,7 @@ ul li {
                         }
                         .profileProfile-content-profile-info-file {
                             border: 1px solid #0378ae;
+                            cursor: pointer;
                             border-radius: 2px;
                             width: 164px;
                             height: 40px;
@@ -3277,6 +3278,7 @@ ul li {
                             overflow: hidden;
                             input {
                                 position: absolute;
+                                cursor: pointer;
                                 font-size: 27px;
                                 right: 0;
                                 top: 0;

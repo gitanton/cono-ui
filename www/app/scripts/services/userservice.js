@@ -20,8 +20,28 @@ angular.module('conojoApp')
                  * Return the full user object from local storage
                  * @returns {*}
                  */
-                getUser: function() {
-                    return store.get('user');
+                get: function() {
+                    var deferred = $q.defer();
+                    var user = store.get('user');
+                    if(user) {
+                        deferred.resolve(user);
+                    } else {
+
+                        $http({
+                            url: ENV.API_ENDPOINT + 'users/user',
+                            method: 'GET',
+                        }).then(function (response) {
+                            var user = response.data;
+                            store.set('user', user);
+                            deferred.resolve(user);
+
+                        }, function (error) {
+                            $log.error('userService.get error: ' + angular.toJson(error));
+                            return $q.reject(error);
+                        });
+                    }
+
+                    return deferred.promise;
                 },
 
                 login: function (username, password) {

@@ -27,25 +27,41 @@
                     <div class="profileProfile-content-profile-title">Your Information</div>
                     <div class="profileProfile-content-profile-info">
                         <div class="profileProfile-content-profile-info-l col-md-3">
-                            <div class="profileProfile-content-profile-info-icon col-md-12"><img src="images/Chan.png" id="userAvatar" ng-if="avatar == ''"></div>
-                            <div class="profileProfile-content-profile-info-icon col-md-12"><img ng-src="{{avatar}}" id="userAvatar" ng-if="avatar != ''"></div>
+                            <div class="profileProfile-content-profile-info-icon col-md-12">
+                                <img src="images/Chan.png" id="userAvatar" ng-if="!avatar">
+                            </div>
+                            <div class="profileProfile-content-profile-info-icon col-md-12">
+                                <img ng-src="{{avatar}}" id="userAvatar" ng-if="avatar">
+                            </div>
                             <div class="profileProfile-content-profile-info-file col-md-12">
                                 <span class="add-file-desc">Choose file</span>
-                                <input type="file" name="add-file" id="screenFile" ngf-select ng-model="picFile" ngf-change="uploadAvatar(picFile)" />
+                                <input type="file" name="add-file" id="screenFile" ngf-select ng-model="picFile" ngf-change="uploadAvatar(picFile)"/>
                             </div>
                         </div>
                         <div class="profileProfile-content-profile-info-r col-md-9">
-                            <div class="profileProfile-content-profile-fullname col-md-12"><input type="text" placeholder="Full Name" ng-model="fullname"></div>
+                            <div class="profileProfile-content-profile-fullname col-md-12">
+                                <input type="text" placeholder="Full Name" ng-model="fullname">
+                            </div>
                             <div class="profileProfile-content-profile-email col-md-12">
-                                <div class="col-md-8"><input type="email" placeholder="Email" ng-model="email"></div>
-                                <div class="profileProfile-content-profile-password col-md-3" ng-click="openResetPassword()">Change Password</div>
+                                <div class="col-md-8">
+                                    <input type="email" placeholder="Email" ng-model="email">
+                                </div>
+                                <div class="profileProfile-content-profile-password col-md-3" ng-click="openResetPassword()">
+                                    Change Password
+                                </div>
                             </div>
                             <div class="profileProfile-content-profile-address col-md-12">
-                                <div class="col-md-4"><input type="text" placeholder="City" ng-model="city"></div>
-                                <div class="col-md-4"><input type="text" placeholder="State" ng-model="state"></div>
+                                <div class="col-md-4">
+                                    <input type="text" placeholder="City" ng-model="city">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" placeholder="State" ng-model="state">
+                                </div>
                                 <div class="col-md-4">
                                     <select ng-model="userCountry">
-                                        <option value="{{country}}" ng-selected="{{country == userCountry}}" ng-repeat="country in countries">{{country}}</option>
+                                        <option value="{{country}}" ng-selected="{{country == userCountry}}" ng-repeat="country in countries">
+                                            {{country}}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -59,15 +75,21 @@
 <div id="resetPassword" class="modal fade in" style="display: none;">
     <div class="reset">
         <div class="col-md-10 reset-desc">RESET PASSWORD</div>
-        <div class="col-md-2 reset-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-2 reset-delete-delicon">
+            <img src="images/close-icon.png" data-dismiss="modal">
+        </div>
         <form name="resetPassword">
             <div class="col-md-12 reset-body">
-                <input type="text" name="resetEmail" ng-model="resetEmail" class="form-control reset-title" placeholder="Enter email address" />
+                <input type="text" name="resetEmail" ng-model="resetEmail" class="form-control reset-title" placeholder="Enter email address"/>
             </div>
-            <div class="col-md-12 reset-note">Please enter the email address that you used when creating your account. An email will be sent to that address with further instructions on how to reset your password.</div>
+            <div class="col-md-12 reset-note">Please enter the email address that you used when creating your account.
+                An email will be sent to that address with further instructions on how to reset your password.
+            </div>
             <div class="col-md-12 reset-button">
                 <button class="btn btn-lg reset-delete-buttoncancel" type="reset" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-lg reset-delete-buttonsubmit" type="submit" ng-click='forgotPassword()'>Send Email</button>
+                <button class="btn btn-lg reset-delete-buttonsubmit" type="submit" ng-click='forgotPassword()'>Send
+                    Email
+                </button>
             </div>
         </form>
     </div>
