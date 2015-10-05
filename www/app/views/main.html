@@ -3,7 +3,9 @@
     <div class="login-form">
         <form name="loginform" ng-submit="processForm()" novalidate>
             <div class="col-md-12">
-                <input type="text" name="username" ng-model="formData.username" class="form-control login-username" placeholder="Username" ng-minlength="5" required />
+                <input type="text" name="username" ng-model="formData.username" class="form-control login-username"
+                       placeholder="Username"
+                       ng-minlength="5" required />
                 <span ng-show="loginform.username.$invalid && !loginform.username.$pristine">Username Should be at least five characters long</span>
             </div>
             <div class="col-md-12">
@@ -11,7 +13,7 @@
                 <span ng-show="loginform.password.$invalid && !loginform.password.$pristine">Password Should be at least six characters long</span>
             </div>
             <div class="col-md-6 login-remember">
-                <label><input type="checkbox"> Remember me</label>
+                <label><input type="checkbox" ng-model="rememberMe" value="1"> Remember me</label>
             </div>
             <div class="col-md-6 login-forgot">
                 <label><a href="javascript:void(0)" ng-click="openResetPassword()">Forgot Password</a></label>
