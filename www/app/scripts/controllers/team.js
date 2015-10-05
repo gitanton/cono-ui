@@ -8,12 +8,12 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('TeamCtrl', function ($scope, $http, $location, $window, teamService) {
+    .controller('TeamCtrl', function ($scope, $http, $location, $window, teamService, userService) {
         $scope.memberUuid = 0;
         $scope.teamContent = $(window).height() - 128;
         $('.team-content').css('height', $scope.teamContent);
-        $scope.currentUser = $window.sessionStorage.fullname;
-        $scope.currentUuid = $window.sessionStorage.currentUserUuid;
+        $scope.currentUser = userService.getUser() ? userService.getUser().fullname : '';
+        $scope.currentUuid = userService.getUserUUID();
 
         $scope.init = function () {
             teamService.list().then(function (teams) {

@@ -16,6 +16,7 @@ angular
         'ngRoute',
         'ngSanitize',
         'ngTouch',
+        'angular-storage',
         'logglyLogger',
         'config',
         'ngFileUpload'
@@ -25,6 +26,7 @@ angular
         //Enable cross domain calls
         $httpProvider.defaults.useXDomain = true;
         $httpProvider.defaults.withCredentials = true;
+
         LogglyLoggerProvider.inputToken('c27a2843-94a4-43d4-a4eb-55908ee737f6');
         LogglyLoggerProvider.includeTimestamp(true);
         LogglyLoggerProvider.inputTag('conojoApp');
@@ -41,7 +43,7 @@ angular
             .when('/register', {
                 templateUrl: 'views/register.html',
                 controller: 'RegisterCtrl',
-                title: 'Register |Conojo Collaboration Platform',
+                title: 'Register | Conojo Collaboration Platform',
                 description: 'Register | The most comprehensive creative collaboration platform there is. Get feedback on UI/UX, video and files in real-time. Get started with our free trial.'
             })
             .when('/project', {
@@ -160,96 +162,6 @@ angular
             .otherwise({
                 redirectTo: '/'
             });
-    })
-    .directive('draggable', function () {
-        return function (scope, element) {
-            // this gives us the native JS object
-            var el = element[0];
-
-            el.draggable = true;
-
-            el.addEventListener(
-                'dragstart',
-                function (e) {
-                    e.dataTransfer.effectAllowed = 'move';
-                    e.dataTransfer.setData('Text', this.id);
-                    this.classList.add('drag');
-                    return false;
-                },
-                false
-            );
-
-            el.addEventListener(
-                'dragend',
-                function () {
-                    this.classList.remove('drag');
-                    return false;
-                },
-                false
-            );
-        };
-    })
-    .directive('droppable', function () {
-        return {
-            scope: {
-                drop: '&' // parent
-            },
-            link: function (scope, element) {
-                // again we need the native object
-                var el = element[0];
-
-                el.addEventListener(
-                    'dragover',
-                    function (e) {
-                        e.dataTransfer.dropEffect = 'move';
-                        // allows us to drop
-                        if (e.preventDefault) {
-                            e.preventDefault();
-                        }
-                        this.classList.add('over');
-                        return false;
-                    },
-                    false
-                );
-
-                el.addEventListener(
-                    'dragenter',
-                    function () {
-                        this.classList.add('over');
-                        return false;
-                    },
-                    false
-                );
-
-                el.addEventListener(
-                    'dragleave',
-                    function () {
-                        this.classList.remove('over');
-                        return false;
-                    },
-                    false
-                );
-
-                el.addEventListener(
-                    'drop',
-                    function (e) {
-                        // Stops some browsers from redirecting.
-                        if (e.stopPropagation) {
-                            e.stopPropagation();
-                        }
-
-                        this.classList.remove('over');
-
-                        var item = document.getElementById(e.dataTransfer.getData('Text'));
-                        this.appendChild(item);
-                        item.style.display = 'none';
-
-                        return false;
-                    },
-                    false
-                );
-            }
-        };
     })
     .run(['$location', '$rootScope', function ($location, $rootScope) {
         $rootScope.$on('$routeChangeSuccess', function (event, current) {

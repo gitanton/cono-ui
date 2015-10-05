@@ -1,13 +1,28 @@
 'use strict';
 
 angular.module('conojoApp')
-    .service('userService', ['$http', '$q', '$log', 'LogglyLogger', 'ENV',
-        function ($http, $q, $log, LogglyLogger, ENV) {
+    .service('userService', function ($http, $q, store, $log, LogglyLogger, ENV) {
 
             /**
              * The user service that we will use to CRUD user objects
              */
             var userService = {
+
+                /**
+                 * Return the user uuid
+                 * @returns {*}
+                 */
+                getUserUUID: function() {
+                    return store.get('user') ? store.get('user').uuid : null;
+                },
+
+                /**
+                 * Return the full user object from local storage
+                 * @returns {*}
+                 */
+                getUser: function() {
+                    return store.get('user');
+                },
 
                 login: function (username, password) {
                     $log.debug('Logging in user: ' + username);
@@ -18,7 +33,10 @@ angular.module('conojoApp')
                         data: $.param({username: username, password: password}),
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                     }).then(function (response) {
-                        return response.data;
+                        var user = response.data;
+                        store.set('user', user);
+                        return user;
+
                     }, function(error) {
                         $log.error('userService.login error: ' + angular.toJson(error));
                         return $q.reject(error);
@@ -41,4 +59,4 @@ angular.module('conojoApp')
             };
 
             return userService;
-        }]);
+        });

@@ -31,7 +31,7 @@
             <div class="projectActivity-content-body">
                 <div class="projectActivity-content-items col-md-10">
                     <div class="col-md-12 projectActivity-content-item" ng-repeat="activity in projectActivities" id="drag{{$index}}" draggable>
-                        <div class="projectActivity-content-img col-md-3"><img src="{{activity.creator.avatar}}" class="img-responsive"></div>
+                        <div class="projectActivity-content-img col-md-3"><img ng-src="{{activity.creator.avatar}}" class="img-responsive"></div>
                         <div class="projectActivity-content-desc col-md-9">
                             <div class="col-md-9">{{activity.title}}</div>
                             <div class="col-md-3">{{activity.created}}</div>

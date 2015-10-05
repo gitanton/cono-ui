@@ -16,32 +16,7 @@ angular.module('conojoApp')
 
         $scope.formData = {};
         $scope.processForm = function () {
-            userService.login($scope.formData.username, $scope.formData.password).then(function (user) {
-                $window.sessionStorage.currentUserUuid = user.uuid;
-
-                if (user.avatar === null) {
-                    $window.sessionStorage.avatar = '';
-                } else {
-                    $window.sessionStorage.avatar = user.avatar;
-                }
-
-                $window.sessionStorage.fullname = user.fullname;
-                $window.sessionStorage.username = user.username;
-                $window.sessionStorage.email = user.email;
-
-                if (user.city === null) {
-                    $window.sessionStorage.city = '';
-                } else {
-                    $window.sessionStorage.city = user.city;
-                }
-
-                if (user.state === null) {
-                    $window.sessionStorage.state = '';
-                } else {
-                    $window.sessionStorage.state = user.state;
-                }
-
-                $window.sessionStorage.userCountry = user.country;
+            userService.login($scope.formData.username, $scope.formData.password).then(function () {
                 $location.path('project');
             }, function () {
                 $('#loginNote').modal('toggle');
@@ -60,4 +35,14 @@ angular.module('conojoApp')
                 $('#resetNote').modal('toggle');
             });
         };
+
+
+        ////////////////////////////////////////////////////////////////////////////
+        //
+        // INITIALIZATION
+        //
+        ////////////////////////////////////////////////////////////////////////////
+        if(userService.getUserUUID()) {
+            $location.path('project');
+        }
     });

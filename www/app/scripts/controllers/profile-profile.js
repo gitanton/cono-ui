@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileProfileCtrl', function ($scope, $location, $http, ENV, Upload, $window) {
+    .controller('ProfileProfileCtrl', function ($scope, $location, $http, ENV, Upload, store, userService) {
         $scope.profileProfileContent = $(window).height() - 250;
         $('.profileProfile-content-profile').css('height', $scope.profileProfileContent);
 
@@ -22,12 +22,13 @@ angular.module('conojoApp')
                 $scope.countries = response.data.countries;
             });
 
-            $scope.fullname = $window.sessionStorage.fullname;
-            $scope.email = $window.sessionStorage.email;
-            $scope.avatar = $window.sessionStorage.avatar;
-            $scope.city = $window.sessionStorage.city;
-            $scope.state = $window.sessionStorage.state;
-            $scope.userCountry = $window.sessionStorage.userCountry;
+            var user = store.get('user');
+            $scope.fullname = user.fullname;
+            $scope.email = user.email;
+            $scope.avatar = user.avatar;
+            $scope.city = user.city;
+            $scope.state = user.state;
+            $scope.country = user.country;
         };
 
         $scope.uploadAvatar = function (files) {
@@ -36,11 +37,11 @@ angular.module('conojoApp')
                 method: 'POST',
                 file: files[0]
             }).then(function (response) {
-                var data = response.data;
-                $window.sessionStorage.avatar = data.avatar;
-                $('#userAvatar').attr('src', data.avatar);
-                $('.siderbar-closed-img').attr('src', data.avatar);
-                $('.siderbar-expand-img').attr('src', data.avatar);
+                var user = response.data;
+                user.avatar = user.avatar;
+                $('#userAvatar').attr('src', user.avatar);
+                $('.siderbar-closed-img').attr('src', user.avatar);
+                $('.siderbar-expand-img').attr('src', user.avatar);
             });
         };
 
@@ -66,26 +67,23 @@ angular.module('conojoApp')
 
         $scope.updateUserInfo = function () {
             $http({
-                url: ENV.API_ENDPOINT + 'users/user/' + $window.sessionStorage.currentUserUuid,
+                url: ENV.API_ENDPOINT + 'users/user/' + userService.getUserUUID(),
                 method: 'PUT',
                 data: $.param({
-                    'uuid': $window.sessionStorage.currentUserUuid,
+                    'uuid': userService.getUserUUID(),
                     'fullname': $scope.fullname,
                     'email': $scope.email,
-                    'username': $window.sessionStorage.username,
+                    'username': store.get('user').username,
                     'city': $scope.city,
                     'state': $scope.state,
                     'country': $scope.country
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function (response) {
-                var data = response.data;
-                $window.sessionStorage.fullname = data.fullname;
-                $window.sessionStorage.email = data.email;
-                $window.sessionStorage.city = data.city;
-                $window.sessionStorage.state = data.state;
-                $window.sessionStorage.country = data.country;
+                var user = response.data;
+                store.set('user', user);
                 $scope.init();
+                return user;
             }, function (data) {
                 $('.reset-note').html(data.message);
                 $('#statusNotice').modal('toggle');

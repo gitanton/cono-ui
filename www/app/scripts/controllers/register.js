@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('RegisterCtrl', function ($scope, $http, $location, $window, ENV) {
+    .controller('RegisterCtrl', function ($scope, $http, $location, store, ENV) {
         $scope.errorOne = false;
         $scope.errorTwo = false;
         $scope.errorThree = false;
@@ -45,32 +45,7 @@ angular.module('conojoApp')
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function (response) {
-                var data = response.data;
-                $window.sessionStorage.currentUserUuid = data.uuid;
-
-                if (data.avatar === null) {
-                    $window.sessionStorage.avatar = '';
-                } else {
-                    $window.sessionStorage.avatar = data.avatar;
-                }
-                console.log($window.sessionStorage.avatar);
-
-                $window.sessionStorage.fullname = data.fullname;
-                $window.sessionStorage.email = data.email;
-
-                if (data.city === null) {
-                    $window.sessionStorage.city = '';
-                } else {
-                    $window.sessionStorage.city = data.city;
-                }
-
-                if (data.state === null) {
-                    $window.sessionStorage.state = '';
-                } else {
-                    $window.sessionStorage.state = data.state;
-                }
-
-                $window.sessionStorage.userCountry = data.country;
+                store.set('user', response.data);
 
                 $location.path('project');
             }, function (dataMessage) {

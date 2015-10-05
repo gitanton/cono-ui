@@ -8,21 +8,25 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('siderBarCtrl', function ($scope, $http, $window, $location, ENV) {
+    .controller('siderBarCtrl', function ($scope, $http, store, $location, ENV) {
         $scope.expandMenuFlag = false;
         $scope.siderbarContainer = $(window).height() - 64;
         $scope.projectContent = $(window).height() - 128;
+        $scope.user = store.get('user');
 
         $('.siderbar-closed-container').css('height', $scope.siderbarContainer);
         $('.siderbar-expand-container').css('height', $scope.siderbarContainer);
 
         $scope.init = function () {
-            $scope.userAvatar = $window.sessionStorage.avatar;
+            $scope.userAvatar = $scope.user.avatar;
         };
 
-        $scope.$watch('$window.sessionStorage.avatar', function () {
-            $('.siderbar-closed-img').attr('src', $window.sessionStorage.avatar);
-            $('.siderbar-expand-img').attr('src', $window.sessionStorage.avatar);
+        /**
+         * Watch the user's avatar for changes so we can change it when it changes.
+         */
+        $scope.$watch('user.avatar', function () {
+            $('.siderbar-closed-img').attr('src', $scope.user.avatar);
+            $('.siderbar-expand-img').attr('src', $scope.user.avatar);
         });
 
         $scope.expandMenu = function () {
@@ -48,6 +52,7 @@ angular.module('conojoApp')
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function (response) {
+                store.remove('user');
                 if (response.data.status === 'success') {
                     $location.path('/');
                 }
