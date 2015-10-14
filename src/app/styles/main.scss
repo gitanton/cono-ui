@@ -421,7 +421,7 @@ ul li {
             .profileBilling-content-billing-changeCard-three {
                 margin-top: 20px;
                 .col-md-2 {
-                    width: 150px;
+
                     img {
                         margin-left: 15px;
                     }
@@ -694,8 +694,6 @@ ul li {
         background: #e6e6e6;
         overflow-y: auto;
         .col-md-4 {
-            width: 295px;
-            height: 270px;
             margin-bottom: 19px;
             background: #fff;
         }
@@ -773,7 +771,7 @@ ul li {
         .project-content-btm {
             position: absolute;
             z-index: 1;
-            width: 296px;
+            width: 100%;
             height: 43px;
             top: 184px;
             background: url('/images/btm.png');
@@ -792,8 +790,6 @@ ul li {
     width: 100%;
     padding-top: 50px;
     .project-new {
-        width: 465px;
-        height: 288px;
         background: #fff;
         border-radius: 4px;
         margin: 0 auto;
@@ -833,8 +829,6 @@ ul li {
     width: 100%;
     padding-top: 50px;
     .project-duplicate {
-        width: 465px;
-        height: 327px;
         background: #fff;
         border-radius: 4px;
         margin: 0 auto;
@@ -876,8 +870,6 @@ ul li {
     width: 100%;
     padding-top: 50px;
     .project-share {
-        width: 465px;
-        height: 327px;
         background: #fff;
         border-radius: 4px;
         margin: 0 auto;
@@ -956,8 +948,6 @@ ul li {
     width: 100%;
     padding-top: 50px;
     .project-archive {
-        width: 465px;
-        height: 405px;
         background: #fff;
         border-radius: 4px;
         margin: 0 auto;
@@ -999,8 +989,6 @@ ul li {
     width: 100%;
     padding-top: 50px;
     .project-delete {
-        width: 465px;
-        height: 397px;
         background: #fff;
         border-radius: 4px;
         margin: 0 auto;
@@ -1359,7 +1347,6 @@ ul li {
                 line-height: 40px;
             }
             .team-header-select {
-                width: 200px;
                 height: 40px;
                 line-height: 40px;
                 text-align: center;
@@ -1394,8 +1381,6 @@ ul li {
     background: #e6e6e6;
     overflow-y: auto;
     .col-md-4 {
-        width: 296px;
-        height: 296px;
         background: #d4d4d4;
         border-radius: 3px;
     }
@@ -1405,8 +1390,8 @@ ul li {
             background: #323232;
             position: absolute;
             top: 0px;
-            width: 296px;
-            height: 296px;
+            width: 100%;
+            height: 100%;
             opacity: 0.5;
             padding: 80px 50px;
             display: none;
@@ -4507,11 +4492,10 @@ ul li {
     width: 100%;
     padding-top: 50px;
     .feedback-add {
-        width: 465px;
-        height: 504px;
         background: #fff;
         border-radius: 4px;
         margin: 0 auto;
+
     }
     .feedback-add-desc {
         text-align: center;
@@ -4560,8 +4544,6 @@ ul li {
     width: 100%;
     padding-top: 50px;
     .feedback-add {
-        width: 465px;
-        height: 390px;
         background: #fff;
         border-radius: 4px;
         margin: 0 auto;
@@ -4593,7 +4575,6 @@ ul li {
     }
     .feedback-delete-buttoncancel {
         @extend .appbutton;
-        width: 201px;
         height: 40px;
         background: #fff;
         border: 1px solid #0370a2;
@@ -4601,12 +4582,7 @@ ul li {
     }
     .feedback-delete-buttonsubmit {
         @extend .appbutton;
-        width: 201px;
         height: 40px;
     }
 }
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-
-}
+@import "responsive";

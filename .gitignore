@@ -5,3 +5,7 @@
 
 src/app/scripts/config.js
 www
+
+# Cordova
+/platforms
+/plugins

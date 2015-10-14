@@ -3,18 +3,22 @@
     <div ng-include="'views/siderbar.html'"></div>
     <div class="templates-container">
         <div class="templates-header">
-            <div class="templates-header-name col-md-7">
-                <span><img src="images/back-icon.png" ng-click="goBack()" title="Back to Build">Select Your Templates</span>
-            </div>
-            <div class="templates-header-button col-md-3">
-                <button class="btn btn-lg" ng-click="uploadSelectTemplate()">Upload your selected template</button>
-            </div>
-            <div class="templates-header-filter col-md-2">
-                <span class="defaultTemplate">Filter Templates</span>
-                <img src="images/select-project-icon.png" ng-click="openTemplates($event)">
-                <ul class="templates">
-                    <li ng-click="selectTemplate('{{template.name}}',$index)" ng-repeat="template in templates">{{template.name}}</li>
-                </ul>
+            <div class="row">
+                <div class="templates-header-name col-md-7">
+                    <span><img src="images/back-icon.png" ng-click="goBack()" title="Back to Build">Select Your Templates</span>
+                </div>
+                <div class="templates-header-button col-md-3">
+                    <button class="btn btn-lg" ng-click="uploadSelectTemplate()">Upload your selected template</button>
+                </div>
+                <div class="templates-header-filter col-md-2">
+                    <span class="defaultTemplate">Filter Templates</span>
+                    <img src="images/select-project-icon.png" ng-click="openTemplates($event)">
+                    <ul class="templates">
+                        <li ng-click="selectTemplate('{{template.name}}',$index)" ng-repeat="template in templates">
+                            {{template.name}}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="templates-content">

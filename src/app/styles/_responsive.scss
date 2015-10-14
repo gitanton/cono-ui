@@ -1,0 +1,126 @@
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+
+}
+
+@media screen and (max-width: 991px) {
+    .activity-container {
+        .activity-content {
+            .activity-content-items {
+                .activity-content-item {
+                    .activity-content-img {
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .login-container {
+        .login-form {
+            width: auto;
+            border-radius: 0;
+        }
+
+        .login-link {
+            width: auto;
+        }
+    }
+
+    .project-container {
+        .project-header {
+            width: auto;
+            height: auto;
+
+            .project-header-search {
+                width: auto;
+
+                input {
+                    width: auto;
+                }
+            }
+
+            .project-header-create {
+                button {
+                    width: 100%;
+                    display: block;
+                }
+            }
+        }
+
+        .project-content {
+            padding-left: 60px !important;
+
+            .project-content-offset {
+                margin-bottom: 45px;
+            }
+
+            .project-content-btm {
+                width: 100%;
+            }
+        }
+    }
+
+    .team-container {
+        .team-header {
+            height: auto;
+        }
+
+        .team-content-offset {
+            margin-bottom: 45px;
+        }
+    }
+
+    .projectBuild-container {
+        .projectBuild-header {
+            height: auto;
+
+            .projectBuild-header-button {
+                padding-top: 10px;
+                button {
+                    width: 50%;
+                    float: left;
+                }
+            }
+        }
+
+        .projectBuild-content {
+            .projectBuild-content-menu {
+                height: auto;
+            }
+        }
+    }
+
+    .projectScreenVideo-container {
+        .projectScreenVideo-header {
+            height: auto;
+
+            .projectScreenVideo-header-button {
+                padding-top: 10px;
+                button {
+                    width: 100%;
+                }
+            }
+        }
+
+        .projectScreenVideo-content {
+            .projectScreenVideo-content-menu {
+                height: auto;
+            }
+            .projectScreenVideo-content-body {
+                .projectScreenVideo-content-upload {
+                    width: auto;
+                    top: 30px;
+                    left: 30px;
+                }
+            }
+        }
+    }
+}
