@@ -3,4 +3,4 @@
 *.iml
 *.iws
 
-www/app/scripts/config.js
+src/app/scripts/config.js
