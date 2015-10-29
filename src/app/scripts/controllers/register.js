@@ -8,17 +8,14 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('RegisterCtrl', function ($scope, $http, $location, store, ENV) {
+    .controller('RegisterCtrl', function ($rootScope, $scope, $http, $location, store, ENV) {
+        $rootScope.bodyCls = 'gray';
         $scope.errorOne = false;
         $scope.errorTwo = false;
         $scope.errorThree = false;
 
         $scope.today = new Date();
         $scope.lastDay = $scope.today.setDate($scope.today.getDate() + 30);
-        $scope.loginPadding = ($(window).height() - 656) / 2;
-
-        $('.register-logo').css('padding-top', $scope.loginPadding);
-        $('.register-note').css('padding-bottom', $scope.loginPadding);
 
         $scope.init = function () {
             $http({

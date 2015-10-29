@@ -25,6 +25,11 @@ body {
     font-family: $font-roboto;
     -webkit-user-select: none;
     -moz-user-select: none;
+    background: $color-white;
+
+    &.gray {
+        background: $color-gray-4;
+    }
 }
 
 .select2-container {
@@ -69,17 +74,6 @@ body {
         right: 10px;
         top: 10px;
     }
-}
-
-/* Space out content a bit */
-
-.appbutton {
-    width: 225px;
-    height: 44px;
-    border-radius: 3px;
-    background: $color-blue-2;
-    color: #efefef;
-    font-size: 14px;
 }
 
 .blue-line {
@@ -226,7 +220,6 @@ body {
 
 /*login page*/
 .login-container {
-    background: #efefef;
     .login-logo {
         margin-left: auto;
         margin-right: auto;
@@ -234,20 +227,22 @@ body {
         width: 227px;
     }
     .login-form {
-        height: 300px;
-        width: 390px;
+        min-height: 300px;
         margin-left: auto;
         margin-right: auto;
         padding: 33px;
-        background: #e3e3e3;
+        background: $color-gray-2;
         border-radius: 10px;
+
+        .form-control {
+            background-color: $color-white;
+        }
+
         .login-username {
-            height: 44px;
             margin-bottom: 20px;
             border: 0px;
         }
         .login-password {
-            height: 44px;
             margin-bottom: 16px;
             border: 0px;
         }
@@ -268,9 +263,6 @@ body {
         }
         .login-button {
             text-align: center;
-            button {
-                @extend .appbutton;
-            }
         }
     }
     .login-link {
@@ -291,8 +283,10 @@ body {
 }
 
 .login-footer {
-    background: #e3e3e3;
-    height: 108px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: $color-gray-2;
     padding: 32px 0px;
     text-align: center;
     a {
@@ -300,82 +294,38 @@ body {
         height: 44px;
         border-radius: 3px;
         background: $color-blue-2;
-        color: #efefef;
+        color: $color-gray-4;
     }
 }
 
 /*register page*/
 .register-container {
-    background: #efefef;
     .register-logo {
         margin-left: auto;
         margin-right: auto;
         padding-bottom: 30px;
         width: 227px;
     }
+
     .register-form {
-        height: 430px;
-        width: 420px;
-        margin-left: auto;
-        margin-right: auto;
         padding: 15px 33px;
-        background: #e3e3e3;
+        background: $color-gray-2;
         border-radius: 10px;
-        button {
-            @extend .appbutton;
-        }
-        .register-desc {
-            padding-bottom: 15px;
-            text-align: center;
-        }
-        .register-desc-free {
-            height: 25px;
-            line-height: 25px;
-            margin: 0px;
-        }
-        .register-desc-card {
-            height: 17px;
-            line-height: 17px;
-            margin: 0px;
-        }
-        .register-username {
-            margin-bottom: 7px;
-            height: 35px;
-            border: 0px;
-        }
-        .register-email {
-            margin-bottom: 7px;
-            height: 35px;
-            border: 0px;
-        }
-        .register-timezone {
-            margin-bottom: 7px;
-            height: 35px;
-            border: 0px;
-        }
-        .register-password {
-            margin-bottom: 7px;
-            height: 35px;
-            border: 0px;
-        }
-        .register-confirmpassword {
-            margin-bottom: 7px;
-            height: 35px;
-            border: 0px;
-        }
-        .register-button {
-            text-align: center;
+
+        .form-control {
+            background-color: $color-white;
         }
     }
+
     .register-billing {
         margin: 0px 50px;
         .profileBilling-content-title {
             color: $color-blue-5;
-            border-bottom: 1px solid #e3e3e3;
+            border-bottom: 1px solid $color-gray-2;
         }
         .profileBilling-content-billing-changrCard {
             padding: 20px;
-            background: #e3e3e3;
+            background: $color-gray-2;
             border-radius: 10px;
             margin-top: 20px;
             .profileBilling-content-billing-changeCard-two {
@@ -435,7 +385,6 @@ body {
                     color: $color-blue-5;
                 }
                 .profileBilling-content-billing-changeCard-button {
-                    @extend .appbutton;
                     width: 220px;
                     height: 40px;
                     border-radius: 3px;
@@ -550,11 +499,11 @@ body {
         }
     }
     .register-note {
-        width: 390px;
         margin-left: auto;
         margin-right: auto;
         padding-top: 30px;
         text-align: center;
+
         p {
             margin: 0px;
         }
@@ -562,7 +511,7 @@ body {
 }
 
 .register-footer {
-    background: #e3e3e3;
+    background: $color-gray-2;
     .register-footer-date-trial {
         height: 100px;
         padding: 15px 0px;
@@ -582,8 +531,8 @@ body {
 .project-container {
     .project-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .project-header-search {
             width: 460px;
@@ -602,13 +551,6 @@ body {
         }
         .project-header-create {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 156px;
-                height: 40px;
-                border-radius: 2px;
-                padding: 0px;
-            }
         }
     }
     .project-content {
@@ -718,14 +660,14 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .project-new-body {
         text-align: center;
         color: $color-blue-5;
         padding: 24px 35px;
         background: $color-gray-2;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .project-new-title {
         height: 48px;
@@ -737,11 +679,6 @@ body {
     .project-new-button {
         padding: 12px 0px;
         text-align: center;
-        button {
-            @extend .appbutton;
-            width: 229px;
-            height: 40px;
-        }
     }
 }
 
@@ -757,12 +694,12 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .project-duplicate-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .project-duplicate-warning {
@@ -779,11 +716,6 @@ body {
         padding: 12px 0px;
         text-align: center;
     }
-    .project-duplicate-buttonsubmit {
-        @extend .appbutton;
-        width: 201px;
-        height: 40px;
-    }
 }
 
 #shareproject {
@@ -798,12 +730,12 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .project-share-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .project-share-body {
@@ -826,11 +758,6 @@ body {
             .project-share-sendbutton {
                 width: 105px;
                 height: 48px;
-                button {
-                    @extend .appbutton;
-                    width: 105px;
-                    height: 48px;
-                }
             }
         }
         .project-share-shorturl {
@@ -868,12 +795,12 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .project-archive-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .project-archive-warning {
@@ -890,11 +817,6 @@ body {
         padding: 12px 0px;
         text-align: center;
     }
-    .project-archive-buttonsubmit {
-        @extend .appbutton;
-        width: 201px;
-        height: 40px;
-    }
 }
 
 #deleteproject {
@@ -909,12 +831,12 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .project-delete-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .project-delete-warning {
@@ -934,27 +856,14 @@ body {
         padding: 12px 0px;
         text-align: center;
     }
-    .project-delete-buttoncancel {
-        @extend .appbutton;
-        width: 201px;
-        height: 40px;
-        background: $color-white;
-        border: 1px solid $color-blue-2;
-        color: $color-blue-5;
-    }
-    .project-delete-buttonsubmit {
-        @extend .appbutton;
-        width: 201px;
-        height: 40px;
-    }
 }
 
 /*activity page*/
 .activity-container {
     .activity-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .activity-header-account {
             span {
@@ -964,12 +873,6 @@ body {
         }
         .activity-header-button {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 98px;
-                height: 40px;
-                border-radius: 2px;
-            }
         }
     }
     .activity-content {
@@ -1021,20 +924,14 @@ body {
 .message-container {
     .message-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .message-header-title {
             padding: 7px 0px;
         }
         .message-header-button {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 140px;
-                height: 40px;
-                border-radius: 2px;
-            }
         }
     }
     .message-subheader {
@@ -1102,19 +999,19 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .newmessage-add-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .newmessage-add-body {
         text-align: center;
         padding: 24px 35px;
         background: $color-gray-2;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         .has-add {
             position: relative;
             .newmessage-add-email {
@@ -1138,11 +1035,6 @@ body {
     .newmessage-add-button {
         padding: 12px 0px;
         text-align: center;
-        button {
-            @extend .appbutton;
-            width: 229px;
-            height: 40px;
-        }
     }
 }
 
@@ -1160,12 +1052,12 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .replymessage-add-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .replymessage-add-body {
@@ -1173,7 +1065,7 @@ body {
         color: $color-blue-5;
         padding: 24px 35px;
         background: $color-gray-2;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         textarea {
             height: 211px;
         }
@@ -1181,11 +1073,6 @@ body {
     .replymessage-add-button {
         padding: 12px 0px;
         text-align: center;
-        button {
-            @extend .appbutton;
-            width: 229px;
-            height: 40px;
-        }
     }
 }
 
@@ -1203,12 +1090,12 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .message-delete-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .message-delete-warning {
@@ -1228,27 +1115,14 @@ body {
         padding: 12px 0px;
         text-align: center;
     }
-    .message-delete-buttoncancel {
-        @extend .appbutton;
-        width: 201px;
-        height: 40px;
-        background: $color-white;
-        border: 1px solid $color-blue-2;
-        color: $color-blue-5;
-    }
-    .message-delete-buttonsubmit {
-        @extend .appbutton;
-        width: 201px;
-        height: 40px;
-    }
 }
 
 /*team page*/
 .team-container {
     .team-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .team-header-account {
             .team-header-userName {
@@ -1345,12 +1219,12 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .teammember-add-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .teammember-add-body {
@@ -1358,7 +1232,7 @@ body {
         color: $color-blue-5;
         padding: 24px 35px;
         background: $color-gray-2;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .has-email {
         position: relative;
@@ -1392,11 +1266,6 @@ body {
     .teammember-add-button {
         padding: 12px 0px;
         text-align: center;
-        button {
-            @extend .appbutton;
-            width: 229px;
-            height: 40px;
-        }
     }
 }
 
@@ -1404,8 +1273,8 @@ body {
 .userpage-container {
     .userpage-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .userpage-header-account {
             span {
@@ -1415,12 +1284,6 @@ body {
         }
         .userpage-header-button {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 156px;
-                height: 40px;
-                border-radius: 2px;
-            }
         }
     }
     .userpage-content {
@@ -1461,14 +1324,6 @@ body {
                     height: 64px;
                     padding: 14px 24px;
                     border-bottom: 1px solid #e5e5e5;
-                    button {
-                        @extend .appbutton;
-                        height: 36px;
-                        width: 136px;
-                        background: $color-white;
-                        border: 1px solid $color-blue-2;
-                        color: $color-blue-5;
-                    }
                 }
             }
         }
@@ -1488,8 +1343,8 @@ body {
     padding-left: 64px;
     .projectBuild-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px;
         .projectBuild-header-name {
             text-align: left;
@@ -1501,13 +1356,6 @@ body {
         }
         .projectBuild-header-button {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 140px;
-                height: 40px;
-                border-radius: 2px;
-                padding: 0px;
-            }
         }
     }
     .projectBuild-content {
@@ -2024,7 +1872,7 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 24px 35px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .hotspots-add-select {
         height: 48px;
@@ -2032,19 +1880,6 @@ body {
     .hotspots-add-button {
         padding: 12px 0px;
         text-align: center;
-        .hotspots-buttoncancel {
-            @extend .appbutton;
-            width: 160px;
-            height: 40px;
-            background: $color-white;
-            border: 1px solid $color-blue-2;
-            color: $color-blue-5;
-        }
-        .hotspots-buttonsubmit {
-            @extend .appbutton;
-            width: 160px;
-            height: 40px;
-        }
     }
 }
 
@@ -2161,19 +1996,6 @@ body {
     .comment-add-button {
         padding: 12px 0px;
         text-align: center;
-        .comment-buttoncancel {
-            @extend .appbutton;
-            width: 160px;
-            height: 40px;
-            background: $color-white;
-            border: 1px solid $color-blue-2;
-            color: $color-blue-5;
-        }
-        .comment-buttonsubmit {
-            @extend .appbutton;
-            width: 160px;
-            height: 40px;
-        }
     }
 }
 
@@ -2181,8 +2003,8 @@ body {
 .projectScreen-container {
     .projectScreen-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .projectScreen-header-name {
             text-align: left;
@@ -2194,13 +2016,6 @@ body {
         }
         .projectScreen-header-button {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 140px;
-                height: 40px;
-                border-radius: 2px;
-                padding: 0px;
-            }
         }
     }
     .projectScreen-content {
@@ -2299,19 +2114,19 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .addScreen-add-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .addScreen-add-body {
         text-align: center;
         padding: 20px 35px;
         background: $color-gray-2;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .has-email {
         position: relative;
@@ -2347,11 +2162,6 @@ body {
     .addScreen-add-button {
         padding: 12px 0px;
         text-align: center;
-        button {
-            @extend .appbutton;
-            width: 229px;
-            height: 40px;
-        }
     }
 }
 
@@ -2359,8 +2169,8 @@ body {
 .projectActivity-container {
     .projectActivity-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .projectActivity-header-name {
             text-align: left;
@@ -2372,13 +2182,6 @@ body {
         }
         .projectActivity-header-button {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 140px;
-                height: 40px;
-                border-radius: 2px;
-                padding: 0px;
-            }
         }
     }
     .projectActivity-content {
@@ -2470,10 +2273,10 @@ body {
     left: 0px;
     width: 100%;
     background: $color-white;
-    border-bottom: 1px solid #e3e3e3;
+    border-bottom: 1px solid $color-gray-2;
     z-index: 3;
     .meeting-time {
-        background: #e3e3e3;
+        background: $color-gray-2;
         height: 30px;
         line-height: 30px;
         width: 78px;
@@ -2551,8 +2354,8 @@ body {
 .projectComment-container {
     .projectComment-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .projectComment-header-name {
             text-align: left;
@@ -2564,13 +2367,6 @@ body {
         }
         .projectComment-header-button {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 156px;
-                height: 40px;
-                border-radius: 2px;
-                padding: 0px;
-            }
         }
     }
     .projectComment-content {
@@ -2657,19 +2453,19 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .newMeeting-add-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .newMeeting-add-body {
         text-align: center;
         padding: 24px 50px;
         background: $color-gray-2;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         .has-add {
             position: relative;
             img {
@@ -2699,11 +2495,6 @@ body {
     .newMeeting-add-button {
         padding: 12px 0px;
         text-align: center;
-        button {
-            @extend .appbutton;
-            width: 229px;
-            height: 40px;
-        }
     }
 }
 
@@ -2719,12 +2510,12 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .meetingDetail-add-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .meetingDetail-content {
@@ -2751,12 +2542,6 @@ body {
             margin-right: 20px;
             width: 200px;
         }
-        .meeting-start-button {
-            @extend .appbutton;
-            width: 125px;
-            height: 35px;
-            border: none;
-        }
     }
 }
 
@@ -2774,28 +2559,23 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .addText-add-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .addText-add-body {
         text-align: center;
         padding: 24px 35px;
         background: $color-gray-2;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .addText-add-button {
         padding: 12px 0px;
         text-align: center;
-        button {
-            @extend .appbutton;
-            width: 229px;
-            height: 40px;
-        }
     }
 }
 
@@ -2813,14 +2593,14 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .project-update-body {
         text-align: center;
         color: $color-blue-5;
         padding: 24px 35px;
         background: $color-gray-2;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .project-update-title {
         height: 48px;
@@ -2833,24 +2613,11 @@ body {
         padding: 12px 0px;
         text-align: center;
     }
-    .project-update-buttoncancel {
-        @extend .appbutton;
-        width: 201px;
-        height: 40px;
-        background: $color-white;
-        border: 1px solid $color-blue-2;
-        color: $color-blue-5;
-    }
-    .project-update-buttonsubmit {
-        @extend .appbutton;
-        width: 201px;
-        height: 40px;
-    }
 }
 
 /*invitation page*/
 .invitation-container {
-    background: #efefef;
+    background: $color-gray-4;
     .invitation-logo {
         width: 1000px;
         margin-left: auto;
@@ -2876,7 +2643,7 @@ body {
             height: 300px;
             width: 390px;
             padding: 33px;
-            background: #e3e3e3;
+            background: $color-gray-2;
             border-radius: 10px;
             .login-username {
                 height: 44px;
@@ -2905,20 +2672,15 @@ body {
             }
             .login-button {
                 text-align: center;
-                button {
-                    @extend .appbutton;
-                }
             }
         }
         .register-form {
             height: 450px;
             width: 420px;
             padding: 15px 33px;
-            background: #e3e3e3;
+            background: $color-gray-2;
             border-radius: 10px;
-            button {
-                @extend .appbutton;
-            }
+
             .register-desc {
                 padding-bottom: 15px;
                 text-align: center;
@@ -2977,8 +2739,8 @@ body {
 .profileProject-container {
     .profileProject-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .profileProject-header-name {
             text-align: left;
@@ -2986,13 +2748,6 @@ body {
         }
         .profileProject-header-button {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 140px;
-                height: 40px;
-                border-radius: 2px;
-                padding: 0px;
-            }
         }
     }
     .profileProject-content {
@@ -3071,8 +2826,8 @@ body {
 .profileProfile-container {
     .profileProfile-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .profileProfile-header-name {
             text-align: left;
@@ -3080,13 +2835,6 @@ body {
         }
         .profileProfile-header-button {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 140px;
-                height: 40px;
-                border-radius: 2px;
-                padding: 0px;
-            }
         }
     }
     .profileProfile-content {
@@ -3173,8 +2921,8 @@ body {
 .profileBilling-container {
     .profileBilling-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .profileBilling-header-name {
             text-align: left;
@@ -3182,13 +2930,6 @@ body {
         }
         .profileBilling-header-button {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 140px;
-                height: 40px;
-                border-radius: 2px;
-                padding: 0px;
-            }
         }
     }
     .profileBilling-content {
@@ -3383,14 +3124,6 @@ body {
                         .profileBilling-content-billing-changeCard-nine {
                             margin-top: 5px;
                         }
-                        .profileBilling-content-billing-plans-button {
-                            @extend .appbutton;
-                            width: 180px;
-                            height: 40px;
-                            border-radius: 3px;
-                            padding: 10px 25px;
-                            margin: 35px auto;
-                        }
                     }
                 }
             }
@@ -3402,8 +3135,8 @@ body {
 .profileNotice-container {
     .profileNotice-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .profileNotice-header-name {
             text-align: left;
@@ -3411,13 +3144,6 @@ body {
         }
         .profileNotice-header-button {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 140px;
-                height: 40px;
-                border-radius: 2px;
-                padding: 0px;
-            }
         }
     }
     .profileNotice-content {
@@ -3476,21 +3202,14 @@ body {
 .templates-container {
     .templates-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .templates-header-name {
             text-align: left;
             font-size: 20px;
         }
         .templates-header-button {
-            button {
-                @extend .appbutton;
-                width: 210px;
-                height: 40px;
-                border-radius: 2px;
-                padding: 0px;
-            }
         }
         .templates-header-filter {
             border: 1px solid $color-blue-5;
@@ -3567,8 +3286,8 @@ body {
 .projectScreenVideo-container {
     .projectScreenVideo-header {
         height: 64px;
-        background: #efefef;
-        border-top: 1px solid #e3e3e3;
+        background: $color-gray-4;
+        border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
         .projectScreenVideo-header-name {
             text-align: left;
@@ -3580,13 +3299,6 @@ body {
         }
         .projectScreenVideo-header-button {
             text-align: right;
-            button {
-                @extend .appbutton;
-                width: 140px;
-                height: 40px;
-                border-radius: 2px;
-                padding: 0px;
-            }
         }
     }
     .projectScreenVideo-content {
@@ -4068,7 +3780,7 @@ body {
 
 /*forgot password page*/
 .forgot-container {
-    background: #efefef;
+    background: $color-gray-4;
     .forgot-logo {
         margin-left: auto;
         margin-right: auto;
@@ -4081,7 +3793,7 @@ body {
         margin-left: auto;
         margin-right: auto;
         padding: 33px;
-        background: #e3e3e3;
+        background: $color-gray-2;
         border-radius: 10px;
         .forgot-email {
             height: 44px;
@@ -4090,9 +3802,6 @@ body {
         }
         .forgot-button {
             text-align: center;
-            button {
-                @extend .appbutton;
-            }
         }
     }
     .forgot-note {
@@ -4158,12 +3867,12 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .errorNote-delete-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .errorNote-note {
@@ -4190,12 +3899,12 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .reset-delete-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .reset-note {
@@ -4222,12 +3931,12 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .reset-delete-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .reset-note {
@@ -4271,19 +3980,19 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .feedback-add-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .feedback-add-body {
         text-align: center;
         padding: 24px 50px;
         background: $color-gray-2;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         .has-add {
             position: relative;
             .feedback-add-reason {
@@ -4302,11 +4011,6 @@ body {
     .feedback-add-button {
         padding: 12px 0px;
         text-align: center;
-        button {
-            @extend .appbutton;
-            width: 229px;
-            height: 40px;
-        }
     }
 }
 
@@ -4322,19 +4026,19 @@ body {
         text-align: center;
         color: $color-blue-5;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
     }
     .feedback-add-delicon {
         text-align: center;
         padding: 22px 0px;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         cursor: pointer;
     }
     .feedback-add-body {
         text-align: center;
         padding: 24px 35px;
         background: $color-gray-2;
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid $color-gray-2;
         .feedback-add-message {
             height: 211px;
         }
@@ -4342,17 +4046,6 @@ body {
     .feedback-delete-button {
         padding: 12px 0px;
         text-align: center;
-    }
-    .feedback-delete-buttoncancel {
-        @extend .appbutton;
-        height: 40px;
-        background: $color-white;
-        border: 1px solid $color-blue-2;
-        color: $color-blue-5;
-    }
-    .feedback-delete-buttonsubmit {
-        @extend .appbutton;
-        height: 40px;
     }
 }
 

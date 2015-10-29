@@ -8,8 +8,8 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('MainCtrl', function ($scope, $http, $location, ENV, store, userService) {
-        $scope.loginPadding = ($(window).height() - 536) / 2;
+    .controller('LoginCtrl', function ($rootScope, $scope, $http, $location, ENV, store, userService) {
+        $rootScope.bodyCls = 'gray';
         $scope.rememberMe = store.get('rememberMe');
         $scope.formData = {
             username: store.get('username')
@@ -21,10 +21,6 @@ angular.module('conojoApp')
         $scope.$watch('rememberMe', function(newVal) {
             store.set('rememberMe', newVal);
         });
-
-        $('.login-logo').css('padding-top', $scope.loginPadding);
-        $('.login-link').css('padding-bottom', $scope.loginPadding);
-
 
         $scope.processForm = function () {
             userService.login($scope.formData.username, $scope.formData.password).then(function () {

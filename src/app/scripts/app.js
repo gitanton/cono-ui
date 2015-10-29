@@ -38,8 +38,8 @@ angular
 
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl',
+                templateUrl: 'views/login.html',
+                controller: 'LoginCtrl',
                 title: 'Login | Conojo Collaboration Platform',
                 description: 'Login | The most comprehensive creative collaboration platform there is. Get feedback on UI/UX, video and files in real-time. Get started with our free trial.'
             })
