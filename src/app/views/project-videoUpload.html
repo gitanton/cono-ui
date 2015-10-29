@@ -1,25 +1,25 @@
-<div class="projectScreenVideo-page page">
+<div class="project-screen-video-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="projectScreenVideo-container">
-        <div class="projectScreenVideo-header">
+    <div class="project-screen-video-container">
+        <div class="project-screen-video-header">
             <div class="row">
-                <div class="projectScreenVideo-header-name col-md-6 col-xs-12">
+                <div class="project-screen-video-header-name col-md-6 col-xs-12">
                     <span ng-bind="updateProjectTitle"></span>
                     <img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
                 </div>
-                <div class="projectScreenVideo-header-button col-md-6 col-xs-12">
+                <div class="project-screen-video-header-button col-md-6 col-xs-12">
                     <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
                 </div>
             </div>
         </div>
-        <div class="projectScreenVideo-content">
-            <div class="projectScreenVideo-content-menu">
+        <div class="project-screen-video-content">
+            <div class="project-screen-video-content-menu">
                 <div class="row">
-                    <div class="projectScreenVideo-content-nav col-md-6">
+                    <div class="project-screen-video-content-nav col-md-6">
                         <span><img src="images/back-icon.png" ng-click="goBack()" title="Back to Build">Add Video</span>
                     </div>
-                    <div class="projectScreenVideo-content-member col-md-6">
+                    <div class="project-screen-video-content-member col-md-6">
                         <ul class="list-inline">
                             <li ng-repeat="projectMember in projectMembers">
                                 <img ng-if="projectMember.avatar != null" ng-src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
@@ -34,8 +34,8 @@
                     </div>
                 </div>
             </div>
-            <div class="projectScreenVideo-content-body">
-                <form id="videoUpload" enctype="multipart/form-data" class="projectScreenVideo-content-upload dropzone">
+            <div class="project-screen-video-content-body">
+                <form id="videoUpload" enctype="multipart/form-data" class="project-screen-video-content-upload dropzone">
                     <input type="hidden" name="project_uuid" value="{{activeProjectUuid}}">
                     <div class="dz-message">
                         <p>Upload Video File</p>

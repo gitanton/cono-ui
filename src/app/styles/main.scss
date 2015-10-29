@@ -1339,35 +1339,35 @@ body {
 }
 
 /*project build page*/
-.projectBuild-container {
+.project-build-container {
     position: absolute;
     left: 0;
     z-index: 1;
     padding-left: $sidebar-closed-width;
-    .projectBuild-header {
+    .project-build-header {
         height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px;
-        .projectBuild-header-name {
+        .project-build-header-name {
             text-align: left;
             font-size: 20px;
         }
-        .projectBuild-header-name img {
+        .project-build-header-name img {
             margin-left: 12px;
             cursor: pointer;
         }
-        .projectBuild-header-button {
+        .project-build-header-button {
             text-align: right;
         }
     }
-    .projectBuild-content {
+    .project-build-content {
         background: $color-gray-2;
-        .projectBuild-content-menu {
+        .project-build-content-menu {
             height: 48px;
             padding: 8px 20px;
             background: #55abd4;
-            .projectBuild-content-nav {
+            .project-build-content-nav {
                 ul {
                     li {
                         color: $color-white;
@@ -1380,7 +1380,7 @@ body {
                     }
                 }
             }
-            .projectBuild-content-member {
+            .project-build-content-member {
                 ul {
                     li {
                         width: 44px;
@@ -1397,11 +1397,11 @@ body {
                 }
             }
         }
-        .projectBuild-content-body {
+        .project-build-content-body {
             @include bg-img('project-build-bg.jpg');
             position: relative;
             overflow-y: auto;
-            .projectBuild-content-upload {
+            .project-build-content-upload {
                 text-align: center;
                 width: 636px;
                 border: 3px dashed $color-white;
@@ -1412,7 +1412,7 @@ body {
                 margin-right: auto;
                 opacity: 0.7;
             }
-            .projectBuild-content-drawing {
+            .project-build-content-drawing {
                 #drawing-b {
                     background: white;
                     cursor: crosshair;
@@ -1427,11 +1427,11 @@ body {
                     z-index: 2;
                 }
             }
-            .projectBuild-content-tools {
+            .project-build-content-tools {
                 position: absolute;
                 left: 0;
                 bottom: 0;
-                .projectBuild-content-tools-ul {
+                .project-build-content-tools-ul {
                     li {
                         text-align: center;
                         width: 58px;
@@ -1449,12 +1449,12 @@ body {
                         float: left;
                         padding: 15px 0;
                     }
-                    .projectBuild-brush-black, .projectBuild-eraser, .projectBuild-shape {
+                    .project-build-brush-black, .project-build-eraser, .project-build-shape {
                         background: #f6f064;
                     }
                 }
             }
-            .projectBuild-content-addScreens {
+            .project-build-content-addScreens {
                 position: absolute;
                 right: 0;
                 bottom: 0;
@@ -1464,7 +1464,7 @@ body {
                 padding: 15px;
                 cursor: pointer;
             }
-            .projectBuild-content-text {
+            .project-build-content-text {
                 display: none;
                 width: 505px;
                 position: absolute;
@@ -1473,28 +1473,28 @@ body {
                 color: $color-white;
                 text-align: center;
                 left: 80px;
-                .projectBuild-content-textTitle {
+                .project-build-content-textTitle {
                     background: #1c85b6;
                     height: 20px;
                     text-align: center;
                     color: $color-white;
                 }
-                .projectBuild-content-textContent {
+                .project-build-content-textContent {
                     padding: 10px 20px;
                     color: $color-white;
                     height: 50px;
-                    .projectBuild-content-textColor {
+                    .project-build-content-textColor {
                         background: #3AD19A;
                         height: 30px;
                     }
-                    .projectBuild-content-textSelect {
+                    .project-build-content-textSelect {
                         background: #323232;
                         width: 30px;
                         height: 30px;
                         display: inline-block;
                         line-height: 30px;
                     }
-                    .projectBuild-content-textSize {
+                    .project-build-content-textSize {
                         .selectSize {
                             position: absolute;
                             top: -62px;
@@ -1505,7 +1505,7 @@ body {
                                 cursor: pointer;
                             }
                         }
-                        .projectBuild-content-textSizeDiv {
+                        .project-build-content-textSizeDiv {
                             background: #323232;
                             width: 50px;
                             height: 30px;
@@ -1513,7 +1513,7 @@ body {
                             line-height: 30px;
                         }
                     }
-                    .projectBuild-content-textFamily {
+                    .project-build-content-textFamily {
                         .selectFamily {
                             position: absolute;
                             top: -42px;
@@ -1524,7 +1524,7 @@ body {
                                 cursor: pointer;
                             }
                         }
-                        .projectBuild-content-textFamilyDiv {
+                        .project-build-content-textFamilyDiv {
                             background: #323232;
                             width: 120px;
                             height: 30px;
@@ -1532,7 +1532,7 @@ body {
                             line-height: 30px;
                         }
                     }
-                    .projectBuild-content-textWeight {
+                    .project-build-content-textWeight {
                         .selectWeight {
                             position: absolute;
                             top: -82px;
@@ -1543,7 +1543,7 @@ body {
                                 cursor: pointer;
                             }
                         }
-                        .projectBuild-content-textWeightDiv {
+                        .project-build-content-textWeightDiv {
                             background: #323232;
                             width: 100px;
                             height: 30px;
@@ -1553,7 +1553,7 @@ body {
                     }
                 }
             }
-            .projectBuild-content-brush::before {
+            .project-build-content-brush::before {
                 border-color: #464646 transparent transparent;
                 border-image: none;
                 border-style: solid;
@@ -1565,7 +1565,7 @@ body {
                 top: 315px;
                 width: 0;
             }
-            .projectBuild-content-brush::after {
+            .project-build-content-brush::after {
                 border-color: #464646 transparent transparent;
                 border-image: none;
                 border-style: solid;
@@ -1577,7 +1577,7 @@ body {
                 top: 315px;
                 width: 0;
             }
-            .projectBuild-content-brush {
+            .project-build-content-brush {
                 display: none;
                 width: 360px;
                 position: absolute;
@@ -1586,16 +1586,16 @@ body {
                 color: $color-white;
                 text-align: center;
                 z-index: 5;
-                .projectBuild-content-brushTitle {
+                .project-build-content-brushTitle {
                     background: #1c85b6;
                     height: 20px;
                     text-align: center;
                     color: $color-white;
                 }
-                .projectBuild-content-brushContent {
+                .project-build-content-brushContent {
                     height: 295px;
                     padding: 10px 0;
-                    .projectBuild-content-brushColorRight {
+                    .project-build-content-brushColorRight {
                         padding: 20px 0;
                         ul {
                             li {
@@ -1634,12 +1634,12 @@ body {
                             }
                         }
                     }
-                    .projectBuild-content-brushBottom {
+                    .project-build-content-brushBottom {
                         padding: 10px 80px 0;
                     }
                 }
             }
-            .projectBuild-content-eraser::before {
+            .project-build-content-eraser::before {
                 border-color: #464646 transparent transparent;
                 border-image: none;
                 border-style: solid;
@@ -1651,7 +1651,7 @@ body {
                 top: 110px;
                 width: 0;
             }
-            .projectBuild-content-eraser::after {
+            .project-build-content-eraser::after {
                 border-color: #464646 transparent transparent;
                 border-image: none;
                 border-style: solid;
@@ -1663,7 +1663,7 @@ body {
                 top: 110px;
                 width: 0;
             }
-            .projectBuild-content-eraser {
+            .project-build-content-eraser {
                 display: none;
                 width: 210px;
                 position: absolute;
@@ -1673,18 +1673,18 @@ body {
                 text-align: center;
                 left: 100px;
                 z-index: 5;
-                .projectBuild-content-eraserTitle {
+                .project-build-content-eraserTitle {
                     background: #1c85b6;
                     height: 20px;
                     text-align: center;
                     color: $color-white;
                 }
-                .projectBuild-content-eraserContent {
+                .project-build-content-eraserContent {
                     height: 90px;
                     padding: 10px 20px;
                 }
             }
-            .projectBuild-content-shape::before {
+            .project-build-content-shape::before {
                 border-color: #464646 transparent transparent;
                 border-image: none;
                 border-style: solid;
@@ -1696,7 +1696,7 @@ body {
                 top: 340px;
                 width: 0;
             }
-            .projectBuild-content-shape::after {
+            .project-build-content-shape::after {
                 border-color: #464646 transparent transparent;
                 border-image: none;
                 border-style: solid;
@@ -1708,7 +1708,7 @@ body {
                 top: 340px;
                 width: 0;
             }
-            .projectBuild-content-shape {
+            .project-build-content-shape {
                 display: none;
                 width: 400px;
                 position: absolute;
@@ -1718,21 +1718,21 @@ body {
                 color: $color-white;
                 text-align: center;
                 z-index: 5;
-                .projectBuild-content-shapeTitle {
+                .project-build-content-shapeTitle {
                     background: #1c85b6;
                     height: 20px;
                     text-align: center;
                     color: $color-white;
                 }
-                .projectBuild-content-shapeContent {
+                .project-build-content-shapeContent {
                     height: 340px;
-                    .projectBuild-content-shapeLeft {
+                    .project-build-content-shapeLeft {
                         padding: 40px 0 0 10px;
                         .col-md-4 {
                             margin-bottom: 20px;
                         }
                     }
-                    .projectBuild-content-shapeRight {
+                    .project-build-content-shapeRight {
                         .shapeColorContainer {
                             ul {
                                 margin: 5px 20px;
@@ -2003,32 +2003,32 @@ body {
 }
 
 /*project screen page*/
-.projectScreen-container {
-    .projectScreen-header {
+.project-screen-container {
+    .project-screen-header {
         height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
-        .projectScreen-header-name {
+        .project-screen-header-name {
             text-align: left;
             font-size: 20px;
         }
-        .projectScreen-header-name img {
+        .project-screen-header-name img {
             margin-left: 12px;
             cursor: pointer;
         }
-        .projectScreen-header-button {
+        .project-screen-header-button {
             text-align: right;
         }
     }
-    .projectScreen-content {
+    .project-screen-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .projectScreen-content-menu {
+        .project-screen-content-menu {
             height: 48px;
             padding: 8px 20px;
             background: #55abd4;
-            .projectScreen-content-nav {
+            .project-screen-content-nav {
                 ul {
                     li {
                         color: $color-white;
@@ -2041,7 +2041,7 @@ body {
                     }
                 }
             }
-            .projectScreen-content-member {
+            .project-screen-content-member {
                 ul {
                     li {
                         width: 44px;
@@ -2058,11 +2058,11 @@ body {
                 }
             }
         }
-        .projectScreen-content-body {
+        .project-screen-content-body {
             overflow-y: auto;
-            .projectScreen-content-items {
+            .project-screen-content-items {
                 margin-left: 16px;
-                .projectScreen-content-thumb {
+                .project-screen-content-thumb {
                     margin: 16px 16px 16px 0;
                     border: 1px solid #d1d1d1;
                     width: 218px;
@@ -2074,11 +2074,11 @@ body {
                     }
                 }
             }
-            .projectScreen-content-delete {
+            .project-screen-content-delete {
                 width: 176px;
                 margin-top: 16px;
                 position: relative;
-                .projectScreen-content-dropcontainer {
+                .project-screen-content-dropcontainer {
                     width: 160px;
                     margin-left: 16px;
                     height: 494px;
@@ -2086,13 +2086,13 @@ body {
                     background: #eeeeee;
                     padding: 200px 0;
                 }
-                .projectScreen-content-upload {
+                .project-screen-content-upload {
                     position: absolute;
                     top: 120px;
                     left: 45%;
                     z-index: 2;
                 }
-                .projectScreen-content-sync {
+                .project-screen-content-sync {
                     position: absolute;
                     bottom: 10px;
                     right: 10px;
@@ -2103,7 +2103,7 @@ body {
     }
 }
 
-#addProjectScreen {
+#addproject-screen {
     width: 100%;
     padding-top: 50px;
     .addScreen-add {
@@ -2354,31 +2354,31 @@ body {
 }
 
 /*project comment page*/
-.projectComment-container {
-    .projectComment-header {
+.project-comment-container {
+    .project-comment-header {
         height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
-        .projectComment-header-name {
+        .project-comment-header-name {
             text-align: left;
             font-size: 20px;
         }
-        .projectComment-header-name img {
+        .project-comment-header-name img {
             margin-left: 12px;
             cursor: pointer;
         }
-        .projectComment-header-button {
+        .project-comment-header-button {
             text-align: right;
         }
     }
-    .projectComment-content {
+    .project-comment-content {
         padding-left: $sidebar-closed-width;
-        .projectComment-content-menu {
+        .project-comment-content-menu {
             height: 48px;
             padding: 8px 20px;
             background: #55abd4;
-            .projectComment-content-nav {
+            .project-comment-content-nav {
                 ul {
                     li {
                         color: $color-white;
@@ -2392,34 +2392,34 @@ body {
                 }
             }
         }
-        .projectComment-subheader {
+        .project-comment-subheader {
             height: 66px;
             padding: 21px 18px;
             border-bottom: 1px solid #e5e5e5;
             box-shadow: 0 3px 3px #e5e5e5;
-            .projectComment-subheader-previously {
+            .project-comment-subheader-previously {
                 text-align: right;
             }
         }
-        .projectComment-content-body {
+        .project-comment-content-body {
             overflow-y: auto;
-            .projectComment-content-items {
+            .project-comment-content-items {
                 padding-left: 20px;
-                .projectComment-content-item-first {
+                .project-comment-content-item-first {
                     border-bottom: 1px solid #e5e5e5;
                 }
-                .projectComment-content-img {
+                .project-comment-content-img {
                     width: 89px;
                     padding: 20px 10px 20px 15px;
                 }
-                .projectComment-content-name {
+                .project-comment-content-name {
                     padding: 40px 10px 40px 0;
                     color: #258ab9;
                 }
-                .projectComment-content-message {
+                .project-comment-content-message {
                     padding: 10px;
                 }
-                .projectComment-content-operate {
+                .project-comment-content-operate {
                     padding: 20px 0;
                     width: 180px;
                     img {
@@ -2430,10 +2430,10 @@ body {
                         margin-right: 10px;
                     }
                 }
-                .projectComment-content-item-reply {
+                .project-comment-content-item-reply {
                     background: #faf9da;
                     margin-left: 30px;
-                    .projectComment-content-itemReply {
+                    .project-comment-content-itemReply {
                         border-bottom: 1px solid #e5e5e5;
                     }
                 }
@@ -3286,32 +3286,32 @@ body {
 }
 
 /*project screen video page*/
-.projectScreenVideo-container {
-    .projectScreenVideo-header {
+.project-screen-video-container {
+    .project-screen-video-header {
         height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
-        .projectScreenVideo-header-name {
+        .project-screen-video-header-name {
             text-align: left;
             font-size: 20px;
         }
-        .projectScreenVideo-header-name img {
+        .project-screen-video-header-name img {
             margin-left: 12px;
             cursor: pointer;
         }
-        .projectScreenVideo-header-button {
+        .project-screen-video-header-button {
             text-align: right;
         }
     }
-    .projectScreenVideo-content {
+    .project-screen-video-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .projectScreenVideo-content-menu {
+        .project-screen-video-content-menu {
             height: 48px;
             padding: 8px 20px;
             background: #55abd4;
-            .projectScreenVideo-content-nav {
+            .project-screen-video-content-nav {
                 span {
                     color: $color-white;
                     font-size: 20px;
@@ -3332,7 +3332,7 @@ body {
                     }
                 }
             }
-            .projectScreenVideo-content-member {
+            .project-screen-video-content-member {
                 ul {
                     li {
                         width: 44px;
@@ -3349,10 +3349,10 @@ body {
                 }
             }
         }
-        .projectScreenVideo-content-body {
+        .project-screen-video-content-body {
             position: relative;
             @include bg-img('project-build-bg.jpg');
-            .projectScreenVideo-content-video {
+            .project-screen-video-content-video {
                 text-align: center;
                 #videoBody {
                     height: 412px;
@@ -3483,14 +3483,14 @@ body {
                 width: 20px;
                 height: 15px;
             }
-            .projectScreenVideo-content-videoDrawing {
+            .project-screen-video-content-videoDrawing {
                 width: 100%;
                 position: absolute;
                 top: 0;
                 left: 0;
                 text-align: center;
             }
-            .projectScreenVideo-content-upload {
+            .project-screen-video-content-upload {
                 text-align: center;
                 width: 636px;
                 border: 3px dashed $color-white;
@@ -3501,10 +3501,10 @@ body {
                 left: 30%;
                 opacity: 0.7;
             }
-            .projectScreenVideo-content-tools {
+            .project-screen-video-content-tools {
                 height: 58px;
                 background: $color-white;
-                .projectScreenVideo-content-tools-ul {
+                .project-screen-video-content-tools-ul {
                     li {
                         text-align: center;
                         width: 58px;
@@ -3522,12 +3522,12 @@ body {
                         float: left;
                         padding: 15px 0;
                     }
-                    .projectScreenVideo-brush-black, .projectScreenVideo-eraser, .projectScreenVideo-shape {
+                    .project-screen-video-brush-black, .project-screen-video-eraser, .project-screen-video-shape {
                         background: #f6f064;
                     }
                 }
             }
-            .projectBuild-content-addScreens {
+            .project-build-content-addScreens {
                 position: absolute;
                 right: 0;
                 bottom: 0;
@@ -3537,7 +3537,7 @@ body {
                 padding: 15px;
                 cursor: pointer;
             }
-            .projectBuild-content-brush::before {
+            .project-build-content-brush::before {
                 border-color: #464646 transparent transparent;
                 border-image: none;
                 border-style: solid;
@@ -3549,7 +3549,7 @@ body {
                 top: 315px;
                 width: 0;
             }
-            .projectBuild-content-brush::after {
+            .project-build-content-brush::after {
                 border-color: #464646 transparent transparent;
                 border-image: none;
                 border-style: solid;
@@ -3561,7 +3561,7 @@ body {
                 top: 315px;
                 width: 0;
             }
-            .projectBuild-content-brush {
+            .project-build-content-brush {
                 display: none;
                 width: 360px;
                 position: absolute;
@@ -3570,16 +3570,16 @@ body {
                 color: $color-white;
                 text-align: center;
                 z-index: 5;
-                .projectBuild-content-brushTitle {
+                .project-build-content-brushTitle {
                     background: #1c85b6;
                     height: 20px;
                     text-align: center;
                     color: $color-white;
                 }
-                .projectBuild-content-brushContent {
+                .project-build-content-brushContent {
                     height: 295px;
                     padding: 10px 0;
-                    .projectBuild-content-brushColorRight {
+                    .project-build-content-brushColorRight {
                         padding: 20px 0;
                         ul {
                             li {
@@ -3618,12 +3618,12 @@ body {
                             }
                         }
                     }
-                    .projectBuild-content-brushBottom {
+                    .project-build-content-brushBottom {
                         padding: 10px 80px 0;
                     }
                 }
             }
-            .projectBuild-content-eraser::before {
+            .project-build-content-eraser::before {
                 border-color: #464646 transparent transparent;
                 border-image: none;
                 border-style: solid;
@@ -3635,7 +3635,7 @@ body {
                 top: 110px;
                 width: 0;
             }
-            .projectBuild-content-eraser::after {
+            .project-build-content-eraser::after {
                 border-color: #464646 transparent transparent;
                 border-image: none;
                 border-style: solid;
@@ -3647,7 +3647,7 @@ body {
                 top: 110px;
                 width: 0;
             }
-            .projectBuild-content-eraser {
+            .project-build-content-eraser {
                 display: none;
                 width: 210px;
                 position: absolute;
@@ -3657,18 +3657,18 @@ body {
                 text-align: center;
                 left: 45px;
                 z-index: 5;
-                .projectBuild-content-eraserTitle {
+                .project-build-content-eraserTitle {
                     background: #1c85b6;
                     height: 20px;
                     text-align: center;
                     color: $color-white;
                 }
-                .projectBuild-content-eraserContent {
+                .project-build-content-eraserContent {
                     height: 90px;
                     padding: 10px 20px;
                 }
             }
-            .projectBuild-content-shape::before {
+            .project-build-content-shape::before {
                 border-color: #464646 transparent transparent;
                 border-image: none;
                 border-style: solid;
@@ -3680,7 +3680,7 @@ body {
                 top: 340px;
                 width: 0;
             }
-            .projectBuild-content-shape::after {
+            .project-build-content-shape::after {
                 border-color: #464646 transparent transparent;
                 border-image: none;
                 border-style: solid;
@@ -3692,7 +3692,7 @@ body {
                 top: 340px;
                 width: 0;
             }
-            .projectBuild-content-shape {
+            .project-build-content-shape {
                 display: none;
                 width: 400px;
                 position: absolute;
@@ -3701,21 +3701,21 @@ body {
                 color: $color-white;
                 text-align: center;
                 z-index: 5;
-                .projectBuild-content-shapeTitle {
+                .project-build-content-shapeTitle {
                     background: #1c85b6;
                     height: 20px;
                     text-align: center;
                     color: $color-white;
                 }
-                .projectBuild-content-shapeContent {
+                .project-build-content-shapeContent {
                     height: 340px;
-                    .projectBuild-content-shapeLeft {
+                    .project-build-content-shapeLeft {
                         padding: 40px 0 0 10px;
                         .col-md-4 {
                             margin-bottom: 20px;
                         }
                     }
-                    .projectBuild-content-shapeRight {
+                    .project-build-content-shapeRight {
                         .shapeColorContainer {
                             ul {
                                 margin: 5px 20px;

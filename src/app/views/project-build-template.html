@@ -1,23 +1,23 @@
-<div class="projectBuild-page page">
+<div class="project-build-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="projectBuild-container col-md-12">
-        <div class="projectBuild-header">
+    <div class="project-build-container col-md-12">
+        <div class="project-build-header">
             <div class="row">
-                <div class="projectBuild-header-name col-md-6">
+                <div class="project-build-header-name col-md-6">
                     <span ng-bind="updateProjectTitle"></span>
                     <img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
                 </div>
-                <div class="projectBuild-header-button col-md-6">
+                <div class="project-build-header-button col-md-6">
                     <button class="btn btn-lg btn-primary">Share</button>
                     <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
                 </div>
             </div>
         </div>
-        <div class="projectBuild-content">
-            <div class="projectBuild-content-menu">
+        <div class="project-build-content">
+            <div class="project-build-content-menu">
                 <div class="row">
-                    <div class="projectBuild-content-nav col-md-6">
+                    <div class="project-build-content-nav col-md-6">
                         <ul class="list-inline">
                             <li class="project-design-menu-current">BUILD</li>
                             <li ng-click="toScreen()">SCREENS</li>
@@ -26,7 +26,7 @@
                         </ul>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="projectBuild-content-member col-md-6">
+                    <div class="project-build-content-member col-md-6">
                         <ul class="list-inline">
                             <li ng-repeat="projectMember in projectMembers">
                                 <img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
@@ -42,89 +42,89 @@
                     </div>
                 </div>
             </div>
-            <div class="projectBuild-content-body">
-                <div class="projectBuild-content-drawing">
+            <div class="project-build-content-body">
+                <div class="project-build-content-drawing">
                     <canvas id="drawing-b" width="790" height="440"></canvas>
                     <canvas id="drawing-f" width="790" height="440"></canvas>
                 </div>
-                <div class="projectBuild-content-tools">
-                    <ul class="projectBuild-content-tools-ul">
-                        <li class="projectBuild-comment-blue" ng-show="showCommentBlue" ng-click="openComments()">
+                <div class="project-build-content-tools">
+                    <ul class="project-build-content-tools-ul">
+                        <li class="project-build-comment-blue" ng-show="showCommentBlue" ng-click="openComments()">
                             <img src="images/comment-blue-icon.png">
                         </li>
-                        <li class="projectBuild-comment-black" ng-hide="showCommentBlue">
+                        <li class="project-build-comment-black" ng-hide="showCommentBlue">
                             <img src="images/comment-black-icon.png">
                         </li>
-                        <li class="projectBuild-hotspots-blue" ng-show="showHotspotsBlue" ng-click="openHotspots()">
+                        <li class="project-build-hotspots-blue" ng-show="showHotspotsBlue" ng-click="openHotspots()">
                             <img src="images/hotspots-blue-icon.png">
                         </li>
-                        <li class="projectBuild-hotspots-black" ng-hide="showHotspotsBlue">
+                        <li class="project-build-hotspots-black" ng-hide="showHotspotsBlue">
                             <img src="images/hotspots-black-icon.png">
                         </li>
-                        <li class="projectBuild-brush-blue" ng-show="showBrushBlue" ng-click="openTools()">
+                        <li class="project-build-brush-blue" ng-show="showBrushBlue" ng-click="openTools()">
                             <img src="images/brush-blue-icon.png">
                         </li>
-                        <li class="projectBuild-brush-black" ng-hide="showBrushBlue" ng-click="openDrawing('brush', $event)">
+                        <li class="project-build-brush-black" ng-hide="showBrushBlue" ng-click="openDrawing('brush', $event)">
                             <img src="images/brush-black-icon.png">
                         </li>
-                        <li class="projectBuild-eraser" ng-show="showEraser" ng-click="openDrawing('eraser', $event)">
+                        <li class="project-build-eraser" ng-show="showEraser" ng-click="openDrawing('eraser', $event)">
                             <img src="images/eraser-black-icon.png">
                         </li>
-                        <li class="projectBuild-shape" ng-show="showShape" ng-click="openDrawing('shape', $event)">
+                        <li class="project-build-shape" ng-show="showShape" ng-click="openDrawing('shape', $event)">
                             <img src="images/shape-black-icon.png">
                         </li>
                     </ul>
                 </div>
-                <div class="projectBuild-content-addScreens" ng-click="openAddScreen()">
+                <div class="project-build-content-addScreens" ng-click="openAddScreen()">
                     <img src="images/addScreen-icon.png">
                     <span>Add Screen</span>
                 </div>
-                <div class="projectBuild-content-text">
-                    <div class="projectBuild-content-textTitle col-md-12">TYPE TOOL</div>
-                    <div class="projectBuild-content-textContent col-md-12">
-                        <div class="col-md-1 projectBuild-content-textColor"></div>
-                        <div class="col-md-3 projectBuild-content-textSize">
+                <div class="project-build-content-text">
+                    <div class="project-build-content-textTitle col-md-12">TYPE TOOL</div>
+                    <div class="project-build-content-textContent col-md-12">
+                        <div class="col-md-1 project-build-content-textColor"></div>
+                        <div class="col-md-3 project-build-content-textSize">
                             <div class="selectSize" ng-show="selectSizeDropdown">
                                 <div ng-click="selectSize('14px')">14px</div>
                                 <div ng-click="selectSize('18px')">18px</div>
                                 <div ng-click="selectSize('24px')">24px</div>
                             </div>
-                            <div class="projectBuild-content-textSizeDiv">24px</div>
-                            <div class="projectBuild-content-textSelect" ng-click="openSelectSize()">
+                            <div class="project-build-content-textSizeDiv">24px</div>
+                            <div class="project-build-content-textSelect" ng-click="openSelectSize()">
                                 <img src="images/select-project-white-icon.png">
                             </div>
                         </div>
-                        <div class="col-md-4 projectBuild-content-textFamily">
+                        <div class="col-md-4 project-build-content-textFamily">
                             <div class="selectFamily" ng-show="selectFamilyDropdown">
                                 <div ng-click="selectFamily('Roboto-Light')">Roboto-Light</div>
                                 <div ng-click="selectFamily('Roboto-Medium')">Roboto-Medium</div>
                             </div>
-                            <div class="projectBuild-content-textFamilyDiv">Roboto-Light</div>
-                            <div class="projectBuild-content-textSelect" ng-click="openSelectFamily()">
+                            <div class="project-build-content-textFamilyDiv">Roboto-Light</div>
+                            <div class="project-build-content-textSelect" ng-click="openSelectFamily()">
                                 <img src="images/select-project-white-icon.png">
                             </div>
                         </div>
-                        <div class="col-md-4 projectBuild-content-textWeight">
+                        <div class="col-md-4 project-build-content-textWeight">
                             <div class="selectWeight" ng-show="selectWeightDropdown">
                                 <div ng-click="selectWeight('normal')">normal</div>
                                 <div ng-click="selectWeight('bold')">bold</div>
                                 <div ng-click="selectWeight('bolder')">bolder</div>
                                 <div ng-click="selectWeight('lighter')">lighter</div>
                             </div>
-                            <div class="projectBuild-content-textWeightDiv">normal</div>
-                            <div class="projectBuild-content-textSelect" ng-click="openSelectWeight()">
+                            <div class="project-build-content-textWeightDiv">normal</div>
+                            <div class="project-build-content-textSelect" ng-click="openSelectWeight()">
                                 <img src="images/select-project-white-icon.png">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="projectBuild-content-brush">
-                    <div class="projectBuild-content-brushTitle col-md-12">BRUSH TOOL</div>
-                    <div class="projectBuild-content-brushContent col-md-12">
-                        <div class="projectBuild-content-brushColorLeft col-md-8">
+                <div class="project-build-content-brush">
+                    <div class="project-build-content-brushTitle col-md-12">BRUSH TOOL</div>
+                    <div class="project-build-content-brushContent col-md-12">
+                        <div class="project-build-content-brushColorLeft col-md-8">
                             <div id="pickerBrush"></div>
                         </div>
-                        <div class="projectBuild-content-brushColorRight col-md-4">
+                        <div class="project-build-content-brushColorRight col-md-4">
                             <ul class="col-md-6">
                                 <li class="brushColor1" ng-click="specicalColor('#fff')"></li>
                                 <li class="brushColor2" ng-click="specicalColor('#959595')"></li>
@@ -140,7 +140,7 @@
                                 <li class="brushColor10" ng-click="specicalColor('#250012')"></li>
                             </ul>
                         </div>
-                        <div class="projectBuild-content-brushBottom col-md-12">
+                        <div class="project-build-content-brushBottom col-md-12">
                             <div class="col-md-4">
                                 <img src="images/8px-icon.png" ng-click="setBrushWidth(8)">
                                 8px
@@ -156,9 +156,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="projectBuild-content-eraser">
-                    <div class="projectBuild-content-eraserTitle col-md-12">ERASER TOOL</div>
-                    <div class="projectBuild-content-eraserContent col-md-12">
+                <div class="project-build-content-eraser">
+                    <div class="project-build-content-eraserTitle col-md-12">ERASER TOOL</div>
+                    <div class="project-build-content-eraserContent col-md-12">
                         <div class="col-md-4">
                             <img src="images/8px-icon.png" ng-click="setEraserWidth(8)">
                             8px
@@ -173,11 +173,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="projectBuild-content-shape">
-                    <div class="projectBuild-content-shapeTitle col-md-12">SHAPE TOOL</div>
-                    <div class="projectBuild-content-shapeContent">
-                        <div class="projectBuild-content-shapeLeft col-md-6">
-                            <div class="projectBuild-content-shapeLeftT">
+                <div class="project-build-content-shape">
+                    <div class="project-build-content-shapeTitle col-md-12">SHAPE TOOL</div>
+                    <div class="project-build-content-shapeContent">
+                        <div class="project-build-content-shapeLeft col-md-6">
+                            <div class="project-build-content-shapeLeftT">
                                 <div class="col-md-4">
                                     <img src="images/square-icon.png" ng-click="drawSquare()">
                                 </div>
@@ -197,7 +197,7 @@
                                     <img src="images/star-icon.png" ng-click="drawStar()">
                                 </div>
                             </div>
-                            <div class="projectBuild-content-shapeLeftB">
+                            <div class="project-build-content-shapeLeftB">
                                 <div class="col-md-4">
                                     <img src="images/8px-icon.png" ng-click="setPenWidth(0)">
                                     8px
@@ -212,7 +212,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="projectBuild-content-shapeRight col-md-6">
+                        <div class="project-build-content-shapeRight col-md-6">
                             <div id="pickerShape"></div>
                             <div class="shapeColorContainer">
                                 <ul class="list-inline">

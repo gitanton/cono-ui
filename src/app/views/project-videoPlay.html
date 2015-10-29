@@ -1,19 +1,19 @@
-<div class="projectScreenVideo-page page">
+<div class="project-screen-video-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="projectScreenVideo-container">
-        <div class="projectScreenVideo-header">
-            <div class="projectScreenVideo-header-name col-md-6">
+    <div class="project-screen-video-container">
+        <div class="project-screen-video-header">
+            <div class="project-screen-video-header-name col-md-6">
                 <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
             </div>
-            <div class="projectScreenVideo-header-button col-md-6">
+            <div class="project-screen-video-header-button col-md-6">
                 <button class="btn btn-lg btn-primary">Share</button>
                 <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
             </div>
         </div>
-        <div class="projectScreenVideo-content">
-            <div class="projectScreenVideo-content-menu">
-                <div class="projectScreenVideo-content-nav col-md-6">
+        <div class="project-screen-video-content">
+            <div class="project-screen-video-content-menu">
+                <div class="project-screen-video-content-nav col-md-6">
                     <ul class="list-inline">
                         <li class="project-design-menu-current">BUILD</li>
                         <li  ng-click="toVideo()">VIDEOS</li>
@@ -21,7 +21,7 @@
                         <li  ng-click="toComment()">COMMENTS</li>
                     </ul>
                 </div>
-                <div class="projectScreenVideo-content-member col-md-6">
+                <div class="project-screen-video-content-member col-md-6">
                     <ul class="list-inline">
                         <li ng-repeat="projectMember in projectMembers"><img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}"></li>
                         <li ng-repeat="projectMember in projectMembers"><img ng-if="projectMember.avatar == null" src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}"></li>
@@ -29,8 +29,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="projectScreenVideo-content-body">
-                <div class="projectScreenVideo-content-video">
+            <div class="project-screen-video-content-body">
+                <div class="project-screen-video-content-video">
                     <video src="images/zenmele.mp4" id="videoBody"></video>
                     <canvas id="videoDrawing" ng-show="showCanvas"></canvas>
                 </div>
@@ -41,22 +41,22 @@
                     <span class="bufferBar"></span>
                     <div class="timeBar"><span class="barIcon"></span></div>
                 </div>
-                <div class="projectScreenVideo-content-tools">
-                    <ul class="projectScreenVideo-content-tools-ul">
-                        <li class="projectScreenVideo-comment-blue" ng-show="showCommentBlue" ng-click="openComment()"><img src="images/comment-blue-icon.png"></li>
-                        <li class="projectScreenVideo-comment-black" ng-hide="showCommentBlue"><img src="images/comment-black-icon.png"></li>
-                        <li class="projectScreenVideo-brush-blue" ng-show="showBrushBlue" ng-click="openTools()"><img src="images/brush-blue-icon.png"></li>
-                        <li class="projectScreenVideo-brush-black" ng-hide="showBrushBlue" ng-click="openDrawing('brush', $event)"><img src="images/brush-black-icon.png"></li>
-                        <li class="projectScreenVideo-eraser" ng-show="showEraser" ng-click="openDrawing('eraser', $event)"><img src="images/eraser-black-icon.png"></li>
-                        <li class="projectScreenVideo-shape" ng-show="showShape" ng-click="openDrawing('shape', $event)"><img src="images/shape-black-icon.png"></li>
+                <div class="project-screen-video-content-tools">
+                    <ul class="project-screen-video-content-tools-ul">
+                        <li class="project-screen-video-comment-blue" ng-show="showCommentBlue" ng-click="openComment()"><img src="images/comment-blue-icon.png"></li>
+                        <li class="project-screen-video-comment-black" ng-hide="showCommentBlue"><img src="images/comment-black-icon.png"></li>
+                        <li class="project-screen-video-brush-blue" ng-show="showBrushBlue" ng-click="openTools()"><img src="images/brush-blue-icon.png"></li>
+                        <li class="project-screen-video-brush-black" ng-hide="showBrushBlue" ng-click="openDrawing('brush', $event)"><img src="images/brush-black-icon.png"></li>
+                        <li class="project-screen-video-eraser" ng-show="showEraser" ng-click="openDrawing('eraser', $event)"><img src="images/eraser-black-icon.png"></li>
+                        <li class="project-screen-video-shape" ng-show="showShape" ng-click="openDrawing('shape', $event)"><img src="images/shape-black-icon.png"></li>
                     </ul>
-                    <div class="projectBuild-content-brush">
-                        <div class="projectBuild-content-brushTitle col-md-12">BRUSH TOOL</div>
-                        <div class="projectBuild-content-brushContent col-md-12">
-                            <div class="projectBuild-content-brushColorLeft col-md-8">
+                    <div class="project-build-content-brush">
+                        <div class="project-build-content-brushTitle col-md-12">BRUSH TOOL</div>
+                        <div class="project-build-content-brushContent col-md-12">
+                            <div class="project-build-content-brushColorLeft col-md-8">
                                 <div id="pickerBrush"></div>
                             </div>
-                            <div class="projectBuild-content-brushColorRight col-md-4">
+                            <div class="project-build-content-brushColorRight col-md-4">
                                 <ul class="col-md-6">
                                     <li class="brushColor1" ng-click="specicalColor('#fff')"></li>
                                     <li class="brushColor2" ng-click="specicalColor('#959595')"></li>
@@ -72,26 +72,26 @@
                                     <li class="brushColor10" ng-click="specicalColor('#250012')"></li>
                                 </ul>
                             </div>
-                            <div class="projectBuild-content-brushBottom col-md-12">
+                            <div class="project-build-content-brushBottom col-md-12">
                                 <div class="col-md-4"><img src="images/8px-icon.png" ng-click="setBrushWidth(8)">8px</div>
                                 <div class="col-md-4"><img src="images/20px-icon.png" ng-click="setBrushWidth(20)">20px</div>
                                 <div class="col-md-4"><img src="images/30px-icon.png" ng-click="setBrushWidth(30)">30px</div>
                             </div>
                         </div>
                     </div>
-                    <div class="projectBuild-content-eraser">
-                        <div class="projectBuild-content-eraserTitle col-md-12">ERASER TOOL</div>
-                        <div class="projectBuild-content-eraserContent col-md-12">
+                    <div class="project-build-content-eraser">
+                        <div class="project-build-content-eraserTitle col-md-12">ERASER TOOL</div>
+                        <div class="project-build-content-eraserContent col-md-12">
                             <div class="col-md-4"><img src="images/8px-icon.png" ng-click="setEraserWidth(8)">8px</div>
                             <div class="col-md-4"><img src="images/20px-icon.png" ng-click="setEraserWidth(20)">20px</div>
                             <div class="col-md-4"><img src="images/30px-icon.png" ng-click="setEraserWidth(30)">30px</div>
                         </div>
                     </div>
-                    <div class="projectBuild-content-shape">
-                        <div class="projectBuild-content-shapeTitle col-md-12">SHAPE TOOL</div>
-                        <div class="projectBuild-content-shapeContent">
-                            <div class="projectBuild-content-shapeLeft col-md-6">
-                                <div class="projectBuild-content-shapeLeftT">
+                    <div class="project-build-content-shape">
+                        <div class="project-build-content-shapeTitle col-md-12">SHAPE TOOL</div>
+                        <div class="project-build-content-shapeContent">
+                            <div class="project-build-content-shapeLeft col-md-6">
+                                <div class="project-build-content-shapeLeftT">
                                     <div class="col-md-4"><img src="images/square-icon.png" ng-click="drawSquare()"></div>
                                     <div class="col-md-4"><img src="images/triangle-icon.png" ng-click="drawTriangle()"></div>
                                     <div class="col-md-4"><img src="images/circle-icon.png" ng-click="drawCircle()"></div>
@@ -99,13 +99,13 @@
                                     <div class="col-md-4"><img src="images/arrow-icon.png" ng-click="drawArrow()"></div>
                                     <div class="col-md-4"><img src="images/star-icon.png" ng-click="drawStar()"></div>
                                 </div>
-                                <div class="projectBuild-content-shapeLeftB">
+                                <div class="project-build-content-shapeLeftB">
                                     <div class="col-md-4"><img src="images/8px-icon.png" ng-click="setPenWidth(0)">8px</div>
                                     <div class="col-md-4"><img src="images/20px-icon.png" ng-click="setPenWidth(1)">20px</div>
                                     <div class="col-md-4"><img src="images/30px-icon.png" ng-click="setPenWidth(2)">30px</div>
                                 </div>
                             </div>
-                            <div class="projectBuild-content-shapeRight col-md-6">
+                            <div class="project-build-content-shapeRight col-md-6">
                                 <div id="pickerShape"></div>
                                 <div class="shapeColorContainer">
                                     <ul class="list-inline">
@@ -142,7 +142,7 @@
                         <div class="volumeBar"><span class="volumeBarIcon"></span></div>
                     </div>
                     <div class="sound sound2"></div>
-                    <div class="projectBuild-content-addScreens" ng-click="openAddVideo()"><img src="images/addScreen-icon.png"><span>Add Video</span></div>
+                    <div class="project-build-content-addScreens" ng-click="openAddVideo()"><img src="images/addScreen-icon.png"><span>Add Video</span></div>
                 </div>
             </div>
         </div>

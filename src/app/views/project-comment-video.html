@@ -1,18 +1,18 @@
-<div class="projectComment-page page">
+<div class="project-comment-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="projectComment-container">
-        <div class="projectComment-header">
-            <div class="projectComment-header-name col-md-6">
+    <div class="project-comment-container">
+        <div class="project-comment-header">
+            <div class="project-comment-header-name col-md-6">
                 <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject('{{activeProjectUuid}}')">
             </div>
-            <div class="projectComment-header-button col-md-6">
+            <div class="project-comment-header-button col-md-6">
                 <button class="btn btn-lg btn-primary" ng-click="openAddComment()">New Comment</button>
             </div>
         </div>
-        <div class="projectComment-content">
-            <div class="projectComment-content-menu">
-                <div class="projectComment-content-nav col-md-12">
+        <div class="project-comment-content">
+            <div class="project-comment-content-menu">
+                <div class="project-comment-content-nav col-md-12">
                     <ul class="list-inline">
                         <li ng-click="toBuild()">BUILD</li>
                         <li ng-click="toVideo()">VIDEOS</li>
@@ -21,25 +21,25 @@
                     </ul>
                 </div>
             </div>
-            <div class="projectComment-subheader">
-                <div class="projectComment-subheader-unread col-md-6">
+            <div class="project-comment-subheader">
+                <div class="project-comment-subheader-unread col-md-6">
                     <span>4 Comments </span><img src="images/line-after-message.png">
                     <a href="javascript:void(0)"><img src="images/search-icon.png"></a>
                 </div>
-                <div class="projectComment-subheader-previously col-md-6">
+                <div class="project-comment-subheader-previously col-md-6">
                     <input type="checkbox"> Show previously viewed comments
                 </div>
             </div>
-            <div class="projectComment-content-body">
-                <div class="projectComment-content-items col-md-12">
-                    <div class="col-md-12 projectComment-content-item" ng-repeat="message in messages">
-                        <div class="projectComment-content-item-first row">
-                            <div class="projectComment-content-img col-md-2"><img src="images/Dawkins-l.png"></div>
-                            <div class="projectComment-content-name col-md-2">R.Dawinks</div>
-                            <div class="projectComment-content-message col-md-6">
+            <div class="project-comment-content-body">
+                <div class="project-comment-content-items col-md-12">
+                    <div class="col-md-12 project-comment-content-item" ng-repeat="message in messages">
+                        <div class="project-comment-content-item-first row">
+                            <div class="project-comment-content-img col-md-2"><img src="images/Dawkins-l.png"></div>
+                            <div class="project-comment-content-name col-md-2">R.Dawinks</div>
+                            <div class="project-comment-content-message col-md-6">
                                 <div class="col-md-12">{{message.content}}</div>
                             </div>
-                            <div class="projectComment-content-operate col-md-2">
+                            <div class="project-comment-content-operate col-md-2">
                                 <div class="col-md-12" style="text-align: right;">{{message.created | limitTo:-8}}</div>
                                 <div class="col-md-12" style="text-align: right;margin-top: 80px;cursor: pointer">
                                     <div class="col-md-6" ng-click="replyMessageModal('{{message.uuid}}')"><span>Reply</span><img src="images/reply-icon.png"> </div>
@@ -47,14 +47,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="projectComment-content-item-reply row">
-                            <div class="projectComment-content-itemReply col-md-12" ng-repeat="reply in message.replies">
-                                <div class="projectComment-content-img col-md-2"><img src="images/Dawkins-l.png"></div>
-                                <div class="projectComment-content-name col-md-2">R.Dawinks</div>
-                                <div class="projectComment-content-message col-md-6">
+                        <div class="project-comment-content-item-reply row">
+                            <div class="project-comment-content-itemReply col-md-12" ng-repeat="reply in message.replies">
+                                <div class="project-comment-content-img col-md-2"><img src="images/Dawkins-l.png"></div>
+                                <div class="project-comment-content-name col-md-2">R.Dawinks</div>
+                                <div class="project-comment-content-message col-md-6">
                                     <div class="col-md-12">{{reply.content}}</div>
                                 </div>
-                                <div class="projectComment-content-operate col-md-2">
+                                <div class="project-comment-content-operate col-md-2">
                                     <div class="col-md-12" style="text-align: right;">{{reply.created | limitTo:-8}}</div>
                                     <div class="col-md-12" style="text-align: right;margin-top: 80px;cursor: pointer">
                                         <div class="col-md-6" ng-click="replyMessageModal('{{message.uuid}}')"><span>Reply</span><img src="images/reply-icon.png"> </div>

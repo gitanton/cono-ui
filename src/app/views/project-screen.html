@@ -1,21 +1,21 @@
-<div class="projectScreen-page page">
+<div class="project-screen-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="projectScreen-container">
-        <div class="projectScreen-header">
+    <div class="project-screen-container">
+        <div class="project-screen-header">
             <div class="row">
-                <div class="projectScreen-header-name col-md-6 col-xs-12">
+                <div class="project-screen-header-name col-md-6 col-xs-12">
                     <span ng-bind="updateProjectTitle"></span>
                     <img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
                 </div>
-                <div class="projectScreen-header-button col-md-6  col-xs-12">
+                <div class="project-screen-header-button col-md-6  col-xs-12">
                     <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
                 </div>
             </div>
         </div>
-        <div class="projectScreen-content">
-            <div class="projectScreen-content-menu">
-                <div class="projectScreen-content-nav col-md-6">
+        <div class="project-screen-content">
+            <div class="project-screen-content-menu">
+                <div class="project-screen-content-nav col-md-6">
                     <ul class="list-inline">
                         <li ng-click="toBuildFirst()">BUILD</li>
                         <li class="project-design-menu-current">SCREENS</li>
@@ -23,7 +23,7 @@
                         <li ng-click="toComment()">COMMENTS</li>
                     </ul>
                 </div>
-                <div class="projectScreen-content-member col-md-6">
+                <div class="project-screen-content-member col-md-6">
                     <ul class="list-inline">
                         <li ng-repeat="projectMember in projectMembers">
                             <img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
@@ -37,18 +37,18 @@
                     </ul>
                 </div>
             </div>
-            <div class="projectScreen-content-body">
-                <div class="projectScreen-content-items col-md-10">
-                    <div class="projectScreen-content-thumb col-md-4" ng-repeat="screen in screens">
+            <div class="project-screen-content-body">
+                <div class="project-screen-content-items col-md-10">
+                    <div class="project-screen-content-thumb col-md-4" ng-repeat="screen in screens">
                         <img ng-src="{{screen.url}}" ng-click="toBuild('{{screen.uuid}}')">
                     </div>
                 </div>
-                <div class="projectScreen-content-delete col-md-2">
-                    <!--<form id="screenupload" enctype="multipart/form-data" class="projectScreen-content-dropcontainer dropzone">-->
+                <div class="project-screen-content-delete col-md-2">
+                    <!--<form id="screenupload" enctype="multipart/form-data" class="project-screen-content-dropcontainer dropzone">-->
                     <!--<input type="hidden" name="project_uuid" value="{{activeProjectUuid}}">-->
                     <!--<div class="dz-message">--><!--<p>Drag & Drop your files</p>--><!--</div>-->
-                    <!--<img class="projectScreen-content-upload" src="images/upload-blue-icon.png">-->
-                    <!--<img class="projectScreen-content-sync" src="images/sync-icon.png">--><!--</form>-->
+                    <!--<img class="project-screen-content-upload" src="images/upload-blue-icon.png">-->
+                    <!--<img class="project-screen-content-sync" src="images/sync-icon.png">--><!--</form>-->
                 </div>
             </div>
         </div>
