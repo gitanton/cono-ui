@@ -1,0 +1,49 @@
+.spacer {
+    height: 20px;
+}
+
+.spacer-15 {
+    height: 15px;
+}
+
+.spacer-30 {
+    height: 30px;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.pad-left-0 {
+    padding-left: 0 !important;
+}
+
+.pad-right-0 {
+    padding-right: 0 !important;
+}
+
+.no-margin-up {
+    margin-top: 0 !important;
+}
+
+.no-margin-down {
+    margin-bottom: 0 !important;
+}
+
+.img-pad {
+    &.pull-right {
+        margin: 0 0 15px 15px;
+    }
+}
+
+.img-fixed {
+    position: fixed;
+}
+
+.white {
+    color: $color-white
+}

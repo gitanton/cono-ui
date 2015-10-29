@@ -8,22 +8,32 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileProfileCtrl', function ($scope, $location, $http, ENV, Upload, store, userService) {
+    .controller('ProfileProfileCtrl', function ($scope, $location, $http, $log, ENV, Upload, store, userService) {
         $scope.profileProfileContent = $(window).height() - 250;
         $('.profileProfile-content-profile').css('height', $scope.profileProfileContent);
 
+        /**
+         * Upload the user's avatar
+         * @param files An array of files.  The file we care about will be in index 0
+         */
         $scope.uploadAvatar = function (files) {
-            Upload.upload({
-                url: ENV.API_ENDPOINT + 'users/avatar',
-                method: 'POST',
-                file: files[0]
-            }).then(function (response) {
-                var user = response.data;
-                user.avatar = user.avatar;
-                $('#userAvatar').attr('src', user.avatar);
-                $('.siderbar-closed-img').attr('src', user.avatar);
-                $('.siderbar-expand-img').attr('src', user.avatar);
-            });
+            if(files && files.length>0) {
+                Upload.upload({
+                    url: ENV.API_ENDPOINT + 'users/avatar',
+                    file: files[0]
+                }).then(function (response) {
+                    var user = response.data;
+                    user.avatar = user.avatar;
+                    store.set('user', user);
+                    $('#userAvatar').attr('src', user.avatar);
+                    $('.siderbar-closed-img').attr('src', user.avatar);
+                    $('.siderbar-expand-img').attr('src', user.avatar);
+                    $scope.alertSuccess = '<i class="fa fa-check-circle"></i> Image uploaded successfully!';
+                }, function (error) {
+                    $scope.alertError = '<i class="fa fa-close-circle"></i> <strong>Image uploaded failed</strong>: '+error.data.message;
+                    $log.error({msg: 'User avatar upload error', error: error});
+                });
+            }
         };
 
         $scope.toProject = function () {

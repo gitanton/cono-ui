@@ -1,0 +1,43 @@
+.btn {
+
+    &.btn-default {
+        color: $color-blue-5;
+        background: $color-white;
+        border: 1px solid $color-blue-5;
+        height: $form-control-height;
+        text-align: center;
+
+        &:hover {
+            color: $color-white;
+            background: $color-blue-5;
+        }
+    }
+}
+
+.form-control {
+    background: $color-gray-2;
+    border-radius: 3px;
+    border: 1px solid $color-gray-2;
+    height: $form-control-height;
+    line-height: $form-control-height;
+}
+
+.alert {
+    &.alert-success {
+        border-color: $color-green-2;
+    }
+
+    &.top-alert {
+        margin: 0;
+        padding: 10px;
+
+        p {
+            margin: 0;
+
+            p {
+                display: inline;
+                margin: 0;
+            }
+        }
+    }
+}

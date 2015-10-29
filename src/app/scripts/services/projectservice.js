@@ -10,7 +10,7 @@ angular.module('conojoApp')
             var projectService = {
 
                 list: function (filters) {
-                    $log.debug('listing projects');
+                    $log.debug({msg: 'listing projects'});
                     var data = filters ? filters : {};
 
                     return $http({
@@ -21,7 +21,7 @@ angular.module('conojoApp')
                     }).then(function (response) {
                         return response;
                     }, function (error) {
-                        $log.error('projectService.list error: ' + angular.toJson(error));
+                        $log.error({msg: 'projectService.list error', error: error});
                         return $q.reject(error.data);
                     });
                 },
@@ -35,7 +35,7 @@ angular.module('conojoApp')
                     }).then(function (response) {
                         return response;
                     }, function (error) {
-                        $log.error('projectService.reorder error: ' + angular.toJson(error));
+                        $log.error({msg: 'projectService.reorder error: ', error: error});
                         return $q.reject(error.data);
                     });
                 }

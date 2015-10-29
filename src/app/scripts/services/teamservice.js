@@ -10,7 +10,7 @@ angular.module('conojoApp')
             var teamService = {
 
                 list: function () {
-                    $log.debug('listing teams');
+                    $log.debug({msg: 'listing teams'});
 
                     return $http({
                         url: ENV.API_ENDPOINT + 'teams',
@@ -18,7 +18,7 @@ angular.module('conojoApp')
                     }).then(function (response) {
                         return response.data;
                     }, function (error) {
-                        $log.error('teamService.list error: ' + angular.toJson(error));
+                        $log.error({msg: 'teamService.list error', error: error});
                         return $q.reject(error.data);
                     });
                 },
@@ -31,7 +31,7 @@ angular.module('conojoApp')
                     }).then(function (response) {
                         return response.data;
                     }, function (error) {
-                        $log.error('teamService.get error: ' + angular.toJson(error));
+                        $log.error({msg: 'teamService.get error', error: error});
                         return $q.reject(error.data);
                     });
                 }

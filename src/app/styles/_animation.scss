@@ -1,0 +1,150 @@
+@keyframes fadeOutRightBig {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(2000px);
+    }
+}
+
+@keyframes fadeOut {
+    100% {
+        opacity: 1;
+    }
+    0% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeOutLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-2000px);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-2000px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(2000px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated {
+    &.fade-out-right {
+        &.ng-leave, &.ng-hide {
+            animation: fadeOutRightBig .5s;
+        }
+
+        &.ng-enter {
+            animation: fadeIn .5s;
+        }
+    }
+    &.fade-out-up {
+        &.ng-leave, &.ng-hide {
+            animation: fadeOutUp .5s;
+        }
+
+        &.ng-enter {
+            animation: fadeIn .5s;
+        }
+    }
+
+    &.fade-in-down {
+        &.ng-enter, &.ng-hide-remove.ng-hide-remove-active {
+            animation: fadeInDown .5s ease-in-out;
+        }
+
+        &.ng-leave {
+            animation: fadeOutUp .5s ease-in-out .1s;
+        }
+    }
+
+    &.fade-in-right {
+        &.ng-enter, &.ng-hide-remove.ng-hide-remove-active {
+            animation: fadeInRight .5s ease-in-out;
+        }
+
+        &.ng-leave {
+            display:none;
+        }
+    }
+
+    &.fade-in-left {
+        &.ng-enter, &.ng-hide-remove.ng-hide-remove-active {
+            animation: fadeInLeft .5s ease-in-out;
+        }
+
+        &.ng-leave {
+            animation: fadeOutLeft .5s ease-in-out .1s;
+        }
+    }
+}
+
+.fade-animate {
+    &.ng-leave {
+        animation: fadeOut .5s;
+    }
+
+    &.ng-enter {
+        animation: fadeIn .5s;
+    }
+}

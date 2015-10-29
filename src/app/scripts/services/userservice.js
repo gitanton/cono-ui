@@ -36,7 +36,7 @@ angular.module('conojoApp')
                             deferred.resolve(user);
 
                         }, function (error) {
-                            $log.error('userService.get error: ' + angular.toJson(error));
+                            $log.error({msg: 'userService.get error', error: error});
                             return $q.reject(error);
                         });
                     }
@@ -45,7 +45,7 @@ angular.module('conojoApp')
                 },
 
                 login: function (username, password) {
-                    $log.debug('Logging in user: ' + username);
+                    $log.debug({msg: 'Logging in user', user: username});
 
                     return $http({
                         url: ENV.API_ENDPOINT + 'users/login',
@@ -58,13 +58,13 @@ angular.module('conojoApp')
                         return user;
 
                     }, function(error) {
-                        $log.error('userService.login error: ' + angular.toJson(error));
+                        $log.error({msg: 'userService.login error', error: error});
                         return $q.reject(error);
                     });
                 },
 
                 forgotPassword: function(email) {
-                    $log.debug('Fetching password for: ' + email);
+                    $log.debug({msg: 'Fetching password: ', email: email});
 
                     return $http({
                         url: ENV.API_ENDPOINT + 'users/forgot_password',
@@ -72,7 +72,7 @@ angular.module('conojoApp')
                         data: $.param({email: email}),
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                     }, function(error) {
-                        $log.error('userService.forgotPassword error: ' + angular.toJson(error));
+                        $log.error({msg: 'userService.forgotPassword error', error: error});
                         return $q.reject(error);
                     });
                 }
