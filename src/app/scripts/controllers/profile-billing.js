@@ -8,9 +8,10 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('profileBillingCtrl', function ($scope, $http, $location, ENV) {
+    .controller('profileBillingCtrl', function ($scope, $http, $location, $log, ENV) {
         $scope.billingOne = true;
         $scope.billingThree = false;
+        $scope.saving = false;
         $scope.plans = [];
         $scope.newPlanId = 0;
         $scope.newPlanName = '';
@@ -38,7 +39,7 @@ angular.module('conojoApp')
                 if (data.plan) {
                     $scope.plan = data.plan;
                     $scope.planName = data.plan.name;
-                    $scope.planId = data.plan.id.toString();
+                    $scope.planId = data.plan.id;
                     $scope.planPrice = data.plan.price;
                     $scope.teamMember = data.plan.team_members;
                 }
@@ -53,7 +54,22 @@ angular.module('conojoApp')
             });
         };
 
-        $scope.payForPlan = function () {
+        $scope.hasPlan = function() {
+            return $scope.planId > 0;
+        };
+
+        $scope.submit = function (isValid) {
+            $scope.alertError = false;
+            if (!isValid) {
+                return false;
+            }
+
+            if(!$scope.newPlanId) {
+                $scope.alertError = '<i class="fa fa-exclamation-circle"></i> Please choose a plan above';
+                return false;
+            }
+
+            $scope.saving = true;
             $scope.token = '';
             Stripe.setPublishableKey('pk_test_qfSibHadzKvpVKdrPoBwHbGN');
             Stripe.card.createToken({
@@ -63,11 +79,11 @@ angular.module('conojoApp')
                 exp_year: $scope.exp_year
             }, function (status, response) {
                 if (response.error) {
-                    $('.reset-note').html(response.error.message);
-                    $('#statusNotice').modal('toggle');
+                    $scope.saving = false;
+                    $scope.alertError = '<i class="fa fa-exclamation-circle"></i> <strong>Credit Card Charge Failed</strong>: '+response.error.message;
+                    $log.error({msg: 'User profile update error', error: response.error});
                 } else {
                     $scope.token = response.id;
-                    console.log($scope.token);
 
                     $http({
                         url: ENV.API_ENDPOINT + 'users/subscription',
@@ -79,12 +95,13 @@ angular.module('conojoApp')
                         }),
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                     }).then(function (response) {
+                        $scope.saving = false;
                         $scope.init();
-                        $('.reset-note').html(response.data.message);
-                        $('#statusNotice').modal('toggle');
+                        $scope.alertSuccess = '<i class="fa fa-check-circle"></i> Your payment has been accepted successfully!';
                     }, function (error) {
-                        $('.reset-note').html(error.message);
-                        $('#statusNotice').modal('toggle');
+                        $scope.saving = false;
+                        $scope.alertError = '<i class="fa fa-exclamation-circle"></i> <strong>Credit Card Charge Failed</strong>: '+error.message;
+                        $log.error({msg: 'User profile update error', error: error});
                     });
                 }
             });

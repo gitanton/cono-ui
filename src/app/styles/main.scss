@@ -23,7 +23,7 @@ body {
 .page {
     height: 100vh;
     overflow: hidden;
-    overfow-y: auto;
+    overflow-y: auto;
     background: $color-gray-2;
 
     .sidebar {
@@ -188,12 +188,12 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    border-radius: 3px;
+    border-radius: $border-radius;
     background: $color-white;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 3px;
+    border-radius: $border-radius;
     background: #c7c7c7;
 }
 
@@ -295,7 +295,7 @@ body {
     a {
         width: 225px;
         height: 44px;
-        border-radius: 3px;
+        border-radius: $border-radius;
         background: $color-blue-2;
         color: $color-gray-4;
     }
@@ -337,13 +337,13 @@ body {
                     background: $color-white;
                     width: 335px;
                     border: 1px solid $color-blue-5;
-                    border-radius: 3px;
+                    border-radius: $border-radius;
                     padding: 10px 25px;
                 }
                 .profile-billing-content-billing-changeCard-two-r {
                     width: 245px;
                     border: 1px solid $color-blue-5;
-                    border-radius: 3px;
+                    border-radius: $border-radius;
                     padding: 10px 25px;
                     background: $color-white;
                 }
@@ -351,7 +351,7 @@ body {
                     background: $color-white;
                     width: 45px;
                     border: 1px solid $color-blue-5;
-                    border-radius: 3px;
+                    border-radius: $border-radius;
                     padding: 10px 15px;
                     margin-left: 5px;
                     margin-right: 5px;
@@ -383,14 +383,14 @@ body {
                 .profile-billing-content-billing-changeCard-planinfo {
                     width: 530px;
                     border: 1px solid $color-blue-5;
-                    border-radius: 3px;
+                    border-radius: $border-radius;
                     padding: 10px 25px;
                     color: $color-blue-5;
                 }
                 .profile-billing-content-billing-changeCard-button {
                     width: 220px;
                     height: 40px;
-                    border-radius: 3px;
+                    border-radius: $border-radius;
                     padding: 10px 25px;
                 }
             }
@@ -456,7 +456,7 @@ body {
                         background: #cbefff;
                         color: $color-blue-5;
                         border: 1px solid $color-blue-5;
-                        border-radius: 3px;
+                        border-radius: $border-radius;
                         width: 145px;
                         height: 40px;
                         padding: 10px;
@@ -490,7 +490,7 @@ body {
                         background: #ebebeb;
                         color: $color-blue-5;
                         border: 1px solid $color-blue-5;
-                        border-radius: 3px;
+                        border-radius: $border-radius;
                         width: 145px;
                         height: 40px;
                         padding: 10px;
@@ -632,7 +632,7 @@ body {
             top: 10px;
             right: 10px;
             background: $color-blue-2;
-            border-radius: 3px;
+            border-radius: $border-radius;
             color: $color-white;
             padding: 3px 5px;
         }
@@ -652,8 +652,6 @@ body {
 }
 
 #newproject {
-    width: 100%;
-    padding-top: 50px;
     .project-new {
         background: $color-white;
         border-radius: 4px;
@@ -665,13 +663,6 @@ body {
         padding: 22px 0;
         border-bottom: 1px solid $color-gray-2;
     }
-    .project-new-body {
-        text-align: center;
-        color: $color-blue-5;
-        padding: 24px 35px;
-        background: $color-gray-2;
-        border-bottom: 1px solid $color-gray-2;
-    }
     .project-new-title {
         height: 48px;
     }
@@ -679,51 +670,17 @@ body {
         margin-top: 16px;
         height: 48px;
     }
-    .project-new-button {
-        padding: 12px 0;
-        text-align: center;
-    }
 }
 
 #duplicateproject {
-    width: 100%;
-    padding-top: 50px;
     .project-duplicate {
         background: $color-white;
         border-radius: 4px;
         margin: 0 auto;
     }
-    .project-duplicate-desc {
-        text-align: center;
-        color: $color-blue-5;
-        padding: 22px 0;
-        border-bottom: 1px solid $color-gray-2;
-    }
-    .project-duplicate-delicon {
-        text-align: center;
-        padding: 22px 0;
-        border-bottom: 1px solid $color-gray-2;
-        cursor: pointer;
-    }
-    .project-duplicate-warning {
-        text-align: center;
-        background: $color-gray-2;
-    }
-    .project-duplicate-warningicon {
-        padding: 27px 0;
-    }
-    .project-duplicate-warningdesc {
-        padding: 0 65px 30px;
-    }
-    .project-duplicate-button {
-        padding: 12px 0;
-        text-align: center;
-    }
 }
 
 #shareproject {
-    width: 100%;
-    padding-top: 50px;
     .project-share {
         background: $color-white;
         border-radius: 4px;
@@ -765,13 +722,13 @@ body {
         }
         .project-share-shorturl {
             border: 1px solid $color-white;
-            border-radius: 3px;
+            border-radius: $border-radius;
             margin-bottom: 16px;
             height: 48px;
         }
         .has-icon {
             position: relative;
-            border-radius: 3px;
+            border-radius: $border-radius;
             border: 1px solid $color-blue-2;
             color: $color-blue-5;
             height: 48px;
@@ -787,8 +744,6 @@ body {
 }
 
 #archiveproject {
-    width: 100%;
-    padding-top: 50px;
     .project-archive {
         background: $color-white;
         border-radius: 4px;
@@ -817,45 +772,6 @@ body {
         padding: 0 65px 35px;
     }
     .project-archive-button {
-        padding: 12px 0;
-        text-align: center;
-    }
-}
-
-#deleteproject {
-    width: 100%;
-    padding-top: 50px;
-    .project-delete {
-        background: $color-white;
-        border-radius: 4px;
-        margin: 0 auto;
-    }
-    .project-delete-desc {
-        text-align: center;
-        color: $color-blue-5;
-        padding: 22px 0;
-        border-bottom: 1px solid $color-gray-2;
-    }
-    .project-delete-delicon {
-        text-align: center;
-        padding: 22px 0;
-        border-bottom: 1px solid $color-gray-2;
-        cursor: pointer;
-    }
-    .project-delete-warning {
-        text-align: center;
-        background: $color-gray-2;
-    }
-    .project-delete-warningicon {
-        padding: 27px 0;
-    }
-    .project-delete-warningdesc {
-        padding: 0 65px;
-    }
-    .project-delete-warningundone {
-        padding: 25px 0;
-    }
-    .project-delete-button {
         padding: 12px 0;
         text-align: center;
     }
@@ -1168,7 +1084,7 @@ body {
     overflow-y: auto;
     .col-md-4 {
         background: #d4d4d4;
-        border-radius: 3px;
+        border-radius: $border-radius;
     }
     .team-content-offset {
         margin-left: 16px;
@@ -1242,7 +1158,7 @@ body {
     }
     .has-add {
         position: relative;
-        border-radius: 3px;
+        border-radius: $border-radius;
         border: 1px solid $color-blue-2;
         color: $color-blue-5;
         height: 48px;
@@ -1296,7 +1212,7 @@ body {
         overflow-y: auto;
         .userpage-content-container {
             background: $color-white;
-            border-radius: 3px;
+            border-radius: $border-radius;
             .userpage-content-intro {
                 border-bottom: 1px solid #e5e5e5;
                 height: 232px;
@@ -1335,7 +1251,7 @@ body {
 
 .project-design-menu-current {
     background: $color-blue-5;
-    border-radius: 3px;
+    border-radius: $border-radius;
 }
 
 /*project build page*/
@@ -2135,7 +2051,7 @@ body {
         position: relative;
     }
     .has-add {
-        border-radius: 3px;
+        border-radius: $border-radius;
         border: 2px dashed $color-white;
         height: 100px;
         position: relative;
@@ -2797,7 +2713,7 @@ body {
             .profile-project-content-projects {
                 overflow-y: auto;
                 background: $color-white;
-                border-radius: 3px;
+                border-radius: $border-radius;
                 border-top: 1px solid #e5e5e5;
                 .profile-project-content-project-intro {
                     padding: 20px 50px;
@@ -2870,7 +2786,7 @@ body {
             .profile-profile-content-profile {
                 overflow-y: auto;
                 background: $color-white;
-                border-radius: 3px;
+                border-radius: $border-radius;
                 border-top: 1px solid #e5e5e5;
                 .profile-profile-content-profile-title {
                     padding: 20px 50px;
@@ -2965,7 +2881,7 @@ body {
             .profile-billing-content-billing {
                 overflow-y: auto;
                 background: $color-white;
-                border-radius: 3px;
+                border-radius: $border-radius;
                 border-top: 1px solid #e5e5e5;
                 .profile-billing-content-billing-plan {
                     padding: 10px 50px;
@@ -2978,17 +2894,8 @@ body {
                     }
                     .profile-billing-content-billing-planinfo {
                         border: 1px solid #e5e5e5;
-                        border-radius: 3px;
+                        border-radius: $border-radius;
                         padding: 10px 25px;
-                    }
-                    .profile-billing-content-billing-upgrade, .profile-billing-content-billing-cancel {
-                        color: $color-blue-5;
-                        width: 155px;
-                        margin-left: 40px;
-                        border: 1px solid $color-blue-5;
-                        border-radius: 3px;
-                        padding: 10px 30px;
-                        cursor: pointer;
                     }
                 }
                 .profile-billing-content-billing-history {
@@ -3012,26 +2919,23 @@ body {
                 .profile-billing-content-billing-plans {
                     padding: 20px;
                     .profile-billing-content-billing-plans-submit {
-                        margin-top: 35px;
-                        margin-bottom: 20px;
+
                         .profile-billing-content-billing-submit-l {
-                            width: 335px;
                             border: 1px solid $color-blue-5;
-                            border-radius: 3px;
+                            border-radius: $border-radius;
                             padding: 10px 25px;
                             margin: 0 auto;
                         }
                         .profile-billing-content-billing-submit-price {
-                            width: 245px;
                             border: 1px solid $color-blue-5;
-                            border-radius: 3px;
+                            border-radius: $border-radius;
                             padding: 10px 25px;
                         }
                         .profile-billing-content-billing-submit-d, .profile-billing-content-billing-submit-i {
                             width: 45px;
                             cursor: pointer;
                             border: 1px solid $color-blue-5;
-                            border-radius: 3px;
+                            border-radius: $border-radius;
                             padding: 10px 15px;
                             margin-left: 5px;
                             margin-right: 5px;
@@ -3079,7 +2983,7 @@ body {
                                 background: #cbefff;
                                 color: $color-blue-5;
                                 border: 1px solid $color-blue-5;
-                                border-radius: 3px;
+                                border-radius: $border-radius;
                                 width: 145px;
                                 height: 40px;
                                 padding: 10px;
@@ -3111,7 +3015,7 @@ body {
                                 background: #ebebeb;
                                 color: $color-blue-5;
                                 border: 1px solid $color-blue-5;
-                                border-radius: 3px;
+                                border-radius: $border-radius;
                                 width: 145px;
                                 height: 40px;
                                 padding: 10px;
@@ -3179,7 +3083,7 @@ body {
             .profile-notice-content-notice {
                 overflow-y: auto;
                 background: $color-white;
-                border-radius: 3px;
+                border-radius: $border-radius;
                 border-top: 1px solid #e5e5e5;
                 .profile-notice-content-notice-general {
                     .profile-notice-content-notice-generaltitle {

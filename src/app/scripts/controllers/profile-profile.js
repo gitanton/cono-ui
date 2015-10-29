@@ -28,7 +28,7 @@ angular.module('conojoApp')
                     $('.siderbar-expand-img').attr('src', user.avatar);
                     $scope.alertSuccess = '<i class="fa fa-check-circle"></i> Image uploaded successfully!';
                 }, function (error) {
-                    $scope.alertError = '<i class="fa fa-close-circle"></i> <strong>Image uploaded failed</strong>: '+error.data.message;
+                    $scope.alertError = '<i class="fa fa-exclamation-circle"></i> <strong>Image uploaded failed</strong>: '+error.data.message;
                     $log.error({msg: 'User avatar upload error', error: error});
                 });
             }
@@ -82,7 +82,7 @@ angular.module('conojoApp')
                 $scope.alertSuccess = '<i class="fa fa-check-circle"></i> Profile updated successfully!';
                 return user;
             }, function (error) {
-                $scope.alertError = '<i class="fa fa-close-circle"></i> <strong>Profile update failed</strong>: '+error.data.message;
+                $scope.alertError = '<i class="fa fa-exclamation-circle"></i> <strong>Profile update failed</strong>: '+error.data.message;
                 $log.error({msg: 'User profile update error', error: error});
             });
         };

@@ -9,8 +9,26 @@ angular.module('conojoApp')
              */
             var projectService = {
 
+                add: function (name, typeId) {
+                    var data = {
+                        name: name,
+                        type_id: typeId
+                    };
+
+                    return $http({
+                        url: ENV.API_ENDPOINT + 'projects',
+                        method: 'POST',
+                        data: $.param(data),
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    }).then(function (response) {
+                        return response;
+                    }, function (error) {
+                        $log.error({msg: 'projectService.add error', error: error});
+                        return $q.reject(error);
+                    });
+                },
+
                 list: function (filters) {
-                    $log.debug({msg: 'listing projects'});
                     var data = filters ? filters : {};
 
                     return $http({

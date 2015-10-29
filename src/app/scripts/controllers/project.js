@@ -9,9 +9,7 @@
 angular.module('conojoApp')
     .controller('ProjectCtrl', function ($rootScope, $scope, $http, $location, ENV, RC_FREE_TRIAL_EXPIRED, projectService,
                                          ModalService) {
-        $scope.projecttype = 0;
-        $scope.projecttitle = '';
-        $scope.errorMessageProject = '';
+        $scope.newProject = {};
 
         $scope.init = function () {
             projectService.list().then(function (response) {
@@ -67,14 +65,17 @@ angular.module('conojoApp')
             }
         };
 
-        $scope.myProject = function () {
-            projectService.list($.param({name: $scope.projecttitle, type_id: $scope.projecttype})).then(function () {
+        $scope.myProject = function (isValid) {
+            $scope.newProjectSuccess = false;
+            $scope.newProjectError = false;
+            if(!isValid) {
+                return false;
+            }
+            projectService.add($scope.newProject.title, $scope.newProject.type).then(function () {
                 $scope.init();
                 $('#newproject').modal('hide');
             }, function (error) {
-                $('#newproject').modal('hide');
-                $scope.errorMessageProject = error.message;
-                $('#statusNoticeProject').modal('toggle');
+                $scope.newProjectError = '<i class="fa fa-exclamation-circle"></i> <strong>Project Creation Failed</strong>: '+error.data.message;
             });
         };
 
@@ -178,7 +179,7 @@ angular.module('conojoApp')
             $http({
                 url: ENV.API_ENDPOINT + 'projects/project/' + uuid,
                 method: 'PUT',
-                data: {type_id: $scope.archiveProjectTypeid, archived: '1'}
+                data: {type_id: $scope.archiveProjectTypeid, archived: true}
             }).then(function () {
                 $scope.init();
                 $('#archiveproject').modal('hide');
