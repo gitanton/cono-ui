@@ -46,13 +46,12 @@ angular.module('conojoApp')
 
             $http({
                 url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid,
-                method: 'GET',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                method: 'GET'
             }).then(function (response) {
                 var data = response.data;
-                hotspotsNum = data.hotspots.length + 1;
+                hotspotsNum = data.hotspots ? data.hotspots.length + 1 : 1;
 
-                if (data.drawings.length > 0) {
+                if (data.drawings && data.drawings.length > 0) {
                     var img_f_init = new Image();
                     img_f_init.src = 'data:image/png;base64,' + data.drawings[data.drawings.length - 1].data.slice(9);
                     img_f_init.onload = function () {
@@ -60,7 +59,7 @@ angular.module('conojoApp')
                     };
                 }
 
-                if (data.hotspots.length > 0) {
+                if (data.hotspots && data.hotspots.length > 0) {
                     for (var j = 0; j < data.hotspots.length; j++) {
                         var left = data.hotspots[j].begin_x + $scope.drawLeft;
                         var currentH = j + 1;

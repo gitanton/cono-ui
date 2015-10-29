@@ -4,11 +4,13 @@
     <div class="project-build-container col-md-12">
         <div class="project-build-header">
             <div class="project-build-header-name col-md-6">
-                <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
+                <span ng-bind="updateProjectTitle"></span>
+                <img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
             </div>
             <div class="project-build-header-button col-md-6">
                 <button class="btn btn-lg btn-primary">Share</button>
-                <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
+                <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting
+                </button>
             </div>
         </div>
         <div class="project-build-content">
@@ -23,9 +25,15 @@
                 </div>
                 <div class="project-build-content-member col-md-6">
                     <ul class="list-inline">
-                        <li ng-repeat="projectMember in projectMembers"><img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}"></li>
-                        <li ng-repeat="projectMember in projectMembers"><img ng-if="projectMember.avatar == null" src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}"></li>
-                        <li><img src="images/addMember-icon.png" ng-click="openAddProjectMember()" class="addMemberIcon"></li>
+                        <li ng-repeat="projectMember in projectMembers">
+                            <img ng-if="projectMember.avatar != null" ng-src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
+                        </li>
+                        <li ng-repeat="projectMember in projectMembers">
+                            <img ng-if="projectMember.avatar == null" ng-src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
+                        </li>
+                        <li>
+                            <img ng-src="images/addMember-icon.png" ng-click="openAddProjectMember()" class="addMemberIcon">
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -35,18 +43,37 @@
                     <canvas id="drawing-f" width="790" height="440"></canvas>
                 </div>
                 <div class="project-build-content-tools">
-                    <ul class="project-build-content-tools-ul">
-                        <li class="project-build-comment-blue" ng-show="showCommentBlue" ng-click="openComments()"><img src="images/comment-blue-icon.png"></li>
-                        <li class="project-build-comment-black" ng-hide="showCommentBlue"><img src="images/comment-black-icon.png"></li>
-                        <li class="project-build-hotspots-blue" ng-show="showHotspotsBlue" ng-click="openHotspots()"><img src="images/hotspots-blue-icon.png"></li>
-                        <li class="project-build-hotspots-black" ng-hide="showHotspotsBlue"><img src="images/hotspots-black-icon.png"></li>
-                        <li class="project-build-brush-blue" ng-show="showBrushBlue" ng-click="openTools()"><img src="images/brush-blue-icon.png"></li>
-                        <li class="project-build-brush-black" ng-hide="showBrushBlue" ng-click="openDrawing('brush', $event)"><img src="images/brush-black-icon.png"></li>
-                        <li class="project-build-eraser" ng-show="showEraser" ng-click="openDrawing('eraser', $event)"><img src="images/eraser-black-icon.png"></li>
-                        <li class="project-build-shape" ng-show="showShape" ng-click="openDrawing('shape', $event)"><img src="images/shape-black-icon.png"></li>
+                    <ul class="project-build-content-tools-ul list-inline">
+                        <li class="project-build-comment-blue" ng-show="showCommentBlue" ng-click="openComments()">
+                            <img src="images/comment-blue-icon.png">
+                        </li>
+                        <li class="project-build-comment-black" ng-hide="showCommentBlue">
+                            <img src="images/comment-black-icon.png">
+                        </li>
+                        <li class="project-build-hotspots-blue" ng-show="showHotspotsBlue" ng-click="openHotspots()">
+                            <img src="images/hotspots-blue-icon.png">
+                        </li>
+                        <li class="project-build-hotspots-black" ng-hide="showHotspotsBlue">
+                            <img src="images/hotspots-black-icon.png">
+                        </li>
+                        <li class="project-build-brush-blue" ng-show="showBrushBlue" ng-click="openTools()">
+                            <img src="images/brush-blue-icon.png">
+                        </li>
+                        <li class="project-build-brush-black" ng-hide="showBrushBlue" ng-click="openDrawing('brush', $event)">
+                            <img src="images/brush-black-icon.png">
+                        </li>
+                        <li class="project-build-eraser" ng-show="showEraser" ng-click="openDrawing('eraser', $event)">
+                            <img src="images/eraser-black-icon.png">
+                        </li>
+                        <li class="project-build-shape" ng-show="showShape" ng-click="openDrawing('shape', $event)">
+                            <img src="images/shape-black-icon.png">
+                        </li>
                     </ul>
                 </div>
-                <div class="project-build-content-addScreens" ng-click="openAddScreen()"><img src="images/addScreen-icon.png"><span>Add Screen</span></div>
+                <div class="project-build-content-addScreens" ng-click="openAddScreen()">
+                    <img src="images/addScreen-icon.png">
+                    <span>Add Screen</span>
+                </div>
                 <div class="project-build-content-brush">
                     <div class="project-build-content-brushTitle col-md-12">BRUSH TOOL</div>
                     <div class="project-build-content-brushContent col-md-12">
@@ -54,14 +81,14 @@
                             <div id="pickerBrush"></div>
                         </div>
                         <div class="project-build-content-brushColorRight col-md-4">
-                            <ul class="col-md-6">
+                            <ul class="list-inline">
                                 <li class="brushColor1" ng-click="specicalColor('#fff')"></li>
                                 <li class="brushColor2" ng-click="specicalColor('#959595')"></li>
                                 <li class="brushColor3" ng-click="specicalColor('#555555')"></li>
                                 <li class="brushColor4" ng-click="specicalColor('#252525')"></li>
                                 <li class="brushColor5" ng-click="specicalColor('#000')"></li>
                             </ul>
-                            <ul class="col-md-6">
+                            <ul class="list-inline">
                                 <li class="brushColor6" ng-click="specicalColor('#d26a9d')"></li>
                                 <li class="brushColor7" ng-click="specicalColor('#a90c5a')"></li>
                                 <li class="brushColor8" ng-click="specicalColor('#800039')"></li>
@@ -70,18 +97,36 @@
                             </ul>
                         </div>
                         <div class="project-build-content-brushBottom col-md-12">
-                            <div class="col-md-4"><img src="images/8px-icon.png" ng-click="setBrushWidth(8)">8px</div>
-                            <div class="col-md-4"><img src="images/20px-icon.png" ng-click="setBrushWidth(20)">20px</div>
-                            <div class="col-md-4"><img src="images/30px-icon.png" ng-click="setBrushWidth(30)">30px</div>
+                            <div class="col-md-4">
+                                <img src="images/8px-icon.png" ng-click="setBrushWidth(8)">
+                                8px
+                            </div>
+                            <div class="col-md-4">
+                                <img src="images/20px-icon.png" ng-click="setBrushWidth(20)">
+                                20px
+                            </div>
+                            <div class="col-md-4">
+                                <img src="images/30px-icon.png" ng-click="setBrushWidth(30)">
+                                30px
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="project-build-content-eraser">
                     <div class="project-build-content-eraserTitle col-md-12">ERASER TOOL</div>
                     <div class="project-build-content-eraserContent col-md-12">
-                        <div class="col-md-4"><img src="images/8px-icon.png" ng-click="setEraserWidth(8)">8px</div>
-                        <div class="col-md-4"><img src="images/20px-icon.png" ng-click="setEraserWidth(20)">20px</div>
-                        <div class="col-md-4"><img src="images/30px-icon.png" ng-click="setEraserWidth(30)">30px</div>
+                        <div class="col-md-4">
+                            <img src="images/8px-icon.png" ng-click="setEraserWidth(8)">
+                            8px
+                        </div>
+                        <div class="col-md-4">
+                            <img src="images/20px-icon.png" ng-click="setEraserWidth(20)">
+                            20px
+                        </div>
+                        <div class="col-md-4">
+                            <img src="images/30px-icon.png" ng-click="setEraserWidth(30)">
+                            30px
+                        </div>
                     </div>
                 </div>
                 <div class="project-build-content-shape">
@@ -89,17 +134,38 @@
                     <div class="project-build-content-shapeContent">
                         <div class="project-build-content-shapeLeft col-md-6">
                             <div class="project-build-content-shapeLeftT">
-                                <div class="col-md-4"><img src="images/square-icon.png" ng-click="drawSquare()"></div>
-                                <div class="col-md-4"><img src="images/triangle-icon.png" ng-click="drawTriangle()"></div>
-                                <div class="col-md-4"><img src="images/circle-icon.png" ng-click="drawCircle()"></div>
-                                <div class="col-md-4"><img src="images/talk-icon.png" ng-click="drawTalk()"></div>
-                                <div class="col-md-4"><img src="images/arrow-icon.png" ng-click="drawArrow()"></div>
-                                <div class="col-md-4"><img src="images/star-icon.png" ng-click="drawStar()"></div>
+                                <div class="col-md-4">
+                                    <img src="images/square-icon.png" ng-click="drawSquare()">
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/triangle-icon.png" ng-click="drawTriangle()">
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/circle-icon.png" ng-click="drawCircle()">
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/talk-icon.png" ng-click="drawTalk()">
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/arrow-icon.png" ng-click="drawArrow()">
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/star-icon.png" ng-click="drawStar()">
+                                </div>
                             </div>
                             <div class="project-build-content-shapeLeftB">
-                                <div class="col-md-4"><img src="images/8px-icon.png" ng-click="setPenWidth(0)">8px</div>
-                                <div class="col-md-4"><img src="images/20px-icon.png" ng-click="setPenWidth(1)">20px</div>
-                                <div class="col-md-4"><img src="images/30px-icon.png" ng-click="setPenWidth(2)">30px</div>
+                                <div class="col-md-4">
+                                    <img src="images/8px-icon.png" ng-click="setPenWidth(0)">
+                                    8px
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/20px-icon.png" ng-click="setPenWidth(1)">
+                                    20px
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="images/30px-icon.png" ng-click="setPenWidth(2)">
+                                    30px
+                                </div>
                             </div>
                         </div>
                         <div class="project-build-content-shapeRight col-md-6">
@@ -123,8 +189,12 @@
                             <div class="shapeFillSwitch">
                                 <div class="col-md-12">Fill Shape</div>
                                 <div class="shapeFillSwitchContainer col-md-12">
-                                    <div class="col-md-6 shapeFillSwitchOn shapeUnFillItem" ng-click="shapeFillSwitch('on')">ON</div>
-                                    <div class="col-md-6 shapeFillSwitchOff shapeFillItem" ng-click="shapeFillSwitch('off')">OFF</div>
+                                    <div class="col-md-6 shapeFillSwitchOn shapeUnFillItem" ng-click="shapeFillSwitch('on')">
+                                        ON
+                                    </div>
+                                    <div class="col-md-6 shapeFillSwitchOff shapeFillItem" ng-click="shapeFillSwitch('off')">
+                                        OFF
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +209,7 @@
         <div class="col-md-12 project-update-desc">UPDATE PROJECT</div>
         <form name="updateProject">
             <div class="col-md-12 project-update-body">
-                <input type="text" name="projecttitle" ng-model="updateProjectTitle" class="form-control project-update-title" />
+                <input type="text" name="projecttitle" ng-model="updateProjectTitle" class="form-control project-update-title"/>
                 <select name="projecttype" ng-model="updateProjectTypeid" class="form-control project-update-type">
                     <option value=0>Project Type</option>
                     <option value=1>UI/UX Project</option>
@@ -148,8 +218,12 @@
                 </select>
             </div>
             <div class="col-md-12 project-update-button">
-                <button class="btn btn-lg project-update-buttoncancel btn-primary" type="cancel" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-lg project-update-buttonsubmit btn-primary" type="submit" ng-click='updateMyProject(activeProjectUuid)'>Save</button>
+                <button class="btn btn-lg project-update-buttoncancel btn-primary" type="cancel" data-dismiss="modal">
+                    Cancel
+                </button>
+                <button class="btn btn-lg project-update-buttonsubmit btn-primary" type="submit" ng-click='updateMyProject(activeProjectUuid)'>
+                    Save
+                </button>
             </div>
         </form>
     </div>
@@ -157,7 +231,9 @@
 <div id="addPeopleToProject" class="modal fade in" style="display: none;">
     <div class="teammember-add">
         <div class="col-md-10 teammember-add-desc">ADD PEOPLE TO THE PROJECT</div>
-        <div class="col-md-2 teammember-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-2 teammember-add-delicon">
+            <img src="images/close-icon.png" data-dismiss="modal">
+        </div>
         <form name="addPeopleToProject">
             <div class="col-md-12 teammember-add-body">
                 <!-- <div class="form-group">
@@ -167,7 +243,7 @@
                     </select>
                 </div> -->
                 <div class="form-group has-email">
-                    <input type="text" name="teammemberemail" ng-model="memberEmail" class="form-control teammember-add-email" placeholder="Enter an email" />
+                    <input type="text" name="teammemberemail" ng-model="memberEmail" class="form-control teammember-add-email" placeholder="Enter an email"/>
                     <img class="teammember-add-emailicon" src="images/mail-icon.png">
                 </div>
                 <!-- <div class="form-group has-add">
@@ -175,7 +251,9 @@
                 </div> -->
             </div>
             <div class="col-md-12 teammember-add-button">
-                <button class="btn btn-lg btn-primary" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People</button>
+                <button class="btn btn-lg btn-primary" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">
+                    Invite People
+                </button>
             </div>
         </form>
     </div>
@@ -183,7 +261,9 @@
 <div id="addHotspots" ng-class="{true: 'addHotspotsLeft', false: 'addHotspotsRight'}[addHotspotsPosition]" ng-show="showAddHotspots">
     <div class="hotspots-add">
         <div class="col-md-10 hotspots-add-desc">Link To:</div>
-        <div class="col-md-2 hotspots-add-delicon"><img src="images/close-icon.png" ng-click="hideAddHotspots()"></div>
+        <div class="col-md-2 hotspots-add-delicon">
+            <img src="images/close-icon.png" ng-click="hideAddHotspots()">
+        </div>
         <form name="createHotspots">
             <div class="col-md-12 hotspots-add-body">
                 <div class="form-group">
@@ -196,8 +276,12 @@
                 </div>
             </div>
             <div class="col-md-12 hotspots-add-button">
-                <button class="btn btn-lg hotspots-buttoncancel btn-primary" type="reset" ng-click="hideAddHotspots()">Cancel</button>
-                <button class="btn btn-lg hotspots-buttonsubmit btn-primary" type="submit" ng-click="saveAddHotspots()">Save</button>
+                <button class="btn btn-lg hotspots-buttoncancel btn-primary" type="reset" ng-click="hideAddHotspots()">
+                    Cancel
+                </button>
+                <button class="btn btn-lg hotspots-buttonsubmit btn-primary" type="submit" ng-click="saveAddHotspots()">
+                    Save
+                </button>
             </div>
         </form>
     </div>
@@ -206,11 +290,15 @@
     <div class="comment-add" data-marker=1>
         <div class="col-md-12 row">
             <div class="col-md-10 comment-add-desc">ADD COMMENT</div>
-            <div class="col-md-2 comment-add-delicon"><img src="images/close-icon.png" ng-click="hideComments()"></div>
+            <div class="col-md-2 comment-add-delicon">
+                <img src="images/close-icon.png" ng-click="hideComments()">
+            </div>
         </div>
         <div class="comment-chat-content col-md-12">
             <div class="col-md-12" ng-repeat="comment in currentComments">
-                <div class="col-md-3"><img src="images/chat-person-icon.png"></div>
+                <div class="col-md-3">
+                    <img src="images/chat-person-icon.png">
+                </div>
                 <div class="col-md-9">
                     <div class="col-md-8">{{comment.fullname}}</div>
                     <div class="col-md-4">{{comment.created | limitTo:-8}}</div>
@@ -228,10 +316,17 @@
                     <option ng-repeat="user in projectMembers" value={{user.uuid}}>{{user.fullname}}</option>
                 </select>
             </div>
-            <div class="col-md-12 comment-assignTask"><input type="checkbox" name="assignTask" ng-checked="isTask" ng-true-value="1" ng-false-value="2">Assign this as a task</div>
+            <div class="col-md-12 comment-assignTask">
+                <input type="checkbox" name="assignTask" ng-checked="isTask" ng-true-value="1" ng-false-value="2">
+                Assign this as a task
+            </div>
             <div class="col-md-12 comment-add-button">
-                <button class="btn btn-lg comment-buttoncancel btn-primary" type="reset" ng-click="hideComments()">Cancel</button>
-                <button class="btn btn-lg comment-buttonsubmit btn-primary" type="submit" ng-click="saveComments($event)">Save</button>
+                <button class="btn btn-lg comment-buttoncancel btn-primary" type="reset" ng-click="hideComments()">
+                    Cancel
+                </button>
+                <button class="btn btn-lg comment-buttonsubmit btn-primary" type="submit" ng-click="saveComments($event)">
+                    Save
+                </button>
             </div>
         </form>
     </div>
@@ -239,17 +334,19 @@
 <div id="newMeeting" class="modal fade in" style="display: none;">
     <div class="newMeeting-add">
         <div class="col-md-10 newMeeting-add-desc">CREATE A MEETING</div>
-        <div class="col-md-2 newMeeting-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-2 newMeeting-add-delicon">
+            <img src="images/close-icon.png" data-dismiss="modal">
+        </div>
         <form name="newMeeting">
             <div class="col-md-12 newMeeting-add-body">
                 <div class="form-group">
                     <textarea name="meetingMessage" ng-model="meetingMessage" placeholder="Notes" class="form-control newMeeting-message"></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="meetingName" ng-model="meetingName" class="form-control newMeeting-name" placeholder="Meeting Name" />
+                    <input type="text" name="meetingName" ng-model="meetingName" class="form-control newMeeting-name" placeholder="Meeting Name"/>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="meetingDateTime" ng-model="meetingDateTime" class="form-control newMeeting-time" placeholder="Choose date & time" />
+                    <input type="text" name="meetingDateTime" ng-model="meetingDateTime" class="form-control newMeeting-time" placeholder="Choose date & time"/>
                 </div>
                 <p style="text-align:left;">Choose recipients</p>
                 <select class="js-example-basic-multiple" multiple="multiple" ng-model="recipients">

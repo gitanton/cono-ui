@@ -18,14 +18,24 @@
         <div class="project-content" id="sortable">
             <div class="col-md-4 col-lg-2 col-sm-6 project-content-offset" ng-repeat="project in projects">
                 <div class="row">
-                    <div class="col-md-10 project-content-name" data-uuid="{{project.uuid}}">{{project.name}}</div>
+                    <div class="col-md-10 project-content-name" data-uuid="{{project.uuid}}">
+                        <button class="btn-link btn no-margin no-padding" ng-click="projectScreen('{{project.uuid}}','{{project.type_id}}')">
+                            {{project.name}}
+                        </button>
+                    </div>
+
                     <div class="col-md-2 project-content-gear" ng-class="showBackground(project.is_open)">
                         <a ng-class="showGear(project.is_open)" ng-click="operateProject(project)"></a>
                     </div>
                 </div>
                 <div class="row">
+                    <img ng-src="{{project.thumbnail}}" class="img-responsive" ng-click="projectScreen('{{project.uuid}}','{{project.type_id}}')">
+                    <div class="project-content-label" ng-if="project.type_id == 1">UI</div>
+                    <div class="project-content-label" ng-if="project.type_id == 2">VIDEO</div>
+                    <div class="project-content-label" ng-if="project.type_id == 3">BUSINESS TEMPLATE</div>
+                </div>
+                <div class="row">
                     <div class="col-md-12 project-content-projectcontent">
-                        <img src="images/project-one.png" class="img-responsive" ng-click="project-screen('{{project.uuid}}','{{project.type_id}}')">
                         <div class="project-content-opetate" ng-class="showOperate(project.is_open)">
                             <div class="col-md-12">
                                 <ul class="list-inline">
@@ -56,10 +66,6 @@
                                 </ul>
                             </div>
                         </div>
-
-                        <div class="project-content-lable" ng-if="project.type_id == 1">UI</div>
-                        <div class="project-content-lable" ng-if="project.type_id == 2">VIDEO</div>
-                        <div class="project-content-lable" ng-if="project.type_id == 3">BUSINESS TEMPLATE</div>
 
                         <div class="project-content-btm">
                             <div class="row">

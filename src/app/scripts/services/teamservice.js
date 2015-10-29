@@ -10,8 +10,6 @@ angular.module('conojoApp')
             var teamService = {
 
                 list: function () {
-                    $log.debug({msg: 'listing teams'});
-
                     return $http({
                         url: ENV.API_ENDPOINT + 'teams',
                         method: 'GET',

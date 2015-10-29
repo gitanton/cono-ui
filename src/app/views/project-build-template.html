@@ -10,7 +10,9 @@
                 </div>
                 <div class="project-build-header-button col-md-6">
                     <button class="btn btn-lg btn-primary">Share</button>
-                    <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
+                    <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a
+                        Meeting
+                    </button>
                 </div>
             </div>
         </div>
@@ -29,10 +31,10 @@
                     <div class="project-build-content-member col-md-6">
                         <ul class="list-inline">
                             <li ng-repeat="projectMember in projectMembers">
-                                <img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
+                                <img ng-if="projectMember.avatar != null" ng-src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
                             </li>
                             <li ng-repeat="projectMember in projectMembers">
-                                <img ng-if="projectMember.avatar == null" src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
+                                <img ng-if="projectMember.avatar == null" ng-src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
                             </li>
                             <li>
                                 <img src="images/addMember-icon.png" ng-click="openAddProjectMember()" class="addMemberIcon">
@@ -262,7 +264,8 @@
                 </select>
             </div>
             <div class="col-md-12 project-update-button">
-                <button class="btn btn-lg project-update-buttoncancel btn-primary" type="cancel" data-dismiss="modal">Cancel
+                <button class="btn btn-lg project-update-buttoncancel btn-primary" type="cancel" data-dismiss="modal">
+                    Cancel
                 </button>
                 <button class="btn btn-lg project-update-buttonsubmit btn-primary" type="submit" ng-click='updateMyProject(activeProjectUuid)'>
                     Save
@@ -294,7 +297,8 @@
                 </div> -->
             </div>
             <div class="col-md-12 teammember-add-button">
-                <button class="btn btn-lg btn-primary" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People
+                <button class="btn btn-lg btn-primary" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">
+                    Invite People
                 </button>
             </div>
         </form>
@@ -318,9 +322,11 @@
                 </div>
             </div>
             <div class="col-md-12 hotspots-add-button">
-                <button class="btn btn-lg hotspots-buttoncancel btn-primary" type="reset" ng-click="hideAddHotspots()">Cancel
+                <button class="btn btn-lg hotspots-buttoncancel btn-primary" type="reset" ng-click="hideAddHotspots()">
+                    Cancel
                 </button>
-                <button class="btn btn-lg hotspots-buttonsubmit btn-primary" type="submit" ng-click="saveAddHotspots()">Save
+                <button class="btn btn-lg hotspots-buttonsubmit btn-primary" type="submit" ng-click="saveAddHotspots()">
+                    Save
                 </button>
             </div>
         </form>
@@ -361,8 +367,11 @@
                 Assign this as a task
             </div>
             <div class="col-md-12 comment-add-button">
-                <button class="btn btn-lg comment-buttoncancel btn-primary" type="reset" ng-click="hideComments()">Cancel</button>
-                <button class="btn btn-lg comment-buttonsubmit btn-primary" type="submit" ng-click="saveComments($event)">Save
+                <button class="btn btn-lg comment-buttoncancel btn-primary" type="reset" ng-click="hideComments()">
+                    Cancel
+                </button>
+                <button class="btn btn-lg comment-buttonsubmit btn-primary" type="submit" ng-click="saveComments($event)">
+                    Save
                 </button>
             </div>
         </form>
