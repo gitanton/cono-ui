@@ -1,15 +1,15 @@
-<div class="profileProject-page page">
+<div class="profile-project-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="profileProject-container">
-        <div class="profileProject-header">
-            <div class="profileProject-header-name col-md-12">
+    <div class="profile-project-container">
+        <div class="profile-project-header">
+            <div class="profile-project-header-name col-md-12">
                 <span>Profile</span>
             </div>
         </div>
-        <div class="profileProject-content">
-            <div class="profileProject-content-menu">
-                <div class="profileProject-content-nav col-md-12">
+        <div class="profile-project-content">
+            <div class="profile-project-content-menu">
+                <div class="profile-project-content-nav col-md-12">
                     <ul class="list-inline">
                         <li class="project-design-menu-current">MY PROJECTS</li>
                         <li ng-click="toProfile()">PROFILE</li>
@@ -18,21 +18,21 @@
                     </ul>
                 </div>
             </div>
-            <div class="profileProject-content-body">
-                <div class="profileProject-content-projectH">
-                    <div class="profileProject-content-projectH-l col-md-10">My Projects</div>
-                    <div class="profileProject-content-projectH-r col-md-2"><span>Select Project<img src="images/select-project-icon.png"></span></div>
+            <div class="profile-project-content-body">
+                <div class="profile-project-content-projectH">
+                    <div class="profile-project-content-projectH-l col-md-10">My Projects</div>
+                    <div class="profile-project-content-projectH-r col-md-2"><span>Select Project<img src="images/select-project-icon.png"></span></div>
                 </div>
-                <div class="profileProject-content-projects">
-                    <div class="profileProject-content-project" ng-repeat="project in projectInfo">
-                        <div class="profileProject-content-project-intro">
-                            <span class="profileProject-content-project-name">{{project[0]}}</span> |
-                            <span class="profileProject-content-project-count">{{project[2]}}</span>
+                <div class="profile-project-content-projects">
+                    <div class="profile-project-content-project" ng-repeat="project in projectInfo">
+                        <div class="profile-project-content-project-intro">
+                            <span class="profile-project-content-project-name">{{project[0]}}</span> |
+                            <span class="profile-project-content-project-count">{{project[2]}}</span>
                         </div>
-                        <div class="profileProject-content-project-thumb" ng-if="project[1] === 1 || project[1] === 3">
+                        <div class="profile-project-content-project-thumb" ng-if="project[1] === 1 || project[1] === 3">
                             <img ng-src="{{detail.url}}" ng-repeat="detail in project[3]" ng-if="project[3].length > 0">
                         </div>
-                        <div class="profileProject-content-project-thumb" ng-if="project[1] === 2">
+                        <div class="profile-project-content-project-thumb" ng-if="project[1] === 2">
                             <video ng-src="{{detail.url}}" ng-repeat="detail in project[3]" ng-if="project[3].length > 0"></video>
                         </div>
                     </div>

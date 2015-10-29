@@ -322,32 +322,32 @@ body {
 
     .register-billing {
         margin: 0 50px;
-        .profileBilling-content-title {
+        .profile-billing-content-title {
             color: $color-blue-5;
             border-bottom: 1px solid $color-gray-2;
         }
-        .profileBilling-content-billing-changrCard {
+        .profile-billing-content-billing-changrCard {
             padding: 20px;
             background: $color-gray-2;
             border-radius: 10px;
             margin-top: 20px;
-            .profileBilling-content-billing-changeCard-two {
+            .profile-billing-content-billing-changeCard-two {
                 margin-top: 5px;
-                .profileBilling-content-billing-changeCard-two-L {
+                .profile-billing-content-billing-changeCard-two-L {
                     background: $color-white;
                     width: 335px;
                     border: 1px solid $color-blue-5;
                     border-radius: 3px;
                     padding: 10px 25px;
                 }
-                .profileBilling-content-billing-changeCard-two-r {
+                .profile-billing-content-billing-changeCard-two-r {
                     width: 245px;
                     border: 1px solid $color-blue-5;
                     border-radius: 3px;
                     padding: 10px 25px;
                     background: $color-white;
                 }
-                .profileBilling-content-billing-changeCard-two-m, .profileBilling-content-billing-changeCard-two-p {
+                .profile-billing-content-billing-changeCard-two-m, .profile-billing-content-billing-changeCard-two-p {
                     background: $color-white;
                     width: 45px;
                     border: 1px solid $color-blue-5;
@@ -357,7 +357,7 @@ body {
                     margin-right: 5px;
                 }
             }
-            .profileBilling-content-billing-changeCard-three {
+            .profile-billing-content-billing-changeCard-three {
                 margin-top: 20px;
                 .col-md-2 {
 
@@ -366,28 +366,28 @@ body {
                     }
                 }
             }
-            .profileBilling-content-billing-changeCard-four, .profileBilling-content-billing-changeCard-six, .profileBilling-content-billing-changeCard-eight {
+            .profile-billing-content-billing-changeCard-four, .profile-billing-content-billing-changeCard-six, .profile-billing-content-billing-changeCard-eight {
                 margin-top: 20px;
             }
-            .profileBilling-content-billing-changeCard-five {
+            .profile-billing-content-billing-changeCard-five {
                 margin-top: 5px;
             }
-            .profileBilling-content-billing-changeCard-seven {
+            .profile-billing-content-billing-changeCard-seven {
                 margin-top: 5px;
             }
-            .profileBilling-content-billing-changeCard-nine {
+            .profile-billing-content-billing-changeCard-nine {
                 margin-top: 5px;
             }
-            .profileBilling-content-billing-changeCard-ten {
+            .profile-billing-content-billing-changeCard-ten {
                 margin-top: 20px;
-                .profileBilling-content-billing-changeCard-planinfo {
+                .profile-billing-content-billing-changeCard-planinfo {
                     width: 530px;
                     border: 1px solid $color-blue-5;
                     border-radius: 3px;
                     padding: 10px 25px;
                     color: $color-blue-5;
                 }
-                .profileBilling-content-billing-changeCard-button {
+                .profile-billing-content-billing-changeCard-button {
                     width: 220px;
                     height: 40px;
                     border-radius: 3px;
@@ -397,29 +397,29 @@ body {
         }
     }
     .register-plan {
-        .profileBilling-content-billing-planTitle {
+        .profile-billing-content-billing-planTitle {
             padding: 20px 50px;
             box-shadow: 3px 3px 3px #e5e5e5;
             height: 68px;
             color: $color-blue-5;
             text-align: center;
         }
-        .profileBilling-content-billing-plans {
+        .profile-billing-content-billing-plans {
             padding: 20px;
-            .profileBilling-content-billing-plans-items {
+            .profile-billing-content-billing-plans-items {
                 border-top: 1px solid #e5e5e5;
                 border-bottom: 1px solid #e5e5e5;
                 border-left: 1px solid #e5e5e5;
                 text-align: center;
                 background: $color-white;
-                .profileBilling-content-billing-plans-item {
+                .profile-billing-content-billing-plans-item {
                     border-right: 1px solid #e5e5e5;
                     padding: 30px;
-                    .profileBilling-content-billing-plans-name {
+                    .profile-billing-content-billing-plans-name {
                         font-size: 16px;
                         font-weight: 700;
                     }
-                    .profileBilling-content-billing-plans-price {
+                    .profile-billing-content-billing-plans-price {
                         color: #777777;
                         padding: 20px 0 35px;
                         border-bottom: 1px solid #e5e5e5;
@@ -428,7 +428,7 @@ body {
                             font-weight: 700;
                         }
                     }
-                    .profileBilling-content-billing-plans-num {
+                    .profile-billing-content-billing-plans-num {
                         color: #777777;
                         padding: 40px 0;
                         span {
@@ -436,7 +436,7 @@ body {
                             font-weight: 700;
                         }
                     }
-                    .profileBilling-content-billing-plans-per {
+                    .profile-billing-content-billing-plans-per {
                         color: #777777;
                         padding-bottom: 80px;
                         span {
@@ -444,7 +444,7 @@ body {
                             font-weight: 700;
                         }
                     }
-                    .profileBilling-content-billing-plans-perT {
+                    .profile-billing-content-billing-plans-perT {
                         color: #777777;
                         padding-bottom: 30px;
                         span {
@@ -452,7 +452,7 @@ body {
                             font-weight: 700;
                         }
                     }
-                    .profileBilling-content-billing-plans-button {
+                    .profile-billing-content-billing-plans-button {
                         background: #cbefff;
                         color: $color-blue-5;
                         border: 1px solid $color-blue-5;
@@ -464,29 +464,29 @@ body {
                         cursor: pointer;
                     }
                 }
-                .profileBilling-content-billing-plans-itemSelect {
+                .profile-billing-content-billing-plans-itemSelect {
                     border-right: 1px solid #e5e5e5;
                     padding: 30px;
                     background: #1582b4;
                     color: $color-white;
-                    .profileBilling-content-billing-plans-name {
+                    .profile-billing-content-billing-plans-name {
                         font-size: 16px;
                         font-weight: 700;
                     }
-                    .profileBilling-content-billing-plans-price {
+                    .profile-billing-content-billing-plans-price {
                         padding: 20px 0 35px;
                         border-bottom: 1px solid #e5e5e5;
                     }
-                    .profileBilling-content-billing-plans-num {
+                    .profile-billing-content-billing-plans-num {
                         padding: 40px 0;
                     }
-                    .profileBilling-content-billing-plans-per {
+                    .profile-billing-content-billing-plans-per {
                         padding-bottom: 80px;
                     }
-                    .profileBilling-content-billing-plans-perT {
+                    .profile-billing-content-billing-plans-perT {
                         padding-bottom: 30px;
                     }
-                    .profileBilling-content-billing-plans-button {
+                    .profile-billing-content-billing-plans-button {
                         background: #ebebeb;
                         color: $color-blue-5;
                         border: 1px solid $color-blue-5;
@@ -2169,32 +2169,32 @@ body {
 }
 
 /*project activity page*/
-.projectActivity-container {
-    .projectActivity-header {
+.project-activity-container {
+    .project-activity-header {
         height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
-        .projectActivity-header-name {
+        .project-activity-header-name {
             text-align: left;
             font-size: 20px;
         }
-        .projectActivity-header-name img {
+        .project-activity-header-name img {
             margin-left: 12px;
             cursor: pointer;
         }
-        .projectActivity-header-button {
+        .project-activity-header-button {
             text-align: right;
         }
     }
-    .projectActivity-content {
+    .project-activity-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .projectActivity-content-menu {
+        .project-activity-content-menu {
             height: 48px;
             padding: 8px 20px;
             background: #55abd4;
-            .projectActivity-content-nav {
+            .project-activity-content-nav {
                 ul {
                     li {
                         color: $color-white;
@@ -2207,7 +2207,7 @@ body {
                     }
                 }
             }
-            .projectActivity-content-member {
+            .project-activity-content-member {
                 ul {
                     li {
                         width: 44px;
@@ -2224,24 +2224,24 @@ body {
                 }
             }
         }
-        .projectActivity-content-body {
+        .project-activity-content-body {
             overflow-y: auto;
-            .projectActivity-content-items {
+            .project-activity-content-items {
                 padding-left: 20px;
                 padding-top: 16px;
-                .projectActivity-content-item {
+                .project-activity-content-item {
                     margin-bottom: 16px;
                 }
-                .projectActivity-content-img {
+                .project-activity-content-img {
                     width: 164px;
                 }
-                .projectActivity-content-desc {
+                .project-activity-content-desc {
                     height: 180px;
                     background: $color-white;
                     padding: 20px
                 }
             }
-            .projectActivity-content-delete {
+            .project-activity-content-delete {
                 height: 494px;
                 width: 176px;
                 position: relative;
@@ -2249,13 +2249,13 @@ body {
                 margin-left: 19px;
                 border: 4px dashed $color-white;
                 background: #eeeeee;
-                .projectActivity-content-deleteicon {
+                .project-activity-content-deleteicon {
                     position: absolute;
                     left: 45%;
                     top: 120px;
                     z-index: 2;
                 }
-                .projectActivity-content-deleteintro {
+                .project-activity-content-deleteintro {
                     text-align: center;
                     position: absolute;
                     left: 0%;
@@ -2739,28 +2739,28 @@ body {
 }
 
 /*profile project page*/
-.profileProject-container {
-    .profileProject-header {
+.profile-project-container {
+    .profile-project-header {
         height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
-        .profileProject-header-name {
+        .profile-project-header-name {
             text-align: left;
             font-size: 20px;
         }
-        .profileProject-header-button {
+        .profile-project-header-button {
             text-align: right;
         }
     }
-    .profileProject-content {
+    .profile-project-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .profileProject-content-menu {
+        .profile-project-content-menu {
             height: 48px;
             padding: 8px 20px;
             background: #55abd4;
-            .profileProject-content-nav {
+            .profile-project-content-nav {
                 ul {
                     li {
                         color: $color-white;
@@ -2774,13 +2774,13 @@ body {
                 }
             }
         }
-        .profileProject-content-body {
+        .profile-project-content-body {
             padding: 24px 20px 0 20px;
-            .profileProject-content-projectH {
+            .profile-project-content-projectH {
                 height: 40px;
                 margin-bottom: 10px;
                 position: relative;
-                .profileProject-content-projectH-r {
+                .profile-project-content-projectH-r {
                     border: 1px solid $color-blue-5;
                     border-radius: 2px;
                     width: 155px;
@@ -2794,23 +2794,23 @@ body {
                     }
                 }
             }
-            .profileProject-content-projects {
+            .profile-project-content-projects {
                 overflow-y: auto;
                 background: $color-white;
                 border-radius: 3px;
                 border-top: 1px solid #e5e5e5;
-                .profileProject-content-project-intro {
+                .profile-project-content-project-intro {
                     padding: 20px 50px;
                     box-shadow: 3px 3px 3px #e5e5e5;
                     height: 68px;
-                    .profileProject-content-project-name {
+                    .profile-project-content-project-name {
                         color: $color-blue-5;
                     }
-                    .profileProject-content-project-count {
+                    .profile-project-content-project-count {
                         color: #919191;
                     }
                 }
-                .profileProject-content-project-thumb {
+                .profile-project-content-project-thumb {
                     padding: 15px;
                     border-bottom: 1px solid #e5e5e5;
                     img {
@@ -2826,28 +2826,28 @@ body {
 }
 
 /*profile profile page*/
-.profileProfile-container {
-    .profileProfile-header {
+.profile-profile-container {
+    .profile-profile-header {
         height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
-        .profileProfile-header-name {
+        .profile-profile-header-name {
             text-align: left;
             font-size: 20px;
         }
-        .profileProfile-header-button {
+        .profile-profile-header-button {
             text-align: right;
         }
     }
-    .profileProfile-content {
+    .profile-profile-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .profileProfile-content-menu {
+        .profile-profile-content-menu {
             height: 48px;
             padding: 8px 20px;
             background: #55abd4;
-            .profileProfile-content-nav {
+            .profile-profile-content-nav {
                 ul {
                     li {
                         color: $color-white;
@@ -2861,29 +2861,29 @@ body {
                 }
             }
         }
-        .profileProfile-content-body {
+        .profile-profile-content-body {
             padding: 24px 20px 0 20px;
-            .profileProfile-content-profileH {
+            .profile-profile-content-profileH {
                 height: 40px;
                 margin-bottom: 10px;
             }
-            .profileProfile-content-profile {
+            .profile-profile-content-profile {
                 overflow-y: auto;
                 background: $color-white;
                 border-radius: 3px;
                 border-top: 1px solid #e5e5e5;
-                .profileProfile-content-profile-title {
+                .profile-profile-content-profile-title {
                     padding: 20px 50px;
                     box-shadow: 3px 3px 3px #e5e5e5;
                     height: 68px;
                     color: $color-blue-5;
                 }
-                .profileProfile-content-profile-info {
+                .profile-profile-content-profile-info {
                     padding: 45px 115px;
-                    .profileProfile-content-profile-info-l {
-                        .profileProfile-content-profile-info-icon {
+                    .profile-profile-content-profile-info-l {
+                        .profile-profile-content-profile-info-icon {
                         }
-                        .profileProfile-content-profile-info-file {
+                        .profile-profile-content-profile-info-file {
                             border: 1px solid $color-blue-5;
                             cursor: pointer;
                             border-radius: 2px;
@@ -2906,11 +2906,11 @@ body {
                             }
                         }
                     }
-                    .profileProfile-content-profile-info-r {
-                        .profileProfile-content-profile-fullname {
+                    .profile-profile-content-profile-info-r {
+                        .profile-profile-content-profile-fullname {
                             margin-bottom: 25px;
                         }
-                        .profileProfile-content-profile-email {
+                        .profile-profile-content-profile-email {
                             margin-bottom: 25px;
                         }
                     }
@@ -2921,28 +2921,28 @@ body {
 }
 
 /*profile billing page*/
-.profileBilling-container {
-    .profileBilling-header {
+.profile-billing-container {
+    .profile-billing-header {
         height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
-        .profileBilling-header-name {
+        .profile-billing-header-name {
             text-align: left;
             font-size: 20px;
         }
-        .profileBilling-header-button {
+        .profile-billing-header-button {
             text-align: right;
         }
     }
-    .profileBilling-content {
+    .profile-billing-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .profileBilling-content-menu {
+        .profile-billing-content-menu {
             height: 48px;
             padding: 8px 20px;
             background: #55abd4;
-            .profileBilling-content-nav {
+            .profile-billing-content-nav {
                 ul {
                     li {
                         color: $color-white;
@@ -2956,32 +2956,32 @@ body {
                 }
             }
         }
-        .profileBilling-content-body {
+        .profile-billing-content-body {
             padding: 24px 20px 0 20px;
-            .profileBilling-content-title {
+            .profile-billing-content-title {
                 height: 40px;
                 margin-bottom: 10px;
             }
-            .profileBilling-content-billing {
+            .profile-billing-content-billing {
                 overflow-y: auto;
                 background: $color-white;
                 border-radius: 3px;
                 border-top: 1px solid #e5e5e5;
-                .profileBilling-content-billing-plan {
+                .profile-billing-content-billing-plan {
                     padding: 10px 50px;
                     box-shadow: 3px 3px 3px #e5e5e5;
                     height: 68px;
-                    .profileBilling-content-billing-plantitle {
+                    .profile-billing-content-billing-plantitle {
                         height: 45px;
                         line-height: 45px;
                         color: $color-blue-5;
                     }
-                    .profileBilling-content-billing-planinfo {
+                    .profile-billing-content-billing-planinfo {
                         border: 1px solid #e5e5e5;
                         border-radius: 3px;
                         padding: 10px 25px;
                     }
-                    .profileBilling-content-billing-upgrade, .profileBilling-content-billing-cancel {
+                    .profile-billing-content-billing-upgrade, .profile-billing-content-billing-cancel {
                         color: $color-blue-5;
                         width: 155px;
                         margin-left: 40px;
@@ -2991,43 +2991,43 @@ body {
                         cursor: pointer;
                     }
                 }
-                .profileBilling-content-billing-history {
-                    .profileBilling-content-billing-historytitle {
+                .profile-billing-content-billing-history {
+                    .profile-billing-content-billing-historytitle {
                         color: $color-blue-5;
                         padding: 20px 50px;
                         box-shadow: 3px 3px 3px #e5e5e5;
                     }
-                    .profileBilling-content-billing-historyitem {
+                    .profile-billing-content-billing-historyitem {
                         height: 48px;
                         border-bottom: 1px dashed #e5e5e5;
                         padding: 15px 75px;
                     }
                 }
-                .profileBilling-content-billing-planTitle {
+                .profile-billing-content-billing-planTitle {
                     padding: 20px 50px;
                     box-shadow: 3px 3px 3px #e5e5e5;
                     height: 68px;
                     color: $color-blue-5;
                 }
-                .profileBilling-content-billing-plans {
+                .profile-billing-content-billing-plans {
                     padding: 20px;
-                    .profileBilling-content-billing-plans-submit {
+                    .profile-billing-content-billing-plans-submit {
                         margin-top: 35px;
                         margin-bottom: 20px;
-                        .profileBilling-content-billing-submit-l {
+                        .profile-billing-content-billing-submit-l {
                             width: 335px;
                             border: 1px solid $color-blue-5;
                             border-radius: 3px;
                             padding: 10px 25px;
                             margin: 0 auto;
                         }
-                        .profileBilling-content-billing-submit-price {
+                        .profile-billing-content-billing-submit-price {
                             width: 245px;
                             border: 1px solid $color-blue-5;
                             border-radius: 3px;
                             padding: 10px 25px;
                         }
-                        .profileBilling-content-billing-submit-d, .profileBilling-content-billing-submit-i {
+                        .profile-billing-content-billing-submit-d, .profile-billing-content-billing-submit-i {
                             width: 45px;
                             cursor: pointer;
                             border: 1px solid $color-blue-5;
@@ -3037,19 +3037,19 @@ body {
                             margin-right: 5px;
                         }
                     }
-                    .profileBilling-content-billing-plans-items {
+                    .profile-billing-content-billing-plans-items {
                         border-top: 1px solid #e5e5e5;
                         border-bottom: 1px solid #e5e5e5;
                         border-left: 1px solid #e5e5e5;
                         text-align: center;
-                        .profileBilling-content-billing-plans-item {
+                        .profile-billing-content-billing-plans-item {
                             border-right: 1px solid #e5e5e5;
                             padding: 30px;
-                            .profileBilling-content-billing-plans-name {
+                            .profile-billing-content-billing-plans-name {
                                 font-size: 16px;
                                 font-weight: 700;
                             }
-                            .profileBilling-content-billing-plans-price {
+                            .profile-billing-content-billing-plans-price {
                                 color: #777777;
                                 padding: 20px 0 35px;
                                 border-bottom: 1px solid #e5e5e5;
@@ -3058,7 +3058,7 @@ body {
                                     font-weight: 700;
                                 }
                             }
-                            .profileBilling-content-billing-plans-num {
+                            .profile-billing-content-billing-plans-num {
                                 color: #777777;
                                 padding: 40px 0;
                                 height: 140px;
@@ -3067,7 +3067,7 @@ body {
                                     font-weight: 700;
                                 }
                             }
-                            .profileBilling-content-billing-plans-per {
+                            .profile-billing-content-billing-plans-per {
                                 color: #777777;
                                 padding-bottom: 80px;
                                 span {
@@ -3075,7 +3075,7 @@ body {
                                     font-weight: 700;
                                 }
                             }
-                            .profileBilling-content-billing-plans-button {
+                            .profile-billing-content-billing-plans-button {
                                 background: #cbefff;
                                 color: $color-blue-5;
                                 border: 1px solid $color-blue-5;
@@ -3087,27 +3087,27 @@ body {
                                 cursor: pointer;
                             }
                         }
-                        .profileBilling-content-billing-plans-itemSelect {
+                        .profile-billing-content-billing-plans-itemSelect {
                             border-right: 1px solid #e5e5e5;
                             padding: 30px;
                             background: #1582b4;
                             color: $color-white;
-                            .profileBilling-content-billing-plans-name {
+                            .profile-billing-content-billing-plans-name {
                                 font-size: 16px;
                                 font-weight: 700;
                             }
-                            .profileBilling-content-billing-plans-price {
+                            .profile-billing-content-billing-plans-price {
                                 padding: 20px 0 35px;
                                 border-bottom: 1px solid #e5e5e5;
                             }
-                            .profileBilling-content-billing-plans-num {
+                            .profile-billing-content-billing-plans-num {
                                 height: 140px;
                                 padding: 40px 0;
                             }
-                            .profileBilling-content-billing-plans-per {
+                            .profile-billing-content-billing-plans-per {
                                 padding-bottom: 80px;
                             }
-                            .profileBilling-content-billing-plans-button {
+                            .profile-billing-content-billing-plans-button {
                                 background: #ebebeb;
                                 color: $color-blue-5;
                                 border: 1px solid $color-blue-5;
@@ -3120,11 +3120,11 @@ body {
                             }
                         }
                     }
-                    .profileBilling-content-billing-changrCard {
-                        .profileBilling-content-billing-changeCard-eight {
+                    .profile-billing-content-billing-changrCard {
+                        .profile-billing-content-billing-changeCard-eight {
                             margin-top: 35px;
                         }
-                        .profileBilling-content-billing-changeCard-nine {
+                        .profile-billing-content-billing-changeCard-nine {
                             margin-top: 5px;
                         }
                     }
@@ -3135,28 +3135,28 @@ body {
 }
 
 /*profile notice page*/
-.profileNotice-container {
-    .profileNotice-header {
+.profile-notice-container {
+    .profile-notice-header {
         height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
-        .profileNotice-header-name {
+        .profile-notice-header-name {
             text-align: left;
             font-size: 20px;
         }
-        .profileNotice-header-button {
+        .profile-notice-header-button {
             text-align: right;
         }
     }
-    .profileNotice-content {
+    .profile-notice-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .profileNotice-content-menu {
+        .profile-notice-content-menu {
             height: 48px;
             padding: 8px 20px;
             background: #55abd4;
-            .profileNotice-content-nav {
+            .profile-notice-content-nav {
                 ul {
                     li {
                         color: $color-white;
@@ -3170,24 +3170,24 @@ body {
                 }
             }
         }
-        .profileNotice-content-body {
+        .profile-notice-content-body {
             padding: 24px 20px 0 20px;
-            .profileNotice-content-title {
+            .profile-notice-content-title {
                 height: 40px;
                 margin-bottom: 10px;
             }
-            .profileNotice-content-notice {
+            .profile-notice-content-notice {
                 overflow-y: auto;
                 background: $color-white;
                 border-radius: 3px;
                 border-top: 1px solid #e5e5e5;
-                .profileNotice-content-notice-general {
-                    .profileNotice-content-notice-generaltitle {
+                .profile-notice-content-notice-general {
+                    .profile-notice-content-notice-generaltitle {
                         color: $color-blue-5;
                         padding: 20px 50px;
                         box-shadow: 3px 3px 3px #e5e5e5;
                     }
-                    .profileNotice-content-notice-generalitem {
+                    .profile-notice-content-notice-generalitem {
                         height: 48px;
                         border-bottom: 1px dashed #e5e5e5;
                         padding: 15px 75px;

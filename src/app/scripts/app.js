@@ -108,7 +108,7 @@ angular
             })
             .when('/profile-billing', {
                 templateUrl: 'views/profile-billing.html',
-                controller: 'ProfileBillingCtrl'
+                controller: 'profileBillingCtrl'
             })
             .when('/profile-notice', {
                 templateUrl: 'views/profile-notice.html',

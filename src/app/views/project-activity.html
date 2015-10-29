@@ -1,18 +1,18 @@
-<div class="projectActivity-page page">
+<div class="project-activity-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="projectActivity-container">
-        <div class="projectActivity-header">
-            <div class="projectActivity-header-name col-md-6">
+    <div class="project-activity-container">
+        <div class="project-activity-header">
+            <div class="project-activity-header-name col-md-6">
                 <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
             </div>
-            <div class="projectActivity-header-button col-md-6">
+            <div class="project-activity-header-button col-md-6">
                 <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
             </div>
         </div>
-        <div class="projectActivity-content">
-            <div class="projectActivity-content-menu">
-                <div class="projectActivity-content-nav col-md-6">
+        <div class="project-activity-content">
+            <div class="project-activity-content-menu">
+                <div class="project-activity-content-nav col-md-6">
                     <ul class="list-inline">
                         <li ng-click="toBuild()">BUILD</li>
                         <li ng-click="toScreen()">SCREENS</li>
@@ -20,7 +20,7 @@
                         <li ng-click="toComment()">COMMENTS</li>
                     </ul>
                 </div>
-                <div class="projectActivity-content-member col-md-6">
+                <div class="project-activity-content-member col-md-6">
                     <ul class="list-inline">
                         <li ng-repeat="projectMember in projectMembers"><img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}"></li>
                         <li ng-repeat="projectMember in projectMembers"><img ng-if="projectMember.avatar == null" src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}"></li>
@@ -28,11 +28,11 @@
                     </ul>
                 </div>
             </div>
-            <div class="projectActivity-content-body">
-                <div class="projectActivity-content-items col-md-10">
-                    <div class="col-md-12 projectActivity-content-item" ng-repeat="activity in projectActivities" id="drag{{$index}}" draggable>
-                        <div class="projectActivity-content-img col-md-3"><img ng-src="{{activity.creator.avatar}}" class="img-responsive"></div>
-                        <div class="projectActivity-content-desc col-md-9">
+            <div class="project-activity-content-body">
+                <div class="project-activity-content-items col-md-10">
+                    <div class="col-md-12 project-activity-content-item" ng-repeat="activity in projectActivities" id="drag{{$index}}" draggable>
+                        <div class="project-activity-content-img col-md-3"><img ng-src="{{activity.creator.avatar}}" class="img-responsive"></div>
+                        <div class="project-activity-content-desc col-md-9">
                             <div class="col-md-9">{{activity.title}}</div>
                             <div class="col-md-3">{{activity.created}}</div>
                             <div class="col-md-12"><img src="images/thumbs.png"></div>
@@ -41,9 +41,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="projectActivity-content-delete col-md-2" droppable drop="handleDrop()">
-                    <img src="images/delete-icon.png" class="projectActivity-content-deleteicon">
-                    <div class="projectActivity-content-deleteintro" id="projectActivity-content-deleteintro">
+                <div class="project-activity-content-delete col-md-2" droppable drop="handleDrop()">
+                    <img src="images/delete-icon.png" class="project-activity-content-deleteicon">
+                    <div class="project-activity-content-deleteintro" id="project-activity-content-deleteintro">
                         <p>DELETE</p>
                         <p>Drag & Drop here to delete</p>
                     </div>

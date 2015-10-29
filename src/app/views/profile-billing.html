@@ -1,15 +1,15 @@
-<div class="profileBilling-page page">
+<div class="profile-billing-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="profileBilling-container">
-        <div class="profileBilling-header">
-            <div class="profileBilling-header-name col-md-12">
+    <div class="profile-billing-container">
+        <div class="profile-billing-header">
+            <div class="profile-billing-header-name col-md-12">
                 <span>Profile</span>
             </div>
         </div>
-        <div class="profileBilling-content">
-            <div class="profileBilling-content-menu">
-                <div class="profileBilling-content-nav col-md-12">
+        <div class="profile-billing-content">
+            <div class="profile-billing-content-menu">
+                <div class="profile-billing-content-nav col-md-12">
                     <ul class="list-inline">
                         <li ng-click="toProject()">MY PROJECTS</li>
                         <li ng-click="toProfile()">PROFILE</li>
@@ -18,80 +18,80 @@
                     </ul>
                 </div>
             </div>
-            <div class="profileBilling-content-body">
-                <div class="profileBilling-content-one" ng-show="billingOne">
-                    <div class="profileBilling-content-title">Your Billing</div>
-                    <div class="profileBilling-content-billing">
-                        <div class="profileBilling-content-billing-plan">
-                            <div class="profileBilling-content-billing-plantitle col-md-1">Your Plan</div>
-                            <div class="profileBilling-content-billing-planinfo col-md-5" ng-if="planId == ''">You don't have a plan.Please select.</div>
-                            <div class="profileBilling-content-billing-planinfo col-md-5" ng-if="planId != ''">{{planName}} --- ${{planPrice}}/Month</div>
-                            <div class="profileBilling-content-billing-upgrade col-md-3" ng-click="upgradePlan()">Upgrade Plan</div>
-                            <div class="profileBilling-content-billing-cancel col-md-3" ng-clcik="openCancelPlan()">Cancel Plan</div>
+            <div class="profile-billing-content-body">
+                <div class="profile-billing-content-one" ng-show="billingOne">
+                    <div class="profile-billing-content-title">Your Billing</div>
+                    <div class="profile-billing-content-billing">
+                        <div class="profile-billing-content-billing-plan">
+                            <div class="profile-billing-content-billing-plantitle col-md-1">Your Plan</div>
+                            <div class="profile-billing-content-billing-planinfo col-md-5" ng-if="planId == ''">You don't have a plan.Please select.</div>
+                            <div class="profile-billing-content-billing-planinfo col-md-5" ng-if="planId != ''">{{planName}} --- ${{planPrice}}/Month</div>
+                            <div class="profile-billing-content-billing-upgrade col-md-3" ng-click="upgradePlan()">Upgrade Plan</div>
+                            <div class="profile-billing-content-billing-cancel col-md-3" ng-clcik="openCancelPlan()">Cancel Plan</div>
                         </div>
-                        <div class="profileBilling-content-billing-history">
-                            <div class="profileBilling-content-billing-historytitle">History</div>
-                            <div class="profileBilling-content-billing-historyitem col-md-12" ng-repeat="billing in billings">Invoice for ${{billing.total}} on {{billing.date | limitTo: 10}}</div>
+                        <div class="profile-billing-content-billing-history">
+                            <div class="profile-billing-content-billing-historytitle">History</div>
+                            <div class="profile-billing-content-billing-historyitem col-md-12" ng-repeat="billing in billings">Invoice for ${{billing.total}} on {{billing.date | limitTo: 10}}</div>
                         </div>
                     </div>
                 </div>
-                <div class="profileBilling-content-three" ng-show="billingThree">
-                    <div class="profileBilling-content-title">Your Billing</div>
-                    <div class="profileBilling-content-billing">
-                        <div class="profileBilling-content-billing-planTitle">
+                <div class="profile-billing-content-three" ng-show="billingThree">
+                    <div class="profile-billing-content-title">Your Billing</div>
+                    <div class="profile-billing-content-billing">
+                        <div class="profile-billing-content-billing-planTitle">
                             <div class="col-md-5"><img src="images/back-icon.png" ng-click="backBilling()"> BACK </div>
                             <div class="col-md-7">SELECT A PLAN</div>
                         </div>
-                        <div class="profileBilling-content-billing-plans">
-                            <div class="profileBilling-content-billing-plans-items col-md-12">
-                                <div class="col-md-4" ng-class="{true:'profileBilling-content-billing-plans-itemSelect',false:'profileBilling-content-billing-plans-item'}[plan.id == planId]" ng-if="plan.projects >= 0" ng-repeat="plan in plans">
-                                    <div class="profileBilling-content-billing-plans-name">{{plan.name}}</div>
-                                    <div class="profileBilling-content-billing-plans-price">${{plan.price}}/Month</div>
-                                    <div class="profileBilling-content-billing-plans-num"><span>{{plan.projects}}</span> Project</div>
-                                    <div class="profileBilling-content-billing-plans-per"><span>${{plan.additional_member}}</span> per additional team member</div>
-                                    <div class="profileBilling-content-billing-plans-button" ng-if="plan.id == planId">CURRENT PLAN</div>
-                                    <div class="profileBilling-content-billing-plans-button" ng-if="plan.id != planId" ng-click="activePlan({{plan.id}},'{{plan.name}}',{{plan.price}})">SELECT PLAN</div>
+                        <div class="profile-billing-content-billing-plans">
+                            <div class="profile-billing-content-billing-plans-items col-md-12">
+                                <div class="col-md-4" ng-class="{true:'profile-billing-content-billing-plans-itemSelect',false:'profile-billing-content-billing-plans-item'}[plan.id == planId]" ng-if="plan.projects >= 0" ng-repeat="plan in plans">
+                                    <div class="profile-billing-content-billing-plans-name">{{plan.name}}</div>
+                                    <div class="profile-billing-content-billing-plans-price">${{plan.price}}/Month</div>
+                                    <div class="profile-billing-content-billing-plans-num"><span>{{plan.projects}}</span> Project</div>
+                                    <div class="profile-billing-content-billing-plans-per"><span>${{plan.additional_member}}</span> per additional team member</div>
+                                    <div class="profile-billing-content-billing-plans-button" ng-if="plan.id == planId">CURRENT PLAN</div>
+                                    <div class="profile-billing-content-billing-plans-button" ng-if="plan.id != planId" ng-click="activePlan({{plan.id}},'{{plan.name}}',{{plan.price}})">SELECT PLAN</div>
                                 </div>
-                                <div class="col-md-4" ng-class="{true:'profileBilling-content-billing-plans-itemSelect',false:'profileBilling-content-billing-plans-item'}[plan.id == planId]" ng-if="plan.projects < 0" ng-repeat="plan in plans">
-                                    <div class="profileBilling-content-billing-plans-name">{{plan.name}}</div>
-                                    <div class="profileBilling-content-billing-plans-price">${{plan.price}}/Month</div>
-                                    <div class="profileBilling-content-billing-plans-num">
+                                <div class="col-md-4" ng-class="{true:'profile-billing-content-billing-plans-itemSelect',false:'profile-billing-content-billing-plans-item'}[plan.id == planId]" ng-if="plan.projects < 0" ng-repeat="plan in plans">
+                                    <div class="profile-billing-content-billing-plans-name">{{plan.name}}</div>
+                                    <div class="profile-billing-content-billing-plans-price">${{plan.price}}/Month</div>
+                                    <div class="profile-billing-content-billing-plans-num">
                                         <p><span>Unlimited</span> Project</p>
                                         <p>Up to <span>5 Team Members</span></p>
                                     </div>
-                                    <div class="profileBilling-content-billing-plans-per"><span>${{plan.additional_member}}</span> per additional team member</div>
-                                    <div class="profileBilling-content-billing-plans-button" ng-if="plan.id == planId">CURRENT PLAN</div>
-                                    <div class="profileBilling-content-billing-plans-button" ng-if="plan.id != planId" ng-click="activePlan({{plan.id}},'{{plan.name}}',{{plan.price}})">SELECT PLAN</div>
+                                    <div class="profile-billing-content-billing-plans-per"><span>${{plan.additional_member}}</span> per additional team member</div>
+                                    <div class="profile-billing-content-billing-plans-button" ng-if="plan.id == planId">CURRENT PLAN</div>
+                                    <div class="profile-billing-content-billing-plans-button" ng-if="plan.id != planId" ng-click="activePlan({{plan.id}},'{{plan.name}}',{{plan.price}})">SELECT PLAN</div>
                                 </div>
                             </div>
-                            <div class="profileBilling-content-billing-plans-submit col-md-12">
+                            <div class="profile-billing-content-billing-plans-submit col-md-12">
                                 <div class="col-md-4">New Plan Price Total</div>
                                 <div class="col-md-4" ng-if="newPlanId == 0">
-                                    <div class="profileBilling-content-billing-submit-l">Your don't select new plan</div>
+                                    <div class="profile-billing-content-billing-submit-l">Your don't select new plan</div>
                                 </div>
                                 <div class="col-md-4" ng-if="newPlanId != 0">
-                                    <div class="profileBilling-content-billing-submit-l">{{newPlanName}} - ${{newPlanPrice}} per month</div>
+                                    <div class="profile-billing-content-billing-submit-l">{{newPlanName}} - ${{newPlanPrice}} per month</div>
                                 </div>
                                 <div class="col-md-4" ng-if="newPlanId != 0">
-                                    <div class="profileBilling-content-billing-submit-d col-md-3" ng-click="decreaseMember()">-</div>
-                                    <div class="profileBilling-content-billing-submit-price col-md-6">+ {{newPlanMember}} Team Member - ${{newPlanAddedPrice}}</div>
-                                    <div class="profileBilling-content-billing-submit-i col-md-3" ng-click="addMember()">+</div>
+                                    <div class="profile-billing-content-billing-submit-d col-md-3" ng-click="decreaseMember()">-</div>
+                                    <div class="profile-billing-content-billing-submit-price col-md-6">+ {{newPlanMember}} Team Member - ${{newPlanAddedPrice}}</div>
+                                    <div class="profile-billing-content-billing-submit-i col-md-3" ng-click="addMember()">+</div>
                                 </div>
                             </div>
                             <form id="payment-form">
-                                <div class="profileBilling-content-billing-changrCard">
-                                    <div class="profileBilling-content-billing-changeCard-eight col-md-12">
+                                <div class="profile-billing-content-billing-changrCard">
+                                    <div class="profile-billing-content-billing-changeCard-eight col-md-12">
                                         <div class="col-md-5">Credit Card Number</div>
                                         <div class="col-md-4">Expiration Date</div>
                                         <div class="col-md-3">CVC</div>
                                     </div>
-                                    <div class="profileBilling-content-billing-changeCard-nine col-md-12">
-                                        <div class="profileBilling-content-billing-changeCard-cardNum col-md-5"><input type="text" size="20" ng-model="number"></div>
-                                        <div class="profileBilling-content-billing-changeCard-expirationM col-md-2"><input type="text" placeholder="MM" size="2" ng-model="exp_month"></div>
-                                        <div class="profileBilling-content-billing-changeCard-expirationY col-md-2"><input type="text" placeholder="YYYY" size="4" ng-model="exp_year"></div>
-                                        <div class="profileBilling-content-billing-changeCard-cvv col-md-3"><input type="text" size="4" ng-model="cvc"></div>
+                                    <div class="profile-billing-content-billing-changeCard-nine col-md-12">
+                                        <div class="profile-billing-content-billing-changeCard-cardNum col-md-5"><input type="text" size="20" ng-model="number"></div>
+                                        <div class="profile-billing-content-billing-changeCard-expirationM col-md-2"><input type="text" placeholder="MM" size="2" ng-model="exp_month"></div>
+                                        <div class="profile-billing-content-billing-changeCard-expirationY col-md-2"><input type="text" placeholder="YYYY" size="4" ng-model="exp_year"></div>
+                                        <div class="profile-billing-content-billing-changeCard-cvv col-md-3"><input type="text" size="4" ng-model="cvc"></div>
                                     </div>
-                                    <button class="btn btn-lg profileBilling-content-billing-plans-button btn-primary" ng-click="payForPlan()">Buy Now</button>
+                                    <button class="btn btn-lg profile-billing-content-billing-plans-button btn-primary" ng-click="payForPlan()">Buy Now</button>
                                 </div>
                                 <span class="payment-errors"></span>
                             </form>

@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name conojoApp.controller:ProfileBillingCtrl
+ * @name conojoApp.controller:profile-billingCtrl
  * @description
- * # ProfileBillingCtrl
+ * # profile-billingCtrl
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileBillingCtrl', function ($scope, $http, $location, ENV) {
+    .controller('profileBillingCtrl', function ($scope, $http, $location, ENV) {
         $scope.billingOne = true;
         $scope.billingThree = false;
         $scope.plans = [];

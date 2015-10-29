@@ -1,9 +1,9 @@
-<div class="profileProfile-page page">
+<div class="profile-profile-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="profileProfile-container">
-        <div class="profileProfile-header">
-            <div class="profileProfile-header-name col-md-2">
+    <div class="profile-profile-container">
+        <div class="profile-profile-header">
+            <div class="profile-profile-header-name col-md-2">
                 <span>Profile</span>
             </div>
             <div class="col-md-8">
@@ -14,13 +14,13 @@
                     <p ng-bind-html="alertError"></p>
                 </div>
             </div>
-            <div class="profileProfile-header-button col-md-2">
+            <div class="profile-profile-header-button col-md-2">
                 <button class="btn btn-lg btn-primary" ng-click="updateUserInfo()">Save & Update</button>
             </div>
         </div>
-        <div class="profileProfile-content">
-            <div class="profileProfile-content-menu">
-                <div class="profileProfile-content-nav col-md-12">
+        <div class="profile-profile-content">
+            <div class="profile-profile-content-menu">
+                <div class="profile-profile-content-nav col-md-12">
                     <ul class="list-inline">
                         <li ng-click="toProject()">MY PROJECTS</li>
                         <li class="project-design-menu-current">PROFILE</li>
@@ -29,29 +29,29 @@
                     </ul>
                 </div>
             </div>
-            <div class="profileProfile-content-body">
-                <div class="profileProfile-content-profileH">My Profile</div>
-                <div class="profileProfile-content-profile">
-                    <div class="profileProfile-content-profile-title">Your Information</div>
-                    <div class="profileProfile-content-profile-info">
+            <div class="profile-profile-content-body">
+                <div class="profile-profile-content-profileH">My Profile</div>
+                <div class="profile-profile-content-profile">
+                    <div class="profile-profile-content-profile-title">Your Information</div>
+                    <div class="profile-profile-content-profile-info">
                         <div class="row">
-                            <div class="profileProfile-content-profile-info-l col-md-3 text-center">
-                                <div class="profileProfile-content-profile-info-icon">
+                            <div class="profile-profile-content-profile-info-l col-md-3 text-center">
+                                <div class="profile-profile-content-profile-info-icon">
                                     <img src="images/Chan.png" id="userAvatar" ng-if="!avatar">
                                 </div>
-                                <div class="profileProfile-content-profile-info-icon">
+                                <div class="profile-profile-content-profile-info-icon">
                                     <img ng-src="{{avatar}}" class="img-responsive" id="userAvatar" ng-if="avatar">
                                 </div>
                                 <div class="spacer-15"></div>
                                 <button class="btn btn-block btn-default" ngf-select ngf-change="uploadAvatar($files)">Choose file</button>
                             </div>
-                            <div class="profileProfile-content-profile-info-r col-md-9">
+                            <div class="profile-profile-content-profile-info-r col-md-9">
                                 <div class="row">
-                                    <div class="profileProfile-content-profile-fullname col-md-12">
+                                    <div class="profile-profile-content-profile-fullname col-md-12">
                                         <input type="text" placeholder="Full Name" ng-model="fullname" class="form-control">
                                     </div>
                                 </div>
-                                <div class="profileProfile-content-profile-email">
+                                <div class="profile-profile-content-profile-email">
                                     <div class="row">
                                         <div class="col-md-8 col-lg-9">
                                             <input type="email" placeholder="Email" ng-model="email" class="form-control">
@@ -63,7 +63,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="profileProfile-content-profile-address">
+                                <div class="profile-profile-content-profile-address">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <input type="text" placeholder="City" ng-model="city" class="form-control">
@@ -86,27 +86,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div id="resetPassword" class="modal fade in" style="display: none;">
-    <div class="reset">
-        <div class="col-md-10 reset-desc">RESET PASSWORD</div>
-        <div class="col-md-2 reset-delete-delicon">
-            <img src="images/close-icon.png" data-dismiss="modal">
-        </div>
-        <form name="resetPassword">
-            <div class="col-md-12 reset-body">
-                <input type="text" name="resetEmail" ng-model="resetEmail" class="form-control reset-title" placeholder="Enter email address"/>
-            </div>
-            <div class="col-md-12 reset-note">Please enter the email address that you used when creating your account.
-                An email will be sent to that address with further instructions on how to reset your password.
-            </div>
-            <div class="col-md-12 reset-button">
-                <button class="btn btn-lg reset-delete-buttoncancel btn-primary" type="reset" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-lg reset-delete-buttonsubmit btn-primary" type="submit" ng-click='forgotPassword()'>Send
-                    Email
-                </button>
-            </div>
-        </form>
     </div>
 </div>
