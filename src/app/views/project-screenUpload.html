@@ -21,9 +21,9 @@
                         <span><img src="images/back-icon.png" ng-click="goBack()" title="Back to Build">Add Screen</span>
                     </div>
                     <div class="projectScreenVideo-content-member col-md-6">
-                        <ul>
+                        <ul class="list-inline">
                             <li ng-repeat="projectMember in projectMembers">
-                                <img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
+                                <img ng-if="projectMember.avatar != null" ng-src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
                             </li>
                             <li ng-repeat="projectMember in projectMembers">
                                 <img ng-if="projectMember.avatar == null" src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">

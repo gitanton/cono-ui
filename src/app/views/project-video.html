@@ -16,7 +16,7 @@
         <div class="projectScreen-content">
             <div class="projectScreen-content-menu">
                 <div class="projectScreen-content-nav col-md-6">
-                    <ul>
+                    <ul class="list-inline">
                         <li ng-click="toBuildFirst()">BUILD</li>
                         <li class="project-design-menu-current">VIDEOS</li>
                         <li ng-click="toActivity()">ACTIVITY</li>
@@ -24,7 +24,7 @@
                     </ul>
                 </div>
                 <div class="projectScreen-content-member col-md-6">
-                    <ul>
+                    <ul class="list-inline">
                         <li ng-repeat="projectMember in projectMembers">
                             <img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
                         </li>

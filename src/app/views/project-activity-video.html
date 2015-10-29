@@ -13,7 +13,7 @@
         <div class="projectActivity-content">
             <div class="projectActivity-content-menu">
                 <div class="projectActivity-content-nav col-md-6">
-                    <ul>
+                    <ul class="list-inline">
                         <li ng-click="toBuild()">BUILD</li>
                         <li ng-click="toVideo()">VIDEOS</li>
                         <li class="project-design-menu-current">ACTIVITY</li>
@@ -21,7 +21,7 @@
                     </ul>
                 </div>
                 <div class="projectActivity-content-member col-md-6">
-                    <ul>
+                    <ul class="list-inline">
                         <li ng-repeat="projectMember in projectMembers"><img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}"></li>
                         <li ng-repeat="projectMember in projectMembers"><img ng-if="projectMember.avatar == null" src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}"></li>
                         <li><img src="images/addMember-icon.png" ng-click="openAddProjectMember()"></li>

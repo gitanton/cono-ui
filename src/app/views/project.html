@@ -7,7 +7,7 @@
                 <div class="col-md-8">
                     <div class="project-header-search">
                         <img src="images/search-icon.png">
-                        <input type="text" name="search-project" class="form-control" placeholder="Search {{projectsNum}} Projects"/>
+                        <input type="text" name="search-project" placeholder="Search {{projectsNum}} Projects"/>
                     </div>
                 </div>
                 <div class="project-header-create col-md-4">
@@ -17,55 +17,63 @@
         </div>
         <div class="project-content" id="sortable">
             <div class="col-md-4 col-lg-2 col-sm-6 project-content-offset" ng-repeat="project in projects">
-                <div class="col-md-10 project-content-name" data-uuid="{{project.uuid}}">{{project.name}}</div>
-                <div class="col-md-2 project-content-gear" ng-class="showBackground(project.is_open)">
-                    <a ng-class="showGear(project.is_open)" ng-click="operateProject(project)"></a>
-                </div>
-                <div class="col-md-12 project-content-projectcontent">
-                    <img src="images/project-one.png" class="img-responsive" ng-click="projectScreen('{{project.uuid}}','{{project.type_id}}')">
-                    <div class="project-content-opetate" ng-class="showOperate(project.is_open)">
-                        <div class="col-md-12">
-                            <ul>
-                                <li>
-                                    <a href="javascript:void(0)" ng-click="duplicateProjectModal('{{project.uuid}}','{{project.name}}')">
-                                        <img src="images/duplicate-icon.png">
-                                        Duplicate
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" ng-click="shareProjectModal('{{project.uuid}}')">
-                                        <img src="images/share-icon.png">
-                                        Share
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" ng-click="archiveProjectModal('{{project.uuid}}','{{project.type_id}}')">
-                                        <img src="images/archive-icon.png">
-                                        Archive
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" ng-click="deleteProjectModal('{{project.uuid}}')">
-                                        <img src="images/delete-project-icon.png">
-                                        Delete
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                <div class="row">
+                    <div class="col-md-10 project-content-name" data-uuid="{{project.uuid}}">{{project.name}}</div>
+                    <div class="col-md-2 project-content-gear" ng-class="showBackground(project.is_open)">
+                        <a ng-class="showGear(project.is_open)" ng-click="operateProject(project)"></a>
                     </div>
-                    <div class="project-content-lable" ng-if="project.type_id == 1">UI</div>
-                    <div class="project-content-lable" ng-if="project.type_id == 2">VIDEO</div>
-                    <div class="project-content-lable" ng-if="project.type_id == 3">BUSINESS TEMPLATE</div>
-                    <div class="project-content-btm">
-                        <div class="col-xs-6 project-content-paper" ng-click="openProjectNote('{{project.uuid}}','{{project.name}}')">
-                            <a href="javascript:void(0)">
-                                <img src="images/paper-icon.png">
-                            </a>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 project-content-projectcontent">
+                        <img src="images/project-one.png" class="img-responsive" ng-click="projectScreen('{{project.uuid}}','{{project.type_id}}')">
+                        <div class="project-content-opetate" ng-class="showOperate(project.is_open)">
+                            <div class="col-md-12">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="javascript:void(0)" ng-click="duplicateProjectModal('{{project.uuid}}','{{project.name}}')">
+                                            <img src="images/duplicate-icon.png">
+                                            Duplicate
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" ng-click="shareProjectModal('{{project.uuid}}')">
+                                            <img src="images/share-icon.png">
+                                            Share
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" ng-click="archiveProjectModal('{{project.uuid}}','{{project.type_id}}')">
+                                            <img src="images/archive-icon.png">
+                                            Archive
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" ng-click="deleteProjectModal('{{project.uuid}}')">
+                                            <img src="images/delete-project-icon.png">
+                                            Delete
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-xs-6 project-content-move hidden-xs">
-                            <a href="javascript:void(0)">
-                                <img src="images/move-icon.png">
-                            </a>
+
+                        <div class="project-content-lable" ng-if="project.type_id == 1">UI</div>
+                        <div class="project-content-lable" ng-if="project.type_id == 2">VIDEO</div>
+                        <div class="project-content-lable" ng-if="project.type_id == 3">BUSINESS TEMPLATE</div>
+
+                        <div class="project-content-btm">
+                            <div class="row">
+                                <div class="col-xs-6 project-content-paper" ng-click="openProjectNote('{{project.uuid}}','{{project.name}}')">
+                                    <a href="javascript:void(0)">
+                                        <img src="images/paper-icon.png">
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 project-content-move hidden-xs">
+                                    <a href="javascript:void(0)">
+                                        <img src="images/move-icon.png">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

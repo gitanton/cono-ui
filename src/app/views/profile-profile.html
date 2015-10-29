@@ -57,8 +57,8 @@
                                             <input type="email" placeholder="Email" ng-model="email" class="form-control">
                                         </div>
                                         <div class="col-md-4 col-lg-3">
-                                            <button class="btn btn-block btn-default" ng-click="openResetPassword()">Change
-                                                Password
+                                            <button class="btn btn-block btn-default" ng-click="changePassword()">
+                                                Change Password
                                             </button>
                                         </div>
                                     </div>
@@ -72,9 +72,9 @@
                                             <input type="text" placeholder="State" ng-model="state" class="form-control">
                                         </div>
                                         <div class="col-md-4">
-                                            <select ng-model="userCountry" class="form-control">
-                                                <option value="{{country}}" ng-selected="{{country == userCountry}}" ng-repeat="country in countries">
-                                                    {{country}}
+                                            <select ng-model="country" class="form-control">
+                                                <option value="{{cnt}}" ng-selected="{{country == cnt}}" ng-repeat="cnt in countries">
+                                                    {{cnt}}
                                                 </option>
                                             </select>
                                         </div>

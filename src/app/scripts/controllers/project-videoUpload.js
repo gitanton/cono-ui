@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectVideoUploadCtrl', function ($scope, $http, $location, $routeParams, ENV) {
+    .controller('ProjectVideoUploadCtrl', function ($scope, $http, $location, $routeParams, ENV, $log, $rootScope) {
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.projectScreenVideoBody = $(window).height() - 176;
         $('.projectScreenVideo-content-body').css('height', $scope.projectScreenVideoBody);
@@ -29,6 +29,7 @@ angular.module('conojoApp')
             url: ENV.API_ENDPOINT + 'videos/project/' + $scope.activeProjectUuid,
             paramName: 'file', // The name that will be used to transfer the file
             maxFilesize: 10,
+            withCredentials: true,
             clickable: true
         });
 
@@ -36,6 +37,18 @@ angular.module('conojoApp')
             var url = '/project-videoPlay/' + $scope.activeProjectUuid + '/' + serverCallBack.uuid;
             $location.path(url).replace();
             $scope.$apply();
+        });
+
+        videoUploadZone.on('error', function (file, error) {
+            $rootScope.$broadcast('ui:error', {
+                title: 'Upload Failed',
+                content: error
+            });
+            $log.error({
+                cls: 'project-videoUpload.js',
+                msg: 'Video upload error',
+                error: error
+            });
         });
 
 

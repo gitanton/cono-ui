@@ -12,6 +12,8 @@ angular
     .module('conojoApp', [
         'ngAnimate',
         'ngCookies',
+        'ngMessages',
+        'ngPassword',
         'ngResource',
         'ngRoute',
         'ngSanitize',
@@ -19,7 +21,8 @@ angular
         'angular-storage',
         'logglyLogger',
         'config',
-        'ngFileUpload'
+        'ngFileUpload',
+        'angularModalService'
     ])
     .config(function ($routeProvider, $httpProvider, LogglyLoggerProvider) {
 

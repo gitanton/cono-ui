@@ -10,7 +10,7 @@
         <div class="profileProject-content">
             <div class="profileProject-content-menu">
                 <div class="profileProject-content-nav col-md-12">
-                    <ul>
+                    <ul class="list-inline">
                         <li class="project-design-menu-current">MY PROJECTS</li>
                         <li ng-click="toProfile()">PROFILE</li>
                         <li ng-click="toBilling()">BILLING</li>
@@ -26,7 +26,7 @@
                 <div class="profileProject-content-projects">
                     <div class="profileProject-content-project" ng-repeat="project in projectInfo">
                         <div class="profileProject-content-project-intro">
-                            <span class="profileProject-content-project-name">{{project[0]}}</span> | 
+                            <span class="profileProject-content-project-name">{{project[0]}}</span> |
                             <span class="profileProject-content-project-count">{{project[2]}}</span>
                         </div>
                         <div class="profileProject-content-project-thumb" ng-if="project[1] === 1 || project[1] === 3">

@@ -1,6 +1,5 @@
 <div class="siderBar" ng-controller="siderBarCtrl">
     <div class="siderbar-closed-container" ng-hide="expandMenuFlag">
-        <img class="siderbar-closed-img" src="images/Chan.png" ng-click="goToProfile()" ng-if="userAvatar == ''">
         <img class="siderbar-closed-img" ng-src="{{userAvatar}}" ng-click="goToProfile()" ng-if="userAvatar != ''">
         <div class="col-md-12"><a href="#/project" title="project" alt="project"><img src="images/project-icon.png"></a></div>
         <div class="col-md-12"><a href="#/activity" title="activity" alt="activity"><img src="images/activity-icon.png"></a></div>

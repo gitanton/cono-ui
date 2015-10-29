@@ -14,7 +14,7 @@
         <div class="projectScreenVideo-content">
             <div class="projectScreenVideo-content-menu">
                 <div class="projectScreenVideo-content-nav col-md-6">
-                    <ul>
+                    <ul class="list-inline">
                         <li class="project-design-menu-current">BUILD</li>
                         <li  ng-click="toVideo()">VIDEOS</li>
                         <li  ng-click="toActivity()">ACTIVITY</li>
@@ -22,7 +22,7 @@
                     </ul>
                 </div>
                 <div class="projectScreenVideo-content-member col-md-6">
-                    <ul>
+                    <ul class="list-inline">
                         <li ng-repeat="projectMember in projectMembers"><img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}"></li>
                         <li ng-repeat="projectMember in projectMembers"><img ng-if="projectMember.avatar == null" src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}"></li>
                         <li><img src="images/addMember-icon.png" ng-click="openAddProjectMember()"></li>
@@ -108,14 +108,14 @@
                             <div class="projectBuild-content-shapeRight col-md-6">
                                 <div id="pickerShape"></div>
                                 <div class="shapeColorContainer">
-                                    <ul>
+                                    <ul class="list-inline">
                                         <li class="shapeColor1" ng-click="specicalColor('#fff')"></li>
                                         <li class="shapeColor2" ng-click="specicalColor('#959595')"></li>
                                         <li class="shapeColor3" ng-click="specicalColor('#555555')"></li>
                                         <li class="shapeColor4" ng-click="specicalColor('#252525')"></li>
                                         <li class="shapeColor5" ng-click="specicalColor('#000')"></li>
                                     </ul>
-                                    <ul>
+                                    <ul class="list-inline">
                                         <li class="shapeColor6" ng-click="specicalColor('#d26a9d')"></li>
                                         <li class="shapeColor7" ng-click="specicalColor('#a90c5a')"></li>
                                         <li class="shapeColor8" ng-click="specicalColor('#800039')"></li>

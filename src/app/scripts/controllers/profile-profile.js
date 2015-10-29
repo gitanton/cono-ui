@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileProfileCtrl', function ($scope, $location, $http, $log, ENV, Upload, store, userService) {
+    .controller('ProfileProfileCtrl', function ($scope, $location, $http, $log, ENV, Upload, store, userService, ModalService) {
         $scope.profileProfileContent = $(window).height() - 250;
         $('.profileProfile-content-profile').css('height', $scope.profileProfileContent);
 
@@ -51,9 +51,16 @@ angular.module('conojoApp')
             $location.path(url);
         };
 
-        $scope.openResetPassword = function () {
-            $scope.resetEmail = '';
-            $('#resetPassword').modal('toggle');
+        $scope.changePassword = function(args, cls) {
+            return ModalService.showModal({
+                templateUrl: "views/modal/change-password.html",
+                controller: "ModalChangePasswordCtrl",
+                inputs: {
+                    user: $scope.user
+                }
+            }).then(function (modal) {
+                modal.element.modal();
+            });
         };
 
         $scope.updateUserInfo = function () {
@@ -74,8 +81,11 @@ angular.module('conojoApp')
                 var user = response.data;
                 store.set('user', user);
                 $scope.init();
+                $scope.alertSuccess = '<i class="fa fa-check-circle"></i> Profile updated successfully!';
                 return user;
             }, function (data) {
+                $scope.alertError = '<i class="fa fa-close-circle"></i> <strong>Profile update failed</strong>: '+error.data.message;
+                $log.error({msg: 'User profile update error', error: error});
                 $('.reset-note').html(data.message);
                 $('#statusNotice').modal('toggle');
             });

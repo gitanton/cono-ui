@@ -75,7 +75,32 @@ angular.module('conojoApp')
                         $log.error({msg: 'userService.forgotPassword error', error: error});
                         return $q.reject(error);
                     });
-                }
+                },
+
+                /**
+                 * Updates a user's password
+                 * @param user
+                 * @param password
+                 * @return {*}
+                 */
+                changePassword: function (user, current, password) {
+                    return $http({
+                        url: ENV.API_ENDPOINT + 'users/password/',
+                        data: {
+                            current: current,
+                            password: password
+                        },
+                        method: 'PUT'
+                    }).then(function (response) {
+                        return response.data;
+                    }, function (error) {
+                        $log.error({
+                            msg: 'userService.changePassword error',
+                            error: error
+                        });
+                        return $q.reject(error.data.message);
+                    });
+                },
             };
 
             return userService;
