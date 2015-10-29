@@ -29,7 +29,7 @@
                             </label>
                         </div>
                         <div class="col-xs-6 login-forgot">
-                            <button type="button" class="btn btn-link" ng-click="openResetPassword()">Forgot Password</button>
+                            <button type="button" class="btn btn-link" ng-click="resetPassword()">Forgot Password</button>
                         </div>
                     </div>
                     <div class="row">
@@ -59,29 +59,6 @@
     <div id="mydata"></div>
 </div>
 
-<div id="resetPassword" class="modal fade in" style="display: none;">
-    <div class="reset">
-        <div class="col-md-10 reset-desc">RESET PASSWORD</div>
-        <div class="col-md-2 reset-delete-delicon">
-            <img src="images/close-icon.png" data-dismiss="modal">
-        </div>
-        <form name="resetPassword">
-            <div class="col-md-12 reset-body">
-                <input type="text" name="resetEmail" ng-model="resetEmail" class="form-control reset-title" placeholder="Enter email address"/>
-            </div>
-            <div class="col-md-12 reset-note">Please enter the email address that you used when creating your account.
-                An email will be sent to that address with further instructions on how to reset your password.
-            </div>
-            <div class="col-md-12 reset-button">
-                <button class="btn btn-lg reset-delete-buttoncancel btn-primary" type="reset" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-lg reset-delete-buttonsubmit btn-primary" type="submit" ng-click='forgotPassword()'>Send
-                    Email
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-
 <div id="loginNote" class="modal fade in" style="display: none;">
     <div class="errorNote">
         <div class="col-md-10 errorNote-desc">LOGIN</div>
@@ -90,17 +67,6 @@
         </div>
         <div class="col-md-12 errorNote-note">
             <p>The username/password you have entered are invalid.</p>
-        </div>
-    </div>
-</div>
-<div id="resetNote" class="modal fade in" style="display: none;">
-    <div class="errorNote">
-        <div class="col-md-10 errorNote-desc">LOGIN</div>
-        <div class="col-md-2 errorNote-delete-delicon">
-            <img src="images/close-icon.png" data-dismiss="modal">
-        </div>
-        <div class="col-md-12 errorNote-note">
-            <p>The email has been send to you successfully. Please check your new email.</p>
         </div>
     </div>
 </div>

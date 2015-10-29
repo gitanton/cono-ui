@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('LoginCtrl', function ($rootScope, $scope, $http, $location, ENV, store, userService) {
+    .controller('LoginCtrl', function ($rootScope, $scope, $http, $location, ENV, store, userService, ModalService) {
         $rootScope.bodyCls = 'gray';
         $scope.rememberMe = store.get('rememberMe');
         $scope.formData = {
@@ -37,8 +37,14 @@ angular.module('conojoApp')
             });
         };
 
-        $scope.openResetPassword = function () {
-            $('#resetPassword').modal('toggle');
+
+        $scope.resetPassword = function(args, cls) {
+            return ModalService.showModal({
+                templateUrl: 'views/modal/reset-password.html',
+                controller: 'ModalResetPasswordCtrl'
+            }).then(function (modal) {
+                modal.element.modal();
+            });
         };
 
         $scope.forgotPassword = function () {
