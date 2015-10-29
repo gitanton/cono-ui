@@ -8,6 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
+    .constant('RC_FREE_TRIAL_EXPIRED', 402)
     .controller('AppCtrl', function ($scope, $rootScope, ModalService) {
         /**
          * Any controller can emit a UI:Error, UI:Success event to trigger the error popup

@@ -1,15 +1,18 @@
+@import "compass";
+
 .img-responsive {
     margin: 0 auto;
 }
 
 .btn {
     border-radius: 3px;
+    height: $form-control-height;
+    line-height: 26px;
 
     &.btn-default {
         color: $color-blue-5;
         background: $color-white;
         border: 1px solid $color-blue-5;
-        height: $form-control-height;
         text-align: center;
 
         &:hover, &:active, &:focus {
@@ -40,6 +43,10 @@
             color: $color-white;
             background: shade($color-blue-5, 15%);
         }
+    }
+
+    &.btn-lg {
+        line-height: 20px;
     }
 }
 

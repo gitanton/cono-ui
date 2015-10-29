@@ -81,11 +81,9 @@ angular.module('conojoApp')
                 $scope.init();
                 $scope.alertSuccess = '<i class="fa fa-check-circle"></i> Profile updated successfully!';
                 return user;
-            }, function (data) {
+            }, function (error) {
                 $scope.alertError = '<i class="fa fa-close-circle"></i> <strong>Profile update failed</strong>: '+error.data.message;
                 $log.error({msg: 'User profile update error', error: error});
-                $('.reset-note').html(data.message);
-                $('#statusNotice').modal('toggle');
             });
         };
 

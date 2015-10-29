@@ -7,7 +7,8 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectCtrl', function ($scope, $http, $location, ENV, projectService) {
+    .controller('ProjectCtrl', function ($rootScope, $scope, $http, $location, ENV, RC_FREE_TRIAL_EXPIRED, projectService,
+                                         ModalService) {
         $scope.projecttype = 0;
         $scope.projecttitle = '';
         $scope.errorMessageProject = '';
@@ -16,6 +17,15 @@ angular.module('conojoApp')
             projectService.list().then(function (response) {
                 $scope.projects = response.data;
                 $scope.projectsNum = $scope.projects.length;
+            }, function (error) {
+                if (RC_FREE_TRIAL_EXPIRED === error.status) {
+                    return ModalService.showModal({
+                        templateUrl: "views/modal/free-trial-expired.html",
+                        controller: "ModalCtrl"
+                    }).then(function (modal) {
+                        modal.element.modal();
+                    });
+                }
             });
         };
 

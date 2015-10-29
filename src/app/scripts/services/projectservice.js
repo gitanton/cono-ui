@@ -22,7 +22,7 @@ angular.module('conojoApp')
                         return response;
                     }, function (error) {
                         $log.error({msg: 'projectService.list error', error: error});
-                        return $q.reject(error.data);
+                        return $q.reject(error);
                     });
                 },
 
