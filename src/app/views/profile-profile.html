@@ -1,4 +1,4 @@
-<div class="profileProfile-page">
+<div class="profileProfile-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
     <div class="profileProfile-container">
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="profileProfile-header-button col-md-2">
-                <button class="btn btn-lg" ng-click="updateUserInfo()">Save & Update</button>
+                <button class="btn btn-lg btn-primary" ng-click="updateUserInfo()">Save & Update</button>
             </div>
         </div>
         <div class="profileProfile-content">
@@ -102,8 +102,8 @@
                 An email will be sent to that address with further instructions on how to reset your password.
             </div>
             <div class="col-md-12 reset-button">
-                <button class="btn btn-lg reset-delete-buttoncancel" type="reset" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-lg reset-delete-buttonsubmit" type="submit" ng-click='forgotPassword()'>Send
+                <button class="btn btn-lg reset-delete-buttoncancel btn-primary" type="reset" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-lg reset-delete-buttonsubmit btn-primary" type="submit" ng-click='forgotPassword()'>Send
                     Email
                 </button>
             </div>

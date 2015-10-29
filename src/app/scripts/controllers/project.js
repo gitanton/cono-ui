@@ -11,8 +11,6 @@ angular.module('conojoApp')
         $scope.projecttype = 0;
         $scope.projecttitle = '';
         $scope.errorMessageProject = '';
-        $scope.projectContent = $(window).height() - 128;
-        $('.project-content').css('height', $scope.projectContent);
 
         $scope.init = function () {
             projectService.list().then(function (response) {

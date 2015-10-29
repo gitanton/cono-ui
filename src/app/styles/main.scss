@@ -9,17 +9,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "mixins";
 @import "utility";
 
-.browsehappy {
-    margin: 0.2em 0;
-    background: $color-gray-1;
-    color: $color-black;
-    padding: 0.2em 0;
-}
-
-.img-responsive {
-    margin: 0 auto;
-}
-
 body {
     font-family: $font-roboto;
     font-family: $font-roboto;
@@ -29,6 +18,19 @@ body {
 
     &.gray {
         background: $color-gray-4;
+    }
+}
+
+.page {
+    height: 100vh;
+    overflow: hidden;
+    overfow-y: hidden;
+
+    .sidebar {
+        .sidebar-container {
+            height: 100vh;
+            margin-top: -$header-height;
+        }
     }
 }
 
@@ -91,8 +93,9 @@ body {
 }
 
 .header-container {
-    height: 64px;
-    padding: 17px 15px 13px;
+    background-color: $color-white;
+    height: $header-height;
+    padding: 17px 15px 13px $sidebar-closed-width;
     .col-md-3 {
         text-align: right;
     }
@@ -102,13 +105,13 @@ body {
 }
 
 .siderbar-closed-container {
-    width: 64px;
+    width: $sidebar-closed-width;
     background: $color-blue-5;
     position: absolute;
     z-index: 2;
     left: 0px;
     .siderbar-closed-img {
-        width: 64px;
+        width: $sidebar-closed-width;
         height: auto;
         cursor: pointer;
     }
@@ -530,7 +533,7 @@ body {
 /*project page*/
 .project-container {
     .project-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -861,7 +864,7 @@ body {
 /*activity page*/
 .activity-container {
     .activity-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -923,7 +926,7 @@ body {
 /*message page*/
 .message-container {
     .message-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -1120,7 +1123,7 @@ body {
 /*team page*/
 .team-container {
     .team-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -1272,7 +1275,7 @@ body {
 /*userpage page*/
 .userpage-container {
     .userpage-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -1340,9 +1343,9 @@ body {
     position: absolute;
     left: 0px;
     z-index: 1;
-    padding-left: 64px;
+    padding-left: $sidebar-closed-width;
     .projectBuild-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px;
@@ -2002,7 +2005,7 @@ body {
 /*project screen page*/
 .projectScreen-container {
     .projectScreen-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -2020,7 +2023,7 @@ body {
     }
     .projectScreen-content {
         background: $color-gray-2;
-        padding-left: 64px;
+        padding-left: $sidebar-closed-width;
         .projectScreen-content-menu {
             height: 48px;
             padding: 8px 20px;
@@ -2168,7 +2171,7 @@ body {
 /*project activity page*/
 .projectActivity-container {
     .projectActivity-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -2186,7 +2189,7 @@ body {
     }
     .projectActivity-content {
         background: $color-gray-2;
-        padding-left: 64px;
+        padding-left: $sidebar-closed-width;
         .projectActivity-content-menu {
             height: 48px;
             padding: 8px 20px;
@@ -2353,7 +2356,7 @@ body {
 /*project comment page*/
 .projectComment-container {
     .projectComment-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -2370,7 +2373,7 @@ body {
         }
     }
     .projectComment-content {
-        padding-left: 64px;
+        padding-left: $sidebar-closed-width;
         .projectComment-content-menu {
             height: 48px;
             padding: 8px 20px;
@@ -2738,7 +2741,7 @@ body {
 /*profile project page*/
 .profileProject-container {
     .profileProject-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -2752,7 +2755,7 @@ body {
     }
     .profileProject-content {
         background: $color-gray-2;
-        padding-left: 64px;
+        padding-left: $sidebar-closed-width;
         .profileProject-content-menu {
             height: 48px;
             padding: 8px 20px;
@@ -2825,7 +2828,7 @@ body {
 /*profile profile page*/
 .profileProfile-container {
     .profileProfile-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -2839,7 +2842,7 @@ body {
     }
     .profileProfile-content {
         background: $color-gray-2;
-        padding-left: 64px;
+        padding-left: $sidebar-closed-width;
         .profileProfile-content-menu {
             height: 48px;
             padding: 8px 20px;
@@ -2920,7 +2923,7 @@ body {
 /*profile billing page*/
 .profileBilling-container {
     .profileBilling-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -2934,7 +2937,7 @@ body {
     }
     .profileBilling-content {
         background: $color-gray-2;
-        padding-left: 64px;
+        padding-left: $sidebar-closed-width;
         .profileBilling-content-menu {
             height: 48px;
             padding: 8px 20px;
@@ -3134,7 +3137,7 @@ body {
 /*profile notice page*/
 .profileNotice-container {
     .profileNotice-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -3148,7 +3151,7 @@ body {
     }
     .profileNotice-content {
         background: $color-gray-2;
-        padding-left: 64px;
+        padding-left: $sidebar-closed-width;
         .profileNotice-content-menu {
             height: 48px;
             padding: 8px 20px;
@@ -3201,7 +3204,7 @@ body {
 /*templates page*/
 .templates-container {
     .templates-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -3242,7 +3245,7 @@ body {
     }
     .templates-content {
         background: #55abd4;
-        padding-left: 64px;
+        padding-left: $sidebar-closed-width;
         overflow-y: auto;
         .templates-content-body {
             padding: 24px 20px 0px 20px;
@@ -3285,7 +3288,7 @@ body {
 /*project screen video page*/
 .projectScreenVideo-container {
     .projectScreenVideo-header {
-        height: 64px;
+        height: $header-height;
         background: $color-gray-4;
         border-top: 1px solid $color-gray-2;
         padding: 11px 20px 12px 84px;
@@ -3303,7 +3306,7 @@ body {
     }
     .projectScreenVideo-content {
         background: $color-gray-2;
-        padding-left: 64px;
+        padding-left: $sidebar-closed-width;
         .projectScreenVideo-content-menu {
             height: 48px;
             padding: 8px 20px;

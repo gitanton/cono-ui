@@ -1,4 +1,4 @@
-<div class="profileBilling-page">
+<div class="profileBilling-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
     <div class="profileBilling-container">
@@ -91,7 +91,7 @@
                                         <div class="profileBilling-content-billing-changeCard-expirationY col-md-2"><input type="text" placeholder="YYYY" size="4" ng-model="exp_year"></div>
                                         <div class="profileBilling-content-billing-changeCard-cvv col-md-3"><input type="text" size="4" ng-model="cvc"></div>
                                     </div>
-                                    <button class="btn btn-lg profileBilling-content-billing-plans-button" ng-click="payForPlan()">Buy Now</button>
+                                    <button class="btn btn-lg profileBilling-content-billing-plans-button btn-primary" ng-click="payForPlan()">Buy Now</button>
                                 </div>
                                 <span class="payment-errors"></span>
                             </form>
@@ -112,8 +112,8 @@
             <div class="col-md-12 project-delete-warningundone">Warning:This cannot be undone</div>
         </div>
         <div class="col-md-12 project-delete-button">
-            <button class="btn btn-lg project-delete-buttoncancel" type="reset" data-dismiss="modal">No.Take me back</button>
-            <button class="btn btn-lg project-delete-buttonsubmit" type="submit" ng-click='cancelPlan()'>Yes.Cancel my plan</button>
+            <button class="btn btn-lg project-delete-buttoncancel btn-primary" type="reset" data-dismiss="modal">No.Take me back</button>
+            <button class="btn btn-lg project-delete-buttonsubmit btn-primary" type="submit" ng-click='cancelPlan()'>Yes.Cancel my plan</button>
         </div>
     </div>
 </div>

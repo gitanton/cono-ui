@@ -10,7 +10,6 @@
 angular.module('conojoApp')
     .controller('TeamCtrl', function ($scope, $http, $location, $window, teamService, userService) {
         $scope.memberUuid = 0;
-        $scope.teamContent = $(window).height() - 128;
         $('.team-content').css('height', $scope.teamContent);
 
         $scope.init = function () {

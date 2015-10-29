@@ -9,8 +9,6 @@
 angular.module('conojoApp')
     .controller('ProjectCommentVideoCtrl', function ($scope, $http, $location, $routeParams, ENV) {
         $scope.activeProjectUuid = $routeParams.uuid;
-        $scope.projectCommentBody = $(window).height() - 242;
-        $('.projectComment-content-body').css('height', $scope.projectCommentBody);
 
         $scope.init = function () {
             $http({

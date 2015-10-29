@@ -10,12 +10,7 @@
 angular.module('conojoApp')
     .controller('siderBarCtrl', function ($scope, $http, store, $location, ENV) {
         $scope.expandMenuFlag = false;
-        $scope.siderbarContainer = $(window).height() - 64;
-        $scope.projectContent = $(window).height() - 128;
         $scope.user = store.get('user');
-
-        $('.siderbar-closed-container').css('height', $scope.siderbarContainer);
-        $('.siderbar-expand-container').css('height', $scope.siderbarContainer);
 
         $scope.init = function () {
             $scope.userAvatar = $scope.user.avatar;

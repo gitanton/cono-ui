@@ -1,4 +1,4 @@
-<div class="projectComment-page">
+<div class="projectComment-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
     <div class="projectComment-container">
@@ -7,7 +7,7 @@
                 <span ng-bind="updateProjectTitle"></span><img src="images/edit-icon.png" ng-click="openUpdateProject('{{activeProjectUuid}}')">
             </div>
             <div class="projectComment-header-button col-md-6">
-                <button class="btn btn-lg" ng-click="openAddComment()">New Comment</button>
+                <button class="btn btn-lg btn-primary" ng-click="openAddComment()">New Comment</button>
             </div>
         </div>
         <div class="projectComment-content">
@@ -83,8 +83,8 @@
                 </select>
             </div>
             <div class="col-md-12 project-update-button">
-                <button class="btn btn-lg project-update-buttoncancel" type="cancel" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-lg project-update-buttonsubmit" type="submit" ng-click="updateMyProject('{{activeProjectUuid}}')">Save</button>
+                <button class="btn btn-lg project-update-buttoncancel btn-primary" type="cancel" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-lg project-update-buttonsubmit btn-primary" type="submit" ng-click="updateMyProject('{{activeProjectUuid}}')">Save</button>
             </div>
         </form>
     </div>
@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div class="col-md-12 newmessage-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addNewComment('{{activeProjectUuid}}')">Send Comment</button>
+                <button class="btn btn-lg btn-primary" type="submit" ng-click="addNewComment('{{activeProjectUuid}}')">Send Comment</button>
             </div>
         </form>
     </div>
@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="col-md-12 replymessage-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="replyMessage()">Send Message</button>
+                <button class="btn btn-lg btn-primary" type="submit" ng-click="replyMessage()">Send Message</button>
             </div>
         </form>
     </div>
@@ -142,8 +142,8 @@
             <div class="col-md-12 message-delete-warningundone">Warning:This cannot be undone</div>
         </div>
         <div class="col-md-12 message-delete-button">
-            <button class="btn btn-lg message-delete-buttoncancel" type="cancel" data-dismiss="modal">Cancel</button>
-            <button class="btn btn-lg message-delete-buttonsubmit" type="submit" ng-click='deleteMessage()'>Delete</button>
+            <button class="btn btn-lg message-delete-buttoncancel btn-primary" type="cancel" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-lg message-delete-buttonsubmit btn-primary" type="submit" ng-click='deleteMessage()'>Delete</button>
         </div>
     </div>
 </div>

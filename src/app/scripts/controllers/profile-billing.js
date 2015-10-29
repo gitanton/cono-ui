@@ -20,9 +20,6 @@ angular.module('conojoApp')
 
         $scope.planId = '';
 
-        $scope.profileBillingContent = $(window).height() - 250;
-        $('.profileBilling-content-billing').css('height', $scope.profileBillingContent);
-
         $scope.init = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'utils/bootstrap',

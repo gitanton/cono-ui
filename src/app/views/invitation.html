@@ -24,7 +24,7 @@
                     <div class="col-md-6 login-forgot">
                         <label><a href="javascript:void(0)">Forgot Password</a></label>
                     </div>
-                    <div class="col-md-12 login-button"><button class="btn btn-lg" type="submit" ng-disabled="loginformInvite.$invalid">Login</button></div>
+                    <div class="col-md-12 login-button"><button class="btn btn-lg btn-primary" type="submit" ng-disabled="loginformInvite.$invalid">Login</button></div>
                 </form>
             </div>
         </div>
@@ -60,7 +60,7 @@
                         <span ng-show="registerFormData.password != registerFormData.confirmpassword && !userFormInvite.confirmpassword.$pristine">This Must match the Password.</span>
                     </div>
                     <div class="col-md-12 register-button">
-                        <button class="btn btn-lg" type="submit" ng-disabled="userFormInvite.$invalid || registerFormData.password != registerFormData.confirmpassword">Create Account</button>
+                        <button class="btn btn-lg btn-primary" type="submit" ng-disabled="userFormInvite.$invalid || registerFormData.password != registerFormData.confirmpassword">Create Account</button>
                     </div>
                 </form>
             </div>

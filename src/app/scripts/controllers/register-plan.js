@@ -9,10 +9,6 @@
  */
 angular.module('conojoApp')
     .controller('registerPlanCtrl', function ($scope, $http, $location, ENV) {
-        $scope.loginPadding = ($(window).height() - 508) / 2;
-
-        $('.register-container').css('padding-top', $scope.loginPadding);
-        $('.register-container').css('padding-bottom', $scope.loginPadding);
 
         $scope.init = function () {
             $http({

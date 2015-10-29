@@ -9,10 +9,6 @@
 angular.module('conojoApp')
     .controller('ProjectActivityTemplateCtrl', function ($scope, $http, $location, $window, $routeParams, ENV) {
         $scope.activeProjectUuid = $routeParams.uuid;
-        $scope.projectActivityBody = $(window).height() - 176;
-        $scope.projectActivityDeleteContainer = $(window).height() - 228;
-        $('.projectActivity-content-body').css('height', $scope.projectActivityBody);
-        $('.projectActivity-content-delete').css('height', $scope.projectActivityDeleteContainer);
 
         $scope.init = function () {
             $http({

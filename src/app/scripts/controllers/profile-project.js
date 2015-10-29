@@ -9,8 +9,6 @@
  */
 angular.module('conojoApp')
     .controller('ProfileProjectCtrl', function ($scope, $http, $location, ENV) {
-        $scope.profileProjectsContent = $(window).height() - 250;
-        $('.profileProject-content-projects').css('height', $scope.profileProjectsContent);
         $scope.projects = [];
         var projectInfo = [];
 

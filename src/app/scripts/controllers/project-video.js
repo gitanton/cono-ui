@@ -9,10 +9,6 @@
 angular.module('conojoApp')
     .controller('ProjectVideoCtrl', function ($scope, $http, $location, $routeParams, ENV) {
         $scope.activeProjectUuid = $routeParams.uuid;
-        $scope.projectScreenBody = $(window).height() - 176;
-        $scope.projectScreenDropcontainer = $(window).height() - 212;
-        $('.projectScreen-content-body').css('height', $scope.projectScreenBody);
-        $('.projectScreen-content-dropcontainer').css('height', $scope.projectScreenDropcontainer);
 
         $scope.init = function () {
             $http({

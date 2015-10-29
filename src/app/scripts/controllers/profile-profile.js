@@ -9,8 +9,6 @@
  */
 angular.module('conojoApp')
     .controller('ProfileProfileCtrl', function ($scope, $location, $http, $log, ENV, Upload, store, userService, ModalService) {
-        $scope.profileProfileContent = $(window).height() - 250;
-        $('.profileProfile-content-profile').css('height', $scope.profileProfileContent);
 
         /**
          * Upload the user's avatar

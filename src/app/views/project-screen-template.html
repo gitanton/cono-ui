@@ -1,4 +1,4 @@
-<div class="projectScreen-page">
+<div class="projectScreen-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
     <div class="projectScreen-container">
@@ -9,7 +9,7 @@
                     <img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
                 </div>
                 <div class="projectScreen-header-button col-md-6">
-                    <button class="btn btn-lg" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
+                    <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
                 </div>
             </div>
         </div>
@@ -70,9 +70,9 @@
                 </select>
             </div>
             <div class="col-md-12 project-update-button">
-                <button class="btn btn-lg project-update-buttoncancel" type="cancel" data-dismiss="modal">Cancel
+                <button class="btn btn-lg project-update-buttoncancel btn-primary" type="cancel" data-dismiss="modal">Cancel
                 </button>
-                <button class="btn btn-lg project-update-buttonsubmit" type="submit" ng-click='updateMyProject(activeProjectUuid)'>
+                <button class="btn btn-lg project-update-buttonsubmit btn-primary" type="submit" ng-click='updateMyProject(activeProjectUuid)'>
                     Save
                 </button>
             </div>
@@ -102,7 +102,7 @@
                 </div> -->
             </div>
             <div class="col-md-12 teammember-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite
+                <button class="btn btn-lg btn-primary" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite
                     People
                 </button>
             </div>
@@ -132,7 +132,7 @@
                 </select>
             </div>
             <div class="col-md-12 newMeeting-add-button">
-                <button class="btn btn-lg" ng-click="addNewMeeting()">Create Meeting</button>
+                <button class="btn btn-lg btn-primary" ng-click="addNewMeeting()">Create Meeting</button>
             </div>
         </form>
     </div>

@@ -1,4 +1,4 @@
-<div class="userpage-page">
+<div class="userpage-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
     <div class="userpage-container">
@@ -8,7 +8,7 @@
                 <span>Your Team</span>
             </div>
             <div class="userpage-header-button col-md-6">
-                <button class="btn btn-lg" ng-click="openAddTeamMember()">Add Team Member</button>
+                <button class="btn btn-lg btn-primary" ng-click="openAddTeamMember()">Add Team Member</button>
             </div>
         </div>
         <div class="userpage-content">
@@ -34,7 +34,7 @@
                     <div class="col-md-12 userpage-content-ownedbyme-title">OWNED BY ME</div>
                     <div class="col-md-12 userpage-content-ownedbyme-item" ng-repeat="project in projects">
                         <div class="col-md-6">{{project.name}}</div>
-                        <div class="col-md-6"><button class="btn btn-lg" ng-click="openAddProjectMember('{{project.uuid}}')">Send Invite</button></div>
+                        <div class="col-md-6"><button class="btn btn-lg btn-primary" ng-click="openAddProjectMember('{{project.uuid}}')">Send Invite</button></div>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                 </div> -->
             </div>
             <div class="col-md-12 teammember-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addTeamMember()">Invite People</button>
+                <button class="btn btn-lg btn-primary" type="submit" ng-click="addTeamMember()">Invite People</button>
             </div>
         </form>
     </div>
@@ -87,7 +87,7 @@
                 </div> -->
             </div>
             <div class="col-md-12 teammember-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People</button>
+                <button class="btn btn-lg btn-primary" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">Invite People</button>
             </div>
         </form>
     </div>

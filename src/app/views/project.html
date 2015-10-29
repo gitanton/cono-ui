@@ -1,4 +1,4 @@
-<div class="project-page">
+<div class="project-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
     <div class="project-container col-md-12">
@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="project-header-create col-md-4">
-                    <button class="btn btn-lg" ng-click="newProject()">Create New Project</button>
+                    <button class="btn btn-lg btn-primary" ng-click="newProject()">Create New Project</button>
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
                 </select>
             </div>
             <div class="col-md-12 project-new-button">
-                <button class="btn btn-lg" type="submit" ng-click='myProject()'>Create New Project</button>
+                <button class="btn btn-lg btn-primary" type="submit" ng-click='myProject()'>Create New Project</button>
             </div>
         </form>
     </div>
@@ -113,7 +113,7 @@
             <div class="col-md-12 project-duplicate-warningdesc">Includes all screens & assets included in project</div>
         </div>
         <div class="col-md-12 project-duplicate-button">
-            <button class="btn btn-lg project-duplicate-buttonsubmit" type="submit" ng-click='duplicateProject()'>
+            <button class="btn btn-lg project-duplicate-buttonsubmit btn-primary" type="submit" ng-click='duplicateProject()'>
                 Duplicate
             </button>
         </div>
@@ -133,7 +133,7 @@
                         <img class="project-share-emailicon" src="images/mail-icon.png">
                     </div>
                     <div class="col-md-2 project-share-sendbutton">
-                        <button class="btn btn-lg" type="submit" ng-click="addTeamMember()">Send Email</button>
+                        <button class="btn btn-lg btn-primary" type="submit" ng-click="addTeamMember()">Send Email</button>
                     </div>
                 </div>
                 <div class="form-group project-share-shorturl">
@@ -171,7 +171,7 @@
             </div>
         </div>
         <div class="col-md-12 project-archive-button">
-            <button class="btn btn-lg project-archive-buttonsubmit" type="submit" ng-click='archiveProject(archiveProjectUuid)'>
+            <button class="btn btn-lg project-archive-buttonsubmit btn-primary" type="submit" ng-click='archiveProject(archiveProjectUuid)'>
                 Archive
             </button>
         </div>
@@ -191,8 +191,8 @@
             <div class="col-md-12 project-delete-warningundone">Warning:This cannot be undone</div>
         </div>
         <div class="col-md-12 project-delete-button">
-            <button class="btn btn-lg project-delete-buttoncancel" type="reset" data-dismiss="modal">Cancel</button>
-            <button class="btn btn-lg project-delete-buttonsubmit" type="submit" ng-click='deleteProject(deleteProjectUuid)'>
+            <button class="btn btn-lg project-delete-buttoncancel btn-primary" type="reset" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-lg project-delete-buttonsubmit btn-primary" type="submit" ng-click='deleteProject(deleteProjectUuid)'>
                 Delete
             </button>
         </div>
@@ -223,9 +223,9 @@
                 </div>
             </div>
             <div class="col-md-12 feedback-delete-button">
-                <button class="btn btn-lg feedback-delete-buttoncancel" type="reset" data-dismiss="modal">Cancel
+                <button class="btn btn-lg feedback-delete-buttoncancel btn-primary" type="reset" data-dismiss="modal">Cancel
                 </button>
-                <button class="btn btn-lg feedback-delete-buttonsubmit" type="submit" ng-click='addProjectNote()'>Save
+                <button class="btn btn-lg feedback-delete-buttonsubmit btn-primary" type="submit" ng-click='addProjectNote()'>Save
                 </button>
             </div>
         </form>
