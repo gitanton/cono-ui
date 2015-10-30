@@ -69,6 +69,10 @@
 }
 
 .form-gray {
+    label {
+        color: $color-blue-5;
+    }
+
     .form-control {
         background: $color-white;
         border-color: $color-blue-5;

@@ -205,35 +205,7 @@
     </div>
 </div>
 
-<div id="addHotspots" ng-class="{true: 'addHotspotsLeft', false: 'addHotspotsRight'}[addHotspotsPosition]" ng-show="showAddHotspots">
-    <div class="hotspots-add">
-        <div class="col-md-10 hotspots-add-desc">Link To:</div>
-        <div class="col-md-2 hotspots-add-delicon">
-            <img src="images/close-icon.png" ng-click="hideAddHotspots()">
-        </div>
-        <form name="createHotspots">
-            <div class="col-md-12 hotspots-add-body">
-                <div class="form-group">
-                    <select name="hotspotsLinkTo" class="form-control hotspots-add-select" ng-model="hotspotsLinkTo">
-                        <option value=0>Select a destination</option>
-                        <option value=1>Project Screen A</option>
-                        <option value=2>Project Screen B</option>
-                        <option value=3>Project Screen C</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-12 hotspots-add-button">
-                <button class="btn btn-lg hotspots-buttoncancel btn-primary" type="reset" ng-click="hideAddHotspots()">
-                    Cancel
-                </button>
-                <button class="btn btn-lg hotspots-buttonsubmit btn-primary" type="submit" ng-click="saveAddHotspots()">
-                    Save
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-
+<div ng-include="'views/modal/includes/add-hotspot.html'"></div>
 <div ng-include="'views/modal/includes/new-meeting.html'"></div>
 <div ng-include="'views/modal/includes/add-people-project.html'"></div>
 <div ng-include="'views/modal/includes/add-comment.html'"></div>

@@ -1,0 +1,36 @@
+<div id="addHotspots" ng-class="{true: 'addHotspotsLeft', false: 'addHotspotsRight'}[addHotspotsPosition]" ng-show="showAddHotspots">
+    <div class="hotspots-add">
+        <div class="row">
+            <div class="col-md-10">
+                <h4>Link To:</h4>
+            </div>
+            <div class="col-md-2">
+                <img src="images/close-icon.png" ng-click="hideAddHotspots()">
+            </div>
+        </div>
+        <form name="createHotspots" class="form-gray">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Select a destination</label>
+                        <select name="hotspotsLinkTo" class="form-control hotspots-add-select" ng-model="hotspotsLinkTo">
+                            <option value="1">Project Screen A</option>
+                            <option value="2">Project Screen B</option>
+                            <option value="3">Project Screen C</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 hotspots-add-button">
+                    <button class="btn btn-lg hotspots-buttoncancel btn-primary" type="reset" ng-click="hideAddHotspots()">
+                        Cancel
+                    </button>
+                    <button class="btn btn-lg hotspots-buttonsubmit btn-primary" type="submit" ng-click="saveAddHotspots()">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
