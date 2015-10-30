@@ -1,0 +1,44 @@
+<div id="updateproject" class="modal fade in" style="display: none;">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="project-update">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Update Project</h3>
+                </div>
+                <form name="updateProject">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" name="projecttitle" ng-model="updateProjectTitle" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <select name="projecttype" ng-model="updateProjectTypeid" class="form-control ">
+                                        <option value=0>Project Type</option>
+                                        <option value=1>UI/UX Project</option>
+                                        <option value=2>Video Project</option>
+                                        <option value=3>Business Template</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-lg btn-primary" type="cancel" data-dismiss="modal">
+                                    Cancel
+                                </button>
+                                <button class="btn btn-lg btn-primary" type="submit" ng-click='updateMyProject(activeProjectUuid)'>
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

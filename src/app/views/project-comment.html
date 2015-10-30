@@ -91,30 +91,6 @@
         </div>
     </div>
 </div>
-<div id="updateproject" class="modal fade in" style="display: none;">
-    <div class="project-update">
-        <div class="col-md-12 project-update-desc">UPDATE PROJECT</div>
-        <form name="updateProject">
-            <div class="col-md-12 project-update-body">
-                <input type="text" name="projecttitle" ng-model="updateProjectTitle" class="form-control project-update-title"/>
-                <select name="projecttype" ng-model="updateProjectTypeid" class="form-control project-update-type">
-                    <option value=0>Project Type</option>
-                    <option value=1>UI/UX Project</option>
-                    <option value=2>Video Project</option>
-                    <option value=3>Business Template</option>
-                </select>
-            </div>
-            <div class="col-md-12 project-update-button">
-                <button class="btn btn-lg project-update-buttoncancel btn-primary" type="cancel" data-dismiss="modal">
-                    Cancel
-                </button>
-                <button class="btn btn-lg project-update-buttonsubmit btn-primary" type="submit" ng-click="updateMyProject('{{activeProjectUuid}}')">
-                    Save
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
 <div id="addNewMessage" class="modal fade in" style="display: none;">
     <div class="newmessage-add">
         <div class="col-md-10 newmessage-add-desc">NEW COMMENT</div>
@@ -180,3 +156,5 @@
         </div>
     </div>
 </div>
+
+<div ng-include="'views/modal/includes/update-project.html'"></div>

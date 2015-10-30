@@ -217,7 +217,7 @@ angular.module('conojoApp')
                 //reorder the project endpoint
                 var uuids = [];
                 for (var i = 0; i < $scope.projectsNum; i++) {
-                    uuids[i] = $('.project-content-name').eq(i).data('uuid');
+                    uuids[i] = $('.project-content-offset').eq(i).data('uuid');
                 }
                 projectService.reorder(uuids).then(function () {
                     $scope.init();

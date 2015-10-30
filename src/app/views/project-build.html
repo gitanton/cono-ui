@@ -204,60 +204,7 @@
         </div>
     </div>
 </div>
-<div id="updateproject" class="modal fade in" style="display: none;">
-    <div class="project-update">
-        <div class="col-md-12 project-update-desc">UPDATE PROJECT</div>
-        <form name="updateProject">
-            <div class="col-md-12 project-update-body">
-                <input type="text" name="projecttitle" ng-model="updateProjectTitle" class="form-control project-update-title"/>
-                <select name="projecttype" ng-model="updateProjectTypeid" class="form-control project-update-type">
-                    <option value=0>Project Type</option>
-                    <option value=1>UI/UX Project</option>
-                    <option value=2>Video Project</option>
-                    <option value=3>Business Template</option>
-                </select>
-            </div>
-            <div class="col-md-12 project-update-button">
-                <button class="btn btn-lg project-update-buttoncancel btn-primary" type="cancel" data-dismiss="modal">
-                    Cancel
-                </button>
-                <button class="btn btn-lg project-update-buttonsubmit btn-primary" type="submit" ng-click='updateMyProject(activeProjectUuid)'>
-                    Save
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-<div id="addPeopleToProject" class="modal fade in" style="display: none;">
-    <div class="teammember-add">
-        <div class="col-md-10 teammember-add-desc">ADD PEOPLE TO THE PROJECT</div>
-        <div class="col-md-2 teammember-add-delicon">
-            <img src="images/close-icon.png" data-dismiss="modal">
-        </div>
-        <form name="addPeopleToProject">
-            <div class="col-md-12 teammember-add-body">
-                <!-- <div class="form-group">
-                    <select name="teammembertype" class="form-control teammember-add-select">
-                        <option value=0>Select Person</option>
-                        <option ng-repeat="user in projectMembers" value={{user.uuid}}>{{user.username}}</option>
-                    </select>
-                </div> -->
-                <div class="form-group has-email">
-                    <input type="text" name="teammemberemail" ng-model="memberEmail" class="form-control teammember-add-email" placeholder="Enter an email"/>
-                    <img class="teammember-add-emailicon" src="images/mail-icon.png">
-                </div>
-                <!-- <div class="form-group has-add">
-                    <span>Add another person<img class="teammember-add-addAnother" src="images/addAnotherPeople-icon.png"></span>
-                </div> -->
-            </div>
-            <div class="col-md-12 teammember-add-button">
-                <button class="btn btn-lg btn-primary" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">
-                    Invite People
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
+
 <div id="addHotspots" ng-class="{true: 'addHotspotsLeft', false: 'addHotspotsRight'}[addHotspotsPosition]" ng-show="showAddHotspots">
     <div class="hotspots-add">
         <div class="col-md-10 hotspots-add-desc">Link To:</div>
@@ -286,76 +233,8 @@
         </form>
     </div>
 </div>
-<div id="addComment" ng-class="{true: 'addCommentLeft', false: 'addCommentRight'}[addCommentPosition]" ng-show="showComments">
-    <div class="comment-add" data-marker=1>
-        <div class="col-md-12 row">
-            <div class="col-md-10 comment-add-desc">ADD COMMENT</div>
-            <div class="col-md-2 comment-add-delicon">
-                <img src="images/close-icon.png" ng-click="hideComments()">
-            </div>
-        </div>
-        <div class="comment-chat-content col-md-12">
-            <div class="col-md-12" ng-repeat="comment in currentComments">
-                <div class="col-md-3">
-                    <img src="images/chat-person-icon.png">
-                </div>
-                <div class="col-md-9">
-                    <div class="col-md-8">{{comment.fullname}}</div>
-                    <div class="col-md-4">{{comment.created | limitTo:-8}}</div>
-                    <div class="col-md-12">{{comment.content}}</div>
-                </div>
-            </div>
-        </div>
-        <form>
-            <div class="comment-chat-input col-md-12">
-                <textarea name="comment-content" ng-model="commentContent" placeholder="Leave a comment..."></textarea>
-            </div>
-            <div class="comment-assignContainer form-group col-md-12">
-                <p style="text-align:left;">Choose recipients</p>
-                <select class="js-example-basic-multiple" multiple="multiple" ng-model="commentRecipients">
-                    <option ng-repeat="user in projectMembers" value={{user.uuid}}>{{user.fullname}}</option>
-                </select>
-            </div>
-            <div class="col-md-12 comment-assignTask">
-                <input type="checkbox" name="assignTask" ng-checked="isTask" ng-true-value="1" ng-false-value="2">
-                Assign this as a task
-            </div>
-            <div class="col-md-12 comment-add-button">
-                <button class="btn btn-lg comment-buttoncancel btn-primary" type="reset" ng-click="hideComments()">
-                    Cancel
-                </button>
-                <button class="btn btn-lg comment-buttonsubmit btn-primary" type="submit" ng-click="saveComments($event)">
-                    Save
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-<div id="newMeeting" class="modal fade in" style="display: none;">
-    <div class="newMeeting-add">
-        <div class="col-md-10 newMeeting-add-desc">CREATE A MEETING</div>
-        <div class="col-md-2 newMeeting-add-delicon">
-            <img src="images/close-icon.png" data-dismiss="modal">
-        </div>
-        <form name="newMeeting">
-            <div class="col-md-12 newMeeting-add-body">
-                <div class="form-group">
-                    <textarea name="meetingMessage" ng-model="meetingMessage" placeholder="Notes" class="form-control newMeeting-message"></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="meetingName" ng-model="meetingName" class="form-control newMeeting-name" placeholder="Meeting Name"/>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="meetingDateTime" ng-model="meetingDateTime" class="form-control newMeeting-time" placeholder="Choose date & time"/>
-                </div>
-                <p style="text-align:left;">Choose recipients</p>
-                <select class="js-example-basic-multiple" multiple="multiple" ng-model="recipients">
-                    <option ng-repeat="user in projectMembers" value={{user.uuid}}>{{user.fullname}}</option>
-                </select>
-            </div>
-            <div class="col-md-12 newMeeting-add-button">
-                <button class="btn btn-lg btn-primary" ng-click="addNewMeeting()">Create Meeting</button>
-            </div>
-        </form>
-    </div>
-</div>
+
+<div ng-include="'views/modal/includes/new-meeting.html'"></div>
+<div ng-include="'views/modal/includes/add-people-project.html'"></div>
+<div ng-include="'views/modal/includes/add-comment.html'"></div>
+<div ng-include="'views/modal/includes/update-project.html'"></div>

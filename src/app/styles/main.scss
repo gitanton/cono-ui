@@ -561,33 +561,33 @@ body {
         padding: 19px 14px 19px 88px;
         background: $color-gray-2;
         overflow-y: auto;
-        .col-md-4 {
-            margin-bottom: 19px;
-            background: $color-white;
-        }
-        .project-content-offset {
-            margin-left: 16px;
-        }
-        .project-content-name {
-            color: $color-blue-5;
-            padding: 13px 0 12px 15px;
 
-            button {
-                min-height: 0;
-            }
+        .gear {
+            padding-top: $padding-small;
         }
-        .project-content-gear {
-            padding: 13px 15px 12px;
-            text-align: right;
+
+        .project-content-offset {
+            margin: 0 $margin-default $margin-large $margin-default;
+            padding: 0 $padding-default;
+            background: $color-white;
+
+            .thumbnail-container {
+                height: 200px;
+                overflow: hidden;
+                background: $color-gray-3;
+                cursor: pointer;
+            }
         }
         .project-content-gear-a {
             @include bg-img('gear-icon.png');
+            background-position: right top;
             height: 20px;
             display: block;
             cursor: pointer;
         }
         .project-content-gear-a-selected {
             @include bg-img('gear-selected.png');
+            background-position: right top;
             height: 20px;
             display: block;
             cursor: pointer;
@@ -604,7 +604,7 @@ body {
         }
         .project-content-projectcontent {
             position: relative;
-            bottom: -2px;
+            background: $color-gray-1;
             img {
                 cursor: pointer;
             }
@@ -635,7 +635,7 @@ body {
             position: absolute;
             z-index: 1;
             top: 65px;
-            right: 5px;
+            right: 20px;
             background: $color-blue-2;
             border-radius: $border-radius;
             color: $color-white;
@@ -1870,34 +1870,14 @@ body {
     z-index: 999;
     .comment-add {
         width: 390px;
-        height: 500px;
         border-radius: 4px;
         background: $color-gray-2;
-    }
-    .comment-add-desc {
-        text-align: left;
-        color: $color-blue-5;
-        padding: 15px 40px;
-    }
-    .comment-add-delicon {
-        text-align: center;
-        padding: 15px 0;
-        img {
-            cursor: pointer;
-        }
+        padding: $padding-default $padding-default 0 $padding-default;
     }
     .comment-chat-content {
-        height: 130px;
+        max-height: 130px;
         padding: 10px;
         overflow-y: auto;
-    }
-    .comment-chat-input {
-        padding: 10px;
-        textarea {
-            width: 365px;
-            height: 70px;
-            border: 1px solid $color-blue-5;
-        }
     }
     .comment-assignContainer {
         padding: 0 10px;
@@ -2369,65 +2349,6 @@ body {
     }
 }
 
-#newMeeting {
-    width: 100%;
-    padding-top: 50px;
-    .newMeeting-add {
-        width: 465px;
-        height: 573px;
-        background: $color-white;
-        border-radius: 4px;
-        margin: 0 auto;
-    }
-    .newMeeting-add-desc {
-        text-align: center;
-        color: $color-blue-5;
-        padding: 22px 0;
-        border-bottom: 1px solid $color-gray-2;
-    }
-    .newMeeting-add-delicon {
-        text-align: center;
-        padding: 22px 0;
-        border-bottom: 1px solid $color-gray-2;
-        cursor: pointer;
-    }
-    .newMeeting-add-body {
-        text-align: center;
-        padding: 24px 50px;
-        background: $color-gray-2;
-        border-bottom: 1px solid $color-gray-2;
-        .has-add {
-            position: relative;
-            img {
-                right: 6px;
-                top: 18px;
-                position: absolute;
-            }
-        }
-    }
-    .newMeeting-assignContainer {
-        height: 100px;
-        .newMeeting-assign {
-            text-align: left;
-            height: 50px;
-            padding: 12px;
-            font-size: 14px;
-            color: #555;
-            background-color: $color-white;
-            background-image: none;
-            border: 1px solid $color-gray-1;
-            border-radius: 4px;
-        }
-        .newMeeting-group {
-            display: none;
-        }
-    }
-    .newMeeting-add-button {
-        padding: 12px 0;
-        text-align: center;
-    }
-}
-
 #meetingDetail {
     width: 465px;
     margin: 0 auto;
@@ -2504,42 +2425,6 @@ body {
         border-bottom: 1px solid $color-gray-2;
     }
     .addText-add-button {
-        padding: 12px 0;
-        text-align: center;
-    }
-}
-
-#updateproject {
-    width: 100%;
-    padding-top: 50px;
-    .project-update {
-        width: 465px;
-        height: 288px;
-        background: $color-white;
-        border-radius: 4px;
-        margin: 0 auto;
-    }
-    .project-update-desc {
-        text-align: center;
-        color: $color-blue-5;
-        padding: 22px 0;
-        border-bottom: 1px solid $color-gray-2;
-    }
-    .project-update-body {
-        text-align: center;
-        color: $color-blue-5;
-        padding: 24px 35px;
-        background: $color-gray-2;
-        border-bottom: 1px solid $color-gray-2;
-    }
-    .project-update-title {
-        height: 48px;
-    }
-    .project-update-type {
-        margin-top: 16px;
-        height: 48px;
-    }
-    .project-update-button {
         padding: 12px 0;
         text-align: center;
     }
@@ -2683,6 +2568,7 @@ body {
     .profile-project-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
+
         .profile-project-content-menu {
             height: 48px;
             padding: 8px 20px;
@@ -2701,6 +2587,7 @@ body {
                 }
             }
         }
+
         .profile-project-content-body {
             padding: 24px 20px 0 20px;
             .profile-project-content-projectH {

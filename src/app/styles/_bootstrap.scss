@@ -68,6 +68,14 @@
     line-height: $form-control-height;
 }
 
+.form-gray {
+    .form-control {
+        background: $color-white;
+        border-color: $color-blue-5;
+        color: $color-blue-5;
+    }
+}
+
 .alert {
     &.alert-success {
         border-color: $color-green-2;

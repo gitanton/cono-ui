@@ -1,0 +1,31 @@
+<div id="addPeopleToProject" class="modal fade in" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="dismissModal()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Add People to the Project</h3>
+            </div>
+            <form name="addPeopleToProject">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group has-email">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                                    <input type="text" name="teammemberemail" ng-model="memberEmail" class="form-control" placeholder="Enter an email"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-lg btn-primary" type="submit" ng-click="addProjectMember(addProjectMemberUuid)">
+                            Invite People
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
