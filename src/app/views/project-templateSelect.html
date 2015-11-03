@@ -11,13 +11,17 @@
                     <button class="btn btn-lg btn-primary" ng-click="uploadSelectTemplate()">Upload your selected template</button>
                 </div>
                 <div class="templates-header-filter col-md-2">
-                    <span class="defaultTemplate">Filter Templates</span>
-                    <img src="images/select-project-icon.png" ng-click="openTemplates($event)">
-                    <ul class="templates">
-                        <li ng-click="selectTemplate('{{template.name}}',$index)" ng-repeat="template in templates">
-                            {{template.name}}
-                        </li>
-                    </ul>
+                    <div class="dropdown filter">
+                        <button type="button" class="btn btn-link btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Filter Templates
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="template in templates">
+                                <button class="btn btn-link btn-block" ng-click="selectTemplate('{{template.name}}',$index)">{{template.name}}</button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

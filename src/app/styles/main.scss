@@ -1283,40 +1283,6 @@ body {
     }
     .project-build-content {
         background: $color-gray-2;
-        .project-build-content-menu {
-            height: 48px;
-            padding: 8px 20px;
-            background: #55abd4;
-            .project-build-content-nav {
-                ul {
-                    li {
-                        color: $color-white;
-                        width: 100px;
-                        line-height: 32px;
-                        margin-right: 10px;
-                        float: left;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                }
-            }
-            .project-build-content-member {
-                ul {
-                    li {
-                        width: 44px;
-                        margin-right: 10px;
-                        float: right;
-                        img {
-                            width: 44px;
-                            height: 32px;
-                        }
-                        .addMemberIcon {
-                            cursor: pointer
-                        }
-                    }
-                }
-            }
-        }
         .project-build-content-body {
             @include bg-img('project-build-bg.jpg');
             background-repeat: repeat;
@@ -1931,40 +1897,6 @@ body {
     .project-screen-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .project-screen-content-menu {
-            height: 48px;
-            padding: 8px 20px;
-            background: #55abd4;
-            .project-screen-content-nav {
-                ul {
-                    li {
-                        color: $color-white;
-                        width: 100px;
-                        line-height: 32px;
-                        margin-right: 10px;
-                        float: left;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                }
-            }
-            .project-screen-content-member {
-                ul {
-                    li {
-                        width: 44px;
-                        margin-right: 10px;
-                        float: right;
-                        img {
-                            width: 44px;
-                            height: 32px;
-                        }
-                        .addMemberIcon {
-                            cursor: pointer;
-                        }
-                    }
-                }
-            }
-        }
         .project-screen-content-body {
             overflow-y: auto;
             .project-screen-content-items {
@@ -2097,40 +2029,6 @@ body {
     .project-activity-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .project-activity-content-menu {
-            height: 48px;
-            padding: 8px 20px;
-            background: #55abd4;
-            .project-activity-content-nav {
-                ul {
-                    li {
-                        color: $color-white;
-                        width: 100px;
-                        line-height: 32px;
-                        margin-right: 10px;
-                        float: left;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                }
-            }
-            .project-activity-content-member {
-                ul {
-                    li {
-                        width: 44px;
-                        margin-right: 10px;
-                        float: right;
-                        img {
-                            width: 44px;
-                            height: 32px;
-                        }
-                        .addMemberIcon {
-                            cursor: pointer;
-                        }
-                    }
-                }
-            }
-        }
         .project-activity-content-body {
             overflow-y: auto;
             .project-activity-content-items {
@@ -2281,24 +2179,6 @@ body {
     }
     .project-comment-content {
         padding-left: $sidebar-closed-width;
-        .project-comment-content-menu {
-            height: 48px;
-            padding: 8px 20px;
-            background: #55abd4;
-            .project-comment-content-nav {
-                ul {
-                    li {
-                        color: $color-white;
-                        width: 100px;
-                        line-height: 32px;
-                        margin-right: 10px;
-                        float: left;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
         .project-comment-subheader {
             height: 66px;
             padding: 21px 18px;
@@ -2569,25 +2449,6 @@ body {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
 
-        .profile-project-content-menu {
-            height: 48px;
-            padding: 8px 20px;
-            background: #55abd4;
-            .profile-project-content-nav {
-                ul {
-                    li {
-                        color: $color-white;
-                        width: 120px;
-                        line-height: 32px;
-                        margin-right: 10px;
-                        float: left;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-
         .profile-project-content-body {
             padding: 24px 20px 0 20px;
             .profile-project-content-projectH {
@@ -2616,7 +2477,6 @@ body {
                 .profile-project-content-project-intro {
                     padding: 20px 50px;
                     box-shadow: 3px 3px 3px #e5e5e5;
-                    height: 68px;
                     .profile-project-content-project-name {
                         color: $color-blue-5;
                     }
@@ -2627,12 +2487,6 @@ body {
                 .profile-project-content-project-thumb {
                     padding: 15px;
                     border-bottom: 1px solid #e5e5e5;
-                    img {
-                        margin-left: 15px;
-                        margin-bottom: 15px;
-                        width: 150px;
-                        height: 150px;
-                    }
                 }
             }
         }
@@ -2657,24 +2511,6 @@ body {
     .profile-profile-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .profile-profile-content-menu {
-            height: 48px;
-            padding: 8px 20px;
-            background: #55abd4;
-            .profile-profile-content-nav {
-                ul {
-                    li {
-                        color: $color-white;
-                        width: 120px;
-                        line-height: 32px;
-                        margin-right: 10px;
-                        float: left;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
         .profile-profile-content-body {
             padding: 24px 20px 0 20px;
             .profile-profile-content-profileH {
@@ -2752,24 +2588,6 @@ body {
     .profile-billing-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .profile-billing-content-menu {
-            height: 48px;
-            padding: 8px 20px;
-            background: #55abd4;
-            .profile-billing-content-nav {
-                ul {
-                    li {
-                        color: $color-white;
-                        width: 120px;
-                        line-height: 32px;
-                        margin-right: 10px;
-                        float: left;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
         .profile-billing-content-body {
             padding: 24px 20px 0 20px;
             .profile-billing-content-title {
@@ -2954,24 +2772,6 @@ body {
     .profile-notice-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .profile-notice-content-menu {
-            height: 48px;
-            padding: 8px 20px;
-            background: #55abd4;
-            .profile-notice-content-nav {
-                ul {
-                    li {
-                        color: $color-white;
-                        width: 120px;
-                        line-height: 32px;
-                        margin-right: 10px;
-                        float: left;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
         .profile-notice-content-body {
             padding: 24px 20px 0 20px;
             .profile-notice-content-title {
@@ -3003,6 +2803,92 @@ body {
     }
 }
 
+.filter {
+    border-radius: $border-radius;
+    border: 1px $color-blue-1 solid;
+
+    > .btn {
+        text-align: left;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        max-height: 300px;
+        overflow: hidden;
+        overflow-y: auto;
+        @include border-radius(0 $border-radius $border-radius 0);
+        margin-top: -2px;
+        border: 1px $color-blue-2 solid;
+
+        li {
+            button.btn-link {
+                border-top: 1px $color-gray-2 solid;
+                display: block;
+                padding: 3px 12px;
+                text-align: left;
+
+                &.hover {
+                    background: $color-blue-2;
+                    text-decoration: none;
+                    color: $color-white;
+                }
+            }
+
+            &:first-child {
+                button.btn-link {
+                    border-top: 0;
+                }
+            }
+        }
+    }
+
+    &.open {
+        > .btn {
+            background: $color-blue-2;
+            color: $color-white;
+        }
+    }
+}
+
+.profile-content-menu,
+.project-content-menu {
+    height: 48px;
+    padding: 8px 20px;
+    background: #55abd4;
+}
+
+.project-content-member {
+    li {
+        img {
+            max-width: 100px;
+        }
+    }
+}
+
+.profile-menu {
+    li {
+        color: $color-white;
+        line-height: 32px;
+        margin-right: 10px;
+        min-width: 120px;
+        text-align: center;
+        @include border-radius($border-radius);
+
+        &:hover {
+            background: $color-blue-2;
+        }
+
+        a {
+            display: block;
+            color: $color-white;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
 /*templates page*/
 .templates-container {
     .templates-header {
@@ -3013,36 +2899,7 @@ body {
         .templates-header-name {
             text-align: left;
             font-size: 20px;
-        }
-        .templates-header-button {
-        }
-        .templates-header-filter {
-            border: 1px solid $color-blue-5;
-            border-radius: 2px;
-            width: 160px;
-            height: 40px;
-            padding: 10px;
-            color: $color-blue-5;
-            img {
-                margin-left: 15px;
-                cursor: pointer;
-            }
-            ul {
-                z-index: 999;
-                display: none;
-                width: 160px;
-                position: absolute;
-                right: -1px;
-                top: 38px;
-                border: 1px solid $color-blue-5;
-                li {
-                    border-top: 1px solid $color-blue-5;
-                    cursor: pointer;
-                    text-align: center;
-                    height: 25px;
-                    color: $color-white;
-                }
-            }
+
         }
     }
     .templates-content {
@@ -3100,7 +2957,6 @@ body {
         }
         .project-screen-video-header-name img {
             margin-left: 12px;
-            cursor: pointer;
         }
         .project-screen-video-header-button {
             text-align: right;
@@ -3109,48 +2965,6 @@ body {
     .project-screen-video-content {
         background: $color-gray-2;
         padding-left: $sidebar-closed-width;
-        .project-screen-video-content-menu {
-            height: 48px;
-            padding: 8px 20px;
-            background: #55abd4;
-            .project-screen-video-content-nav {
-                span {
-                    color: $color-white;
-                    font-size: 20px;
-                    img {
-                        margin-right: 20px;
-                        cursor: pointer;
-                    }
-                }
-                ul {
-                    li {
-                        color: $color-white;
-                        width: 100px;
-                        line-height: 32px;
-                        margin-right: 10px;
-                        float: left;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                }
-            }
-            .project-screen-video-content-member {
-                ul {
-                    li {
-                        width: 44px;
-                        margin-right: 10px;
-                        float: right;
-                        img {
-                            width: 44px;
-                            height: 32px;
-                        }
-                        .addMemberIcon {
-                            cursor: pointer;
-                        }
-                    }
-                }
-            }
-        }
         .project-screen-video-content-body {
             position: relative;
             @include bg-img('project-build-bg.jpg');
@@ -3944,7 +3758,6 @@ body {
     }
 }
 
-
 .ui-select-multiple.ui-select-bootstrap {
     padding: 0 6px 0 6px;
 
@@ -3969,9 +3782,9 @@ body {
     }
 
     .empty.ui-select-match + .ui-select-search,
-    .empty.ui-select-match + .ui-select-search input{
+    .empty.ui-select-match + .ui-select-search input {
         width: 100% !important;
-        line-height:24px;
+        line-height: 24px;
         margin-bottom: 0;
     }
 }

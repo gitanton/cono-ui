@@ -62,25 +62,10 @@ angular.module('conojoApp')
         };
 
         $scope.selectTemplate = function (name, index) {
-            $('.templates').hide();
             $('.defaultTemplate').html(name);
             $('.templates-content-unselect').hide();
             $('.templates-content-select').hide();
             $('.templates-content-body').children().eq(index).show();
-        };
-
-        $(document).on('click', function () {
-            $('.templates').hide();
-        });
-
-        $('.templates').on('click', function (evt) {
-            evt = window.event || evt;
-            evt.stopPropagation();
-        });
-
-        $scope.openTemplates = function (evt) {
-            $('.templates').show();
-            evt.stopPropagation();
         };
 
         $scope.init();

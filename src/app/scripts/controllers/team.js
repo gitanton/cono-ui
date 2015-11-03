@@ -46,25 +46,10 @@ angular.module('conojoApp')
         };
 
         $scope.selectTeam = function (val, index) {
-            $('.teams').hide();
             $('.defaultTeam').html(val);
             $('.team-content-offset').hide();
             $('.team-content-offset').eq(index).show();
         };
-
-        $scope.openTeams = function (evt) {
-            $('.teams').show();
-            evt.stopPropagation();
-        };
-
-        $(document).on('click', function () {
-            $('.teams').hide();
-        });
-
-        $('.teams').on('click', function (evt) {
-            evt = window.event || evt;
-            evt.stopPropagation();
-        });
 
         $scope.init();
     });
