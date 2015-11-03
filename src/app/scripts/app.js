@@ -14,7 +14,6 @@ angular
         'ngCookies',
         'ngMessages',
         'ngPassword',
-        'ngResource',
         'ngRoute',
         'ngSanitize',
         'ngTouch',
@@ -22,9 +21,11 @@ angular
         'logglyLogger',
         'config',
         'ngFileUpload',
-        'angularModalService'
+        'angularModalService',
+        'ui.select',
+        'ui.bootstrap.datetimepicker'
     ])
-    .config(function ($routeProvider, $httpProvider, LogglyLoggerProvider) {
+    .config(function ($routeProvider, $httpProvider, LogglyLoggerProvider, uiSelectConfig) {
 
         //Enable cross domain calls
         $httpProvider.defaults.useXDomain = true;
@@ -34,6 +35,7 @@ angular
         LogglyLoggerProvider.includeTimestamp(true);
         LogglyLoggerProvider.inputTag('conojoApp');
         $httpProvider.interceptors.push('ResponseInterceptor');
+        uiSelectConfig.theme = 'bootstrap';
 
 
         $routeProvider

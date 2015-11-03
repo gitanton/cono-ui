@@ -1,6 +1,5 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 @import "compass";
 @import "variables";
@@ -3941,6 +3940,62 @@ body {
                 border: 1px $color-yellow-1 solid;
                 color: $color-yellow-1;
             }
+        }
+    }
+}
+
+
+.ui-select-multiple.ui-select-bootstrap {
+    padding: 0 6px 0 6px;
+
+    .ui-select-match-item {
+        background: $color-gray-1;
+        border: 1px $color-gray-2 solid;
+        padding: 3px 6px;
+        cursor: default;
+
+        &.btn-primary {
+            background: $color-gray-1;
+            border: 1px $color-gray-2 solid;
+            padding: 3px 6px;
+            color: $color-black;
+            min-width: 0;
+            cursor: default;
+        }
+
+        .close {
+            line-height: 1;
+        }
+    }
+
+    .empty.ui-select-match + .ui-select-search,
+    .empty.ui-select-match + .ui-select-search input{
+        width: 100% !important;
+        line-height:24px;
+        margin-bottom: 0;
+    }
+}
+
+.ui-select-bootstrap {
+    border: 1px $color-gray-3 solid;
+    min-height: $form-control-height;
+
+    .form-control {
+        border: 0;
+    }
+
+    .ui-select-choices-row {
+        &.active {
+            background-color: $color-blue-2;
+        }
+    }
+}
+
+.ui-select-match {
+    .ui-select-toggle {
+        > a.btn {
+            color: $color-gray-3;
+            padding: 3px 6px;
         }
     }
 }

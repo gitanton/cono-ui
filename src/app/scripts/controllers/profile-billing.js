@@ -94,7 +94,7 @@ angular.module('conojoApp')
                             additional_users: $scope.newPlanMember
                         }),
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                    }).then(function (response) {
+                    }).then(function () {
                         $scope.saving = false;
                         $scope.init();
                         $scope.alertSuccess = '<i class="fa fa-check-circle"></i> Your payment has been accepted successfully!';

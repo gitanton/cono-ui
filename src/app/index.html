@@ -11,15 +11,16 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/dropzone/dist/min/dropzone.min.css" />
-    <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css" />
+    <link rel="stylesheet" href="bower_components/ui-select/dist/select.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/jquery-ui.css">
-    <link rel="stylesheet" href="styles/select2.min.css">
     <!-- endbuild -->
 </head>
 <body ng-class="bodyCls">
@@ -70,33 +71,21 @@
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-loggly-logger/angular-loggly-logger.js"></script>
 <script src="bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
 <script src="bower_components/dropzone/dist/min/dropzone.min.js"></script>
-<script src="bower_components/moment/moment.js"></script>
-<script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 <script src="bower_components/jquery-ui/jquery-ui.js"></script>
 <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
 <script src="bower_components/angular-messages/angular-messages.js"></script>
 <script src="bower_components/angular-password/angular-password.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/ui-select/dist/select.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 <script src="scripts/config.js"></script>
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
@@ -109,6 +98,7 @@
 <script src="scripts/controllers/modal/modal.js"></script>
 <script src="scripts/controllers/modal/modal-alert.js"></script>
 <script src="scripts/controllers/modal/modal-change-password.js"></script>
+<script src="scripts/controllers/modal/modal-new-meeting.js"></script>
 <script src="scripts/controllers/modal/modal-reset-password.js"></script>
 <script src="scripts/controllers/project-activity-template.js"></script>
 <script src="scripts/controllers/project-activity-video.js"></script>
@@ -142,55 +132,12 @@
 
 <script src="scripts/interceptors/response.js"></script>
 
+<script src="scripts/services/meetingService.js"></script>
 <script src="scripts/services/projectservice.js"></script>
 <script src="scripts/services/teamservice.js"></script>
 <script src="scripts/services/userservice.js"></script>
 
 <script src="scripts/farbtastic.js"></script>
 <!-- endbuild -->
-
-<script>
-    window.intercomSettings = {
-        // TODO: The current logged in user's full name
-        name: "John Doe",
-        // TODO: The current logged in user's email address.
-        email: "john.doe@example.com",
-        // TODO: The current logged in user's sign-up date as a Unix timestamp.
-        created_at: 1234567890,
-        app_id: "zyz411mh"
-    };
-</script>
-<script>(function () {
-    var w = window;
-    var ic = w.Intercom;
-    if (typeof ic === "function") {
-        ic('reattach_activator');
-        ic('update', intercomSettings);
-    } else {
-        var d = document;
-        var i = function () {
-            i.c(arguments)
-        };
-        i.q = [];
-        i.c = function (args) {
-            i.q.push(args)
-        };
-        w.Intercom = i;
-        function l() {
-            var s = d.createElement('script');
-            s.type = 'text/javascript';
-            s.async = true;
-            s.src = 'https://widget.intercom.io/widget/zyz411mh';
-            var x = d.getElementsByTagName('script')[0];
-            x.parentNode.insertBefore(s, x);
-        }
-
-        if (w.attachEvent) {
-            w.attachEvent('onload', l);
-        } else {
-            w.addEventListener('load', l, false);
-        }
-    }
-})()</script>
 </body>
 </html>

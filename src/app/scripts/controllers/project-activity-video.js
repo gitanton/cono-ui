@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectActivityVideoCtrl', function ($scope, $http, $location, $routeParams, ENV) {
+    .controller('ProjectActivityVideoCtrl', function ($scope, $http, $location, $routeParams, ENV, ModalService) {
         $scope.activeProjectUuid = $routeParams.uuid;
 
         $scope.init = function () {
@@ -67,42 +67,22 @@ angular.module('conojoApp')
             });
         };
 
+        /**
+         * Open the modal to create a new meeting for the project
+         * @returns Modal The modal that is created
+         */
         $scope.openNewMeeting = function () {
-            $scope.meetingMessage = '';
-            $scope.meetingName = '';
-            $scope.recipients = [];
-            $(".js-example-basic-multiple").select2({
-                templateResult: function (state) {
-                    return $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
+            return ModalService.showModal({
+                templateUrl: 'views/modal/new-meeting.html',
+                controller: 'ModalNewMeetingCtrl',
+                inputs: {
+                    projectMembers: $scope.projectMembers,
+                    projectUUID: $scope.activeProjectUuid
                 }
-            }).val('');
-            $(".select2-selection__choice").remove();
-            $('#newMeeting').modal('toggle');
-        };
-
-        $scope.addNewMeeting = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'meetings',
-                method: 'POST',
-                data: $.param({
-                    notes: $scope.meetingMessage,
-                    project_uuid: $scope.activeProjectUuid,
-                    name: $scope.meetingName,
-                    date: $('.newMeeting-time').val().split(' ')[0],
-                    time: $('.newMeeting-time').val().split(' ')[1],
-                    attendees: $scope.recipients.join(',')
-                }),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).then(function () {
-                $scope.init();
-                $('#newMeeting').modal('hide');
+            }).then(function (modal) {
+                modal.element.modal();
             });
         };
-
-        $('.newMeeting-time').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm',
-            useCurrent: false
-        });
 
         $scope.toBuild = function () {
             $http({

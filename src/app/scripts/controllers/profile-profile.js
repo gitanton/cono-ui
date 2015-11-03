@@ -49,7 +49,7 @@ angular.module('conojoApp')
             $location.path(url);
         };
 
-        $scope.changePassword = function(args, cls) {
+        $scope.changePassword = function() {
             return ModalService.showModal({
                 templateUrl: "views/modal/change-password.html",
                 controller: "ModalChangePasswordCtrl",

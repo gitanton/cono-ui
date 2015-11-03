@@ -38,7 +38,7 @@ angular.module('conojoApp')
         };
 
 
-        $scope.resetPassword = function(args, cls) {
+        $scope.resetPassword = function() {
             return ModalService.showModal({
                 templateUrl: 'views/modal/reset-password.html',
                 controller: 'ModalResetPasswordCtrl'
