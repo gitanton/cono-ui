@@ -8,7 +8,9 @@
                     <span><img src="images/back-icon.png" ng-click="goBack()" title="Back to Build">Select Your Templates</span>
                 </div>
                 <div class="templates-header-button col-md-3">
-                    <button class="btn btn-lg btn-primary" ng-click="uploadSelectTemplate()">Upload your selected template</button>
+                    <button class="btn btn-lg btn-primary" ng-click="uploadSelectTemplate()">Upload your selected
+                        template
+                    </button>
                 </div>
                 <div class="templates-header-filter col-md-2">
                     <div class="dropdown filter">
@@ -18,7 +20,9 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li ng-repeat="template in templates">
-                                <button class="btn btn-link btn-block" ng-click="selectTemplate('{{template.name}}',$index)">{{template.name}}</button>
+                                <button class="btn btn-link btn-block" ng-click="selectTemplate('{{template.name}}',$index)">
+                                    {{template.name}}
+                                </button>
                             </li>
                         </ul>
                     </div>

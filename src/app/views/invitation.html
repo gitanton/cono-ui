@@ -2,29 +2,43 @@
     <div class="invitation-logo row">
         <div class="col-md-5">
             <img src="images/invitation-icon.png">
-            <div class="invitation-warn">In order to accept this invitation,register a new<br />account or login with your current accout.</div>
+            <div class="invitation-warn">In order to accept this invitation,register a new
+                <br/>
+                account or login with your current accout.
+            </div>
         </div>
-        <div class="col-md-7"><img src="images/logo-account.png"></div>
+        <div class="col-md-7">
+            <img src="images/logo-account.png">
+        </div>
     </div>
     <div class="invitation-content">
         <div class="login col-md-5">
             <div class="login-form">
                 <form name="loginformInvite" ng-submit="processLoginForm()" novalidate>
                     <div class="col-md-12">
-                        <input type="text" name="username" ng-model="loginFormData.username" class="form-control login-username" placeholder="Username" ng-minlength="5" required />
+                        <input type="text" name="username" ng-model="loginFormData.username" class="form-control login-username" placeholder="Username" ng-minlength="5" required/>
                         <span ng-show="loginformInvite.username.$invalid && !loginformInvite.username.$pristine">Username Should be at least five characters long</span>
                     </div>
                     <div class="col-md-12">
-                        <input type="password" name="password" ng-model="loginFormData.password" class="form-control login-password" placeholder="Password" ng-minlength="6" required />
+                        <input type="password" name="password" ng-model="loginFormData.password" class="form-control login-password" placeholder="Password" ng-minlength="6" required/>
                         <span ng-show="loginformInvite.password.$invalid && !loginformInvite.password.$pristine">Password Should be at least six characters long</span>
                     </div>
                     <div class="col-md-6 login-remember">
-                        <label><input type="checkbox"> Remember me</label>
+                        <label>
+                            <input type="checkbox">
+                            Remember me
+                        </label>
                     </div>
                     <div class="col-md-6 login-forgot">
-                        <label><a href="javascript:void(0)">Forgot Password</a></label>
+                        <label>
+                            <a href="javascript:void(0)">Forgot Password</a>
+                        </label>
                     </div>
-                    <div class="col-md-12 login-button"><button class="btn btn-lg btn-primary" type="submit" ng-disabled="loginformInvite.$invalid">Login</button></div>
+                    <div class="col-md-12 login-button">
+                        <button class="btn btn-lg btn-primary" type="submit" ng-disabled="loginformInvite.$invalid">
+                            Login
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -33,15 +47,16 @@
             <div class="register-form">
                 <div class="col-md-12 register-desc">
                     <p class="register-desc-free">Get Started Absolutely FREE.</p>
+
                     <p class="register-desc-card">No credit card needed.</p>
                 </div>
                 <form name="userFormInvite" ng-submit="processRegisterForm()" novalidate>
                     <div class="col-md-12">
-                        <input type="text" name="username" class="form-control register-username" placeholder="Username" ng-model="registerFormData.username" ng-minlength="6" required />
+                        <input type="text" name="username" class="form-control register-username" placeholder="Username" ng-model="registerFormData.username" ng-minlength="6" required/>
                         <span ng-show="userFormInvite.username.$invalid && !userFormInvite.username.$pristine">Username Should be at least five characters long</span>
                     </div>
                     <div class="col-md-12">
-                        <input type="email" name="email" class="form-control register-email" placeholder="Email" ng-model="registerFormData.email" required />
+                        <input type="email" name="email" class="form-control register-email" placeholder="Email" ng-model="registerFormData.email" required/>
                         <span ng-show="userFormInvite.email.$invalid && !userFormInvite.email.$pristine">Enter a valid email.</span>
                     </div>
                     <div class="col-md-12">
@@ -51,16 +66,18 @@
                         <span ng-show="userForm.timezone.$invalid && !userForm.timezone.$pristine">Select the timezone.</span>
                     </div>
                     <div class="col-md-12">
-                        <input type="password" name="password" class="form-control register-password" placeholder="Password" ng-model="registerFormData.password" ng-minlength="6" required />
+                        <input type="password" name="password" class="form-control register-password" placeholder="Password" ng-model="registerFormData.password" ng-minlength="6" required/>
                         <span ng-show="userFormInvite.password.$invalid && !userFormInvite.password.$pristine">Password Should be at least six characters long</span>
                     </div>
                     <div class="col-md-12">
-                        <input type="password" name="confirmpassword" class="form-control register-confirmpassword" placeholder="Confirm Password" ng-model="registerFormData.confirmpassword" ng-minlength="6" required />
+                        <input type="password" name="confirmpassword" class="form-control register-confirmpassword" placeholder="Confirm Password" ng-model="registerFormData.confirmpassword" ng-minlength="6" required/>
                         <span ng-show="userFormInvite.confirmpassword.$invalid && !userFormInvite.confirmpassword.$pristine">Password Should be at least six characters long.</span>
                         <span ng-show="registerFormData.password != registerFormData.confirmpassword && !userFormInvite.confirmpassword.$pristine">This Must match the Password.</span>
                     </div>
                     <div class="col-md-12 register-button">
-                        <button class="btn btn-lg btn-primary" type="submit" ng-disabled="userFormInvite.$invalid || registerFormData.password != registerFormData.confirmpassword">Create Account</button>
+                        <button class="btn btn-lg btn-primary" type="submit" ng-disabled="userFormInvite.$invalid || registerFormData.password != registerFormData.confirmpassword">
+                            Create Account
+                        </button>
                     </div>
                 </form>
             </div>
@@ -73,7 +90,9 @@
 <div id="loginNote" class="modal fade in" style="display: none;">
     <div class="errorNote">
         <div class="col-md-10 errorNote-desc">LOGIN</div>
-        <div class="col-md-2 errorNote-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-2 errorNote-delete-delicon">
+            <img src="images/close-icon.png" data-dismiss="modal">
+        </div>
         <div class="col-md-12 errorNote-note">
             <p>The username/password you have entered are invalid.</p>
         </div>
@@ -82,11 +101,17 @@
 <div id="registerNote" class="modal fade in" style="display: none;">
     <div class="reset">
         <div class="col-md-10 reset-desc">REGISTER</div>
-        <div class="col-md-2 reset-delete-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
+        <div class="col-md-2 reset-delete-delicon">
+            <img src="images/close-icon.png" data-dismiss="modal">
+        </div>
         <div class="col-md-12 reset-note">
             <p ng-show="errorOne">The Email field must contain a unique value.Please fill in your information again.</p>
-            <p ng-show="errorTwo">The Username field must contain a unique value.Please fill in your information again.</p>
-            <p ng-show="errorThree">The Username and Email field must contain a unique value.Please fill in your information again.</p>
+
+            <p ng-show="errorTwo">The Username field must contain a unique value.Please fill in your information
+                again.</p>
+
+            <p ng-show="errorThree">The Username and Email field must contain a unique value.Please fill in your
+                information again.</p>
         </div>
     </div>
 </div>

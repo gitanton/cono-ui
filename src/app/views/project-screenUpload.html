@@ -9,7 +9,8 @@
                     <img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
                 </div>
                 <div class="project-screen-video-header-button col-md-6">
-                    <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
+                    <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting
+                    </button>
                 </div>
             </div>
         </div>
@@ -20,7 +21,7 @@
                     <div class="project-screen-video-content-nav col-md-6">
                         <span><img src="images/back-icon.png" ng-click="goBack()" title="Back to Build">Add Screen</span>
                     </div>
-                    <div class="project-screen-video-content-member col-md-6">
+                    <div class="project-content-member col-md-6">
                         <ul class="list-inline">
                             <li ng-repeat="projectMember in projectMembers">
                                 <img ng-if="projectMember.avatar != null" ng-src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">

@@ -18,12 +18,18 @@
                 <div class="project-build-content-nav col-md-6">
                     <ul class="list-inline profile-menu">
                         <li class="project-design-menu-current">BUILD</li>
-                        <li ng-click="toScreen()">SCREENS</li>
-                        <li ng-click="toActivity()">ACTIVITY</li>
-                        <li ng-click="toComment()">COMMENTS</li>
+                        <li>
+                            <button class="btn btn-link" ng-click="toScreen()">SCREENS</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-link" ng-click="toActivity()">ACTIVITY</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-link" ng-click="toComment()">COMMENTS</button>
+                        </li>
                     </ul>
                 </div>
-                <div class="project-build-content-member col-md-6">
+                <div class="project-content-member col-md-6">
                     <ul class="list-inline">
                         <li ng-repeat="projectMember in projectMembers">
                             <img ng-if="projectMember.avatar != null" ng-src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">

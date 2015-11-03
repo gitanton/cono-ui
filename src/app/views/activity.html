@@ -3,7 +3,9 @@
     <div ng-include="'views/siderbar.html'"></div>
     <div class="activity-container col-md-12">
         <div class="activity-header">
-            <div class="activity-header-account col-md-6"><span>Account Activity</span></div>
+            <div class="activity-header-account col-md-6">
+                <span>Account Activity</span>
+            </div>
             <div class="activity-header-button col-md-6">
                 <!-- <button class="btn btn-lg">MYSELF</button>
                 <button class="btn btn-lg">MY TEAM</button>
@@ -13,13 +15,19 @@
         <div class="activity-content">
             <div class="activity-content-items col-md-10">
                 <div class="col-md-12 activity-content-item" ng-repeat="activity in projectActivities" id="drag{{$index}}" draggable>
-                    <div class="activity-content-img col-md-3"><img ng-src="{{activity.creator.avatar}}" class="img-responsive"></div>
+                    <div class="activity-content-img col-md-3">
+                        <img ng-src="{{activity.creator.avatar}}" class="img-responsive">
+                    </div>
                     <div class="activity-content-desc col-md-9">
                         <div class="col-md-9">{{activity.title}}</div>
                         <div class="col-md-3">{{activity.created}}</div>
-                        <div class="col-md-12"><img src="images/thumbs.png"></div>
+                        <div class="col-md-12">
+                            <img src="images/thumbs.png">
+                        </div>
                         <div class="col-md-12">{{activity.content}}</div>
-                        <div style="position: absolute;top:0px;right:0px;"><img src="images/dragbar-icon.png"></div>
+                        <div style="position: absolute;top:0px;right:0px;">
+                            <img src="images/dragbar-icon.png">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -27,6 +35,7 @@
                 <img src="images/delete-icon.png" class="activity-content-deleteicon">
                 <div class="activity-content-deleteintro" id="activity-content-deleteintro">
                     <p>DELETE</p>
+
                     <p>Drag & Drop here to delete</p>
                 </div>
             </div>

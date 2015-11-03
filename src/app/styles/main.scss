@@ -2852,15 +2852,24 @@ body {
 
 .profile-content-menu,
 .project-content-menu {
-    height: 48px;
-    padding: 8px 20px;
+    height: $sub-header-height;
+    padding: 4px 20px;
     background: #55abd4;
+
+    ul {
+        margin: 0;
+    }
 }
 
 .project-content-member {
-    li {
-        img {
-            max-width: 100px;
+    ul {
+        float: right;
+        li {
+            max-height: $sub-header-height;
+            overflow: hidden;
+            img {
+                width: $sub-header-height;
+            }
         }
     }
 }
@@ -2878,12 +2887,16 @@ body {
             background: $color-blue-2;
         }
 
-        a {
+        a, button {
             display: block;
             color: $color-white;
+            margin-bottom: 0;
+            text-align: center;
+            width: 100%;
 
             &:hover {
                 text-decoration: none;
+                color: $color-white;
             }
         }
     }

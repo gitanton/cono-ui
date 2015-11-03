@@ -9,7 +9,8 @@
                     <img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
                 </div>
                 <div class="project-screen-header-button col-md-6">
-                    <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting</button>
+                    <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting
+                    </button>
                 </div>
             </div>
         </div>
@@ -17,13 +18,17 @@
             <div class="project-content-menu">
                 <div class="project-screen-content-nav col-md-6">
                     <ul class="list-inline profile-menu">
-                        <li ng-click="toBuildFirst()">BUILD</li>
+                        <li><button class="btn btn-link" ng-click="toBuildFirst()">BUILD</button></li>
                         <li class="project-design-menu-current">VIDEOS</li>
-                        <li ng-click="toActivity()">ACTIVITY</li>
-                        <li ng-click="toComment()">COMMENTS</li>
+                        <li>
+                            <button class="btn btn-link" ng-click="toActivity()">ACTIVITY</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-link" ng-click="toComment()">COMMENTS</button>
+                        </li>
                     </ul>
                 </div>
-                <div class="project-screen-content-member col-md-6">
+                <div class="project-content-member col-md-6">
                     <ul class="list-inline">
                         <li ng-repeat="projectMember in projectMembers">
                             <img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
