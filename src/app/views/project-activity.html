@@ -13,65 +13,8 @@
             </div>
         </div>
         <div class="project-activity-content">
-            <div class="project-content-menu">
-                <div class="project-activity-content-nav col-md-6">
-                    <ul class="list-inline profile-menu">
-                        <li>
-                            <button class="btn btn-link" ng-click="toBuild()">BUILD</button>
-                        </li>
-                        <li>
-                            <button class="btn btn-link" ng-click="toScreen()">SCREENS</button>
-                        </li>
-                        <li class="project-design-menu-current">
-                            <button class="btn btn-link" ng-click="toActivity()">ACTIVITY</button>
-                        </li>
-                        <li>
-                            <button class="btn btn-link" ng-click="toComment()">COMMENTS</button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="project-content-member col-md-6">
-                    <ul class="list-inline">
-                        <li ng-repeat="projectMember in projectMembers">
-                            <img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
-                        </li>
-                        <li ng-repeat="projectMember in projectMembers">
-                            <img ng-if="projectMember.avatar == null" src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
-                        </li>
-                        <li>
-                            <img src="images/addMember-icon.png" ng-click="openAddProjectMember()" class="addMemberIcon">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="project-activity-content-body">
-                <div class="project-activity-content-items col-md-10">
-                    <div class="col-md-12 project-activity-content-item" ng-repeat="activity in projectActivities" id="drag{{$index}}" draggable>
-                        <div class="project-activity-content-img col-md-3">
-                            <img ng-src="{{activity.creator.avatar}}" class="img-responsive">
-                        </div>
-                        <div class="project-activity-content-desc col-md-9">
-                            <div class="col-md-9">{{activity.title}}</div>
-                            <div class="col-md-3">{{activity.created}}</div>
-                            <div class="col-md-12">
-                                <img src="images/thumbs.png">
-                            </div>
-                            <div class="col-md-12">{{activity.content}}</div>
-                            <div style="position: absolute;top:0px;right:0px;">
-                                <img src="images/dragbar-icon.png">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-activity-content-delete col-md-2" droppable drop="handleDrop()">
-                    <img src="images/delete-icon.png" class="project-activity-content-deleteicon">
-                    <div class="project-activity-content-deleteintro" id="project-activity-content-deleteintro">
-                        <p>DELETE</p>
-
-                        <p>Drag & Drop here to delete</p>
-                    </div>
-                </div>
-            </div>
+            <div ng-include="'views/includes/project-content-menu.html'"></div>
+            <div ng-include="'views/includes/project-activity.html'"></div>
         </div>
     </div>
 </div>

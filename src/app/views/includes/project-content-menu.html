@@ -1,0 +1,35 @@
+<div class="project-content-menu">
+    <div class="row">
+        <div class="project-activity-content-nav col-md-12">
+            <ul class="list-inline profile-menu pull-left">
+                <li>
+                    <button class="btn btn-link" ng-click="toBuild()">BUILD</button>
+                </li>
+                <li>
+                    <button class="btn btn-link" ng-click="toVideo()">VIDEOS</button>
+                </li>
+                <li class="project-design-menu-current">
+                    <button class="btn btn-link" ng-click="toActivity()">ACTIVITY</button>
+                </li>
+                <li>
+                    <button class="btn btn-link" ng-click="toComment()">COMMENTS</button>
+                </li>
+            </ul>
+            <div class="project-content-member pull-right">
+                <ul class="list-inline">
+                    <li ng-repeat="projectMember in projectMembers">
+                        <img ng-if="projectMember.avatar != null" ng-src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}"
+                             title="{{projectMember.fullname}}">
+                    </li>
+                    <li ng-repeat="projectMember in projectMembers">
+                        <img ng-if="projectMember.avatar == null" ng-src="images/Chan.png" alt="{{projectMember.fullname}}"
+                             title="{{projectMember.fullname}}">
+                    </li>
+                    <li>
+                        <img src="images/addMember-icon.png" ng-click="openAddProjectMember()">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

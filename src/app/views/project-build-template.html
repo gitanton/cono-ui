@@ -16,39 +16,7 @@
             </div>
         </div>
         <div class="project-build-content">
-            <div class="project-content-menu">
-                <div class="row">
-                    <div class="project-build-content-nav col-md-6">
-                        <ul class="list-inline profile-menu">
-                            <li class="project-design-menu-current">BUILD</li>
-                            <li>
-                                <button class="btn btn-link" ng-click="toScreen()">SCREENS</button>
-                            </li>
-                            <li>
-                                <button class="btn btn-link" ng-click="toActivity()">ACTIVITY</button>
-                            </li>
-                            <li>
-                                <button class="btn btn-link" ng-click="toComment()">COMMENTS</button>
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="project-content-member col-md-6">
-                        <ul class="list-inline">
-                            <li ng-repeat="projectMember in projectMembers">
-                                <img ng-if="projectMember.avatar != null" ng-src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
-                            </li>
-                            <li ng-repeat="projectMember in projectMembers">
-                                <img ng-if="projectMember.avatar == null" ng-src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
-                            </li>
-                            <li>
-                                <img src="images/addMember-icon.png" ng-click="openAddProjectMember()" class="addMemberIcon">
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
+        <div ng-include="'views/includes/project-content-menu.html'"></div>
             <div class="project-build-content-body">
                 <div class="project-build-content-drawing">
                     <canvas id="drawing-b" width="790" height="440"></canvas>

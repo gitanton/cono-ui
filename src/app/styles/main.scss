@@ -798,27 +798,27 @@ body {
       text-align: right;
     }
   }
-  .activity-content {
+  .project-activity-content-body {
     border-top: 1px solid #dddddd;
     padding: 16px 14px 0 84px;
     background: $color-gray-2;
     overflow-y: auto;
-    .activity-content-items {
+    .project-activity-content-items {
       padding-left: 20px;
       padding-top: 16px;
-      .activity-content-item {
+      .project-activity-content-item {
         margin-top: 16px;
-        .activity-content-img {
+        .project-activity-content-img {
           width: 164px;
         }
-        .activity-content-desc {
+        .project-activity-content-desc {
           height: 180px;
           background: $color-white;
           padding: 20px
         }
       }
     }
-    .activity-content-delete {
+    .project-activity-content-delete {
       height: 494px;
       width: 176px;
       position: relative;
@@ -826,13 +826,13 @@ body {
       margin-left: 19px;
       border: 4px dashed $color-white;
       background: #eeeeee;
-      .activity-content-deleteicon {
+      .project-activity-content-deleteicon {
         position: absolute;
         left: 45%;
         top: 120px;
         z-index: 2;
       }
-      .activity-content-deleteintro {
+      .project-activity-content-deleteintro {
         text-align: center;
         position: absolute;
         left: 0;
@@ -2849,16 +2849,17 @@ body {
 
 .profile-content-menu,
 .project-content-menu {
-  height: $sub-header-height;
+  min-height: $sub-header-height;
   padding: 4px 20px;
   background: #55abd4;
-
   ul {
     margin: 0;
   }
 }
 
 .project-content-member {
+  max-height: $sub-header-inner-height;
+  overflow: hidden;
   ul {
     float: right;
     li {

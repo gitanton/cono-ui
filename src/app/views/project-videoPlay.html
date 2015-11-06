@@ -14,31 +14,7 @@
             </div>
         </div>
         <div class="project-screen-video-content">
-            <div class="project-content-menu">
-                <div class="project-screen-video-content-nav col-md-6">
-                    <ul class="list-inline profile-menu">
-                        <li class="project-design-menu-current">BUILD</li>
-                        <li ng-click="toVideo()">VIDEOS</li>
-                        <li>
-                            <button class="btn btn-link" ng-click="toActivity()">ACTIVITY</button>
-                        </li>
-                        <li ng-click="toComment()">COMMENTS</li>
-                    </ul>
-                </div>
-                <div class="project-content-member col-md-6">
-                    <ul class="list-inline">
-                        <li ng-repeat="projectMember in projectMembers">
-                            <img ng-if="projectMember.avatar != null" src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
-                        </li>
-                        <li ng-repeat="projectMember in projectMembers">
-                            <img ng-if="projectMember.avatar == null" src="images/Chan.png" alt="{{projectMember.fullname}}" title="{{projectMember.fullname}}">
-                        </li>
-                        <li>
-                            <img src="images/addMember-icon.png" ng-click="openAddProjectMember()">
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <div ng-include="'views/includes/project-content-menu.html'"></div>
             <div class="project-screen-video-content-body">
                 <div class="project-screen-video-content-video">
                     <video src="images/zenmele.mp4" id="videoBody"></video>
