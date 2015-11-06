@@ -9,6 +9,7 @@
 angular.module('conojoApp')
     .controller('ProjectCommentVideoCtrl', function ($scope, $http, $location, $routeParams, ENV) {
         $scope.activeProjectUuid = $routeParams.uuid;
+        $scope.model = {};
 
         $scope.init = function () {
             $http({
@@ -56,9 +57,9 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'messages',
                 method: 'POST',
                 data: $.param({
-                    content: $scope.messageContent,
+                    content: $scope.model.messageContent,
                     project_uuid: $scope.activeProjectUuid,
-                    recipients: $scope.recipients.join(',')
+                    recipients: $scope.model.recipients.join(',')
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function () {
@@ -82,7 +83,7 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'messages',
                 method: 'POST',
                 data: $.param({
-                    content: $scope.replyContent,
+                    content: $scope.model.replyContent,
                     project_uuid: $scope.activeProjectUuid,
                     parent_uuid: $scope.replyMessageUuid
                 }),

@@ -1,0 +1,28 @@
+<div id="replymessage" class="modal fade in" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Reply</h3>
+            </div>
+            <form name="createreplymessage" class="form-gray">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea name="replymessagecontent" ng-model="model.replyContent" class="form-control replymessage-add-message"
+                                          placeholder="Add your reply"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-lg btn-primary" type="submit" ng-click="replyMessage()">Send Message</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

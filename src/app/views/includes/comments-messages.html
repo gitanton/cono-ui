@@ -1,0 +1,66 @@
+<div class="project-comment-content-body">
+    <div clas="row">
+        <div class="project-comment-content-items col-md-12">
+            <div class="project-comment-content-item" ng-repeat="message in messages">
+                <div class="project-comment-content-item-first row">
+                    <div class="project-comment-content-img col-md-1">
+                        <img ng-src="{{message.sender.avatar}}" class="img-responsive">
+                    </div>
+                    <div class="project-comment-content-name col-md-2">{{message.sender.fullname}}</div>
+                    <div class="project-comment-content-message col-md-7">
+                        <div class="col-md-12">{{message.content}}</div>
+                    </div>
+                    <div class="project-comment-content-operate col-md-2 text-right">
+                        <p>{{message.created | limitTo:-8}}</p>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-link" ng-click="replyMessageModal('{{message.uuid}}')">
+                                <span>Reply</span>
+                                <img src="images/reply-icon.png">
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-link" ng-click="deleteMessageModal('{{message.uuid}}')">
+                                    <span>Delete</span>
+                                    <img src="images/delete-blue-icon.png">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-comment-content-item-reply">
+                    <div class="project-comment-content-itemReply" ng-repeat="reply in message.replies">
+                        <div class="row">
+                            <div class="project-comment-content-img col-md-1">
+                                <img ng-src="{{reply.sender.avatar}}" class="img-responsive">
+                            </div>
+                            <div class="project-comment-content-name col-md-2">{{reply.sender.fullname}}</div>
+                            <div class="project-comment-content-message col-md-7">
+                                <div class="col-md-12">{{reply.content}}</div>
+                            </div>
+                            <div class="project-comment-content-operate col-md-2">
+                                <p>{{reply.created | limitTo:-8}}</p>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-link" ng-click="replyMessageModal('{{message.uuid}}')">
+                                            <span>Reply</span>
+                                            <img src="images/reply-icon.png">
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-link" ng-click="deleteMessageModal('{{reply.uuid}}')">
+                                            <span>Delete</span>
+                                            <img src="images/delete-blue-icon.png">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
