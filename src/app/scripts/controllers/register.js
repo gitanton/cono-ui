@@ -29,7 +29,11 @@ angular.module('conojoApp')
 
         $scope.formData = {};
 
-        $scope.processForm = function () {
+        $scope.processForm = function (isValid) {
+            if(!isValid) {
+                return false;
+            }
+
             $http({
                 url: ENV.API_ENDPOINT + 'users',
                 method: 'POST',

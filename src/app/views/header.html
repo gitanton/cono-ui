@@ -7,6 +7,7 @@
     <div class="col-md-3 hidden-xs">
         <div class="col-md-4">
             <img src="images/calender-icon.png" ng-click="showCalendar($event)">
+
             <div id="datetimepicker">
                 <div class="datetimepicker-title">MEETINGS
                     <img src="images/calender-white-icon.png" ng-click="hideCalendar()">
@@ -21,25 +22,31 @@
         </div>
     </div>
     <div id="meetingDetail" class="modal fade in">
-        <div class="meetingDetail-add row">
-            <div class="col-md-10 meetingDetail-add-desc">MEETING DETAILS IN THIS DAY</div>
-            <div class="col-md-2 meetingDetail-add-delicon">
-                <img src="images/close-icon.png" data-dismiss="modal">
-            </div>
-        </div>
-        <div class="meetingDetail-content" ng-if="meetingDetails == true">
-            <p ng-repeat="selectDateMeeting in selectDateMeetings">
-                {{selectDateMeeting.name}}---{{selectDateMeeting.time}}
-                <label ng-click="startOneMeeting('{{selectDateMeeting.uuid}}')">Join in this meeting</label>
-            </p>
-        </div>
-        <div ng-if="meetingDetails == false" class="meeting-start">
-            <form>
-                <div class="form-group">
-                    <input type="text" ng-model="digits" class="meeting-start-input" placeholder="Enter your digits"/>
-                    <button class="meeting-start-button" ng-click="joinOneMeeting()">Start meeting</button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Meeting Details for this Day</h3>
                 </div>
-            </form>
+                <div class="modal-body">
+                    <div ng-if="meetingDetails == true" class="meetingDetail-content">
+                        <p ng-repeat="selectDateMeeting in selectDateMeetings">
+                            {{selectDateMeeting.name}}---{{selectDateMeeting.time}}
+                        </p>
+                        <button class="btn btn-primary" ng-click="startOneMeeting('{{selectDateMeeting.uuid}}')">Join in this meeting</button>
+                    </div>
+                    <div ng-if="meetingDetails == false">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" ng-model="digits" class="meeting-start-input form-control" placeholder="Enter your digits"/>
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary" ng-click="joinOneMeeting()">Start meeting</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="startMeeting" ng-if="startMeeting == true">
@@ -82,7 +89,8 @@
             </div>
             <div class="meeting-chat-input">
                 <form>
-                    <input type="text" name="meeting-chat-content" ng-model="chatComment" ng-keyup="$event.keyCode == 13 && sendChat()" placeholder="Type your message here">
+                    <input type="text" name="meeting-chat-content" ng-model="chatComment" ng-keyup="$event.keyCode == 13 && sendChat()"
+                           placeholder="Type your message here">
                 </form>
             </div>
         </div>
@@ -103,7 +111,8 @@
                         <select class="js-example-basic-single" data-placeholder="Reasons for requesting support"></select>
                     </div>
                     <div class="col-md-12">
-                        <textarea name="messageContent" ng-model="messageContent" class="form-control feedback-add-message" placeholder="Add message"></textarea>
+                        <textarea name="messageContent" ng-model="messageContent" class="form-control feedback-add-message"
+                                  placeholder="Add message"></textarea>
                     </div>
                 </div>
                 <div class="col-md-12 feedback-add-button">
