@@ -7,8 +7,24 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectActivityTemplateCtrl', function ($scope, $http, $location, $window, $routeParams, ENV, ModalService) {
+    .controller('ProjectActivityTemplateCtrl', function ($scope, $http, $location, $window, $routeParams, ENV, ModalService, NAV) {
         $scope.activeProjectUuid = $routeParams.uuid;
+        /**
+         * Navigation
+         */
+        $scope.hasScreens = function() {
+            return true;
+        };
+        $scope.hasVideos = function() {
+            return false;
+        };
+        $scope.isActivity = function() {
+            return true;
+        };
+        $scope.screenURL = '#/'+NAV.PROJECT_TEMPLATE_SCREEN+'/' + $scope.activeProjectUuid;
+        $scope.buildURL = '#/'+NAV.PROJECT_TEMPLATE_BUILD+'/' + $scope.activeProjectUuid;
+        $scope.activityURL = '#/'+NAV.PROJECT_TEMPLATE_ACTIVITY+'/' + $scope.activeProjectUuid;
+        $scope.commentURL = '#/'+NAV.PROJECT_TEMPLATE_COMMENT+'/' + $scope.activeProjectUuid;
 
         $scope.init = function () {
             $http({
@@ -98,16 +114,6 @@ angular.module('conojoApp')
                     $location.path('/project-templateSelect/' + $scope.activeProjectUuid);
                 }
             });
-        };
-
-        $scope.toScreen = function () {
-            var url = '/project-screen-template/' + $scope.activeProjectUuid;
-            $location.path(url);
-        };
-
-        $scope.toComment = function () {
-            var url = '/project-comment-template/' + $scope.activeProjectUuid;
-            $location.path(url);
         };
 
         $scope.handleDrop = function () {

@@ -1,18 +1,26 @@
 <div class="project-content-menu">
     <div class="row">
-        <div class="project-activity-content-nav col-md-12">
+        <div class="nav col-md-12">
             <ul class="list-inline profile-menu pull-left">
-                <li>
-                    <button class="btn btn-link" ng-click="toBuild()">BUILD</button>
+                <li ng-class="{'current' : isBuild()}">
+                    <a class="btn btn-link hidden-xs" href="{{buildURL}}">BUILD</a>
+                    <a class="btn btn-link visible-xs" href="{{buildURL}}"><i class="fa fa-cog"></i></a>
                 </li>
-                <li>
-                    <button class="btn btn-link" ng-click="toVideo()">VIDEOS</button>
+                <li ng-if="hasScreens()" ng-class="{'current' : isScreen()}">
+                    <a class="btn btn-link hidden-xs" href="{{screenURL}}">Screen</a>
+                    <a class="btn btn-link visible-xs" href="{{screenURL}}"><i class="fa fa-photo"></i></a>
                 </li>
-                <li class="project-design-menu-current">
-                    <button class="btn btn-link" ng-click="toActivity()">ACTIVITY</button>
+                <li ng-if="hasVideos()" ng-class="{'current' : isVideo()}">
+                    <a class="btn btn-link hidden-xs" href="{{videoURL}}">VIDEOS</a>
+                    <a class="btn btn-link visible-xs" href="{{videoURL}}"><i class="fa fa-video-camera"></i></a>
                 </li>
-                <li>
-                    <button class="btn btn-link" ng-click="toComment()">COMMENTS</button>
+                <li ng-class="{'current' : isActivity()}">
+                    <a class="btn btn-link hidden-xs" href="{{activityURL}}">ACTIVITY</a>
+                    <a class="btn btn-link visible-xs" href="{{activityURL}}"><i class="fa fa-tasks"></i></a>
+                </li>
+                <li ng-class="{'current' : isComment()}">
+                    <a class="btn btn-link hidden-xs" href="{{commentURL}}">COMMENTS</a>
+                    <a class="btn btn-link visible-xs" href="{{commentURL}}"><i class="fa fa-comments"></i></a>
                 </li>
             </ul>
             <div class="project-content-member pull-right">

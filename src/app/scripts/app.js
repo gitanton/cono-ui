@@ -25,7 +25,14 @@ angular
         'ui.select',
         'ui.bootstrap.datetimepicker'
     ])
-    .config(function ($routeProvider, $httpProvider, LogglyLoggerProvider, uiSelectConfig) {
+    .constant('NAV', {
+        PROJECT_TEMPLATE_BUILD: 'project-template-build',
+        PROJECT_TEMPLATE_ACTIVITY: 'project-template-activity',
+        PROJECT_TEMPLATE_COMMENT: 'project-template-comment',
+        PROJECT_TEMPLATE_SELECT: 'project-template-select',
+        PROJECT_TEMPLATE_SCREEN: 'project-template-screen'
+    })
+    .config(function ($routeProvider, $httpProvider, LogglyLoggerProvider, uiSelectConfig, NAV) {
 
         //Enable cross domain calls
         $httpProvider.defaults.useXDomain = true;
@@ -136,23 +143,23 @@ angular
                 templateUrl: 'views/project-comment-video.html',
                 controller: 'ProjectCommentVideoCtrl'
             })
-            .when('/project-build-template/:puuid/:suuid', {
-                templateUrl: 'views/project-build-template.html',
+            .when('/'+NAV.PROJECT_TEMPLATE_BUILD+'/:puuid/:suuid', {
+                templateUrl: 'views/project-template-build.html',
                 controller: 'ProjectBuildTemplateCtrl'
             })
-            .when('/project-screen-template/:uuid', {
-                templateUrl: 'views/project-screen-template.html',
+            .when('/'+NAV.PROJECT_TEMPLATE_SCREEN+'/:uuid', {
+                templateUrl: 'views/project-template-screen.html',
                 controller: 'ProjectScreenTemplateCtrl'
             })
-            .when('/project-templateSelect/:uuid', {
-                templateUrl: 'views/project-templateSelect.html',
+            .when('/'+NAV.PROJECT_TEMPLATE_SELECT+'/:uuid', {
+                templateUrl: 'views/project-template-select.html',
                 controller: 'ProjectTemplateSelectCtrl'
             })
-            .when('/project-activity-template/:uuid', {
-                templateUrl: 'views/project-activity-template.html',
+            .when('/'+NAV.PROJECT_TEMPLATE_ACTIVITY+'/:uuid', {
+                templateUrl: 'views/project-template-activity.html',
                 controller: 'ProjectActivityTemplateCtrl'
             })
-            .when('/project-comment-template/:uuid', {
+            .when('/'+NAV.PROJECT_TEMPLATE_COMMENT+'/:uuid', {
                 templateUrl: 'views/project-comment-template.html',
                 controller: 'ProjectCommentTemplateCtrl'
             })

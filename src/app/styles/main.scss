@@ -1251,7 +1251,7 @@ body {
   }
 }
 
-.project-design-menu-current {
+.project-design-menu-current, li.current {
   background: $color-blue-5;
   border-radius: $border-radius;
 }

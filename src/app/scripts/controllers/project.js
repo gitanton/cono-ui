@@ -8,7 +8,7 @@
  */
 angular.module('conojoApp')
     .controller('ProjectCtrl', function ($rootScope, $scope, $http, $location, ENV, RC_FREE_TRIAL_EXPIRED, projectService,
-                                         ModalService) {
+                                         ModalService, NAV) {
         $scope.newProject = {};
 
         $scope.init = function () {
@@ -119,7 +119,7 @@ angular.module('conojoApp')
                 }).then(function (response) {
                     var data = response.data;
                     if (data.length > 0) {
-                        $location.path('/project-build-template/' + uuid + '/' + data[0].uuid);
+                        $location.path('/'+NAV.PROJECT_TEMPLATE_BUILD+'/' + uuid + '/' + data[0].uuid);
                     } else {
                         $location.path('/project-templateSelect/' + uuid);
                     }
