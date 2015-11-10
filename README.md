@@ -30,8 +30,8 @@ Keystore Key: &C0n0j0!
 
 ```
 cordova build --release android
-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore conojo.keystore platforms\android\build\outputs\apk\android-armv7-release-unsigned.apk conojo
-\lang\Android\android-sdk\build-tools\22.0.1\zipalign.exe -v 4 platforms\android\build\outputs\apk\android-armv7-release-unsigned.apk conojo.apk
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore conojo.keystore platforms\android\build\outputs\apk\android-release-unsigned.apk conojo
+\lang\Android\android-sdk\build-tools\22.0.1\zipalign.exe -v 4 platforms\android\build\outputs\apk\android-release-unsigned.apk conojo.apk
 
 ```
 
