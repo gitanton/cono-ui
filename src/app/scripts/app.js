@@ -96,7 +96,7 @@ angular
                 controller: 'ProjectCommentCtrl'
             })
             .when('/project-screenUpload/:uuid', {
-                templateUrl: 'views/project-screenUpload.html',
+                templateUrl: 'views/project-screen-upload.html',
                 controller: 'ProjectScreenUploadCtrl'
             })
             .when('/invitation/:invite/:type', {
@@ -128,11 +128,11 @@ angular
                 controller: 'ProjectVideoCtrl'
             })
             .when('/project-videoUpload/:uuid', {
-                templateUrl: 'views/project-videoUpload.html',
+                templateUrl: 'views/project-video-upload.html',
                 controller: 'ProjectVideoUploadCtrl'
             })
             .when('/project-videoPlay/:puuid/:vuuid', {
-                templateUrl: 'views/project-videoPlay.html',
+                templateUrl: 'views/project-video-play.html',
                 controller: 'ProjectVideoPlayCtrl'
             })
             .when('/project-activity-video/:uuid', {
@@ -142,6 +142,10 @@ angular
             .when('/project-comment-video/:uuid', {
                 templateUrl: 'views/project-comment-video.html',
                 controller: 'ProjectCommentVideoCtrl'
+            })
+            .when('/'+NAV.PROJECT_TEMPLATE_BUILD+'/:puuid', {
+                templateUrl: 'views/project-template-build.html',
+                controller: 'ProjectBuildTemplateCtrl'
             })
             .when('/'+NAV.PROJECT_TEMPLATE_BUILD+'/:puuid/:suuid', {
                 templateUrl: 'views/project-template-build.html',
@@ -160,7 +164,7 @@ angular
                 controller: 'ProjectActivityTemplateCtrl'
             })
             .when('/'+NAV.PROJECT_TEMPLATE_COMMENT+'/:uuid', {
-                templateUrl: 'views/project-comment-template.html',
+                templateUrl: 'views/project-template-comment.html',
                 controller: 'ProjectCommentTemplateCtrl'
             })
             .when('/register-billingInfo', {

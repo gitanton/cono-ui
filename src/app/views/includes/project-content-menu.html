@@ -1,7 +1,7 @@
 <div class="project-content-menu">
     <div class="row">
         <div class="nav col-md-12">
-            <ul class="list-inline profile-menu pull-left">
+            <ul class="list-inline project-menu">
                 <li ng-class="{'current' : isBuild()}">
                     <a class="btn btn-link hidden-xs" href="{{buildURL}}">BUILD</a>
                     <a class="btn btn-link visible-xs" href="{{buildURL}}"><i class="fa fa-cog"></i></a>
@@ -24,7 +24,7 @@
                 </li>
             </ul>
             <div class="project-content-member pull-right">
-                <ul class="list-inline">
+                <ul class="list-inline hidden-xs">
                     <li ng-repeat="projectMember in projectMembers">
                         <img ng-if="projectMember.avatar != null" ng-src="{{projectMember.avatar}}" alt="{{projectMember.fullname}}"
                              title="{{projectMember.fullname}}">

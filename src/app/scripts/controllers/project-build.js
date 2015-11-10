@@ -42,6 +42,8 @@ angular.module('conojoApp')
                 $scope.projectMembers = data.users;
                 $scope.updateProjectTitle = data.name;
                 $scope.updateProjectTypeid = data.type_id;
+            }).then(function() {
+
             });
 
             $http({

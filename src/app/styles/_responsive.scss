@@ -23,6 +23,16 @@
         overflow-x: hidden;
     }
 
+    .navbar {
+        margin-bottom: $margin-default;
+
+        .navbar-brand {
+            @include bg-img-box('logo.png');
+            @include hide-text;
+            margin: $margin-smallest 0 0 $margin-small;
+        }
+    }
+
     .login-container {
         .login-form {
             width: auto;
@@ -35,9 +45,14 @@
     }
 
     .project-container {
+        padding: 0 $padding-default;
+        position: static;
+
         .project-header {
             width: auto;
             height: auto;
+            padding: $padding-default;
+            margin: 0 -15px;
 
             .project-header-search {
                 width: auto;
@@ -53,11 +68,20 @@
                     display: block;
                 }
             }
+
+            .name {
+                text-align: center;
+                padding: 0 0 $padding-small 0;
+            }
+
+            .button {
+                text-align: center;
+            }
         }
 
         .project-content {
-            padding-left: 60px !important;
-
+            margin: 0 -15px;
+            padding: 0 $padding-default;
             .project-content-offset {
                 margin-bottom: 45px;
             }
@@ -65,6 +89,10 @@
             .project-content-btm {
                 width: 100%;
             }
+        }
+
+        .project-content-menu {
+            margin: 0 -15px;
         }
     }
 
@@ -78,49 +106,16 @@
         }
     }
 
-    .project-build-container {
-        .project-build-header {
-            height: auto;
+    .project-content-menu {
+        float: none !important;
+        .project-menu {
+            @include display-flex();
 
-            .project-build-header-button {
-                padding-top: 10px;
-                button {
-                    width: 50%;
-                    float: left;
-                }
+            li {
+                min-width: 0;
+                @include flex(1);
             }
-        }
 
-        .project-build-content {
-            .project-build-content-menu {
-                height: auto;
-            }
-        }
-    }
-
-    .project-screen-video-container {
-        .project-screen-video-header {
-            height: auto;
-
-            .project-screen-video-header-button {
-                padding-top: 10px;
-                button {
-                    width: 100%;
-                }
-            }
-        }
-
-        .project-screen-video-content {
-            .project-screen-video-content-menu {
-                height: auto;
-            }
-            .project-screen-video-content-body {
-                .project-screen-video-content-upload {
-                    width: auto;
-                    top: 30px;
-                    left: 30px;
-                }
-            }
         }
     }
 }

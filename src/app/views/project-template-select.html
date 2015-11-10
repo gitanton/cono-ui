@@ -1,10 +1,10 @@
 <div class="templates-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="templates-container">
-        <div class="templates-header">
+    <div class="templates-container project-container">
+        <div class="templates-header project-header">
             <div class="row">
-                <div class="templates-header-name col-md-7">
+                <div class="templates-header-name name col-md-7">
                     <span><img src="images/back-icon.png" ng-click="goBack()" title="Back to Build">Select Your Templates</span>
                 </div>
                 <div class="templates-header-button col-md-3">
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="templates-content">
+        <div class="templates-content project-content">
             <div class="templates-content-body">
                 <div class="templates-content-unselect col-md-6" ng-repeat="template in templates">
                     <div class="templates-content-template-icon" ng-click="clickTemplate('{{template.url}}',$event,$index)">

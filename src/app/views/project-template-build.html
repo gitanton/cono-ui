@@ -1,21 +1,21 @@
 <div class="project-build-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="project-build-container col-md-12">
-        <div class="project-build-header">
+    <div class="project-build-container project-container col-md-12">
+        <div class="project-build-header project-header">
             <div class="row">
-                <div class="project-build-header-name col-md-6">
+                <div class="project-build-header-name name col-md-6">
                     <span ng-bind="updateProjectTitle"></span>
                     <img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
                 </div>
-                <div class="project-build-header-button col-md-6">
+                <div class="project-build-header-button button col-md-6">
                     <button class="btn btn-lg btn-primary">Share</button>
                     <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting
                     </button>
                 </div>
             </div>
         </div>
-        <div class="project-build-content">
+        <div class="project-build-content project-content">
         <div ng-include="'views/includes/project-content-menu.html'"></div>
             <div class="project-build-content-body">
                 <div class="project-build-content-drawing">
