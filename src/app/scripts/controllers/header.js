@@ -117,7 +117,7 @@ angular.module('conojoApp')
             }).then(function () {
                 $scope.chatComment = '';
             }, function (error) {
-                $('.reset-note').html(error.message);
+                $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');
             });
         };
@@ -150,25 +150,13 @@ angular.module('conojoApp')
             $location.path(url);
         };
 
-        $scope.reasons = [{id: 1, text: 'reason one'}, {id: 2, text: 'reason two'}, {
-            id: 3,
-            text: 'reason three'
-        }, {id: 4, text: 'reason four'}, {id: 5, text: 'reason five'}];
-
         $scope.openFeedBack = function () {
-            $(".js-example-basic-single").select2({
-                templateResult: function (state) {
-                    return $('<p>' + state.text + '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>');
-                },
-                minimumResultsForSearch: Infinity,
-                data: $scope.reasons,
-            });
-            $(".js-example-basic-single").select2('val', '');
             $('#addFeedback').modal('toggle');
         };
 
         $scope.addNewFeedBack = function () {
             //add new feedback
+            $('#addFeedback').modal('toggle');
         };
     });
 

@@ -1,53 +1,35 @@
-<div class="message-page">
+<div class="message-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="message-container">
-        <div class="message-header">
-            <div class="message-header-title col-md-6">
-                <span>MESSAGES</span>
-            </div>
-            <!-- <div class="message-header-button col-md-6">
-                <button class="btn btn-lg" ng-click="openAddNewMessage()">New Message</button>
-            </div> -->
-        </div>
-        <div class="message-subheader">
-            <div class="message-subheader-unread col-md-6">
-                <span>{{messages.length}} Unread Messages </span>
-                <img src="images/line-after-message.png">
-                <a href="javascript:void(0)">
-                    <img src="images/search-icon.png">
-                </a>
-            </div>
-            <div class="message-subheader-previously col-md-6">
-                <input type="checkbox">
-                Show previously viewed messages
+    <div class="message-container project-container project-comment-container">
+        <div class="message-header project-header">
+            <div class="row">
+                <div class="message-header-title col-md-6">
+                    <span>MESSAGES</span>
+                </div>
+                <!-- <div class="message-header-button col-md-6">
+                    <button class="btn btn-lg" ng-click="openAddNewMessage()">New Message</button>
+                </div> -->
             </div>
         </div>
+        <div class="project-content project-comment-content">
+            <div class="message-subheader ">
+                <div class="message-subheader-unread col-md-6">
+                    <span>{{messages.length}} Unread Messages </span>
+                    <img src="images/line-after-message.png">
+                    <a href="javascript:void(0)">
+                        <img src="images/search-icon.png">
+                    </a>
+                </div>
+                <div class="message-subheader-previously col-md-6">
+                    <input type="checkbox">
+                    Show previously viewed messages
+                </div>
+            </div>
+            <div ng-include="'views/includes/comments-messages.html'"></div>
 
-        <div ng-include="'views/includes/comments-messages.html'"></div>
+        </div>
     </div>
-</div><!-- <div id="addNewMessage" class="modal fade in" style="display: none;">
-    <div class="newmessage-add">
-        <div class="col-md-10 newmessage-add-desc">NEW COMMENT</div>
-        <div class="col-md-2 newmessage-add-delicon"><img src="images/close-icon.png" data-dismiss="modal"></div>
-        <form name="createnewmessage">
-            <div class="col-md-12 newmessage-add-body">
-                <div class="form-group has-add">
-                    <input type="text" name="newmessageemail" ng-model="memberEmail" class="form-control newmessage-add-email" placeholder="Choose recipients or enter an email" />
-                    <img class="newmessage-add-addicon" src="images/add-gray-icon.png">
-                </div>
-                <div class="form-group has-allselected">
-                    <label><input type="checkbox"> Send to everyone on the project</label>
-                </div>
-                <div class="col-md-12">
-                    <textarea name="newmessagecontentl" ng-model="messageContent" class="form-control newmessage-add-message" placeholder="Add Comment"></textarea>
-                </div>
-            </div>
-            <div class="col-md-12 newmessage-add-button">
-                <button class="btn btn-lg" type="submit" ng-click="addNewComment('{{activeProjectUuid}}')">Send Comment</button>
-            </div>
-        </form>
-    </div>
-</div> -->
+</div>
 <div ng-include="'views/modal/includes/reply-message.html'"></div>
 <div ng-include="'views/modal/includes/delete-message.html'"></div>

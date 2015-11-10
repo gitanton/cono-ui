@@ -1,0 +1,31 @@
+<div id="addFeedback" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Support</h3>
+            </div>
+            <form name="createnewmessage" class="form-gray">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 feedback-add-body">
+                            <p>Submit feedback or report problems you are experiencing using the form below.</p>
+
+                            <div class="form-group has-add">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="messageContent" ng-model="messageContent" class="form-control feedback-add-message" placeholder="Add message"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-12 feedback-add-button">
+                        <button class="btn btn-lg btn-primary" type="submit" ng-click="addNewFeedBack()">Get support
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

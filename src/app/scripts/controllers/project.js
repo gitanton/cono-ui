@@ -111,7 +111,7 @@ angular.module('conojoApp')
                 $('#duplicateproject').modal('hide');
             }, function (error) {
                 $('#duplicateproject').modal('hide');
-                $('.reset-note').html(error.message);
+                $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');
             });
         };
@@ -131,7 +131,7 @@ angular.module('conojoApp')
                 $('#shareproject').modal('hide');
             }, function (error) {
                 $('#shareproject').modal('hide');
-                $('.reset-note').html(error.message);
+                $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');
             });
         };
@@ -152,7 +152,7 @@ angular.module('conojoApp')
                 $('#archiveproject').modal('hide');
             }, function (error) {
                 $('#archiveproject').modal('hide');
-                $('.reset-note').html(error.message);
+                $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');
             });
         };
@@ -172,7 +172,7 @@ angular.module('conojoApp')
                 $('#deleteproject').modal('hide');
             }, function (error) {
                 $('#deleteproject').modal('hide');
-                $('.reset-note').html(error.message);
+                $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');
             });
         };
@@ -189,7 +189,7 @@ angular.module('conojoApp')
                 projectService.reorder(uuids).then(function () {
                     $scope.init();
                 }, function (error) {
-                    $('.reset-note').html(error.message);
+                    $('.reset-note').html(error.data.message);
                     $('#statusNotice').modal('toggle');
                 });
             }

@@ -85,7 +85,7 @@ angular.module('conojoApp')
                 $('#addNewMessage').modal('hide');
             }, function (error) {
                 $('#addNewMessage').modal('hide');
-                $('.reset-note').html(error.message);
+                $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');
             });
         };
@@ -111,7 +111,7 @@ angular.module('conojoApp')
                 $('#replymessage').modal('hide');
             }, function (error) {
                 $('#replymessage').modal('hide');
-                $('.reset-note').html(error.message);
+                $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');
             });
         };

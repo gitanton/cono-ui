@@ -13,15 +13,19 @@ angular.module('conojoApp')
         $scope.user = store.get('user');
 
         $scope.init = function () {
-            $scope.userAvatar = $scope.user.avatar;
+            if($scope.user) {
+                $scope.userAvatar = $scope.user.avatar;
+            }
         };
 
         /**
          * Watch the user's avatar for changes so we can change it when it changes.
          */
         $scope.$watch('user.avatar', function () {
-            $('.siderbar-closed-img').attr('src', $scope.user.avatar);
-            $('.siderbar-expand-img').attr('src', $scope.user.avatar);
+            if($scope.user) {
+                $('.siderbar-closed-img').attr('src', $scope.user.avatar);
+                $('.siderbar-expand-img').attr('src', $scope.user.avatar);
+            }
         });
 
         $scope.expandMenu = function () {
@@ -52,7 +56,7 @@ angular.module('conojoApp')
                     $location.path('/');
                 }
             }, function (error) {
-                $('.reset-note').html(error.message);
+                $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');
             });
         };

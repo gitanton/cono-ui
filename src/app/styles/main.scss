@@ -845,18 +845,6 @@ body {
 
 /*message page*/
 .message-container {
-    .message-header {
-        height: $header-height;
-        background: $color-gray-4;
-        border-top: 1px solid $color-gray-2;
-        padding: 11px 20px 12px 84px;
-        .message-header-title {
-            padding: 7px 0;
-        }
-        .message-header-button {
-            text-align: right;
-        }
-    }
     .message-subheader {
         height: 66px;
         padding: 21px 18px 21px 82px;

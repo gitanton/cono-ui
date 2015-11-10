@@ -9,6 +9,7 @@
  */
 angular.module('conojoApp')
     .controller('MessageCtrl', function ($scope, $http, ENV, NAV) {
+        $scope.model = {};
 
         $scope.init = function () {
             $http({
@@ -44,7 +45,7 @@ angular.module('conojoApp')
             $('#replymessage').modal('toggle');
             $scope.replyMessageUuid = muuid;
             $scope.replyProjectUuid = puuid;
-            $scope.messagecontent = '';
+            $scope.model.replyContent = '';
         };
 
         $scope.replyMessage = function () {
@@ -52,7 +53,7 @@ angular.module('conojoApp')
                 url: ENV.API_ENDPOINT + 'messages',
                 method: 'POST',
                 data: $.param({
-                    content: $scope.messagecontent,
+                    content: $scope.model.replyContent,
                     project_uuid: $scope.replyProjectUuid,
                     parent_uuid: $scope.replyMessageUuid
                 }),
@@ -61,8 +62,9 @@ angular.module('conojoApp')
                 $scope.init();
                 $('#replymessage').modal('hide');
             }, function (error) {
+                console.log(error);
                 $('#replymessage').modal('hide');
-                $('.reset-note').html(error.message);
+                $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');
             });
         };

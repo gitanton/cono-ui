@@ -37,7 +37,7 @@ angular.module('conojoApp')
                 $('#addPeopleToProject').modal('hide');
             }, function (error) {
                 $('#addPeopleToProject').modal('hide');
-                $('.reset-note').html(error.message);
+                $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');
             });
         };
@@ -57,7 +57,7 @@ angular.module('conojoApp')
                 $('#addTeamMember').modal('hide');
             }, function (error) {
                 $('#addTeamMember').modal('hide');
-                $('.reset-note').html(error.message);
+                $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');
             });
         };
