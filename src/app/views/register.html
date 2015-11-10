@@ -1,7 +1,7 @@
 <div class="register-container">
     <div class="spacer-30"></div>
     <div class="row">
-        <div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+        <div class="col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
             <div class="register-logo">
                 <a ng-href="#/">
                     <img src="images/logo-account.png">
@@ -9,7 +9,7 @@
             </div>
             <div class="register-form">
                 <div class="row">
-                    <div class="col-md-12 register-desc">
+                    <div class="col-sm-12 register-desc">
                         <p class="register-desc-free text-center">Get Started Absolutely FREE.</p>
 
                         <p class="register-desc-card text-center">No credit card needed.</p>
@@ -18,7 +18,7 @@
                 <div class="row">
                     <form name="userForm" ng-submit="processForm(userForm.$valid)" novalidate>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <input type="text" name="username" class="form-control register-username" placeholder="Username" ng-model="formData.username" ng-minlength="5" required/>
                                 </div>
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control register-email" placeholder="Email" ng-model="formData.email" required/>
                                 </div>
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <select name="timezone" class="form-control register-timezone" ng-model="formData.timezone" required>
                                         <option ng-repeat="timezone in timezones" value={{timezone}}>{{timezone}}
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <input type="password" name="password" class="form-control register-password" placeholder="Password" ng-model="formData.password" ng-minlength="6" required/>
                                     <span ng-show="userForm.password.$invalid && !userForm.password.$pristine">Password Should be at least six characters long</span>
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <input type="password" name="confirmpassword" class="form-control register-confirmpassword" placeholder="Confirm Password" ng-model="formData.confirmpassword" ng-minlength="6" required/>
                                 </div>
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 col-md-offset-3 register-button text-center">
+                            <div class="col-sm-6 col-sm-offset-3 register-button text-center">
                                 <div class="spacer-30"></div>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                                     Create Account
@@ -113,10 +113,10 @@
                 </div>
                 <div class="register-footer-date-trial">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-sm-5">
                             <img src="images/free-trial.png">
                         </div>
-                        <div class="col-md-7"><p>Your free 30-day trial</p>
+                        <div class="col-sm-7"><p>Your free 30-day trial</p>
 
                             <p>lasts until:{{lastDay | date}}</p>
                         </div>
@@ -126,13 +126,13 @@
             <div id="registerNote" class="modal fade in" style="display: none;">
                 <div class="reset">
                     <div class="row">
-                        <div class="col-md-10 reset-desc">REGISTER</div>
-                        <div class="col-md-2 reset-delete-delicon">
+                        <div class="col-md-10 col-sm-8 reset-desc">REGISTER</div>
+                        <div class="col-md-2 col-sm-4 reset-delete-delicon">
                             <img src="images/close-icon.png" data-dismiss="modal">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 reset-note">
+                        <div class="col-sm-12 reset-note">
                             <p ng-show="errorOne">The Email field must contain a unique value. Please fill in your
                                 information again.</p>
 

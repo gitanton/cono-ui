@@ -3,13 +3,13 @@
     <div ng-include="'views/siderbar.html'"></div>
     <div class="profile-billing-container">
         <div class="profile-billing-header">
-            <div class="profile-billing-header-name col-md-12">
+            <div class="profile-billing-header-name col-sm-12">
                 <span>Profile</span>
             </div>
         </div>
         <div class="profile-billing-content">
             <div class="profile-content-menu">
-                <div class="profile-content-nav col-md-12">
+                <div class="profile-content-nav col-sm-12">
                     <ul class="list-inline profile-menu">
                         <li>
                             <a href="#/profile-project/">MY PROJECTS</a>
@@ -33,23 +33,23 @@
                     <div class="profile-billing-content-billing">
                         <div class="profile-billing-content-billing-plan">
                             <div class="row">
-                                <div class="profile-billing-content-billing-plantitle col-md-1">Your Plan</div>
-                                <div class="col-md-5" ng-if="hasPlan()">
+                                <div class="profile-billing-content-billing-plantitle col-sm-1">Your Plan</div>
+                                <div class="col-sm-5" ng-if="hasPlan()">
                                     <div class="profile-billing-content-billing-planinfo">
                                         {{planName}} --- ${{planPrice}}/Month
                                     </div>
                                 </div>
-                                <div class="col-md-3" ng-if="!hasPlan()">
+                                <div class="col-sm-3" ng-if="!hasPlan()">
                                     <button class="btn-primary-outline btn btn-block" ng-click="upgradePlan()">Choose
                                         Plan
                                     </button>
                                 </div>
-                                <div class="col-md-3" ng-if="hasPlan()">
+                                <div class="col-sm-3" ng-if="hasPlan()">
                                     <button class="btn-primary-outline btn btn-block" ng-click="upgradePlan()">Change
                                         Plan
                                     </button>
                                 </div>
-                                <div class="col-md-3" ng-if="hasPlan()">
+                                <div class="col-sm-3" ng-if="hasPlan()">
                                     <button class="btn-primary-outline btn btn-block" ng-click="openCancelPlan()">Cancel
                                         Plan
                                     </button>
@@ -59,7 +59,7 @@
                         <div class="profile-billing-content-billing-history">
                             <div class="profile-billing-content-billing-historytitle">History</div>
                             <div class="row" ng-repeat="billing in billings">
-                                <div class="profile-billing-content-billing-historyitem col-md-12">
+                                <div class="profile-billing-content-billing-historyitem col-sm-12">
                                     Invoice for ${{billing.total}} on {{billing.date | limitTo: 10}}
                                 </div>
                             </div>
@@ -70,15 +70,15 @@
                     <div class="profile-billing-content-title">Your Billing</div>
                     <div class="profile-billing-content-billing">
                         <div class="profile-billing-content-billing-planTitle">
-                            <div class="col-md-5">
+                            <div class="col-sm-5">
                                 <img src="images/back-icon.png" ng-click="backBilling()">
                                 BACK
                             </div>
-                            <div class="col-md-7">SELECT A PLAN</div>
+                            <div class="col-sm-7">SELECT A PLAN</div>
                         </div>
                         <div class="profile-billing-content-billing-plans">
                             <div class="profile-billing-content-billing-plans-items row">
-                                <div class="col-md-4" ng-class="{true:'profile-billing-content-billing-plans-itemSelect',false:'profile-billing-content-billing-plans-item'}[plan.id == planId]" ng-if="plan.projects >= 0" ng-repeat="plan in plans">
+                                <div class="col-sm-4" ng-class="{true:'profile-billing-content-billing-plans-itemSelect',false:'profile-billing-content-billing-plans-item'}[plan.id == planId]" ng-if="plan.projects >= 0" ng-repeat="plan in plans">
                                     <div class="profile-billing-content-billing-plans-name">{{plan.name}}</div>
                                     <div class="profile-billing-content-billing-plans-price">${{plan.price}}/Month</div>
                                     <div class="profile-billing-content-billing-plans-num">
@@ -96,7 +96,7 @@
                                         SELECT PLAN
                                     </div>
                                 </div>
-                                <div class="col-md-4" ng-class="{true:'profile-billing-content-billing-plans-itemSelect',false:'profile-billing-content-billing-plans-item'}[plan.id == planId]" ng-if="plan.projects < 0" ng-repeat="plan in plans">
+                                <div class="col-sm-4" ng-class="{true:'profile-billing-content-billing-plans-itemSelect',false:'profile-billing-content-billing-plans-item'}[plan.id == planId]" ng-if="plan.projects < 0" ng-repeat="plan in plans">
                                     <div class="profile-billing-content-billing-plans-name">{{plan.name}}</div>
                                     <div class="profile-billing-content-billing-plans-price">${{plan.price}}/Month</div>
                                     <div class="profile-billing-content-billing-plans-num">
@@ -124,24 +124,24 @@
                             <div class="spacer"></div>
 
                             <div class="profile-billing-content-billing-plans-submit row">
-                                <div class="col-md-4">New Plan Price Total</div>
-                                <div class="col-md-4" ng-if="newPlanId == 0">
+                                <div class="col-sm-4">New Plan Price Total</div>
+                                <div class="col-sm-4" ng-if="newPlanId == 0">
                                     <div class="profile-billing-content-billing-submit-l">Select A Plan
                                     </div>
                                 </div>
-                                <div class="col-md-4" ng-if="newPlanId != 0">
+                                <div class="col-sm-4" ng-if="newPlanId != 0">
                                     <div class="profile-billing-content-billing-submit-l">{{newPlanName}} -
                                         ${{newPlanPrice}} per month
                                     </div>
                                 </div>
-                                <div class="col-md-4" ng-if="newPlanId != 0">
-                                    <div class="profile-billing-content-billing-submit-d col-md-3" ng-click="decreaseMember()">
+                                <div class="col-sm-4" ng-if="newPlanId != 0">
+                                    <div class="profile-billing-content-billing-submit-d col-sm-3" ng-click="decreaseMember()">
                                         -
                                     </div>
-                                    <div class="profile-billing-content-billing-submit-price col-md-6">+
+                                    <div class="profile-billing-content-billing-submit-price col-sm-6">+
                                         {{newPlanMember}} Team Member - ${{newPlanAddedPrice}}
                                     </div>
-                                    <div class="profile-billing-content-billing-submit-i col-md-3" ng-click="addMember()">
+                                    <div class="profile-billing-content-billing-submit-i col-sm-3" ng-click="addMember()">
                                         +
                                     </div>
                                 </div>
@@ -151,7 +151,7 @@
                                 <div class="profile-billing-content-billing-changrCard">
 
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-sm-12">
                                             <div class="alert alert-success animated fade-in-left top-alert" ng-show="alertSuccess">
                                                 <p ng-bind-html="alertSuccess"></p>
                                             </div>
@@ -162,7 +162,7 @@
                                     </div>
 
                                     <div class="profile-billing-content-billing-changeCard-eight row">
-                                        <div class="col-md-4">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Credit Card Number</label>
                                                 <input type="text" class="form-control" ng-model="number" name="ccNumber" required/>
@@ -173,11 +173,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Expiration Date</label>
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <input type="text" placeholder="MM" name="ccMonth" class="form-control" size="2" ng-model="exp_month" required/>
                                                         </div>
@@ -187,7 +187,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <input type="text" placeholder="YYYY" name="ccYear" class="form-control" size="4" ng-model="exp_year" required/>
                                                         </div>
@@ -200,7 +200,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-sm-2">
                                             <div class="form-group">
                                                 <label>CVC</label>
                                                 <input type="text" class="form-control" ng-model="cvc" name="cvc" required/>
@@ -211,7 +211,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-sm-2">
                                             <div class="form-group">
                                                 <label>&nbsp;</label>
                                                 <button class="btn btn-lg btn-primary btn-block" type="submit" ng-show="!saving">
@@ -238,20 +238,20 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="project-delete">
-                <div class="col-md-10 project-delete-desc">CANCEL YOUR SUBSCRIPTION PLAN</div>
-                <div class="col-md-2 project-delete-delicon">
+                <div class="col-md-10 col-sm-8 project-delete-desc">CANCEL YOUR SUBSCRIPTION PLAN</div>
+                <div class="col-md-2 col-sm-4 project-delete-delicon">
                     <img src="images/close-icon.png" data-dismiss="modal">
                 </div>
-                <div class="col-md-12 project-delete-warning">
-                    <div class="col-md-12 project-delete-warningicon">
+                <div class="col-sm-12 project-delete-warning">
+                    <div class="col-sm-12 project-delete-warningicon">
                         <img src="images/warning-icon.png">
                     </div>
-                    <div class="col-md-12 project-delete-warningdesc">Are you sure you want to cancel your plan?</div>
-                    <div class="col-md-12 project-delete-warningundone">Warning:This cannot be undone</div>
+                    <div class="col-sm-12 project-delete-warningdesc">Are you sure you want to cancel your plan?</div>
+                    <div class="col-sm-12 project-delete-warningundone">Warning:This cannot be undone</div>
                 </div>
             </div>
             <div class="modal-footer">
-                <div class="col-md-12 project-delete-button">
+                <div class="col-sm-12 project-delete-button">
                     <button class="btn btn-lg project-delete-buttoncancel btn-primary" type="reset" data-dismiss="modal">
                         No.Take me back
                     </button>

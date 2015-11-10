@@ -3,11 +3,11 @@
     <div ng-include="'views/siderbar.html'"></div>
     <div class="project-screen-video-container project-container">
         <div class="project-screen-video-header project-header">
-            <div class="project-screen-video-header-name name col-md-6">
+            <div class="project-screen-video-header-name name col-sm-6">
                 <span ng-bind="updateProjectTitle"></span>
                 <img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
             </div>
-            <div class="project-screen-video-header-button button col-md-6">
+            <div class="project-screen-video-header-button button col-sm-6">
                 <button class="btn btn-lg btn-primary">Share</button>
                 <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting
                 </button>
@@ -53,20 +53,20 @@
                         </li>
                     </ul>
                     <div class="project-build-content-brush">
-                        <div class="project-build-content-brushTitle col-md-12">BRUSH TOOL</div>
-                        <div class="project-build-content-brushContent col-md-12">
-                            <div class="project-build-content-brushColorLeft col-md-8">
+                        <div class="project-build-content-brushTitle col-sm-12">BRUSH TOOL</div>
+                        <div class="project-build-content-brushContent col-sm-12">
+                            <div class="project-build-content-brushColorLeft col-sm-8">
                                 <div id="pickerBrush"></div>
                             </div>
-                            <div class="project-build-content-brushColorRight col-md-4">
-                                <ul class="col-md-6">
+                            <div class="project-build-content-brushColorRight col-sm-4">
+                                <ul class="col-sm-6">
                                     <li class="brushColor1" ng-click="specicalColor('#fff')"></li>
                                     <li class="brushColor2" ng-click="specicalColor('#959595')"></li>
                                     <li class="brushColor3" ng-click="specicalColor('#555555')"></li>
                                     <li class="brushColor4" ng-click="specicalColor('#252525')"></li>
                                     <li class="brushColor5" ng-click="specicalColor('#000')"></li>
                                 </ul>
-                                <ul class="col-md-6">
+                                <ul class="col-sm-6">
                                     <li class="brushColor6" ng-click="specicalColor('#d26a9d')"></li>
                                     <li class="brushColor7" ng-click="specicalColor('#a90c5a')"></li>
                                     <li class="brushColor8" ng-click="specicalColor('#800039')"></li>
@@ -74,16 +74,16 @@
                                     <li class="brushColor10" ng-click="specicalColor('#250012')"></li>
                                 </ul>
                             </div>
-                            <div class="project-build-content-brushBottom col-md-12">
-                                <div class="col-md-4">
+                            <div class="project-build-content-brushBottom col-sm-12">
+                                <div class="col-sm-4">
                                     <img src="images/8px-icon.png" ng-click="setBrushWidth(8)">
                                     8px
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <img src="images/20px-icon.png" ng-click="setBrushWidth(20)">
                                     20px
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <img src="images/30px-icon.png" ng-click="setBrushWidth(30)">
                                     30px
                                 </div>
@@ -91,62 +91,62 @@
                         </div>
                     </div>
                     <div class="project-build-content-eraser">
-                        <div class="project-build-content-eraserTitle col-md-12">ERASER TOOL</div>
-                        <div class="project-build-content-eraserContent col-md-12">
-                            <div class="col-md-4">
+                        <div class="project-build-content-eraserTitle col-sm-12">ERASER TOOL</div>
+                        <div class="project-build-content-eraserContent col-sm-12">
+                            <div class="col-sm-4">
                                 <img src="images/8px-icon.png" ng-click="setEraserWidth(8)">
                                 8px
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-sm-4">
                                 <img src="images/20px-icon.png" ng-click="setEraserWidth(20)">
                                 20px
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-sm-4">
                                 <img src="images/30px-icon.png" ng-click="setEraserWidth(30)">
                                 30px
                             </div>
                         </div>
                     </div>
                     <div class="project-build-content-shape">
-                        <div class="project-build-content-shapeTitle col-md-12">SHAPE TOOL</div>
+                        <div class="project-build-content-shapeTitle col-sm-12">SHAPE TOOL</div>
                         <div class="project-build-content-shapeContent">
-                            <div class="project-build-content-shapeLeft col-md-6">
+                            <div class="project-build-content-shapeLeft col-sm-6">
                                 <div class="project-build-content-shapeLeftT">
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <img src="images/square-icon.png" ng-click="drawSquare()">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <img src="images/triangle-icon.png" ng-click="drawTriangle()">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <img src="images/circle-icon.png" ng-click="drawCircle()">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <img src="images/talk-icon.png" ng-click="drawTalk()">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <img src="images/arrow-icon.png" ng-click="drawArrow()">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <img src="images/star-icon.png" ng-click="drawStar()">
                                     </div>
                                 </div>
                                 <div class="project-build-content-shapeLeftB">
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <img src="images/8px-icon.png" ng-click="setPenWidth(0)">
                                         8px
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <img src="images/20px-icon.png" ng-click="setPenWidth(1)">
                                         20px
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-sm-4">
                                         <img src="images/30px-icon.png" ng-click="setPenWidth(2)">
                                         30px
                                     </div>
                                 </div>
                             </div>
-                            <div class="project-build-content-shapeRight col-md-6">
+                            <div class="project-build-content-shapeRight col-sm-6">
                                 <div id="pickerShape"></div>
                                 <div class="shapeColorContainer">
                                     <ul class="list-inline">
@@ -165,12 +165,12 @@
                                     </ul>
                                 </div>
                                 <div class="shapeFillSwitch">
-                                    <div class="col-md-12">Fill Shape</div>
-                                    <div class="shapeFillSwitchContainer col-md-12">
-                                        <div class="col-md-6 shapeFillSwitchOn shapeUnFillItem" ng-click="shapeFillSwitch('on')">
+                                    <div class="col-sm-12">Fill Shape</div>
+                                    <div class="shapeFillSwitchContainer col-sm-12">
+                                        <div class="col-sm-6 shapeFillSwitchOn shapeUnFillItem" ng-click="shapeFillSwitch('on')">
                                             ON
                                         </div>
-                                        <div class="col-md-6 shapeFillSwitchOff shapeFillItem" ng-click="shapeFillSwitch('off')">
+                                        <div class="col-sm-6 shapeFillSwitchOff shapeFillItem" ng-click="shapeFillSwitch('off')">
                                             OFF
                                         </div>
                                     </div>

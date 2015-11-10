@@ -4,15 +4,15 @@
     <div class="templates-container project-container">
         <div class="templates-header project-header">
             <div class="row">
-                <div class="templates-header-name name col-md-7">
+                <div class="templates-header-name name col-sm-7">
                     <span><img src="images/back-icon.png" ng-click="goBack()" title="Back to Build">Select Your Templates</span>
                 </div>
-                <div class="templates-header-button col-md-3">
+                <div class="templates-header-button col-sm-3">
                     <button class="btn btn-lg btn-primary btn-block" ng-click="uploadSelectTemplate()">Upload your selected
                         template
                     </button>
                 </div>
-                <div class="templates-header-filter col-md-2">
+                <div class="templates-header-filter col-md-2 col-sm-4">
                     <div class="dropdown filter">
                         <button type="button" class="btn btn-link btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Filter Templates
@@ -31,7 +31,7 @@
         </div>
         <div class="templates-content project-content">
             <div class="templates-content-body">
-                <div class="templates-content-unselect col-md-6" ng-repeat="template in templates">
+                <div class="templates-content-unselect col-sm-6" ng-repeat="template in templates">
                     <div class="templates-content-template-icon" ng-click="clickTemplate('{{template.url}}',$event,$index)">
                         <img src='{{template.url}}' style="width:268px;height:177px;">
                         <img src="images/template-select-icon.png" class="templates-content-template-select">

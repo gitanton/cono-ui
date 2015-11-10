@@ -5,10 +5,10 @@
         <div class="team-header project-header">
             <div class="team-header-account">
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-10 col-sm-8">
                         <div class="team-header-userName">{{currentUser}}</div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-sm-4">
                         <div class="dropdown filter">
                             <button type="button" class="btn btn-link btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="defaultTeam">Select Team</span>
@@ -28,7 +28,7 @@
         </div>
         <div class="team-content project-content">
             <div class="row">
-                <div class="col-md-4 col-lg-2 col-xs-6" ng-repeat="user in team.users">
+                <div class="col-sm-4 col-lg-2 col-xs-6" ng-repeat="user in team.users">
                     <div class="team-content-offset">
                         <div class="team-content-itemimg text-center">
                             <img ng-src="{{user.avatar}}" class="img-circle img-responsive" ng-mouseover="hoverOver($event)">

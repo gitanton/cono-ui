@@ -3,24 +3,26 @@
     <div ng-include="'views/siderbar.html'"></div>
     <div class="profile-profile-container">
         <div class="profile-profile-header">
-            <div class="profile-profile-header-name col-md-2">
-                <span>Profile</span>
-            </div>
-            <div class="col-md-8">
-                <div class="alert alert-success animated fade-in-left top-alert" ng-show="alertSuccess">
-                    <p ng-bind-html="alertSuccess"></p>
+            <div class="row">
+                <div class="profile-profile-header-name col-md-2 col-sm-3">
+                    <span>Profile</span>
                 </div>
-                <div class="alert alert-danger animated fade-in-left top-alert" ng-show="alertError">
-                    <p ng-bind-html="alertError"></p>
+                <div class="col-sm-6 col-md-8">
+                    <div class="alert alert-success animated fade-in-left top-alert" ng-show="alertSuccess">
+                        <p ng-bind-html="alertSuccess"></p>
+                    </div>
+                    <div class="alert alert-danger animated fade-in-left top-alert" ng-show="alertError">
+                        <p ng-bind-html="alertError"></p>
+                    </div>
                 </div>
-            </div>
-            <div class="profile-profile-header-button col-md-2">
-                <button class="btn btn-lg btn-primary" ng-click="updateUserInfo()">Save & Update</button>
+                <div class="profile-profile-header-button col-md-2 col-sm-3 text-right">
+                    <button class="btn btn-lg btn-primary" ng-click="updateUserInfo()">Save & Update</button>
+                </div>
             </div>
         </div>
         <div class="profile-profile-content">
             <div class="profile-content-menu">
-                <div class="profile-content-nav col-md-12">
+                <div class="profile-content-nav col-sm-12">
                     <ul class="list-inline profile-menu">
                         <li>
                             <a href="#/profile-project/">MY PROJECTS</a>
@@ -43,7 +45,7 @@
                     <div class="profile-profile-content-profile-title">Your Information</div>
                     <div class="profile-profile-content-profile-info">
                         <div class="row">
-                            <div class="profile-profile-content-profile-info-l col-md-3 text-center">
+                            <div class="profile-profile-content-profile-info-l col-sm-3 text-center">
                                 <div class="profile-profile-content-profile-info-icon">
                                     <img src="images/Chan.png" id="userAvatar" ng-if="!avatar">
                                 </div>
@@ -55,18 +57,18 @@
                                     Choose file
                                 </button>
                             </div>
-                            <div class="profile-profile-content-profile-info-r col-md-9">
+                            <div class="profile-profile-content-profile-info-r col-sm-9">
                                 <div class="row">
-                                    <div class="profile-profile-content-profile-fullname col-md-12">
+                                    <div class="profile-profile-content-profile-fullname col-sm-12">
                                         <input type="text" placeholder="Full Name" ng-model="fullname" class="form-control">
                                     </div>
                                 </div>
                                 <div class="profile-profile-content-profile-email">
                                     <div class="row">
-                                        <div class="col-md-8 col-lg-9">
+                                        <div class="col-sm-8 col-lg-9">
                                             <input type="email" placeholder="Email" ng-model="email" class="form-control">
                                         </div>
-                                        <div class="col-md-4 col-lg-3">
+                                        <div class="col-sm-4 col-lg-3">
                                             <button class="btn btn-block btn-default" ng-click="changePassword()">
                                                 Change Password
                                             </button>
@@ -75,13 +77,13 @@
                                 </div>
                                 <div class="profile-profile-content-profile-address">
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-sm-4">
                                             <input type="text" placeholder="City" ng-model="city" class="form-control">
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-sm-4">
                                             <input type="text" placeholder="State" ng-model="state" class="form-control">
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-sm-4">
                                             <select ng-model="country" class="form-control">
                                                 <option value="{{cnt}}" ng-selected="{{country == cnt}}" ng-repeat="cnt in countries">
                                                     {{cnt}}

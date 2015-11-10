@@ -1,28 +1,28 @@
 <div id="addComment" ng-class="{true: 'addCommentLeft', false: 'addCommentRight'}[addCommentPosition]" ng-show="showComments">
     <div class="comment-add" data-marker="1">
         <div class="row">
-            <div class="col-md-10 comment-add-desc">
+            <div class="col-md-10 col-sm-8 comment-add-desc">
                 <h4>Add Comment</h4>
             </div>
-            <div class="col-md-2 comment-add-delicon">
+            <div class="col-md-2 col-sm-4 comment-add-delicon">
                 <img src="images/close-icon.png" ng-click="hideComments()">
             </div>
         </div>
         <div class="comment-chat-content">
             <div class="row" ng-repeat="comment in currentComments">
-                <div class="col-md-3">
+                <div class="col-sm-3">
                     <img src="images/chat-person-icon.png">
                 </div>
-                <div class="col-md-9">
-                    <div class="col-md-8">{{comment.fullname}}</div>
-                    <div class="col-md-4">{{comment.created | limitTo:-8}}</div>
-                    <div class="col-md-12">{{comment.content}}</div>
+                <div class="col-sm-9">
+                    <div class="col-sm-8">{{comment.fullname}}</div>
+                    <div class="col-sm-4">{{comment.created | limitTo:-8}}</div>
+                    <div class="col-sm-12">{{comment.content}}</div>
                 </div>
             </div>
         </div>
         <form class="form-gray">
             <div class="row">
-                <div class="comment-chat-input col-md-12">
+                <div class="comment-chat-input col-sm-12">
                     <div class="form-group">
                         <textarea name="comment-content" ng-model="commentContent" placeholder="Leave a comment..." class="form-control"></textarea>
                     </div>
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 comment-add-button">
+                <div class="col-sm-12 comment-add-button">
                     <button class="btn btn-lg comment-buttoncancel btn-primary" type="reset" ng-click="hideComments()">
                         Cancel
                     </button>

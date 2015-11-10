@@ -4,11 +4,11 @@
     <div class="project-screen-container project-container">
         <div class="project-screen-header project-header">
             <div class="row">
-                <div class="project-screen-header-name name col-md-6">
+                <div class="project-screen-header-name name col-sm-6">
                     <span ng-bind="updateProjectTitle"></span>
                     <img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
                 </div>
-                <div class="project-screen-header-button button col-md-6">
+                <div class="project-screen-header-button button col-sm-6">
                     <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting
                     </button>
                 </div>
@@ -17,12 +17,12 @@
         <div class="project-screen-content project-content">
             <div ng-include="'views/includes/project-content-menu.html'"></div>
             <div class="project-screen-content-body">
-                <div class="project-screen-content-items col-md-10">
-                    <div class="project-screen-content-thumb col-md-4" ng-repeat="video in videos">
-                        <video src="{{video.url}}" ng-click="toBuild('{{video.uuid}}')"></video>
+                <div class="project-screen-content-items col-md-10 col-sm-8">
+                    <div class="project-screen-content-thumb col-sm-4" ng-repeat="video in videos">
+                        <video ng-src="{{trustSrc(video.url)}}" ng-click="toBuild('{{video.uuid}}')" class="img-responsive"></video>
                     </div>
                 </div>
-                <div class="project-screen-content-delete col-md-2">
+                <div class="project-screen-content-delete col-md-2 col-sm-4">
                     <!--<form id="screenupload" enctype="multipart/form-data" class="project-screen-content-dropcontainer dropzone">-->
                     <!--<input type="hidden" name="project_uuid" value="{{activeProjectUuid}}">-->
                     <!--<div class="dz-message">--><!--<p>Drag & Drop your files</p>--><!--</div>-->

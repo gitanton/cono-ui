@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectVideoCtrl', function ($scope, $http, $location, $routeParams, ENV, ModalService, NAV) {
+    .controller('ProjectVideoCtrl', function ($scope, $http, $location, $routeParams, ENV, ModalService, NAV, $sce) {
         $scope.activeProjectUuid = $routeParams.uuid;
         /**
          * Navigation
@@ -26,6 +26,10 @@ angular.module('conojoApp')
         $scope.activityURL = '#/'+NAV.PROJECT_VIDEO_ACTIVITY+'/' + $scope.activeProjectUuid;
         $scope.commentURL = '#/'+NAV.PROJECT_VIDEO_COMMENT+'/' + $scope.activeProjectUuid;
 
+        $scope.trustSrc = function(src) {
+            return $sce.trustAsResourceUrl(src);
+        }
+
         $scope.init = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'projects/project/' + $scope.activeProjectUuid,
@@ -39,7 +43,7 @@ angular.module('conojoApp')
             });
 
             $http({
-                url: ENV.API_ENDPOINT + 'video/project/' + $scope.activeProjectUuid,
+                url: ENV.API_ENDPOINT + 'videos/project/' + $scope.activeProjectUuid,
                 method: 'GET',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function (response) {
@@ -110,6 +114,12 @@ angular.module('conojoApp')
             }).then(function (modal) {
                 modal.element.modal();
             });
+        };
+
+        $scope.toBuild = function (suuid) {
+            var url = $scope.buildURL + '/' + suuid;
+            console.log(url);
+            $location.path(url);
         };
 
         $scope.init();

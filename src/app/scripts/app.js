@@ -149,11 +149,11 @@ angular
                 templateUrl: 'views/project-video-upload.html',
                 controller: 'ProjectVideoUploadCtrl'
             })
-            .when('/'+NAV.PROJECT_VIDEO_PLAY+'/:puuid', {
+            .when('/'+NAV.PROJECT_VIDEO_PLAY+'/:puuid/:vuuid', {
                 templateUrl: 'views/project-video-play.html',
                 controller: 'ProjectVideoPlayCtrl'
             })
-            .when('/'+NAV.PROJECT_VIDEO_PLAY+'/:puuid/:vuuid', {
+            .when('/'+NAV.PROJECT_VIDEO_PLAY+'/:puuid', {
                 templateUrl: 'views/project-video-play.html',
                 controller: 'ProjectVideoPlayCtrl'
             })
@@ -165,11 +165,11 @@ angular
                 templateUrl: 'views/project-video-comment.html',
                 controller: 'ProjectCommentVideoCtrl'
             })
-            .when('/'+NAV.PROJECT_TEMPLATE_BUILD+'/:puuid', {
+            .when('/'+NAV.PROJECT_TEMPLATE_BUILD+'/:puuid/:suuid', {
                 templateUrl: 'views/project-template-build.html',
                 controller: 'ProjectBuildTemplateCtrl'
             })
-            .when('/'+NAV.PROJECT_TEMPLATE_BUILD+'/:puuid/:suuid', {
+            .when('/'+NAV.PROJECT_TEMPLATE_BUILD+'/:puuid', {
                 templateUrl: 'views/project-template-build.html',
                 controller: 'ProjectBuildTemplateCtrl'
             })

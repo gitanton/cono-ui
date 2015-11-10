@@ -13,6 +13,7 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
     background: $color-white;
+    overflow-x: hidden;
 
     &.gray {
         background: $color-gray-4;
@@ -557,9 +558,12 @@ body {
     }
     .project-content {
         border-top: 1px solid #dddddd;
-        padding: 19px 14px 19px 88px;
         background: $color-gray-2;
         overflow-y: auto;
+
+        &.with-pad {
+            padding: 19px 14px 19px 88px;
+        }
 
         .gear {
             padding-top: $padding-small;
@@ -1244,8 +1248,8 @@ body {
 }
 
 /*project build page*/
-.project-build-container {
-    position: absolute;
+.project-build-container,
+.main-container {
     left: 0;
     z-index: 1;
     padding-left: $sidebar-closed-width;
@@ -2413,6 +2417,10 @@ body {
     }
 }
 
+.profile-body {
+    padding-left: $padding-default;
+}
+
 /*profile project page*/
 .profile-project-container {
     .profile-project-header {
@@ -2860,6 +2868,7 @@ body {
 
 .profile-menu,
 .project-menu {
+    float: left;
     li {
         color: $color-white;
         line-height: 32px;
@@ -2965,7 +2974,11 @@ body {
         padding-left: $sidebar-closed-width;
         .project-screen-video-content-body {
             position: relative;
+            min-width: 100vw;
+            min-height: 100vh;
+
             @include bg-img('project-build-bg.jpg');
+            background-repeat: repeat;
             .project-screen-video-content-video {
                 text-align: center;
                 #videoBody {

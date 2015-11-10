@@ -3,13 +3,13 @@
     <div ng-include="'views/siderbar.html'"></div>
     <div class="profile-notice-container">
         <div class="profile-notice-header">
-            <div class="profile-notice-header-name col-md-12">
+            <div class="profile-notice-header-name col-sm-12">
                 <span>Profile</span>
             </div>
         </div>
         <div class="profile-notice-content">
             <div class="profile-content-menu">
-                <div class="profile-content-nav col-md-12">
+                <div class="profile-content-nav col-sm-12">
                     <ul class="list-inline profile-menu">
                         <li>
                             <a href="#/profile-project/">MY PROJECTS</a>
@@ -29,35 +29,35 @@
             <div class="profile-notice-content-body">
                 <div class="profile-notice-content-title">Notification Center</div>
                 <div class="profile-notice-content-notice">
-                    <div class="profile-notice-content-notice-general col-md-12">
+                    <div class="profile-notice-content-notice-general col-sm-12">
                         <div class="profile-notice-content-notice-generaltitle">General Updates</div>
-                        <div class="profile-notice-content-notice-generalitem col-md-12">
-                            <div class="col-md-11">Blog Updates</div>
-                            <div class="col-md-1" ng-if="notification.notify_general == true">
+                        <div class="profile-notice-content-notice-generalitem col-sm-12">
+                            <div class="col-sm-11">Blog Updates</div>
+                            <div class="col-sm-1" ng-if="notification.notify_general == true">
                                 <img src="images/on-icon.png" ng-click="updateSettings('general',false)">
                             </div>
-                            <div class="col-md-1" ng-if="notification.notify_general == false">
+                            <div class="col-sm-1" ng-if="notification.notify_general == false">
                                 <img src="images/off-icon.png" ng-click="updateSettings('general',true)">
                             </div>
                         </div>
-                        <div class="profile-notice-content-notice-generalitem col-md-12">
-                            <div class="col-md-11">Promotions</div>
-                            <div class="col-md-1" ng-if="notification.notify_promotions == true">
+                        <div class="profile-notice-content-notice-generalitem col-sm-12">
+                            <div class="col-sm-11">Promotions</div>
+                            <div class="col-sm-1" ng-if="notification.notify_promotions == true">
                                 <img src="images/on-icon.png" ng-click="updateSettings('promition',false)">
                             </div>
-                            <div class="col-md-1" ng-if="notification.notify_promotions == false">
+                            <div class="col-sm-1" ng-if="notification.notify_promotions == false">
                                 <img src="images/off-icon.png" ng-click="updateSettings('promition',true)">
                             </div>
                         </div>
                     </div>
-                    <div class="profile-notice-content-notice-general col-md-12">
+                    <div class="profile-notice-content-notice-general col-sm-12">
                         <div class="profile-notice-content-notice-generaltitle">All Projects</div>
-                        <div class="profile-notice-content-notice-generalitem col-md-12" ng-repeat="project in notification.projects">
-                            <div class="col-md-11">{{project.name}}</div>
-                            <div class="col-md-1" ng-if="project.notify == true">
+                        <div class="profile-notice-content-notice-generalitem col-sm-12" ng-repeat="project in notification.projects">
+                            <div class="col-sm-11">{{project.name}}</div>
+                            <div class="col-sm-1" ng-if="project.notify == true">
                                 <img src="images/on-icon.png" ng-click="updateSettings($index,false)">
                             </div>
-                            <div class="col-md-1" ng-if="project.notify == false">
+                            <div class="col-sm-1" ng-if="project.notify == false">
                                 <img src="images/off-icon.png" ng-click="updateSettings($index,true)">
                             </div>
                         </div>

@@ -3,25 +3,25 @@
     <div ng-include="'views/siderbar.html'"></div>
     <div class="project-comment-container project-container ">
         <div class="project-comment-header project-header">
-            <div class="project-comment-header-name name col-md-6">
+            <div class="project-comment-header-name name col-sm-6">
                 <span ng-bind="updateProjectTitle"></span>
                 <img src="images/edit-icon.png" ng-click="openUpdateProject('{{activeProjectUuid}}')">
             </div>
-            <div class="project-comment-header-button button col-md-6">
+            <div class="project-comment-header-button button col-sm-6">
                 <button class="btn btn-lg btn-primary" ng-click="openAddComment()">New Comment</button>
             </div>
         </div>
         <div class="project-comment-content project-content">
             <div ng-include="'views/includes/project-content-menu.html'"></div>
             <div class="project-comment-subheader project-subheader">
-                <div class="project-comment-subheader-unread col-md-6">
+                <div class="project-comment-subheader-unread col-sm-6">
                     <span>{{messages.length}} Comments </span>
                     <img src="images/line-after-message.png">
                     <a href="javascript:void(0)">
                         <img src="images/search-icon.png">
                     </a>
                 </div>
-                <div class="project-comment-subheader-previously col-md-6">
+                <div class="project-comment-subheader-previously col-sm-6">
                     <input type="checkbox">
                     Show previously viewed comments
                 </div>

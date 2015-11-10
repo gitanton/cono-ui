@@ -4,23 +4,23 @@
     <div class="project-container">
         <div class="project-header">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-sm-8">
                     <div class="project-header-search">
                         <img src="images/search-icon.png">
                         <input type="text" name="search-project" ng-model="searchText.name" placeholder="Search {{projectsNum}} Projects"/>
                     </div>
                 </div>
-                <div class="project-header-create col-md-4">
+                <div class="project-header-create col-sm-4">
                     <button class="btn btn-lg btn-primary" ng-click="newProject()">Create New Project</button>
                 </div>
             </div>
         </div>
-        <div class="project-content">
+        <div class="project-content with-pad">
             <div class="row" id="sortable">
                 <div class="col-md-4 col-lg-3 col-sm-6" ng-repeat="project in projects | filter:searchText">
                     <div class="project-content-offset" data-uuid="{{project.uuid}}">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-10 col-sm-8">
                                 <div class="name">
                                     <button class="btn-link btn no-margin no-padding" ng-click="projectScreen('{{project.uuid}}','{{project.type_id}}')">
                                         {{project.name}}
@@ -28,7 +28,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-2" ng-class="showBackground(project.is_open)">
+                            <div class="col-md-2 col-sm-4" ng-class="showBackground(project.is_open)">
                                 <div class="text-right gear">
                                     <a ng-class="showGear(project.is_open)" ng-click="operateProject(project)"></a>
                                 </div>
@@ -43,9 +43,9 @@
                             <div class="project-content-label" ng-if="project.type_id == 3">BUSINESS TEMPLATE</div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 project-content-projectcontent">
+                            <div class="col-sm-12 project-content-projectcontent">
                                 <div class="project-content-opetate" ng-class="showOperate(project.is_open)">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-12">
                                         <ul class="list-inline">
                                             <li>
                                                 <a href="javascript:void(0)" ng-click="duplicateProjectModal('{{project.uuid}}','{{project.name}}')">
@@ -113,7 +113,7 @@
                 <form name="newProjectForm" ng-submit="myProject(newProjectForm.$valid)" novalidate>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                                 <div class="alert alert-success animated fade-in-left top-alert" ng-show="newProjectSuccess">
                                     <p ng-bind-html="newProjectSuccess"></p>
                                 </div>
@@ -124,7 +124,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-12 ">
+                            <div class="col-sm-12 ">
                                 <div class="form-group">
                                     <label>Title</label>
                                     <input type="text" name="projecttitle" ng-model="newProject.title" name="projectTitle" class="form-control" required/>
@@ -154,7 +154,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="row">
-                            <div class="col-md-12 text-center">
+                            <div class="col-sm-12 text-center">
                                 <button class="btn btn-lg btn-primary" type="submit">
                                     Create New Project
                                 </button>
@@ -177,7 +177,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-12 text-center">
+                    <div class="col-sm-12 text-center">
                         <img src="images/dupe-icon.png">
 
                         <div class="spacer-15"></div>
@@ -187,7 +187,7 @@
             </div>
             <div class="modal-footer">
                 <div class="row">
-                    <div class="col-md-12 text-center">
+                    <div class="col-sm-12 text-center">
                         <button class="btn btn-lg btn-primary" type="submit" ng-click='duplicateProject()'>
                             Duplicate
                         </button>
@@ -210,13 +210,13 @@
                 <div class="project-share">
                     <form name="shareproject">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                                 <div class="form-group project-share-email">
                                     <div class="row">
-                                        <div class="col-md-8 has-email">
+                                        <div class="col-sm-8 has-email">
                                             <input type="text" name="teammemberemail" ng-model="teammemberemail" class="form-control project-share-email" placeholder="Enter an email"/>
                                         </div>
-                                        <div class="col-md-4 sendbutton">
+                                        <div class="col-sm-4 sendbutton">
                                             <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="addTeamMember()">
                                                 Send Email
                                             </button>
@@ -228,10 +228,10 @@
                         <hr/>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-2 col-sm-4">
                                     Short URL
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-sm-8">
                                     <input type="text" name="teammemberemail" ng-model="teammemberemail" class="form-control project-share-email" placeholder="http://"/>
                                 </div>
                             </div>
@@ -241,13 +241,13 @@
             </div>
             <div class="modal-footer">
                 <div class="row">
-                    <div class="form-group has-icon col-md-4 text-center">
+                    <div class="form-group has-icon col-sm-4 text-center">
                         <span>Share on Twitter <img class="project-share-addAnother" src="images/twitter-blue-icon.png"></span>
                     </div>
-                    <div class="form-group has-icon col-md-4 text-center">
+                    <div class="form-group has-icon col-sm-4 text-center">
                         <span>Share on Facebook <img class="project-share-addAnother" src="images/fb-blue-icon.png"></span>
                     </div>
-                    <div class="form-group has-icon col-md-4 text-center">
+                    <div class="form-group has-icon col-sm-4 text-center">
                         <span>Share on Google <img class="project-share-addAnother" src="images/google-blue-icon.png"></span>
                     </div>
                 </div>
@@ -266,7 +266,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-12 text-center">
+                    <div class="col-sm-12 text-center">
                         <img src="images/arch-icon.png">
                         <div class="spacer-15"></div>
                         <p><strong>Warning</strong>: You are about to move this project to the Project Archive. Doing so
@@ -277,7 +277,7 @@
             </div>
             <div class="modal-footer">
                 <div class="row">
-                    <div class="col-md-12 text-center">
+                    <div class="col-sm-12 text-center">
                         <button class="btn btn-lg  btn-primary" type="submit" ng-click='archiveProject(archiveProjectUuid)'>
                             Archive
                         </button>
@@ -298,10 +298,10 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-12 text-center">
+                    <div class="col-sm-12 text-center">
 
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                                 <img src="images/warning-icon.png">
                                 <div class="spacer-15"></div>
                                 <p>Are you sure you want to delete this project?</p>
@@ -314,7 +314,7 @@
             </div>
             <div class="modal-footer">
                 <div class="row">
-                    <div class="col-md-12 text-center">
+                    <div class="col-sm-12 text-center">
                         <button class="btn btn-lg" type="reset" data-dismiss="modal">
                             Cancel
                         </button>
@@ -339,7 +339,7 @@
             <div class="modal-body">
                 <div class="reset">
                     <div class="row">
-                        <div class="col-md-12 reset-note">{{errorMessageProject}}Please click
+                        <div class="col-sm-12 reset-note">{{errorMessageProject}}Please click
                             <label style="color:#0378ae;cursor:pointer;" ng-click="goToBilling()">here</label>
                             to select one plan.
                         </div>
@@ -362,12 +362,12 @@
                 <div class="feedback-add">
                     <form name="createnewmessage">
                         <div class="row">
-                            <div class="col-md-12 feedback-add-body">
+                            <div class="col-sm-12 feedback-add-body">
                                 <textarea name="messageContent" ng-model="messageContent" class="form-control feedback-add-message" placeholder="Add project note"></textarea>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 feedback-delete-button">
+                            <div class="col-sm-12 feedback-delete-button">
                                 <button class="btn btn-lg feedback-delete-buttoncancel btn-primary" type="reset" data-dismiss="modal">
                                     Cancel
                                 </button>
