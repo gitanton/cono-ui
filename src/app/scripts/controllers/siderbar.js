@@ -41,7 +41,7 @@ angular.module('conojoApp')
             $location.path(url);
         };
 
-        $scope.Logout = function () {
+        $scope.logout = function () {
             $http({
                 url: ENV.API_ENDPOINT + 'users/logout',
                 method: 'POST',
