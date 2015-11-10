@@ -7,8 +7,24 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectScreenUploadCtrl', function ($scope, $http, $location, $routeParams, ENV, $log, $rootScope, ModalService) {
+    .controller('ProjectScreenUploadCtrl', function ($scope, $http, $location, $routeParams, ENV, $log, $rootScope, ModalService, NAV) {
         $scope.activeProjectUuid = $routeParams.uuid;
+        /**
+         * Navigation
+         */
+        $scope.hasScreens = function() {
+            return true;
+        };
+        $scope.hasVideos = function() {
+            return false;
+        };
+        $scope.isScreen = function() {
+            return true;
+        };
+        $scope.screenURL = '#/'+NAV.PROJECT_SCREEN+'/' + $scope.activeProjectUuid;
+        $scope.buildURL = '#/'+NAV.PROJECT_BUILD+'/' + $scope.activeProjectUuid;
+        $scope.activityURL = '#/'+NAV.PROJECT_ACTIVITY+'/' + $scope.activeProjectUuid;
+        $scope.commentURL = '#/'+NAV.PROJECT_COMMENT+'/' + $scope.activeProjectUuid;
 
         $scope.init = function () {
             $http({

@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectVideoPlayCtrl', function ($scope, $http, $location, $routeParams, ENV, ModalService) {
+    .controller('ProjectVideoPlayCtrl', function ($scope, $http, $location, $routeParams, ENV, ModalService, videoService, NAV) {
         $scope.activeProjectUuid = $routeParams.puuid;
         $scope.activeVideoProjectUuid = $routeParams.vuuid;
         $scope.showCanvas = false;
@@ -18,6 +18,23 @@ angular.module('conojoApp')
         $scope.showEraser = false;
         $scope.showShape = false;
         $scope.videoHeight = $(window).height() - 270;
+        /**
+         * Navigation
+         */
+        $scope.hasScreens = function() {
+            return false;
+        };
+        $scope.hasVideos = function() {
+            return true;
+        };
+        $scope.isBuild = function() {
+            return true;
+        };
+        $scope.videoURL = '#/'+NAV.PROJECT_VIDEO+'/' + $scope.activeProjectUuid;
+        $scope.buildURL = '#/'+NAV.PROJECT_VIDEO_PLAY+'/' + $scope.activeProjectUuid;
+        $scope.activityURL = '#/'+NAV.PROJECT_VIDEO_ACTIVITY+'/' + $scope.activeProjectUuid;
+        $scope.commentURL = '#/'+NAV.PROJECT_VIDEO_COMMENT+'/' + $scope.activeProjectUuid;
+
         $('.projectScreenVideo-content-video').css('height', $scope.videoHeight);
         $('#videoBody').on('loadedmetadata', function () {
             $('#videoDrawing').css('marginLeft', ($(window).width() - $('#videoBody').width() - 64) / 2);
@@ -35,44 +52,51 @@ angular.module('conojoApp')
                 $scope.projectMembers = data.users;
                 $scope.updateProjectTitle = data.name;
                 $scope.updateProjectTypeid = data.type_id;
-            });
+            }).then(function() {
+                return videoService.getForProject($scope.activeProjectUuid).then(function (videos) {
+                    if (videos.length < 1) {
+                        $location.path('/' + NAV.PROJECT_VIDEO_UPLOAD + '/' + $scope.activeProjectUuid);
+                    } else {
+                        if ($scope.activeVideoProjectUuid !== 'new') {
+                            $http({
+                                url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid,
+                                method: 'GET',
+                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                            }).then(function (response) {
+                                var data = response.data;
+                                $('#videoBody').attr('src', data.url);
+                                commentNum = data.comments.length + 1;
 
-            if ($scope.activeVideoProjectUuid !== 'new') {
-                $http({
-                    url: ENV.API_ENDPOINT + 'videos/video/' + $scope.activeVideoProjectUuid,
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).then(function (response) {
-                    var data = response.data;
-                    $('#videoBody').attr('src', data.url);
-                    commentNum = data.comments.length + 1;
+                                if (data.drawings.length > 0) {
+                                    var img_f_init = new Image();
+                                    img_f_init.src = 'data:image/png;base64,' + data.drawings[data.drawings.length - 1].data.slice(9);
+                                    img_f_init.onload = function () {
+                                        cxt.drawImage(img_f_init, 0, 0, $('#videoBody').width(), $('#videoBody').height());
+                                    };
+                                }
 
-                    if (data.drawings.length > 0) {
-                        var img_f_init = new Image();
-                        img_f_init.src = 'data:image/png;base64,' + data.drawings[data.drawings.length - 1].data.slice(9);
-                        img_f_init.onload = function () {
-                            cxt.drawImage(img_f_init, 0, 0, $('#videoBody').width(), $('#videoBody').height());
-                        };
-                    }
+                                if (data.comments.length > 0) {
+                                    for (var i = 1; i <= data.comments.length; i++) {
+                                        //group the comments
 
-                    if (data.comments.length > 0) {
-                        for (var i = 1; i <= data.comments.length; i++) {
-                            //group the comments
+                                        //var left = data.comments[i-1].begin_x + $scope.drawLeft;
+                                        //$('.projectBuild-content-drawing').append("<div id='commentMarker" + i + "' class='commentSqure' style='left:" + left + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
+                                    }
+                                }
+                            });
 
-                            //var left = data.comments[i-1].begin_x + $scope.drawLeft;
-                            //$('.projectBuild-content-drawing').append("<div id='commentMarker" + i + "' class='commentSqure' style='left:" + left + "px;top:" + rectCommentY + "px'>" + commentNum + "</div>");
+                            $('#pickerBrush').farbtastic(function (color) {
+                                $scope.setPenColor(color);
+                            });
+                            $('#pickerShape').farbtastic(function (color) {
+                                $scope.setPenColor(color);
+                            });
+                            $scope.setPenWidth(0);
                         }
+
                     }
                 });
-
-                $('#pickerBrush').farbtastic(function (color) {
-                    $scope.setPenColor(color);
-                });
-                $('#pickerShape').farbtastic(function (color) {
-                    $scope.setPenColor(color);
-                });
-                $scope.setPenWidth(0);
-            }
+            });
         };
 
         //Begun to deal with playing video
@@ -288,21 +312,6 @@ angular.module('conojoApp')
 
         $scope.openAddVideo = function () {
             var url = '/project-videoUpload/' + $scope.activeProjectUuid;
-            $location.path(url);
-        };
-
-        $scope.toVideo = function () {
-            var url = '/project-video/' + $scope.activeProjectUuid;
-            $location.path(url);
-        };
-
-        $scope.toActivity = function () {
-            var url = '/project-activity-video/' + $scope.activeProjectUuid;
-            $location.path(url);
-        };
-
-        $scope.toComment = function () {
-            var url = '/project-comment-video/' + $scope.activeProjectUuid;
             $location.path(url);
         };
 

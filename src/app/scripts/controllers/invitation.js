@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('InvitationCtrl', function ($scope, $http, $location, $routeParams, ENV) {
+    .controller('InvitationCtrl', function ($scope, $http, $location, $routeParams, ENV, NAV) {
 
         $scope.init = function () {
             $http({

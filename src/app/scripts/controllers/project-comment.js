@@ -7,9 +7,25 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectCommentCtrl', function ($scope, $http, $location, $routeParams, ENV) {
+    .controller('ProjectCommentCtrl', function ($scope, $http, $location, $routeParams, ENV, NAV) {
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.model = {};
+        /**
+         * Navigation
+         */
+        $scope.hasScreens = function() {
+            return true;
+        };
+        $scope.hasVideos = function() {
+            return false;
+        };
+        $scope.isComment = function() {
+            return true;
+        };
+        $scope.screenURL = '#/'+NAV.PROJECT_SCREEN+'/' + $scope.activeProjectUuid;
+        $scope.buildURL = '#/'+NAV.PROJECT_BUILD+'/' + $scope.activeProjectUuid;
+        $scope.activityURL = '#/'+NAV.PROJECT_ACTIVITY+'/' + $scope.activeProjectUuid;
+        $scope.commentURL = '#/'+NAV.PROJECT_COMMENT+'/' + $scope.activeProjectUuid;
 
         $scope.init = function () {
             $http({
@@ -113,31 +129,6 @@ angular.module('conojoApp')
                 $scope.init();
                 $('#deletemessage').modal('hide');
             });
-        };
-
-        $scope.toBuild = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'screens/project/' + $scope.activeProjectUuid,
-                method: 'GET',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).then(function (response) {
-                var data = response.data;
-                if (data.length > 0) {
-                    $location.path('/project-build/' + $scope.activeProjectUuid + '/' + data[0].uuid);
-                } else {
-                    $location.path('/project-screenUpload/' + $scope.activeProjectUuid);
-                }
-            });
-        };
-
-        $scope.toScreen = function () {
-            var url = '/project-screen/' + $scope.activeProjectUuid;
-            $location.path(url);
-        };
-
-        $scope.toActivity = function () {
-            var url = '/project-activity/' + $scope.activeProjectUuid;
-            $location.path(url);
         };
 
         $scope.openMessage = function () {

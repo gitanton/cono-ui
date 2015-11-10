@@ -1,35 +1,40 @@
-<div class="project-activity-content-body">
+<div class="project-activity-content-body project-body">
     <div class="row">
         <div class="project-activity-content-items col-md-10">
-            <div class="row">
-                <div class="col-md-12 project-activity-content-item" ng-repeat="activity in projectActivities" id="drag{{$index}}" draggable>
-                    <div class="project-activity-content-img col-md-3">
-                        <img ng-src="{{activity.creator.avatar}}" class="img-responsive">
+            <div class="project-activity-content-item" ng-repeat="activity in projectActivities" id="drag{{$index}}" draggable>
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 col-xs-3 pad-right-0">
+                        <div class="project-activity-content-img">
+                            <img ng-src="{{activity.creator.avatar}}" class="img-responsive">
+                        </div>
                     </div>
-                    <div class="project-activity-content-desc col-md-9">
-                        <div class="row">
-                            <div class="col-md-9">{{activity.title}}</div>
-                            <div class="col-md-3">{{activity.created}}</div>
-                        </div>
-                        <!--
-                        <div class="row">
-                            <div class="col-md-12">
-                                <img src="images/thumbs.png">
+                    <div class="col-md-9 col-sm-8 col-xs-9 pad-left-0">
+                        <div class="project-activity-content-desc">
+                            <div class="row">
+                                <div class="col-md-9">{{activity.title}}</div>
+                                <div class="col-md-3">{{activity.created}}</div>
                             </div>
-                        </div>
-                        -->
-                        <div class="row">
-                            <div class="col-md-12">{{activity.content}}</div>
-                        </div>
-                        <div style="position: absolute;top:0px;right:0px;">
-                            <img src="images/dragbar-icon.png">
+                            <!--
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img src="images/thumbs.png">
+                                </div>
+                            </div>
+                            -->
+                            <div class="row">
+                                <div class="col-md-12">{{activity.content}}</div>
+                            </div>
+                            <div class="hidden-xs" style="position: absolute;top:0px;right:0px;">
+                                <img src="images/dragbar-icon.png">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+
         </div>
-        <div class="project-activity-content-delete col-md-2" droppable drop="handleDrop()">
+        <div class="project-activity-content-delete col-md-2 hidden-xs" droppable drop="handleDrop()">
             <img src="images/delete-icon.png" class="project-activity-content-deleteicon">
 
             <div class="project-activity-content-deleteintro" id="project-activity-content-deleteintro">

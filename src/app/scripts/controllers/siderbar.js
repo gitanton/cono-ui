@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('siderBarCtrl', function ($scope, $http, store, $location, ENV) {
+    .controller('siderBarCtrl', function ($scope, $http, store, $location, ENV, NAV) {
         $scope.expandMenuFlag = false;
         $scope.user = store.get('user');
 

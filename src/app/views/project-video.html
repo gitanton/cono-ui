@@ -1,14 +1,14 @@
 <div class="project-screen-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="project-screen-container">
-        <div class="project-screen-header">
+    <div class="project-screen-container project-container">
+        <div class="project-screen-header project-header">
             <div class="row">
-                <div class="project-screen-header-name col-md-6">
+                <div class="project-screen-header-name name col-md-6">
                     <span ng-bind="updateProjectTitle"></span>
                     <img src="images/edit-icon.png" ng-click="openUpdateProject(activeProjectUuid)">
                 </div>
-                <div class="project-screen-header-button col-md-6">
+                <div class="project-screen-header-button button col-md-6">
                     <button class="btn btn-lg btn-primary" ng-click="openNewMeeting(activeProjectUuid)">Create a Meeting
                     </button>
                 </div>

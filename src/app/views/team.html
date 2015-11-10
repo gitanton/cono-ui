@@ -1,8 +1,8 @@
 <div class="team-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="team-container">
-        <div class="team-header">
+    <div class="team-container project-container">
+        <div class="team-header project-header">
             <div class="team-header-account">
                 <div class="row">
                     <div class="col-md-10">
@@ -26,22 +26,20 @@
                 </div>
             </div>
         </div>
-        <div class="team-content">
+        <div class="team-content project-content">
             <div class="row">
-                <div class="col-md-4 col-lg-2 team-content-offset" ng-repeat="user in team.users">
-                    <div class="row">
-                        <div class="col-md-12 team-content-itemimg text-center">
+                <div class="col-md-4 col-lg-2 col-xs-6" ng-repeat="user in team.users">
+                    <div class="team-content-offset">
+                        <div class="team-content-itemimg text-center">
                             <img ng-src="{{user.avatar}}" class="img-circle img-responsive" ng-mouseover="hoverOver($event)">
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 team-content-itemname">
+                        <div class="team-content-itemname">
                             <span>{{user.fullname}}</span>
                         </div>
-                    </div>
-                    <div class="team-content-permissions" ng-mouseleave="hoverLeave($event)">
-                        <div class="team-content-permissionsEdit" ng-click="goToEdit('{{user.uuid}}','{{team.uuid}}')">
-                            Edit Permissions
+                        <div class="team-content-permissions" ng-mouseleave="hoverLeave($event)">
+                            <div class="team-content-permissionsEdit" ng-click="goToEdit('{{user.uuid}}','{{team.uuid}}')">
+                                Edit Permissions
+                            </div>
                         </div>
                     </div>
                 </div>

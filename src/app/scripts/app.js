@@ -26,11 +26,25 @@ angular
         'ui.bootstrap.datetimepicker'
     ])
     .constant('NAV', {
+        PROJECT_BUILD: 'project-build',
+        PROJECT_SCREEN: 'project-screen',
+        PROJECT_ACTIVITY: 'project-activity',
+        PROJECT_COMMENT: 'project-comment',
+
+
+        PROJECT_SCREEN_UPLOAD: 'project-screen-upload',
+
         PROJECT_TEMPLATE_BUILD: 'project-template-build',
         PROJECT_TEMPLATE_ACTIVITY: 'project-template-activity',
         PROJECT_TEMPLATE_COMMENT: 'project-template-comment',
         PROJECT_TEMPLATE_SELECT: 'project-template-select',
-        PROJECT_TEMPLATE_SCREEN: 'project-template-screen'
+        PROJECT_TEMPLATE_SCREEN: 'project-template-screen',
+
+        PROJECT_VIDEO: 'project-video',
+        PROJECT_VIDEO_PLAY: 'project-video-play',
+        PROJECT_VIDEO_UPLOAD: 'project-video-upload',
+        PROJECT_VIDEO_ACTIVITY: 'project-video-activity',
+        PROJECT_VIDEO_COMMENT: 'project-video-comment',
     })
     .config(function ($routeProvider, $httpProvider, LogglyLoggerProvider, uiSelectConfig, NAV) {
 
@@ -79,23 +93,27 @@ angular
                 templateUrl: 'views/userpage.html',
                 controller: 'UserpageCtrl'
             })
-            .when('/project-build/:puuid/:suuid', {
+            .when('/'+NAV.PROJECT_BUILD+'/:puuid', {
                 templateUrl: 'views/project-build.html',
                 controller: 'ProjectBuildCtrl'
             })
-            .when('/project-screen/:uuid', {
+            .when('/'+NAV.PROJECT_BUILD+'/:puuid/:suuid', {
+                templateUrl: 'views/project-build.html',
+                controller: 'ProjectBuildCtrl'
+            })
+            .when('/'+NAV.PROJECT_SCREEN+'/:uuid', {
                 templateUrl: 'views/project-screen.html',
                 controller: 'ProjectScreenCtrl'
             })
-            .when('/project-activity/:uuid', {
+            .when('/'+NAV.PROJECT_ACTIVITY+'/:uuid', {
                 templateUrl: 'views/project-activity.html',
                 controller: 'ProjectActivityCtrl'
             })
-            .when('/project-comment/:uuid', {
+            .when('/'+NAV.PROJECT_COMMENT+'/:uuid', {
                 templateUrl: 'views/project-comment.html',
                 controller: 'ProjectCommentCtrl'
             })
-            .when('/project-screenUpload/:uuid', {
+            .when('/'+NAV.PROJECT_SCREEN_UPLOAD+'/:uuid', {
                 templateUrl: 'views/project-screen-upload.html',
                 controller: 'ProjectScreenUploadCtrl'
             })
@@ -123,24 +141,28 @@ angular
                 templateUrl: 'views/profile-notice.html',
                 controller: 'ProfileNoticeCtrl'
             })
-            .when('/project-video/:uuid', {
+            .when('/'+NAV.PROJECT_VIDEO+'/:uuid', {
                 templateUrl: 'views/project-video.html',
                 controller: 'ProjectVideoCtrl'
             })
-            .when('/project-videoUpload/:uuid', {
+            .when('/'+NAV.PROJECT_VIDEO_UPLOAD+'/:uuid', {
                 templateUrl: 'views/project-video-upload.html',
                 controller: 'ProjectVideoUploadCtrl'
             })
-            .when('/project-videoPlay/:puuid/:vuuid', {
+            .when('/'+NAV.PROJECT_VIDEO_PLAY+'/:puuid', {
                 templateUrl: 'views/project-video-play.html',
                 controller: 'ProjectVideoPlayCtrl'
             })
-            .when('/project-activity-video/:uuid', {
-                templateUrl: 'views/project-activity-video.html',
+            .when('/'+NAV.PROJECT_VIDEO_PLAY+'/:puuid/:vuuid', {
+                templateUrl: 'views/project-video-play.html',
+                controller: 'ProjectVideoPlayCtrl'
+            })
+            .when('/'+NAV.PROJECT_VIDEO_ACTIVITY+'/:uuid', {
+                templateUrl: 'views/project-video-activity.html',
                 controller: 'ProjectActivityVideoCtrl'
             })
-            .when('/project-comment-video/:uuid', {
-                templateUrl: 'views/project-comment-video.html',
+            .when('/'+NAV.PROJECT_VIDEO_COMMENT+'/:uuid', {
+                templateUrl: 'views/project-video-comment.html',
                 controller: 'ProjectCommentVideoCtrl'
             })
             .when('/'+NAV.PROJECT_TEMPLATE_BUILD+'/:puuid', {
@@ -167,8 +189,8 @@ angular
                 templateUrl: 'views/project-template-comment.html',
                 controller: 'ProjectCommentTemplateCtrl'
             })
-            .when('/register-billingInfo', {
-                templateUrl: 'views/register-billingInfo.html',
+            .when('/register-billing-info', {
+                templateUrl: 'views/register-billing-info.html',
                 controller: 'registerBillingCtrl'
             })
             .when('/register-plan', {

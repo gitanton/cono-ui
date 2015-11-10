@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectBuildCtrl', function ($scope, $http, $location, $routeParams, ENV, ModalService) {
+    .controller('ProjectBuildCtrl', function ($scope, $http, $location, $routeParams, ENV, ModalService, NAV, screenService) {
         $scope.isTask = 1;
         $scope.CLOCK = null;
         $scope.shapeFill = false;
@@ -28,6 +28,22 @@ angular.module('conojoApp')
         $('.projectBuild-content-drawing').css('marginLeft', $scope.drawLeft);
         var commentNum = 1;
         var hotspotsNum = 1;
+        /**
+         * Navigation
+         */
+        $scope.hasScreens = function() {
+            return true;
+        };
+        $scope.hasVideos = function() {
+            return false;
+        };
+        $scope.isBuild = function() {
+            return true;
+        };
+        $scope.screenURL = '#/'+NAV.PROJECT_SCREEN+'/' + $scope.activeProjectUuid;
+        $scope.buildURL = '#/'+NAV.PROJECT_BUILD+'/' + $scope.activeProjectUuid;
+        $scope.activityURL = '#/'+NAV.PROJECT_ACTIVITY+'/' + $scope.activeProjectUuid;
+        $scope.commentURL = '#/'+NAV.PROJECT_COMMENT+'/' + $scope.activeProjectUuid;
 
         $scope.comments = [];
         $scope.hotspots = [];
@@ -43,73 +59,78 @@ angular.module('conojoApp')
                 $scope.updateProjectTitle = data.name;
                 $scope.updateProjectTypeid = data.type_id;
             }).then(function() {
-
-            });
-
-            $http({
-                url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid,
-                method: 'GET'
-            }).then(function (response) {
-                var data = response.data;
-                hotspotsNum = data.hotspots ? data.hotspots.length + 1 : 1;
-
-                if (data.drawings && data.drawings.length > 0) {
-                    var img_f_init = new Image();
-                    img_f_init.src = 'data:image/png;base64,' + data.drawings[data.drawings.length - 1].data.slice(9);
-                    img_f_init.onload = function () {
-                        cxt.drawImage(img_f_init, 0, 0, 790, 440);
-                    };
-                }
-
-                if (data.hotspots && data.hotspots.length > 0) {
-                    for (var j = 0; j < data.hotspots.length; j++) {
-                        var left = data.hotspots[j].begin_x + $scope.drawLeft;
-                        var currentH = j + 1;
-                        $('.projectBuild-content-drawing').append("<div data-linkto='" + data.hotspots[j].link_to + "' id='hotspotsMarker" + currentH + "' class='hotspotsSqure' style='left:" + left + "px;top:" + data.hotspots[j].begin_y + "px;width:" + data.hotspots[j].end_x + "px;height:" + data.hotspots[j].end_y + "px'></div>");
-                    }
-                }
-
-                var img_b_init = new Image();
-                img_b_init.src = data.url;
-                var img_width = data.image_width;
-                var img_height = data.image_height;
-                img_b_init.onload = function () {
-                    if (img_width <= 790 && img_height <= 440) {
-                        cxt_b.drawImage(img_b_init, 0, 0, img_width, img_height);
+                return screenService.getForProject($scope.activeProjectUuid).then(function(screens) {
+                    if(screens.length<1) {
+                        $location.path('/' + NAV.PROJECT_SCREEN_UPLOAD + '/' + $scope.activeProjectUuid);
                     } else {
-                        cxt_b.drawImage(img_b_init, 0, 0, 790, 440);
-                    }
-                };
-            });
+                        $scope.activeScreenUuid = screens[0].uuid;
+                        $http({
+                            url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid,
+                            method: 'GET'
+                        }).then(function (response) {
+                            var data = response.data;
+                            hotspotsNum = data.hotspots ? data.hotspots.length + 1 : 1;
 
-            $http({
-                url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments',
-                method: 'GET',
-                data: $.param({screen_uuid: $scope.activeScreenUuid}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).then(function (response) {
-                var data = response.data;
-                if (data.length > 0) {
-                    for (var i = 0; i < data.length; i++) {
-                        //group the comment
-                        var num = data[i].marker;
-                        if (!$scope.comments[num]) {
-                            $scope.comments[num] = num;
-                            commentNum = num + 1;
-                            var left = data[i].begin_x + $scope.drawLeft;
-                            $('.projectBuild-content-drawing').append("<div data-beginx='" + data[i].begin_x + "' data-beginy='" + data[i].begin_y + "' data-comment='" + num + "' id='commentMarker" + num + "' class='commentSqure' style='left:" + left + "px;top:" + data[i].begin_y + "px'>" + num + "</div>");
-                        }
-                    }
-                }
-            });
+                            if (data.drawings && data.drawings.length > 0) {
+                                var img_f_init = new Image();
+                                img_f_init.src = 'data:image/png;base64,' + data.drawings[data.drawings.length - 1].data.slice(9);
+                                img_f_init.onload = function () {
+                                    cxt.drawImage(img_f_init, 0, 0, 790, 440);
+                                };
+                            }
 
-            $('#pickerBrush').farbtastic(function (color) {
-                $scope.setPenColor(color);
+                            if (data.hotspots && data.hotspots.length > 0) {
+                                for (var j = 0; j < data.hotspots.length; j++) {
+                                    var left = data.hotspots[j].begin_x + $scope.drawLeft;
+                                    var currentH = j + 1;
+                                    $('.projectBuild-content-drawing').append("<div data-linkto='" + data.hotspots[j].link_to + "' id='hotspotsMarker" + currentH + "' class='hotspotsSqure' style='left:" + left + "px;top:" + data.hotspots[j].begin_y + "px;width:" + data.hotspots[j].end_x + "px;height:" + data.hotspots[j].end_y + "px'></div>");
+                                }
+                            }
+
+                            var img_b_init = new Image();
+                            img_b_init.src = data.url;
+                            var img_width = data.image_width;
+                            var img_height = data.image_height;
+                            img_b_init.onload = function () {
+                                if (img_width <= 790 && img_height <= 440) {
+                                    cxt_b.drawImage(img_b_init, 0, 0, img_width, img_height);
+                                } else {
+                                    cxt_b.drawImage(img_b_init, 0, 0, 790, 440);
+                                }
+                            };
+                        });
+
+                        $http({
+                            url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments',
+                            method: 'GET',
+                            data: $.param({screen_uuid: $scope.activeScreenUuid}),
+                            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                        }).then(function (response) {
+                            var data = response.data;
+                            if (data.length > 0) {
+                                for (var i = 0; i < data.length; i++) {
+                                    //group the comment
+                                    var num = data[i].marker;
+                                    if (!$scope.comments[num]) {
+                                        $scope.comments[num] = num;
+                                        commentNum = num + 1;
+                                        var left = data[i].begin_x + $scope.drawLeft;
+                                        $('.projectBuild-content-drawing').append("<div data-beginx='" + data[i].begin_x + "' data-beginy='" + data[i].begin_y + "' data-comment='" + num + "' id='commentMarker" + num + "' class='commentSqure' style='left:" + left + "px;top:" + data[i].begin_y + "px'>" + num + "</div>");
+                                    }
+                                }
+                            }
+                        });
+
+                        $('#pickerBrush').farbtastic(function (color) {
+                            $scope.setPenColor(color);
+                        });
+                        $('#pickerShape').farbtastic(function (color) {
+                            $scope.setPenColor(color);
+                        });
+                        $scope.setPenWidth(0);
+                    }
+                });
             });
-            $('#pickerShape').farbtastic(function (color) {
-                $scope.setPenColor(color);
-            });
-            $scope.setPenWidth(0);
         };
 
         $scope.openUpdateProject = function () {
@@ -168,21 +189,6 @@ angular.module('conojoApp')
             }).then(function (modal) {
                 modal.element.modal();
             });
-        };
-
-        $scope.toScreen = function () {
-            var url = '/project-screen/' + $scope.activeProjectUuid;
-            $location.path(url);
-        };
-
-        $scope.toActivity = function () {
-            var url = '/project-activity/' + $scope.activeProjectUuid;
-            $location.path(url);
-        };
-
-        $scope.toComment = function () {
-            var url = '/project-comment/' + $scope.activeProjectUuid;
-            $location.path(url);
         };
 
         $scope.openMessage = function () {

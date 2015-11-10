@@ -7,9 +7,26 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectCommentVideoCtrl', function ($scope, $http, $location, $routeParams, ENV) {
+    .controller('ProjectCommentVideoCtrl', function ($scope, $http, $location, $routeParams, ENV, NAV) {
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.model = {};
+
+        /**
+         * Navigation
+         */
+        $scope.hasScreens = function() {
+            return false;
+        };
+        $scope.hasVideos = function() {
+            return true;
+        };
+        $scope.isComment = function() {
+            return true;
+        };
+        $scope.videoURL = '#/'+NAV.PROJECT_VIDEO+'/' + $scope.activeProjectUuid;
+        $scope.buildURL = '#/'+NAV.PROJECT_VIDEO_PLAY+'/' + $scope.activeProjectUuid;
+        $scope.activityURL = '#/'+NAV.PROJECT_VIDEO_ACTIVITY+'/' + $scope.activeProjectUuid;
+        $scope.commentURL = '#/'+NAV.PROJECT_VIDEO_COMMENT+'/' + $scope.activeProjectUuid;
 
         $scope.init = function () {
             $http({
@@ -112,31 +129,6 @@ angular.module('conojoApp')
                 $scope.init();
                 $('#deletemessage').modal('hide');
             });
-        };
-
-        $scope.toBuild = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'videos/project/' + $scope.activeProjectUuid,
-                method: 'GET',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).then(function (response) {
-                var data = response.data;
-                if (data.length > 0) {
-                    $location.path('/project-videoPlay/' + $scope.activeProjectUuid + '/' + data[0].uuid);
-                } else {
-                    $location.path('/project-videoUpload/' + $scope.activeProjectUuid);
-                }
-            });
-        };
-
-        $scope.toVideo = function () {
-            var url = '/project-video/' + $scope.activeProjectUuid;
-            $location.path(url);
-        };
-
-        $scope.toActivity = function () {
-            var url = '/project-activity-video/' + $scope.activeProjectUuid;
-            $location.path(url);
         };
 
         $scope.openMessage = function () {

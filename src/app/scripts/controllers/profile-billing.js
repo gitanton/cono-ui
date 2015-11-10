@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('profileBillingCtrl', function ($scope, $http, $location, $log, ENV) {
+    .controller('profileBillingCtrl', function ($scope, $http, $location, $log, ENV, NAV) {
         $scope.billingOne = true;
         $scope.billingThree = false;
         $scope.saving = false;

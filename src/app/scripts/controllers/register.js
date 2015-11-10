@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('RegisterCtrl', function ($rootScope, $scope, $http, $location, store, ENV) {
+    .controller('RegisterCtrl', function ($rootScope, $scope, $http, $location, store, ENV, NAV) {
         $rootScope.bodyCls = 'gray';
         $scope.errorOne = false;
         $scope.errorTwo = false;

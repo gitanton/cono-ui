@@ -86,44 +86,11 @@ angular.module('conojoApp')
 
         $scope.projectScreen = function (uuid, type) {
             if (type === '1') {
-                $http({
-                    url: ENV.API_ENDPOINT + 'screens/project/' + uuid,
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).then(function (response) {
-                    var data = response.data;
-                    if (data.length > 0) {
-                        $location.path('/project-build/' + uuid + '/' + data[0].uuid);
-                    } else {
-                        $location.path('/project-screenUpload/' + uuid);
-                    }
-                });
+                $location.path('/'+NAV.PROJECT_BUILD+'/' + uuid);
             } else if (type === '2') {
-                $http({
-                    url: ENV.API_ENDPOINT + 'videos/project/' + uuid,
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).then(function (response) {
-                    var data = response.data;
-                    if (data.length > 0) {
-                        $location.path('/project-videoPlay/' + uuid + '/' + data[0].uuid);
-                    } else {
-                        $location.path('/project-videoUpload/' + uuid);
-                    }
-                });
+                $location.path('/'+NAV.PROJECT_VIDEO_PLAY+'/' + uuid);
             } else if (type === '3') {
-                $http({
-                    url: ENV.API_ENDPOINT + 'screens/project/' + uuid,
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).then(function (response) {
-                    var data = response.data;
-                    if (data.length > 0) {
-                        $location.path('/'+NAV.PROJECT_TEMPLATE_BUILD+'/' + uuid + '/' + data[0].uuid);
-                    } else {
-                        $location.path('/project-templateSelect/' + uuid);
-                    }
-                });
+                $location.path('/'+NAV.PROJECT_TEMPLATE_BUILD+'/' + uuid);
             }
         };
 

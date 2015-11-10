@@ -1,23 +1,25 @@
 <div class="userpage-page page">
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/siderbar.html'"></div>
-    <div class="userpage-container">
-        <div class="userpage-header">
-            <div class="userpage-header-account col-md-6">
-                <a href="#/team">
-                    <img src="images/back-icon.png">
-                </a>
-                <span>Your Team</span>
-            </div>
-            <div class="userpage-header-button col-md-6">
-                <button class="btn btn-lg btn-primary" ng-click="openAddTeamMember()">Add Team Member</button>
+    <div class="userpage-container project-container">
+        <div class="userpage-header project-header">
+            <div class="row">
+                <div class="userpage-header-account name col-md-6">
+                    <a href="#/team">
+                        <img src="images/back-icon.png">
+                    </a>
+                    <span>Your Team</span>
+                </div>
+                <div class="userpage-header-button button col-md-6">
+                    <button class="btn btn-lg btn-primary" ng-click="openAddTeamMember()">Add Team Member</button>
+                </div>
             </div>
         </div>
-        <div class="userpage-content">
+        <div class="userpage-content project-content">
             <div class="col-md-12 userpage-content-container">
                 <div class="userpage-content-intro">
                     <div class="col-md-3 userpage-content-img">
-                        <img src="images/Dawkins.png" class="img-circle">
+                        <img ng-src="images/Dawkins.png" class="img-circle">
                     </div>
                     <div class="col-md-9 userpage-content-desc">
                         <p class="col-md-12 userpage-content-name">R.Dawkins</p>

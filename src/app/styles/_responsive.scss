@@ -48,6 +48,10 @@
         padding: 0 $padding-default;
         position: static;
 
+        .project-activity-content-body {
+            padding: 0 $padding-default;
+        }
+
         .project-header {
             width: auto;
             height: auto;
@@ -89,10 +93,19 @@
             .project-content-btm {
                 width: 100%;
             }
+
+            .project-content-opetate {
+                top: -250px;
+                right: 0;
+            }
         }
 
         .project-content-menu {
             margin: 0 -15px;
+        }
+
+        .project-body {
+            min-height: 100vh;
         }
     }
 
@@ -102,7 +115,13 @@
         }
 
         .team-content-offset {
-            margin-bottom: 45px;
+            margin: 0;
+            min-height: 215px;
+            margin-bottom: $margin-large;
+
+            img {
+                min-height: 100px;
+            }
         }
     }
 
@@ -116,6 +135,35 @@
                 @include flex(1);
             }
 
+        }
+    }
+
+    .project-content-offset {
+        position: relative;
+    }
+
+    .project-content-gear-a,
+    .project-content-gear-a-selected {
+        position: absolute;
+        top: -25px;
+        width: 20px;
+        right: 10px;
+        z-index: 100;
+    }
+
+    .activity-container {
+        .project-activity-content-body {
+            .project-activity-content-items {
+                .project-activity-content-item {
+                    .project-activity-content-img {
+                        width: auto;
+                    }
+
+                    .project-activity-content-desc {
+                        height: auto;
+                    }
+                }
+            }
         }
     }
 }

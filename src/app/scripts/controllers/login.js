@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('LoginCtrl', function ($rootScope, $scope, $http, $location, ENV, store, userService, ModalService) {
+    .controller('LoginCtrl', function ($rootScope, $scope, $http, $location, ENV, store, userService, ModalService, NAV) {
         $rootScope.bodyCls = 'gray';
         $scope.rememberMe = store.get('rememberMe');
         $scope.formData = {

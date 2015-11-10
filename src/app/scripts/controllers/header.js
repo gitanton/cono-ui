@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('headerCtrl', function ($scope, $http, $location, ENV) {
+    .controller('headerCtrl', function ($scope, $http, $location, ENV, NAV) {
         $scope.meetingDetails = true;
         $scope.startMeeting = false;
         $scope.chatContainer = true;
