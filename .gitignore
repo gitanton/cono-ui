@@ -5,6 +5,9 @@
 
 src/app/scripts/config.js
 www
+node_modules
+bower_components
+.tmp
 
 # Cordova
 /platforms
