@@ -3,11 +3,12 @@
 *.iml
 *.iws
 
-src/app/scripts/config.js
+src/scripts/config.js
 www
 node_modules
 bower_components
 .tmp
+.sass-cache
 
 # Cordova
 /platforms
