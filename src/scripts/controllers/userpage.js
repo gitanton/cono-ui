@@ -22,26 +22,6 @@ angular.module('conojoApp')
             //this need to get the current team user's project
         };
 
-        $scope.openAddProjectMember = function (uuid) {
-            $('#addPeopleToProject').modal('toggle');
-            $scope.addToProjectUuid = uuid;
-        };
-
-        $scope.addProjectMember = function () {
-            $http({
-                url: ENV.API_ENDPOINT + 'projects/project/' + $scope.addToProjectUuid + '/invite',
-                method: 'POST',
-                data: $.param({uuid: $scope.addToProjectUuid, email: $scope.memberEmail}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).then(function () {
-                $('#addPeopleToProject').modal('hide');
-            }, function (error) {
-                $('#addPeopleToProject').modal('hide');
-                $('.reset-note').html(error.data.message);
-                $('#statusNotice').modal('toggle');
-            });
-        };
-
         $scope.openAddTeamMember = function () {
             $('#addTeamMember').modal('toggle');
             $scope.activeTeamUuid = $routeParams.tuuid;

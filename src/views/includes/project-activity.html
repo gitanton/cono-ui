@@ -3,12 +3,12 @@
         <div class="project-activity-content-items col-md-10 col-sm-8">
             <div class="project-activity-content-item" ng-repeat="activity in projectActivities" id="drag{{$index}}" draggable>
                 <div class="row">
-                    <div class="col-sm-3 col-sm-4 col-xs-3 pad-right-0">
+                    <div class="col-lg-2 col-sm-4 col-xs-3 pad-right-0">
                         <div class="project-activity-content-img">
                             <img ng-src="{{activity.creator.avatar}}" class="img-responsive">
                         </div>
                     </div>
-                    <div class="col-sm-9 col-sm-8 col-xs-9 pad-left-0">
+                    <div class="col-lg-10 col-sm-8 col-xs-9 pad-left-0">
                         <div class="project-activity-content-desc">
                             <div class="row">
                                 <div class="col-sm-9">{{activity.title}}</div>

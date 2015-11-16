@@ -12,19 +12,19 @@ angular.module('conojoApp')
         /**
          * Navigation
          */
-        $scope.hasScreens = function() {
+        $scope.hasScreens = function () {
             return true;
         };
-        $scope.hasVideos = function() {
+        $scope.hasVideos = function () {
             return false;
         };
-        $scope.isScreen = function() {
+        $scope.isScreen = function () {
             return true;
         };
-        $scope.screenURL = '#/'+NAV.PROJECT_SCREEN+'/' + $scope.activeProjectUuid;
-        $scope.buildURL = '#/'+NAV.PROJECT_BUILD+'/' + $scope.activeProjectUuid;
-        $scope.activityURL = '#/'+NAV.PROJECT_ACTIVITY+'/' + $scope.activeProjectUuid;
-        $scope.commentURL = '#/'+NAV.PROJECT_COMMENT+'/' + $scope.activeProjectUuid;
+        $scope.screenURL = '#/' + NAV.PROJECT_SCREEN + '/' + $scope.activeProjectUuid;
+        $scope.buildURL = '#/' + NAV.PROJECT_BUILD + '/' + $scope.activeProjectUuid;
+        $scope.activityURL = '#/' + NAV.PROJECT_ACTIVITY + '/' + $scope.activeProjectUuid;
+        $scope.commentURL = '#/' + NAV.PROJECT_COMMENT + '/' + $scope.activeProjectUuid;
 
         $scope.init = function () {
             $http({
@@ -119,7 +119,7 @@ angular.module('conojoApp')
         };
 
         $scope.goBack = function () {
-            var url = '/project';
+            var url = '/' + NAV.PROJECT;
             $location.path(url);
         };
 

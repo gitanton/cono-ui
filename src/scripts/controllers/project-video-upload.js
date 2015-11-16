@@ -120,7 +120,7 @@ angular.module('conojoApp')
             });
         };
         $scope.goBack = function () {
-            var url = '/project';
+            var url = '/' + NAV.PROJECT;
             $location.path(url);
         };
 

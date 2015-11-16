@@ -26,7 +26,9 @@ angular
         'ui.bootstrap.datetimepicker'
     ])
     .constant('NAV', {
+        PROJECT: 'project',
         PROJECT_BUILD: 'project-build',
+        PROJECT_BUILD_SCREEN: 'project-build-screen',
         PROJECT_SCREEN: 'project-screen',
         PROJECT_ACTIVITY: 'project-activity',
         PROJECT_COMMENT: 'project-comment',
@@ -35,6 +37,7 @@ angular
         PROJECT_SCREEN_UPLOAD: 'project-screen-upload',
 
         PROJECT_TEMPLATE_BUILD: 'project-template-build',
+        PROJECT_TEMPLATE_BUILD_SCREEN: 'project-template-build-screen',
         PROJECT_TEMPLATE_ACTIVITY: 'project-template-activity',
         PROJECT_TEMPLATE_COMMENT: 'project-template-comment',
         PROJECT_TEMPLATE_SELECT: 'project-template-select',
@@ -72,7 +75,7 @@ angular
                 title: 'Register | Conojo Collaboration Platform',
                 description: 'Register | The most comprehensive creative collaboration platform there is. Get feedback on UI/UX, video and files in real-time. Get started with our free trial.'
             })
-            .when('/project', {
+            .when('/'+NAV.PROJECT, {
                 templateUrl: 'views/project.html',
                 controller: 'ProjectCtrl',
                 title: 'Projects | Conojo Collaboration Platform'
@@ -97,7 +100,7 @@ angular
                 templateUrl: 'views/project-build.html',
                 controller: 'ProjectBuildCtrl'
             })
-            .when('/'+NAV.PROJECT_BUILD+'/:puuid/:suuid', {
+            .when('/'+NAV.PROJECT_BUILD_SCREEN+'/:puuid/:suuid', {
                 templateUrl: 'views/project-build.html',
                 controller: 'ProjectBuildCtrl'
             })
@@ -165,7 +168,7 @@ angular
                 templateUrl: 'views/project-video-comment.html',
                 controller: 'ProjectCommentVideoCtrl'
             })
-            .when('/'+NAV.PROJECT_TEMPLATE_BUILD+'/:puuid/:suuid', {
+            .when('/'+NAV.PROJECT_TEMPLATE_BUILD_SCREEN+'/:puuid/:suuid', {
                 templateUrl: 'views/project-template-build.html',
                 controller: 'ProjectBuildTemplateCtrl'
             })

@@ -31,19 +31,19 @@ angular.module('conojoApp')
         /**
          * Navigation
          */
-        $scope.hasScreens = function() {
+        $scope.hasScreens = function () {
             return true;
         };
-        $scope.hasVideos = function() {
+        $scope.hasVideos = function () {
             return false;
         };
-        $scope.isBuild = function() {
+        $scope.isBuild = function () {
             return true;
         };
-        $scope.screenURL = '#/'+NAV.PROJECT_SCREEN+'/' + $scope.activeProjectUuid;
-        $scope.buildURL = '#/'+NAV.PROJECT_BUILD+'/' + $scope.activeProjectUuid;
-        $scope.activityURL = '#/'+NAV.PROJECT_ACTIVITY+'/' + $scope.activeProjectUuid;
-        $scope.commentURL = '#/'+NAV.PROJECT_COMMENT+'/' + $scope.activeProjectUuid;
+        $scope.screenURL = '#/' + NAV.PROJECT_SCREEN + '/' + $scope.activeProjectUuid;
+        $scope.buildURL = '#/' + NAV.PROJECT_BUILD + '/' + $scope.activeProjectUuid;
+        $scope.activityURL = '#/' + NAV.PROJECT_ACTIVITY + '/' + $scope.activeProjectUuid;
+        $scope.commentURL = '#/' + NAV.PROJECT_COMMENT + '/' + $scope.activeProjectUuid;
 
         $scope.comments = [];
         $scope.hotspots = [];
@@ -58,9 +58,9 @@ angular.module('conojoApp')
                 $scope.projectMembers = data.users;
                 $scope.updateProjectTitle = data.name;
                 $scope.updateProjectTypeid = data.type_id;
-            }).then(function() {
-                return screenService.getForProject($scope.activeProjectUuid).then(function(screens) {
-                    if(screens.length<1) {
+            }).then(function () {
+                return screenService.getForProject($scope.activeProjectUuid).then(function (screens) {
+                    if (screens.length < 1) {
                         $location.path('/' + NAV.PROJECT_SCREEN_UPLOAD + '/' + $scope.activeProjectUuid);
                     } else {
                         $scope.activeScreenUuid = screens[0].uuid;
@@ -149,7 +149,7 @@ angular.module('conojoApp')
         };
 
         $scope.openAddScreen = function () {
-            var url = '/project-screenUpload/' + $scope.activeProjectUuid;
+            var url = '/' + NAV.PROJECT_SCREEN_UPLOAD + '/' + $scope.activeProjectUuid;
             $location.path(url);
         };
 

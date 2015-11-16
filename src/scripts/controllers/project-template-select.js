@@ -12,16 +12,16 @@ angular.module('conojoApp')
         /**
          * Navigation
          */
-        $scope.hasScreens = function() {
+        $scope.hasScreens = function () {
             return true;
         };
-        $scope.hasVideos = function() {
+        $scope.hasVideos = function () {
             return false;
         }
-        $scope.screenURL = '#/'+NAV.PROJECT_TEMPLATE_SCREEN+'/' + $scope.activeProjectUuid;
-        $scope.buildURL = '#/'+NAV.PROJECT_TEMPLATE_BUILD+'/' + $scope.activeProjectUuid;
-        $scope.activityURL = '#/'+NAV.PROJECT_TEMPLATE_ACTIVITY+'/' + $scope.activeProjectUuid;
-        $scope.commentURL = '#/'+NAV.PROJECT_TEMPLATE_COMMENT+'/' + $scope.activeProjectUuid;
+        $scope.screenURL = '#/' + NAV.PROJECT_TEMPLATE_SCREEN + '/' + $scope.activeProjectUuid;
+        $scope.buildURL = '#/' + NAV.PROJECT_TEMPLATE_BUILD + '/' + $scope.activeProjectUuid;
+        $scope.activityURL = '#/' + NAV.PROJECT_TEMPLATE_ACTIVITY + '/' + $scope.activeProjectUuid;
+        $scope.commentURL = '#/' + NAV.PROJECT_TEMPLATE_COMMENT + '/' + $scope.activeProjectUuid;
 
         $scope.init = function () {
             $http({
@@ -59,7 +59,7 @@ angular.module('conojoApp')
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).then(function (response) {
                     var data = response.data;
-                    var url = '/project-build-template/' + $scope.activeProjectUuid + '/' + data.uuid;
+                    var url = '/' + NAV.PROJECT_TEMPLATE_BUILD_SCREEN + '/' + $scope.activeProjectUuid + '/' + data.uuid;
                     $location.path(url).replace();
                     $scope.$apply();
                 }, function (data) {
@@ -70,7 +70,7 @@ angular.module('conojoApp')
         };
 
         $scope.goBack = function () {
-            var url = '/project';
+            var url = '/' + NAV.PROJECT;
             $location.path(url);
         };
 

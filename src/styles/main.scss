@@ -812,9 +812,7 @@ body {
             padding-top: 16px;
             .project-activity-content-item {
                 margin-top: 16px;
-                .project-activity-content-img {
-                    width: 164px;
-                }
+
                 .project-activity-content-desc {
                     height: 180px;
                     background: $color-white;
@@ -2026,9 +2024,7 @@ body {
                 .project-activity-content-item {
                     margin-bottom: 16px;
                 }
-                .project-activity-content-img {
-                    width: 164px;
-                }
+
                 .project-activity-content-desc {
                     height: 180px;
                     background: $color-white;
@@ -2528,7 +2524,6 @@ body {
                             border: 1px solid $color-blue-5;
                             cursor: pointer;
                             border-radius: 2px;
-                            width: 164px;
                             height: 40px;
                             padding: 10px 35px;
                             color: $color-blue-5;

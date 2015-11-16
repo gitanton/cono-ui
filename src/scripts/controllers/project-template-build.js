@@ -151,7 +151,7 @@ angular.module('conojoApp')
         };
 
         $scope.openAddScreen = function () {
-            var url = '/project-templateSelect/' + $scope.activeProjectUuid;
+            var url = '/'+NAV.PROJECT_TEMPLATE_SELECT+'/' + $scope.activeProjectUuid;
             $location.path(url);
         };
 
@@ -169,9 +169,9 @@ angular.module('conojoApp')
             }).then(function () {
                 $scope.init();
                 $('#addPeopleToProject').modal('hide');
-            }, function (data) {
+            }, function (error) {
                 $('#addPeopleToProject').modal('hide');
-                $('.reset-note').html(data.message);
+                $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');
             });
         };
