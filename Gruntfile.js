@@ -51,7 +51,7 @@ module.exports = function (grunt) {
             },
             production: {
                 options: {
-                    dest: '<%= yeoman.dist %>/scripts/config.js'
+                    dest: '<%= yeoman.app %>/scripts/config.js'
                 },
                 constants: {
                     ENV: {
@@ -173,8 +173,7 @@ module.exports = function (grunt) {
                         dot: true,
                         src: [
                             '.tmp',
-                            '<%= yeoman.dist %>/{,*/}*',
-                            '!<%= yeoman.dist %>/.git*'
+                            '<%= yeoman.dist %>/**/*'
                         ]
                     }
                 ]
@@ -441,7 +440,11 @@ module.exports = function (grunt) {
 
     grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
         if (target === 'dist') {
-            return grunt.task.run(['build', 'connect:dist:keepalive']);
+            return grunt.task.run([
+                'clean:dist',
+                'build',
+                'connect:dist:keepalive'
+            ]);
         }
 
         grunt.task.run([
@@ -469,8 +472,6 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', [
-        'clean:dist',
-        'ngconstant:production',
         'wiredep',
         'useminPrepare',
         'concurrent:dist',
@@ -487,8 +488,14 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        //'newer:jshint',
-        //'test',
+        'clean:dist',
+        'ngconstant:production',
+        'build'
+    ]);
+
+    grunt.registerTask('staging', [
+        'clean:dist',
+        'ngconstant:development',
         'build'
     ]);
 };
