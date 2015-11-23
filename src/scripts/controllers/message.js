@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('MessageCtrl', function ($scope, $http, ENV, NAV) {
+    .controller('MessageCtrl', function ($rootScope, $scope, $http, ENV, NAV, $log) {
         $scope.model = {};
 
         $scope.init = function () {
@@ -62,7 +62,7 @@ angular.module('conojoApp')
                 $scope.init();
                 $('#replymessage').modal('hide');
             }, function (error) {
-                console.log(error);
+                $log.error({error: error});
                 $('#replymessage').modal('hide');
                 $('.reset-note').html(error.data.message);
                 $('#statusNotice').modal('toggle');

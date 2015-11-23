@@ -135,7 +135,7 @@ body {
     z-index: 2;
     left: 0;
     .siderbar-expand-profileContainer {
-        background: #323232;
+        background: $color-dark-1;
         position: absolute;
         top: 0;
         width: 160px;
@@ -573,6 +573,7 @@ body {
             margin: 0 $margin-default $margin-large $margin-default;
             padding: 0 $padding-default;
             background: $color-white;
+            position: relative;
 
             .thumbnail-container {
                 height: 200px;
@@ -616,6 +617,7 @@ body {
             position: absolute;
             z-index: 2;
             width: 100%;
+            margin-left: -15px;
             height: 184px;
             top: 0;
             ul {
@@ -1079,8 +1081,10 @@ body {
         background: #d4d4d4;
         border-radius: $border-radius;
         margin-left: 16px;
+        position: relative;
+
         .team-content-permissions {
-            background: #323232;
+            background: $color-dark-1;
             position: absolute;
             top: 0;
             width: 100%;
@@ -1206,7 +1210,7 @@ body {
             border-radius: $border-radius;
             .userpage-content-intro {
                 border-bottom: 1px solid #e5e5e5;
-                height: 232px;
+
                 .userpage-content-img {
                     text-align: center;
                     padding: 20px;
@@ -1367,7 +1371,7 @@ body {
                         height: 30px;
                     }
                     .project-build-content-textSelect {
-                        background: #323232;
+                        background: $color-dark-1;
                         width: 30px;
                         height: 30px;
                         display: inline-block;
@@ -1378,14 +1382,14 @@ body {
                             position: absolute;
                             top: -62px;
                             left: 13px;
-                            background: #323232;
+                            background: $color-dark-1;
                             width: 83px;
                             div {
                                 cursor: pointer;
                             }
                         }
                         .project-build-content-textSizeDiv {
-                            background: #323232;
+                            background: $color-dark-1;
                             width: 50px;
                             height: 30px;
                             display: inline-block;
@@ -1397,14 +1401,14 @@ body {
                             position: absolute;
                             top: -42px;
                             left: 0;
-                            background: #323232;
+                            background: $color-dark-1;
                             width: 155px;
                             div {
                                 cursor: pointer;
                             }
                         }
                         .project-build-content-textFamilyDiv {
-                            background: #323232;
+                            background: $color-dark-1;
                             width: 120px;
                             height: 30px;
                             display: inline-block;
@@ -1416,14 +1420,14 @@ body {
                             position: absolute;
                             top: -82px;
                             left: 7px;
-                            background: #323232;
+                            background: $color-dark-1;
                             width: 133px;
                             div {
                                 cursor: pointer;
                             }
                         }
                         .project-build-content-textWeightDiv {
-                            background: #323232;
+                            background: $color-dark-1;
                             width: 100px;
                             height: 30px;
                             display: inline-block;
@@ -2839,7 +2843,7 @@ body {
 .profile-content-menu,
 .project-content-menu {
     min-height: $sub-header-height;
-    padding: 4px 20px;
+    padding: 8px 20px;
     background: #55abd4;
     ul {
         margin: 0;

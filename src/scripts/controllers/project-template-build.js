@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectBuildTemplateCtrl', function ($scope, $http, $location, $routeParams, ENV, ModalService, NAV, screenService) {
+    .controller('ProjectBuildTemplateCtrl', function ($rootScope, $scope, $http, $location, $routeParams, ENV, ModalService, NAV, screenService) {
         $scope.isTask = 1;
         $scope.CLOCK = null;
         $scope.shapeFill = false;
@@ -345,7 +345,6 @@ angular.module('conojoApp')
             var addBeginx = $(this).data('beginx');
             // var addBeginy = $(this).data('beginy');
 
-            console.log('click comments ' + $(this).data('comment'));
             $http({
                 url: ENV.API_ENDPOINT + 'screens/screen/' + $scope.activeScreenUuid + '/comments/search',
                 method: 'POST',
@@ -463,7 +462,6 @@ angular.module('conojoApp')
 
         $(document).on('click', '.hotspotsSqure', function () {
             //link to some position
-            console.log('click hotspots ' + $(this).data('linkto'));
             // $location.path('/project-build/' + $scope.activeProjectUuid + '/' + $(this).data('linkto'));
         });
 

@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileProfileCtrl', function ($scope, $location, $http, $log, ENV, Upload, store, userService, ModalService, NAV) {
+    .controller('ProfileProfileCtrl', function ($rootScope, $scope, $location, $http, $log, ENV, Upload, store, userService, ModalService, NAV) {
 
         /**
          * Upload the user's avatar

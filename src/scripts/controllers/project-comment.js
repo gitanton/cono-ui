@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectCommentCtrl', function ($scope, $http, $location, $routeParams, ENV, NAV) {
+    .controller('ProjectCommentCtrl', function ($rootScope, $scope, $http, $location, $routeParams, ENV, NAV) {
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.model = {};
         /**

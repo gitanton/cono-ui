@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('registerBillingCtrl', function ($scope, $http, $location, ENV, NAV) {
+    .controller('registerBillingCtrl', function ($rootScope, $scope, $http, $location, ENV, NAV) {
 
         $scope.init = function () {
             $http({

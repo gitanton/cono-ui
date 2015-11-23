@@ -94,7 +94,7 @@ angular
             })
             .when('/userpage/:ouuid/:tuuid', {
                 templateUrl: 'views/userpage.html',
-                controller: 'UserpageCtrl'
+                controller: 'UserPageCtrl'
             })
             .when('/'+NAV.PROJECT_BUILD+'/:puuid', {
                 templateUrl: 'views/project-build.html',

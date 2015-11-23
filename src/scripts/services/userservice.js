@@ -20,15 +20,15 @@ angular.module('conojoApp')
                  * Return the full user object from local storage
                  * @returns {*}
                  */
-                get: function() {
+                get: function(uuid) {
                     var deferred = $q.defer();
                     var user = store.get('user');
-                    if(user) {
+                    if(!uuid && user) {
                         deferred.resolve(user);
                     } else {
 
                         $http({
-                            url: ENV.API_ENDPOINT + 'users/user',
+                            url: ENV.API_ENDPOINT + 'users/user/'+uuid,
                             method: 'GET',
                         }).then(function (response) {
                             var user = response.data;

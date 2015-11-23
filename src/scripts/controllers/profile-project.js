@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileProjectCtrl', function ($scope, $http, $location, ENV, NAV) {
+    .controller('ProfileProjectCtrl', function ($rootScope, $scope, $http, $location, ENV, NAV) {
         $scope.projects = [];
         var projectInfo = [];
 
@@ -20,7 +20,6 @@ angular.module('conojoApp')
             }).then(function (response) {
                 var data = response.data;
                 $scope.projects = data;
-                console.log(data);
             });
         };
 

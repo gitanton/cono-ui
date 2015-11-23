@@ -18,32 +18,30 @@
         <div class="userpage-content project-content">
             <div class="col-sm-12 userpage-content-container">
                 <div class="userpage-content-intro">
-                    <div class="col-sm-3 userpage-content-img">
-                        <img ng-src="images/Dawkins.png" class="img-circle">
-                    </div>
-                    <div class="col-sm-9 userpage-content-desc">
-                        <p class="col-sm-12 userpage-content-name">R.Dawkins</p>
+                    <div class="row">
+                        <div class="col-sm-3 col-md-1 userpage-content-img">
+                            <img ng-src="{{::user.avatar}}" class="img-circle img-responsive">
+                        </div>
+                        <div class="col-sm-9 col-md-11 userpage-content-desc">
+                            <p class="userpage-content-name">{{::user.fullname}}</p>
 
-                        <p class="col-sm-12 userpage-content-email">account@company.com</p>
+                            <p class="userpage-content-email">{{::user.email}}</p>
 
-                        <p class="col-sm-12 userpage-content-active">Last active Today at 3:14pm</p>
+                            <p class="userpage-content-active">Last active {{::user.last_login_pretty}}</p>
+                        </div>
                     </div>
                 </div>
                 <div class="userpage-content-ownedbyme">
-                    <div class="col-sm-12 userpage-content-ownedbyme-title">OWNED BY CURRENT TEAM OWNER</div>
-                    <!-- <div class="col-sm-12 userpage-content-ownedbyme-item" ng-repeat="project in projects">
-                        <div class="col-sm-6">{{project.name}}</div>
-                        <div class="col-sm-6"><button class="btn btn-lg" ng-click="openAddProjectMember('{{project.uuid}}')">Send Invite</button></div>
-                    </div> -->
-                </div>
-                <div class="userpage-content-ownedbyme">
-                    <div class="col-sm-12 userpage-content-ownedbyme-title">OWNED BY ME</div>
+                    <div class="col-sm-12 userpage-content-ownedbyme-title">Projects On This Team</div>
                     <div class="col-sm-12 userpage-content-ownedbyme-item" ng-repeat="project in projects">
                         <div class="col-sm-6">{{project.name}}</div>
                         <div class="col-sm-6">
-                            <button class="btn btn-lg btn-primary" ng-click="openAddProjectMember('{{project.uuid}}')">
+                            <button class="btn btn-lg btn-primary" ng-click="invite(project)"
+                                    ng-if="!isOnProject(project) && !project.invited">
                                 Send Invite
                             </button>
+                            <span class="btn-primary-outline btn" ng-if="isOnProject(project) && !project.invited">On Project</span>
+                            <span class="btn-success-outline btn" ng-if="project.invited">Invited to Project</span>
                         </div>
                     </div>
                 </div>
@@ -52,30 +50,39 @@
     </div>
 </div>
 <div id="addTeamMember" class="modal fade in" style="display: none;">
-    <div class="teammember-add">
-        <div class="col-md-10 col-sm-8 teammember-add-desc">ADD PEOPLE TO TEAM</div>
-        <div class="col-md-2 col-sm-4 teammember-add-delicon">
-            <img src="images/close-icon.png" data-dismiss="modal">
-        </div>
-        <form name="addPeopleToProject">
-            <div class="col-sm-12 teammember-add-body">
-                <!-- <div class="form-group">
-                    <select name="teammembertype" class="form-control teammember-add-select">
-                        <option value=0>Select Person</option>
-                    </select>
-                </div> -->
-                <div class="form-group has-email">
-                    <input type="text" name="teammemberemail" ng-model="teammemberemail" class="form-control teammember-add-email" placeholder="Enter an email"/>
-                    <img class="teammember-add-emailicon" src="images/mail-icon.png">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Add Team Member</h3>
+            </div>
+            <form name="addPeopleToProject" class="form-gray">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12 teammember-add-body">
+                            <!-- <div class="form-group">
+                                <select name="teammembertype" class="form-control teammember-add-select">
+                                    <option value=0>Select Person</option>
+                                </select>
+                            </div> -->
+                            <div class="form-group has-email">
+                                <input type="text" name="teammemberemail" ng-model="teammemberemail" class="form-control teammember-add-email" placeholder="Enter an email"/>
+                                <img class="teammember-add-emailicon" src="images/mail-icon.png">
+                            </div>
+                            <!-- <div class="form-group has-add">
+                                <span>Add another person<img class="teammember-add-addAnother" src="images/addAnotherPeople-icon.png"></span>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 teammember-add-button">
+                            <button class="btn btn-lg btn-primary" type="submit" ng-click="addTeamMember()">Invite
+                                People
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <!-- <div class="form-group has-add">
-                    <span>Add another person<img class="teammember-add-addAnother" src="images/addAnotherPeople-icon.png"></span>
-                </div> -->
-            </div>
-            <div class="col-sm-12 teammember-add-button">
-                <button class="btn btn-lg btn-primary" type="submit" ng-click="addTeamMember()">Invite People</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
-<div ng-include="'views/modal/includes/add-people-project.html'"></div>

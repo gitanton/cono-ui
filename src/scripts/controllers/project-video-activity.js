@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectActivityVideoCtrl', function ($scope, $http, $location, $routeParams, ENV, ModalService, NAV) {
+    .controller('ProjectActivityVideoCtrl', function ($rootScope, $scope, $http, $location, $routeParams, ENV, ModalService, NAV) {
         $scope.activeProjectUuid = $routeParams.uuid;
 
         /**

@@ -56,6 +56,20 @@ angular.module('conojoApp')
                         $log.error({msg: 'projectService.reorder error: ', error: error});
                         return $q.reject(error.data);
                     });
+                },
+
+                invite: function(uuid, user_uuid) {
+                    return $http({
+                        url: ENV.API_ENDPOINT + 'projects/project/' + uuid + '/invite',
+                        method: 'POST',
+                        data: $.param({user_uuid: user_uuid}),
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    }).then(function (response) {
+                        return response;
+                    }, function (error) {
+                        $log.error({msg: 'projectService.invite error: ', error: error});
+                        return $q.reject(error.data.error);
+                    });
                 }
             };
 

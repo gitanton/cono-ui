@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectTemplateSelectCtrl', function ($scope, $http, $location, $routeParams, ENV, NAV) {
+    .controller('ProjectTemplateSelectCtrl', function ($rootScope, $scope, $http, $location, $routeParams, ENV, NAV) {
         $scope.activeProjectUuid = $routeParams.uuid;
         /**
          * Navigation
@@ -43,7 +43,6 @@ angular.module('conojoApp')
             } else {
                 $(event.target).parent().parent().removeClass('templates-content-select').addClass('templates-content-unselect');
                 $scope.templateUrl = '';
-                console.log('unselect');
             }
         };
 

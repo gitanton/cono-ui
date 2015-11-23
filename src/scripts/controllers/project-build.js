@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectBuildCtrl', function ($scope, $http, $location, $routeParams, ENV, ModalService, NAV, screenService) {
+    .controller('ProjectBuildCtrl', function ($rootScope, $scope, $http, $location, $routeParams, ENV, ModalService, NAV, screenService) {
         $scope.isTask = 1;
         $scope.CLOCK = null;
         $scope.shapeFill = false;
@@ -460,7 +460,6 @@ angular.module('conojoApp')
 
         $(document).on('click', '.hotspotsSqure', function () {
             //link to some position
-            console.log('click hotspots ' + $(this).data('linkto'));
             // $location.path('/project-build/' + $scope.activeProjectUuid + '/' + $(this).data('linkto'));
         });
 

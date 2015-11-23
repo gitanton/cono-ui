@@ -8,7 +8,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProfileNoticeCtrl', function ($scope, $http, $location, ENV, NAV) {
+    .controller('ProfileNoticeCtrl', function ($rootScope, $scope, $http, $location, ENV, NAV) {
 
         $scope.init = function () {
             $http({

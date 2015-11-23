@@ -42,6 +42,17 @@
         }
     }
 
+    &.btn-success-outline {
+        color: $color-green-2;
+        background: $color-white;
+        border: 1px $color-green-2 solid;
+
+        &:hover, &:active, &:focus {
+            color: $color-white;
+            background: $color-green-2;
+        }
+    }
+
     &.btn-primary-2 {
         color: $color-white;
         background: $color-blue-5;

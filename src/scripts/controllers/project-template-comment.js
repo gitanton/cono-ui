@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectCommentTemplateCtrl', function ($scope, $http, $location, $routeParams, ENV, NAV) {
+    .controller('ProjectCommentTemplateCtrl', function ($rootScope, $scope, $http, $location, $routeParams, ENV, NAV) {
         $scope.activeProjectUuid = $routeParams.uuid;
         $scope.model = {};
         /**
@@ -70,7 +70,6 @@ angular.module('conojoApp')
         };
 
         $scope.addNewComment = function () {
-            console.log($scope);
             $http({
                 url: ENV.API_ENDPOINT + 'messages',
                 method: 'POST',

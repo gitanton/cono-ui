@@ -19,6 +19,36 @@
             <div class="row" id="sortable">
                 <div class="col-md-4 col-lg-3 col-sm-6" ng-repeat="project in projects | filter:searchText">
                     <div class="project-content-offset" data-uuid="{{project.uuid}}">
+                        <div class="project-content-opetate" ng-class="showOperate(project.is_open)">
+                            <div class="col-sm-12">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="javascript:void(0)" ng-click="duplicateProjectModal('{{project.uuid}}','{{project.name}}')">
+                                            <img src="images/duplicate-icon.png">
+                                            Duplicate
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" ng-click="shareProjectModal('{{project.uuid}}')">
+                                            <img src="images/share-icon.png">
+                                            Share
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" ng-click="archiveProjectModal('{{project.uuid}}','{{project.type_id}}')">
+                                            <img src="images/archive-icon.png">
+                                            Archive
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" ng-click="deleteProjectModal('{{project.uuid}}')">
+                                            <img src="images/delete-project-icon.png">
+                                            Delete
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-10 col-sm-8">
                                 <div class="name">
@@ -44,36 +74,6 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12 project-content-projectcontent">
-                                <div class="project-content-opetate" ng-class="showOperate(project.is_open)">
-                                    <div class="col-sm-12">
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="javascript:void(0)" ng-click="duplicateProjectModal('{{project.uuid}}','{{project.name}}')">
-                                                    <img src="images/duplicate-icon.png">
-                                                    Duplicate
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" ng-click="shareProjectModal('{{project.uuid}}')">
-                                                    <img src="images/share-icon.png">
-                                                    Share
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" ng-click="archiveProjectModal('{{project.uuid}}','{{project.type_id}}')">
-                                                    <img src="images/archive-icon.png">
-                                                    Archive
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" ng-click="deleteProjectModal('{{project.uuid}}')">
-                                                    <img src="images/delete-project-icon.png">
-                                                    Delete
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
 
                                 <div class="project-content-btm">
                                     <div class="row">
@@ -356,11 +356,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3>{{projectNoteName}}:NOTES</h3>
+                <h3>{{projectNoteName}}: Notes</h3>
             </div>
             <div class="modal-body">
                 <div class="feedback-add">
-                    <form name="createnewmessage">
+                    <form name="createnewmessage" class="form-gray">
                         <div class="row">
                             <div class="col-sm-12 feedback-add-body">
                                 <textarea name="messageContent" ng-model="messageContent" class="form-control feedback-add-message" placeholder="Add project note"></textarea>

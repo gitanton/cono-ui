@@ -7,7 +7,7 @@
  * Controller of the conojoApp
  */
 angular.module('conojoApp')
-    .controller('ProjectVideoCtrl', function ($scope, $http, $location, $routeParams, ENV, ModalService, NAV, $sce) {
+    .controller('ProjectVideoCtrl', function ($rootScope, $scope, $http, $location, $routeParams, ENV, ModalService, NAV, $sce) {
         $scope.activeProjectUuid = $routeParams.uuid;
         /**
          * Navigation
@@ -118,7 +118,6 @@ angular.module('conojoApp')
 
         $scope.toBuild = function (suuid) {
             var url = $scope.buildURL + '/' + suuid;
-            console.log(url);
             $location.path(url);
         };
 
