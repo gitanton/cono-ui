@@ -26,7 +26,7 @@ are used when grunt runs to create a src/app/scripts/config.js file that is copi
 Building for android can be done from the command line as long as you have the android-sdk installed (download it here: http://developer.android.com/).
 Replace the '\lang\Android\android-sdk\' directory below with the location of your android-sdk.
 
-Keystore Key: &C0n0j0!
+Keystore Key: conojo01
 
 ```
 cordova build --release android

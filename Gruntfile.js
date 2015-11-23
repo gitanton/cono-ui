@@ -20,6 +20,7 @@ module.exports = function (grunt) {
     // Configurable paths for the application
     var appConfig = {
         app: require('./bower.json').appPath || 'app',
+        version: require('./package.json').version || '1.0.0',
         dist: 'www'
     };
 
@@ -28,6 +29,49 @@ module.exports = function (grunt) {
 
         // Project settings
         yeoman: appConfig,
+
+        replace: {
+            android: {
+                src: ['config-src.xml'],             // source files array (supports minimatch)
+                dest: 'config.xml',             // destination directory or file
+                replacements: [{
+                    from: '{{VERSION}}',                   // string replacement
+                    to: '<%= yeoman.version %>'
+                }, {
+                    from: '{{BUNDLE}}',      // regex replacement ('Fooo' to 'Mooo')
+                    to: 'com.vizmojolabs.conojo'
+                }]
+            },
+            ios: {
+                src: ['config-src.xml'],             // source files array (supports minimatch)
+                dest: 'config.xml',             // destination directory or file
+                replacements: [{
+                    from: '{{VERSION}}',                   // string replacement
+                    to: '<%= yeoman.version %>'
+                }, {
+                    from: '{{BUNDLE}}',      // regex replacement ('Fooo' to 'Mooo')
+                    to: 'com.conojo.ConojoiPhone'
+                }]
+            }
+        },
+
+
+
+        exec: {
+            cordova: {
+                command: 'cordova build --release android',
+                stdout: true,
+                stderr: true
+            },
+            jarsigner: {
+                command: 'jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore conojo.keystore platforms\\android\\build\\outputs\\apk\\android-release-unsigned.apk -keypass conojo01 -storepass conojo01 conojo',
+                stdout: true,
+                stderr: true
+            },
+            zipalign: {
+                command: '\\lang\\Android\\android-sdk\\build-tools\\22.0.1\\zipalign.exe -v 4 platforms\\android\\build\\outputs\\apk\\android-release-unsigned.apk conojo.apk'
+            }
+        },
 
         // Setup our environment constants
         ngconstant: {
@@ -497,5 +541,25 @@ module.exports = function (grunt) {
         'clean:dist',
         'ngconstant:development',
         'build'
+    ]);
+
+    grunt.registerTask('build-android', [
+        'clean:dist',
+        'replace:android',
+        'ngconstant:production',
+        'build',
+        'exec:cordova',
+        'exec:jarsigner',
+        'exec:zipalign'
+    ]);
+
+    grunt.registerTask('build-ios', [
+        'clean:dist',
+        'replace:ios',
+        'ngconstant:production',
+        'build',
+        'exec:cordova',
+        'exec:jarsigner',
+        'exec:zipalign'
     ]);
 };
