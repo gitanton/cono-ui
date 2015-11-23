@@ -63,6 +63,11 @@ module.exports = function (grunt) {
                 stdout: true,
                 stderr: true
             },
+            cordovaPrepare: {
+                command: 'cordova prepare ios',
+                stdout: true,
+                stderr: true
+            },
             jarsigner: {
                 command: 'jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore conojo.keystore platforms\\android\\build\\outputs\\apk\\android-release-unsigned.apk -keypass conojo01 -storepass conojo01 conojo',
                 stdout: true,
@@ -558,8 +563,6 @@ module.exports = function (grunt) {
         'replace:ios',
         'ngconstant:production',
         'build',
-        'exec:cordova',
-        'exec:jarsigner',
-        'exec:zipalign'
+        'exec:cordovaPrepare'
     ]);
 };
