@@ -9,6 +9,7 @@
  */
 angular.module('conojoApp')
     .controller('ProfileProfileCtrl', function ($rootScope, $scope, $location, $http, $log, ENV, Upload, store, userService, ModalService, NAV) {
+        $scope.uploadingAvatar = false;
 
         /**
          * Upload the user's avatar
@@ -16,10 +17,14 @@ angular.module('conojoApp')
          */
         $scope.uploadAvatar = function (files) {
             if(files && files.length>0) {
+                $scope.alertSuccess = null;
+                $scope.alertError = null;
+                $scope.uploadingAvatar = true;
                 Upload.upload({
                     url: ENV.API_ENDPOINT + 'users/avatar',
                     file: files[0]
                 }).then(function (response) {
+                    $scope.uploadingAvatar = false;
                     var user = response.data;
                     user.avatar = user.avatar;
                     store.set('user', user);
@@ -28,6 +33,7 @@ angular.module('conojoApp')
                     $('.siderbar-expand-img').attr('src', user.avatar);
                     $scope.alertSuccess = '<i class="fa fa-check-circle"></i> Image uploaded successfully!';
                 }, function (error) {
+                    $scope.uploadingAvatar = false;
                     $scope.alertError = '<i class="fa fa-exclamation-circle"></i> <strong>Image uploaded failed</strong>: '+error.data.message;
                     $log.error({msg: 'User avatar upload error', error: error});
                 });

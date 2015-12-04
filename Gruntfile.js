@@ -94,7 +94,9 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         name: 'development',
-                        API_ENDPOINT: 'http://conojoapp.scmreview.com/rest/'
+                        GOOGLE_API_KEY: 'AIzaSyCuuOvuThAcR0Bh5Thjx_sHAgwOCDVO7yQ',
+                        API_ENDPOINT: 'http://conojoapp.scmreview.com/rest/',
+                        CLIENT_URL: 'http://localhost:9000/#/'
                     }
                 }
             },
@@ -105,7 +107,9 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         name: 'production',
-                        API_ENDPOINT: 'http://rest.conojo.com/'
+                        GOOGLE_API_KEY: 'AIzaSyCuuOvuThAcR0Bh5Thjx_sHAgwOCDVO7yQ',
+                        API_ENDPOINT: 'http://rest.conojo.com/',
+                        CLIENT_URL: 'http://app.conojo.com/#/'
                     }
                 }
             }

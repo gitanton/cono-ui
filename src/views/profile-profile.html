@@ -53,8 +53,11 @@
                                     <img ng-src="{{avatar}}" class="img-responsive" id="userAvatar" ng-if="avatar">
                                 </div>
                                 <div class="spacer-15"></div>
-                                <button class="btn btn-block btn-default" ngf-select ngf-change="uploadAvatar($files)">
+                                <button class="btn btn-block btn-default" ngf-select ng-if="!uploadingAvatar" ngf-change="uploadAvatar($files)">
                                     Change Picture
+                                </button>
+                                <button class="btn btn-block btn-default" ng-if="uploadingAvatar">
+                                    Uploading <i class="fa fa-spin fa-spinner"></i>
                                 </button>
                             </div>
                             <div class="profile-profile-content-profile-info-r col-sm-9">

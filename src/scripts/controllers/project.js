@@ -8,7 +8,7 @@
  */
 angular.module('conojoApp')
     .controller('ProjectCtrl', function ($rootScope, $scope, $http, $location, ENV, RC_FREE_TRIAL_EXPIRED, projectService,
-                                         ModalService, NAV) {
+                                         ModalService, NAV, utilityService) {
         $scope.newProject = {};
 
         $scope.init = function () {
@@ -68,14 +68,14 @@ angular.module('conojoApp')
         $scope.myProject = function (isValid) {
             $scope.newProjectSuccess = false;
             $scope.newProjectError = false;
-            if(!isValid) {
+            if (!isValid) {
                 return false;
             }
             projectService.add($scope.newProject.title, $scope.newProject.type).then(function () {
                 $scope.init();
                 $('#newproject').modal('hide');
             }, function (error) {
-                $scope.newProjectError = '<i class="fa fa-exclamation-circle"></i> <strong>Project Creation Failed</strong>: '+error.data.message;
+                $scope.newProjectError = '<i class="fa fa-exclamation-circle"></i> <strong>Project Creation Failed</strong>: ' + error.data.message;
             });
         };
 
@@ -86,11 +86,11 @@ angular.module('conojoApp')
 
         $scope.projectScreen = function (uuid, type) {
             if (type === '1') {
-                $location.path('/'+NAV.PROJECT_BUILD+'/' + uuid);
+                $location.path('/' + NAV.PROJECT_BUILD + '/' + uuid);
             } else if (type === '2') {
-                $location.path('/'+NAV.PROJECT_VIDEO_PLAY+'/' + uuid);
+                $location.path('/' + NAV.PROJECT_VIDEO_PLAY + '/' + uuid);
             } else if (type === '3') {
-                $location.path('/'+NAV.PROJECT_TEMPLATE_BUILD+'/' + uuid);
+                $location.path('/' + NAV.PROJECT_TEMPLATE_BUILD + '/' + uuid);
             }
         };
 
@@ -116,16 +116,32 @@ angular.module('conojoApp')
             });
         };
 
-        $scope.shareProjectModal = function (uuid) {
-            $('#shareproject').modal('toggle');
-            $scope.shareProjectUuid = uuid;
+        $scope.shareProjectModal = function (uuid, type) {
+            $scope.shareUrl = '';
+            $scope.projectUUID = uuid;
+
+            var url = ENV.CLIENT_URL;
+
+            if (type === 1) {
+                url += NAV.PROJECT_BUILD + '/' + uuid;
+            } else if (type === 2) {
+                url += NAV.PROJECT_VIDEO_PLAY + '/' + uuid;
+            } else if (type === 3) {
+                url += NAV.PROJECT_TEMPLATE_BUILD + '/' + uuid;
+            }
+            utilityService.shortenUrl(url).then(function (url) {
+                $scope.shareUrl = url;
+                $('#shareproject').modal('toggle');
+                $scope.shareProjectUuid = uuid;
+
+            });
         };
 
-        $scope.shareProject = function (uuid) {
+        $scope.shareProject = function () {
             $http({
-                url: ENV.API_ENDPOINT + 'projects/project/' + uuid + '/share',
+                url: ENV.API_ENDPOINT + 'projects/project/' + $scope.projectUUID + '/invite',
                 method: 'POST',
-                data: $.param({uuid: $scope.shareProjectUuid}),
+                data: $.param({email: $scope.shareEmail}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function () {
                 $('#shareproject').modal('hide');
