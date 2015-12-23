@@ -1,6 +1,6 @@
 {
   "name": "conojo",
-  "version": "20051223",
+  "version": "1.0.1",
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.1",
