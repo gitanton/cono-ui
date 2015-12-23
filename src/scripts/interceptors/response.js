@@ -5,6 +5,7 @@ angular.module('conojoApp')
         return {
             responseError: function (response) {
                 if (response.status === 401) {
+                    console.log('test');
                     store.remove('user');
                     $location.path('/');
                 }

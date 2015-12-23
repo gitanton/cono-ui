@@ -37,7 +37,7 @@ angular.module('conojoApp')
 
                         }, function (error) {
                             $log.error({msg: 'userService.get error', error: error});
-                            return $q.reject(error);
+                            return $q.reject(error.data.message);
                         });
                     }
 
@@ -59,7 +59,7 @@ angular.module('conojoApp')
 
                     }, function(error) {
                         $log.error({msg: 'userService.login error', error: error});
-                        return $q.reject(error);
+                        return $q.reject(error.data.message);
                     });
                 },
 

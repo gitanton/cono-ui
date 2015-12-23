@@ -30,8 +30,11 @@ angular.module('conojoApp')
                     store.remove('username');
                 }
                 $location.path('project');
-            }, function () {
-                $('#loginNote').modal('toggle');
+            }, function (error) {
+                $rootScope.$broadcast('ui:error', {
+                    title: 'Invalid login',
+                    content: error
+                });
                 $('.login-username').val('').focus();
                 $('.login-password').val('');
             });
