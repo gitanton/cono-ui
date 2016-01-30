@@ -3,12 +3,16 @@
 *.iml
 *.iws
 
+Gruntfile.js
+bower.json
+
 src/scripts/config.js
 www
 node_modules
 bower_components
 .tmp
 .sass-cache
+.htaccess
 
 # Cordova
 /platforms

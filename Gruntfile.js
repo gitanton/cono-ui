@@ -95,7 +95,7 @@ module.exports = function (grunt) {
                     ENV: {
                         name: 'development',
                         GOOGLE_API_KEY: 'AIzaSyCuuOvuThAcR0Bh5Thjx_sHAgwOCDVO7yQ',
-                        API_ENDPOINT: 'http://conojorest.scmreview.com/',
+                        API_ENDPOINT: 'http://localhost:80/conojo/conojo-rest/',
                         CLIENT_URL: 'http://localhost:9000/#/'
                     }
                 }
