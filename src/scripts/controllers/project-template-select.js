@@ -48,7 +48,7 @@ angular.module('conojoApp')
 
         $scope.uploadSelectTemplate = function () {
             if ($scope.templateUrl === '') {
-                $('.reset-note').html('You have not select the template.');
+                $('.reset-note').html('ERROR! You have not selected any template.');
                 $('#statusNotice').modal('toggle');
             } else {
                 $http({
@@ -62,7 +62,7 @@ angular.module('conojoApp')
                     $location.path(url).replace();
                     $scope.$apply();
                 }, function (data) {
-                    $('.reset-note').html(data.message);
+                    $('.reset-note').html("<p><strong>"+data.data.status.toUpperCase()+"! <strong>"+ data.data.message+"</p>");
                     $('#statusNotice').modal('toggle');
                 });
             }
