@@ -140,14 +140,16 @@ angular.module('conojoApp')
             $('#deleteproject').modal('toggle');
         };
 
-        $scope.cancelPlan = function () {
+        $scope.cancelPlan = function () {            
             $http({
-                url: ENV.API_ENDPOINT + 'users/subscription',
+                url: ENV.API_ENDPOINT + 'users/subscription' + $scope.planId,
                 method: 'DELETE',
+                data: $.param({Subscription: $scope.planId}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).then(function () {
+            }).then(function (response) {                
                 $scope.init();
                 $('#deleteproject').modal('hide');
+                $scope.planId= 0;
             });
         };
 
