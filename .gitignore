@@ -6,6 +6,9 @@
 Gruntfile.js
 bower.json
 
+ssh
+ssh.pub
+
 src/scripts/config.js
 www
 node_modules
