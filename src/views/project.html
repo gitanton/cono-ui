@@ -127,17 +127,17 @@
                             <div class="col-sm-12 ">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" name="projecttitle" ng-model="newProject.title" name="projectTitle" class="form-control" required/>
+                                    <input type="text" ng-model="newProject.title" name="projectTitle" class="form-control" required/>
                                 </div>
                                 <div ng-messages="newProjectForm.projectTitle.$error" ng-if="(newProjectForm.$submitted || newProjectForm.projectTitle.$touched)">
                                     <div class="alert alert-danger form-alert" ng-message="required">
-                                        <p>Please enter the project title</p>
+                                        <p>Please Enter The Project Title</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Type</label>
-                                    <select name="projecttype" ng-model="newProject.type" class="form-control" name="projectType" required>
+                                    <select ng-model="newProject.type" class="form-control" name="projectType" required>
                                         <option value="1">UI/UX Project</option>
                                         <option value="2">Video Project</option>
                                         <option value="3">Business Template</option>
@@ -146,7 +146,7 @@
 
                                 <div ng-messages="newProjectForm.projectType.$error" ng-if="(newProjectForm.$submitted || newProjectForm.projectType.$touched)">
                                     <div class="alert alert-danger form-alert" ng-message="required">
-                                        <p>Please enter the new password</p>
+                                        <p>Please Select The Project Type</p>
                                     </div>
                                 </div>
                             </div>
