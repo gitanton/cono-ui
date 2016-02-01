@@ -28,7 +28,7 @@ angular.module('conojoApp')
                 $scope.alertSuccess = '<i class="fa fa-check-circle"></i> The email has been sent to you successfully.  Please check your email.';
             }, function(error) {
                 $scope.saving = false;
-                $scope.alertError = '<i class="fa fa-close-circle"></i> <strong>Password reset failed</strong>: '+' No Record Found in Database!';
+                $scope.alertError = '<i class="fa fa-close-circle"></i> <strong>Password reset failed</strong>: '+error.data.message;
             });
         }
     });
