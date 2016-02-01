@@ -12,8 +12,13 @@ src/scripts/config.js
 www
 node_modules
 bower_components
-.tmp
 .sass-cache
+
+!.tmp/styles/main.css
+.tmp/*
+.tmp
+# Dont ignore this File has changes
+
 
 # Cordova
 /platforms
