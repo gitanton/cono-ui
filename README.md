@@ -6,10 +6,14 @@ the cordova platform.  All important code is located in the src/ directory.  Whe
 
 ## Installation
 To install and run the app, run the following.  The app requires that you have bower, npm, and ruby gems installed:
+
+Ruby Installer
+http://rubyinstaller.org/downloads/
 ```
-> cd src
+> cd cono-ui
 > npm install
-> npm install grunt-cli
+> npm install -g grunt-cli
+> npm install -g bower
 > bower install
 # Install compass
 > gem install compass

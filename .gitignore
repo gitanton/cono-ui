@@ -1,3 +1,7 @@
+
+Gruntfile.js
+bower.json
+
 # Intellij
 .idea/
 *.iml
@@ -14,6 +18,7 @@ node_modules
 bower_components
 .tmp
 .sass-cache
+
 
 # Cordova
 /platforms
