@@ -92,6 +92,10 @@ angular
                 templateUrl: 'views/team.html',
                 controller: 'TeamCtrl'
             })
+            .when('/drawing', {
+                templateUrl: 'views/drawing.html',
+                controller: 'DrawingCtrl'
+            })
             .when('/userpage/:ouuid/:tuuid', {
                 templateUrl: 'views/userpage.html',
                 controller: 'UserPageCtrl'
