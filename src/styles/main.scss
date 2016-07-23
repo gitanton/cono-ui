@@ -848,7 +848,7 @@ body {
 }
 
 @media(min-width:768px){
-    .drawingControl{   margin-left:80px;}    
+    .drawingControl, .tempControl{   margin-left:80px;}    
 }
 
 /*drawing page*/
@@ -856,6 +856,15 @@ body {
     .drawing-body {
         .drawingControl{
             background-color: white;
+        }
+        .tempControl{
+            left: 0px;
+            top: 0px;
+            position:absolute;
+            background:transparent;
+        }
+        .row{
+            position:relative;
         }
     }
     .drawing-footer{
