@@ -3,7 +3,6 @@
 .colorpicker {
     background-color: #222222;
     border-radius: 5px 5px 5px 5px;
-    box-shadow: 2px 2px 2px #444444;
     color: #FFFFFF;
     font-size: 12px;
     position: absolute;
@@ -42,12 +41,11 @@
     width: 75px;
 }
 .preview {
-    background: url("../images/select.png") repeat scroll center center transparent;
+    background-color:black;
     border-radius: 3px;
-    /*box-shadow: 2px 2px 2px #444444;*/
     cursor: pointer;
-    height: 30px;
     width: 30px;
+    margin-left:20px;
 }
 </style>
 <div class="drawing-page page">
@@ -60,29 +58,31 @@
                     <span>Drawing</span>
                 </div>
                 <div class="drawing-header-button col-sm-6">
-                    <button class="btn btn-lg">MYSELF</button>
+<!--                     <button class="btn btn-lg">MYSELF</button>
                     <button class="btn btn-lg">MY TEAM</button>
-                    <button class="btn btn-lg">EVERYONE</button>
+                    <button class="btn btn-lg">EVERYONE</button> -->
                 </div>
             </div>
         </div>
         <div class="drawing-body project-body">
             <div class="row">
-                <canvas class="drawingControl"></canvas>
+                <canvas class="drawingControl" id="drawingCanvas"></canvas>
+                <input type="text" class="canvasText" value="" style="display:none" />
             </div>
         </div>
         <div class="drawing-footer project-footer">
             <div class="row">
                 <div class="drawing-header-button">
-                    <button class="btn" ng-click="tool=1">Pen</button>
-                    <button class="btn" ng-click="tool=2">Line</button>
-                    <button class="btn" ng-click="tool=3">Arrow</button>
-                    <button class="btn" ng-click="tool=4">Rectangle</button>
-                    <button class="btn" ng-click="tool=5">Shape</button>
-                    <button class="btn" ng-click="tool=6">Marker</button>
-                    <button class="btn" ng-click="tool=7">Text</button>
+                    <button class="btn drawing-tool" ng-click="type=1">Pen</button>
+                    <button class="btn drawing-tool" ng-click="type=2">Line</button>
+                    <button class="btn drawing-tool" ng-click="type=3">Arrow</button>
+                    <button class="btn drawing-tool" ng-click="type=4">Rectangle</button>
+                    <button class="btn drawing-tool" ng-click="type=5">Shape</button>
+                    <button class="btn drawing-tool" ng-click="type=6">Marker</button>
+                    <button class="btn drawing-tool" ng-click="type=7">Text</button>
+                    <button class="btn drawing-tool" ng-click="type=8">Eraser</button>
                     <!-- preview element -->
-                    <button class="preview"></button>
+                    <button class="btn preview"></button>
                     <!-- colorpicker element -->
                     <div class="colorpicker" style="display:none">
                         <canvas id="picker" var="1" width="300" height="300"></canvas>
@@ -99,53 +99,3 @@
         </div>
     </div>
 </div>
-<script>
-    var bCanPreview = true; // can preview
-
-    // create canvas and context objects
-    var canvas = document.getElementById('picker');
-    var ctx = canvas.getContext('2d');
-
-    // drawing active image
-    var image = new Image();
-    image.onload = function () {
-        ctx.drawImage(image, 0, 0, image.width, image.height); // draw the image on the canvas
-    }
-
-    // select desired colorwheel
-    var imageSrc = 'images/palette.png';
-    image.src = imageSrc;
-
-    $('#picker').mousemove(function(e) { // mouse move handler
-        if (bCanPreview) {
-            // get coordinates of current position
-            var canvasOffset = $(canvas).offset();
-            var canvasX = Math.floor(e.pageX - canvasOffset.left);
-            var canvasY = Math.floor(e.pageY - canvasOffset.top);
-
-            // get current pixel
-            var imageData = ctx.getImageData(canvasX, canvasY, 1, 1);
-            var pixel = imageData.data;
-
-            // update preview color
-            var pixelColor = "rgb("+pixel[0]+", "+pixel[1]+", "+pixel[2]+")";
-            $('.preview').css('backgroundColor', pixelColor);
-
-            // update controls
-            $('#rVal').val(pixel[0]);
-            $('#gVal').val(pixel[1]);
-            $('#bVal').val(pixel[2]);
-            $('#rgbVal').val(pixel[0]+','+pixel[1]+','+pixel[2]);
-
-            var dColor = pixel[2] + 256 * pixel[1] + 65536 * pixel[0];
-            $('#hexVal').val('#' + ('0000' + dColor.toString(16)).substr(-6));
-        }
-    });
-    $('#picker').click(function(e) { // click event handler
-        bCanPreview = !bCanPreview;
-    }); 
-    $('.preview').click(function(e) { // preview click
-        $('.colorpicker').fadeToggle("slow", "linear");
-        bCanPreview = true;
-    });
-</script>
