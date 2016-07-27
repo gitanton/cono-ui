@@ -46,8 +46,8 @@ angular.module('conojoApp')
             var bCanPreview = true; // can preview
 
             // create canvas1 and context objects
-            var canvas1 = document.getElementById('picker');
-            var ctx = canvas1.getContext('2d');
+            var pickerCanvas = document.getElementById('picker');
+            var ctx = pickerCanvas.getContext('2d');
 
             // drawing active image
             var image = new Image();
@@ -62,12 +62,12 @@ angular.module('conojoApp')
             $('#picker').mousemove(function(e) { // mouse move handler
                 if (bCanPreview) {
                     // get coordinates of current position
-                    var canvas1Offset = $(canvas1).offset();
-                    var canvas1X = Math.floor(e.pageX - canvas1Offset.left);
-                    var canvas1Y = Math.floor(e.pageY - canvas1Offset.top);
+                    var canvasOffset = $(pickerCanvas).offset();
+                    var canvasX = Math.floor(e.pageX - canvasOffset.left);
+                    var canvasY = Math.floor(e.pageY - canvasOffset.top);
 
                     // get current pixel
-                    var imageData = ctx.getImageData(canvas1X, canvas1Y, 1, 1);
+                    var imageData = ctx.getImageData(canvasX, canvasY, 1, 1);
                     var pixel = imageData.data;
 
                     // update preview color
@@ -196,7 +196,7 @@ angular.module('conojoApp')
         function drawRectangle(context, x1, y1, x2, y2, color){
             context.clearRect(0,0, canvas1.width, canvas1.height);
             context.beginPath();
-            pt2.x = event.offsetX, pt2.y = event.offsetY;
+/*            pt2.x = event.offsetX, pt2.y = event.offsetY;*/
             context.rect(x1, y1, x2 - x1, y2 - y1);
             context.stroke();
             context.closePath();
