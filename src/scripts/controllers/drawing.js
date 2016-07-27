@@ -196,7 +196,6 @@ angular.module('conojoApp')
         function drawRectangle(context, x1, y1, x2, y2, color){
             context.clearRect(0,0, canvas1.width, canvas1.height);
             context.beginPath();
-/*            pt2.x = event.offsetX, pt2.y = event.offsetY;*/
             context.rect(x1, y1, x2 - x1, y2 - y1);
             context.stroke();
             context.closePath();
