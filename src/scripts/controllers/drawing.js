@@ -12,7 +12,7 @@ angular.module('conojoApp')
 
         // Drawing Variables
         $scope.type = 1; // Pen 1, Line 2, Arrow 3, Rectangle 4, Shape 5, Marker 6, Text 7, Eraser 8, Select 9
-                        // Rectangle 10, Circle 11, Triangle 12, Star 13, Balloon 14, Arrow 15, Polygon 16, Diamon 17
+                        // Rectangle 10, Oval 11, Triangle 12, Star 13, Balloon 14, Arrow 15, Polygon 16, Diamon 17
         $scope.color = "black";
         $scope.width = 1;
         $scope.selection = {x1:0, y1:0, y1:0, y2:0};
@@ -154,6 +154,33 @@ angular.module('conojoApp')
             }
         }
 
+        $scope.fileOp = function(op){
+            if(op == 1){
+
+            }
+            else if(op == 2){
+                var c = canvas1, filename = "aab.png";
+                var lnk = document.createElement('a'), e;
+
+                /// the key here is to set the download attribute of the a tag
+                lnk.download = filename;
+
+                /// convert canvas content to data-uri for link. When download
+                /// attribute is set the content pointed to by link will be
+                /// pushed as "download" in HTML5 capable browsers
+                lnk.href = c.toDataURL();
+
+                /// create a "fake" click-event to trigger the download
+                if (document.createEvent) {
+                    e = document.createEvent("MouseEvents");
+                    e.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                    lnk.dispatchEvent(e);
+                } else if (lnk.fireEvent) {
+                    lnk.fireEvent("onclick");
+                }
+            }
+        }
+
         function processDownEvent(event){
             isDragging = true;
             context1.strokeStyle = $scope.color;
@@ -172,6 +199,12 @@ angular.module('conojoApp')
                 case 4: // Rectangle
                 case 5: // Shape
                 case 9: // Selection
+                case 11://Oval
+                case 12:// Triangle
+                case 13:// Star
+                case 16: //Poly
+                case 17: //Diamond
+                case 14: // Speech Bubble
                     pt1.x = event.offsetX;
                     pt1.y = event.offsetY;
                     var leftX = Math.min($scope.selection.x1, $scope.selection.x2),
@@ -225,12 +258,27 @@ angular.module('conojoApp')
                     case 10:
                         drawRectangle(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, $scope.color);
                     break;
-                    case 5:
+                    case 11:
+                        drawCircle(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, $scope.color);
+                    break;
+                    case 12:
                         pt2.x = event.offsetX, pt2.y = event.offsetY;
                         var triangleWidth = pt2.x - pt1.x;
                         var triangleHeight = pt2.y - pt1.y;
                         var triangleY = canvas1.height / 2 - triangleWidth / 2;
                         drawTriangle(context1, pt1.x, pt1.y, triangleWidth, triangleHeight, $scope.color);    
+                    break;
+                    case 13:
+                        drawStar(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, 5, $scope.color);
+                    break;
+                    case 14:
+                        drawBubble(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, $scope.color);
+                    break;
+                    case 16:
+                        drawStar(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, 6, $scope.color);
+                    break;
+                    case 17:
+                        drawStar(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, 4, $scope.color);
                     break;
                     case 6:
                         context1.lineTo(event.offsetX, event.offsetY);
@@ -275,6 +323,7 @@ angular.module('conojoApp')
             context.moveTo(x, y);
             context.lineTo(x + triangleWidth / 2, y + triangleHeight);
             context.lineTo(x - triangleWidth / 2, y + triangleHeight);
+            context.lineTo(x, y);
             context.color = color;
             context.strokeStyle = color;
             context.stroke();
@@ -290,6 +339,89 @@ angular.module('conojoApp')
             if($scope.type == 9){
                 $scope.selection = {x1:x1, y1:y1, x2:x2, y2:y2};
             }
+        }
+
+        function drawCircle(context, x1, y1, x2, y2, color){
+            context.clearRect(0,0, canvas1.width, canvas1.height);
+            context.beginPath();
+            var width = Math.abs(x1 - x2),
+                height = Math.abs(y1 - y2),
+                centerX = Math.min(x1, x2) + width/2,
+                centerY = Math.min(y1, y2) + height/2;
+
+            context.moveTo(centerX, centerY - height/2); // A1
+
+            context.bezierCurveTo(
+            centerX + width/2, centerY - height/2, // C1
+            centerX + width/2, centerY + height/2, // C2
+            centerX, centerY + height/2); // A2
+
+            context.bezierCurveTo(
+            centerX - width/2, centerY + height/2, // C3
+            centerX - width/2, centerY - height/2, // C4
+            centerX, centerY - height/2); // A1
+            context.strokeStyle = color;
+            context.stroke();
+            context.closePath();
+        }
+
+        function drawStar(context, x1, y1, x2, y2, spikes, color) {
+            context.clearRect(0,0, canvas1.width, canvas1.height);
+            context.beginPath();
+            var width = Math.abs(x1 - x2),
+                height = Math.abs(y1 - y2),
+                cx = Math.min(x1, x2) + width/2,
+                cy = Math.min(y1, y2) + height/2,
+                outerRadius = width / 2,
+                innerRadius = width / 4;
+
+            var rot = Math.PI / 2 * 3;
+            var x = cx;
+            var y = cy;
+            var step = Math.PI / spikes;
+
+            context.moveTo(cx, cy - outerRadius);
+            for (var i = 0; i < spikes; i++) {
+                x = cx + Math.cos(rot) * outerRadius;
+                y = cy + Math.sin(rot) * outerRadius;
+                context.lineTo(x, y);
+                rot += step;
+
+                x = cx + Math.cos(rot) * innerRadius;
+                y = cy + Math.sin(rot) * innerRadius;
+                context.lineTo(x, y);
+                rot += step;
+            }
+            context.lineTo(cx, cy - outerRadius);
+            context.strokeStyle=color;
+            context.stroke();
+            context.closePath();
+        }
+
+        function drawBubble(context, x1, y1, x2, y2, color){
+            context.clearRect(0,0, canvas1.width, canvas1.height);
+            var w = Math.abs(x1 - x2),
+                h = Math.abs(y1 - y2),
+                radius = 20;
+            var x = Math.min(x1, x2),
+                y = Math.min(y1, y2);
+            var r = x + w;
+            var b = y + h;
+            context.beginPath();
+            context.strokeStyle=color;
+            context.moveTo(x+radius, y);
+            context.lineTo(x+radius/2, y-10);
+            context.lineTo(x+radius * 2, y);
+            context.lineTo(r-radius, y);
+            context.quadraticCurveTo(r, y, r, y+radius);
+            context.lineTo(r, y+h-radius);
+            context.quadraticCurveTo(r, b, r-radius, b);
+            context.lineTo(x+radius, b);
+            context.quadraticCurveTo(x, b, x, b-radius);
+            context.lineTo(x, y+radius);
+            context.quadraticCurveTo(x, y, x+radius, y);
+            context.stroke();
+            context.closePath();
         }
 
         function drawLine(context, x1, y1, x2, y2, color){
@@ -322,7 +454,7 @@ angular.module('conojoApp')
         function updateCanvas(){
             context2.drawImage(canvas2, 0, 0);
             context1.clearRect(0, 0, canvas2.width, canvas2.height);
-            context2.globalAlpha = 1;
+            context1.globalAlpha = 1;
             context2.globalAlpha = 1;
         }
 

@@ -23,7 +23,7 @@
         </div>
         <div class="drawing-footer project-footer">
             <div class="row">
-                <div class="drawing-header-button">
+                <div class="">
                     <button class="btn drawing-tool-9" ng-click="selectTool(9)"></button>
                     <button class="btn drawing-tool-1 selected" ng-click="selectTool(1)"></button>
                     <button class="btn drawing-tool-2" ng-click="selectTool(2)">Line</button>
@@ -36,6 +36,8 @@
                     <!-- preview element -->
                     <button class="btn preview"></button>
                     <button class="btn drawing-tool-10"></button>
+                    <button class="btn btn-op" ng-click="fileOp(1)">Save</button>
+                    <button class="btn btn-op" ng-click="fileOp(2)">Open</button>
                     <!-- colorpicker element -->
                     <div class="colorpicker" style="display:none">
                         <canvas id="picker" var="1" width="300" height="300"></canvas>
@@ -71,7 +73,7 @@
                         </div>
                         <div class="controller-body">
                             <button class="btn btn-extra btn-shape-5" ng-click="selectShape(5)">Bal</button>
-                            <button class="btn btn-extra btn-shape-6" ng-click="selectShape(6)">Ar</button>
+                            <button class="btn btn-extra btn-shape-6" ng-click="selectShape(6)" style="display:none;">Ar</button>
                             <button class="btn btn-extra btn-shape-7" ng-click="selectShape(7)">Poly</button>
                             <button class="btn btn-extra btn-shape-8" ng-click="selectShape(8)">Dia</button>
                         </div>
