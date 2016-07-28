@@ -12,10 +12,10 @@ angular.module('conojoApp')
 
         // Drawing Variables
         $scope.type = 1; // Pen 1, Line 2, Arrow 3, Rectangle 4, Shape 5, Marker 6, Text 7, Eraser 8, Select 9
+                        // Rectangle 10, Circle 11, Triangle 12, Star 13, Balloon 14, Arrow 15, Polygon 16, Diamon 17
         $scope.color = "black";
         $scope.width = 1;
         $scope.selection = {x1:0, y1:0, y1:0, y2:0};
-
         var isDragging = false, isSelectable = true, isSelected = false,
             context1, canvas1, context2, canvas2,
             pt1 = {x:0, y:0}, pt2 = {x:0, y:0},
@@ -25,7 +25,7 @@ angular.module('conojoApp')
             canvas1 = document.getElementById("drawingCanvas");
             context2 = canvas1.getContext("2d");
             canvas1.width = $(window).width();
-            canvas1.height = $(window).height();
+            canvas1.height = $(window).height() * 8 / 10;
 
             canvas2 = document.getElementById("tempCanvas");
             context1 = canvas2.getContext("2d");
@@ -34,6 +34,7 @@ angular.module('conojoApp')
 
             initPalette();
             initWidth();
+            initShapeWindow();
             if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
                 initAppDrawingEvent();    
             }else{
@@ -105,6 +106,15 @@ angular.module('conojoApp')
 
         }
 
+        function initShapeWindow(){
+            var bCanPreview = true;
+            $('.drawing-tool-5').click(function(e) { // click event handler
+               $('.shapecontroller').fadeToggle("slow", "linear");
+                bCanPreview = !bCanPreview; 
+            });
+
+        }
+
         $scope.selectTool = function(type){
             $scope.type = type;
             for(var i = 1; i < 10; i++){
@@ -131,7 +141,18 @@ angular.module('conojoApp')
             }
         }
 
-
+        $scope.selectShape = function(shape){
+            $scope.type = shape + 9;
+            for(var i = 1; i < 9; i++){
+                if(i == shape)
+                {
+                    $('.btn-shape-' + i).addClass('selected');
+                }
+                else{
+                    $('.btn-shape-' + i).removeClass("selected");
+                }
+            }
+        }
 
         function processDownEvent(event){
             isDragging = true;
@@ -147,6 +168,7 @@ angular.module('conojoApp')
                     break;
                 case 2: // Line
                 case 3: // Arrow
+                case 10:// Rectangle
                 case 4: // Rectangle
                 case 5: // Shape
                 case 9: // Selection
@@ -200,6 +222,7 @@ angular.module('conojoApp')
                         drawArrow(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, $scope.color);
                     break;
                     case 4:
+                    case 10:
                         drawRectangle(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, $scope.color);
                     break;
                     case 5:
@@ -307,7 +330,7 @@ angular.module('conojoApp')
             var canvas1 = document.getElementById("drawingCanvas");
             var canvas2 = document.getElementById("tempCanvas");
             canvas1.width = $(window).width();
-            canvas1.height = $(window).height();
+            canvas1.height = $(window).height() * 8 / 10;
             canvas2.width = canvas1.width;
             canvas2.height = canvas1.height;
         });
