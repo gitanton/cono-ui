@@ -7,7 +7,8 @@
     font-size: 12px;
     position: absolute;
     width: 460px;
-    top:350px;
+    top:-330px;
+    left:350px;
 }
 #picker {
     cursor: crosshair;
@@ -41,11 +42,38 @@
     width: 75px;
 }
 .preview {
-    background-color:black;
-    border-radius: 3px;
+    background-color: black;
+    border-radius: 30px;
     cursor: pointer;
-    width: 30px;
-    margin-left:20px;
+    width: 40px;
+    height: 40px;
+}
+.widthcontroller{
+    text-align: center;
+    background-color: #464646;
+    border-radius: 5px 5px 5px 5px;
+    color: #FFFFFF;
+    font-size: 12px;
+    position: absolute;
+    width: 265px;
+    top: -90px;
+    left: 495px;
+    height: 80px;
+}
+.controller-body{
+    margin-top: 7px;
+}
+.tabTriangle{
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 7px solid #464646;
+    margin-left:120px;
+}
+.controller-header{
+    font-size: 16px;
+    background: #1c85b6;
 }
 </style>
 <div class="drawing-page page">
@@ -61,8 +89,6 @@
 <!--                     <button class="btn btn-lg">MYSELF</button>
                     <button class="btn btn-lg">MY TEAM</button>
                     <button class="btn btn-lg">EVERYONE</button> -->
-                    <button class="btn btn-lg">Save</button>
-                    <button class="btn btn-lg">Open</button>
                 </div>
             </div>
         </div>
@@ -76,16 +102,18 @@
         <div class="drawing-footer project-footer">
             <div class="row">
                 <div class="drawing-header-button">
-                    <button class="btn drawing-tool" ng-click="type=1">Pen</button>
-                    <button class="btn drawing-tool" ng-click="type=2">Line</button>
-                    <button class="btn drawing-tool" ng-click="type=3">Arrow</button>
-                    <button class="btn drawing-tool" ng-click="type=4">Rectangle</button>
-                    <button class="btn drawing-tool" ng-click="type=5">Shape</button>
-                    <button class="btn drawing-tool" ng-click="type=6">Marker</button>
-                    <button class="btn drawing-tool" ng-click="type=7">Text</button>
-                    <button class="btn drawing-tool" ng-click="type=8">Eraser</button>
+                    <button class="btn drawing-tool-9" ng-click="selectTool(9)"></button>
+                    <button class="btn drawing-tool-1 selected" ng-click="selectTool(1)"></button>
+                    <button class="btn drawing-tool-2" ng-click="selectTool(2)">Line</button>
+                    <button class="btn drawing-tool-3" ng-click="selectTool(3)">Arrow</button>
+                    <button class="btn drawing-tool-4" ng-click="selectTool(4)">Rectangle</button>
+                    <button class="btn drawing-tool-5" ng-click="selectTool(5)"></button>
+                    <button class="btn drawing-tool-6" ng-click="selectTool(6)">Marker</button>
+                    <button class="btn drawing-tool-7" ng-click="selectTool(7)"></button>
+                    <button class="btn drawing-tool-8" ng-click="selectTool(8)"></button>
                     <!-- preview element -->
                     <button class="btn preview"></button>
+                    <button class="btn drawing-tool-10"></button>
                     <!-- colorpicker element -->
                     <div class="colorpicker" style="display:none">
                         <canvas id="picker" var="1" width="300" height="300"></canvas>
@@ -95,6 +123,32 @@
                             <div><label>B</label> <input type="text" id="bVal" /></div>
                             <div><label>RGB</label> <input type="text" id="rgbVal" /></div>
                             <div><label>HEX</label> <input type="text" id="hexVal" /></div>
+                        </div>
+                        <div class="tabTriangle">
+                        </div>
+                    </div>
+                    <div class="widthcontroller" style="display:none">
+                        <div class="controller-header">WIDTH</div>
+                        <div class="controller-body">
+                            <button class="btn btn-width btn-width-1 selected" ng-click="selectWidth(1)">1x</button>
+                            <button class="btn btn-width btn-width-2" ng-click="selectWidth(2)">2x</button>
+                            <button class="btn btn-width btn-width-3" ng-click="selectWidth(3)">3x</button>
+                            <button class="btn btn-width btn-width-4" ng-click="selectWidth(4)">4x</button>
+                            <button class="btn btn-width btn-width-5" ng-click="selectWidth(5)">5x</button>
+                        </div>
+                        <div class="tabTriangle">
+                        </div>
+                    </div>
+                    <div class="shapecontroller" style="display:none">
+                        <div class="controller-header">SHAPE TOOL</div>
+                        <div class="controller-body">
+                            <button class="btn btn-width btn-width-1 selected" ng-click="selectWidth(1)">1x</button>
+                            <button class="btn btn-width btn-width-2" ng-click="selectWidth(2)">2x</button>
+                            <button class="btn btn-width btn-width-3" ng-click="selectWidth(3)">3x</button>
+                            <button class="btn btn-width btn-width-4" ng-click="selectWidth(4)">4x</button>
+                            <button class="btn btn-width btn-width-5" ng-click="selectWidth(5)">5x</button>
+                        </div>
+                        <div class="tabTriangle">
                         </div>
                     </div>
                 </div>

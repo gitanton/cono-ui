@@ -11,10 +11,12 @@ angular.module('conojoApp')
     .controller('DrawingCtrl', function ($rootScope, $scope, $http, ENV, NAV) {
 
         // Drawing Variables
-        $scope.type = 1; // Pen 1, Line 2, Arrow 3, Rectangle 4, Shape 5, Marker 6, Text 7, Eraser 8
+        $scope.type = 1; // Pen 1, Line 2, Arrow 3, Rectangle 4, Shape 5, Marker 6, Text 7, Eraser 8, Select 9
         $scope.color = "black";
+        $scope.width = 1;
+        $scope.selection = {x1:0, y1:0, y1:0, y2:0};
 
-        var isDragging = false,
+        var isDragging = false, isSelectable = true, isSelected = false,
             context1, canvas1, context2, canvas2,
             pt1 = {x:0, y:0}, pt2 = {x:0, y:0},
             isTextEnable = false;
@@ -23,7 +25,7 @@ angular.module('conojoApp')
             canvas1 = document.getElementById("drawingCanvas");
             context2 = canvas1.getContext("2d");
             canvas1.width = $(window).width();
-            canvas1.height = $(window).height() / 10 * 7;
+            canvas1.height = $(window).height();
 
             canvas2 = document.getElementById("tempCanvas");
             context1 = canvas2.getContext("2d");
@@ -31,7 +33,7 @@ angular.module('conojoApp')
             canvas2.height = canvas1.height;
 
             initPalette();
-
+            initWidth();
             if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
                 initAppDrawingEvent();    
             }else{
@@ -94,11 +96,48 @@ angular.module('conojoApp')
             });
         }
 
+        function initWidth(){
+            var bCanPreview = true;
+            $('.drawing-tool-10').click(function(e) { // click event handler
+               $('.widthcontroller').fadeToggle("slow", "linear");
+                bCanPreview = !bCanPreview; 
+            });
+
+        }
+
+        $scope.selectTool = function(type){
+            $scope.type = type;
+            for(var i = 1; i < 10; i++){
+                if(i == type)
+                {
+                    $('.drawing-tool-' + i).addClass('selected');
+                }
+                else{
+                    $('.drawing-tool-' + i).removeClass("selected");
+                }
+            }
+        }
+
+        $scope.selectWidth = function(width){
+            $scope.width = width * 2;
+            for(var i = 1; i < 6; i++){
+                if(i == width)
+                {
+                    $('.btn-width-' + i).addClass('selected');
+                }
+                else{
+                    $('.btn-width-' + i).removeClass("selected");
+                }
+            }
+        }
+
+
+
         function processDownEvent(event){
             isDragging = true;
-        
             context1.strokeStyle = $scope.color;
             context1.fillStyle = $scope.color;
+            context1.lineWidth = $scope.width;
             switch($scope.type){
                 case 1: // Pen
                 case 6: // Marker
@@ -110,8 +149,22 @@ angular.module('conojoApp')
                 case 3: // Arrow
                 case 4: // Rectangle
                 case 5: // Shape
+                case 9: // Selection
                     pt1.x = event.offsetX;
                     pt1.y = event.offsetY;
+                    var leftX = Math.min($scope.selection.x1, $scope.selection.x2),
+                        leftY = Math.min($scope.selection.y1, $scope.selection.y2),
+                        absWidth = Math.abs($scope.selection.x1 - $scope.selection.x2),
+                        absHeight = Math.abs($scope.selection.y1 - $scope.selection.y2);
+                    if (leftX < pt1.x && leftX + absWidth > pt1.x && leftY < pt1.y && leftY + absHeight > pt1.y){
+                        if(isSelected){
+                            isSelectable = false;
+                        }
+                    }
+                    else{
+                        isSelectable = true;
+                        context1.clearRect(0, 0, canvas2.width, canvas2.height);
+                    }
                 break;
                 case 7:
                     if(!isTextEnable){
@@ -138,7 +191,6 @@ angular.module('conojoApp')
                 switch($scope.type){
                     case 1:
                         context1.lineTo(event.offsetX, event.offsetY);
-                        context1.lineWidth = 1;
                         context1.stroke();
                     break;
                     case 2:
@@ -159,14 +211,24 @@ angular.module('conojoApp')
                     break;
                     case 6:
                         context1.lineTo(event.offsetX, event.offsetY);
-                        context1.lineWidth = 8;
+                        context1.globalAlpha = 0.3;
+                        context2.globalAlpha = 0.3;
                         context1.stroke();
                     break;
                     case 8:
                         context1.lineTo(event.offsetX, event.offsetY);
                         context1.strokeStyle = "white";
-                        context1.lineWidth = 15;
                         context1.stroke();
+                    break;
+                    case 9:
+                        if(isSelectable){
+                            context1.save();
+                            context1.setLineDash([5]);
+                            context1.strokeStyle = "black";
+                            drawRectangle(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, $scope.color);
+                            isSelected = true;
+                            context1.restore();
+                        }
                     break;
                 }
             }
@@ -175,11 +237,14 @@ angular.module('conojoApp')
         function processUpEvent(){
             if(isDragging){
                 isDragging = false;
-                updateCanvas();
+                
+                if($scope.type != 9)
+                {
+                    updateCanvas();    
+                }
                 context1.closePath();
             }
         }
-
 
         function drawTriangle(context, x, y, triangleWidth, triangleHeight, color){
             context.clearRect(0,0, canvas1.width, canvas1.height);
@@ -199,6 +264,9 @@ angular.module('conojoApp')
             context.rect(x1, y1, x2 - x1, y2 - y1);
             context.stroke();
             context.closePath();
+            if($scope.type == 9){
+                $scope.selection = {x1:x1, y1:y1, x2:x2, y2:y2};
+            }
         }
 
         function drawLine(context, x1, y1, x2, y2, color){
@@ -218,7 +286,7 @@ angular.module('conojoApp')
             context.moveTo(x1, y1);
             context.strokeStyle = color;
             // Draw ArrowHead
-            var headlen = 10;
+            var headlen = 8;
             var angle = Math.atan2(y2 - y1, x2 - x1);
             context.lineTo(x2, y2);
             context.lineTo(x2 - headlen * Math.cos( angle - Math.PI / 6), y2 - headlen * Math.sin( angle - Math.PI / 6));
@@ -231,13 +299,15 @@ angular.module('conojoApp')
         function updateCanvas(){
             context2.drawImage(canvas2, 0, 0);
             context1.clearRect(0, 0, canvas2.width, canvas2.height);
+            context2.globalAlpha = 1;
+            context2.globalAlpha = 1;
         }
 
         $(window).resize(function() {
             var canvas1 = document.getElementById("drawingCanvas");
             var canvas2 = document.getElementById("tempCanvas");
             canvas1.width = $(window).width();
-            canvas1.height = $(window).height() / 10 * 7;
+            canvas1.height = $(window).height();
             canvas2.width = canvas1.width;
             canvas2.height = canvas1.height;
         });
@@ -255,6 +325,14 @@ angular.module('conojoApp')
             $(".tempControl").bind('mouseup', function(event){
                 processUpEvent();
             });
+
+            document.addEventListener( "keydown", function(e){
+                if(isSelected && e.keyCode == 46){
+                    context2.clearRect(Math.min($scope.selection.x1 , $scope.selection.x2), Math.min($scope.selection.y1 , $scope.selection.y2), Math.abs($scope.selection.x1 - $scope.selection.x2), Math.abs($scope.selection.y1 - $scope.selection.y2));
+                    isSelected = false;
+                    context1.clearRect(0, 0, canvas2.width, canvas2.height);
+                }
+            }, false );
         }
 
         // Drawing Events for Mobile Application

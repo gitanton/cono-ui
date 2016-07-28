@@ -872,11 +872,130 @@ body {
         background: #efefef;
         border-top: 1px solid #e6e6e6;
         padding: 11px 20px 12px 84px;
+        bottom:0px;
+        position:absolute;
     }
 }
 
-.drawing-tool:focus, .drawing-tool:active{
-    background-color: green;
+.drawing-tool-1,.drawing-tool-1:active{
+    background-image: url("../images/brush-blue-icon.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    width: 50px;
+    height: 50px;
+}
+.drawing-tool-1.selected{
+    background-color:#f6f064;
+}
+
+.drawing-tool-2,.drawing-tool-2:active{
+    background-image: url("../images/brush-blue-icon.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    width: 50px;
+    height: 50px;
+}
+
+.drawing-tool-2.selected{
+    background-color:#f6f064;
+}
+
+.drawing-tool-3,.drawing-tool-3:active{
+    background-image: url("../images/brush-blue-icon.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    width: 50px;
+    height: 50px;
+}
+.drawing-tool-3.selected{
+    background-color:#f6f064;
+}
+
+.drawing-tool-4,.drawing-tool-4:active{
+    background-image: url("../images/brush-blue-icon.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    width: 50px;
+    height: 50px;
+}
+.drawing-tool-4.selected{
+    background-color:#f6f064;
+}
+
+.drawing-tool-5,.drawing-tool-5:active{
+    background-image: url("../images/shape-black-icon.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    width: 50px;
+    height: 50px;
+}
+.drawing-tool-5.selected{
+    background-color:#f6f064;
+}
+
+.drawing-tool-6,.drawing-tool-6:active{
+    background-image: url("../images/brush-blue-icon.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    width: 50px;
+    height: 50px;
+}
+.drawing-tool-6.selected{
+    background-color:#f6f064;
+}
+
+.drawing-tool-7,.drawing-tool-7:active{
+    background-image: url("../images/text-blue-icon.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    width: 50px;
+    height: 50px;
+}
+.drawing-tool-7.selected{
+    background-color:#f6f064;
+}
+
+.drawing-tool-8,.drawing-tool-8:active{
+    background-image: url("../images/eraser-black-icon.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    width: 50px;
+    height: 50px;
+}
+.drawing-tool-8.selected{
+    background-color:#f6f064;
+}
+
+.drawing-tool-9,.drawing-tool-9:active{
+    background-image: url("../images/move-icon.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    width: 50px;
+    height: 50px;
+}
+.drawing-tool-9.selected{
+    background-color:#f6f064;
+}
+
+.drawing-tool-10,.drawing-tool-10:active{
+    background-image: url("../images/up-icon.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    width: 50px;
+    height: 50px;
+}
+.drawing-tool-10.selected{
+    background-color:#f6f064;
 }
 
 .canvasText{
@@ -884,6 +1003,20 @@ body {
     border-width: 1px;
     position:absolute;
 }
+
+.btn-width{
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    background-color: #323232;
+    border-radius: 0px;
+}
+
+.btn-width.selected, .btn-width:hover,.btn-width:active{
+    border-color: #1c85b6;
+    color:white;
+}
+
 
 /*message page*/
 .message-container {
