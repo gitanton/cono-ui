@@ -16,6 +16,7 @@ angular.module('conojoApp')
         $scope.color = "black";
         $scope.width = 1;
         $scope.selection = {x1:0, y1:0, y1:0, y2:0};
+
         var isDragging = false, isSelectable = true, isSelected = false,
             context1, canvas1, context2, canvas2,
             pt1 = {x:0, y:0}, pt2 = {x:0, y:0},
@@ -93,26 +94,66 @@ angular.module('conojoApp')
             }); 
             $('.preview').click(function(e) { // preview click
                 $('.colorpicker').fadeToggle("slow", "linear");
-                bCanPreview = true;
+                $('.widthcontroller1').css("display", "none");
+                $('.widthcontroller2').css("display", "none");
+                $('.widthcontroller3').css("display", "none");
+                $('.widthcontroller4').css("display", "none");
+                $('.shapecontroller').css("display", "none");
             });
         }
 
         function initWidth(){
-            var bCanPreview = true;
-            $('.drawing-tool-10').click(function(e) { // click event handler
-               $('.widthcontroller').fadeToggle("slow", "linear");
-                bCanPreview = !bCanPreview; 
+            $('.drawing-tool-1').click(function(e) { // click event handler
+                $('.widthcontroller1').fadeToggle("slow", "linear");
+                $('.widthcontroller1').css("left", "110px");
+                $('.colorpicker').css("display", "none");
+                $('.widthcontroller2').css("display", "none");
+                $('.widthcontroller3').css("display", "none");
+                $('.widthcontroller4').css("display", "none");
+                $('.shapecontroller').css("display", "none");
             });
+            $('.drawing-tool-2').click(function(e) { // click event handler
+               $('.widthcontroller2').fadeToggle("slow", "linear");
+               $('.widthcontroller2').css("left", "160px");
 
+                $('.colorpicker').css("display", "none");
+                $('.widthcontroller1').css("display", "none");
+                $('.widthcontroller3').css("display", "none");
+                $('.widthcontroller4').css("display", "none");
+                $('.shapecontroller').css("display", "none");
+            });
+            $('.drawing-tool-6').click(function(e) { // click event handler
+               $('.widthcontroller4').fadeToggle("slow", "linear");
+               $('.widthcontroller4').css("left", "270px");
+
+                $('.colorpicker').css("display", "none");
+                $('.widthcontroller1').css("display", "none");
+                $('.widthcontroller3').css("display", "none");
+                $('.widthcontroller2').css("display", "none");
+                $('.shapecontroller').css("display", "none");
+            });
         }
 
         function initShapeWindow(){
-            var bCanPreview = true;
-            $('.drawing-tool-5').click(function(e) { // click event handler
-               $('.shapecontroller').fadeToggle("slow", "linear");
-                bCanPreview = !bCanPreview; 
+            $('.drawing-tool-5').click(function(e) { // click event handler 
+                if($('.shapecontroller').css("display") == "none"){
+                    $scope.type = 10;    
+                }
+                $('.shapecontroller').fadeToggle("slow", "linear");
+                $('.colorpicker').css("display", "none");
+                $('.widthcontroller1').css("display", "none");
+                $('.widthcontroller2').css("display", "none");
+                $('.widthcontroller3').css("display", "none");
+                $('.widthcontroller4').css("display", "none");
             });
-
+            $('.drawing-tool-8').click(function(e) { // click event handler 
+                $('.widthcontroller3').fadeToggle("slow", "linear");
+                $('.widthcontroller3').css("left", "375px");
+                $('.colorpicker').css("display", "none");
+                $('.widthcontroller1').css("display", "none");
+                $('.widthcontroller2').css("display", "none");
+                $('.shapecontroller').css("display", "none");
+            });
         }
 
         $scope.selectTool = function(type){
@@ -187,19 +228,25 @@ angular.module('conojoApp')
             context1.fillStyle = $scope.color;
             context1.lineWidth = $scope.width;
             switch($scope.type){
-                case 1: // Pen
                 case 6: // Marker
+                    context1.beginPath();
+                    context1.globalAlpha = 0.5;
+                    context2.globalAlpha = 0.5;
+                    context1.moveTo(event.offsetX, event.offsetY);
+                break;
+                case 1: // Pen
                 case 8: // Eraser
                     context1.beginPath();
                     context1.moveTo(event.offsetX, event.offsetY);
-                    break;
+                break;                
                 case 2: // Line
                 case 3: // Arrow
+                case 15: // Arrow
                 case 10:// Rectangle
                 case 4: // Rectangle
                 case 5: // Shape
                 case 9: // Selection
-                case 11://Oval
+                case 11: //Oval
                 case 12:// Triangle
                 case 13:// Star
                 case 16: //Poly
@@ -252,6 +299,7 @@ angular.module('conojoApp')
                         drawLine(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, $scope.color);
                     break;
                     case 3:
+                    case 15:
                         drawArrow(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, $scope.color);
                     break;
                     case 4:
@@ -281,10 +329,11 @@ angular.module('conojoApp')
                         drawStar(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, 4, $scope.color);
                     break;
                     case 6:
+                        /*context1.clearRect(0, 0, canvas2.width, canvas2.height);*/
                         context1.lineTo(event.offsetX, event.offsetY);
-                        context1.globalAlpha = 0.3;
-                        context2.globalAlpha = 0.3;
+                        
                         context1.stroke();
+                        /*context2.drawImage(canvas2, 0, 0);*/
                     break;
                     case 8:
                         context1.lineTo(event.offsetX, event.offsetY);
@@ -308,12 +357,12 @@ angular.module('conojoApp')
         function processUpEvent(){
             if(isDragging){
                 isDragging = false;
-                
                 if($scope.type != 9)
                 {
                     updateCanvas();    
                 }
                 context1.closePath();
+                context2.closePath();
             }
         }
 

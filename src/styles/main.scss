@@ -1072,7 +1072,7 @@ body {
     width: 40px;
     height: 40px;
 }
-.widthcontroller{
+.widthcontroller1, .widthcontroller2, .widthcontroller3, .widthcontroller4{
     text-align: center;
     background-color: #464646;
     border-radius: 5px 5px 5px 5px;
@@ -1080,7 +1080,7 @@ body {
     font-size: 12px;
     position: absolute;
     width: 265px;
-    top: -90px;
+    top: -95px;
     left: 495px;
     height: 80px;
 }
@@ -1107,17 +1107,15 @@ body {
     color: #FFFFFF;
     font-size: 12px;
     position: absolute;
-    width: 230px;
-    top: -140px;
-    left: 255px;
-    height: 125px;
-    .tabTriangle   {
-        margin-left:105px !important;
-    }
+    width: 265px;
+    top: -190px;
+    left: 215px;
+    height: 175px;
     .controller-body{
         margin-top:0px !important;
     }
 }
+
 /*message page*/
 .message-container {
     .message-subheader {

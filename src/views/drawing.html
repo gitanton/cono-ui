@@ -24,18 +24,18 @@
         <div class="drawing-footer project-footer">
             <div class="row">
                 <div class="">
-                    <button class="btn drawing-tool-9" ng-click="selectTool(9)"></button>
+                    <button class="btn drawing-tool-9" ng-click="selectTool(9)" style="margin-left:90px;"></button>
                     <button class="btn drawing-tool-1 selected" ng-click="selectTool(1)"></button>
                     <button class="btn drawing-tool-2" ng-click="selectTool(2)">Line</button>
-                    <button class="btn drawing-tool-3" ng-click="selectTool(3)">Arrow</button>
-                    <button class="btn drawing-tool-4" ng-click="selectTool(4)">Rectangle</button>
-                    <button class="btn drawing-tool-5" ng-click="selectTool(5)"></button>
+                    <button class="btn drawing-tool-3" ng-click="selectTool(3)" style="display:none">Arrow</button>
+                    <button class="btn drawing-tool-4" ng-click="selectTool(4)" style="display:none">Rectangle</button>
+                    <button class="btn drawing-tool-5"></button>
                     <button class="btn drawing-tool-6" ng-click="selectTool(6)">Marker</button>
                     <button class="btn drawing-tool-7" ng-click="selectTool(7)"></button>
                     <button class="btn drawing-tool-8" ng-click="selectTool(8)"></button>
                     <!-- preview element -->
                     <button class="btn preview"></button>
-                    <button class="btn drawing-tool-10"></button>
+                    <button class="btn drawing-tool-10" style="display:none"></button>
                     <button class="btn btn-op" ng-click="fileOp(1)">Save</button>
                     <button class="btn btn-op" ng-click="fileOp(2)">Open</button>
                     <!-- colorpicker element -->
@@ -51,7 +51,43 @@
                         <div class="tabTriangle">
                         </div>
                     </div>
-                    <div class="widthcontroller" style="display:none">
+                    <div class="widthcontroller1" style="display:none">
+                        <div class="controller-header">WIDTH</div>
+                        <div class="controller-body">
+                            <button class="btn btn-extra btn-width-1 selected" ng-click="selectWidth(1)">1x</button>
+                            <button class="btn btn-extra btn-width-2" ng-click="selectWidth(2)">2x</button>
+                            <button class="btn btn-extra btn-width-3" ng-click="selectWidth(3)">3x</button>
+                            <button class="btn btn-extra btn-width-4" ng-click="selectWidth(4)">4x</button>
+                            <button class="btn btn-extra btn-width-5" ng-click="selectWidth(5)">5x</button>
+                        </div>
+                        <div class="tabTriangle">
+                        </div>
+                    </div>
+                    <div class="widthcontroller2" style="display:none">
+                        <div class="controller-header">WIDTH</div>
+                        <div class="controller-body">
+                            <button class="btn btn-extra btn-width-1 selected" ng-click="selectWidth(1)">1x</button>
+                            <button class="btn btn-extra btn-width-2" ng-click="selectWidth(2)">2x</button>
+                            <button class="btn btn-extra btn-width-3" ng-click="selectWidth(3)">3x</button>
+                            <button class="btn btn-extra btn-width-4" ng-click="selectWidth(4)">4x</button>
+                            <button class="btn btn-extra btn-width-5" ng-click="selectWidth(5)">5x</button>
+                        </div>
+                        <div class="tabTriangle">
+                        </div>
+                    </div>
+                    <div class="widthcontroller3" style="display:none">
+                        <div class="controller-header">WIDTH</div>
+                        <div class="controller-body">
+                            <button class="btn btn-extra btn-width-1 selected" ng-click="selectWidth(1)">1x</button>
+                            <button class="btn btn-extra btn-width-2" ng-click="selectWidth(2)">2x</button>
+                            <button class="btn btn-extra btn-width-3" ng-click="selectWidth(3)">3x</button>
+                            <button class="btn btn-extra btn-width-4" ng-click="selectWidth(4)">4x</button>
+                            <button class="btn btn-extra btn-width-5" ng-click="selectWidth(5)">5x</button>
+                        </div>
+                        <div class="tabTriangle">
+                        </div>
+                    </div>
+                    <div class="widthcontroller4" style="display:none">
                         <div class="controller-header">WIDTH</div>
                         <div class="controller-body">
                             <button class="btn btn-extra btn-width-1 selected" ng-click="selectWidth(1)">1x</button>
@@ -73,9 +109,16 @@
                         </div>
                         <div class="controller-body">
                             <button class="btn btn-extra btn-shape-5" ng-click="selectShape(5)">Bal</button>
-                            <button class="btn btn-extra btn-shape-6" ng-click="selectShape(6)" style="display:none;">Ar</button>
+                            <button class="btn btn-extra btn-shape-6" ng-click="selectShape(6)">Ar</button>
                             <button class="btn btn-extra btn-shape-7" ng-click="selectShape(7)">Poly</button>
                             <button class="btn btn-extra btn-shape-8" ng-click="selectShape(8)">Dia</button>
+                        </div>
+                        <div class="controller-body" style="border-top: grey; border-top-style: solid;">
+                            <button class="btn btn-extra btn-width-1 selected" ng-click="selectWidth(1)">1x</button>
+                            <button class="btn btn-extra btn-width-2" ng-click="selectWidth(2)">2x</button>
+                            <button class="btn btn-extra btn-width-3" ng-click="selectWidth(3)">3x</button>
+                            <button class="btn btn-extra btn-width-4" ng-click="selectWidth(4)">4x</button>
+                            <button class="btn btn-extra btn-width-5" ng-click="selectWidth(5)">5x</button>
                         </div>
                         <div class="tabTriangle">
                         </div>

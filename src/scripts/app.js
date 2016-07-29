@@ -23,7 +23,8 @@ angular
         'ngFileUpload',
         'angularModalService',
         'ui.select',
-        'ui.bootstrap.datetimepicker'
+        'ui.bootstrap.datetimepicker',
+
     ])
     .constant('NAV', {
         PROJECT: 'project',
@@ -210,7 +211,14 @@ angular
     })
     .run(['$location', '$rootScope', function ($location, $rootScope) {
         $rootScope.$on('$routeChangeSuccess', function (event, current) {
-            $rootScope.title = current.$$route.title;
-            $rootScope.description = current.$$route.description;
+            if(current.$$route != undefined)
+            {
+                $rootScope.title = current.$$route.title;
+                $rootScope.description = current.$$route.description;
+            }
+            else{
+                
+            }
+            
         });
     }]);
