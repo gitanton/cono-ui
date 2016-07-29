@@ -158,6 +158,12 @@ angular.module('conojoApp')
 
         $scope.selectTool = function(type){
             $scope.type = type;
+
+            if(isTextEnable){
+                isDragging = false;
+                hideTextBox();
+            } 
+
             for(var i = 1; i < 10; i++){
                 if(i == type)
                 {
@@ -222,6 +228,21 @@ angular.module('conojoApp')
             }
         }
 
+        function hideTextBox(x, y){
+            context1.font = "16px Arial";
+            context1.fillText($('.canvasText').val(), x, y);
+            $('.canvasText').val("");
+            $('.canvasText').css("display", "none");
+            isTextEnable = false;
+        }
+
+        function showTextBox(x, y){
+            $('.canvasText').css("left", x + $(".canvasText").width() / 2);
+            $('.canvasText').css("top", y - 17);
+            $('.canvasText').css("display", "block");
+            isTextEnable = true;
+        }
+
         function processDownEvent(event){
             isDragging = true;
             context1.strokeStyle = $scope.color;
@@ -269,20 +290,12 @@ angular.module('conojoApp')
                     }
                 break;
                 case 7:
+                    isDragging = false;
                     if(!isTextEnable){
-                        pt1.x = event.offsetX;
-                        pt1.y = event.offsetY;
-                        $('.canvasText').css("left", pt1.x + $(".canvasText").width() / 2);
-                        $('.canvasText').css("top", pt1.y - 17);
-                        $('.canvasText').css("display", "block");
-                        isTextEnable = true;
+                        showTextBox(event.offsetX, event.offsetY);
                     }
                     else{
-                        context1.font = "16px Arial";
-                        context1.fillText($('.canvasText').val(), pt1.x, pt1.y);
-                        $('.canvasText').val("");
-                        $('.canvasText').css("display", "none");
-                        isTextEnable = false;
+                        hideTextBox(pt1.x, pt1.y);
                     }
                 break;
             }
