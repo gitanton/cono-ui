@@ -216,6 +216,7 @@ angular.module('conojoApp')
 
         function hideTextBox(x, y){
             context1.font = "16px Arial";
+            context1.fillStyle = $scope.color;
             context1.fillText($('.canvasText').val(), x, y);
             $('.canvasText').val("");
             $('.canvasText').css("display", "none");
@@ -223,6 +224,8 @@ angular.module('conojoApp')
         }
 
         function showTextBox(x, y){
+            pt1.x = x;
+            pt1.y = y;
             $('.canvasText').css("left", x + $(".canvasText").width() / 2);
             $('.canvasText').css("top", y - 17);
             $('.canvasText').css("display", "block");
@@ -276,7 +279,7 @@ angular.module('conojoApp')
                     }
                 break;
                 case 7:
-                    isDragging = false;
+                    /*isDragging = false;*/
                     if(!isTextEnable){
                         showTextBox(event.offsetX, event.offsetY);
                     }
@@ -291,6 +294,7 @@ angular.module('conojoApp')
             if(isDragging){
                 switch($scope.type){
                     case 1:
+                    case 6:
                         context1.lineTo(event.offsetX, event.offsetY);
                         context1.stroke();
                     break;
@@ -327,13 +331,6 @@ angular.module('conojoApp')
                     case 17:
                         drawStar(context1, pt1.x, pt1.y, event.offsetX, event.offsetY, 4, $scope.color);
                     break;
-                    case 6:
-                        /*context1.clearRect(0, 0, canvas2.width, canvas2.height);*/
-                        context1.lineTo(event.offsetX, event.offsetY);
-                        
-                        context1.stroke();
-                        /*context2.drawImage(canvas2, 0, 0);*/
-                    break;
                     case 8:
                         context1.lineTo(event.offsetX, event.offsetY);
                         context1.strokeStyle = "white";
@@ -360,8 +357,8 @@ angular.module('conojoApp')
                 {
                     updateCanvas();    
                 }
-                context1.closePath();
-                context2.closePath();
+                /*context1.closePath();
+                context2.closePath();*/
             }
         }
 
