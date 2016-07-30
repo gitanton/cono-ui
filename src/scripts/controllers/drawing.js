@@ -33,6 +33,9 @@ angular.module('conojoApp')
             canvas2.width = canvas1.width;
             canvas2.height = canvas1.height;
 
+            context2.fillStyle = '#FFFFFF';
+            context2.fillRect(0, 0, canvas1.width, canvas1.height);
+
             initPalette();
             initWidth();
             initShapeWindow();
@@ -202,29 +205,12 @@ angular.module('conojoApp')
         }
 
         $scope.fileOp = function(op){
-            if(op == 1){
+            if(op == 2){
 
             }
-            else if(op == 2){
-                var c = canvas1, filename = "aab.png";
-                var lnk = document.createElement('a'), e;
+            else if(op == 1){
 
-                /// the key here is to set the download attribute of the a tag
-                lnk.download = filename;
 
-                /// convert canvas content to data-uri for link. When download
-                /// attribute is set the content pointed to by link will be
-                /// pushed as "download" in HTML5 capable browsers
-                lnk.href = c.toDataURL();
-
-                /// create a "fake" click-event to trigger the download
-                if (document.createEvent) {
-                    e = document.createEvent("MouseEvents");
-                    e.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-                    lnk.dispatchEvent(e);
-                } else if (lnk.fireEvent) {
-                    lnk.fireEvent("onclick");
-                }
             }
         }
 
@@ -521,12 +507,13 @@ angular.module('conojoApp')
         }
 
         $(window).resize(function() {
-            var canvas1 = document.getElementById("drawingCanvas");
+            // Temporarily commented for file save
+/*            var canvas1 = document.getElementById("drawingCanvas");
             var canvas2 = document.getElementById("tempCanvas");
             canvas1.width = $(window).width();
             canvas1.height = $(window).height() * 8 / 10;
             canvas2.width = canvas1.width;
-            canvas2.height = canvas1.height;
+            canvas2.height = canvas1.height;*/
         });
 
         // Drawing Events for Web Application
@@ -550,6 +537,13 @@ angular.module('conojoApp')
                     context1.clearRect(0, 0, canvas2.width, canvas2.height);
                 }
             }, false );
+
+            function dlCanvas() {
+                var dt = canvas1.toDataURL();
+                this.href = dt;
+                this.download = new Date().getTime() +".jpg";
+            };
+            document.getElementById("dl").addEventListener('click', dlCanvas, false);
         }
 
         // Drawing Events for Mobile Application

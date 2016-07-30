@@ -23,7 +23,6 @@ angular
         'ngFileUpload',
         'angularModalService',
         'ui.select',
-        'ui.bootstrap.datetimepicker',
 
     ])
     .constant('NAV', {
