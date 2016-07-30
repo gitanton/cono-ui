@@ -17,6 +17,8 @@ angular.module('conojoApp')
         $scope.width = 1;
         $scope.selection = {x1:0, y1:0, y1:0, y2:0};
 
+        $scope.imageList = [];
+        var undoStep = -1;
         var isDragging = false, isSelectable = true, isSelected = false,
             context1, canvas1, context2, canvas2,
             pt1 = {x:0, y:0}, pt2 = {x:0, y:0},
@@ -279,7 +281,7 @@ angular.module('conojoApp')
                     }
                 break;
                 case 7:
-                    /*isDragging = false;*/
+                    isDragging = false;
                     if(!isTextEnable){
                         showTextBox(event.offsetX, event.offsetY);
                     }
@@ -355,10 +357,36 @@ angular.module('conojoApp')
                 isDragging = false;
                 if($scope.type != 9)
                 {
-                    updateCanvas();    
+                    updateCanvas();
                 }
-                /*context1.closePath();
-                context2.closePath();*/
+                context1.closePath();
+                context2.closePath();
+                imagePush();
+            }
+        }
+
+        function imagePush() {
+            undoStep ++;
+            if(undoStep > 50) return;
+            if (undoStep < $scope.imageList.length) { $scope.imageList.length = undoStep; }
+            $scope.imageList.push(document.getElementById('drawingCanvas').toDataURL());
+        }
+
+        function cUndo() {
+            if (undoStep > 0) {
+                undoStep--;
+                var canvasPic = new Image();
+                canvasPic.src = $scope.imageList[undoStep];
+                canvasPic.onload = function () { context2.drawImage(canvasPic, 0, 0); }
+            }
+        }
+
+        function cRedo() {
+            if (undoStep < $scope.imageList.length - 1) {
+                undoStep++;
+                var canvasPic = new Image();
+                canvasPic.src = $scope.imageList[undoStep];
+                canvasPic.onload = function () { context2.drawImage(canvasPic, 0, 0); }
             }
         }
 
@@ -533,6 +561,15 @@ angular.module('conojoApp')
                     isSelected = false;
                     context1.clearRect(0, 0, canvas2.width, canvas2.height);
                 }
+
+                if ( e.ctrlKey && e.keyCode == 90 ) {
+                    console.log(undoStep)
+                    cUndo();
+                } 
+                else if( e.ctrlKey && e.keyCode == 88 ) {
+                    cRedo();
+                }
+
             }, false );
 
             function dlCanvas() {
