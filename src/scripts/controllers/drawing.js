@@ -557,7 +557,8 @@ angular.module('conojoApp')
 
             document.addEventListener( "keydown", function(e){
                 if(isSelected && e.keyCode == 46){
-                    context2.clearRect(Math.min($scope.selection.x1 , $scope.selection.x2), Math.min($scope.selection.y1 , $scope.selection.y2), Math.abs($scope.selection.x1 - $scope.selection.x2), Math.abs($scope.selection.y1 - $scope.selection.y2));
+                    context2.fillStyle = '#FFFFFF';
+                    context2.fillRect(Math.min($scope.selection.x1 , $scope.selection.x2), Math.min($scope.selection.y1 , $scope.selection.y2), Math.abs($scope.selection.x1 - $scope.selection.x2), Math.abs($scope.selection.y1 - $scope.selection.y2));
                     isSelected = false;
                     context1.clearRect(0, 0, canvas2.width, canvas2.height);
                 }
