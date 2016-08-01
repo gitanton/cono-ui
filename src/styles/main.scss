@@ -880,7 +880,8 @@ body {
 }
 
 .drawing-tool-1,.drawing-tool-1:active{
-    background-image: url("../images/brush-blue-icon.png");
+    background-image: url("../images/pen1.png");
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -889,10 +890,13 @@ body {
 }
 .drawing-tool-1.selected{
     background-color:#f6f064;
+    background-image: url("../images/pen2.png");
+    background-size: contain;
 }
 
 .drawing-tool-2,.drawing-tool-2:active{
-    background-image: url("../images/brush-blue-icon.png");
+    background-image: url("../images/line1.png");
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -902,6 +906,8 @@ body {
 
 .drawing-tool-2.selected{
     background-color:#f6f064;
+    background-image: url("../images/line2.png");
+    background-size: contain;
 }
 
 .drawing-tool-3,.drawing-tool-3:active{
@@ -929,7 +935,8 @@ body {
 }
 
 .drawing-tool-5,.drawing-tool-5:active{
-    background-image: url("../images/shape-black-icon.png");
+    background-image: url("../images/shape1.png");
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -938,10 +945,13 @@ body {
 }
 .drawing-tool-5.selected{
     background-color:#f6f064;
+    background-image: url("../images/shape2.png");
+    background-size: contain;
 }
 
 .drawing-tool-6,.drawing-tool-6:active{
-    background-image: url("../images/brush-blue-icon.png");
+    background-image: url("../images/marker1.png");
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -949,11 +959,14 @@ body {
     height: 50px;
 }
 .drawing-tool-6.selected{
-    background-color:#f6f064;
+    background-image: url("../images/marker2.png");
+    background-size: contain;
+
 }
 
 .drawing-tool-7,.drawing-tool-7:active{
-    background-image: url("../images/text-blue-icon.png");
+    background-size: contain;
+    background-image: url("../images/text_1.png");
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -962,10 +975,15 @@ body {
 }
 .drawing-tool-7.selected{
     background-color:#f6f064;
+    background-image: url("../images/text_2.png");
+    background-size: contain;
+
 }
 
 .drawing-tool-8,.drawing-tool-8:active{
-    background-image: url("../images/eraser-black-icon.png");
+    background-image: url("../images/eraser1.png");
+    background-size: contain;
+
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -974,10 +992,15 @@ body {
 }
 .drawing-tool-8.selected{
     background-color:#f6f064;
+    background-image: url("../images/eraser2.png");
+    background-size: contain;
+
 }
 
 .drawing-tool-9,.drawing-tool-9:active{
-    background-image: url("../images/move-icon.png");
+    background-image: url("../images/select_1.png");
+    background-size: contain;
+
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
@@ -986,6 +1009,9 @@ body {
 }
 .drawing-tool-9.selected{
     background-color:#f6f064;
+    background-image: url("../images/select_2.png");
+    background-size: contain;
+    
 }
 
 .drawing-tool-10,.drawing-tool-10:active{
